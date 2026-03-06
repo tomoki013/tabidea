@@ -1,0 +1,294 @@
+{
+  "id": "536c8098-c7c1-47a8-86bd-aae4e440a536",
+  "destination": "Hong Kong",
+  "description": "Immerse yourself in the vibrant streets of Hong Kong, where the aroma of dim sum wafts through the air and the skyline dazzles with its neon lights. This 3-day adventure is crafted for food lovers and night owls, promising a delightful blend of culinary experiences, breathtaking views, and the thrill of shopping in bustling markets. Get ready to explore hidden gems and iconic sights, all while indulging in the rich tapestry of flavors that this city has to offer.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Culinary Delights",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Check-in at Hotel",
+          "description": "Arrive at your hotel in Tsim Sha Tsui and settle in. This area is perfect for exploring the vibrant streets of Hong Kong.",
+          "locationEn": "Tsim Sha Tsui, Hong Kong",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Dim Dim Sum Dim Sum Specialty Store",
+          "description": "Indulge in a delightful dim sum lunch at this popular local spot. Try their signature shrimp dumplings and pork buns for an authentic taste of Hong Kong.",
+          "searchQuery": "Dim Dim Sum Dim Sum Specialty Store",
+          "locationEn": "Tsim Sha Tsui, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Victoria Harbour Promenade",
+          "description": "Stroll along the Victoria Harbour Promenade, where you can enjoy stunning views of the skyline and the iconic Star Ferry. It's a perfect spot for photos!",
+          "searchQuery": "Victoria Harbour Promenade",
+          "locationEn": "Tsim Sha Tsui, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping at Harbour City",
+          "description": "Explore Harbour City, one of Hong Kong's largest shopping malls. With a mix of luxury brands and local shops, it's a shopper's paradise.",
+          "searchQuery": "Harbour City",
+          "locationEn": "Tsim Sha Tsui, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Mak's Noodle",
+          "description": "Savor a bowl of authentic wonton noodles at Mak's Noodle, a beloved eatery known for its rich broth and handmade noodles. A must-try for noodle lovers!",
+          "searchQuery": "Mak's Noodle",
+          "locationEn": "Tsim Sha Tsui, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "A Symphony of Lights Show",
+          "description": "Catch the spectacular Symphony of Lights show from the Tsim Sha Tsui waterfront. The skyline lights up in a dazzling display synchronized with music.",
+          "searchQuery": "A Symphony of Lights",
+          "locationEn": "Tsim Sha Tsui, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Explore Nathan Road Night Market",
+          "description": "Wander through the bustling Nathan Road Night Market, where you can find street food, souvenirs, and local snacks. Don't miss the egg waffles!",
+          "searchQuery": "Nathan Road Night Market",
+          "locationEn": "Tsim Sha Tsui, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Shopping and Night Views",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Tsim Sha Tsui",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Central",
+          "time": "09:15"
+        },
+        "duration": "15m",
+        "memo": "Take the MTR from Tsim Sha Tsui to Central."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "DimDimSum Dim Sum Specialty Store",
+          "description": "Start your day with a delightful dim sum breakfast at DimDimSum, known for its fresh and delicious dumplings. Be sure to try their signature shrimp dumplings and pork buns!",
+          "searchQuery": "DimDimSum Dim Sum Specialty Store",
+          "locationEn": "Hong Kong, China",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Shopping at IFC Mall",
+          "description": "After breakfast, head to the luxurious IFC Mall for some shopping. With a mix of high-end brands and local boutiques, it's the perfect place to find unique souvenirs and enjoy the stunning harbor views from the mall.",
+          "searchQuery": "IFC Mall",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Mak's Noodle",
+          "description": "Enjoy a bowl of authentic wonton noodles at Mak's Noodle, a local favorite. The rich broth and handmade wontons are a must-try for any foodie visiting Hong Kong!",
+          "searchQuery": "Mak's Noodle",
+          "locationEn": "Hong Kong, China",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Lan Kwai Fong",
+          "description": "Stroll through the vibrant streets of Lan Kwai Fong, famous for its nightlife and dining options. This area is bustling with energy and offers a glimpse into Hong Kong's lively culture.",
+          "searchQuery": "Lan Kwai Fong",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Victoria Peak Tram",
+          "description": "Take the iconic Peak Tram to Victoria Peak for breathtaking views of the Hong Kong skyline. The ride itself is an experience, and the panoramic views from the top are simply unforgettable!",
+          "searchQuery": "Victoria Peak Tram",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Peak Lookout",
+          "description": "Enjoy dinner at The Peak Lookout, where you can savor delicious international cuisine while taking in the stunning views of the city as the sun sets. It's a perfect spot to relax after a day of exploring.",
+          "searchQuery": "The Peak Lookout",
+          "locationEn": "Hong Kong, China",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Sky Terrace 428",
+          "description": "Visit the Sky Terrace 428 for the best night views of Hong Kong. The terrace offers a 360-degree view of the city, making it a perfect spot to capture the dazzling skyline at night.",
+          "searchQuery": "Sky Terrace 428",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:30",
+          "activity": "Return to Central",
+          "description": "After enjoying the views, take the Peak Tram back down and return to Central for a leisurely evening stroll or to explore more of the nightlife.",
+          "locationEn": "Hong Kong, China",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Local Markets and Departure",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Central",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Sham Shui Po",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the MTR from Central to Sham Shui Po for a local market experience."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Sham Shui Po Street Market",
+          "description": "Dive into the vibrant atmosphere of Sham Shui Po, where you can explore a variety of stalls selling everything from electronics to traditional snacks. Don't miss the chance to try some local street food!",
+          "searchQuery": "Sham Shui Po Street Market",
+          "locationEn": "Sham Shui Po, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "DimDimSum Dim Sum Specialty Store",
+          "description": "Savor a delightful dim sum lunch at this popular spot known for its fresh and delicious offerings. Be sure to try their signature shrimp dumplings and pork buns!",
+          "searchQuery": "DimDimSum Dim Sum Specialty Store",
+          "locationEn": "Sham Shui Po, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Temple Street Night Market",
+          "description": "Stroll through the bustling Temple Street Night Market, famous for its lively atmosphere and variety of goods. It's a great place to shop for souvenirs and enjoy some local street food.",
+          "searchQuery": "Temple Street Night Market",
+          "locationEn": "Yau Ma Tei, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Enjoy a farewell dinner at a local restaurant, where you can indulge in more delicious Cantonese dishes. Ask for recommendations from the staff for the best dishes to try!",
+          "searchQuery": "Local Cantonese Restaurant",
+          "locationEn": "Yau Ma Tei, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Victoria Harbour Night View",
+          "description": "End your trip with a breathtaking view of the Hong Kong skyline from Victoria Harbour. The evening lights create a magical atmosphere, perfect for capturing memories with friends.",
+          "searchQuery": "Victoria Harbour",
+          "locationEn": "Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,377 @@
+{
+  "id": "72c4a09d-a998-4ce6-9dce-7736f9397a09",
+  "destination": "Busan",
+  "description": "Immerse yourself in the vibrant culture and artistic spirit of Busan, a city that pulses with energy and creativity. Over four days, you’ll explore the rich tapestry of K-Pop culture, historical sites, and contemporary art, all while indulging in delicious local cuisine. This journey is designed for the solo traveler, offering a perfect blend of exploration and relaxation, with plenty of opportunities to connect with fellow fans and discover hidden gems along the way.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Busan and Exploring K-Pop Culture",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious breakfast at a cozy café near your accommodation. Try a classic Korean breakfast set with rice, soup, and side dishes to fuel your day of exploration.",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Haeundae Beach",
+          "description": "Stroll along the beautiful Haeundae Beach, one of Busan's most famous spots. Enjoy the sea breeze and take in the stunning views of the coastline. It's a great place to relax and soak up the sun.",
+          "searchQuery": "Haeundae Beach",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Seafood Restaurant",
+          "description": "Indulge in a fresh seafood lunch at a local restaurant. Try the famous Busan sashimi or grilled fish, which are both local specialties. The vibrant atmosphere will enhance your dining experience.",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Busan Cinema Center",
+          "description": "Visit the Busan Cinema Center, known for its stunning architecture and as the venue for the Busan International Film Festival. Take a guided tour to learn about its history and significance in the film industry.",
+          "searchQuery": "Busan Cinema Center",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "K-Pop Merchandise Shopping at Shinsegae Centum City",
+          "description": "Head to Shinsegae Centum City, the world's largest department store, where you can find a variety of K-Pop merchandise. From albums to fashion items, this is a paradise for K-Pop fans.",
+          "searchQuery": "Shinsegae Centum City",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit the Busan Museum of Art",
+          "description": "Explore the Busan Museum of Art, which showcases contemporary art and hosts various exhibitions. It's a great way to immerse yourself in the local art scene and enjoy some culture.",
+          "searchQuery": "Busan Museum of Art",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Korean BBQ Restaurant",
+          "description": "End your day with a hearty dinner at a Korean BBQ restaurant. Grill your own meat and enjoy it with a variety of side dishes. It's a fun and interactive dining experience that you shouldn't miss.",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Walk Along the Beach",
+          "description": "Take a leisurely evening walk along Haeundae Beach. The night view of the beach and the city lights create a magical atmosphere, perfect for reflecting on your day.",
+          "locationEn": "Busan, South Korea",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Art and History in Busan",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Cafe de One",
+          "description": "Start your day with a delicious breakfast at Cafe de One, known for its cozy atmosphere and great coffee. Try their signature pancakes or a hearty breakfast set to fuel your day of exploration.",
+          "searchQuery": "Cafe de One",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Gamcheon Culture Village",
+          "description": "Explore the vibrant streets of Gamcheon Culture Village, famous for its colorful houses and artistic murals. This area is a perfect blend of art and history, with plenty of photo opportunities and local shops to discover.",
+          "searchQuery": "Gamcheon Culture Village",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Local Eatery",
+          "description": "Enjoy a traditional Korean lunch at a local eatery nearby. Savor dishes like bibimbap or kimchi stew, which are both delicious and filling, perfect for recharging after your morning adventures.",
+          "searchQuery": "Local Korean Eatery",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Busan Museum of Art",
+          "description": "Visit the Busan Museum of Art, where you can immerse yourself in contemporary art exhibitions. The museum often features works by both local and international artists, making it a great spot for art enthusiasts.",
+          "searchQuery": "Busan Museum of Art",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for K-Pop Merchandise",
+          "description": "Head to the nearby shopping district to hunt for K-Pop merchandise. From albums to fan goods, this area is a treasure trove for any K-Pop fan looking to expand their collection.",
+          "searchQuery": "K-Pop Merchandise Store",
+          "locationEn": "Busan, South Korea",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Korean BBQ Restaurant",
+          "description": "Indulge in a delicious Korean BBQ dinner at a popular local restaurant. Grill your own meat and enjoy it with a variety of side dishes, a true Korean dining experience.",
+          "searchQuery": "Korean BBQ Restaurant",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll at Gwangalli Beach",
+          "description": "End your day with a relaxing stroll along Gwangalli Beach. Enjoy the beautiful night view of the Gwangan Bridge illuminated, and take in the fresh sea breeze as you unwind from your day of exploration.",
+          "searchQuery": "Gwangalli Beach",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Shopping and More K-Pop Adventures",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious breakfast at a cozy café in Busan. Enjoy a classic Korean breakfast set with rice, soup, and side dishes to fuel your day of adventures.",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Nampo-dong Shopping District",
+          "description": "Explore the vibrant Nampo-dong area, known for its trendy shops and street vendors. This is a great place to find K-Pop merchandise and unique fashion items. Don't forget to check out the local street food while you're here!",
+          "searchQuery": "Nampo-dong",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Jagalchi Fish Market",
+          "description": "Head to Jagalchi Fish Market for a fresh seafood lunch. Try the grilled fish or sashimi, and enjoy the lively atmosphere of this famous market. It's a must-visit for any food lover!",
+          "searchQuery": "Jagalchi Fish Market",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Gwangbokdong Fashion Street",
+          "description": "Stroll along Gwangbokdong Fashion Street, where you can find more K-Pop merchandise and trendy clothing stores. This area is perfect for shopping and soaking in the local culture.",
+          "searchQuery": "Gwangbokdong Fashion Street",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Busan Museum of Art",
+          "description": "Visit the Busan Museum of Art to appreciate contemporary art and exhibitions. The museum often features works by local artists and is a great way to immerse yourself in the local art scene.",
+          "searchQuery": "Busan Museum of Art",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local BBQ Restaurant",
+          "description": "Enjoy a traditional Korean BBQ dinner at a local restaurant. Grill your own meat and savor the flavors of Korea in a lively atmosphere. It's a perfect way to end your day of exploration!",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along Gwangalli Beach",
+          "description": "Take a relaxing evening stroll along Gwangalli Beach. The view of the illuminated Gwangan Bridge is stunning at night, making it a perfect spot to unwind after a busy day.",
+          "searchQuery": "Gwangalli Beach",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Final Day and Departure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious breakfast at a cozy café in Busan. Enjoy a traditional Korean breakfast set with rice, soup, and side dishes, perfect for fueling up before a day of exploration.",
+          "searchQuery": "Busan Local Café",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Jagalchi Fish Market",
+          "description": "Explore the vibrant Jagalchi Fish Market, the largest seafood market in Korea. Here, you can sample fresh seafood and even buy some unique K-Pop themed snacks and merchandise from nearby stalls.",
+          "searchQuery": "Jagalchi Fish Market",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Jagalchi Fish Market",
+          "description": "Enjoy a seafood lunch at one of the market's many restaurants. Try the grilled fish or sashimi, and don't forget to pair it with a local beer for a true Busan experience!",
+          "searchQuery": "Jagalchi Fish Market Restaurants",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore BIFF Square",
+          "description": "Stroll through BIFF Square, a hub for K-Pop fans and movie lovers alike. Check out the handprints of famous stars and browse the shops for K-Pop merchandise and souvenirs.",
+          "searchQuery": "BIFF Square",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Busan Cinema Center",
+          "description": "Take a short walk to the Busan Cinema Center, known for its stunning architecture and as the venue for the Busan International Film Festival. Enjoy the art installations and maybe catch a film if time allows!",
+          "searchQuery": "Busan Cinema Center",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Wrap up your trip with a hearty dinner at a local restaurant. Try some Korean BBQ or a hot pot dish, perfect for reflecting on your adventures in Busan.",
+          "searchQuery": "Busan Local Restaurant",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Hotel and Prepare for Departure",
+          "description": "Head back to your hotel to pack up and prepare for your departure. Take a moment to relax and reflect on your wonderful trip to Busan.",
+          "locationEn": "Busan, South Korea",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,356 @@
+{
+  "id": "1cd456ce-0a8e-4365-9614-fcb6e7de9d47",
+  "destination": "ケアンズ",
+  "description": "ケアンズはオーストラリアの美しい熱帯地方に位置し、世界遺産のグレートバリアリーフや豊かな文化が魅力の街です。この4日間の旅では、地元のグルメやアート、歴史を楽しみながら、ケアンズの魅力を存分に味わいましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ケアンズ到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ケアンズのホテルで、オーストラリアの新鮮なフルーツやトースト、コーヒーを楽しむ朝食で一日をスタート。",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ケアンズエスプラネード散策",
+          "description": "美しい海岸線に沿ったケアンズエスプラネードを散策。地元のアートやストリートパフォーマンスを楽しみながら、リラックスした時間を過ごせます。",
+          "searchQuery": "Cairns Esplanade",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のカフェでランチ",
+          "description": "エスプラネード近くのカフェで、オーストラリアの人気メニュー、アボカドトーストやサラダを楽しみます。",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ケアンズアートギャラリー訪問",
+          "description": "ケアンズアートギャラリーで、オーストラリアのアートや先住民の文化に触れることができます。特に地元アーティストの作品が魅力的です。",
+          "searchQuery": "Cairns Art Gallery",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ケアンズ博物館見学",
+          "description": "ケアンズ博物館で、地域の歴史や文化を学びます。特に先住民の歴史に関する展示が興味深いです。",
+          "searchQuery": "Cairns Museum",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ケアンズ夜市でショッピング",
+          "description": "夕方からはケアンズ夜市へ。地元の手作り品やお土産を探しながら、ストリートフードも楽しめます。",
+          "searchQuery": "Cairns Night Markets",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "夜市でディナー",
+          "description": "夜市の屋台で、バーベキューシーフードや地元の特産品を使った料理を味わいます。活気ある雰囲気の中で食事を楽しんでください。",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "グレートバリアリーフの冒険",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ケアンズのホテルで、オーストラリアの新鮮なフルーツやベーカリーを楽しむ朝食。エネルギーをチャージして、素晴らしい一日をスタートしましょう。",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "グレートバリアリーフへのスノーケリングツアー",
+          "description": "世界遺産のグレートバリアリーフへ向かうツアーに参加。美しいサンゴ礁と色とりどりの熱帯魚に囲まれながら、スノーケリングを楽しむことができます。",
+          "searchQuery": "Great Barrier Reef snorkeling tour",
+          "locationEn": "Great Barrier Reef, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ビーチサイドでランチ",
+          "description": "ツアーの後は、ビーチサイドのカフェで新鮮なシーフードランチを堪能。地元の食材を使った料理を楽しみながら、リラックスした時間を過ごします。",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ケアンズエスプラネード散策",
+          "description": "ケアンズのエスプラネードを散策。美しい海岸線を眺めながら、アート作品や地元のマーケットを楽しむことができます。",
+          "searchQuery": "Cairns Esplanade",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ケアンズアートギャラリー訪問",
+          "description": "ケアンズアートギャラリーでオーストラリアのアートを鑑賞。地元アーティストの作品や先住民アートに触れることができ、文化的な体験が得られます。",
+          "searchQuery": "Cairns Art Gallery",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ケアンズの人気レストランで、オーストラリア料理を楽しむディナー。新鮮な地元の食材を使った料理が堪能できます。",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のケアンズ散策",
+          "description": "ディナーの後は、夜のケアンズを散策。ライトアップされたエスプラネードや、地元のバーでのんびりとした時間を過ごします。",
+          "locationEn": "Cairns, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "アボリジニ文化とアートの探求",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ケアンズのホテルで、地元の食材を使った豪華な朝食を楽しみます。フルーツやオーストラリア産の卵料理が特におすすめです。",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "アボリジニ文化センター訪問",
+          "description": "アボリジニの文化と歴史を深く理解できるアボリジニ文化センターへ。伝統的なダンスやアートの展示を通じて、先住民の豊かな文化に触れることができます。",
+          "searchQuery": "Aboriginal Culture Centre",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のカフェでランチ",
+          "description": "アボリジニ文化センター近くのカフェで、オーストラリアの新鮮な食材を使ったランチを楽しみます。特に、地元の魚を使った料理が絶品です。",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アートギャラリー訪問",
+          "description": "ケアンズのアートギャラリーで、オーストラリアの現代アートやアボリジニアートを鑑賞します。地元アーティストの作品が多く展示されており、アートに触れる貴重な時間を過ごせます。",
+          "searchQuery": "Cairns Art Gallery",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ケアンズエスプラネード散策",
+          "description": "ケアンズのエスプラネードを散策しながら、海の景色を楽しみます。地元のアートやストリートパフォーマンスも見られるので、散策が一層楽しくなります。",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "海辺のレストランでディナー",
+          "description": "ケアンズの海辺にあるレストランで、シーフードディナーを堪能します。新鮮な魚介類を使った料理が豊富で、特にロブスターが人気です。",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のケアンズ散策",
+          "description": "ディナー後は、ケアンズの夜の雰囲気を楽しむために散策します。ライトアップされたエスプラネードや、地元のバーでのんびり過ごすのも良いでしょう。",
+          "locationEn": "Cairns, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ケアンズの美味しいグルメと帰路",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ケアンズのホテルで、オーストラリアの新鮮なフルーツやベーカリーを楽しむ朝食。特に、地元のトロピカルフルーツは絶品です。",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ケアンズアートギャラリー",
+          "description": "オーストラリアのアートシーンを体感できるケアンズアートギャラリー。地元アーティストの作品や、先住民アートの展示が魅力的です。",
+          "searchQuery": "Cairns Art Gallery",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "ケアンズの土産屋巡り",
+          "description": "地元の特産品やアート作品を扱うお土産屋を巡ります。特に、手作りのアートや工芸品はお土産にぴったり。",
+          "locationEn": "Cairns, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "オーストラリアン・バーベキューランチ",
+          "description": "地元の人気レストランで、オーストラリアン・バーベキューを楽しみます。ジューシーなステーキや新鮮なシーフードが絶品です。",
+          "searchQuery": "Cairns BBQ Restaurant",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ケアンズエスプラネード散策",
+          "description": "美しい海岸線を眺めながら、エスプラネードを散策。地元のアートやストリートパフォーマンスを楽しむことができます。",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ケアンズのカフェで休憩",
+          "description": "エスプラネード沿いのカフェで、地元のコーヒーを楽しみながら、リラックスした時間を過ごします。",
+          "searchQuery": "Cairns Cafe",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "空港へ移動",
+          "description": "ケアンズの空港へ向かいます。帰路の準備をしながら、最後のケアンズの風景を楽しんでください。",
+          "locationEn": "Cairns, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

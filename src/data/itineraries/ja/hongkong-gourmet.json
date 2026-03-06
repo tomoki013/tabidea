@@ -1,0 +1,330 @@
+{
+  "id": "4aacc138-97ea-49bf-921f-11d1c0a6c712",
+  "destination": "香港",
+  "description": "香港の魅力を存分に味わう2泊3日の旅へようこそ。美味しい飲茶を楽しみながら、煌びやかな夜景を堪能し、ショッピングや街歩きに心躍る体験が待っています。香港の多様な文化と活気に満ちた街並みを感じながら、友人と一緒に素敵な思い出を作りましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "香港の街を歩く",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "香港の伝統的な飲茶を楽しむため、ホテル近くの飲茶レストランで朝食を。点心や蒸し餃子、チャーシューまんなど、種類豊富なメニューが揃っています。",
+          "searchQuery": "DimDimSum Dim Sum Specialty Store",
+          "locationEn": "Hong Kong, China",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "中環エリア散策",
+          "description": "香港のビジネス街・中環を散策。高層ビルと歴史的な建物が共存する街並みを楽しみながら、スターフェリー乗り場へ向かいます。",
+          "searchQuery": "Central, Hong Kong",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "飲茶ランチ",
+          "description": "地元の人に人気の飲茶レストランでランチ。新鮮な海鮮や季節の野菜を使った点心を堪能し、香港の味を満喫します。",
+          "searchQuery": "Maxim's Palace",
+          "locationEn": "Hong Kong, China",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ビクトリア・ピークへ",
+          "description": "トラムに乗ってビクトリア・ピークへ。香港の絶景を一望できる展望台で、写真撮影を楽しみましょう。",
+          "searchQuery": "Victoria Peak",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ピーク・タワーでショッピング",
+          "description": "ビクトリア・ピークのピーク・タワーでショッピング。お土産やファッションアイテムを探しながら、カフェで一休み。",
+          "searchQuery": "The Peak Tower",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夜景を楽しむディナー",
+          "description": "香港の夜景を眺めながら、海沿いのレストランでディナー。美味しい中華料理を味わいながら、煌びやかな夜景を楽しみます。",
+          "searchQuery": "Aqua Restaurant",
+          "locationEn": "Hong Kong, China",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "スターフェリーで夜景クルーズ",
+          "description": "スターフェリーに乗って、香港の夜景をクルーズ。海から見る香港の摩天楼は、まさに絶景です。",
+          "searchQuery": "Star Ferry",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:30",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。夜の香港の雰囲気を楽しみながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Hong Kong, China",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "美味しい飲茶と夜景",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "香港島",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "九龍",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "フェリーで九龍へ移動します。朝の海の景色を楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "飲茶で朝食",
+          "description": "九龍の有名な飲茶レストランで、点心や蒸し餃子を楽しみます。地元の人々に愛されるお店で、本格的な香港の味を堪能しましょう。",
+          "searchQuery": "DimDimSum Dim Sum Specialty Store",
+          "locationEn": "Kowloon, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "尖沙咀の海沿い散策",
+          "description": "尖沙咀のプロムナードを歩きながら、ビクトリア湾の美しい景色を楽しみます。特に、香港島のスカイラインが見えるスポットは絶好の写真スポットです。",
+          "searchQuery": "Tsim Sha Tsui Promenade",
+          "locationEn": "Kowloon, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ランチに香港スタイルのヌードル",
+          "description": "地元の人気店で、香港スタイルのワンタン麺や牛肉麺を味わいます。スープの旨味が絶品です。",
+          "searchQuery": "Mak's Noodle",
+          "locationEn": "Kowloon, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ショッピング＠ハーバーシティ",
+          "description": "九龍のハーバーシティでショッピングを楽しみます。高級ブランドからお土産まで、幅広い選択肢があります。",
+          "searchQuery": "Harbour City",
+          "locationEn": "Kowloon, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ビクトリア湾のフェリー乗船",
+          "description": "夕暮れ時のビクトリア湾をフェリーで渡ります。美しい夕焼けと共に、香港の夜景が広がります。",
+          "searchQuery": "Star Ferry",
+          "locationEn": "Kowloon, Hong Kong",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夜景を楽しむ＠ビクトリアピーク",
+          "description": "ビクトリアピークに登り、香港の夜景を一望します。特に夜のライトアップは圧巻で、思い出に残る瞬間です。",
+          "searchQuery": "Victoria Peak",
+          "locationEn": "Hong Kong Island, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ディナー＠ピーク・レストラン",
+          "description": "ビクトリアピークのレストランで、夜景を眺めながらディナーを楽しみます。特別な夜を演出する素敵な場所です。",
+          "searchQuery": "The Peak Lookout",
+          "locationEn": "Hong Kong Island, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "22:00",
+          "activity": "ホテルへ戻る",
+          "description": "九龍のホテルに戻り、今日の素晴らしい体験を振り返りながらリラックスします。",
+          "locationEn": "Kowloon, Hong Kong",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ショッピングと帰路",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "九龍",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "旺角",
+          "time": "09:15"
+        },
+        "duration": "15m",
+        "memo": "九龍から旺角まで徒歩で移動します。朝の街並みを楽しみながら向かいましょう。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "飲茶を楽しむ",
+          "description": "旺角の人気飲茶店で、点心やシュウマイ、ハルマキなどを堪能します。地元の人々に愛されるお店で、朝から美味しい飲茶を楽しむのが香港流です。",
+          "searchQuery": "DimDimSum Dim Sum Specialty Store",
+          "locationEn": "Mong Kok, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "旺角散策",
+          "description": "旺角の賑やかな街並みを散策しながら、ショッピングを楽しみます。ファッションや雑貨、ストリートフードなど、様々な魅力が詰まったエリアです。",
+          "searchQuery": "Mong Kok",
+          "locationEn": "Mong Kok, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチに香港スタイルの焼きそば",
+          "description": "地元の人気店で、香港スタイルの焼きそばをいただきます。香ばしいソースと新鮮な野菜が絶妙に絡み合った一品です。",
+          "searchQuery": "Mak's Noodle",
+          "locationEn": "Mong Kok, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "銅鑼湾でショッピング",
+          "description": "銅鑼湾に移動し、ショッピングモールやブティックを巡ります。最新のファッションやお土産を探しながら、香港のトレンドを感じてください。",
+          "searchQuery": "Causeway Bay",
+          "locationEn": "Causeway Bay, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ビクトリア・ピークからの夜景",
+          "description": "夕方、ビクトリア・ピークに向かい、香港の美しい夜景を楽しみます。特に夕暮れ時の景色は息を呑む美しさです。",
+          "searchQuery": "Victoria Peak",
+          "locationEn": "Victoria Peak, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "空港へ移動",
+          "description": "ビクトリア・ピークから空港へ向かいます。香港の思い出を胸に、帰路につきましょう。",
+          "searchQuery": "Hong Kong International Airport",
+          "locationEn": "Chek Lap Kok, Hong Kong",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "香港国際空港での夕食",
+          "description": "空港内のレストランで、最後の香港料理を楽しみます。旅行の締めくくりにぴったりの一品を選んでください。",
+          "searchQuery": "Hong Kong International Airport",
+          "locationEn": "Chek Lap Kok, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,287 @@
+{
+  "id": "fc9e4fc8-fafc-41c5-aca8-d77ada959577",
+  "destination": "ソウル",
+  "description": "ソウルの街を巡りながら、K-Popの魅力に浸る3日間の旅へようこそ。文化と歴史が息づくこの都市で、あなたの推し活を存分に楽しみましょう。地元のアートシーンや美術館も訪れ、韓国の魅力を多角的に体験できるプランをご提案します。",
+  "heroImage": "https://images.unsplash.com/photo-1622967889059-b5e08a6bfb29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTE0MTd8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Soyoung HAN",
+  "heroImagePhotographerUrl": "https://unsplash.com/@soflightsto?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "K-Popの聖地を巡る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ソウルのカフェで、韓国の伝統的な朝食を楽しみます。ビビンバやキムチチゲなど、地元の味を堪能して一日をスタートしましょう。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "明洞でショッピング",
+          "description": "K-Pop関連のグッズが豊富に揃う明洞で、推しのアイドルのグッズを探しましょう。化粧品やファッションアイテムも充実しており、ショッピングを楽しむには最適な場所です。",
+          "searchQuery": "Myeongdong Shopping Street",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "明洞の屋台でランチ",
+          "description": "明洞の屋台で、トッポッキやホットクなどのストリートフードを楽しみます。手軽に食べられるので、ショッピングの合間にぴったりです。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "弘大エリア散策",
+          "description": "若者文化の発信地、弘大エリアを散策。アートギャラリーやストリートパフォーマンスを楽しみながら、個性的なショップを巡りましょう。",
+          "searchQuery": "Hongdae",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "K-Popスタジオ見学",
+          "description": "弘大近くのK-Popスタジオを見学し、練習生たちのパフォーマンスを間近で体験。ファンにはたまらない貴重な体験です。",
+          "searchQuery": "K-Pop Studio",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "弘大でディナー",
+          "description": "弘大の人気レストランで、韓国料理のディナーを楽しみます。ビビンバや焼肉など、地元の味を堪能しましょう。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "弘大のナイトマーケット",
+          "description": "弘大のナイトマーケットで、夜の雰囲気を楽しみながら、さらにショッピングやストリートフードを満喫。夜遅くまで賑わうエリアです。",
+          "searchQuery": "Hongdae Night Market",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アートと文化に触れる",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ソウルのカフェで、韓国式の朝食を楽しみます。ビビンバやトースト、コーヒーでエネルギーをチャージしましょう。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "三清洞散策",
+          "description": "伝統的な韓屋とアートギャラリーが並ぶ三清洞を散策。おしゃれなカフェやショップが点在し、K-Pop関連のグッズも見つかるかも。",
+          "searchQuery": "Samcheongdong",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "北村韓屋村でランチ",
+          "description": "北村韓屋村の中にある伝統的な韓国料理店で、ビビンバやトッポッキを楽しみます。美しい韓屋の景色を眺めながら、地元の味を堪能。",
+          "searchQuery": "Bukchon Hanok Village",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "国立現代美術館",
+          "description": "韓国の現代アートを楽しむために国立現代美術館へ。多彩な展示があり、アートに触れながらリラックスした時間を過ごせます。",
+          "searchQuery": "National Museum of Modern and Contemporary Art, Korea",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "K-Pop関連ショップ巡り",
+          "description": "明洞エリアに移動し、K-Pop関連のショップを巡ります。推しのグッズを探しながら、楽しいショッピングタイムを過ごしましょう。",
+          "searchQuery": "Myeongdong",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "明洞で夕食",
+          "description": "明洞の屋台で、韓国のストリートフードを楽しみます。チーズドッグやホットクなど、手軽に食べられる美味しい料理がたくさん！",
+          "searchQuery": "Myeongdong Street Food",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜の明洞散策",
+          "description": "明洞の夜の雰囲気を楽しみながら、ショッピングやカフェ巡りを続けます。夜景を楽しみながら、ロマンチックな時間を過ごしましょう。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ソウルの街を最後まで楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ソウルのカフェで、韓国式の朝食を楽しみます。トーストやサラダ、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "COEXモール訪問",
+          "description": "アジア最大級のショッピングモール、COEXでショッピングやアートを楽しみます。特にK-Pop関連のショップが充実しており、ファングッズを探すのに最適です。",
+          "searchQuery": "COEX Mall",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "COEXモール内でランチ",
+          "description": "モール内のフードコートで、韓国のストリートフードを楽しみます。ビビンバやトッポッキなど、手軽に美味しい料理が揃っています。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "カロスキル散策",
+          "description": "おしゃれなカフェやショップが立ち並ぶカロスキルを散策。特にK-Popファンにはたまらないお店が多く、ここでもファングッズを見つけるチャンス！",
+          "searchQuery": "Garosu-gil",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アートギャラリー巡り",
+          "description": "カロスキル周辺のアートギャラリーを訪れ、現代アートを楽しみます。地元アーティストの作品を見ながら、文化的なひとときを過ごしましょう。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕食は韓国焼肉",
+          "description": "地元の人に人気の焼肉店で、ジューシーな肉を堪能します。お酒と一緒に楽しむのが韓国流！",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "K-Pop関連のショップ訪問",
+          "description": "夜は、明洞や弘大のK-Popショップを訪れ、最新のファングッズをチェック。お土産にもぴったりです。",
+          "searchQuery": "Myeongdong",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "22:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の移動に備えて、早めに休むのも良いでしょう。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

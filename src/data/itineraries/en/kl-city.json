@@ -1,0 +1,473 @@
+{
+  "id": "163b423a-e472-43b5-b507-81065d9a3ee5",
+  "destination": "クアラルンプール",
+  "description": "Immerse yourself in the vibrant tapestry of Kuala Lumpur, a city where modern skyscrapers meet rich cultural heritage. Over five days, you’ll explore iconic landmarks, indulge in mouthwatering local cuisine, and capture stunning photographs that showcase the city's unique blend of tradition and innovation. From the majestic Petronas Towers to bustling street markets, this journey promises to be a feast for the senses and a visual delight.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and City Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Cafe",
+          "description": "Start your day with a traditional Malaysian breakfast at a local cafe. Try Nasi Lemak, a fragrant rice dish served with sambal, fried crispy anchovies, peanuts, and boiled egg, paired with a cup of rich kopi (coffee).",
+          "searchQuery": "Nasi Lemak Cafe",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Petronas Towers",
+          "description": "Head to the iconic Petronas Towers, the tallest twin towers in the world. Don't miss the chance to take stunning photos from the Skybridge and observation deck, offering breathtaking views of the city.",
+          "searchQuery": "Petronas Towers",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Jalan Alor Food Street",
+          "description": "Indulge in a variety of local street food at Jalan Alor, famous for its vibrant atmosphere and delicious offerings. Sample satay, char kway teow, and fresh fruit juices from the numerous stalls.",
+          "searchQuery": "Jalan Alor Food Street",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through KLCC Park",
+          "description": "Take a leisurely walk in KLCC Park, a beautiful green space right next to the Petronas Towers. Enjoy the fountains, sculptures, and the serene environment, perfect for some relaxation and photography.",
+          "searchQuery": "KLCC Park",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Bukit Bintang",
+          "description": "Venture into Bukit Bintang, the shopping and entertainment district of Kuala Lumpur. Explore the bustling streets, check out local shops, and enjoy the lively atmosphere. It's a great place for people-watching and capturing the city's vibe.",
+          "searchQuery": "Bukit Bintang",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Savor a delicious dinner at a local restaurant, where you can try dishes like Roti Canai or Mee Goreng. Enjoy the flavors of Malaysian cuisine in a cozy setting.",
+          "searchQuery": "Local Malaysian Restaurant",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening at the Petronas Towers",
+          "description": "Return to the Petronas Towers for a stunning night view. The towers are beautifully illuminated, providing a perfect backdrop for evening photos. Capture the magic of Kuala Lumpur at night.",
+          "searchQuery": "Petronas Towers Night View",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Heritage and Local Flavors",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Village Park Restaurant",
+          "description": "Start your day with a delicious Nasi Lemak, a traditional Malaysian breakfast featuring fragrant rice, sambal, fried chicken, and peanuts. This local favorite is sure to energize you for the day ahead!",
+          "searchQuery": "Village Park Restaurant",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Merdeka Square",
+          "description": "Explore the historical heart of Kuala Lumpur at Merdeka Square, where you can admire the stunning colonial architecture and the iconic Sultan Abdul Samad Building. This is a perfect spot for some memorable photos!",
+          "searchQuery": "Merdeka Square",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore Central Market",
+          "description": "Wander through Central Market, a vibrant hub of local arts and crafts. Here, you can find unique souvenirs, traditional handicrafts, and even sample some local snacks. Don't forget to capture the colorful stalls!",
+          "searchQuery": "Central Market",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Old China Cafe",
+          "description": "Enjoy a delightful lunch at Old China Cafe, where you can savor traditional Peranakan cuisine in a charming setting. The ambiance reflects the rich cultural heritage of Malaysia, making it a great dining experience.",
+          "searchQuery": "Old China Cafe",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit Chinatown",
+          "description": "Stroll through the bustling streets of Chinatown, where you can experience the vibrant culture and shop for unique items. Be sure to take photos of the colorful shopfronts and the famous Petaling Street market!",
+          "searchQuery": "Chinatown Kuala Lumpur",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Photo Opportunity at Petronas Twin Towers",
+          "description": "Head to the iconic Petronas Twin Towers for a photo session. The stunning architecture and the surrounding park provide a perfect backdrop for your travel memories. Don't miss the chance to capture this landmark!",
+          "searchQuery": "Petronas Twin Towers",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Jalan Alor Night Market",
+          "description": "Indulge in a culinary adventure at Jalan Alor Night Market, where you can sample a variety of street food from satay to grilled seafood. The lively atmosphere and delicious aromas will make for an unforgettable dining experience.",
+          "searchQuery": "Jalan Alor Night Market",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk at KLCC Park",
+          "description": "End your day with a relaxing stroll at KLCC Park, where you can enjoy the beautiful night views of the Petronas Twin Towers illuminated against the night sky. It's a perfect way to unwind after a day of exploration!",
+          "searchQuery": "KLCC Park",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Nature and Scenic Views",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Village Park Restaurant",
+          "description": "Start your day with a delicious Nasi Lemak, a traditional Malaysian breakfast featuring fragrant rice, sambal, fried chicken, and peanuts. This local favorite is a must-try!",
+          "searchQuery": "Village Park Restaurant",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Batu Caves",
+          "description": "Explore the stunning Batu Caves, a limestone hill featuring a series of caves and cave temples. The iconic golden statue of Lord Murugan and the colorful steps leading up to the caves make for a perfect photo opportunity!",
+          "searchQuery": "Batu Caves",
+          "locationEn": "Batu Caves, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restoran Rani",
+          "description": "Enjoy a local lunch at Restoran Rani, known for its authentic Indian cuisine. Try their flavorful biryani or roti canai, which are popular among locals.",
+          "searchQuery": "Restoran Rani",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "KL Bird Park",
+          "description": "Visit the KL Bird Park, the world's largest free-flight walk-in aviary. Here, you can see a variety of exotic birds in a lush, tropical setting, making it a great spot for photography.",
+          "searchQuery": "KL Bird Park",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Stroll through Perdana Botanical Garden",
+          "description": "Take a leisurely walk through the Perdana Botanical Garden, a beautiful green space filled with various plants and flowers. It's a peaceful escape from the city's hustle and bustle, perfect for some relaxation and photos.",
+          "searchQuery": "Perdana Botanical Garden",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Jalan Alor Night Market",
+          "description": "Experience the vibrant atmosphere of Jalan Alor Night Market, where you can sample a variety of street food from satay to grilled seafood. It's a great place to indulge in local flavors and enjoy the lively ambiance.",
+          "searchQuery": "Jalan Alor Night Market",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Petronas Twin Towers Night Photography",
+          "description": "End your day by capturing stunning night photos of the Petronas Twin Towers. The towers are beautifully illuminated at night, providing a perfect backdrop for your travel memories.",
+          "searchQuery": "Petronas Twin Towers",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Art and Night Markets",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Village Park Restaurant",
+          "description": "Start your day with a delicious Nasi Lemak, a traditional Malaysian breakfast featuring fragrant rice, sambal, fried chicken, and peanuts. This local favorite is sure to energize you for the day ahead!",
+          "searchQuery": "Village Park Restaurant",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Islamic Arts Museum Malaysia",
+          "description": "Explore the rich heritage of Islamic art at this stunning museum. With its intricate architecture and diverse exhibits, you'll find beautiful artifacts and learn about the cultural significance of Islamic art across the world.",
+          "searchQuery": "Islamic Arts Museum Malaysia",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Jalan Alor",
+          "description": "Head to Jalan Alor, a bustling street known for its vibrant food scene. Sample a variety of local dishes from satay to grilled seafood, all while soaking in the lively atmosphere of this famous food street.",
+          "searchQuery": "Jalan Alor",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Little India (Brickfields)",
+          "description": "Wander through the colorful streets of Little India, where you can admire the vibrant shops, taste delicious Indian snacks, and capture stunning photos of the unique architecture and street art.",
+          "searchQuery": "Little India Kuala Lumpur",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Petronas Twin Towers Photo Opportunity",
+          "description": "No visit to Kuala Lumpur is complete without a photo in front of the iconic Petronas Twin Towers. Head to the nearby KLCC Park for the best views and a perfect backdrop for your pictures!",
+          "searchQuery": "Petronas Twin Towers",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Jalan Alor Night Market",
+          "description": "Return to Jalan Alor for dinner and experience the vibrant night market atmosphere. Enjoy a variety of street food options, from char kway teow to mango sticky rice, while mingling with locals and fellow travelers.",
+          "searchQuery": "Jalan Alor Night Market",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll at KLCC Park",
+          "description": "Take a leisurely stroll around KLCC Park, where you can enjoy the beautiful fountains and gardens. The park offers a serene escape from the bustling city and a perfect spot to relax after a day of exploration.",
+          "searchQuery": "KLCC Park",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Final Day and Departure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Village Park Restaurant",
+          "description": "Start your day with a delicious Nasi Lemak, a traditional Malaysian breakfast featuring fragrant rice, sambal, fried chicken, and peanuts. This local favorite will give you the energy you need for your final day in Kuala Lumpur.",
+          "searchQuery": "Village Park Restaurant",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit KL Tower",
+          "description": "Head to the iconic KL Tower for breathtaking panoramic views of the city. The observation deck offers a stunning backdrop for photos, especially with the Petronas Twin Towers in sight. Don't forget to capture the moment!",
+          "searchQuery": "KL Tower",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Jalan Alor Street Food",
+          "description": "Indulge in a variety of local street food at Jalan Alor, a bustling food street. Try the satay, char kway teow, and fresh fruit juices while soaking in the vibrant atmosphere.",
+          "searchQuery": "Jalan Alor",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Shopping at Suria KLCC",
+          "description": "After lunch, make your way to Suria KLCC, a premier shopping destination located at the base of the Petronas Towers. Browse through a mix of high-end brands and local boutiques, perfect for picking up souvenirs or gifts.",
+          "searchQuery": "Suria KLCC",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at KLCC Park",
+          "description": "Take a leisurely stroll through KLCC Park, where you can enjoy the lush greenery and the beautiful fountains. It's a great spot to unwind and reflect on your trip before heading to the airport.",
+          "searchQuery": "KLCC Park",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Madam Kwan's",
+          "description": "Enjoy a farewell dinner at Madam Kwan's, known for its authentic Malaysian cuisine. Try their signature dishes like Nasi Lemak and Laksa, a perfect way to end your culinary journey in Kuala Lumpur.",
+          "searchQuery": "Madam Kwan's",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Departure from Kuala Lumpur",
+          "description": "Head to the airport for your departure flight, taking with you wonderful memories of Kuala Lumpur's vibrant culture and delicious food.",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

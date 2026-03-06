@@ -1,0 +1,447 @@
+{
+  "id": "3b0296aa-586a-4f6d-b0b5-0df5fa7e66d9",
+  "destination": "ルアンパバーン",
+  "description": "Escape to the enchanting town of Luang Prabang, where the serene beauty of nature meets rich cultural heritage. Nestled at the confluence of the Mekong and Nam Khan rivers, this UNESCO World Heritage site is a haven for couples seeking tranquility and adventure. Over five days, immerse yourselves in the lush landscapes, ancient temples, and the warm embrace of local traditions. Enjoy leisurely strolls through vibrant markets, savor exquisite Laotian cuisine, and bask in the peaceful ambiance that this charming town offers.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Luang Prabang",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Tamarind",
+          "description": "Start your culinary journey with a delightful lunch at Tamarind, known for its authentic Laotian dishes. Enjoy a variety of local flavors, including sticky rice and fresh herbs, in a cozy setting.",
+          "searchQuery": "Tamarind",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Wat Xieng Thong",
+          "description": "Explore the stunning Wat Xieng Thong, one of the most important temples in Luang Prabang. Admire its intricate mosaics and serene atmosphere, perfect for a peaceful afternoon stroll.",
+          "searchQuery": "Wat Xieng Thong",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax by the Mekong River",
+          "description": "Take a leisurely walk along the Mekong River, soaking in the tranquil views. Find a quiet spot to sit and enjoy the sunset, a perfect way to unwind after your travels.",
+          "searchQuery": "Mekong River",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Dyen Sabai",
+          "description": "Enjoy dinner at Dyen Sabai, a riverside restaurant famous for its laid-back atmosphere and delicious Laotian cuisine. Try their grilled dishes and enjoy the view of the river.",
+          "searchQuery": "Dyen Sabai",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll through the Night Market",
+          "description": "Wander through the vibrant Night Market, where you can find local handicrafts and street food. It's a great place to soak in the local culture and pick up unique souvenirs.",
+          "searchQuery": "Luang Prabang Night Market",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Temples and Nature",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Saffron Coffee",
+          "description": "Start your day with a delicious breakfast at Saffron Coffee, known for its locally sourced ingredients and cozy atmosphere. Enjoy a hearty Lao-style breakfast with fresh fruit and coffee brewed from local beans.",
+          "searchQuery": "Saffron Coffee",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Wat Xieng Thong",
+          "description": "Explore the stunning Wat Xieng Thong, one of the most important temples in Luang Prabang. Admire its intricate mosaics and the serene atmosphere that surrounds this historic site.",
+          "searchQuery": "Wat Xieng Thong",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Stroll along the Mekong River",
+          "description": "Take a leisurely walk along the Mekong River, enjoying the peaceful views and the gentle breeze. This is a perfect time to relax and soak in the natural beauty of the area.",
+          "searchQuery": "Mekong River",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Tamarind",
+          "description": "Indulge in a traditional Lao lunch at Tamarind, where you can taste local dishes like laap and sticky rice. The restaurant offers a charming setting and a chance to learn about Lao cuisine.",
+          "searchQuery": "Tamarind",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Kuang Si Falls",
+          "description": "Head to the breathtaking Kuang Si Falls, a short drive from Luang Prabang. Enjoy the turquoise waters and take a refreshing dip in the natural pools surrounded by lush jungle.",
+          "searchQuery": "Kuang Si Falls",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Luang Prabang",
+          "description": "After a relaxing afternoon at the falls, return to Luang Prabang. Enjoy the scenic drive back as you reflect on the beauty of the day.",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Dyen Sabai",
+          "description": "End your day with a delightful dinner at Dyen Sabai, known for its riverside dining and delicious Lao dishes. Try their famous BBQ and enjoy the ambiance as the sun sets over the Mekong.",
+          "searchQuery": "Dyen Sabai",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion and Relaxation",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Saffron Coffee",
+          "description": "Start your day with a delicious breakfast at Saffron Coffee, known for its locally sourced ingredients and cozy atmosphere. Enjoy a hearty Lao-style breakfast with fresh fruit and coffee brewed from local beans.",
+          "searchQuery": "Saffron Coffee",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Royal Palace Museum",
+          "description": "Explore the Royal Palace Museum, a beautiful blend of traditional Lao and French colonial architecture. The museum houses a collection of artifacts that showcase the rich history and culture of Laos, including royal regalia and religious art.",
+          "searchQuery": "Royal Palace Museum",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Tamarind",
+          "description": "Enjoy a delightful lunch at Tamarind, a restaurant that specializes in traditional Lao cuisine. Try their signature dishes and learn about the unique flavors of Laos in a charming setting.",
+          "searchQuery": "Tamarind",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Wat Xieng Thong",
+          "description": "Visit Wat Xieng Thong, one of the most important temples in Luang Prabang. Admire its stunning architecture and intricate mosaics, and take a moment to soak in the serene atmosphere of this spiritual site.",
+          "searchQuery": "Wat Xieng Thong",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Relax at Kuang Si Waterfall",
+          "description": "Take a short trip to Kuang Si Waterfall, a breathtaking natural wonder. Enjoy a leisurely swim in the turquoise pools or simply relax in the lush surroundings. This is the perfect spot to unwind and connect with nature.",
+          "searchQuery": "Kuang Si Waterfall",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Dyen Sabai",
+          "description": "End your day with dinner at Dyen Sabai, a riverside restaurant known for its laid-back vibe and delicious Lao dishes. Enjoy a meal while watching the sunset over the Mekong River, creating a perfect romantic atmosphere.",
+          "searchQuery": "Dyen Sabai",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Visit Luang Prabang Night Market",
+          "description": "Stroll through the vibrant Luang Prabang Night Market, where you can find local handicrafts, textiles, and street food. It's a great place to pick up souvenirs and experience the local culture in a lively setting.",
+          "searchQuery": "Luang Prabang Night Market",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Scenic Boat Trip and Village Visit",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café Ban Phan Luang",
+          "description": "Start your day with a delightful breakfast at Café Ban Phan Luang, known for its fresh fruit smoothies and traditional Lao breakfast options. Enjoy the serene atmosphere as you prepare for a day of exploration.",
+          "searchQuery": "Café Ban Phan Luang",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Boat Trip on the Mekong River",
+          "description": "Embark on a scenic boat trip along the Mekong River, where you can soak in the stunning views of the lush landscapes and traditional villages lining the riverbanks. This peaceful journey is a perfect way to connect with nature.",
+          "searchQuery": "Mekong River",
+          "locationEn": "Mekong River, Laos",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Visit Pak Ou Caves",
+          "description": "Explore the famous Pak Ou Caves, home to thousands of Buddha statues. The caves are a significant pilgrimage site and offer a fascinating glimpse into local spirituality and culture. The boat ride to the caves adds to the adventure.",
+          "searchQuery": "Pak Ou Caves",
+          "locationEn": "Pak Ou Caves, Laos",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at a Riverside Restaurant",
+          "description": "Enjoy a leisurely lunch at a riverside restaurant, where you can savor traditional Lao dishes while enjoying the tranquil views of the Mekong. Try the local specialty, Laap, a flavorful minced meat salad.",
+          "searchQuery": "Riverside Restaurant Luang Prabang",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Local Villages",
+          "description": "After lunch, take a stroll through nearby villages to experience the local way of life. Engage with friendly villagers and witness traditional crafts such as weaving and pottery making.",
+          "searchQuery": "Luang Prabang Villages",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Luang Prabang",
+          "description": "Head back to Luang Prabang by boat, enjoying the sunset views over the Mekong River. This is a perfect time to reflect on the day's experiences and take in the beauty of the surroundings.",
+          "searchQuery": "Mekong River",
+          "locationEn": "Mekong River, Laos",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Tamarind",
+          "description": "End your day with a delicious dinner at Tamarind, a restaurant renowned for its authentic Lao cuisine. The cozy atmosphere and flavorful dishes make it a perfect spot for a romantic evening.",
+          "searchQuery": "Tamarind Restaurant",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Leisurely Departure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Cafe Ban Phan Luang",
+          "description": "Start your day with a delightful breakfast at Cafe Ban Phan Luang, known for its cozy atmosphere and delicious local dishes. Enjoy a traditional Lao breakfast with fresh fruits and a cup of aromatic coffee.",
+          "searchQuery": "Cafe Ban Phan Luang",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Wat Xieng Thong",
+          "description": "Explore the stunning Wat Xieng Thong, one of the most important temples in Luang Prabang. Admire its intricate architecture and beautiful mosaics, and take a moment to soak in the serene atmosphere.",
+          "searchQuery": "Wat Xieng Thong",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Stroll Along the Mekong River",
+          "description": "Take a leisurely stroll along the Mekong River, enjoying the peaceful views and the gentle breeze. This is a perfect time to reflect on your trip and capture some beautiful photos of the river and surrounding mountains.",
+          "searchQuery": "Mekong River",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Tamarind",
+          "description": "Indulge in a delicious lunch at Tamarind, a restaurant famous for its authentic Lao cuisine. Try their signature dishes and enjoy the unique flavors of the region in a charming setting.",
+          "searchQuery": "Tamarind Restaurant",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Kuang Si Waterfall",
+          "description": "Take a short trip to the breathtaking Kuang Si Waterfall. Enjoy the stunning turquoise pools and lush surroundings, perfect for a refreshing swim or simply relaxing in nature.",
+          "searchQuery": "Kuang Si Waterfall",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Luang Prabang",
+          "description": "Head back to Luang Prabang, taking in the scenic views along the way. This is a great time to reflect on your experiences and enjoy the last moments in this beautiful town.",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at L'Elephant",
+          "description": "Enjoy a farewell dinner at L'Elephant, a well-known restaurant offering a mix of French and Lao cuisine. Savor the flavors and ambiance as you reminisce about your trip.",
+          "searchQuery": "L'Elephant Restaurant",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Relax at the Hotel",
+          "description": "Spend your last evening relaxing at your hotel. Reflect on your journey and enjoy the peaceful atmosphere of Luang Prabang before your departure.",
+          "locationEn": "Luang Prabang, Laos",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

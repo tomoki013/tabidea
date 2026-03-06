@@ -1,0 +1,532 @@
+{
+  "id": "962efb9a-62f5-4e66-b85a-f9ecbb1b73cc",
+  "destination": "アマルフィ・ポジターノ",
+  "description": "イタリアの美しい海岸線をドライブしながら、アマルフィとポジターノの絶景を楽しむロマンチックな旅へ。世界遺産に登録されたこの地域は、青い海と色とりどりの家々が織りなす風景が魅力。新鮮なシーフードや手作りのパスタを味わい、ゆったりとした時間を過ごすことで、二人の絆を深めることができるでしょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "アマルフィへの旅",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ナポリ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "アマルフィ",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "ナポリからアマルフィ海岸をドライブしながら美しい景色を楽しむ。"
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "アマルフィ大聖堂",
+          "description": "アマルフィのシンボルである大聖堂を訪れ、その美しいファサードと内部の装飾を堪能します。特に、モザイクの美しさは必見です。",
+          "searchQuery": "Amalfi Cathedral",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "地元のレストランでランチ",
+          "description": "アマルフィの海沿いにあるレストランで、新鮮なシーフードパスタを楽しみます。地元の食材を使った料理は絶品です。",
+          "searchQuery": "Ristorante Da Gemma",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "アマルフィ海岸ドライブ",
+          "description": "アマルフィ海岸の絶景を楽しみながら、ポジターノへ向かいます。途中、いくつかのビューポイントで写真を撮るのもお忘れなく。",
+          "searchQuery": "Amalfi Coast",
+          "locationEn": "Amalfi Coast, Italy",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ポジターノ散策",
+          "description": "美しいカラフルな家々が並ぶポジターノを散策。小道を歩きながら、ショップやカフェを楽しむことができます。",
+          "searchQuery": "Positano",
+          "locationEn": "Positano, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ポジターノのビーチで夕日鑑賞",
+          "description": "ポジターノのビーチで夕日を眺めながら、ロマンチックなひとときを過ごします。海に沈む夕日は特別な思い出になるでしょう。",
+          "searchQuery": "Positano Beach",
+          "locationEn": "Positano, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ポジターノでディナー",
+          "description": "海を眺めながら、地元のレストランでディナー。新鮮な魚介類やパスタを楽しみ、素敵な夜を締めくくります。",
+          "searchQuery": "La Pergola",
+          "locationEn": "Positano, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アマルフィの絶景を楽しむ",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "アマルフィ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ポジターノ",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "アマルフィからポジターノへ美しい海岸線をドライブします。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "ポジターノ散策",
+          "description": "ポジターノの美しい街並みを散策します。カラフルな家々が海に面して立ち並び、どこを切り取っても絵になる風景です。",
+          "searchQuery": "Positano",
+          "locationEn": "Positano, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "リストランテ・ダ・ヴィンチでランチ",
+          "description": "ポジターノの海を眺めながら、新鮮なシーフードパスタを楽しめる名店です。特にトマトソースのパスタが絶品。",
+          "searchQuery": "Ristorante Da Vincenzo",
+          "locationEn": "Positano, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "マイオリへ移動",
+          "description": "マイオリへ向かう途中、海岸線の絶景を楽しみながらドライブします。",
+          "locationEn": "Maiori, Italy",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "マイオリ散策",
+          "description": "マイオリのビーチを散策し、地元の雰囲気を楽しみます。静かなビーチでリラックスするのもおすすめです。",
+          "searchQuery": "Maiori",
+          "locationEn": "Maiori, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "アマルフィへ戻る",
+          "description": "アマルフィへ戻る途中、海岸線の美しい景色を楽しみながらドライブします。",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "アマルフィ大聖堂",
+          "description": "アマルフィのシンボルである大聖堂を訪れます。美しい建築と歴史を感じることができます。",
+          "searchQuery": "Amalfi Cathedral",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アマルフィでのディナー",
+          "description": "アマルフィの海を眺めながら、地元の食材を使った料理を楽しめるレストランでディナーを。特に魚料理がおすすめです。",
+          "searchQuery": "Trattoria Da Gemma",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "アマルフィの夜景散策",
+          "description": "夕暮れ時のアマルフィを散策し、ロマンチックな雰囲気を楽しみます。海に映る街の灯りが美しいです。",
+          "searchQuery": "Amalfi",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ポジターノの魅力を堪能",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "アマルフィ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ポジターノ",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "アマルフィからポジターノまでの美しい海沿いのドライブを楽しみます。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "ポジターノビーチ散策",
+          "description": "ポジターノの美しいビーチで、青い海とカラフルな家々の景色を楽しみながら、ゆったりとした時間を過ごします。海の音を聞きながら、リラックスしたひとときを。",
+          "searchQuery": "Positano Beach",
+          "locationEn": "Positano, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "レストランでランチ",
+          "description": "地元のレストランで新鮮なシーフードパスタを堪能。特に、トマトソースとバジルの香りが引き立つ一皿は絶品です。",
+          "searchQuery": "Ristorante Da Vincenzo",
+          "locationEn": "Positano, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "サンタマリア・アスンタ教会訪問",
+          "description": "ポジターノのシンボルとも言える美しい教会を訪れます。青いドームと白い壁が印象的で、内部の装飾も見逃せません。",
+          "searchQuery": "Santa Maria Assunta",
+          "locationEn": "Positano, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ポジターノの街を散策",
+          "description": "カラフルな家々が立ち並ぶ狭い路地を散策しながら、地元のショップやカフェを楽しみます。特に、手作りの陶器やアクセサリーはお土産にぴったり。",
+          "searchQuery": "Positano",
+          "locationEn": "Positano, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕食にディナー",
+          "description": "海を眺めながら、ロマンチックなディナーを楽しむ時間。地元の食材を使った料理を味わい、素敵な夜を過ごします。",
+          "searchQuery": "La Sponda",
+          "locationEn": "Positano, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "アマルフィの文化を探る",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ポジターノ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "アマルフィ",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "美しい海岸線をドライブしながらアマルフィへ向かいます。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "アマルフィ大聖堂",
+          "description": "アマルフィのシンボルとも言える美しい大聖堂。外観のモザイクや内部の装飾は圧巻で、歴史を感じることができます。",
+          "searchQuery": "Amalfi Cathedral",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "アマルフィの地元のレストランで、新鮮なシーフードパスタを楽しみましょう。特にレモンを使った料理が絶品です。",
+          "searchQuery": "Trattoria Da Gemma",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "レモン農園見学",
+          "description": "アマルフィの名物、レモンの農園を訪れます。香り高いレモンの木々の中を散策し、地元のレモンを使った製品の試食も楽しめます。",
+          "searchQuery": "Amalfi Lemon Experience",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アマルフィの街散策",
+          "description": "アマルフィの狭い路地を散策し、地元のショップやカフェを楽しみましょう。お土産探しにもぴったりです。",
+          "searchQuery": "Amalfi Town",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "アマルフィのビーチで夕日鑑賞",
+          "description": "アマルフィのビーチで美しい夕日を眺めながら、ロマンチックなひとときを過ごします。海の音を聞きながら、ゆったりとした時間を楽しんでください。",
+          "searchQuery": "Amalfi Beach",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "アマルフィでディナー",
+          "description": "海を眺めながら、地元の食材を使ったディナーを楽しみましょう。特に新鮮な魚料理やパスタが絶品です。",
+          "searchQuery": "Ristorante Marina Grande",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "アマルフィからの帰路",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "アマルフィ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ナポリ",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "アマルフィ海岸の美しい景色を楽しみながらのドライブ。"
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "ナポリのピッツェリアでランチ",
+          "description": "ナポリ名物の本場のピザを楽しむため、地元で評判のピッツェリアへ。モッツァレラチーズとトマトソースのシンプルなマルゲリータが絶品です。",
+          "searchQuery": "Pizzeria Da Michele",
+          "locationEn": "Naples, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ナポリ国立考古学博物館",
+          "description": "古代ローマの遺物やポンペイの出土品が展示されている博物館。歴史に触れながら、ゆったりとした時間を過ごせます。",
+          "searchQuery": "Naples National Archaeological Museum",
+          "locationEn": "Naples, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ナポリの海岸散策",
+          "description": "ナポリの美しい海岸沿いを散策。青い海と空のコントラストが素晴らしく、ロマンチックな雰囲気を楽しめます。",
+          "searchQuery": "Lungomare Caracciolo",
+          "locationEn": "Naples, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ナポリでディナー",
+          "description": "地元の食材を使った料理を楽しむため、ナポリのレストランでディナー。新鮮なシーフードやパスタを堪能できます。",
+          "searchQuery": "Trattoria da Nennella",
+          "locationEn": "Naples, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "東京への帰路",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ナポリ",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "18:00"
+        },
+        "duration": "12h",
+        "memo": "ナポリから東京への直行便で帰路につきます。機内でのんびり過ごしましょう。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ナポリのカフェで朝食",
+          "description": "ナポリ名物のエスプレッソと共に、フレッシュなペストリーを楽しむ朝食。地元の人々に混じって、活気あるカフェの雰囲気を味わいましょう。",
+          "searchQuery": "Caffè Gambrinus",
+          "locationEn": "Naples, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ナポリの歴史地区散策",
+          "description": "世界遺産に登録されているナポリの歴史地区を散策。サンタルチア地区やスパッカナポリの街並みを楽しみながら、地元の雰囲気を感じてください。",
+          "searchQuery": "Historic Centre of Naples",
+          "locationEn": "Naples, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ナポリのレストランでランチ",
+          "description": "新鮮なシーフードパスタを楽しめるレストランで、ナポリの味を堪能。海の幸をふんだんに使った料理は絶品です。",
+          "searchQuery": "Trattoria da Nennella",
+          "locationEn": "Naples, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ナポリ港からの景色を楽しむ",
+          "description": "ナポリ港で美しい海の景色を眺めながら、最後のひとときを過ごします。青い海と空のコントラストが心に残ります。",
+          "searchQuery": "Naples Harbour",
+          "locationEn": "Naples, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "空港へ移動",
+          "description": "ナポリの空港へ向かい、帰国の準備をします。最後のナポリの風景を楽しみながら、ゆったりとした時間を過ごしましょう。",
+          "searchQuery": "Naples International Airport",
+          "locationEn": "Naples, Italy",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,598 @@
+{
+  "id": "1aaa78b4-b2f7-4dd8-84b5-c5ba00c03b3b",
+  "destination": "マラケシュ",
+  "description": "モロッコの魅力が詰まったマラケシュで、文化・歴史、ショッピング、フォトジェニックなスポットを巡る7日間の旅へようこそ。友人と共に、色とりどりの雑貨や美味しいモロッコ料理を楽しみながら、心に残る体験をお届けします。",
+  "days": [
+    {
+      "day": 1,
+      "title": "マラケシュの魅力に触れる",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "モロッコの伝統的な朝食を楽しみます。フレッシュなパンやオリーブオイル、ハチミツ、そしてミントティーでエネルギーをチャージ。",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ジャマ・エル・フナ広場",
+          "description": "マラケシュの中心地、ジャマ・エル・フナ広場を訪れます。ストリートパフォーマンスや屋台の賑わいを楽しみながら、モロッコの文化を体感しましょう。",
+          "searchQuery": "Jemaa el-Fnaa",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "レストランでタジンランチ",
+          "description": "地元のレストランで本格的なモロッコ料理のタジンを味わいます。香辛料が効いた肉や野菜の煮込みは、心も体も温まる一品です。",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "スーク散策",
+          "description": "マラケシュのスーク（市場）でショッピングを楽しみます。カラフルな雑貨や手工芸品が並ぶ中、お気に入りのアイテムを見つけましょう。",
+          "searchQuery": "Marrakech Souk",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "クッサール・アラビア訪問",
+          "description": "美しい装飾が施されたクッサール・アラビアを見学します。モロッコの伝統的な建築を堪能しながら、フォトジェニックなスポットを探してみてください。",
+          "searchQuery": "Koutoubia Mosque",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルで休憩",
+          "description": "一日の疲れを癒すため、ホテルで少し休憩します。夕方の涼しい時間帯に備えましょう。",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "マラケシュの地元レストランで、モロッコ料理を楽しみます。特にタジンやクスクスは絶品です。",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "歴史と文化を感じる",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "マラケシュのホテルで、モロッコの伝統的な朝食を楽しみます。フレッシュなパンやオリーブオイル、ハチミツ、そしてミントティーでエネルギーをチャージ。",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "バイア宮殿",
+          "description": "美しい庭園と豪華な装飾が施されたバイア宮殿を訪れます。歴史的な建物の中を散策しながら、モロッコの文化に触れることができます。",
+          "searchQuery": "Bahia Palace",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "マジョレル庭園",
+          "description": "色とりどりの植物とアートが融合したマジョレル庭園で、リラックスしたひとときを過ごします。特に青い建物が印象的で、フォトジェニックなスポットです。",
+          "searchQuery": "Majorelle Garden",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "モロッコ料理のランチ（タジン鍋）",
+          "description": "地元の人気レストランで、モロッコの名物タジン鍋を堪能します。スパイスの効いた肉や野菜がたっぷり入ったタジンは、心も体も温まる一品です。",
+          "searchQuery": "Le Tobsil",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "スーク（市場）でショッピング",
+          "description": "マラケシュのスークで、かわいい雑貨や手工芸品を探しながらショッピングを楽しみます。色鮮やかな布や陶器、アクセサリーなど、モロッコならではのアイテムが揃っています。",
+          "searchQuery": "Marrakech Souk",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "クッキングクラス",
+          "description": "モロッコ料理のクッキングクラスに参加し、自分でタジン鍋を作る体験をします。地元のシェフから直接教わる貴重な機会です。",
+          "searchQuery": "Cooking Class Marrakech",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ホテルでディナー",
+          "description": "クッキングクラスで作った料理を楽しむか、ホテルのレストランでモロッコ料理を味わいます。旅の締めくくりにぴったりのディナーです。",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "フォトジェニックなスポット巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マラケシュの伝統的な朝食を楽しみます。フレッシュなオレンジジュースや、モロッコのパン、ハチミツを使った甘いペーストが絶品です。",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "アグダル庭園",
+          "description": "美しいアグダル庭園を散策します。広大なオリーブの木々と果樹が並ぶ中、静かな時間を過ごしながら、フォトジェニックな写真を撮影するのに最適なスポットです。",
+          "searchQuery": "Agdal Gardens",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "モロッコ料理のタジンを楽しむランチ",
+          "description": "地元の人気レストランで、モロッコの名物タジンを味わいます。スパイスが効いた肉や野菜がたっぷり入ったタジンは、心も体も温まる一品です。",
+          "searchQuery": "Le Tobsil",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "サアード朝の墳墓",
+          "description": "サアード朝の墳墓を訪れ、その美しい装飾や歴史に触れます。特に、細かいタイルや彫刻が施された墓は、写真映えすること間違いなしです。",
+          "searchQuery": "Saadian Tombs",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "メディナ散策とショッピング",
+          "description": "マラケシュのメディナを散策し、かわいい雑貨や手作りの工芸品を探します。色とりどりのスカーフや陶器、ランプなど、素敵なお土産が見つかるかもしれません。",
+          "searchQuery": "Marrakech Medina",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "マラケシュの雰囲気を楽しみながら、地元のレストランでディナーを楽しみます。新鮮な食材を使った料理が堪能でき、特にデザートのバクラバはおすすめです。",
+          "searchQuery": "Restaurant Dar Yacout",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "モロッコ料理を堪能する",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マラケシュのホテルで、モロッコの伝統的な朝食を楽しみます。フレッシュなパンやオリーブオイル、甘いミントティーで一日をスタート。",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "タジン料理教室",
+          "description": "地元の料理教室で、モロッコの代表的な料理・タジンを作る体験をします。新鮮なスパイスや食材を使い、料理のコツを学びながら、楽しい時間を過ごしましょう。",
+          "searchQuery": "Moroccan Tagine Cooking Class",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "地元のレストランでランチ",
+          "description": "タジン料理教室で作った料理を楽しんだ後、地元の人気レストランで本格的なモロッコ料理を堪能します。特に、スパイシーなタジンやクスクスが絶品です。",
+          "searchQuery": "Restaurant in Marrakech",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "スーク（市場）散策",
+          "description": "マラケシュのスークで、カラフルな雑貨や手工芸品を探しながら散策します。かわいい雑貨やお土産を見つけるチャンス！交渉も楽しんでください。",
+          "searchQuery": "Marrakech Souk",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "カフェで休憩",
+          "description": "スークでの買い物の後は、地元のカフェで一息。モロッコのミントティーやスイーツを楽しみながら、友人とゆったりとした時間を過ごします。",
+          "searchQuery": "Cafe in Marrakech",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "夜は、マラケシュの地元レストランでディナー。新鮮な食材を使ったモロッコ料理を楽しみながら、旅の思い出を語り合いましょう。",
+          "searchQuery": "Local Restaurant in Marrakech",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "マラケシュからエッサウィラへ",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "マラケシュ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "エッサウィラ",
+          "time": "11:30"
+        },
+        "duration": "2h 30m",
+        "memo": "エッサウィラ行きのバスは快適で、途中の風景も楽しめます。"
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "エッサウィラの港でランチ",
+          "description": "エッサウィラの港で新鮮なシーフードを楽しみましょう。特に、地元の魚を使ったタジンは絶品です。",
+          "searchQuery": "Essaouira Port",
+          "locationEn": "Essaouira, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "エッサウィラ旧市街散策",
+          "description": "ユネスコ世界遺産に登録されている旧市街を散策。カラフルな雑貨店やアートギャラリーが立ち並び、フォトジェニックなスポットがたくさんあります。",
+          "searchQuery": "Essaouira Medina",
+          "locationEn": "Essaouira, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "アートギャラリー訪問",
+          "description": "地元アーティストの作品を展示しているギャラリーを訪れ、モロッコのアートシーンを体感しましょう。特に、陶器や絵画が魅力的です。",
+          "searchQuery": "Galerie d'Art Damgaard",
+          "locationEn": "Essaouira, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "エッサウィラのビーチでリラックス",
+          "description": "美しいビーチでのんびりと過ごし、夕日を眺めながらリラックス。海の音を聞きながら、友人と素敵な時間を過ごしましょう。",
+          "searchQuery": "Essaouira Beach",
+          "locationEn": "Essaouira, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "エッサウィラでディナー",
+          "description": "地元のレストランでモロッコ料理のタジンを堪能。スパイスの効いた料理は、エッサウィラの夜を彩ります。",
+          "searchQuery": "Restaurant La Table by Madada",
+          "locationEn": "Essaouira, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "エッサウィラの魅力を探る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "エッサウィラのホテルで、モロッコの伝統的な朝食を楽しみます。新鮮なパンやオリーブオイル、ハーブティーで一日をスタート。",
+          "locationEn": "Essaouira, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "エッサウィラのビーチ散策",
+          "description": "美しい大西洋のビーチを散策し、波の音を聞きながらリラックス。地元の人々や観光客が楽しむ様子を眺めるのも楽しいです。",
+          "searchQuery": "Essaouira Beach",
+          "locationEn": "Essaouira, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元の海鮮料理を楽しむ",
+          "description": "エッサウィラの海鮮レストランで、新鮮な魚介類を使ったタジン鍋を堪能。地元の味を楽しむ絶好の機会です。",
+          "searchQuery": "Restaurant de la Plage",
+          "locationEn": "Essaouira, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アートショップ巡り",
+          "description": "エッサウィラのアートショップを巡り、地元アーティストの作品や手作りの雑貨を探します。ユニークなアイテムが見つかるかも！",
+          "searchQuery": "Essaouira Art Shops",
+          "locationEn": "Essaouira, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "スーク（市場）でショッピング",
+          "description": "エッサウィラのスークで、モロッコの雑貨やお土産を探しながらショッピング。カラフルな商品が並ぶ中で、交渉を楽しむのも醍醐味です。",
+          "searchQuery": "Essaouira Souk",
+          "locationEn": "Essaouira, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕日を眺める",
+          "description": "ビーチで夕日を眺めながら、今日の思い出を振り返ります。美しい夕焼けが心に残ることでしょう。",
+          "locationEn": "Essaouira, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "エッサウィラの地元レストランで、モロッコ料理を楽しむディナー。タジン鍋やクスクスなど、モロッコの味を堪能しましょう。",
+          "searchQuery": "La Table by Madada",
+          "locationEn": "Essaouira, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "マラケシュへ戻り、帰路へ",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "エッサウィラ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "マラケシュ",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "エッサウィラからマラケシュへは車で約2時間の移動です。美しい海岸線を眺めながらのドライブを楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "マラケシュのスーク散策",
+          "description": "マラケシュのスークで色とりどりの雑貨や手工芸品を探しましょう。特にモロッコの伝統的なタジン鍋や美しいランプが揃っています。",
+          "searchQuery": "Marrakech Souk",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "モロッコ料理のランチ",
+          "description": "地元の人気レストランで本格的なモロッコ料理を楽しみましょう。特にタジン鍋は絶品で、スパイスの香りが食欲をそそります。",
+          "searchQuery": "Le Tobsil",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ジャマ・エル・フナ広場",
+          "description": "マラケシュの中心、ジャマ・エル・フナ広場を訪れましょう。ストリートパフォーマンスや屋台の雰囲気を楽しみながら、フォトジェニックな瞬間をキャッチ！",
+          "searchQuery": "Jemaa el-Fnaa",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "カフェでのひととき",
+          "description": "広場近くのカフェで、ミントティーを飲みながらリラックス。モロッコの雰囲気を感じつつ、友人との会話を楽しむ時間です。",
+          "searchQuery": "Café de France",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "最後のショッピング",
+          "description": "スークでのショッピングをもう一度楽しみましょう。お気に入りの雑貨を見つけて、旅の思い出を持ち帰るチャンスです。",
+          "searchQuery": "Marrakech Souk",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "マラケシュのホテルチェックイン",
+          "description": "本日の宿泊先にチェックイン。旅の疲れを癒し、明日の帰路に備えましょう。",
+          "searchQuery": "Riad Kniza",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

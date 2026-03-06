@@ -1,0 +1,335 @@
+{
+  "id": "afd2af68-de9b-42c1-9308-5da1428ca5ba",
+  "destination": "マドリード",
+  "description": "マドリードの街を一人旅で満喫する4日間の旅。アクティビティ、リゾート、ショッピングをテーマに、スペインの文化と美食を楽しみながら、ゆったりとした時間を過ごします。美しい公園や歴史的な建物を巡り、地元の人々と触れ合うことで、マドリードの魅力を深く味わうことができるでしょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "マドリード到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マドリードのホテルで、スペインの伝統的な朝食を楽しみます。トーストにトマトとオリーブオイルをかけた「パン・コン・トマテ」や、ハムとチーズの盛り合わせが絶品です。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "プラド美術館",
+          "description": "世界的に有名なプラド美術館を訪れ、ゴヤやベラスケスの名作を鑑賞します。美術館内は広々としており、ゆっくりと作品を楽しむことができます。",
+          "searchQuery": "Prado Museum",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "レストランでランチ",
+          "description": "地元の人気レストランで、タパスやパエリアを楽しみます。新鮮な食材を使った料理が自慢で、マドリードの味を堪能できます。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "レティーロ公園散策",
+          "description": "広大なレティーロ公園でリラックスした時間を過ごします。美しい庭園や池を眺めながら、散策やボート遊びを楽しむことができます。",
+          "searchQuery": "Retiro Park",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ソル広場でショッピング",
+          "description": "マドリードの中心地、ソル広場でショッピングを楽しみます。お土産やファッションアイテムを探しながら、賑やかな雰囲気を味わえます。",
+          "searchQuery": "Puerta del Sol",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "マドリードの地元料理を楽しむために、評判の良いレストランでディナーを取ります。特に、スペインワインと共に楽しむ料理は格別です。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アクティビティとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マドリードのホテルで、スペインの伝統的な朝食を楽しみます。トーストにトマトとオリーブオイルをかけた「パン・コン・トマテ」や、甘いペストリーの「チュロス」をぜひ味わってみてください。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "サンミゲル市場散策",
+          "description": "地元の人々に愛されるサンミゲル市場で、新鮮な食材やタパスを楽しみながら散策します。色とりどりの食材が並ぶ様子は、まるで食のアートギャラリーのよう。",
+          "searchQuery": "Mercado de San Miguel",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ：タパスを楽しむ",
+          "description": "市場内のタパスバーで、スペインの名物料理を堪能。特に「ハモン・セラーノ」や「パタタス・ブラバス」は絶品です。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "グランビア通りでショッピング",
+          "description": "マドリードのメインストリート、グランビア通りでショッピングを楽しみます。高級ブランドから地元のデザイナーまで、様々なお店が立ち並びます。",
+          "searchQuery": "Gran Via",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "プラド美術館訪問",
+          "description": "世界的に有名なプラド美術館で、スペインの名画を鑑賞します。ゴヤやベラスケスの作品は必見です。美術館内のカフェで一息つくのもおすすめ。",
+          "searchQuery": "Museo del Prado",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディナー：地元のレストランで",
+          "description": "マドリードの地元レストランで、スペイン料理のフルコースを楽しみます。特に「パエリア」や「フィデウア」は、旅行の締めくくりにぴったり。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "夜のマドリード散策",
+          "description": "夜のマドリードを散策し、ライトアップされた建物や広場を楽しみます。特にプラザ・マヨールは、夜の雰囲気が素晴らしいです。",
+          "searchQuery": "Plaza Mayor",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "リゾート気分を味わう",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マドリードのホテルで、スペインの伝統的な朝食を楽しみます。トーストにトマトとオリーブオイルをかけた「パン・コン・トマテ」や、甘いペストリーが絶品です。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "カサ・デ・カンポ散策",
+          "description": "マドリードの広大な公園、カサ・デ・カンポでリラックスした時間を過ごします。美しい湖や緑豊かな景色の中で、散歩やピクニックを楽しむのがおすすめです。",
+          "searchQuery": "Casa de Campo",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カフェでランチ",
+          "description": "カサ・デ・カンポ近くのカフェで、スペインのタパスやサラダを楽しみながら、のんびりとした時間を過ごします。地元の人々に人気のあるお店で、アットホームな雰囲気が魅力です。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "マドリード動物園訪問",
+          "description": "カサ・デ・カンポ内にあるマドリード動物園を訪れ、様々な動物たちと触れ合います。特に、パンダやコアラが人気で、子供から大人まで楽しめるスポットです。",
+          "searchQuery": "Madrid Zoo",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ショッピングタイム",
+          "description": "マドリードの中心地に戻り、グランビア通りでショッピングを楽しみます。高級ブランドから地元のデザイナーまで、様々なお店が並んでいます。",
+          "searchQuery": "Gran Via",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "マドリードの人気レストランで、スペイン料理のディナーを楽しみます。特にパエリアやハモン・セラーノが絶品で、地元のワインと共に味わうのがおすすめです。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "マドリードの最後のひととき",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マドリードのホテルで、スペインの伝統的な朝食を楽しみます。トーストにトマトとオリーブオイルをかけた「パン・コン・トマテ」や、ハムとチーズのプレートが定番です。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "マドリード王宮",
+          "description": "スペイン王室の公式な居住地であるマドリード王宮を訪れます。豪華な内装や美しい庭園を散策しながら、歴史を感じるひとときを過ごしましょう。",
+          "searchQuery": "Royal Palace of Madrid",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "アルムデナ大聖堂",
+          "description": "マドリード王宮のすぐ隣に位置するアルムデナ大聖堂を見学します。美しいステンドグラスや壮大な天井が印象的で、静かな空間で心を落ち着けることができます。",
+          "searchQuery": "Almudena Cathedral",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "地元のカフェでランチ",
+          "description": "マドリードの地元のカフェで、スペインのタパスやパエリアを楽しみます。地元の人々に混じって、リラックスした雰囲気の中で食事を楽しむのがポイントです。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "プラド美術館",
+          "description": "世界的に有名なプラド美術館を訪れ、スペインの巨匠たちの作品を鑑賞します。ゴヤやベラスケスの名作を間近で見ることができ、アートに浸る贅沢な時間を過ごせます。",
+          "searchQuery": "Prado Museum",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ショッピングエリアで散策",
+          "description": "マドリードの中心地にあるショッピングエリアを散策し、地元のブランドやお土産を探します。特に、グランビア通りやサラマンカ地区は高級ブランドが揃っており、ウィンドウショッピングも楽しめます。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "地元のレストランでディナー",
+          "description": "マドリードの人気レストランで、スペイン料理のディナーを楽しみます。特に、地元のワインと共に味わうタパスは絶品です。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

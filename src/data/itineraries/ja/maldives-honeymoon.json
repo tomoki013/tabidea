@@ -1,0 +1,448 @@
+{
+  "id": "7d0db186-30b8-42ec-b39c-d7c54d331144",
+  "destination": "モルディブ",
+  "description": "モルディブの美しい海に囲まれた水上コテージで、二人だけの特別な時間を過ごしませんか？青い海と白い砂浜、そして心地よい風が吹き抜けるリゾートで、日常の喧騒を忘れ、リラックスしたひとときを楽しむことができます。特にハネムーンにぴったりのこの場所では、ロマンティックなディナーやスパ体験も満喫できるでしょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からモルディブへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "モルディブ",
+          "time": "15:00"
+        },
+        "duration": "8h",
+        "memo": "直行便でモルディブへ。機内でリラックスしながら、到着を楽しみに待ちましょう。"
+      },
+      "activities": [
+        {
+          "time": "15:30",
+          "activity": "水上コテージチェックイン",
+          "description": "モルディブの美しい海に浮かぶ水上コテージにチェックイン。目の前には透き通った海が広がり、リゾート気分を満喫できます。",
+          "searchQuery": "Water Villa Maldives",
+          "locationEn": "Maldives",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ビーチでのんびり",
+          "description": "水上コテージの周りのビーチで、夕日を眺めながらのんびりと過ごします。波の音を聞きながら、心地よい時間をお楽しみください。",
+          "searchQuery": "Maldives Beach",
+          "locationEn": "Maldives",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "リゾート内レストランでディナー",
+          "description": "リゾート内のレストランで、地元の新鮮なシーフードを使ったディナーを楽しみます。ロマンチックな雰囲気の中で、特別なひとときを過ごしましょう。",
+          "searchQuery": "Maldives Resort Restaurant",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "リゾートでのんびり",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "水上コテージで朝食",
+          "description": "美しい海を眺めながら、プライベートな水上コテージでの朝食を楽しみます。新鮮なフルーツや地元の料理が並び、特別な朝のひとときを演出します。",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ビーチでリラックス",
+          "description": "白い砂浜と透き通った海で、のんびりとした時間を過ごします。ビーチチェアに寝転び、波の音を聞きながら、心地よい風に身を委ねてください。",
+          "locationEn": "Maldives",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ビーチサイドでランチ",
+          "description": "ビーチの目の前にあるレストランで、シーフードランチを楽しみます。新鮮な魚介類を使った料理が絶品で、リゾートの雰囲気を満喫できます。",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "スパでリフレッシュ",
+          "description": "リゾート内のスパで、カップル向けのトリートメントを受けます。アロマオイルを使ったマッサージで、日頃の疲れを癒し、心身ともにリフレッシュしましょう。",
+          "locationEn": "Maldives",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "サンセットビーチ散策",
+          "description": "夕暮れ時のビーチを散策し、ロマンチックなサンセットを楽しみます。オレンジ色に染まる空と海のコントラストは、特別な思い出になることでしょう。",
+          "locationEn": "Maldives",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "水上レストランでディナー",
+          "description": "水上に建つレストランで、特別なディナーを楽しみます。キャンドルライトの中で、地元の食材を使った美味しい料理を味わいながら、二人だけの時間を過ごします。",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "シュノーケリングと海の楽しみ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "水上コテージで朝食",
+          "description": "美しい海を眺めながら、リゾート特製の朝食を楽しみます。新鮮なフルーツや地元の料理が並び、心地よい海風を感じながらの朝食は特別なひとときです。",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "シュノーケリング体験",
+          "description": "透明度の高い海で、色とりどりの魚たちと一緒に泳ぎます。リゾートのスタッフが案内してくれるので、初心者でも安心して楽しめます。美しいサンゴ礁を間近で見ることができる貴重な体験です。",
+          "searchQuery": "Maldives snorkeling",
+          "locationEn": "Maldives",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ビーチでランチ",
+          "description": "ビーチサイドのレストランで、地元のシーフードを使ったランチを楽しみます。新鮮な魚介類やトロピカルフルーツを使った料理が絶品です。",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ビーチでリラックス",
+          "description": "ランチの後は、ビーチでのんびりと過ごします。白い砂浜に寝転び、波の音を聞きながら、心身ともにリフレッシュ。お二人だけの特別な時間をお楽しみください。",
+          "locationEn": "Maldives",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "スパでのトリートメント",
+          "description": "リゾート内のスパで、カップル向けのトリートメントを受けます。アロマオイルを使ったマッサージで、日頃の疲れを癒し、心身ともにリラックスできます。",
+          "searchQuery": "Maldives spa",
+          "locationEn": "Maldives",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕日を眺めながらのディナー",
+          "description": "海に沈む夕日を眺めながら、ロマンティックなディナーを楽しみます。地元の食材を使ったコース料理は、特別な夜を演出してくれます。",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "星空の下での散歩",
+          "description": "ディナーの後は、ビーチを散歩しながら星空を楽しみます。静かな海の音とともに、二人だけの時間を過ごすのにぴったりです。",
+          "locationEn": "Maldives",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ロマンティックなディナー",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "水上コテージで朝食",
+          "description": "美しい海を眺めながら、プライベートな水上コテージでの朝食を楽しみます。新鮮なフルーツや地元の料理が並び、特別なひとときを演出します。",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ビーチでリラックス",
+          "description": "白い砂浜と青い海に囲まれたビーチで、のんびりとした時間を過ごします。ビーチチェアに寝転び、波の音を聞きながら、心地よい風に身を委ねてください。",
+          "locationEn": "Maldives",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ビーチサイドでランチ",
+          "description": "ビーチサイドのレストランで、地元のシーフードを使ったランチを楽しみます。新鮮な魚介類やトロピカルフルーツを味わいながら、リゾートの雰囲気を満喫。",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "スパでリラックス",
+          "description": "リゾート内のスパで、カップル向けのトリートメントを受けます。アロマオイルを使ったマッサージで、日頃の疲れを癒し、心身ともにリフレッシュしましょう。",
+          "locationEn": "Maldives",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "水上レストランでディナー",
+          "description": "夕暮れ時、海の上に浮かぶ水上レストランでロマンティックなディナーを楽しみます。美しいサンセットを眺めながら、特別なコース料理を堪能。",
+          "searchQuery": "水上レストラン",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "星空の下で散歩",
+          "description": "ディナーの後は、星空の下をゆっくりと散歩。波の音を聞きながら、二人だけの特別な時間を過ごします。",
+          "locationEn": "Maldives",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "モルディブから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "モルディブ",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "20:00"
+        },
+        "duration": "8h",
+        "memo": "モルディブから東京への直行便です。機内でリラックスしながら、素敵な思い出を振り返りましょう。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "水上コテージで朝食",
+          "description": "美しい海を眺めながら、プライベートな水上コテージでの朝食を楽しみます。新鮮なフルーツや地元の料理が並ぶ豪華なビュッフェスタイルです。",
+          "searchQuery": "水上コテージ 朝食",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ビーチでのんびり",
+          "description": "水上コテージの目の前に広がる白い砂浜で、のんびりとした時間を過ごします。海に足を浸けたり、ビーチチェアでリラックスしたり、二人だけの特別なひとときを楽しんでください。",
+          "searchQuery": "Maldives Beach",
+          "locationEn": "Maldives",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "スパでリラックス",
+          "description": "リゾート内のスパで、カップル向けのトリートメントを受けます。アロマオイルを使ったマッサージで、心身ともにリフレッシュしましょう。",
+          "searchQuery": "Maldives Spa",
+          "locationEn": "Maldives",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "水上コテージでランチ",
+          "description": "コテージに戻り、プライベートな空間でランチを楽しみます。新鮮なシーフードや地元の特産品を使った料理が堪能できます。",
+          "searchQuery": "水上コテージ ランチ",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "チェックアウトと空港へ移動",
+          "description": "リゾートを後にし、空港へ向かいます。最後のモルディブの風景を楽しみながら、ゆったりとした移動を心がけましょう。",
+          "searchQuery": "Maldives Airport",
+          "locationEn": "Maldives",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "東京到着",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "東京"
+        },
+        "arrival": {
+          "place": "モルディブ"
+        },
+        "memo": "モルディブへのフライトで、リゾート地へ向かいます。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "東京のホテルで、和洋折衷の朝食を楽しみます。新鮮な食材を使った料理で、エネルギーをチャージしましょう。",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "東京からモルディブへ出発",
+          "description": "空港へ移動し、モルディブ行きのフライトに搭乗します。空の旅を楽しみながら、リゾートでの素晴らしい時間を期待しましょう。",
+          "searchQuery": "Maldives",
+          "locationEn": "Maldives",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "モルディブ到着・リゾートチェックイン",
+          "description": "モルディブに到着後、予約した水上コテージにチェックイン。美しい海を眺めながら、リラックスした時間を過ごします。",
+          "locationEn": "Maldives",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "水上コテージでのんびり",
+          "description": "コテージのデッキで、海を眺めながらのんびりとした時間を過ごします。夕日を眺めながら、特別なひとときをお楽しみください。",
+          "locationEn": "Maldives",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "リゾート内のレストランでディナー",
+          "description": "リゾート内のレストランで、地元の新鮮なシーフードを使ったディナーを楽しみます。ロマンチックな雰囲気の中で、特別な夜を過ごしましょう。",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

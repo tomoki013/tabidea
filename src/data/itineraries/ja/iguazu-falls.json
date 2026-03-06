@@ -1,0 +1,634 @@
+{
+  "id": "0bc0f27d-61db-40ff-bf0a-304291b7b5bc",
+  "destination": "イグアス",
+  "description": "イグアスの滝の壮大な景色に心を奪われ、友人と共に大自然の冒険に出かける8日間の旅。世界遺産の美しさを体感し、ボートツアーで滝の迫力を間近で感じるアクティブなプランです。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からイグアスへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "イグアス",
+          "time": "15:00"
+        },
+        "duration": "14h",
+        "memo": "直行便でイグアスへ向かいます。時差に注意！"
+      },
+      "activities": [
+        {
+          "time": "16:00",
+          "activity": "イグアスの滝観光",
+          "description": "世界遺産に登録されているイグアスの滝を訪れます。圧倒的な水量と美しい景観に心を奪われることでしょう。特に、サン・マルティン島からの眺めは絶景です。",
+          "searchQuery": "Iguazu Falls",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "イグアスの地元料理を楽しむために、評判の良いレストランでディナーを。アルゼンチンのステーキやエンパナーダをぜひ味わってください。",
+          "searchQuery": "El Quincho del Tío Querido",
+          "locationEn": "Iguazu, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルチェックイン",
+          "description": "イグアスの滞在先にチェックイン。快適な部屋で旅の疲れを癒しましょう。",
+          "searchQuery": "Hotel Saint George",
+          "locationEn": "Iguazu, Argentina",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "イグアスの滝を満喫",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "イグアス",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "イグアスの滝",
+          "time": "08:30"
+        },
+        "duration": "30m",
+        "memo": "徒歩でイグアスの滝へ向かいます。早朝の静けさの中、滝の迫力を感じる準備をしましょう。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "イグアスの滝（ブラジル側）",
+          "description": "世界遺産に登録されているイグアスの滝をブラジル側から観賞します。壮大な滝の迫力に圧倒されること間違いなし。特に「悪魔の喉笛」と呼ばれる部分は必見です。",
+          "searchQuery": "Iguazu Falls",
+          "locationEn": "Iguazu Falls, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "レストランでランチ",
+          "description": "滝の近くにあるレストランで、地元の料理を楽しみます。特に、ブラジルの伝統的な料理「フェイジョアーダ」をぜひ味わってみてください。",
+          "searchQuery": "Restaurante Porto Canoas",
+          "locationEn": "Iguazu Falls, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ボートツアー",
+          "description": "イグアスの滝を間近で体験できるボートツアーに参加します。滝の水しぶきを浴びながら、迫力満点のアドベンチャーを楽しみましょう。",
+          "searchQuery": "Iguazu Falls Boat Tour",
+          "locationEn": "Iguazu Falls, Brazil",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "イグアス国立公園内散策",
+          "description": "ボートツアーの後は、イグアス国立公園内を散策。多様な動植物を観察しながら、自然の美しさを堪能します。",
+          "searchQuery": "Iguazu National Park",
+          "locationEn": "Iguazu National Park, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "イグアスの滝の夕日観賞",
+          "description": "滝の近くで夕日を眺めながら、今日の素晴らしい体験を振り返ります。夕暮れ時の滝は、また違った美しさを見せてくれます。",
+          "searchQuery": "Iguazu Falls Sunset",
+          "locationEn": "Iguazu Falls, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ホテルでディナー",
+          "description": "イグアスの滝近くのホテルで、ゆったりとしたディナーを楽しみます。地元の食材を使った料理を堪能し、旅の疲れを癒しましょう。",
+          "searchQuery": "Hotel das Cataratas",
+          "locationEn": "Iguazu, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ボートツアーで滝を体感",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "イグアス",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "イグアスの滝",
+          "time": "08:30"
+        },
+        "duration": "30m",
+        "memo": "イグアスの滝へは徒歩で移動します。早朝の静けさの中、滝の迫力を感じる準備をしましょう。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "イグアスの滝ボートツアー",
+          "description": "世界遺産のイグアスの滝を間近で体感できるボートツアーに参加します。滝の水しぶきを浴びながら、圧倒的な自然の力を感じることができます。",
+          "searchQuery": "Iguazu Falls Boat Tour",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "滝の近くでランチ",
+          "description": "滝の近くにあるレストランで、アルゼンチンの伝統料理を楽しみます。特に、アサado（バーベキュー）は絶品です。",
+          "searchQuery": "Iguazu Falls Restaurant",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アルゼンチン側の滝散策",
+          "description": "アルゼンチン側からの滝の眺めは格別です。トレイルを歩きながら、様々な角度から滝を楽しむことができます。",
+          "searchQuery": "Iguazu National Park",
+          "locationEn": "Iguazu National Park, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "滝の展望台でのんびり",
+          "description": "滝の展望台で、滝の音を聞きながらリラックス。美しい景色を眺めながら、友人と素敵な時間を過ごしましょう。",
+          "searchQuery": "Iguazu Falls Viewpoint",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "イグアスの街でディナー",
+          "description": "イグアスの街に戻り、地元のレストランでディナーを楽しみます。新鮮な魚料理やパスタが人気です。",
+          "searchQuery": "Iguazu City Restaurant",
+          "locationEn": "Iguazu, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "国立公園で自然探検",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "イグアス",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "イグアス国立公園",
+          "time": "08:30"
+        },
+        "duration": "30m",
+        "memo": "イグアス国立公園への徒歩移動。早朝の空気を感じながら、自然の中へ向かいます。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "イグアス国立公園トレッキング",
+          "description": "イグアス国立公園内のトレッキングコースを歩きながら、壮大な滝の景色を楽しみます。特に「悪魔の喉笛」からの眺めは圧巻で、自然の力を感じることができます。",
+          "searchQuery": "Iguazu National Park",
+          "locationEn": "Iguazu, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "公園内のレストランでランチ",
+          "description": "公園内のレストランで、地元の食材を使った料理を楽しみます。特に、アルゼンチンの伝統的なアサado（バーベキュー）は絶品です。",
+          "searchQuery": "Iguazu National Park Restaurant",
+          "locationEn": "Iguazu, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ボートツアーで滝を間近に体験",
+          "description": "イグアスの滝を間近で体験できるボートツアーに参加します。滝の水しぶきを浴びながら、迫力満点の景色を楽しむことができます。",
+          "searchQuery": "Iguazu Falls Boat Tour",
+          "locationEn": "Iguazu, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "公園内の散策",
+          "description": "ボートツアーの後は、ゆっくりと公園内を散策。多様な植物や動物を観察しながら、自然の美しさを堪能します。",
+          "searchQuery": "Iguazu National Park",
+          "locationEn": "Iguazu, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "イグアスの街でディナー",
+          "description": "イグアスの街に戻り、地元のレストランでディナー。アルゼンチンのワインと共に、肉料理を楽しむのがおすすめです。",
+          "searchQuery": "Iguazu Restaurant",
+          "locationEn": "Iguazu, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "周辺の文化体験",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "イグアスのホテルで、地元のフルーツやパンを使った朝食を楽しみます。エネルギーをチャージして、今日の冒険に備えましょう。",
+          "locationEn": "Iguazu, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "イグアスの滝ボートツアー",
+          "description": "世界遺産のイグアスの滝を間近で体感できるボートツアーに参加します。滝の迫力を感じながら、濡れる覚悟で楽しんでください！",
+          "searchQuery": "Iguazu Falls Boat Tour",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "滝の近くでランチ",
+          "description": "滝の近くにあるレストランで、アルゼンチンの伝統料理を味わいます。特に、アサado（バーベキュー）は絶品です！",
+          "locationEn": "Iguazu, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "イグアス国立公園散策",
+          "description": "イグアス国立公園内を散策し、様々な展望台から滝の美しい景色を楽しみます。自然の中でリフレッシュしましょう。",
+          "searchQuery": "Iguazu National Park",
+          "locationEn": "Iguazu National Park, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "地元の村訪問",
+          "description": "イグアス周辺の地元の村を訪れ、文化体験を楽しみます。地元の人々との交流を通じて、アルゼンチンの生活を感じてみてください。",
+          "locationEn": "Iguazu, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "イグアスの地元のレストランで、アルゼンチンワインと共にディナーを楽しみます。新鮮な食材を使った料理が魅力です。",
+          "locationEn": "Iguazu, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "イグアスからリオデジャネイロへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "イグアス",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "リオデジャネイロ",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "イグアスからリオデジャネイロへのフライト。空港までの移動時間を考慮して早めに出発しましょう。"
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "リオデジャネイロのホテルにチェックイン",
+          "description": "リオデジャネイロの中心に位置するホテルで、快適な滞在をスタート。観光地へのアクセスも良好です。",
+          "searchQuery": "Hotel Fasano Rio de Janeiro",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "コルコバードのキリスト像見学",
+          "description": "リオデジャネイロのシンボル、コルコバードの丘に立つキリスト像を訪れます。展望台からの絶景は圧巻で、特に晴れた日には素晴らしい写真が撮れます。",
+          "searchQuery": "Christ the Redeemer",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "シュガーローフ山のハイキング",
+          "description": "シュガーローフ山へのハイキングで、リオの美しい海岸線を一望。途中の景色を楽しみながら、アクティブな時間を過ごしましょう。",
+          "searchQuery": "Sugarloaf Mountain",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランで夕食",
+          "description": "リオデジャネイロの地元料理を楽しむために、人気のレストランで夕食を。新鮮なシーフードやブラジルの伝統料理を堪能できます。",
+          "searchQuery": "Oro Restaurant",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "リオデジャネイロの観光",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "リオデジャネイロのホテルで、ブラジルの伝統的な朝食を楽しみます。新鮮なフルーツやパン、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "シュガーローフ山",
+          "description": "シュガーローフ山へ向かい、ケーブルカーで頂上まで。リオの街並みと海の絶景を一望できるスポットです。特に朝の光の中での景色は格別。",
+          "searchQuery": "Sugarloaf Mountain",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "リオの地元料理を楽しめるレストランで、フェイジョアーダ（豆と肉の煮込み）を味わいます。ブラジルの文化を感じる一皿です。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "イパネマビーチ散策",
+          "description": "イパネマビーチを散策し、リオのビーチ文化を体験。ビーチ沿いのカフェで冷たい飲み物を楽しみながら、リラックスした時間を過ごします。",
+          "searchQuery": "Ipanema Beach",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ボートツアーで滝へ",
+          "description": "イグアスの滝へ向かうボートツアーに参加。滝の迫力を間近で体感し、濡れること間違いなしのスリリングな体験です。",
+          "searchQuery": "Iguazu Falls Boat Tour",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルに戻る",
+          "description": "ボートツアーの後、ホテルに戻り、リフレッシュ。夕食までの時間をゆったりと過ごします。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "リオの夜を楽しむために、地元の人気レストランでディナー。新鮮なシーフードやブラジルのワインを堪能します。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "リオデジャネイロから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "リオデジャネイロ",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "06:00"
+        },
+        "duration": "14h",
+        "memo": "直行便での移動。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "ホテルで朝食",
+          "description": "リオデジャネイロのホテルで、ブラジルの伝統的な朝食を楽しみます。新鮮なフルーツやパステル、コーヒーでエネルギーをチャージ。",
+          "searchQuery": "Hotel Breakfast",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:30",
+          "activity": "イグアスの滝観光",
+          "description": "世界遺産に登録されているイグアスの滝を訪れ、その壮大な景色に圧倒されます。特に、ブラジル側からの眺めは絶景です。",
+          "searchQuery": "Iguazu Falls",
+          "locationEn": "Iguazu Falls, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "イグアスの滝近くのレストランでランチ",
+          "description": "滝の近くにあるレストランで、地元の料理を楽しみます。特に、ブラジルのシュラスコは絶品です。",
+          "searchQuery": "Iguazu Falls Restaurant",
+          "locationEn": "Iguazu Falls, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ボートツアーで滝の近くへ",
+          "description": "ボートツアーに参加し、滝の真下まで接近します。水しぶきを浴びながら、迫力満点の体験を楽しみましょう。",
+          "searchQuery": "Iguazu Falls Boat Tour",
+          "locationEn": "Iguazu Falls, Brazil",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "リオデジャネイロへ移動",
+          "description": "イグアスの滝を後にし、リオデジャネイロへ戻ります。移動中は、滝の余韻に浸りながら旅の思い出を振り返りましょう。",
+          "searchQuery": "Rio de Janeiro",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "東京行きのフライト搭乗",
+          "description": "リオデジャネイロから東京行きのフライトに搭乗します。長旅ですが、機内でリラックスして過ごしましょう。",
+          "searchQuery": "Flight to Tokyo",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

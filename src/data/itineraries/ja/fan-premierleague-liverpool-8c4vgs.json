@@ -1,0 +1,456 @@
+{
+  "id": "2f766236-98a5-4624-870a-34fbb111c3d2",
+  "destination": "リバプール",
+  "description": "リバプールは、音楽とスポーツの歴史が交差する魅力的な都市です。特に、ビートルズの故郷として知られ、サッカーの聖地でもあるこの街では、推し活を楽しみながら、文化や自然も満喫できます。ゆったりとしたペースで、リバプールの魅力を存分に味わいましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "リバプール到着とビートルズ巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リバプールのホテルで、イギリスの伝統的な朝食を楽しみます。ベーコンやソーセージ、トーストに紅茶を添えて、エネルギーをチャージしましょう。",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ビートルズ・ストーリー",
+          "description": "ビートルズの歴史を深く知ることができる博物館です。彼らの音楽や影響を受けた文化を体感し、ファンにはたまらないスポットです。",
+          "searchQuery": "The Beatles Story",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "マシュー・ストリートでランチ",
+          "description": "ビートルズゆかりのマシュー・ストリートで、地元のパブやカフェで軽食を楽しみます。ビートルズの音楽を聴きながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "マシュー・ストリート散策",
+          "description": "ビートルズの足跡を辿りながら、マシュー・ストリートを散策します。ストリートアートやお土産屋さんを楽しみながら、ファングッズを探してみてください。",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "リバプール・フットボールクラブのスタジアム見学",
+          "description": "リバプールFCのアンスフィールドスタジアムを訪れ、クラブの歴史や名選手たちの足跡を感じるツアーに参加します。サッカーファンには必見のスポットです。",
+          "searchQuery": "Anfield Stadium",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー",
+          "description": "リバプールの地元料理を楽しむため、カジュアルなレストランでディナーを取ります。フィッシュ＆チップスやパイなど、イギリスの伝統的な料理を味わいましょう。",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "リバプールの夜景を楽しむ",
+          "description": "夜のリバプールを散策し、美しい夜景を楽しみます。特にアルバート・ドック周辺は、ライトアップされた建物が幻想的です。",
+          "locationEn": "Liverpool, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "サッカーの聖地を訪れる",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リバプールの地元のカフェで、イングリッシュブレックファストを楽しみます。ベーコンやソーセージ、トーストにスクランブルエッグがついたボリューム満点の朝食で、エネルギーをチャージ！",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "アンフィールドスタジアム見学ツアー",
+          "description": "リバプールFCの本拠地、アンフィールドスタジアムを訪れます。スタジアムの歴史や名選手たちの足跡を辿りながら、サッカーの聖地を体感。ツアーの最後には、スタジアムのピッチに立つこともできるかも！",
+          "searchQuery": "Anfield Stadium",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "スタジアム近くのカフェでランチ",
+          "description": "アンフィールド近くのカフェで、サンドイッチやパイを楽しみます。サッカー観戦の合間に、地元の味を堪能しましょう。",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "リバプールFCミュージアム訪問",
+          "description": "リバプールFCの歴史を深く知ることができるミュージアムを見学。トロフィーや名選手の展示を通じて、クラブの誇りを感じることができます。",
+          "searchQuery": "Liverpool FC Museum",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ファングッズショップでショッピング",
+          "description": "アンフィールドの近くにある公式ショップで、リバプールFCのファングッズを購入。ユニフォームやマフラーなど、サポーター必見のアイテムが揃っています。",
+          "searchQuery": "Liverpool FC Official Store",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "リバプールのパブでディナー",
+          "description": "地元のパブで、フィッシュ＆チップスやビールを楽しみながら、リラックスした時間を過ごします。サッカーの話題で盛り上がるのも良いですね。",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "リバプールの夜景を楽しむ散策",
+          "description": "リバプールの美しい夜景を楽しみながら、街を散策。特にアルバート・ドック周辺は、夜の雰囲気が素敵です。",
+          "locationEn": "Liverpool, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "リバプールの自然と文化を楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リバプールのカフェで、地元の食材を使ったイングリッシュブレックファーストを楽しみます。トースト、ベーコン、卵、そして新鮮なフルーツが揃ったボリューム満点の朝食です。",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "セント・ジョンズ・ガーデンズ散策",
+          "description": "美しい庭園でリラックスした時間を過ごしましょう。色とりどりの花々や緑に囲まれながら、静かなひとときを楽しむことができます。特に春や夏は花が満開で、写真映えも抜群です。",
+          "searchQuery": "St John's Gardens",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "リバプール美術館訪問",
+          "description": "リバプール美術館では、地元アーティストの作品や歴史的なアートコレクションを楽しむことができます。入場は無料なので、気軽に立ち寄ってみてください。",
+          "searchQuery": "Liverpool Museum",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "地元のパブでランチ",
+          "description": "リバプールの伝統的なパブで、フィッシュ＆チップスやパイなどの地元料理を楽しみましょう。ビールと一緒に、リバプールの雰囲気を満喫できます。",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "アンフィールドスタジアム見学",
+          "description": "リバプールFCの本拠地、アンフィールドスタジアムを訪れます。スタジアムツアーでは、歴史や名選手のエピソードを聞きながら、ピッチやロッカールームを見学できます。",
+          "searchQuery": "Anfield Stadium",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ファングッズショップでショッピング",
+          "description": "アンフィールド近くの公式ショップで、リバプールFCのファングッズを購入しましょう。ユニフォームやマフラーなど、サポーターにはたまらないアイテムが揃っています。",
+          "searchQuery": "Liverpool FC Official Store",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "リバプールのレストランでディナー",
+          "description": "地元の食材を使った料理を楽しめるレストランで、リラックスしたディナータイムを過ごします。リバプールの夜景を眺めながら、特別なひとときをお楽しみください。",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ショッピングとリラックス",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リバプールのホテルで、イギリスの伝統的な朝食を楽しみます。ベーコンやソーセージ、トーストに紅茶を添えて、エネルギーをチャージしましょう。",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "リバプールONEでショッピング",
+          "description": "リバプールの人気ショッピングエリア、リバプールONEでお買い物。ファングッズやお土産を探しながら、カフェで一息つくのもおすすめです。",
+          "searchQuery": "Liverpool ONE",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "アルバート・ドックでランチ",
+          "description": "アルバート・ドックのレストランで、地元のシーフードを楽しむランチ。美しい港の景色を眺めながら、リラックスした時間を過ごせます。",
+          "searchQuery": "Albert Dock",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アルバート・ドック散策",
+          "description": "歴史的なアルバート・ドックを散策。美しい建物やアートギャラリーを見ながら、リバプールの文化を感じることができます。",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "リバプールFCのショップ訪問",
+          "description": "リバプールFCの公式ショップで、ファングッズを購入。ユニフォームやスカーフなど、サポーターにはたまらないアイテムが揃っています。",
+          "searchQuery": "Liverpool FC Store",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "カフェでリラックス",
+          "description": "ショッピングの後は、カフェでゆっくりと過ごしましょう。地元のスイーツやコーヒーを楽しみながら、旅の思い出を振り返る時間を持ちます。",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルでのんびり",
+          "description": "一日の疲れを癒すために、ホテルでリラックス。お風呂に入ったり、明日のプランを考えたりして、ゆったりとした夜を過ごします。",
+          "locationEn": "Liverpool, England",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "帰路につく",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リバプールのホテルで、イギリスの伝統的な朝食を楽しみます。ベーコンやソーセージ、トーストに紅茶を添えて、エネルギーをチャージしましょう。",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "リバプール市内散策",
+          "description": "リバプールの街をゆっくりと散策します。ビートルズゆかりの地や、歴史的な建物を巡りながら、街の雰囲気を楽しんでください。特にアルバート・ドック周辺は見どころが多いです。",
+          "searchQuery": "Albert Dock",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "The Beatles Storyを訪問",
+          "description": "ビートルズの歴史を深く知ることができるミュージアムです。彼らの音楽や影響を受けた文化を体験し、ファンにはたまらないスポットです。",
+          "searchQuery": "The Beatles Story",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ランチ：The Baltic Social",
+          "description": "地元の食材を使った料理が楽しめるカジュアルなレストランで、リラックスした雰囲気の中でランチを楽しみましょう。特にハンバーガーが人気です。",
+          "searchQuery": "The Baltic Social",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "リバプールFCのスタジアム見学",
+          "description": "リバプールFCの本拠地、アンフィールドを訪れます。スタジアムツアーでは、選手たちがプレーするピッチやロッカールームを見学でき、サッカーファンにはたまらない体験です。",
+          "searchQuery": "Anfield Stadium",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ファングッズ購入",
+          "description": "リバプールFCの公式ショップで、ユニフォームやグッズを購入します。自分へのお土産や、友人へのプレゼントにぴったりです。",
+          "searchQuery": "Liverpool FC Store",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "夕食：The Philharmonic Dining Rooms",
+          "description": "歴史的なパブで、地元のビールと共に伝統的なイギリス料理を楽しみます。美しい内装も魅力的で、リラックスした時間を過ごせます。",
+          "searchQuery": "The Philharmonic Dining Rooms",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "帰路につく準備",
+          "description": "ホテルに戻り、帰路につく準備をします。リバプールでの素晴らしい思い出を振り返りながら、次の旅を楽しみにしましょう。",
+          "locationEn": "Liverpool, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

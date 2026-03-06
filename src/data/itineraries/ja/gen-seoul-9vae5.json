@@ -1,0 +1,376 @@
+{
+  "id": "d385dd74-eec8-442d-b5c6-66539fb7b076",
+  "destination": "ソウル",
+  "description": "ソウルでの4日間は、自然の美しさとリラックスした時間を楽しむ絶好の機会です。友人と共に、都市の喧騒を離れ、心地よい風に吹かれながら、韓国の魅力を存分に味わいましょう。美しい公園や絶景スポットを巡り、地元のグルメも堪能する旅へ出かけましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1622967889059-b5e08a6bfb29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTU1MDR8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Soyoung HAN",
+  "heroImagePhotographerUrl": "https://unsplash.com/@soflightsto?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "ソウル到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ソウルのホテルで、韓国の伝統的な朝食を楽しみます。キムチやご飯、スープが揃った朝食で、エネルギーをチャージしましょう。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "明洞散策",
+          "description": "ショッピングとグルメが楽しめる明洞へ。ストリートフードを味わいながら、韓国コスメのお店を巡るのもおすすめです。特に、明洞の屋台でのトッポッキやホットクは絶品！",
+          "searchQuery": "Myeongdong",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "明洞でランチ",
+          "description": "明洞の人気店でビビンバをいただきます。新鮮な野菜とご飯を混ぜて、韓国の味を楽しみましょう。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "南山タワー訪問",
+          "description": "南山タワーに登り、ソウルの絶景を堪能します。特に夕方の時間帯は、夕日と共に美しい景色が広がります。",
+          "searchQuery": "Namsan Seoul Tower",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "南山公園散策",
+          "description": "南山タワーの周辺に広がる南山公園を散策。自然に囲まれた静かな時間を楽しみながら、リラックスできます。",
+          "searchQuery": "Namsan Park",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "東大門デザインプラザで夕食",
+          "description": "東大門デザインプラザ内のフードコートで、韓国のストリートフードを楽しみます。多様な料理が揃っているので、いろいろ試してみてください。",
+          "searchQuery": "Dongdaemun Design Plaza",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "東大門デザインプラザ散策",
+          "description": "夜の東大門デザインプラザはライトアップされ、幻想的な雰囲気に包まれます。建物のデザインを楽しみながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "自然と絶景を楽しむ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ソウルのホテルで、韓国の伝統的な朝食を楽しみます。キムチやご飯、スープなど、栄養満点のメニューで一日をスタート。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "北漢山国立公園ハイキング",
+          "description": "北漢山国立公園で自然を満喫しながらハイキング。美しい山々や清らかな空気の中で、リフレッシュできる時間を過ごします。特に、頂上からの眺望は絶景です。",
+          "searchQuery": "Bukhansan National Park",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "公園近くの食堂でランチ",
+          "description": "北漢山国立公園の近くにある地元の食堂で、ビビンバや冷麺などの韓国料理を楽しみます。新鮮な食材を使った料理が魅力です。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "漢江公園でのんびり",
+          "description": "漢江公園でのんびりとした時間を過ごします。サイクリングやピクニックを楽しむことができ、川の流れを眺めながらリラックスできます。",
+          "searchQuery": "Hangang Park",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "漢江沿いのカフェで休憩",
+          "description": "漢江沿いのカフェで、コーヒーやスイーツを楽しみながら、夕暮れの美しい景色を堪能します。特に、夕日が沈む瞬間は絶景です。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元の居酒屋でディナー",
+          "description": "地元の居酒屋で、韓国の焼肉やお酒を楽しみます。友人と一緒に賑やかな雰囲気の中で、楽しいひとときを過ごしましょう。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "リラックスした一日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ソウルのカフェで、韓国式の朝食を楽しみます。トーストやサラダ、コーヒーで軽やかにスタート。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "梨花女子大学散策",
+          "description": "美しいキャンパスを持つ梨花女子大学を訪れます。特に春には桜が満開で、写真スポットとしても人気です。",
+          "searchQuery": "Ewha Womans University",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "弘大周辺でランチ",
+          "description": "弘大エリアの人気カフェで、ボリューム満点のランチを楽しみます。地元の人に人気のメニューを試してみてください。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "弘大のストリートアート散策",
+          "description": "弘大の街を歩きながら、ユニークなストリートアートやグラフィティを楽しみます。アート好きにはたまらないエリアです。",
+          "searchQuery": "Hongdae Street Art",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "弘大の公園でリラックス",
+          "description": "弘大の公園でのんびりと過ごします。友人と一緒にピクニックを楽しむのも良いでしょう。",
+          "searchQuery": "Hongdae Park",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "カフェで休憩",
+          "description": "弘大のカフェで、韓国のスイーツやドリンクを楽しみながら、友人との会話を楽しみます。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "夜の弘大散策",
+          "description": "夜の弘大は活気に満ちています。ストリートパフォーマンスや屋台を楽しみながら、賑やかな雰囲気を味わいましょう。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すために、ホテルに戻ります。リラックスした夜を過ごしましょう。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ソウルからの帰路",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "仁川国際空港",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "12:30"
+        },
+        "duration": "2h 30m",
+        "memo": "ソウルから東京への直行便です。早めに空港に到着しておくことをおすすめします。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "地元のカフェで、韓国式の朝食を楽しみます。ビビンバやキムチチゲなど、エネルギー満点の料理で一日をスタート。",
+          "searchQuery": "Seoul Cafe",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "仁寺洞散策",
+          "description": "伝統的な韓国文化が息づく仁寺洞を散策。アートギャラリーや手作りの工芸品店が並び、地元の雰囲気を感じながらショッピングを楽しめます。",
+          "searchQuery": "Insadong",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "景福宮訪問",
+          "description": "韓国の歴史を感じる景福宮を訪れます。美しい庭園や壮大な建物を見学し、韓国の伝統文化に触れる貴重な体験ができます。",
+          "searchQuery": "Gyeongbokgung Palace",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "近くの食堂でランチ",
+          "description": "景福宮近くの食堂で、韓国の家庭料理を楽しみます。ビビンバや冷麺など、地元の味を堪能しましょう。",
+          "searchQuery": "Gyeongbokgung Restaurant",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "北村韓屋村散策",
+          "description": "伝統的な韓屋が立ち並ぶ北村韓屋村を散策。美しい街並みを背景に、写真撮影にも最適なスポットです。",
+          "searchQuery": "Bukchon Hanok Village",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "カフェで休憩",
+          "description": "北村韓屋村近くのカフェで、韓国のスイーツやコーヒーを楽しみながら、リラックスした時間を過ごします。",
+          "searchQuery": "Seoul Cafe",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "仁川国際空港へ移動",
+          "description": "仁寺洞から仁川国際空港へ向かいます。空港までの移動は、地下鉄やタクシーを利用するのが便利です。",
+          "searchQuery": "Incheon International Airport",
+          "locationEn": "Incheon, South Korea",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

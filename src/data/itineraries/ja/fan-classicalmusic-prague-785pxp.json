@@ -1,0 +1,648 @@
+{
+  "id": "9cf29776-ce0a-4e8c-b686-8075f60569ac",
+  "destination": "プラハ",
+  "description": "プラハの美しい街並みを巡りながら、クラシック音楽の魅力に浸る7日間の旅に出かけましょう。歴史的な建物や文化的なスポットを訪れ、地元の人々が愛するレストランでの食事を楽しむことで、家族との思い出を深めることができます。特にクラシック音楽に関連するスポットを巡ることで、音楽の歴史を感じながら、プラハの魅力を存分に味わいましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "プラハ到着と旧市街散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "プラハの伝統的な朝食を楽しみます。新鮮なパンやハム、チーズ、そして地元のヨーグルトでエネルギーをチャージ。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "旧市街広場散策",
+          "description": "プラハの中心、旧市街広場を散策。美しいバロック様式の建物や、歴史的な天文時計を眺めながら、街の雰囲気を楽しみます。",
+          "searchQuery": "Old Town Square",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "天文時計見学",
+          "description": "毎正時に行われる天文時計のパフォーマンスを見逃さないように。時計の仕掛けや歴史を学びながら、観光客と一緒に楽しみましょう。",
+          "searchQuery": "Astronomical Clock",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "レストランでランチ",
+          "description": "地元のレストランでチェコ料理を堪能。特に、グラーシュやトドゥーリ（チェコ風のパン）を試してみてください。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "カレル橋散策",
+          "description": "カレル橋を渡りながら、彫刻やストリートパフォーマンスを楽しみます。橋の上からの眺めも素晴らしいので、写真を撮るのをお忘れなく。",
+          "searchQuery": "Charles Bridge",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "音楽関連ショップ訪問",
+          "description": "プラハの音楽関連ショップを巡り、クラシック音楽のファングッズやCDを探します。特に、地元のアーティストの作品を見つけるのが楽しいです。",
+          "searchQuery": "music shop Prague",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー",
+          "description": "プラハの雰囲気を楽しみながら、地元のビールと共にディナーを。おすすめは、チェコの伝統的なビアホールでの食事です。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "コンサート鑑賞",
+          "description": "プラハの歴史的なホールでクラシック音楽のコンサートを楽しみます。美しい音楽に包まれながら、特別な夜を過ごしましょう。",
+          "searchQuery": "concert hall Prague",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "クラシック音楽の名所巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "プラハのホテルで、地元の食材を使った美味しい朝食を楽しみます。特に、ハムやチーズ、フレッシュなパンが絶品です。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ドヴォルザークホール",
+          "description": "プラハのクラシック音楽の聖地、ドヴォルザークホールを訪れます。美しい内装と素晴らしい音響が特徴で、コンサートのスケジュールもチェックしてみてください。",
+          "searchQuery": "Dvořák Hall",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "レストランでランチ",
+          "description": "地元のレストランで、チェコ料理を楽しむランチタイム。特に、グラーシュやトドゥーリ（チェコ風のパン）をぜひ味わってみてください。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "プラハ国立歌劇場",
+          "description": "プラハ国立歌劇場を見学します。美しい建物と歴史的な舞台裏を体験できるツアーに参加し、オペラの魅力を感じましょう。",
+          "searchQuery": "National Theatre",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "音楽関連のグッズショップ巡り",
+          "description": "プラハの音楽関連ショップを巡り、クラシック音楽のファングッズやCDを探します。特に、地元アーティストの作品を見つけるのが楽しいです。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "カフェで休憩",
+          "description": "プラハのカフェで一息つき、コーヒーやデザートを楽しみます。特に、チェコの伝統的なスイーツ、トゥルデルニークを試してみてください。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディナー",
+          "description": "地元のレストランでディナーを楽しみます。チェコのビールと共に、地元の料理を堪能しましょう。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "プラハ城と歴史的建造物",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "プラハのホテルで、地元の食材を使った朝食を楽しみます。新鮮なパンやチーズ、ハムなど、朝からエネルギーをチャージ！",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "プラハ城",
+          "description": "プラハのシンボル、プラハ城を訪れます。壮大な建築と美しい庭園を散策しながら、歴史を感じるひとときを過ごしましょう。特にセントヴィート大聖堂の美しさは圧巻です。",
+          "searchQuery": "Prague Castle",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カフェ・ルネッサンスでランチ",
+          "description": "プラハ城近くのカフェ・ルネッサンスで、地元の料理を楽しむランチタイム。特に、伝統的なチェコ料理のグラーシュは絶品です。",
+          "searchQuery": "Cafe Renaissance",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "セントヴィート大聖堂",
+          "description": "プラハ城内にあるセントヴィート大聖堂を見学。ゴシック様式の美しい建物で、内部のステンドグラスも見逃せません。",
+          "searchQuery": "St. Vitus Cathedral",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "黄金の小道散策",
+          "description": "プラハ城の黄金の小道を散策。カラフルな小さな家々が並ぶこの道は、かつてアルケミストたちが住んでいた場所で、今ではお土産屋さんやカフェが立ち並びます。",
+          "searchQuery": "Golden Lane",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "プラハの音楽ショップ訪問",
+          "description": "クラシック音楽ファンにはたまらない、プラハの音楽ショップを訪れます。CDや楽譜、関連グッズを探してみましょう。",
+          "searchQuery": "Music Shop Prague",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "レストランでディナー",
+          "description": "プラハの伝統的なレストランでディナー。地元のビールと共に、チェコ料理を堪能します。特に、豚肉のローストはおすすめです。",
+          "searchQuery": "Traditional Czech Restaurant",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "音楽とアートの融合",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "プラハのホテルで、地元の食材を使った美味しい朝食を楽しみます。特に、ハムやチーズ、フレッシュなパンが絶品です。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "音楽博物館訪問",
+          "description": "プラハの音楽博物館で、クラシック音楽の歴史を学びながら、貴重な楽器や資料を見学します。音楽の魅力に浸りながら、心に残る体験を。",
+          "searchQuery": "Museum of Music",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "{\"type\":\"blog\",\"title\":\"プラハの音楽博物館を訪れて\",\"url\":\"https://example.com/prague-music-museum\",\"confidence\":\"high\"}"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のカフェでランチ",
+          "description": "プラハの隠れ家カフェで、伝統的なチェコ料理を楽しみます。特に、グラーシュ（牛肉の煮込み）やトゥルデルニーク（スイーツ）が人気です。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アートギャラリー巡り",
+          "description": "プラハのアートギャラリーを訪れ、地元アーティストの作品やクラシックな絵画を鑑賞します。特に、現代アートの展示が見どころです。",
+          "searchQuery": "National Gallery Prague",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "{\"type\":\"blog\",\"title\":\"プラハのアートギャラリー巡り\",\"url\":\"https://example.com/prague-art-gallery\",\"confidence\":\"high\"}"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "音楽関連のファングッズショップ訪問",
+          "description": "プラハの音楽ショップで、クラシック音楽のCDや楽器関連のグッズを探します。お気に入りのアーティストのアイテムを見つけるチャンス！",
+          "searchQuery": "Music Shop Prague",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "プラハの人気レストランで、地元のビールと共にディナーを楽しみます。特に、チェコの伝統料理を堪能できるメニューが揃っています。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "プラハのオペラハウスでの公演観賞",
+          "description": "プラハのオペラハウスで、クラシック音楽の公演を楽しみます。美しい建物の中で、素晴らしい音楽に浸る贅沢な時間を過ごします。",
+          "searchQuery": "National Theatre Prague",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "地元の文化を体験",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "プラハの伝統的な朝食を楽しむ。地元のパンやチーズ、ハムを使った朝食が、エネルギーをチャージしてくれます。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "プラハの地元市場を訪れる",
+          "description": "地元の人々が集まる市場で、新鮮な食材や手作りの工芸品を見て回ります。特に、地元のスイーツやお土産を探すのに最適な場所です。",
+          "searchQuery": "Prague Farmers Market",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "プラハの伝統料理を楽しめるレストランで、グラーシュやトドゥーを味わいます。地元のビールもお忘れなく！",
+          "searchQuery": "Lokál Dlouhááá",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ドヴォルザーク博物館を訪問",
+          "description": "チェコの偉大な作曲家、ドヴォルザークの生涯と作品を学ぶことができる博物館です。彼の音楽に触れながら、プラハの文化を深く理解しましょう。",
+          "searchQuery": "Dvořák Museum",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "音楽関連のファングッズを探す",
+          "description": "プラハの音楽ショップやお土産屋で、クラシック音楽に関連するグッズを探します。CDや楽譜、アート作品など、素敵なアイテムが見つかるかもしれません。",
+          "searchQuery": "Prague Music Shop",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "プラハの雰囲気を楽しみながら、地元の食材を使ったディナーを堪能します。特に、季節の料理を楽しむのがおすすめです。",
+          "searchQuery": "U Medvídků",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "プラハのオペラハウスでの公演観賞",
+          "description": "プラハの美しいオペラハウスで、クラシック音楽の公演を楽しみます。事前にチケットを予約しておくと安心です。",
+          "searchQuery": "National Theatre Prague",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "プラハの隠れた魅力",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "プラハの伝統的な朝食を楽しみながら、今日の計画を立てましょう。地元のパンやハム、チーズが並ぶビュッフェスタイルの朝食が魅力です。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ヴルタヴァ川クルーズ",
+          "description": "プラハの美しい景色を水上から楽しむクルーズ。カレル橋やプラハ城を眺めながら、リラックスした時間を過ごせます。特に午前中の光が水面に反射する様子は絶景です。",
+          "searchQuery": "Vltava River Cruise",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "レストランでランチ",
+          "description": "地元の料理を楽しめるレストランで、チェコのビールと共にランチを。特に、グラーシュ（牛肉の煮込み）やトゥルデルニーク（スイーツ）が人気です。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ジョン・レノンの壁",
+          "description": "プラハの歴史的なアートスポット、ジョン・レノンの壁を訪れます。自由や平和をテーマにした色とりどりの落書きが施されており、写真撮影にも最適です。",
+          "searchQuery": "John Lennon Wall",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "音楽関連のショップ巡り",
+          "description": "プラハの音楽ショップを巡り、クラシック音楽のCDやグッズを探しましょう。特に、地元のアーティストの作品や、プラハのオーケストラの関連商品が見つかります。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "カフェで休憩",
+          "description": "プラハのカフェで一息つきながら、地元のスイーツやコーヒーを楽しみます。特に、トゥルデルニークをぜひ試してみてください。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "オペラまたはコンサート鑑賞",
+          "description": "プラハの美しいオペラハウスで、クラシック音楽のコンサートやオペラを楽しみます。事前にチケットを予約しておくことをおすすめします。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:30",
+          "activity": "ホテルに戻る",
+          "description": "今日の素晴らしい体験を振り返りながら、ホテルに戻ります。明日の計画を立てるのも楽しみの一つです。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "プラハから東京へ帰路",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "プラハ",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "翌日 06:00"
+        },
+        "duration": "12h",
+        "memo": "プラハから東京への直行便で帰国します。機内でのリラックスタイムをお楽しみください。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "プラハのホテルで、地元の食材を使った美味しい朝食を楽しみます。特に、チェコの伝統的なパンやスモークサーモンが絶品です。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ドヴォルザーク博物館",
+          "description": "チェコの偉大な作曲家、ドヴォルザークの生涯と作品を紹介する博物館です。彼の音楽に触れながら、文化的なひとときを過ごしましょう。",
+          "searchQuery": "Dvořák Museum",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "カフェ・ルネッサンスでコーヒータイム",
+          "description": "ドヴォルザーク博物館の近くにあるカフェ・ルネッサンスで、チェコの伝統的なコーヒーとスイーツを楽しみます。特に、トルテやパイが人気です。",
+          "searchQuery": "Café Renaissance",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "プラハ国立歌劇場見学",
+          "description": "プラハ国立歌劇場での見学ツアーに参加し、歴史的な建物とその内部を探訪します。オペラやバレエの舞台裏を知る貴重な機会です。",
+          "searchQuery": "National Theatre Prague",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "音楽関連のグッズ購入",
+          "description": "プラハの音楽ショップで、クラシック音楽のCDや楽器関連のグッズを探します。お土産にぴったりなアイテムが見つかるかもしれません。",
+          "searchQuery": "music shop Prague",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "空港へ移動",
+          "description": "プラハの市内から空港へ向かいます。帰国の準備を整えましょう。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

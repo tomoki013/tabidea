@@ -1,0 +1,485 @@
+{
+  "id": "c3ff5168-7269-4d1a-86dd-aad761b1d019",
+  "destination": "クアラルンプール",
+  "description": "クアラルンプールでの6日間の旅は、家族全員が楽しめるリゾートと自然の絶景を満喫する素晴らしい体験です。都会の喧騒を離れ、緑豊かな公園や美しいリゾートでリラックスしながら、マレーシアの文化や美味しい料理を堪能しましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1712601979098-15dccb4d0996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTUxNDF8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Hongwei FAN",
+  "heroImagePhotographerUrl": "https://unsplash.com/@yokonoito0512?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からクアラルンプールへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "クアラルンプール",
+          "time": "15:00"
+        },
+        "duration": "7h",
+        "memo": "直行便での移動。機内食を楽しみながら、リラックスした時間を過ごしましょう。"
+      },
+      "activities": [
+        {
+          "time": "15:30",
+          "activity": "ホテルチェックイン",
+          "description": "クアラルンプールの中心に位置するリーズナブルなホテルにチェックイン。家族で快適に過ごせる広めの部屋を選びました。",
+          "searchQuery": "Hotel Sentral Kuala Lumpur",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "KLCC公園散策",
+          "description": "ペトロナスツインタワーの近くにあるKLCC公園で、子供たちと一緒に遊びながら美しい景色を楽しみましょう。夕方の涼しい時間帯が特におすすめです。",
+          "searchQuery": "KLCC Park",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランで夕食",
+          "description": "クアラルンプールの地元料理を楽しめるレストランで、ナシレマやサテを味わいましょう。家族みんなでシェアしながら、異国の味を楽しむのがポイントです。",
+          "searchQuery": "Restoran Rebung",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "クアラルンプール市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "クアラルンプールのホテルで、バラエティ豊かなビュッフェスタイルの朝食を楽しみます。地元のフルーツや、マレーシアの伝統的な料理を味わいながら、家族でのんびりとした朝を過ごしましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ペトロナスツインタワー",
+          "description": "クアラルンプールのシンボル、ペトロナスツインタワーを訪れます。展望台からの眺めは圧巻で、特に晴れた日には遠くの山々まで見渡せます。子供たちも大喜びのスポットです。",
+          "searchQuery": "Petronas Twin Towers",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "KLCC公園でピクニックランチ",
+          "description": "ペトロナスツインタワーのすぐそばにあるKLCC公園で、家族でピクニックランチを楽しみます。緑豊かな公園で、子供たちが遊ぶ姿を見ながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "バトゥ洞窟",
+          "description": "クアラルンプールの郊外にあるバトゥ洞窟を訪れます。巨大なヒンドゥー教の神像が迎えてくれるこの場所は、洞窟内の寺院も見どころ。子供たちと一緒に階段を登り、自然の美しさを楽しみましょう。",
+          "searchQuery": "Batu Caves",
+          "locationEn": "Batu Caves, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "バトゥ洞窟周辺でおやつ",
+          "description": "バトゥ洞窟周辺の屋台で、地元のスナックやデザートを楽しみます。特に、ココナッツジュースやカキ氷は子供たちに人気です。",
+          "locationEn": "Batu Caves, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ホテルに戻る",
+          "description": "バトゥ洞窟からタクシーでホテルに戻ります。移動中に、今日の楽しかった思い出を家族で語り合いましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ホテル近くのレストランでディナー",
+          "description": "ホテル近くのレストランで、マレーシア料理のディナーを楽しみます。ナシレマやサテなど、地元の味を堪能し、家族で楽しい夜を過ごしましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "自然を楽しむ日",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "クアラルンプールのホテルで、バラエティ豊かなビュッフェスタイルの朝食を楽しみます。地元のフルーツや、アジアの朝食メニューが揃っていて、家族みんなで満足できる内容です。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "プトラジャヤ観光",
+          "description": "美しい人工湖とモダンな建築が魅力のプトラジャヤへ。特にプトラモスクのピンク色のドームは必見で、家族での写真撮影にもぴったりです。",
+          "searchQuery": "Putrajaya Mosque",
+          "locationEn": "Putrajaya, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "プトラジャヤでランチ",
+          "description": "プトラジャヤのレストランで、マレーシアの伝統料理を楽しみます。特にナシレマ（ココナッツミルクご飯）はおすすめです。",
+          "locationEn": "Putrajaya, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "セパンの自然公園へ移動",
+          "description": "セパンの自然公園へ向かいます。車で約30分の距離で、自然の中でリラックスした時間を過ごせます。",
+          "locationEn": "Sepang, Malaysia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "セパンの自然公園でハイキング",
+          "description": "セパンの自然公園で、家族みんなでハイキングを楽しみます。豊かな緑と多様な動植物に囲まれたトレイルは、子供たちにも大人気です。",
+          "searchQuery": "Sepang Nature Park",
+          "locationEn": "Sepang, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "公園内でピクニック",
+          "description": "公園内のピクニックエリアで、軽食を持参して家族でのんびりとした時間を過ごします。自然の中での食事は格別です。",
+          "locationEn": "Sepang, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "クアラルンプールへ戻る",
+          "description": "セパンからクアラルンプールへ戻ります。夕暮れ時の美しい景色を楽しみながら、リラックスした移動を。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "クアラルンプールでディナー",
+          "description": "クアラルンプールの地元のレストランで、家族でディナーを楽しみます。特にシーフード料理が新鮮でおすすめです。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "リゾートでのんびり",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "クアラルンプールのホテルで、バラエティ豊かなビュッフェスタイルの朝食を楽しみます。地元のフルーツや、アジアの朝食メニューが揃っていて、家族みんなで満足できる内容です。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "サンウェイラグーンで遊ぶ",
+          "description": "家族全員で楽しめるアミューズメントパーク、サンウェイラグーンへ。ウォータースライダーやプール、動物園も併設されており、子供たちも大喜び。特に、波のプールはおすすめです！",
+          "searchQuery": "Sunway Lagoon",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "サンウェイラグーン内でランチ",
+          "description": "サンウェイラグーン内のカジュアルなレストランでランチ。ピザやハンバーガーなど、子供たちが好きなメニューが揃っています。遊び疲れた体にエネルギーを補給しましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "サンウェイピラミッドでショッピング",
+          "description": "サンウェイラグーンの隣にあるサンウェイピラミッドでショッピング。ユニークなピラミッド型の建物内には、様々なショップやカフェがあり、家族でのんびりと過ごせます。",
+          "searchQuery": "Sunway Pyramid",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルに戻る",
+          "description": "サンウェイラグーンからホテルへ戻ります。タクシーやシャトルバスを利用して、快適に移動しましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルで夕食",
+          "description": "ホテル内のレストランで夕食。地元の料理を楽しむことができ、家族みんなでリラックスした時間を過ごせます。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルのプールでリラックス",
+          "description": "夕食後は、ホテルのプールでリラックス。夜のプールサイドで、家族と一緒に楽しいひとときを過ごしましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "文化体験とショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "クアラルンプールのホテルで、地元のフルーツやパンを使った朝食を楽しみます。エネルギーをチャージして、楽しい一日をスタート！",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "バザール・セントラル",
+          "description": "地元の文化や手工芸品が集まるバザール・セントラルでショッピング。お土産やアート作品を探しながら、活気ある雰囲気を楽しんでください。",
+          "searchQuery": "Central Market Kuala Lumpur",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のレストランでランチ",
+          "description": "バザール近くの地元のレストランで、マレーシアの伝統料理を味わいます。ナシレマやサテなど、家族みんなで楽しめるメニューが揃っています。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "マスジッド・ネガラ",
+          "description": "マレーシアの国立モスク、マスジッド・ネガラを訪れます。美しい建築と静かな雰囲気の中で、心を落ち着けるひとときを過ごしましょう。",
+          "searchQuery": "National Mosque of Malaysia",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "KLCC公園でリラックス",
+          "description": "ペトロナスツインタワーの近くにあるKLCC公園で、家族でのんびりと過ごします。子供たちが遊べる広場や美しい噴水もあり、リフレッシュに最適です。",
+          "searchQuery": "KLCC Park",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルで休憩",
+          "description": "一日の観光を終えたら、ホテルに戻ってゆっくりと休憩。家族でのんびりとした時間を過ごしましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元の屋台で夕食",
+          "description": "クアラルンプールの屋台で、ナシゴレンやロティチャナイなどのストリートフードを楽しみます。子供たちも喜ぶ味が揃っています。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "クアラルンプールから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "クアラルンプール国際空港",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "18:00"
+        },
+        "duration": "6h",
+        "memo": "直行便で東京へ向かいます。機内での軽食をお楽しみください。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ホテルのビュッフェで、マレーシアの伝統的な朝食を楽しみます。ナシレマやロティチャナイなど、地元の味を堪能しましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "クアラルンプール国際空港へ移動",
+          "description": "ホテルをチェックアウト後、クアラルンプール国際空港へ向かいます。空港までの移動はタクシーやシャトルバスを利用すると便利です。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "機内でランチ",
+          "description": "フライト中に提供されるランチを楽しみます。マレーシアの料理が出ることもあるので、楽しみにしていてください。",
+          "locationEn": "In Flight",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "東京到着",
+          "description": "東京に到着後、家族での楽しい旅が終わります。空港からの移動は、事前に予約した送迎サービスや公共交通機関を利用しましょう。",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

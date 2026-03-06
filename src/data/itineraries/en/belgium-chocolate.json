@@ -1,0 +1,604 @@
+{
+  "id": "ae954bed-b2ac-4bde-ab0d-68da7390e42b",
+  "destination": "Brussels & Bruges",
+  "description": "Embark on a delightful 6-day journey through the enchanting streets of Brussels and Bruges, where every corner reveals a new taste and a picturesque view. This trip is designed for food lovers and urban explorers alike, offering a perfect blend of gourmet experiences, charming architecture, and leisurely shopping. From indulging in rich Belgian chocolates to savoring the iconic waffles, your taste buds will be dancing with joy. Stroll through cobblestone streets lined with medieval buildings, and let the vibrant atmosphere of these cities captivate your heart. Get ready for an unforgettable adventure with your friends!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Brussels",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Maison Dandoy",
+          "description": "Start your day with a delicious breakfast at Maison Dandoy, famous for its authentic Belgian waffles. Try the classic Liège waffle topped with fresh strawberries and whipped cream for a sweet treat!",
+          "searchQuery": "Maison Dandoy",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Grand Place",
+          "description": "Stroll over to the Grand Place, a UNESCO World Heritage site, and marvel at the stunning architecture of the Town Hall and guildhalls. This vibrant square is the heart of Brussels and a perfect spot for photos!",
+          "searchQuery": "Grand Place",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Chez Léon",
+          "description": "Enjoy a hearty lunch at Chez Léon, known for its moules-frites (mussels and fries). This bustling restaurant is a local favorite and offers a true taste of Belgian cuisine.",
+          "searchQuery": "Chez Léon",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Manneken Pis",
+          "description": "Take a short walk to see the iconic Manneken Pis statue. This cheeky little boy has become a symbol of Brussels and is often dressed in various costumes throughout the year.",
+          "searchQuery": "Manneken Pis",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Chocolate Tasting at Pierre Marcolini",
+          "description": "Indulge in some of the finest chocolates at Pierre Marcolini. Sample a variety of pralines and truffles, and don't forget to pick up a box to take home!",
+          "searchQuery": "Pierre Marcolini",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Shopping at Galeries Royales Saint-Hubert",
+          "description": "Wander through the beautiful Galeries Royales Saint-Hubert, a stunning shopping arcade filled with luxury boutiques and charming cafes. It's a great place to find unique souvenirs and enjoy the elegant atmosphere.",
+          "searchQuery": "Galeries Royales Saint-Hubert",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Coffee Break at Café de Flore",
+          "description": "Take a break at the historic Café de Flore, where you can enjoy a cup of coffee and a slice of traditional Belgian cake. It's the perfect spot to relax and soak in the local ambiance.",
+          "searchQuery": "Café de Flore",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Restaurant Vincent",
+          "description": "End your day with dinner at Restaurant Vincent, known for its seafood dishes and classic Belgian fare. The cozy atmosphere and friendly service make it a great choice for a relaxing meal.",
+          "searchQuery": "Restaurant Vincent",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Brussels",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Maison Dandoy",
+          "description": "Start your day with a delicious breakfast at Maison Dandoy, famous for its authentic Belgian waffles. Enjoy a warm, crispy waffle topped with fresh fruits and whipped cream, a true Belgian delight!",
+          "searchQuery": "Maison Dandoy",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Atomium",
+          "description": "Head to the iconic Atomium, a unique building and museum that offers stunning panoramic views of Brussels. Explore the spheres and learn about the history of this architectural marvel.",
+          "searchQuery": "Atomium",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Chez Léon",
+          "description": "Indulge in a hearty lunch at Chez Léon, renowned for its moules-frites (mussels and fries). This bustling restaurant is a favorite among locals and tourists alike, perfect for experiencing authentic Belgian cuisine.",
+          "searchQuery": "Chez Léon",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through the Sablon District",
+          "description": "Take a leisurely stroll through the charming Sablon District, known for its beautiful antique shops and chocolate boutiques. Don't miss the chance to sample exquisite chocolates from renowned chocolatiers like Pierre Marcolini.",
+          "searchQuery": "Sablon District",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Royal Palace of Brussels",
+          "description": "Explore the Royal Palace, the official palace of the King and Queen of the Belgians. While the interior is only open to the public during the summer, the exterior and surrounding gardens are beautiful year-round.",
+          "searchQuery": "Royal Palace of Brussels",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Le Pain Quotidien",
+          "description": "Enjoy a casual dinner at Le Pain Quotidien, where you can savor organic dishes and freshly baked bread. The communal tables create a warm atmosphere, perfect for sharing a meal with friends.",
+          "searchQuery": "Le Pain Quotidien",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Chocolate Tasting Tour",
+          "description": "End your day with a delightful chocolate tasting tour. Visit several local chocolatiers and sample a variety of chocolates, learning about the art of Belgian chocolate-making along the way.",
+          "searchQuery": "Brussels Chocolate Tasting Tour",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Day Trip to Bruges",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Brussels",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Bruges",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Direct train from Brussels to Bruges."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Market Square (Markt)",
+          "description": "Start your day in the heart of Bruges at the Market Square, surrounded by stunning medieval architecture. Don't forget to snap a photo with the iconic Belfry of Bruges in the background!",
+          "searchQuery": "Market Square Bruges",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Belfry of Bruges",
+          "description": "Climb the 366 steps of the Belfry for a breathtaking panoramic view of the city. The climb is worth it, especially on a clear day!",
+          "searchQuery": "Belfry of Bruges",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at De Halve Maan Brewery",
+          "description": "Enjoy a delicious lunch at this local brewery, famous for its craft beers and traditional Flemish dishes. Try the 'Brugse Zot' beer with your meal!",
+          "searchQuery": "De Halve Maan Brewery",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Canal Tour",
+          "description": "Take a scenic boat tour through Bruges' picturesque canals. This is a relaxing way to see the city from a different perspective and learn about its history.",
+          "searchQuery": "Bruges Canal Tour",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Chocolate Tasting at Choco-Story",
+          "description": "Indulge in some of the best chocolates Bruges has to offer at Choco-Story. Participate in a tasting session and learn about the history of chocolate making.",
+          "searchQuery": "Choco-Story Bruges",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Waffle Stop at Chez Albert",
+          "description": "No trip to Belgium is complete without trying a waffle! Stop by Chez Albert for a freshly made waffle topped with your choice of delicious toppings.",
+          "searchQuery": "Chez Albert",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Evening Stroll through the Historic Center",
+          "description": "As the sun sets, take a leisurely stroll through the charming streets of Bruges. The city lights up beautifully, making for a magical atmosphere.",
+          "searchQuery": "Bruges Historic Center",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at 't Zwart Huis",
+          "description": "End your day with a delightful dinner at 't Zwart Huis, known for its cozy ambiance and delicious local cuisine. Try the Flemish stew for a true taste of Belgium!",
+          "searchQuery": "'t Zwart Huis",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Discovering Bruges",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Bruges",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Bruges",
+          "time": "09:15"
+        },
+        "duration": "15m",
+        "memo": "Short train ride to explore the beautiful city of Bruges."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Breakfast at Chez Albert",
+          "description": "Start your day with a delicious Belgian waffle topped with fresh fruits and whipped cream at this popular waffle shop. It's a local favorite and a perfect way to fuel up for a day of exploration!",
+          "searchQuery": "Chez Albert",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Basilica of the Holy Blood",
+          "description": "Explore this stunning basilica that houses a relic believed to contain the blood of Christ. The intricate architecture and serene atmosphere make it a must-visit spot in Bruges.",
+          "searchQuery": "Basilica of the Holy Blood",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at De Halve Maan Brewery",
+          "description": "Enjoy a hearty lunch at this local brewery, famous for its craft beers and traditional Flemish dishes. Don't forget to try their signature beer, Brugse Zot!",
+          "searchQuery": "De Halve Maan Brewery",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Choco-Story Museum",
+          "description": "Dive into the world of chocolate at this interactive museum. Learn about the history of chocolate, how it's made, and indulge in some tastings along the way!",
+          "searchQuery": "Choco-Story Museum",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Stroll through the Windmills of Bruges",
+          "description": "Take a leisurely walk to see the iconic windmills that dot the landscape of Bruges. The picturesque views and charming surroundings make for a perfect photo opportunity.",
+          "searchQuery": "Windmills of Bruges",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Chocolate Tasting at The Chocolate Line",
+          "description": "Treat yourself to some of the finest chocolates in Bruges at The Chocolate Line. Sample unique flavors and artisanal creations that will satisfy your sweet tooth!",
+          "searchQuery": "The Chocolate Line",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Bistro De Pompe",
+          "description": "End your day with a delightful dinner at this cozy bistro, known for its local cuisine and warm atmosphere. Enjoy a relaxing meal while reflecting on your day in Bruges!",
+          "searchQuery": "Bistro De Pompe",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Brussels",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Bruges",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Brussels",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy the scenic train ride from Bruges to Brussels."
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "European Parliament",
+          "description": "Visit the iconic European Parliament building and learn about the European Union's workings. The visitor center offers engaging exhibits and guided tours.",
+          "searchQuery": "European Parliament",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Chez Léon",
+          "description": "Savor a delicious meal at Chez Léon, famous for its moules-frites (mussels and fries). This bustling restaurant is a local favorite and offers a true taste of Belgian cuisine.",
+          "searchQuery": "Chez Léon",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Galeries Royales Saint-Hubert",
+          "description": "Stroll through the stunning Galeries Royales Saint-Hubert, a beautiful covered arcade filled with luxury boutiques, chocolate shops, and cafes. Don't forget to stop for some exquisite Belgian chocolate!",
+          "searchQuery": "Galeries Royales Saint-Hubert",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Shopping in Local Boutiques",
+          "description": "Explore the charming local boutiques around the area, where you can find unique souvenirs, handmade crafts, and stylish fashion items. It's the perfect opportunity to pick up something special to remember your trip.",
+          "searchQuery": "local boutiques Brussels",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Waffle Tasting at Maison Dandoy",
+          "description": "Indulge in some of the best waffles in Brussels at Maison Dandoy. Their crispy, golden waffles are a must-try, especially when topped with fresh strawberries and whipped cream.",
+          "searchQuery": "Maison Dandoy",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at La Roue d'Or",
+          "description": "Enjoy a delightful dinner at La Roue d'Or, known for its traditional Belgian dishes and warm atmosphere. It's a great way to end your day in Brussels with a hearty meal.",
+          "searchQuery": "La Roue d'Or",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Departure from Brussels",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Brussels",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Brussels Airport",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Prepare for departure and enjoy some last-minute shopping."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Maison Dandoy",
+          "description": "Start your day with a delicious breakfast at Maison Dandoy, famous for its authentic Belgian waffles. Try their signature Liège waffles topped with fresh fruits and whipped cream for a sweet morning treat.",
+          "searchQuery": "Maison Dandoy",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Last-minute Shopping at Galeries Royales Saint-Hubert",
+          "description": "Stroll through the stunning Galeries Royales Saint-Hubert, a beautiful shopping arcade filled with luxury boutiques, chocolate shops, and cafés. It's the perfect place to pick up some souvenirs or indulge in more Belgian chocolates.",
+          "searchQuery": "Galeries Royales Saint-Hubert",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Chez Léon",
+          "description": "Enjoy a hearty lunch at Chez Léon, renowned for its moules-frites (mussels and fries). This bustling restaurant captures the essence of Belgian cuisine and is a great spot to relax before your journey.",
+          "searchQuery": "Chez Léon",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Atomium",
+          "description": "Take a short trip to the Atomium, an iconic building and museum in Brussels. Explore its unique structure and enjoy panoramic views of the city from the top sphere. A must-see landmark that showcases modern architecture.",
+          "searchQuery": "Atomium",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Coffee at Café de Flore",
+          "description": "Unwind with a cup of coffee at the charming Café de Flore, a historic café known for its literary past. Enjoy the ambiance and perhaps a slice of cake as you reflect on your trip.",
+          "searchQuery": "Café de Flore",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Head to Brussels Airport",
+          "description": "Make your way to Brussels Airport for your departure. Ensure you have all your souvenirs and memories packed as you conclude your delightful trip to Belgium.",
+          "searchQuery": "Brussels Airport",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

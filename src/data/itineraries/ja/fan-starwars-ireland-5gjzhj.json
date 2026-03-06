@@ -1,0 +1,465 @@
+{
+  "id": "86447013-104e-4643-b06a-a56505334893",
+  "destination": "アイルランド",
+  "description": "アイルランドの美しい風景と豊かな文化に浸りながら、特に『スター・ウォーズ』のファンにとっての聖地を巡る旅へ出かけましょう。歴史的な街並みや壮大な自然、そしてリラックスできるリゾート地で、心温まる体験が待っています。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ダブリンの文化と歴史を感じる",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "成田空港",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "ダブリン空港",
+          "time": "14:00"
+        },
+        "duration": "13h",
+        "memo": "直行便でダブリンへ。時差に注意！"
+      },
+      "activities": [
+        {
+          "time": "15:00",
+          "activity": "ダブリン城",
+          "description": "ダブリンの歴史を感じるダブリン城を訪れます。美しい庭園や歴史的な建物を散策しながら、アイルランドの歴史に触れましょう。",
+          "searchQuery": "Dublin Castle",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "トリニティ・カレッジ",
+          "description": "アイルランド最古の大学、トリニティ・カレッジを見学。美しい図書館には「ケルズの書」が展示されており、歴史的な雰囲気を楽しめます。",
+          "searchQuery": "Trinity College Dublin",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "The Woollen Millsでディナー",
+          "description": "地元の食材を使ったアイルランド料理を楽しめるレストラン。特にシチューやスモークサーモンが絶品です。ダブリンの雰囲気を感じながら、リラックスしたディナーを。",
+          "searchQuery": "The Woollen Mills",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ギネスストアハウス",
+          "description": "ギネスビールの歴史を学びながら、パノラマビューのバーで一杯。ダブリンの夜景を楽しみながら、リラックスした時間を過ごせます。",
+          "searchQuery": "Guinness Storehouse",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アイルランドの美しい自然を満喫",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ダブリン",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "シャノン",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "ダブリンからシャノンへ移動し、モハーの断崖へ向かいます。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "モハーの断崖",
+          "description": "アイルランドの壮大な自然を感じることができるモハーの断崖。高さ214メートルの断崖からの眺望は圧巻で、特に晴れた日には大西洋の美しい景色が広がります。",
+          "searchQuery": "Cliffs of Moher",
+          "locationEn": "Cliffs of Moher, County Clare, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "近くのカフェでランチ",
+          "description": "モハーの断崖近くのカフェで、アイルランドの伝統的な料理を楽しみましょう。新鮮な地元の食材を使った料理が魅力です。",
+          "searchQuery": "Café at the Cliffs of Moher",
+          "locationEn": "Cliffs of Moher, County Clare, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アラン諸島へのフェリー",
+          "description": "モハーの断崖からアラン諸島へ向かうフェリーに乗船。美しい海の景色を楽しみながら、アイルランドの文化を感じる旅が始まります。",
+          "searchQuery": "Ferry to Aran Islands",
+          "locationEn": "Aran Islands, Ireland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "アラン諸島観光",
+          "description": "アラン諸島に到着後、島内を散策。特にダン・エンガスの古代遺跡は必見です。壮大な崖の上に立つこの遺跡からの眺めは、心に残る体験となるでしょう。",
+          "searchQuery": "Dún Aonghasa",
+          "locationEn": "Inis Meain, Aran Islands, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アラン諸島の地元ショップでファングッズ購入",
+          "description": "アラン諸島の地元のショップで、Star Wars関連のファングッズを探してみましょう。ユニークなアイテムが見つかるかもしれません。",
+          "searchQuery": "Aran Islands Gift Shop",
+          "locationEn": "Inis Meain, Aran Islands, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ギャリウェイのホテルにチェックイン",
+          "description": "ギャリウェイに戻り、ホテルにチェックイン。リラックスした後、夕食を楽しむ準備をしましょう。",
+          "searchQuery": "Hotel in Galway",
+          "locationEn": "Galway, Ireland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ギャリウェイでディナー",
+          "description": "地元のレストランでアイルランド料理を堪能。新鮮なシーフードや伝統的なアイリッシュパブの雰囲気を楽しんでください。",
+          "searchQuery": "Galway Seafood Restaurant",
+          "locationEn": "Galway, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "スター・ウォーズの聖地を巡る",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ギャリウェイ",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "スカリッグ・ミケル",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "ギャリウェイからスカリッグ・ミケルへ車で移動します。美しい海岸線を楽しみながらのドライブです。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "スカリッグ・ミケル訪問",
+          "description": "映画『スター・ウォーズ』の撮影地として知られるスカリッグ・ミケル。美しい景観と共に、映画の世界に浸ることができます。特に、島の頂上からの眺めは圧巻です。",
+          "searchQuery": "Skellig Michael",
+          "locationEn": "Skellig Michael, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "スカリッグ・ミケルでのランチ",
+          "description": "島内のカフェで軽食を楽しみます。新鮮なシーフードや地元の特産品を味わいながら、映画の余韻に浸りましょう。",
+          "searchQuery": "Skellig Michael Cafe",
+          "locationEn": "Skellig Michael, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ダン・アングスへ移動",
+          "description": "スカリッグ・ミケルからダン・アングスへ向かいます。途中の美しい風景を楽しみながら、リラックスしたドライブをお楽しみください。",
+          "locationEn": "Dun Aonghasa, Ireland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ダン・アングス訪問",
+          "description": "ダン・アングスは、古代の要塞であり、壮大な崖の上に位置しています。ここからの海の眺めは素晴らしく、歴史を感じながら散策できます。",
+          "searchQuery": "Dun Aonghasa",
+          "locationEn": "Dun Aonghasa, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ダン・アングス周辺での散策",
+          "description": "周辺の自然を楽しみながら、リラックスした時間を過ごします。美しい風景をバックに写真を撮るのもおすすめです。",
+          "locationEn": "Dun Aonghasa, Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ダンゴールでディナー",
+          "description": "ダンゴールのレストランで、地元の料理を楽しみます。新鮮な食材を使った料理が堪能できるお店を選びましょう。",
+          "searchQuery": "Dunmore House Restaurant",
+          "locationEn": "Dunmore House, Dunmore, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ダンゴールの宿泊先チェックイン",
+          "description": "ダンゴールの快適な宿泊先にチェックイン。リラックスして、明日の冒険に備えましょう。",
+          "searchQuery": "Dunmore House",
+          "locationEn": "Dunmore House, Dunmore, Ireland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "リラックスとリゾート体験",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ダンゴール",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ダン・アングス",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "ダンゴールからダン・アングスへ車での移動。美しい田舎道を楽しみながらのドライブ。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "ダン・アングスの散策",
+          "description": "ダン・アングスの美しい風景を楽しみながら、歴史的な遺跡や自然の美しさを堪能します。特に、古代の城壁や緑豊かな公園が魅力的です。",
+          "searchQuery": "Dun Aonghasa",
+          "locationEn": "Inis Meain, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ダン・アングス近くのカフェでランチ",
+          "description": "地元の食材を使った新鮮な料理を楽しめるカフェで、アイルランドの伝統的な料理を味わいます。特に、シーフードが絶品です。",
+          "searchQuery": "Café at Dun Aonghasa",
+          "locationEn": "Inis Meain, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アイルランドの田舎をドライブ",
+          "description": "ダン・アングスからアイルランドの田舎をドライブしながら、壮大な風景や美しい村々を訪れます。途中で写真を撮るのをお忘れなく！",
+          "searchQuery": "Irish countryside",
+          "locationEn": "Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Star Wars関連のショップ訪問",
+          "description": "アイルランドの田舎にあるStar Wars関連のショップで、ファングッズを探します。特に、地元のアーティストによる作品が見逃せません。",
+          "searchQuery": "Star Wars Shop Ireland",
+          "locationEn": "Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ダンゴールに戻り、リラックス",
+          "description": "ダンゴールに戻り、ホテルでリラックス。スパやマッサージを楽しむのもおすすめです。",
+          "searchQuery": "Dunmore House Hotel",
+          "locationEn": "Dunmore, Ireland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ダンゴールでディナー",
+          "description": "地元のレストランでアイルランド料理を堪能。特に、シーフードや伝統的なアイリッシュパブ料理が楽しめます。",
+          "searchQuery": "The Olde Castle Bar",
+          "locationEn": "Dunmore, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ダブリンでの最後のひととき",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ダンゴール",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ダブリン",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "ダンゴールからダブリンまでの美しい景色を楽しみながらのドライブ。"
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "ダブリンのマーケット散策",
+          "description": "ダブリンの活気あるマーケットで地元の特産品やアートを楽しみます。新鮮な食材やユニークな手作りアイテムが揃い、買い物をしながら地元の雰囲気を味わえます。",
+          "searchQuery": "Dublin Market",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ランチ：The Woollen Mills",
+          "description": "ダブリンの人気レストランで、アイルランドの伝統料理を楽しみます。特に、シェパーズパイやスモークサーモンが絶品です。マーケットから徒歩圏内。",
+          "searchQuery": "The Woollen Mills",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ファングッズショップ巡り",
+          "description": "ダブリン市内のファングッズショップを訪れ、Star Wars関連のアイテムを探します。特に、アイルランド限定のグッズやコレクターズアイテムが見つかるかも。",
+          "searchQuery": "Star Wars Merchandise Store",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ダブリン城見学",
+          "description": "歴史的なダブリン城を訪れ、その美しい庭園や歴史的な建物を見学します。アイルランドの歴史を感じながら、リラックスした時間を過ごせます。",
+          "searchQuery": "Dublin Castle",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー：The Church",
+          "description": "ダブリンの歴史的な教会を改装したレストランで、ユニークな雰囲気の中でディナーを楽しみます。アイルランドのビールと共に、地元の料理を堪能しましょう。",
+          "searchQuery": "The Church",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ダブリンの夜景散策",
+          "description": "ダブリンの美しい夜景を楽しみながら、街を散策します。特に、リフィー川沿いのライトアップされた橋や建物が幻想的です。",
+          "searchQuery": "Dublin Night View",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

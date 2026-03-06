@@ -1,0 +1,452 @@
+{
+  "id": "de1b907b-1134-4344-9a06-921b3643b18d",
+  "destination": "北アイルランド",
+  "description": "北アイルランドの美しい自然と歴史的な背景を感じながら、特に『ゲーム・オブ・スローンズ』のファンにとっては夢のような旅が待っています。壮大な風景の中で、撮影地を巡り、地元の文化に触れながら、特別な思い出を作りましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ダブリンからベルファストへ",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Dublin",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Belfast",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "ダブリンからベルファストへは快適な電車移動がおすすめです。美しいアイルランドの風景を楽しみながら、リラックスした時間を過ごせます。"
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "ベルファスト市内観光",
+          "description": "ベルファストの中心部を散策し、歴史的な建物や文化的なスポットを訪れます。特に、タイタニック博物館は必見です。",
+          "searchQuery": "Titanic Belfast",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "The Crown Liquor Saloonでランチ",
+          "description": "ベルファストの名物パブで、アイルランドの伝統的な料理を楽しみながら、歴史的な雰囲気を味わえます。",
+          "searchQuery": "The Crown Liquor Saloon",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Game of Thrones Studio Tour",
+          "description": "「ゲーム・オブ・スローンズ」の撮影セットを見学できるスタジオツアー。ファンにはたまらない体験です。",
+          "searchQuery": "Game of Thrones Studio Tour",
+          "locationEn": "Banbridge, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ファングッズショッピング",
+          "description": "ベルファストの専門店で「ゲーム・オブ・スローンズ」の関連商品を探し、思い出の品をゲットしましょう。",
+          "searchQuery": "Game of Thrones merchandise",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Belfastでディナー",
+          "description": "地元のレストランでアイルランド料理を楽しみます。新鮮なシーフードや伝統的なアイリッシュシチューがおすすめです。",
+          "searchQuery": "Belfast restaurant",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルチェックイン",
+          "description": "ベルファストの中心部にある快適なホテルにチェックイン。旅の疲れを癒して、明日の冒険に備えましょう。",
+          "searchQuery": "Belfast hotel",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ベルファストのゲーム・オブ・スローンズ巡り",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ベルファストのホテルで、アイルランドの伝統的な朝食を楽しみます。ソーセージやベーコン、卵、トーストが並ぶボリューム満点の朝食で、元気をチャージ！",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ゲーム・オブ・スローンズスタジオツアー",
+          "description": "ゲーム・オブ・スローンズの撮影スタジオを訪れ、実際のセットや衣装を見学します。ファンにはたまらない体験で、撮影の裏話も聞けるかもしれません。",
+          "searchQuery": "Game of Thrones Studio Tour",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：The Dirty Onion",
+          "description": "ベルファストの人気パブで、アイルランドの伝統料理を楽しみます。特に、地元のビールと一緒に味わうフィッシュ＆チップスがおすすめです。",
+          "searchQuery": "The Dirty Onion",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ゲーム・オブ・スローンズのロケ地巡り",
+          "description": "ベルファスト周辺のゲーム・オブ・スローンズのロケ地を巡ります。美しい自然の中で、ドラマの名シーンを思い出しながら散策しましょう。",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ファングッズショッピング",
+          "description": "ゲーム・オブ・スローンズの公式グッズを取り扱うショップで、思い出の品を探します。Tシャツやフィギュアなど、ファンにはたまらないアイテムが揃っています。",
+          "searchQuery": "Game of Thrones Merchandise",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディナー：The Crown Liquor Saloon",
+          "description": "歴史あるパブで、アイルランドのビールと共にディナーを楽しみます。美しい内装と共に、地元の料理を堪能できる素敵な場所です。",
+          "searchQuery": "The Crown Liquor Saloon",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "アントリム海岸の絶景",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ベルファスト",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ジャイアンツ・コーズウェイ",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "ベルファストからアントリム海岸へ向かいます。美しい海岸線を楽しみながらのドライブです。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "ジャイアンツ・コーズウェイ",
+          "description": "ユネスコ世界遺産に登録されたジャイアンツ・コーズウェイは、自然が作り出した神秘的な六角形の岩が並ぶ絶景スポットです。散策しながら、壮大な海の景色を楽しんでください。",
+          "searchQuery": "Giant's Causeway",
+          "locationEn": "County Antrim, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "アントリムのカフェでランチ",
+          "description": "地元のカフェで軽食を楽しみましょう。新鮮な地元の食材を使ったサンドイッチやスープがおすすめです。",
+          "searchQuery": "Cafe in Antrim",
+          "locationEn": "Antrim, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ダンルース城",
+          "description": "ダンルース城は、アントリム海岸の美しい景色を一望できる歴史的な城です。城内を見学しながら、映画『ゲーム・オブ・スローンズ』の撮影地としても知られるこの場所の魅力を感じてください。",
+          "searchQuery": "Dunluce Castle",
+          "locationEn": "County Antrim, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "アントリム海岸沿いのドライブ",
+          "description": "アントリム海岸の美しい景色を楽しみながら、ドライブを続けましょう。途中で立ち寄れるビューポイントもたくさんあります。",
+          "searchQuery": "Antrim Coast",
+          "locationEn": "County Antrim, Northern Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ゲーム・オブ・スローンズ関連ショップ訪問",
+          "description": "アントリム周辺には、ゲーム・オブ・スローンズのファングッズを扱うショップがあります。お気に入りのグッズを見つけて、旅の思い出にしましょう。",
+          "searchQuery": "Game of Thrones merchandise shop",
+          "locationEn": "Antrim, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "アントリムのレストランでディナー",
+          "description": "地元の食材を使った料理を楽しめるレストランで、アイルランドの伝統的な料理を堪能しましょう。特にシーフード料理が人気です。",
+          "searchQuery": "Restaurant in Antrim",
+          "locationEn": "Antrim, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ダウンパトリックと文化体験",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "アントリム",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ダウンパトリック",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "アントリムからダウンパトリックへ車で移動します。美しい田園風景を楽しみながらのドライブです。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "ダウンパトリックのゲーム・オブ・スローンズ関連スポット",
+          "description": "ダウンパトリックは『ゲーム・オブ・スローンズ』の撮影地として知られています。特に、アイルランドの歴史的な背景を感じながら、撮影場所を巡ることができます。",
+          "searchQuery": "Downpatrick Game of Thrones filming locations",
+          "locationEn": "Downpatrick, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のカフェでランチ",
+          "description": "ダウンパトリックの地元カフェで、アイルランドの伝統的な料理を楽しみましょう。特に、スープやサンドイッチが人気です。",
+          "searchQuery": "local cafe Downpatrick",
+          "locationEn": "Downpatrick, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ダウンパトリックのマーケット訪問",
+          "description": "地元のマーケットで新鮮な食材や手作りの工芸品を探してみましょう。特に、アイルランドの伝統的なファングッズが見つかるかもしれません。",
+          "searchQuery": "Downpatrick market",
+          "locationEn": "Downpatrick, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "セント・パトリック大聖堂見学",
+          "description": "ダウンパトリックの象徴的なセント・パトリック大聖堂を訪れ、その美しい建築と歴史を学びましょう。大聖堂内には、セント・パトリックの墓もあります。",
+          "searchQuery": "Saint Patrick's Cathedral Downpatrick",
+          "locationEn": "Downpatrick, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ダウンパトリックのパブでディナー",
+          "description": "地元のパブでアイルランドのビールと共に、伝統的なアイルランド料理を楽しみましょう。アイルランドの雰囲気を満喫できる場所です。",
+          "searchQuery": "pub Downpatrick",
+          "locationEn": "Downpatrick, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ダウンパトリックの宿泊先チェックイン",
+          "description": "ダウンパトリックの宿泊先にチェックインし、ゆっくりとくつろぎましょう。",
+          "searchQuery": "hotel Downpatrick",
+          "locationEn": "Downpatrick, Northern Ireland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ベルファストからダブリンへ",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "ダウンパトリック",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ダブリン",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "ダウンパトリックからダブリン行きのバスで快適に移動します。"
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "ダブリン城",
+          "description": "ダブリンの中心に位置する歴史的な城で、アイルランドの歴史を感じることができます。美しい庭園もあり、散策にぴったりです。",
+          "searchQuery": "Dublin Castle",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "The Woollen Millsでランチ",
+          "description": "地元の食材を使ったアイルランド料理を楽しめるカジュアルなレストラン。特に、シェパーズパイが絶品です。",
+          "searchQuery": "The Woollen Mills",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "トリニティ・カレッジとケルズの書",
+          "description": "アイルランド最古の大学であるトリニティ・カレッジを訪れ、世界的に有名なケルズの書を見学します。美しい図書館も必見です。",
+          "searchQuery": "Trinity College Dublin",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ゲーム・オブ・スローンズのショップ",
+          "description": "ダブリンの中心にあるゲーム・オブ・スローンズの公式ショップで、ファングッズを購入できます。特別なアイテムを見つけて、思い出に残るお土産をゲットしましょう。",
+          "searchQuery": "Game of Thrones Studio Tour",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ダブリンのパブでディナー",
+          "description": "アイルランドの伝統的なパブで、フィッシュ＆チップスやギネスビールを楽しみながら、地元の雰囲気を満喫します。",
+          "searchQuery": "The Brazen Head",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ダブリンのナイトライフを楽しむ",
+          "description": "ダブリンの賑やかなナイトライフを体験。ライブ音楽を楽しめるパブやバーを巡り、アイルランドの文化を感じましょう。",
+          "searchQuery": "Dublin nightlife",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

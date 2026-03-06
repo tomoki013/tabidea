@@ -1,0 +1,754 @@
+{
+  "id": "43ab3462-8a79-436a-a2a2-ceb5d43e6acb",
+  "destination": "ケープタウン",
+  "description": "南アフリカの美しいケープタウンで、自然の絶景や野生動物、グルメを満喫する8日間の旅に出かけましょう。壮大な喜望峰や野生のペンギンに出会える場所を訪れ、ドライブを楽しみながら、地元の美味しい料理を堪能します。",
+  "heroImage": "https://images.unsplash.com/photo-1545510120-66374ff70e4f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODU4MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Zoë Reeve",
+  "heroImagePhotographerUrl": "https://unsplash.com/@zoeeee_?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "ケープタウン到着",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ケープタウンのホテルで、南アフリカの伝統的な朝食を楽しみます。新鮮なフルーツや卵料理、地元のパンが並び、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "キャンプスベイビーチ散策",
+          "description": "美しいキャンプスベイビーチでリラックス。青い海と白い砂浜、背後にはテーブルマウンテンがそびえ立つ絶景を楽しみながら、散策や写真撮影を楽しんでください。",
+          "searchQuery": "Camps Bay Beach",
+          "locationEn": "Camps Bay, Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のレストランでランチ",
+          "description": "キャンプスベイ近くのレストランで、新鮮なシーフードや南アフリカの郷土料理を堪能。特に、グリルした魚やバーベキュー料理がおすすめです。",
+          "locationEn": "Camps Bay, Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "喜望峰へのドライブ",
+          "description": "美しい海岸線をドライブしながら、喜望峰へ向かいます。途中、壮大な景色を楽しみながら、いくつかの展望スポットに立ち寄ることもできます。",
+          "searchQuery": "Cape of Good Hope",
+          "locationEn": "Cape of Good Hope, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "喜望峰での散策",
+          "description": "喜望峰に到着したら、トレイルを歩いて絶景を楽しみましょう。野生のペンギンにも出会えるかもしれません。自然の美しさに心を奪われる瞬間です。",
+          "searchQuery": "Cape of Good Hope",
+          "locationEn": "Cape of Good Hope, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルに戻る",
+          "description": "喜望峰からの帰り道、夕日を眺めながらのドライブを楽しんでください。美しい夕焼けが広がる中、ケープタウンの街に戻ります。",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "ケープタウンの人気レストランで、南アフリカのワインと共にディナーを楽しみます。特に、ビーフステーキやワインペアリングが絶品です。",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "喜望峰とペンギンの楽園",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ケープタウン",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "喜望峰",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "美しい海岸線をドライブしながら喜望峰へ向かいます。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "喜望峰国立公園",
+          "description": "壮大な喜望峰の景色を楽しみながら、ハイキングや展望台からの眺望を堪能します。特に、海と空が交わる瞬間は絶景です。",
+          "searchQuery": "Cape of Good Hope",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "喜望峰でのランチ",
+          "description": "公園内のカフェで軽食を楽しみます。新鮮なシーフードやサンドイッチが人気です。海を眺めながらのランチは格別。",
+          "searchQuery": "Cape of Good Hope Restaurant",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ボルダーズビーチ",
+          "description": "野生のペンギンが生息するボルダーズビーチへ。可愛らしいペンギンたちを間近で観察できる貴重な体験です。",
+          "searchQuery": "Boulders Beach",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ボルダーズビーチ散策",
+          "description": "ビーチを散策しながら、ペンギンたちの自然な姿を楽しみます。写真撮影にも最適なスポットです。",
+          "searchQuery": "Boulders Beach",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ケープタウンへ戻る",
+          "description": "ボルダーズビーチを後にし、ケープタウンへ戻ります。夕暮れ時の美しい景色を楽しみながらのドライブです。",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ケープタウンでディナー",
+          "description": "地元の人気レストランで、南アフリカのワインと共にグルメディナーを楽しみます。特に、ビーフステーキやシーフードが絶品です。",
+          "searchQuery": "The Test Kitchen",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルチェックイン",
+          "description": "ケープタウンの高級ホテルにチェックイン。快適な部屋で旅の疲れを癒します。",
+          "searchQuery": "One&Only Cape Town",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "テーブルマウンテンとワイナリー巡り",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ケープタウン",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "テーブルマウンテン",
+          "time": "08:30"
+        },
+        "duration": "30m",
+        "memo": "レンタカーでの移動。朝の渋滞を避けるため早めに出発。"
+      },
+      "activities": [
+        {
+          "time": "08:30",
+          "activity": "テーブルマウンテン",
+          "description": "ケープタウンのシンボル、テーブルマウンテンで絶景を楽しみましょう。ケーブルカーで山頂まで上がると、360度のパノラマビューが広がります。特に朝の光の中での景色は格別です。",
+          "searchQuery": "Table Mountain",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ワイナリー巡り",
+          "description": "ワインランドへ向かい、数軒のワイナリーを訪れます。地元のワインを試飲しながら、美しいブドウ畑の風景を楽しむことができます。特にステレンボッシュのワイナリーはおすすめです。",
+          "searchQuery": "Stellenbosch Wine Estate",
+          "locationEn": "Stellenbosch, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ワイナリーでランチ",
+          "description": "ワイナリー内のレストランで、地元の食材を使った美味しいランチを楽しみます。ワインと一緒に、南アフリカの料理を堪能しましょう。",
+          "searchQuery": "Stellenbosch Wine Estate Restaurant",
+          "locationEn": "Stellenbosch, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "野生のペンギンに会いに行く",
+          "description": "ボルダーズビーチで野生のペンギンを観察します。可愛らしいペンギンたちが自由に歩き回る姿は、訪れる価値があります。",
+          "searchQuery": "Boulders Beach",
+          "locationEn": "Simon’s Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "喜望峰観光",
+          "description": "喜望峰へ向かい、壮大な海の景色を楽しみます。ここは大西洋とインド洋が交わる地点で、自然の美しさを感じることができます。",
+          "searchQuery": "Cape of Good Hope",
+          "locationEn": "Cape Point, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ケープタウンに戻りディナー",
+          "description": "ケープタウンに戻り、地元のレストランでディナーを楽しみます。新鮮なシーフードや南アフリカの肉料理を堪能しましょう。",
+          "searchQuery": "The Test Kitchen",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ケープ半島の絶景ドライブ",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ケープタウン",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ケープオブグッドホープ",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "美しい海岸線をドライブしながら、ケープオブグッドホープへ向かいます。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "ケープオブグッドホープ国立公園",
+          "description": "壮大な自然が広がるケープオブグッドホープ国立公園で、トレッキングや野生動物観察を楽しみましょう。特に、ここでは野生のペンギンにも出会えるチャンスがあります。",
+          "searchQuery": "Cape of Good Hope National Park",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ピクニックランチ",
+          "description": "公園内でのピクニックランチを楽しみます。地元の食材を使ったサンドイッチやフルーツを持参して、自然の中でリラックスしたひとときを過ごしましょう。",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ボルダーズビーチ",
+          "description": "ボルダーズビーチで、かわいいアフリカンペンギンたちを観察します。彼らが海で泳ぐ姿や、砂浜で日向ぼっこをする姿はとても愛らしいです。",
+          "searchQuery": "Boulders Beach",
+          "locationEn": "Simon’s Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "スワートランドのワイナリー訪問",
+          "description": "スワートランドエリアのワイナリーで、地元のワインを試飲します。美しいブドウ畑を眺めながら、ワインの製造過程について学ぶこともできます。",
+          "searchQuery": "Swartland Wine Region",
+          "locationEn": "Swartland, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ケープタウンに戻る",
+          "description": "ドライブを楽しみながら、ケープタウンへ戻ります。夕暮れ時の海岸線は特に美しいので、途中で写真を撮るのもおすすめです。",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "ケープタウンの地元のレストランで、新鮮なシーフードや南アフリカ料理を楽しみます。特に、グリルした魚や肉料理は絶品です。",
+          "searchQuery": "The Test Kitchen",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ロベン島と地元グルメ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ケープタウン",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ロベン島",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "ロベン島行きのフェリーで美しい海を楽しみながら移動します。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ロベン島観光",
+          "description": "ネルソン・マンデラが長い間収監されていた歴史的なロベン島を訪れます。ガイド付きツアーで、島の歴史や文化を深く学ぶことができます。",
+          "searchQuery": "Robben Island",
+          "locationEn": "Robben Island, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ロベン島でのランチ",
+          "description": "ロベン島のカフェで軽食を楽しみます。地元の食材を使ったサンドイッチやサラダが人気です。",
+          "searchQuery": "Robben Island Cafe",
+          "locationEn": "Robben Island, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ケープタウンに戻る",
+          "description": "フェリーでケープタウンに戻ります。海の景色を楽しみながら、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Cape Town",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "グリーンマーケットスクエア散策",
+          "description": "地元のアートや手工芸品が並ぶグリーンマーケットスクエアを訪れます。お土産探しや、地元のアーティストとの交流を楽しんでください。",
+          "searchQuery": "Greenmarket Square",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ケープタウンの人気レストランで、南アフリカの伝統料理を堪能します。特に、ビーフ・ボボティやバーベキュー料理がおすすめです。",
+          "searchQuery": "The Africa Café",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ケープタウンの夜景を楽しむ",
+          "description": "ディナーの後は、ケープタウンの美しい夜景を楽しむために、テーブルマウンテンの展望台へ。夜の街の灯りが幻想的です。",
+          "searchQuery": "Table Mountain",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "アフリカの野生動物を探しに",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ケープタウン",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ボルダーズビーチ",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "ケープタウンからボルダーズビーチまでのドライブは美しい海岸線を楽しめます。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ボルダーズビーチでペンギン観察",
+          "description": "ボルダーズビーチでは、野生のアフリカンペンギンが間近で見られます。彼らの愛らしい姿を楽しみながら、ビーチの美しい景色も堪能しましょう。",
+          "searchQuery": "Boulders Beach",
+          "locationEn": "Simon’s Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "ケープタウンでランチ",
+          "description": "ケープタウンに戻り、地元の人気レストランで新鮮なシーフードランチを楽しみます。特に、グリルした魚やシーフードパスタがおすすめです。",
+          "searchQuery": "The Codfather",
+          "locationEn": "Camps Bay, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "喜望峰国立公園訪問",
+          "description": "喜望峰国立公園へ向かい、壮大な海の景色と山々のコントラストを楽しみます。ハイキングコースもあり、自然の中でリフレッシュできます。",
+          "searchQuery": "Cape Point",
+          "locationEn": "Cape Peninsula, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "喜望峰での夕日鑑賞",
+          "description": "喜望峰の絶景ポイントで夕日を眺めながら、ロマンチックなひとときを過ごします。特にカップルにおすすめのスポットです。",
+          "searchQuery": "Cape Point",
+          "locationEn": "Cape Peninsula, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ケープタウンでディナー",
+          "description": "ケープタウンのダイニングエリアで、地元のワインとともにディナーを楽しみます。特に、南アフリカの肉料理は絶品です。",
+          "searchQuery": "Gold Restaurant",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "ケープタウンの文化とアート",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ケープタウン",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ボカップ",
+          "time": "08:30"
+        },
+        "duration": "30m",
+        "memo": "レンタカーでボカップへ向かいます。朝の爽やかな空気を感じながらドライブを楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "08:30",
+          "activity": "ボカップ散策",
+          "description": "カラフルな家々が並ぶボカップ地区を散策します。歴史的な背景を持つこのエリアは、南アフリカの文化を感じることができるスポットです。",
+          "searchQuery": "Bo-Kaap",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "アフリカンアートギャラリー訪問",
+          "description": "地元アーティストの作品を展示するアフリカンアートギャラリーで、ユニークなアートを楽しみます。アートに触れながら、南アフリカの文化を深く理解することができます。",
+          "searchQuery": "African Art Gallery",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ボカップ近くのレストランで、南アフリカの伝統料理を楽しみます。特に、ボボティ（スパイスの効いたひき肉料理）が絶品です。",
+          "searchQuery": "Local Restaurant Bo-Kaap",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "喜望峰へのドライブ",
+          "description": "美しい海岸線を眺めながら、喜望峰へ向かいます。途中、絶景ポイントでの写真撮影をお忘れなく。",
+          "searchQuery": "Cape of Good Hope",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "喜望峰観光",
+          "description": "喜望峰に到着したら、トレッキングや展望台からの絶景を楽しみましょう。野生の動物にも出会えるかもしれません。",
+          "searchQuery": "Cape of Good Hope",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ペンギンビーチ訪問",
+          "description": "ボルダーズビーチで野生のペンギンを観察します。可愛らしいペンギンたちが間近で見られる貴重な体験です。",
+          "searchQuery": "Boulders Beach",
+          "locationEn": "Simon’s Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "海辺のレストランでディナー",
+          "description": "海を眺めながら、新鮮なシーフードを楽しむディナータイム。特に、グリルした魚料理がおすすめです。",
+          "searchQuery": "Seafood Restaurant Cape Town",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "ケープタウンから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ケープタウン国際空港",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "翌日 06:00"
+        },
+        "duration": "約12h",
+        "memo": "ケープタウンから東京への直行便です。機内での食事を楽しみながら、ゆったりとした時間を過ごしましょう。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ケープタウンのホテルで、南アフリカの伝統的な朝食を楽しみます。新鮮なフルーツや卵料理、地元のパンが揃い、エネルギーをチャージ。",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ボルダーズビーチで野生のペンギン観察",
+          "description": "ボルダーズビーチでは、野生のアフリカペンギンたちが自由に泳ぎ回る姿を間近で見ることができます。美しいビーチとペンギンの可愛らしい姿に癒されること間違いなし。",
+          "searchQuery": "Boulders Beach",
+          "locationEn": "Simon’s Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "喜望峰へのドライブ",
+          "description": "ケープタウンから喜望峰までのドライブは、絶景の海岸線を楽しむことができます。途中、壮大な山々と海のコントラストを楽しみながら、素晴らしい写真スポットがたくさんあります。",
+          "locationEn": "Cape Point, South Africa",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "喜望峰でのランチ",
+          "description": "喜望峰の近くにあるレストランで、地元の新鮮なシーフードを楽しみます。美しい海の景色を眺めながら、リラックスしたひとときを過ごしましょう。",
+          "locationEn": "Cape Point, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "喜望峰国立公園散策",
+          "description": "喜望峰国立公園内を散策し、壮大な自然の中でハイキングを楽しみます。特に、灯台までのトレイルは絶景が広がり、心に残る体験となるでしょう。",
+          "searchQuery": "Cape Point Nature Reserve",
+          "locationEn": "Cape Point, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ケープタウン国際空港へ移動",
+          "description": "喜望峰からケープタウン国際空港へ戻ります。途中の景色を楽しみながら、最後の南アフリカの思い出を胸に刻みましょう。",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ケープタウン国際空港で夕食",
+          "description": "空港内のレストランで、南アフリカの料理を楽しみながら、フライトの準備をします。最後の南アフリカの味を堪能しましょう。",
+          "locationEn": "Cape Town International Airport, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

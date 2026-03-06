@@ -1,0 +1,753 @@
+{
+  "id": "16e1ece1-f35e-442b-b0cb-1bf19af0dcfa",
+  "destination": "ムロンダバ",
+  "description": "Escape to the enchanting landscapes of Morondava, Madagascar, where the iconic Avenue of the Baobabs stretches into the horizon, creating a surreal backdrop for your adventure. This 8-day journey is designed for nature lovers and adventure seekers, promising breathtaking scenery, unique wildlife encounters, and unforgettable memories with friends. From the moment you arrive, the vibrant culture and stunning vistas will captivate your senses, making every moment a photo opportunity. Get ready to explore the wild beauty of Madagascar, where each day unfolds a new chapter of discovery and excitement.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Departure from Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Washington D.C.",
+          "time": "15:00"
+        },
+        "arrival": {
+          "place": "Antananarivo",
+          "time": "05:00"
+        },
+        "duration": "15h",
+        "memo": "Direct flight to Antananarivo."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Airport",
+          "description": "Start your journey with a hearty breakfast at the airport. Enjoy a selection of pastries, coffee, and fresh fruit to fuel your travels.",
+          "searchQuery": "Washington D.C. Airport Breakfast",
+          "locationEn": "Washington D.C., USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Flight to Antananarivo",
+          "description": "Board your flight to Antananarivo, Madagascar. Settle in for a long journey as you prepare for the adventures ahead.",
+          "searchQuery": "Flight to Antananarivo",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "05:00",
+          "activity": "Arrival in Antananarivo",
+          "description": "Welcome to Antananarivo! After a long flight, you will arrive in the capital of Madagascar, where your adventure begins.",
+          "searchQuery": "Antananarivo",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "06:30",
+          "activity": "Check-in at Hotel",
+          "description": "Check into your hotel and freshen up after your flight. Take a moment to relax and prepare for the day ahead.",
+          "searchQuery": "Hotel in Antananarivo",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Enjoy a delicious breakfast at your hotel, featuring local Malagasy dishes and fresh fruits to energize you for the day.",
+          "searchQuery": "Hotel Breakfast Antananarivo",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Explore Antananarivo",
+          "description": "Take a leisurely stroll around the vibrant streets of Antananarivo. Visit local markets and experience the culture of Madagascar.",
+          "searchQuery": "Antananarivo City Tour",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Savor traditional Malagasy cuisine at a local restaurant. Try dishes like Romazava or Ravitoto for an authentic taste of Madagascar.",
+          "searchQuery": "Local Restaurant Antananarivo",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Lemur Park",
+          "description": "Take a short trip to Lemur Park, where you can see various species of lemurs in a natural setting. A perfect opportunity for photography and wildlife observation.",
+          "searchQuery": "Lemur Park Antananarivo",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Hotel",
+          "description": "Head back to your hotel to relax and unwind after a day of exploration. Enjoy the amenities and prepare for your next adventure.",
+          "searchQuery": "Hotel in Antananarivo",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Rooftop Restaurant",
+          "description": "Enjoy dinner at a rooftop restaurant with stunning views of the city. Indulge in local dishes while soaking in the ambiance of Antananarivo at night.",
+          "searchQuery": "Rooftop Restaurant Antananarivo",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Journey to Morondava",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Antananarivo",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Morondava",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "A short domestic flight to Morondava, enjoy the views of Madagascar's landscapes from above."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Check-in at Hotel Trecicogne",
+          "description": "Settle into your comfortable accommodation at Hotel Trecicogne, known for its friendly service and proximity to the beach. Enjoy a refreshing drink as you prepare for the day's adventures.",
+          "searchQuery": "Hotel Trecicogne",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Avenue of the Baobabs",
+          "description": "Explore the iconic Avenue of the Baobabs, a stunning dirt road lined with towering baobab trees. This photogenic spot is perfect for capturing the unique beauty of Madagascar's landscape, especially in the morning light.",
+          "searchQuery": "Avenue of the Baobabs",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at La Varangue",
+          "description": "Savor a delicious lunch at La Varangue, a local restaurant offering a variety of Malagasy dishes. Try the zebu steak or fresh seafood while enjoying the relaxed atmosphere.",
+          "searchQuery": "La Varangue",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Kirindy Forest Reserve",
+          "description": "Head to Kirindy Forest Reserve, a unique dry deciduous forest home to diverse wildlife. Keep an eye out for the famous fossa and the playful sifaka lemurs that leap gracefully through the trees.",
+          "searchQuery": "Kirindy Forest Reserve",
+          "locationEn": "Kirindy, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Morondava",
+          "description": "After an exciting afternoon in Kirindy, return to Morondava. Relax and refresh at your hotel before dinner.",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Chez Maggie",
+          "description": "Enjoy dinner at Chez Maggie, a beachfront restaurant known for its fresh seafood and stunning sunset views. Indulge in local specialties while listening to the sound of the waves.",
+          "searchQuery": "Chez Maggie",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Avenue of the Baobabs",
+      "activities": [
+        {
+          "time": "07:30",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel in Morondava, featuring fresh tropical fruits, local pastries, and Malagasy coffee to energize you for the adventures ahead.",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Visit Avenue of the Baobabs",
+          "description": "Explore the iconic Avenue of the Baobabs, where towering baobab trees create a stunning landscape. This is a perfect spot for photography, especially in the soft morning light. Don't forget to take a leisurely walk along the path and soak in the beauty of this natural wonder.",
+          "searchQuery": "Avenue of the Baobabs",
+          "locationEn": "Avenue of the Baobabs, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Lunch at La Varangue",
+          "description": "Enjoy a delicious lunch at La Varangue, a local restaurant known for its fresh seafood and traditional Malagasy dishes. The ambiance is relaxed, making it a great place to recharge after your morning explorations.",
+          "searchQuery": "La Varangue",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Kirindy Forest Excursion",
+          "description": "Head to Kirindy Forest, a short drive from Morondava, where you can spot unique wildlife, including the famous fossa and various lemur species. The forest is also home to the endemic giant jumping rat, so keep your camera ready!",
+          "searchQuery": "Kirindy Forest",
+          "locationEn": "Kirindy Forest, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Morondava",
+          "description": "After an exciting day in Kirindy Forest, return to Morondava. Take some time to relax at your hotel or explore the local shops for souvenirs.",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Chez Maggie",
+          "description": "Dine at Chez Maggie, a popular restaurant offering a mix of Malagasy and international cuisine. Enjoy the sunset views over the ocean while savoring fresh grilled fish or a hearty Malagasy stew.",
+          "searchQuery": "Chez Maggie",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Stroll on the Beach",
+          "description": "End your day with a peaceful evening stroll along the beach in Morondava. The sound of the waves and the starry sky create a perfect backdrop for reflection on the day's adventures.",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Wildlife Adventures",
+      "activities": [
+        {
+          "time": "07:30",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel in Morondava, featuring local fruits, fresh bread, and Malagasy coffee to fuel your adventure ahead.",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Visit Avenue of the Baobabs",
+          "description": "Explore the iconic Avenue of the Baobabs, where towering baobab trees create a stunning landscape. This is a perfect spot for photography, especially in the soft morning light.",
+          "searchQuery": "Avenue of the Baobabs",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Wildlife Spotting in Kirindy Forest",
+          "description": "Head to Kirindy Forest, a short drive from Morondava, where you can spot unique wildlife including the famous fossa and various lemur species. Keep your camera ready for some incredible shots!",
+          "searchQuery": "Kirindy Forest",
+          "locationEn": "Kirindy Forest, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Enjoy a delicious lunch at a local restaurant, sampling traditional Malagasy dishes such as zebu steak or fresh seafood, accompanied by rice and local vegetables.",
+          "locationEn": "Kirindy Forest, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Continue Wildlife Exploration",
+          "description": "After lunch, continue your exploration of Kirindy Forest. Look out for the playful sifakas and other lemurs as they leap through the trees, a truly captivating sight!",
+          "locationEn": "Kirindy Forest, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Morondava",
+          "description": "Make your way back to Morondava, reflecting on the day's adventures and the incredible wildlife you've encountered.",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at La Varangue",
+          "description": "Dine at La Varangue, a charming restaurant known for its fresh seafood and local specialties. Enjoy the relaxed atmosphere and perhaps try a local rum cocktail to end your day.",
+          "searchQuery": "La Varangue",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Stroll on the Beach",
+          "description": "Take a leisurely evening stroll along the beach in Morondava, soaking in the tranquil atmosphere and the sound of the waves. A perfect way to unwind after an adventurous day.",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Beach Day at Belo Sur Mer",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Morondava",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Belo Sur Mer",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Boat transfer from Morondava to Belo Sur Mer."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Arrival at Belo Sur Mer",
+          "description": "Step off the boat and breathe in the fresh ocean air at Belo Sur Mer. This charming coastal village is known for its stunning beaches and laid-back atmosphere, perfect for a day of relaxation and adventure.",
+          "searchQuery": "Belo Sur Mer",
+          "locationEn": "Belo Sur Mer, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Beach Activities",
+          "description": "Spend the morning enjoying the pristine beaches of Belo Sur Mer. You can swim, sunbathe, or even try your hand at snorkeling to explore the vibrant marine life just off the shore.",
+          "searchQuery": "Belo Sur Mer Beach",
+          "locationEn": "Belo Sur Mer, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Beachside Restaurant",
+          "description": "Savor a delicious seafood lunch at a local restaurant overlooking the beach. Freshly caught fish and local Malagasy dishes will give you a taste of the region's culinary delights.",
+          "searchQuery": "Belo Sur Mer Restaurant",
+          "locationEn": "Belo Sur Mer, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit the Avenue of the Baobabs",
+          "description": "Take a short trip to the iconic Avenue of the Baobabs, where you can marvel at these majestic trees. This is a perfect spot for photography, especially with the golden light of the afternoon sun.",
+          "searchQuery": "Avenue of the Baobabs",
+          "locationEn": "Avenue of the Baobabs, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Wildlife Spotting Tour",
+          "description": "Join a guided tour to spot the famous lemurs in their natural habitat. Keep your camera ready as you might catch a glimpse of them jumping from tree to tree!",
+          "searchQuery": "Lemur Spotting Tour Belo Sur Mer",
+          "locationEn": "Belo Sur Mer, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Beachfront Restaurant",
+          "description": "End your day with a delightful dinner at a beachfront restaurant, enjoying the sunset over the ocean while indulging in local delicacies and fresh seafood.",
+          "searchQuery": "Belo Sur Mer Beachfront Restaurant",
+          "locationEn": "Belo Sur Mer, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll on the Beach",
+          "description": "Take a leisurely stroll along the beach under the stars. The sound of the waves and the cool breeze will make for a perfect ending to your adventurous day.",
+          "searchQuery": "Belo Sur Mer Beach",
+          "locationEn": "Belo Sur Mer, Madagascar",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Exploring Local Culture",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Belo Sur Mer",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Local Villages",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "Boat transfer to local villages for cultural experiences."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Visit Local Villages",
+          "description": "Explore the vibrant local villages around Belo Sur Mer, where you can immerse yourself in the unique culture and traditions of the local communities. Don't forget your camera for some stunning shots of the colorful houses and friendly locals!",
+          "searchQuery": "Local Villages Belo Sur Mer",
+          "locationEn": "Belo Sur Mer, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Eatery",
+          "description": "Enjoy a delicious lunch at a local eatery, where you can savor traditional Malagasy dishes made from fresh, local ingredients. The seafood here is particularly recommended!",
+          "searchQuery": "Local Eatery Belo Sur Mer",
+          "locationEn": "Belo Sur Mer, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Baobab Tree Avenue",
+          "description": "Take a scenic walk along the famous Avenue of the Baobabs, where you can marvel at these majestic trees that are over a thousand years old. This iconic landscape is perfect for photography, especially during the golden hour.",
+          "searchQuery": "Avenue of the Baobabs",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Kirindy Forest Reserve",
+          "description": "Head to Kirindy Forest Reserve, where you can spot the famous jumping lemurs and other unique wildlife. This is a great opportunity for adventure and photography in a stunning natural setting.",
+          "searchQuery": "Kirindy Forest Reserve",
+          "locationEn": "Kirindy, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Hotel Restaurant",
+          "description": "Return to your hotel for a relaxing dinner. Enjoy a mix of local and international cuisine while reflecting on the day's adventures. The ambiance is perfect for unwinding after an active day.",
+          "searchQuery": "Hotel Restaurant Belo Sur Mer",
+          "locationEn": "Belo Sur Mer, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Return to Morondava",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Belo Sur Mer",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Morondava",
+          "time": "12:00"
+        },
+        "duration": "3h",
+        "memo": "Enjoy a scenic boat transfer along the coast."
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "Lunch at Chez Maggie",
+          "description": "Savor a delicious meal at Chez Maggie, known for its fresh seafood and local Malagasy dishes. The beachfront setting adds to the charm, making it a perfect spot to relax after your journey.",
+          "searchQuery": "Chez Maggie",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Avenue of the Baobabs",
+          "description": "Explore the iconic Avenue of the Baobabs, a stunning natural monument lined with towering baobab trees. This photogenic spot is perfect for capturing the unique beauty of Madagascar's landscape, especially in the golden afternoon light.",
+          "searchQuery": "Avenue of the Baobabs",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Wildlife Spotting at Kirindy Forest",
+          "description": "Take a guided tour to Kirindy Forest, where you can spot the famous jumping lemurs and other unique wildlife. This adventure offers a chance to see Madagascar's incredible biodiversity up close.",
+          "searchQuery": "Kirindy Forest",
+          "locationEn": "Kirindy, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at La Varangue",
+          "description": "Enjoy a delightful dinner at La Varangue, a popular restaurant known for its fusion of Malagasy and French cuisine. The cozy atmosphere and delicious dishes make it a great way to end your day.",
+          "searchQuery": "La Varangue",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Evening Stroll on the Beach",
+          "description": "Take a leisurely evening stroll along the beach, soaking in the tranquil atmosphere and the sound of the waves. It's a perfect way to unwind after a day of exploration.",
+          "searchQuery": "Morondava Beach",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Morondava",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Antananarivo",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Direct flight from Morondava to Antananarivo."
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "Lunch at La Varangue",
+          "description": "Enjoy a delightful lunch at La Varangue, known for its exquisite Malagasy cuisine and charming ambiance. It's a perfect spot to reflect on your adventures in Madagascar before heading home.",
+          "searchQuery": "La Varangue",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Explore Rova of Antananarivo",
+          "description": "Visit the historic Rova of Antananarivo, a royal palace complex that offers stunning views of the city and insights into Madagascar's rich history. Don't forget your camera for some breathtaking shots!",
+          "searchQuery": "Rova of Antananarivo",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit Analakely Market",
+          "description": "Stroll through Analakely Market, where you can experience the vibrant local culture and shop for unique souvenirs. The colorful stalls and lively atmosphere make it a great place for photography.",
+          "searchQuery": "Analakely Market",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Flight from Antananarivo to Washington D.C.",
+          "description": "Catch your international flight back to Washington D.C. Reflect on the incredible experiences you've had in Madagascar as you prepare for your journey home.",
+          "searchQuery": "Antananarivo International Airport",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

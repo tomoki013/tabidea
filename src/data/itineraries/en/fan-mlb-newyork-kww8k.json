@@ -1,0 +1,385 @@
+{
+  "id": "31e50528-fe9d-4993-89e8-b6942745c1ea",
+  "destination": "New York City",
+  "description": "Immerse yourself in the vibrant energy of New York City, where the pulse of the streets matches the rhythm of your family's excitement. Over four unforgettable days, you’ll explore the iconic landmarks, dive into the world of Major League Baseball, and create lasting memories in this bustling metropolis. From the towering skyscrapers to the charming neighborhoods, every moment is filled with adventure and discovery, perfect for both kids and adults alike.",
+  "heroImage": "https://images.unsplash.com/photo-1578496746448-fe831c881a57?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTE0ODZ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Julius Drost",
+  "heroImagePhotographerUrl": "https://unsplash.com/@juliusdrost?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Exploring Midtown",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Ellen's Stardust Diner",
+          "description": "Start your day with a hearty breakfast at this iconic diner, famous for its singing waitstaff. Enjoy classic American breakfast dishes while soaking in the vibrant atmosphere.",
+          "searchQuery": "Ellen's Stardust Diner",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Times Square",
+          "description": "Immerse yourself in the bright lights and bustling energy of Times Square. Take photos with the iconic billboards and explore the nearby shops for some MLB merchandise.",
+          "searchQuery": "Times Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Shake Shack",
+          "description": "Grab a delicious burger and fries at Shake Shack, a beloved fast-casual chain. The original location is just a short walk from Times Square, perfect for a quick and tasty meal.",
+          "searchQuery": "Shake Shack",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Bryant Park",
+          "description": "Take a leisurely stroll through Bryant Park, a beautiful green space surrounded by skyscrapers. Enjoy the park's various activities, including games and seasonal events.",
+          "searchQuery": "Bryant Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the Empire State Building",
+          "description": "Head to the Empire State Building for breathtaking views of the city from the observation deck. Be sure to take your time and enjoy the exhibits about the building's history.",
+          "searchQuery": "Empire State Building",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Junior's Restaurant",
+          "description": "Indulge in a classic New York cheesecake at Junior's, known for its delicious desserts and hearty meals. It's a great spot to relax after a day of exploring.",
+          "searchQuery": "Junior's Restaurant",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Shopping for MLB Merchandise at the MLB Store",
+          "description": "Wrap up your day by visiting the MLB Store in Midtown. It's the perfect place to find jerseys, caps, and other fan gear to commemorate your trip.",
+          "searchQuery": "MLB Store",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "MLB Adventures and Central Park",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Sarabeth's",
+          "description": "Start your day with a delightful breakfast at Sarabeth's, known for its delicious pancakes and fresh fruit. It's a family-friendly spot that will energize you for the day ahead!",
+          "searchQuery": "Sarabeth's Central Park South",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Yankee Stadium Tour",
+          "description": "Take a guided tour of the iconic Yankee Stadium, where you can learn about the history of the Yankees and see the stadium up close. Don't forget to check out the Monument Park!",
+          "searchQuery": "Yankee Stadium",
+          "locationEn": "Bronx, New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Yankee Stadium's Hard Rock Cafe",
+          "description": "Enjoy lunch at the Hard Rock Cafe located inside Yankee Stadium. It's a great place to grab a bite while soaking in the baseball atmosphere.",
+          "searchQuery": "Hard Rock Cafe Yankee Stadium",
+          "locationEn": "Bronx, New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Shopping for MLB Merchandise",
+          "description": "After the tour, spend some time shopping for official MLB merchandise at the stadium's team store. It's the perfect opportunity to grab some fan gear for the family!",
+          "searchQuery": "Yankee Stadium Team Store",
+          "locationEn": "Bronx, New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Central Park Exploration",
+          "description": "Head back to Manhattan and explore Central Park. You can rent bikes or take a leisurely walk to enjoy the beautiful scenery and maybe even spot some wildlife!",
+          "searchQuery": "Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit The Metropolitan Museum of Art",
+          "description": "Explore The Met, one of the largest and most prestigious art museums in the world. The museum has a family-friendly atmosphere with plenty of exhibits to engage children.",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Smith",
+          "description": "End your day with a family dinner at The Smith, a lively American brasserie with a great menu that caters to all tastes. It's a perfect spot to relax after a busy day!",
+          "searchQuery": "The Smith",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Brooklyn and Baseball Culture",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Junior's Restaurant",
+          "description": "Start your day with a classic New York breakfast at Junior's, famous for its delicious cheesecakes and hearty portions. It's a great spot to fuel up before a day of exploring!",
+          "searchQuery": "Junior's Restaurant",
+          "locationEn": "Brooklyn, New York",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Brooklyn Bridge Walk",
+          "description": "Take a leisurely stroll across the iconic Brooklyn Bridge. Enjoy stunning views of the Manhattan skyline and the East River as you walk from Brooklyn to Manhattan. Don't forget to snap some family photos!",
+          "searchQuery": "Brooklyn Bridge",
+          "locationEn": "Brooklyn, New York",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Visit the Brooklyn Museum",
+          "description": "Explore the Brooklyn Museum, which features an impressive collection of art and artifacts. The museum often has family-friendly exhibits and activities, making it a perfect stop for kids and adults alike.",
+          "searchQuery": "Brooklyn Museum",
+          "locationEn": "Brooklyn, New York",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Smorgasburg",
+          "description": "Head to Smorgasburg, a popular outdoor food market in Williamsburg. Sample a variety of local foods from different vendors, perfect for trying something new and delicious!",
+          "searchQuery": "Smorgasburg",
+          "locationEn": "Brooklyn, New York",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Coney Island Boardwalk",
+          "description": "Travel to Coney Island and enjoy the lively atmosphere of the boardwalk. You can visit the beach, ride the famous Cyclone roller coaster, or just enjoy a stroll along the shore.",
+          "searchQuery": "Coney Island Boardwalk",
+          "locationEn": "Coney Island, New York",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Nathan's Famous",
+          "description": "No trip to Coney Island is complete without a hot dog from Nathan's Famous! Grab a bite and enjoy the vibrant atmosphere of this historic eatery.",
+          "searchQuery": "Nathan's Famous",
+          "locationEn": "Coney Island, New York",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Barclays Center Tour",
+          "description": "Wrap up your day with a tour of the Barclays Center, home to the Brooklyn Nets and various events. Learn about the history of the arena and its significance in Brooklyn's sports culture.",
+          "searchQuery": "Barclays Center",
+          "locationEn": "Brooklyn, New York",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Hotel in New York City",
+          "description": "After a fun-filled day, head back to your hotel in New York City to relax and reflect on the day's adventures.",
+          "locationEn": "New York City, New York",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Final Day and Departure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Sarabeth's",
+          "description": "Start your day with a delightful breakfast at Sarabeth's, known for its delicious pancakes and fresh fruit. It's a family-friendly spot that offers a cozy atmosphere to fuel up for the day ahead.",
+          "searchQuery": "Sarabeth's Central Park South",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the MLB Store",
+          "description": "Head to the MLB Store located in Midtown Manhattan. This is a paradise for baseball fans, offering a wide range of merchandise from all teams, including jerseys, caps, and collectibles. Perfect for picking up some fan gear!",
+          "searchQuery": "MLB Store",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore Fifth Avenue",
+          "description": "Stroll along Fifth Avenue, one of the most famous shopping streets in the world. Enjoy window shopping at iconic stores and take in the vibrant atmosphere of New York City. Don't forget to snap some family photos!",
+          "searchQuery": "Fifth Avenue",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Shake Shack",
+          "description": "Grab a casual lunch at Shake Shack, famous for its burgers and shakes. It's a great spot for families, and the outdoor seating allows you to enjoy the lively city vibe.",
+          "searchQuery": "Shake Shack Madison Square Park",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the National Baseball Hall of Fame and Museum",
+          "description": "Take a trip to Cooperstown to visit the National Baseball Hall of Fame and Museum. It's a bit of a drive, but well worth it for any baseball enthusiast. Explore the history of the game and see memorabilia from your favorite players!",
+          "searchQuery": "National Baseball Hall of Fame and Museum",
+          "locationEn": "Cooperstown, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to New York City",
+          "description": "After a fun-filled day at the Hall of Fame, head back to New York City. Use this time to relax and reflect on your trip as you make your way back to the city.",
+          "locationEn": "New York City, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Carmine's Italian Restaurant",
+          "description": "End your trip with a hearty family-style dinner at Carmine's. Known for its generous portions and delicious Italian dishes, it's the perfect way to celebrate your time in New York City.",
+          "searchQuery": "Carmine's Italian Restaurant",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

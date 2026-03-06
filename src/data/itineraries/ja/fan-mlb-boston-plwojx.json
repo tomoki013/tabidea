@@ -1,0 +1,362 @@
+{
+  "id": "b848e68b-6a54-40dc-bb7b-25df03f99070",
+  "destination": "ボストン",
+  "description": "ボストンの街は、歴史と文化が交差する魅力的な場所です。特に、メジャーリーグベースボール（MLB）ファンにはたまらないスポットが盛りだくさん。歴史的な名所を巡りながら、ボストンの活気ある雰囲気に浸り、推し活を楽しむ素敵な旅を提案します。",
+  "heroImage": "https://images.unsplash.com/photo-1506551907304-60bb62ffc9b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTIwNzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Lance Anderson",
+  "heroImagePhotographerUrl": "https://unsplash.com/@lanceanderson?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "ボストン到着と歴史散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ボストンの地元のカフェで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理が揃い、エネルギーをチャージして一日をスタート！",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ボストンコモン散策",
+          "description": "アメリカ最古の公園、ボストンコモンでリラックス。緑豊かな景色の中を散策し、歴史的なモニュメントを楽しみながら、ボストンの雰囲気を感じましょう。",
+          "searchQuery": "Boston Common",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "クインシーマーケットでランチ",
+          "description": "クインシーマーケットで多彩なフードスタンドから好きな料理を選び、地元の味を堪能。シーフードやサンドイッチ、デザートまで、選ぶ楽しさも魅力です。",
+          "searchQuery": "Quincy Market",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "フリーダムトレイル散策",
+          "description": "ボストンの歴史を感じるフリーダムトレイルを歩きます。赤いラインを辿りながら、歴史的な建物や名所を訪れ、アメリカ独立の物語に触れましょう。",
+          "searchQuery": "Freedom Trail",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "MLB関連ショップ訪問",
+          "description": "ボストン・レッドソックスのファングッズを探しに、フェンウェイパーク周辺のショップへ。ユニフォームやグッズを手に入れて、思い出を作りましょう。",
+          "searchQuery": "Fenway Park",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "地元のレストランでディナー",
+          "description": "ボストンのシーフードレストランで、新鮮なロブスターやクラムチャウダーを楽しみます。地元の味を堪能しながら、素敵な夜を過ごしましょう。",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ボストンの夜景を楽しむ",
+          "description": "ボストンの美しい夜景を楽しむために、ハーバー沿いを散策。ライトアップされた街並みを眺めながら、ロマンチックなひとときを過ごします。",
+          "locationEn": "Boston, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "MLBの聖地、フェンウェイパーク",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ボストンのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ！",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "フェンウェイパーク見学ツアー",
+          "description": "MLBの聖地、フェンウェイパークを訪れます。歴史ある球場の内部を見学し、レッドソックスの熱い歴史を感じることができます。特にグリーンモンスターからの眺めは圧巻！",
+          "searchQuery": "Fenway Park",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ボストン美術館でランチ",
+          "description": "ボストン美術館内のカフェで軽食を楽しみます。アートに囲まれた空間で、サンドイッチやサラダを味わいながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ボストン美術館見学",
+          "description": "ボストン美術館で多彩なアートを楽しみます。特にアメリカのアートコレクションは見応えがあり、文化的な刺激を受けること間違いなしです。",
+          "searchQuery": "Museum of Fine Arts",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ニューベリー通りでショッピング",
+          "description": "ニューベリー通りを散策しながら、MLB関連のファングッズを探します。おしゃれなブティックやカフェも多く、ショッピングの合間に休憩も楽しめます。",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ボストンの地元料理を楽しめるレストランでディナー。シーフードやニューイングランドの名物料理を堪能し、旅行の締めくくりにふさわしい食事を楽しみましょう。",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の計画を立てながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Boston, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ボストンの文化とショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ボストンのカフェで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ。",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ボストン公共図書館",
+          "description": "美しい建築が魅力のボストン公共図書館を訪れます。歴史的な書籍やアートが展示されており、静かな雰囲気の中でゆったりと過ごせます。",
+          "searchQuery": "Boston Public Library",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ルビー・スラッシャーでランチ",
+          "description": "ボストンの人気レストラン、ルビー・スラッシャーでシーフードランチを楽しみます。新鮮なロブスターやクラムチャウダーが絶品です。",
+          "searchQuery": "Legal Sea Foods",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ハーバード大学キャンパス散策",
+          "description": "ケンブリッジにあるハーバード大学を訪れ、歴史的なキャンパスを散策します。美しい建物や庭園を楽しみながら、学生の雰囲気を感じてみてください。",
+          "searchQuery": "Harvard University",
+          "locationEn": "Cambridge, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "MLB関連グッズショップ訪問",
+          "description": "ボストン・レッドソックスの公式ショップで、ファングッズを購入します。ユニフォームやキャップなど、思い出に残るアイテムを見つけましょう。",
+          "searchQuery": "Boston Red Sox Team Store",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ケンブリッジのカフェで休憩",
+          "description": "ハーバード大学近くのカフェで、コーヒーやスイーツを楽しみながら、ゆったりとした時間を過ごします。地元の人々に混じってリラックス。",
+          "locationEn": "Cambridge, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ボストンのレストランでディナー",
+          "description": "ボストンのダウンタウンにあるレストランで、地元の料理を楽しみます。シーフードやステーキなど、ボストンならではの味を堪能。",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ボストンの思い出を持ち帰る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ボストンのカフェで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食で一日をスタート。",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ボストン・レッドソックスの本拠地フェンウェイ・パーク見学",
+          "description": "MLBの聖地とも言えるフェンウェイ・パークを訪れ、歴史ある球場の魅力を体感します。ガイドツアーに参加すれば、レッドソックスの歴史や選手たちのエピソードを聞くことができます。",
+          "searchQuery": "Fenway Park",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ボストンのファングッズショップでショッピング",
+          "description": "フェンウェイ・パーク近くのファングッズショップで、レッドソックスのユニフォームやグッズを購入。自分用のお土産や、友人へのプレゼントにぴったりです。",
+          "searchQuery": "Boston Red Sox Team Store",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ボストン・ハーバーでのクルーズ",
+          "description": "ボストン・ハーバーをクルーズしながら、海からの美しい景色を楽しみます。歴史的な建物や美しい景観を眺めながら、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Boston Harbor Cruises",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ボストンのカフェで休憩",
+          "description": "ボストンの人気カフェで、コーヒーとスイーツを楽しみながら、旅の思い出を語り合うひとときを。地元の人に愛されるカフェで、リラックスした時間を過ごせます。",
+          "searchQuery": "Tatte Bakery & Cafe",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ボストンのレストランでディナー",
+          "description": "ボストンのシーフードレストランで、新鮮なロブスターやクラムチャウダーを堪能。地元の味を楽しみながら、素敵なディナータイムを過ごします。",
+          "searchQuery": "Legal Sea Foods",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ボストンの夜景を楽しむ散策",
+          "description": "ボストンの街を散策しながら、夜景を楽しみます。特にハーバー沿いの景色は美しく、ロマンチックな雰囲気が漂います。",
+          "locationEn": "Boston, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,565 @@
+{
+  "id": "a49f4031-67cd-4632-be5b-4be8523abcd6",
+  "destination": "ストックホルム",
+  "description": "Immerse yourself in the enchanting beauty of Stockholm, a city that seamlessly blends history with modernity. Over six days, you and your friends will wander through cobblestone streets, explore charming boutiques, and capture the essence of this picturesque city, famously known as the inspiration for the beloved film 'Kiki's Delivery Service'. From the vibrant markets to the serene waterfronts, every corner of Stockholm offers a new adventure waiting to be discovered.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Stockholm",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Vete-Katten",
+          "description": "Start your day with a delightful Swedish breakfast at Vete-Katten, a historic café known for its pastries and cozy atmosphere. Enjoy a selection of freshly baked breads, cheeses, and traditional Swedish coffee.",
+          "searchQuery": "Vete-Katten",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Gamla Stan",
+          "description": "Wander through the charming cobblestone streets of Gamla Stan, Stockholm's old town. Admire the colorful buildings, visit the Royal Palace, and don't forget to snap some photos at Stortorget, the main square.",
+          "searchQuery": "Gamla Stan",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Tradition",
+          "description": "Savor traditional Swedish cuisine at Tradition, where you can try classic dishes like meatballs and herring. The cozy ambiance and authentic flavors make it a perfect spot for lunch.",
+          "searchQuery": "Tradition",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Nobel Museum",
+          "description": "Discover the fascinating stories of Nobel Prize winners at the Nobel Museum. The exhibits highlight the achievements of laureates and their contributions to humanity, making it an inspiring stop.",
+          "searchQuery": "Nobel Museum",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping in Södermalm",
+          "description": "Head to Södermalm, a trendy district known for its unique shops and boutiques. Explore local designers and find Scandinavian home goods and quirky souvenirs to take home.",
+          "searchQuery": "Södermalm",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Pelikan",
+          "description": "Enjoy dinner at Pelikan, a classic Swedish restaurant in Södermalm. Indulge in a hearty meal featuring local ingredients and traditional recipes, all served in a charming setting.",
+          "searchQuery": "Pelikan",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening stroll along the waterfront",
+          "description": "End your day with a leisurely stroll along the waterfront. The views of the city lights reflecting on the water are simply magical, providing the perfect backdrop for a memorable evening.",
+          "searchQuery": "Stockholm waterfront",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Gamla Stan",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Vete-Katten",
+          "description": "Start your day with a delightful Swedish breakfast at Vete-Katten, a charming café known for its pastries and traditional dishes. Enjoy a warm cinnamon bun and a cup of coffee in this historic setting.",
+          "searchQuery": "Vete-Katten",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Stortorget Square",
+          "description": "Stroll through Stortorget, the main square of Gamla Stan, surrounded by colorful medieval buildings. This picturesque spot is perfect for photos and soaking in the vibrant atmosphere of Stockholm's old town.",
+          "searchQuery": "Stortorget",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Nobel Museum",
+          "description": "Visit the Nobel Museum to learn about the history of the Nobel Prize and its laureates. The museum offers fascinating exhibits and insights into the achievements of some of the world's greatest minds.",
+          "searchQuery": "Nobel Museum",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Tradition",
+          "description": "Enjoy a traditional Swedish lunch at Tradition, where you can savor classic dishes like meatballs and herring. The cozy atmosphere and authentic flavors make it a must-visit for food lovers.",
+          "searchQuery": "Tradition",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Shopping for Nordic Crafts",
+          "description": "Explore the quaint shops in Gamla Stan, where you can find unique Nordic crafts and souvenirs. Look for handmade items, textiles, and local art that reflect the charm of Swedish design.",
+          "searchQuery": "Nordic Crafts",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Fika at Café Schweizer",
+          "description": "Take a break and enjoy a traditional Swedish 'fika' at Café Schweizer. Indulge in coffee and a slice of cake while relaxing in this cozy café, perfect for people-watching.",
+          "searchQuery": "Café Schweizer",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Walk along the waterfront",
+          "description": "End your day with a leisurely walk along the waterfront, taking in the stunning views of the city and the water. This is a great opportunity for some beautiful sunset photos.",
+          "searchQuery": "Stockholm Waterfront",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Pelikan",
+          "description": "Savor a delicious dinner at Pelikan, a historic restaurant known for its traditional Swedish cuisine. Enjoy dishes made from fresh, local ingredients in a warm and inviting atmosphere.",
+          "searchQuery": "Pelikan",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Södermalm and Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Saturnus",
+          "description": "Start your day with a delicious breakfast at Café Saturnus, famous for its giant cinnamon buns and cozy atmosphere. Enjoy a warm cup of coffee paired with a sweet pastry to fuel your day of exploration.",
+          "searchQuery": "Café Saturnus",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore SoFo District",
+          "description": "Wander through the vibrant SoFo District, known for its eclectic mix of boutiques, vintage shops, and trendy cafes. This area is perfect for finding unique Nordic goods and capturing Instagram-worthy photos of its charming streets.",
+          "searchQuery": "SoFo District",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Urban Deli",
+          "description": "Enjoy a casual lunch at Urban Deli, a popular spot among locals. Savor fresh, locally sourced dishes in a lively atmosphere, perfect for recharging before more shopping.",
+          "searchQuery": "Urban Deli",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Shopping at Hornstull Market",
+          "description": "Head to Hornstull Market, a trendy area filled with shops and stalls selling everything from handmade crafts to vintage clothing. It's a great place to find unique souvenirs and gifts, especially Nordic design items.",
+          "searchQuery": "Hornstull Market",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Coffee Break at Vete-Katten",
+          "description": "Take a break at Vete-Katten, a historic café known for its elegant pastries and traditional Swedish cakes. Enjoy a slice of princess cake or a cardamom bun while soaking in the charming atmosphere.",
+          "searchQuery": "Vete-Katten",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Stroll along Monteliusvagen",
+          "description": "End your day with a leisurely stroll along Monteliusvagen, a scenic walking path that offers stunning views of the city and the waterfront. It's a perfect spot for photography, especially during sunset.",
+          "searchQuery": "Monteliusvagen",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Pelikan",
+          "description": "Enjoy a traditional Swedish dinner at Pelikan, a historic restaurant in Sodermalm. Indulge in classic dishes like herring and meatballs, all served in a cozy, rustic setting.",
+          "searchQuery": "Pelikan",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Art and Culture Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Vete-Katten",
+          "description": "Start your day at Vete-Katten, a charming café known for its traditional Swedish pastries and cozy atmosphere. Enjoy a slice of their famous princess cake with a cup of coffee to fuel your day of exploration.",
+          "searchQuery": "Vete-Katten",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Moderna Museet",
+          "description": "Explore the Moderna Museet, home to an impressive collection of modern and contemporary art. Don't miss the stunning views of the waterfront from the museum's terrace, perfect for a few memorable photos.",
+          "searchQuery": "Moderna Museet",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Pelikan",
+          "description": "Head to Pelikan, a historic restaurant in Sodermalm, for a traditional Swedish lunch. Try the herring platter or meatballs, both local favorites, in a cozy, rustic setting.",
+          "searchQuery": "Pelikan",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through Djurgården",
+          "description": "Take a leisurely walk through Djurgården, a beautiful island park filled with lush greenery and picturesque paths. It's a perfect spot for photography, especially near the water and historic buildings.",
+          "searchQuery": "Djurgården",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Nordic Goods at DesignTorget",
+          "description": "Visit DesignTorget, a trendy store offering a variety of unique Nordic design items and souvenirs. It's a great place to find quirky home goods and gifts that reflect Scandinavian style.",
+          "searchQuery": "DesignTorget",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Tradition",
+          "description": "Enjoy dinner at Tradition, where you can savor authentic Swedish cuisine in a warm and inviting atmosphere. Be sure to try the gravlax or the classic Swedish meatballs for a true taste of Sweden.",
+          "searchQuery": "Tradition",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along Strandvägen",
+          "description": "End your day with a relaxing evening walk along Strandvägen, one of Stockholm's most beautiful waterfront promenades. The views of the city skyline at sunset are simply breathtaking.",
+          "searchQuery": "Strandvägen",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Day Trip to Vaxholm",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Blåbär",
+          "description": "Start your day with a delightful breakfast at Café Blåbär, known for its cozy atmosphere and delicious Swedish pastries. Try their famous cinnamon bun with a cup of freshly brewed coffee to fuel your adventure ahead.",
+          "searchQuery": "Café Blåbär",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Ferry to Vaxholm",
+          "description": "Catch a scenic ferry from Stockholm to Vaxholm, a charming archipelago town. The ride takes about an hour and offers stunning views of the surrounding islands and waterfront.",
+          "searchQuery": "Ferry to Vaxholm",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Explore Vaxholm Fortress",
+          "description": "Upon arrival, visit the historic Vaxholm Fortress, which dates back to the 16th century. Explore the museum and enjoy panoramic views of the archipelago from the fortress walls.",
+          "searchQuery": "Vaxholm Fortress",
+          "locationEn": "Vaxholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Vaxholm's Restaurant",
+          "description": "Enjoy a leisurely lunch at one of Vaxholm's waterfront restaurants, where you can savor fresh seafood dishes while overlooking the picturesque harbor.",
+          "searchQuery": "Vaxholm Restaurant",
+          "locationEn": "Vaxholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Shopping for Nordic Crafts",
+          "description": "Stroll through the quaint streets of Vaxholm and explore local shops selling unique Nordic crafts and souvenirs. This is the perfect opportunity to find that special item to take home.",
+          "searchQuery": "Vaxholm Shops",
+          "locationEn": "Vaxholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at the Waterfront",
+          "description": "Take some time to relax by the waterfront, enjoying the serene views of the archipelago. This is a great spot for photography, so don’t forget your camera!",
+          "searchQuery": "Vaxholm Waterfront",
+          "locationEn": "Vaxholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Ferry back to Stockholm",
+          "description": "Head back to Stockholm on the ferry, reflecting on your lovely day in Vaxholm. The return trip offers another chance to capture the beauty of the archipelago.",
+          "searchQuery": "Ferry to Stockholm",
+          "locationEn": "Vaxholm, Sweden",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Tradition",
+          "description": "End your day with a traditional Swedish dinner at Tradition, where you can indulge in classic dishes like meatballs and herring, all served in a warm, inviting atmosphere.",
+          "searchQuery": "Tradition Restaurant",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Stockholm",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "15:00"
+        },
+        "duration": "9h",
+        "memo": "Direct flight from Stockholm to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Vete-Katten",
+          "description": "Start your day with a delightful breakfast at Vete-Katten, a charming café known for its traditional Swedish pastries and cozy atmosphere. Enjoy a classic Swedish cinnamon bun and a cup of coffee to fuel your day.",
+          "searchQuery": "Vete-Katten",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Stroll through Gamla Stan",
+          "description": "Take a leisurely walk through Gamla Stan, Stockholm's picturesque old town. With its cobblestone streets, colorful buildings, and quaint shops, it's the perfect place to soak in the city's history and charm. Don't forget to snap some photos of the stunning architecture!",
+          "searchQuery": "Gamla Stan",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Visit the Royal Palace",
+          "description": "Explore the Royal Palace, one of the largest palaces in Europe. Witness the changing of the guard ceremony and take a tour of the opulent rooms filled with royal artifacts. The palace offers a glimpse into Sweden's regal history.",
+          "searchQuery": "Royal Palace of Stockholm",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Tradition",
+          "description": "Savor traditional Swedish cuisine at Tradition, a cozy restaurant that serves classic dishes like meatballs and herring. It's a great spot to experience authentic flavors before your journey home.",
+          "searchQuery": "Tradition",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Last-minute shopping at NK",
+          "description": "Head to Nordiska Kompaniet (NK), a high-end department store, for some last-minute shopping. Browse through a variety of Scandinavian design items, fashion, and unique souvenirs to take home.",
+          "searchQuery": "Nordiska Kompaniet",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

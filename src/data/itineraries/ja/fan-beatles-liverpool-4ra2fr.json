@@ -1,0 +1,373 @@
+{
+  "id": "d6d131d0-8f36-4a16-aac5-138b2d15c382",
+  "destination": "リバプール",
+  "description": "リバプールでの4日間は、ビートルズの魅力に浸りながら、歴史と文化を感じる旅です。地元の人々が愛するスポットや、ビートルズファンにはたまらない名所を巡り、リラックスした時間を過ごしましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ビートルズの足跡を辿る旅の始まり",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リバプールのホテルで、イギリスの伝統的な朝食を楽しみます。ベーコンやソーセージ、トーストに紅茶を添えて、エネルギーをチャージしましょう。",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ビートルズ・ストーリー",
+          "description": "ビートルズの歴史を深く知ることができる博物館です。彼らの音楽や影響を受けた文化を体感し、貴重な展示物を見学しましょう。特に、初期のレコーディングや映像は必見です。",
+          "searchQuery": "The Beatles Story",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "アルバート・ドックでランチ",
+          "description": "歴史的なアルバート・ドックで、地元のシーフードレストランでランチを楽しみます。新鮮な魚料理やパイが人気で、リバプールの港の景色を眺めながら食事ができます。",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "マシュー・ストリート散策",
+          "description": "ビートルズの音楽が息づくマシュー・ストリートを散策。ここにはビートルズにちなんだお店やストリートパフォーマンスがあり、ファングッズを探すのにぴったりの場所です。",
+          "searchQuery": "Mathew Street",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ビートルズ関連ショップ巡り",
+          "description": "ビートルズの公式グッズやレアなアイテムが揃うショップを訪れます。特に「The Beatles Shop」はファン必見のスポットで、記念品を手に入れるチャンスです。",
+          "searchQuery": "The Beatles Shop",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "リバプールの公園でリラックス",
+          "description": "リバプールの美しい公園で、散策やベンチでのんびり過ごします。緑に囲まれた静かな時間を楽しみながら、旅の疲れを癒しましょう。",
+          "locationEn": "Liverpool, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のパブでディナー",
+          "description": "リバプールの地元のパブで、フィッシュ＆チップスやパイを楽しみます。カジュアルな雰囲気の中で、地元の人々と交流するのも楽しいひとときです。",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "リバプールの文化と歴史を満喫",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "リバプールのホテルで、イギリスの伝統的な朝食を楽しみます。ベーコンやソーセージ、トーストに紅茶を添えて、エネルギーをチャージしましょう。",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "リバプール美術館",
+          "description": "リバプール美術館で、地元アーティストの作品や歴史的なアートを鑑賞します。特に、ビートルズに関連する展示も見逃せません。",
+          "searchQuery": "Liverpool Museum",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "The Philharmonic Dining Roomsでランチ",
+          "description": "歴史的なパブで、地元のビールと共にイギリスのパブ料理を楽しみます。特にフィッシュ＆チップスが人気です。",
+          "searchQuery": "The Philharmonic Dining Rooms",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "セント・ジョージホール",
+          "description": "セント・ジョージホールを訪れ、その壮大な建築を堪能します。内部の装飾や歴史的な背景についてのガイドツアーもおすすめです。",
+          "searchQuery": "St George's Hall",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ビートルズ・ストーリー",
+          "description": "ビートルズの歴史を深く知ることができるミュージアムです。彼らの音楽や影響を受けた文化についての展示が充実しています。",
+          "searchQuery": "The Beatles Story",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ビートルズ関連グッズのショッピング",
+          "description": "ビートルズのファングッズを取り扱うショップで、Tシャツやレコードなどを探してみましょう。お土産にもぴったりです。",
+          "searchQuery": "The Beatles Shop",
+          "locationEn": "Liverpool, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "The Cavern Clubでディナー",
+          "description": "ビートルズが初めて演奏した伝説のクラブで、ライブ音楽を楽しみながらディナーをいただきます。雰囲気も最高です。",
+          "searchQuery": "The Cavern Club",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ビートルズの聖地を巡る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リバプールのホテルで、イギリスの伝統的な朝食を楽しみます。ベーコンやソーセージ、トーストに紅茶を添えて、元気に一日をスタート！",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ペニーレイン",
+          "description": "ビートルズの名曲「ペニーレイン」にちなんだ場所を訪れます。美しい風景と共に、ビートルズの歴史を感じることができるスポットです。",
+          "searchQuery": "Penny Lane",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "ストロベリー・フィールズ",
+          "description": "ビートルズのジョン・レノンが幼少期を過ごした場所で、名曲「ストロベリー・フィールズ・フォーエバー」にも登場します。静かな庭園でリラックスしながら、思い出に浸りましょう。",
+          "searchQuery": "Strawberry Fields",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ザ・ビートルズ・ストーリーでランチ",
+          "description": "ビートルズにちなんだテーマレストランで、軽食を楽しみながら彼らの歴史を学びます。ビートルズの memorabilia に囲まれたユニークな空間です。",
+          "searchQuery": "The Beatles Story",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ビートルズの家（メンバーの故郷）",
+          "description": "ジョン・レノンやポール・マッカートニーの家を訪れ、彼らの成長過程や音楽のルーツを感じることができます。ガイドツアーもあり、より深くビートルズの世界に浸れます。",
+          "searchQuery": "John Lennon House",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ビートルズ関連グッズのショッピング",
+          "description": "リバプールのビートルズショップで、ファングッズやお土産を探しましょう。Tシャツやレコードなど、思い出に残るアイテムが揃っています。",
+          "searchQuery": "The Beatles Shop",
+          "locationEn": "Liverpool, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルでリラックス",
+          "description": "一日の観光を終えたら、ホテルでゆっくりとくつろぎましょう。ビートルズの音楽を聴きながら、旅の思い出を振り返るのも良いですね。",
+          "locationEn": "Liverpool, England",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "リバプールのパブでディナー",
+          "description": "地元のパブで、イギリスの伝統的な料理を楽しみます。フィッシュ＆チップスやパイなど、ビートルズの故郷ならではの味を堪能しましょう。",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "リバプールの最後のひとときを楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リバプールのホテルで、イギリスの伝統的な朝食を楽しみます。ベーコンやソーセージ、トーストに紅茶を添えて、エネルギーをチャージしましょう。",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "リバプール・マーケット訪問",
+          "description": "地元の人々に愛されるリバプール・マーケットで、ユニークな商品や新鮮な食材を探しながら、地元の雰囲気を楽しみます。特に手作りの工芸品やアート作品が魅力的です。",
+          "searchQuery": "Liverpool Market",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "The Beatles Story訪問",
+          "description": "ビートルズの歴史を深く知ることができるミュージアム「The Beatles Story」で、彼らの音楽と文化的影響を体感します。展示物や映像が豊富で、ファンにはたまらないスポットです。",
+          "searchQuery": "The Beatles Story",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ビートルズ関連ショップ巡り",
+          "description": "ビートルズのファングッズを探しに、キャバーン・クラブ周辺のショップを巡ります。Tシャツやレコード、限定グッズなど、思い出に残るアイテムを見つけましょう。",
+          "searchQuery": "Cavern Club",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アルバート・ドック散策",
+          "description": "歴史的なアルバート・ドックを散策し、アートギャラリーやカフェでリラックス。美しい景色を眺めながら、最後のひとときを楽しみます。",
+          "searchQuery": "Albert Dock",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "リバプールのレストランでディナー",
+          "description": "地元の食材を使った料理を楽しめるレストランで、リバプールの最後の夜を締めくくります。特にシーフード料理が人気です。",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のリバプール散策",
+          "description": "夜のリバプールを散策し、ライトアップされた街並みを楽しみます。ビートルズの音楽を聴きながら、ロマンティックな時間を過ごしましょう。",
+          "locationEn": "Liverpool, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

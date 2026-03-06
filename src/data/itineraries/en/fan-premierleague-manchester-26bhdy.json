@@ -1,0 +1,350 @@
+{
+  "id": "d38914b7-80c0-4106-ae9a-32bd54ce1074",
+  "destination": "Manchester",
+  "description": "Immerse yourself in the vibrant culture and rich history of Manchester, a city that pulses with the energy of its football fandom and culinary delights. Over four days, you and your friends will explore iconic football landmarks, savor local delicacies, and discover the artistic spirit that defines this northern gem. From the thrilling atmosphere of Premier League matches to the cozy charm of local eateries, this trip promises to be a feast for the senses and a celebration of your favorite teams.",
+  "heroImage": "https://images.unsplash.com/photo-1727873275022-d5189075c660?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTEyNTh8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Sierra Alpha Juliet",
+  "heroImagePhotographerUrl": "https://unsplash.com/@mrhz?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Exploring the Heart of Manchester",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Federal Cafe Bar",
+          "description": "Start your day with a delicious brunch at Federal Cafe Bar, known for its Australian-style breakfast. Enjoy their famous avocado toast or a hearty breakfast burrito to fuel your day of exploration.",
+          "searchQuery": "Federal Cafe Bar",
+          "locationEn": "Manchester, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Manchester City Centre",
+          "description": "Stroll through the vibrant Manchester City Centre, where you can admire the stunning architecture and visit iconic landmarks like the Manchester Town Hall and the Central Library. Don't forget to snap some photos!",
+          "searchQuery": "Manchester City Centre",
+          "locationEn": "Manchester, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Rudy's Neapolitan Pizza",
+          "description": "Indulge in some of the best pizza in Manchester at Rudy's. Their authentic Neapolitan pizzas are made with fresh ingredients and cooked to perfection in a traditional wood-fired oven.",
+          "searchQuery": "Rudy's Neapolitan Pizza",
+          "locationEn": "Manchester, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Northern Quarter",
+          "description": "Dive into the artistic heart of Manchester by exploring the Northern Quarter. This area is filled with independent shops, street art, and quirky cafes. It's the perfect place to find unique fan merchandise and local crafts.",
+          "searchQuery": "Northern Quarter",
+          "locationEn": "Manchester, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the National Football Museum",
+          "description": "Immerse yourself in the world of football at the National Football Museum. Discover the history of the sport, see memorabilia from famous players, and even try your hand at some interactive exhibits.",
+          "searchQuery": "National Football Museum",
+          "locationEn": "Manchester, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Wharf",
+          "description": "Enjoy a relaxed dinner at The Wharf, a charming pub located by the canal. They offer a variety of classic British dishes and a great selection of local ales, perfect for unwinding after a day of sightseeing.",
+          "searchQuery": "The Wharf",
+          "locationEn": "Manchester, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll along the canals",
+          "description": "Take a leisurely evening stroll along the picturesque canals of Manchester. The area is beautifully lit at night, providing a perfect backdrop for a relaxing end to your first day.",
+          "searchQuery": "Manchester Canals",
+          "locationEn": "Manchester, UK",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Football Fever: Premier League Experience",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Refuge",
+          "description": "Start your day with a hearty breakfast at The Refuge, known for its delicious brunch options and cozy atmosphere. Try their full English breakfast for a true local experience!",
+          "searchQuery": "The Refuge",
+          "locationEn": "Manchester, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Etihad Stadium Tour",
+          "description": "Visit the iconic Etihad Stadium, home of Manchester City FC. The guided tour takes you through the stadium, including the pitch, the dressing rooms, and the trophy room, giving you a behind-the-scenes look at the club's history.",
+          "searchQuery": "Etihad Stadium",
+          "locationEn": "Manchester, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The City Cafe",
+          "description": "Enjoy a casual lunch at The City Cafe, located near the stadium. They offer a variety of sandwiches and salads, perfect for a quick bite before heading to your next destination.",
+          "searchQuery": "The City Cafe",
+          "locationEn": "Manchester, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Old Trafford Stadium Tour",
+          "description": "Head over to Old Trafford, the legendary home of Manchester United. The tour includes access to the museum and a chance to walk through the players' tunnel, making it a must-visit for any football fan.",
+          "searchQuery": "Old Trafford",
+          "locationEn": "Manchester, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Fan Merchandise at the Manchester United Megastore",
+          "description": "After the tour, visit the Manchester United Megastore to pick up some exclusive fan merchandise. From jerseys to souvenirs, you'll find everything you need to show your support for the team!",
+          "searchQuery": "Manchester United Megastore",
+          "locationEn": "Manchester, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Rudy's Neapolitan Pizza",
+          "description": "End your day with a delicious dinner at Rudy's, famous for its authentic Neapolitan pizza. The casual atmosphere and mouth-watering pizzas make it a perfect spot to unwind after a day of football.",
+          "searchQuery": "Rudy's Neapolitan Pizza",
+          "locationEn": "Manchester, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion and Local Cuisine",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Federal Cafe",
+          "description": "Start your day with a hearty breakfast at Federal Cafe, known for its delicious brunch options and cozy atmosphere. Try their famous avocado toast or a classic English breakfast to fuel up for the day ahead.",
+          "searchQuery": "Federal Cafe Manchester",
+          "locationEn": "Manchester, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Manchester Art Gallery",
+          "description": "Explore the Manchester Art Gallery, home to an impressive collection of British art, including works from the Pre-Raphaelite Brotherhood. The gallery is free to enter, making it a perfect spot to soak in some culture without breaking the bank.",
+          "searchQuery": "Manchester Art Gallery",
+          "locationEn": "Manchester, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Refuge",
+          "description": "Enjoy a relaxed lunch at The Refuge, where you can savor a variety of dishes inspired by global cuisine. The vibrant atmosphere and unique decor make it a great place to unwind with friends.",
+          "searchQuery": "The Refuge Manchester",
+          "locationEn": "Manchester, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Chinatown",
+          "description": "Stroll through Manchester's Chinatown, one of the largest in the UK. Discover authentic Asian shops, bakeries, and restaurants. Don't forget to stop by the Chinese supermarket for some unique snacks and souvenirs.",
+          "searchQuery": "Chinatown Manchester",
+          "locationEn": "Manchester, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Manchester United Museum and Stadium Tour",
+          "description": "Dive into the world of Premier League football with a visit to the Manchester United Museum and Stadium. Take a guided tour of Old Trafford, learn about the club's rich history, and grab some official merchandise from the club shop.",
+          "searchQuery": "Manchester United Museum and Stadium",
+          "locationEn": "Manchester, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Rudy's Neapolitan Pizza",
+          "description": "End your day with a delicious dinner at Rudy's, famous for its authentic Neapolitan pizza. The casual vibe and mouth-watering pizzas make it a favorite among locals and visitors alike.",
+          "searchQuery": "Rudy's Neapolitan Pizza",
+          "locationEn": "Manchester, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Last-Minute Shopping and Departure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Refuge",
+          "description": "Start your day with a hearty breakfast at The Refuge, known for its delicious brunch options and cozy atmosphere. Try their famous avocado toast or a full English breakfast to fuel up for the day ahead.",
+          "searchQuery": "The Refuge",
+          "locationEn": "Manchester, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Trafford Centre",
+          "description": "Head to Trafford Centre, one of the largest shopping centers in the UK. Explore a variety of shops, from high street brands to unique boutiques, and don’t forget to check out the impressive food court for some quick snacks.",
+          "searchQuery": "Trafford Centre",
+          "locationEn": "Manchester, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Great Hall",
+          "description": "Enjoy lunch at The Great Hall within Trafford Centre, where you can choose from a range of cuisines. It’s a perfect spot to relax and recharge before more shopping or sightseeing.",
+          "searchQuery": "The Great Hall Trafford Centre",
+          "locationEn": "Manchester, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Deansgate",
+          "description": "Make your way to Deansgate, a vibrant street filled with shops, cafes, and bars. This area is great for picking up some last-minute fan merchandise from local sports shops, especially if you're a Premier League fan.",
+          "searchQuery": "Deansgate",
+          "locationEn": "Manchester, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Manchester United Megastore",
+          "description": "No trip to Manchester is complete without a visit to the Manchester United Megastore. Here, you can find a wide range of official merchandise, from jerseys to memorabilia, perfect for any fan.",
+          "searchQuery": "Manchester United Megastore",
+          "locationEn": "Manchester, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Rudy's Neapolitan Pizza",
+          "description": "End your day with a delicious dinner at Rudy's, famous for its authentic Neapolitan pizza. The casual atmosphere and mouth-watering pizzas make it a great spot to unwind after a busy day.",
+          "searchQuery": "Rudy's Neapolitan Pizza",
+          "locationEn": "Manchester, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Hotel and Prepare for Departure",
+          "description": "Head back to your hotel to pack up and prepare for your departure. Reflect on the wonderful memories made during your trip to Manchester!",
+          "locationEn": "Manchester, UK",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

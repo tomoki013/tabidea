@@ -1,0 +1,673 @@
+{
+  "id": "8eae4ddc-e646-46a7-af2c-a9e5e2fcfffa",
+  "destination": "Iguazu Falls",
+  "description": "Immerse yourself in the breathtaking beauty of Iguazu Falls, a UNESCO World Heritage site that will leave you in awe. This 8-day adventure is designed for thrill-seekers and nature lovers alike, offering a perfect blend of exploration, adventure, and relaxation amidst one of the world's most stunning natural wonders. From exhilarating boat rides that take you right into the mist of the falls to tranquil hikes through lush rainforests, every moment promises to be unforgettable. Get ready to create memories that will last a lifetime with your friends as you embark on this incredible journey!",
+  "heroImage": "https://images.unsplash.com/photo-1648510399083-32883f49b35a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODYwODd8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Jeffrey Eisen",
+  "heroImagePhotographerUrl": "https://unsplash.com/@jeisen?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Departure from Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Washington D.C.",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Iguazu Falls",
+          "time": "16:00"
+        },
+        "duration": "10h",
+        "memo": "Direct flight to Iguazu Falls."
+      },
+      "activities": [
+        {
+          "time": "17:00",
+          "activity": "Check-in at Hotel Das Cataratas",
+          "description": "Settle into the luxurious Hotel Das Cataratas, located just steps away from the breathtaking Iguazu Falls. Enjoy the stunning views and relax in the beautiful surroundings.",
+          "searchQuery": "Hotel Das Cataratas",
+          "locationEn": "Iguazu Falls, Brazil",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at the hotel restaurant",
+          "description": "Indulge in a delightful dinner at the hotel's restaurant, featuring local Brazilian cuisine and fresh ingredients. The ambiance is perfect for unwinding after a long day of travel.",
+          "searchQuery": "Hotel Das Cataratas Restaurant",
+          "locationEn": "Iguazu Falls, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Evening stroll in the hotel gardens",
+          "description": "Take a leisurely evening stroll through the lush gardens of the hotel, soaking in the sounds of nature and the distant roar of the falls. A perfect way to end your first day in Iguazu.",
+          "searchQuery": "Iguazu Falls",
+          "locationEn": "Iguazu Falls, Brazil",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the Brazilian Side of Iguazu Falls",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring fresh fruits, pastries, and local delicacies to fuel your adventure ahead.",
+          "locationEn": "Iguazu Falls, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Iguazu National Park",
+          "description": "Head to Iguazu National Park, where you can explore the lush trails and breathtaking views of the falls. Don't miss the chance to take the train to the Devil's Throat for an unforgettable experience.",
+          "searchQuery": "Iguazu National Park",
+          "locationEn": "Iguazu National Park, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Porto Canoas Restaurant",
+          "description": "Enjoy a delicious lunch at Porto Canoas, located within the park. The restaurant offers stunning views of the falls and a menu featuring local flavors, perfect for recharging after your morning explorations.",
+          "searchQuery": "Porto Canoas Restaurant",
+          "locationEn": "Iguazu National Park, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Boat Tour to the Falls",
+          "description": "Get ready for an exhilarating boat tour that takes you right up to the base of the falls! Prepare to get wet as you experience the power and beauty of Iguazu Falls up close.",
+          "searchQuery": "Iguazu Falls Boat Tour",
+          "locationEn": "Iguazu Falls, Brazil",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore the Trails of Iguazu",
+          "description": "After the boat tour, take some time to explore the various walking trails in the park. Each path offers unique perspectives of the falls and the surrounding rainforest, making for great photo opportunities.",
+          "searchQuery": "Iguazu National Park Trails",
+          "locationEn": "Iguazu National Park, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Hotel",
+          "description": "Head back to your hotel to relax and freshen up after a day filled with adventure and stunning sights.",
+          "locationEn": "Iguazu Falls, Brazil",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at La Selva Restaurant",
+          "description": "Indulge in a delightful dinner at La Selva, known for its exquisite local cuisine and warm ambiance. It's the perfect way to end your day surrounded by nature.",
+          "searchQuery": "La Selva Restaurant",
+          "locationEn": "Iguazu Falls, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Adventure on the Argentine Side",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at La Selva",
+          "description": "Start your day with a hearty breakfast at La Selva, known for its fresh tropical fruits and delicious Argentine pastries. The cozy atmosphere is perfect for fueling up before a day of adventure!",
+          "searchQuery": "La Selva Iguazu",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Iguazu National Park",
+          "description": "Explore the breathtaking Iguazu National Park, a UNESCO World Heritage site. Walk along the well-maintained trails and witness the stunning views of the waterfalls, including the iconic Garganta del Diablo (Devil's Throat).",
+          "searchQuery": "Iguazu National Park",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurante Porto Canoas",
+          "description": "Enjoy a delicious lunch at Restaurante Porto Canoas, located within the park. Savor local dishes while overlooking the beautiful scenery of the falls. Don't forget to try the traditional Argentine empanadas!",
+          "searchQuery": "Restaurante Porto Canoas",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Boat Tour to the Falls",
+          "description": "Get ready for an exhilarating boat tour that takes you right up to the base of the falls! Feel the rush of the water as you get splashed by the powerful cascades. This is an unforgettable way to experience the majesty of Iguazu!",
+          "searchQuery": "Iguazu Falls Boat Tour",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore Garganta del Diablo",
+          "description": "After the boat tour, head to the viewing platform at Garganta del Diablo. This is the most impressive section of the falls, where you can witness the sheer power of nature as water plunges into the abyss. It's a sight you won't want to miss!",
+          "searchQuery": "Garganta del Diablo",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Hotel",
+          "description": "After a day filled with adventure, return to your hotel to relax and freshen up. Take some time to reflect on the incredible sights you've seen today!",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at El Quincho del Tio Querido",
+          "description": "End your day with a delightful dinner at El Quincho del Tio Querido, where you can indulge in traditional Argentine barbecue (asado) and enjoy a lively atmosphere. It's the perfect way to celebrate your day at Iguazu!",
+          "searchQuery": "El Quincho del Tio Querido",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Rainforest Exploration and Wildlife Spotting",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring local fruits, fresh bread, and traditional Argentine dishes to fuel your adventure ahead.",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Selvatura Park Canopy Tour",
+          "description": "Embark on an exhilarating canopy tour at Selvatura Park, where you'll glide through the treetops on zip lines, offering breathtaking views of the lush rainforest and its diverse wildlife.",
+          "searchQuery": "Selvatura Park",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "{\"type\":\"blog\",\"title\":\"Exploring the Wonders of Iguazu Falls\",\"url\":\"https://example.com/selvatura-park\",\"confidence\":\"high\"}"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at La Selva Restaurant",
+          "description": "Enjoy a delicious lunch at La Selva, where you can savor local dishes made with fresh ingredients, surrounded by the sounds of nature.",
+          "searchQuery": "La Selva Restaurant",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Guided Wildlife Spotting Tour",
+          "description": "Join a guided tour through the rainforest to spot exotic wildlife, including toucans, monkeys, and butterflies. Your guide will share fascinating insights about the ecosystem.",
+          "searchQuery": "Iguazu National Park",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "{\"type\":\"blog\",\"title\":\"Wildlife Adventures in Iguazu Falls\",\"url\":\"https://example.com/wildlife-spotting\",\"confidence\":\"high\"}"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Boat Tour to the Falls",
+          "description": "Get ready to get wet! Hop on a boat tour that takes you right up to the base of the magnificent Iguazu Falls. Feel the power of the cascading water as you experience the falls up close.",
+          "searchQuery": "Iguazu Falls Boat Tour",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at El Quincho del Tio Querido",
+          "description": "End your day with a delightful dinner at El Quincho del Tio Querido, known for its Argentine barbecue and warm atmosphere. Enjoy grilled meats and local wines as you reflect on your adventurous day.",
+          "searchQuery": "El Quincho del Tio Querido",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Cultural Day in Puerto Iguazu",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at La Rueda",
+          "description": "Start your day with a hearty breakfast at La Rueda, known for its delicious Argentine pastries and fresh coffee. It's a great way to fuel up for a day of adventure!",
+          "searchQuery": "La Rueda",
+          "locationEn": "Puerto Iguazu, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Hito Tres Fronteras",
+          "description": "Explore Hito Tres Fronteras, where Argentina, Brazil, and Paraguay meet. Enjoy stunning views of the confluence of the three countries and take memorable photos at this unique landmark.",
+          "searchQuery": "Hito Tres Fronteras",
+          "locationEn": "Puerto Iguazu, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Local Market Exploration",
+          "description": "Stroll through the local markets of Puerto Iguazu, where you can find handmade crafts, local delicacies, and souvenirs. Engage with friendly vendors and immerse yourself in the local culture.",
+          "searchQuery": "Puerto Iguazu Local Market",
+          "locationEn": "Puerto Iguazu, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at El Quincho del Tio Querido",
+          "description": "Enjoy a traditional Argentine lunch at El Quincho del Tio Querido, famous for its grilled meats and local dishes. The cozy atmosphere and delicious food make it a perfect spot to relax.",
+          "searchQuery": "El Quincho del Tio Querido",
+          "locationEn": "Puerto Iguazu, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Iguazu Falls Boat Tour",
+          "description": "Get ready for an exhilarating boat tour that takes you right up to the base of the majestic Iguazu Falls. Prepare to get wet as you experience the power and beauty of the falls up close!",
+          "searchQuery": "Iguazu Falls Boat Tour",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Return to Hotel and Relax",
+          "description": "After an exciting day, return to your hotel to freshen up and relax. Take some time to reflect on the breathtaking sights you've experienced today.",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at La Selva",
+          "description": "End your day with a delightful dinner at La Selva, where you can savor a variety of local dishes in a beautiful jungle-themed setting. The ambiance is perfect for unwinding after a day of adventure.",
+          "searchQuery": "La Selva",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Relaxation and Spa Day",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at La Selva",
+          "description": "Start your day with a delicious breakfast at La Selva, known for its fresh tropical fruits and local pastries. Enjoy the serene atmosphere surrounded by nature before your adventure begins.",
+          "searchQuery": "La Selva",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Iguazu Falls Boat Tour",
+          "description": "Get ready for an exhilarating boat tour that takes you right up to the thundering waterfalls. Feel the refreshing spray of the falls as you navigate through the waters, offering a unique perspective of this natural wonder.",
+          "searchQuery": "Iguazu Falls Boat Tour",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurante Porto Canoas",
+          "description": "Enjoy a delightful lunch at Restaurante Porto Canoas, located within the national park. Savor local dishes while overlooking the stunning views of the falls, making for a perfect dining experience.",
+          "searchQuery": "Restaurante Porto Canoas",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Spa Treatment at Gran Melia Iguazu",
+          "description": "Indulge in a luxurious spa treatment at Gran Melia Iguazu. Choose from a variety of massages and wellness therapies designed to relax and rejuvenate you after your adventurous morning.",
+          "searchQuery": "Gran Melia Iguazu Spa",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Relax by the Pool",
+          "description": "Spend your afternoon unwinding by the pool at your hotel. Enjoy the lush surroundings and perhaps sip on a refreshing cocktail as you soak up the sun.",
+          "searchQuery": "Gran Melia Iguazu",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at La Rueda",
+          "description": "Conclude your day with a delightful dinner at La Rueda, known for its Argentine steak and local wines. The warm ambiance and friendly service make it a perfect spot to reflect on your day.",
+          "searchQuery": "La Rueda",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Final Adventure at the Falls",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at La Selva",
+          "description": "Start your day with a hearty breakfast at La Selva, where you can enjoy fresh tropical fruits and local pastries. The ambiance is cozy, perfect for fueling up before your adventure at the falls.",
+          "searchQuery": "La Selva",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Iguazu Falls Boat Tour",
+          "description": "Get ready for an exhilarating boat tour that takes you right up to the base of the falls. Feel the refreshing spray of the water as you experience the power of nature up close. This is a must-do for thrill-seekers!",
+          "searchQuery": "Iguazu Falls Boat Tour",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Porto Canoas",
+          "description": "After your boat adventure, enjoy lunch at Porto Canoas, located within the national park. Savor delicious local dishes while overlooking the stunning views of the falls.",
+          "searchQuery": "Porto Canoas",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Upper Circuit",
+          "description": "Take a leisurely walk along the Upper Circuit trail, where you can enjoy panoramic views of the falls from various viewpoints. This is a great opportunity for photography and to appreciate the lush surroundings.",
+          "searchQuery": "Upper Circuit Iguazu Falls",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Visit the Garganta del Diablo (Devil's Throat)",
+          "description": "Head to the iconic Garganta del Diablo, the most impressive section of Iguazu Falls. The roar of the water and the mist in the air create an unforgettable experience. Don't forget your camera!",
+          "searchQuery": "Garganta del Diablo",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Sunset Views at the Falls",
+          "description": "As the day winds down, find a perfect spot to watch the sunset over the falls. The colors reflecting off the water create a magical atmosphere, making it a perfect end to your adventure.",
+          "searchQuery": "Iguazu Falls Sunset",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at La Selva",
+          "description": "Return to La Selva for dinner, where you can indulge in more local cuisine. The relaxed atmosphere and friendly service make it a great place to reflect on your day.",
+          "searchQuery": "La Selva",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Iguazu Falls",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "18:00"
+        },
+        "duration": "6h",
+        "memo": "Direct flight back to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at La Selva",
+          "description": "Start your day with a hearty breakfast at La Selva, known for its fresh tropical fruits and delicious local pastries. It's the perfect fuel for your last day in Iguazu Falls!",
+          "searchQuery": "La Selva",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Iguazu Falls National Park",
+          "description": "Spend your morning exploring the breathtaking Iguazu Falls National Park. Walk along the trails and take in the stunning views of the falls from various vantage points. Don't forget your camera!",
+          "searchQuery": "Iguazu Falls National Park",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Boat Tour at Iguazu Falls",
+          "description": "Get ready for an exhilarating boat tour that takes you right up to the base of the falls! Prepare to get wet as you experience the power and beauty of Iguazu Falls up close. This is an adventure you won't forget!",
+          "searchQuery": "Iguazu Falls Boat Tour",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Restaurante Porto Canoas",
+          "description": "Enjoy a delicious lunch at Restaurante Porto Canoas, located within the park. Savor local dishes while enjoying views of the falls. It's a great way to relax after your morning adventures!",
+          "searchQuery": "Restaurante Porto Canoas",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Last Walk in the Park",
+          "description": "Take a final stroll through the park, perhaps visiting the Devil's Throat viewpoint for one last breathtaking view of the falls. Reflect on your incredible journey before heading to the airport.",
+          "searchQuery": "Devil's Throat",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Transfer to Airport",
+          "description": "Make your way to the airport for your flight back to Washington D.C. Take a moment to reminisce about the stunning sights and adventures you've experienced in Iguazu Falls.",
+          "locationEn": "Iguazu Falls, Argentina",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,491 @@
+{
+  "id": "0b295b46-d71f-43d7-a2b3-d151a5e40960",
+  "destination": "コロール",
+  "description": "コロールの美しい海と自然を満喫する5日間の旅へようこそ。友人と共に、ダイビングやビーチアクティビティを楽しみながら、心に残る思い出を作りましょう。特に、クラゲの湖での不思議な体験や、泥パックでのユニークな写真撮影は、旅のハイライトになること間違いなしです。",
+  "days": [
+    {
+      "day": 1,
+      "title": "コロールへの到着とビーチでのリラックス",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "コロール国際空港到着",
+          "description": "コロール国際空港に到着し、リゾート気分を高めるスタート。空港からはタクシーでホテルへ向かいます。",
+          "searchQuery": "Koror International Airport",
+          "locationEn": "Koror, Palau",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ホテルでチェックイン",
+          "description": "ビーチフロントのリゾートホテルにチェックイン。美しい海を眺めながら、リラックスした時間を過ごします。",
+          "searchQuery": "Palau Royal Resort",
+          "locationEn": "Koror, Palau",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ホテルでランチ",
+          "description": "ホテル内のレストランで新鮮なシーフードランチを楽しみます。地元の食材を使った料理が魅力です。",
+          "searchQuery": "Palau Royal Resort Restaurant",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "エルビスビーチでリラックス",
+          "description": "エルビスビーチでのんびりとした時間を過ごします。白い砂浜と青い海が広がる美しいビーチで、シュノーケリングや日光浴を楽しんでください。",
+          "searchQuery": "Elvis Beach",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "クラゲの湖ツアー",
+          "description": "クラゲの湖へ向かうツアーに参加。無害なクラゲと一緒に泳ぎ、幻想的な体験を楽しみます。",
+          "searchQuery": "Jellyfish Lake",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "ホテルのレストランで夕食。地元の料理や新鮮な魚介類を堪能し、旅の初日を締めくくります。",
+          "searchQuery": "Palau Royal Resort Restaurant",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ビーチで星空観賞",
+          "description": "ビーチに出て、満天の星空を楽しみます。静かな海の音を聞きながら、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Koror Beach",
+          "locationEn": "Koror, Palau",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "クラゲの湖とダイビング体験",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "コロールのホテルで、地元のフルーツやトーストを使った朝食を楽しみます。新鮮なパパイヤやマンゴーが特におすすめです。",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "クラゲの湖へ出発",
+          "description": "ボートでクラゲの湖へ向かいます。美しい海を眺めながらの移動は、旅の始まりを感じさせてくれます。",
+          "searchQuery": "Jellyfish Lake",
+          "locationEn": "Koror, Palau",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "クラゲの湖でのスノーケリング",
+          "description": "クラゲの湖に到着したら、スノーケリングを楽しみます。無数のクラゲに囲まれながら、幻想的な体験を味わえます。",
+          "searchQuery": "Jellyfish Lake",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "湖畔でランチ",
+          "description": "湖の近くでピクニックランチを楽しみます。地元の食材を使ったサンドイッチやフルーツが美味しいです。",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "泥パック体験",
+          "description": "湖の近くで泥パックを楽しみます。自然の泥を使って、肌をリフレッシュさせながら、友人と楽しい写真を撮りましょう。",
+          "locationEn": "Koror, Palau",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ダイビングスポットへ移動",
+          "description": "次はダイビングスポットへ移動します。透明度の高い海で、色とりどりの魚たちと出会えるチャンスです。",
+          "locationEn": "Koror, Palau",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ダイビング体験",
+          "description": "ダイビングインストラクターと共に、海の中の美しいサンゴ礁を探索します。初心者でも安心して楽しめるスポットです。",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルに戻る",
+          "description": "ダイビングを終えたら、ボートでホテルに戻ります。夕日を眺めながらの帰路は、心に残るひとときです。",
+          "locationEn": "Koror, Palau",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "ホテルのレストランで、地元のシーフードを使ったディナーを楽しみます。新鮮な魚介類は絶品です。",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "泥パックと自然探検",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "コロールのホテルで、地元のフルーツやトーストを使った朝食を楽しみます。新鮮なパパイヤやマンゴーが特におすすめです。",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "泥パック体験",
+          "description": "コロール近くの泥パックスポットで、自然の泥を使ったスパ体験を楽しみます。肌がしっとりと潤い、リフレッシュできます。写真撮影にもぴったりのスポットです。",
+          "searchQuery": "Mud Bath Koror",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "コロールの地元レストランで、パラオの伝統料理を味わいます。新鮮な魚や野菜を使った料理が楽しめます。",
+          "searchQuery": "Local Restaurant Koror",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "クラゲの湖へ移動",
+          "description": "クラゲの湖へ向かうボートツアーに参加します。美しい海を眺めながらの移動は、旅の醍醐味です。",
+          "searchQuery": "Jellyfish Lake",
+          "locationEn": "Koror, Palau",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "クラゲの湖でスノーケリング",
+          "description": "クラゲの湖で、無害なクラゲと一緒に泳ぎます。透明な水の中でのスノーケリングは、忘れられない体験です。",
+          "searchQuery": "Jellyfish Lake",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "ビーチでリラックス",
+          "description": "クラゲの湖から戻った後、近くのビーチでのんびりと過ごします。夕日を眺めながら、友人と楽しい時間を過ごしましょう。",
+          "searchQuery": "Beach Koror",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ビーチサイドでディナー",
+          "description": "ビーチ沿いのレストランで、海の幸を使ったディナーを楽しみます。新鮮なシーフードと共に、パラオの美しい夜景を堪能しましょう。",
+          "searchQuery": "Beachside Restaurant Koror",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "ディナーの後、ホテルに戻り、ゆったりとした時間を過ごします。明日の冒険に備えて、リラックスしましょう。",
+          "locationEn": "Koror, Palau",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ビーチアクティビティと地元グルメ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "コロールのホテルで、地元のフルーツやシーフードを使った朝食を楽しみます。新鮮なパパイヤやマンゴー、そして地元の魚料理が絶品です。",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "クラゲの湖へ出発",
+          "description": "ボートでクラゲの湖へ向かいます。透明度の高い水中で、無害なクラゲと一緒に泳ぐ体験は、まるで夢のようなひとときです。",
+          "searchQuery": "Jellyfish Lake",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "クラゲの湖でスノーケリング",
+          "description": "クラゲの湖でスノーケリングを楽しみます。無数のクラゲが浮かぶ幻想的な光景は、思わず写真を撮りたくなる美しさです。",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元レストランでランチ",
+          "description": "クラゲの湖から戻った後、地元のレストランで新鮮なシーフードランチを楽しみます。特に、グリルした魚やパウンドケーキが人気です。",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "泥パック体験",
+          "description": "ビーチで泥パックを体験します。自然の泥を使って肌をリフレッシュし、友人と一緒に楽しい写真を撮りましょう。",
+          "locationEn": "Koror, Palau",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ビーチでリラックス",
+          "description": "泥パックの後は、ビーチでのんびりと過ごします。青い海を眺めながら、リラックスした時間を楽しんでください。",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕食は地元の居酒屋",
+          "description": "コロールの地元居酒屋で、パラオの伝統料理を堪能します。特に、タロイモやココナッツを使った料理が絶品です。",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日のアクティビティを終え、ホテルに戻ります。夜は星空を眺めながら、友人と旅の思い出を語り合いましょう。",
+          "locationEn": "Koror, Palau",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "コロールから東京への帰路",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "コロール国際空港",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "15:00"
+        },
+        "duration": "5h",
+        "memo": "直行便で東京へ帰ります。機内でのんびり過ごしましょう。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "コロールのホテルで、地元のフルーツやトーストを使った朝食を楽しみます。新鮮なパパイヤやマンゴーが特におすすめです。",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "クラゲの湖へ出発",
+          "description": "美しいクラゲの湖へ向かいます。透明度の高い水の中で、無害なクラゲと一緒に泳ぐことができます。",
+          "searchQuery": "Jellyfish Lake",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "クラゲの湖でのスノーケリング",
+          "description": "クラゲの湖でスノーケリングを楽しみます。無数のクラゲに囲まれながら、幻想的な体験を味わえます。",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ（ピクニック）",
+          "description": "湖の近くでピクニックランチを楽しみます。地元の食材を使ったサンドイッチやフルーツを持参して、自然の中でリフレッシュ。",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "泥パック体験",
+          "description": "近くのビーチで泥パックを体験します。肌に良いとされる泥を使って、リラックスしながら写真撮影も楽しみましょう。",
+          "searchQuery": "Mud Bath",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "コロール国際空港へ移動",
+          "description": "泥パックを楽しんだ後、空港へ向かいます。最後のコロールの風景を楽しみながら、帰路につきましょう。",
+          "locationEn": "Koror, Palau",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,463 @@
+{
+  "id": "d283586d-ee5d-4f30-8dfa-f97849cdc730",
+  "destination": "Los Angeles",
+  "description": "Escape to the vibrant city of Los Angeles, where the sun shines bright and the streets pulse with the energy of culture, history, and sports. This 5-day adventure is tailored for you and your friends, immersing you in the world of NBA fandom while indulging in the diverse culinary scene and exploring the rich tapestry of LA's cultural heritage. From iconic landmarks to hidden gems, this trip promises an unforgettable experience filled with excitement and discovery.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and NBA Fan Experience",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Original Pantry Cafe",
+          "description": "Start your day with a hearty breakfast at this iconic diner, known for its classic American fare. Try their famous pancakes or a classic breakfast platter to fuel up for the day ahead.",
+          "searchQuery": "The Original Pantry Cafe",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Staples Center",
+          "description": "Home to the LA Lakers and Clippers, Staples Center is a must-visit for any NBA fan. Take a guided tour to learn about the history of the arena and its famous events, or simply soak in the atmosphere of this iconic venue.",
+          "searchQuery": "Staples Center",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at LA Live",
+          "description": "Head over to LA Live for a variety of dining options. Grab a quick bite at one of the many eateries, or enjoy a sit-down meal at a restaurant with views of the bustling plaza.",
+          "searchQuery": "LA Live",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore The Grammy Museum",
+          "description": "Dive into the world of music at The Grammy Museum. Discover interactive exhibits and memorabilia that celebrate the history of music and the Grammy Awards. It's a great way to appreciate the cultural impact of music in Los Angeles.",
+          "searchQuery": "The Grammy Museum",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for NBA Merchandise at the Lakers Store",
+          "description": "Visit the Lakers Store located at LA Live to pick up some official NBA merchandise. From jerseys to hats, you'll find plenty of gear to show your support for your favorite team.",
+          "searchQuery": "Lakers Store",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Cheesecake Factory",
+          "description": "End your day with a delicious dinner at The Cheesecake Factory. Known for its extensive menu and decadent cheesecakes, it's a great place to relax and enjoy a meal with friends after a busy day.",
+          "searchQuery": "The Cheesecake Factory",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll around LA Live",
+          "description": "Take a leisurely evening stroll around LA Live. Enjoy the vibrant atmosphere, street performers, and the beautiful lights of the city as you wind down from your day of exploration.",
+          "searchQuery": "LA Live",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Hollywood and Cultural Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Griddle Cafe",
+          "description": "Start your day with a hearty breakfast at The Griddle Cafe, famous for its oversized pancakes and delicious omelets. It's a local favorite that will fuel you for a day of exploration!",
+          "searchQuery": "The Griddle Cafe",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Hollywood Walk of Fame",
+          "description": "Stroll along the iconic Hollywood Walk of Fame, where you can find the stars of your favorite celebrities embedded in the sidewalk. Don't forget to snap a photo with your favorite star!",
+          "searchQuery": "Hollywood Walk of Fame",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Musso & Frank Grill",
+          "description": "Enjoy a classic Hollywood dining experience at Musso & Frank Grill, a historic restaurant known for its steak and old-school charm. It's a great spot to soak in the atmosphere of Tinseltown.",
+          "searchQuery": "Musso & Frank Grill",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "TCL Chinese Theatre",
+          "description": "Visit the TCL Chinese Theatre, famous for its celebrity handprints and footprints. Take a guided tour to learn about its rich history and the stars that have graced its red carpet.",
+          "searchQuery": "TCL Chinese Theatre",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "NBA Store",
+          "description": "Head over to the NBA Store to shop for official merchandise and fan gear. Whether you're looking for jerseys, hats, or collectibles, this is the perfect place to find your favorite team's gear!",
+          "searchQuery": "NBA Store",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Griffith Observatory",
+          "description": "Make your way to Griffith Observatory for stunning views of the city and the iconic Hollywood sign. Explore the exhibits and, if time allows, catch a planetarium show for an out-of-this-world experience!",
+          "searchQuery": "Griffith Observatory",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at In-N-Out Burger",
+          "description": "End your day with a casual dinner at In-N-Out Burger, a California staple. Enjoy their famous burgers and fries in a laid-back atmosphere, perfect for unwinding after a busy day.",
+          "searchQuery": "In-N-Out Burger",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Beach Day and Local Eats",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Butcher, The Baker, The Cappuccino Maker",
+          "description": "Start your day with a delicious breakfast at this popular spot known for its fresh ingredients and vibrant atmosphere. Try their famous avocado toast or a hearty breakfast burrito!",
+          "searchQuery": "The Butcher, The Baker, The Cappuccino Maker",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Santa Monica Pier",
+          "description": "Head to the iconic Santa Monica Pier, where you can enjoy the ocean views, ride the Ferris wheel, and take a stroll along the beach. Don't forget to snap some photos with the colorful carousel!",
+          "searchQuery": "Santa Monica Pier",
+          "locationEn": "Santa Monica, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Albright",
+          "description": "Enjoy a casual lunch at The Albright, a seafood restaurant right on the pier. Their clam chowder and fish tacos are local favorites, perfect for a beachside meal.",
+          "searchQuery": "The Albright",
+          "locationEn": "Santa Monica, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Venice Beach Boardwalk",
+          "description": "After lunch, make your way to Venice Beach. Explore the vibrant boardwalk filled with street performers, shops, and local artists. It's a great place to soak in the sun and the lively atmosphere.",
+          "searchQuery": "Venice Beach Boardwalk",
+          "locationEn": "Venice, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping at Abbot Kinney Boulevard",
+          "description": "Stroll down Abbot Kinney Boulevard, known for its trendy boutiques and unique shops. This is the perfect spot to find some NBA merchandise and other fun souvenirs to take home!",
+          "searchQuery": "Abbot Kinney Boulevard",
+          "locationEn": "Venice, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Guelaguetza",
+          "description": "Wrap up your day with a delicious dinner at Guelaguetza, famous for its Oaxacan cuisine. Try their mole and tlayudas for an authentic taste of Mexico, just a short drive from Venice Beach.",
+          "searchQuery": "Guelaguetza",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk at Santa Monica Beach",
+          "description": "End your day with a relaxing evening walk along Santa Monica Beach. The sunset views are breathtaking, and it's a perfect way to unwind after a fun-filled day.",
+          "searchQuery": "Santa Monica Beach",
+          "locationEn": "Santa Monica, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "NBA Store and Downtown LA",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Grand Central Market",
+          "description": "Start your day with a delicious breakfast at Grand Central Market, where you can find a variety of local vendors offering everything from fresh pastries to hearty breakfast burritos. It's a great way to fuel up for a day of exploring!",
+          "searchQuery": "Grand Central Market",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit NBA Store",
+          "description": "Head over to the NBA Store located in the heart of Los Angeles. Here, you can find a wide range of NBA merchandise, from jerseys to collectibles. It's a must-visit for any basketball fan looking to grab some exclusive gear!",
+          "searchQuery": "NBA Store",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Grand Central Market",
+          "description": "After shopping, return to Grand Central Market for lunch. Try the famous Eggslut for their signature egg sandwiches or grab some tacos from Tacos Tumbras a Tomas for a taste of local flavors.",
+          "searchQuery": "Grand Central Market",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore The Broad Museum",
+          "description": "Visit The Broad, a contemporary art museum featuring an impressive collection of postwar and contemporary art. Admission is free, but be sure to reserve your tickets in advance to avoid long lines!",
+          "searchQuery": "The Broad Museum",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Stroll through Walt Disney Concert Hall",
+          "description": "Take a leisurely walk around the iconic Walt Disney Concert Hall. The stunning architecture designed by Frank Gehry is a sight to behold, and you can snap some great photos here!",
+          "searchQuery": "Walt Disney Concert Hall",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Bottega Louie",
+          "description": "End your day with dinner at Bottega Louie, a vibrant Italian restaurant known for its delicious pizzas and pastries. The lively atmosphere and beautiful decor make it a perfect spot to unwind after a busy day.",
+          "searchQuery": "Bottega Louie",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening walk at LA Live",
+          "description": "After dinner, take a stroll around LA Live, a bustling entertainment complex. Enjoy the vibrant atmosphere, and if you're lucky, you might catch a live performance or event happening in the area!",
+          "searchQuery": "LA Live",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Los Angeles International Airport",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Washington D.C. (DCA)",
+          "time": "18:00"
+        },
+        "duration": "5h",
+        "memo": "Direct flight back to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Griddle Cafe",
+          "description": "Start your day with a hearty breakfast at The Griddle Cafe, famous for its oversized pancakes and delicious omelets. It's a local favorite that will fuel you for the day ahead!",
+          "searchQuery": "The Griddle Cafe",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Staples Center",
+          "description": "Head over to the iconic Staples Center, home of the Los Angeles Lakers and Clippers. You can take a guided tour to learn about the history of the arena and its significance in the NBA.",
+          "searchQuery": "Staples Center",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "NBA Store Los Angeles",
+          "description": "After your tour, visit the NBA Store located nearby to grab some exclusive fan merchandise. From jerseys to collectibles, it's a must-visit for any basketball fan!",
+          "searchQuery": "NBA Store Los Angeles",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at In-N-Out Burger",
+          "description": "No trip to California is complete without a stop at In-N-Out Burger. Enjoy their famous burgers and fries for a quick and satisfying meal before heading to the airport.",
+          "searchQuery": "In-N-Out Burger",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore LA Live",
+          "description": "Take a stroll around LA Live, an entertainment complex right next to Staples Center. Check out the vibrant atmosphere, and if you have time, visit the Grammy Museum for a taste of music history.",
+          "searchQuery": "LA Live",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Head to Los Angeles International Airport",
+          "description": "Make your way to LAX for your flight back to Washington D.C. Make sure to arrive at least 2 hours before your departure time to ensure a smooth check-in process.",
+          "searchQuery": "Los Angeles International Airport",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

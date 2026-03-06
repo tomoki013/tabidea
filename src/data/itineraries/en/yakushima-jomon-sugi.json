@@ -1,0 +1,273 @@
+{
+  "id": "7d4e90b8-fecd-4f3e-803c-859f474c57af",
+  "destination": "屋久島",
+  "description": "Immerse yourself in the enchanting wilderness of Yakushima, a UNESCO World Heritage site known for its ancient cedar trees, lush forests, and breathtaking landscapes. This 3-day adventure is designed for those who crave the thrill of hiking and the serenity of nature, as you explore the mystical moss-covered forests and stand in awe of the majestic Jomon Sugi, one of the oldest trees in the world. Get ready for an unforgettable journey filled with adventure and natural beauty, perfect for you and your friends!",
+  "heroImage": "https://images.unsplash.com/photo-1680201976642-c20c4105d6ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODY2MzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Marek Piwnicki",
+  "heroImagePhotographerUrl": "https://unsplash.com/@marekpiwnicki?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Exploration of Yakushima",
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Yakushima Airport Arrival",
+          "description": "Arrive at Yakushima Airport, where the lush greenery and fresh air greet you. Take a moment to soak in the beauty of this UNESCO World Heritage site before heading out for your adventure.",
+          "searchQuery": "Yakushima Airport",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Moss Forest Hike",
+          "description": "Start your journey with a hike through the enchanting Moss Forest. The vibrant green moss covering the trees creates a magical atmosphere, perfect for photography and immersing yourself in nature.",
+          "searchQuery": "Moss Forest Yakushima",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Enjoy a hearty lunch at a local eatery, where you can savor Yakushima's fresh seafood and local specialties. Don't miss the chance to try the famous Yakushima pork!",
+          "searchQuery": "Yakushima Local Restaurant",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Jomon Sugi Hike",
+          "description": "Embark on a challenging hike to Jomon Sugi, the ancient cedar tree estimated to be over 7,000 years old. The trek is demanding but offers breathtaking views and a sense of accomplishment upon reaching this natural wonder.",
+          "searchQuery": "Jomon Sugi",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Return to Accommodation",
+          "description": "After a long day of hiking, return to your accommodation to relax and refresh. Enjoy the serene surroundings of Yakushima as you unwind from your adventures.",
+          "searchQuery": "Yakushima Accommodation",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "End your day with dinner at a cozy izakaya, where you can enjoy a variety of local dishes and drinks. Share stories of your day's adventures with your friends in a warm and inviting atmosphere.",
+          "searchQuery": "Yakushima Izakaya",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Hiking to Jomon Sugi",
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "Breakfast at a local café",
+          "description": "Start your day with a hearty breakfast at a cozy café in Yakushima, enjoying local specialties like sweet potato pancakes and fresh fruit. This will fuel you for the adventurous hike ahead!",
+          "searchQuery": "Yakushima Café",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "Hiking to Jomon Sugi",
+          "description": "Embark on an exhilarating hike to Jomon Sugi, the ancient cedar tree that is over 7,000 years old. The trail takes you through lush forests filled with moss-covered trees and vibrant flora, offering breathtaking views along the way.",
+          "searchQuery": "Jomon Sugi",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a mountain hut",
+          "description": "Enjoy a packed lunch at a mountain hut along the trail, surrounded by the serene beauty of nature. Take a moment to relax and recharge before continuing your hike.",
+          "searchQuery": "Yakushima Mountain Hut",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Continue hiking to Jomon Sugi",
+          "description": "After lunch, continue your hike to reach the majestic Jomon Sugi. The sight of this ancient tree is awe-inspiring, and you'll have plenty of opportunities to take stunning photos.",
+          "searchQuery": "Jomon Sugi",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Shiratani Unsuikyo",
+          "description": "After visiting Jomon Sugi, head to Shiratani Unsuikyo, a beautiful area known for its enchanting mossy forests and scenic trails. This is a perfect spot for photography and immersing yourself in nature.",
+          "searchQuery": "Shiratani Unsuikyo",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return hike to the starting point",
+          "description": "Begin your descent back to the trailhead, taking in the serene atmosphere of the forest as you reflect on the day's adventure. Keep an eye out for wildlife along the way!",
+          "searchQuery": "Yakushima Hiking Trail",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a local izakaya",
+          "description": "End your day with a delicious dinner at a local izakaya, where you can savor fresh seafood and traditional Yakushima dishes. It's the perfect way to unwind after a long day of hiking.",
+          "searchQuery": "Yakushima Izakaya",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Relax at your accommodation",
+          "description": "Return to your accommodation to relax and recharge for the next day's adventures. Enjoy the peaceful ambiance of Yakushima as you reflect on your incredible day.",
+          "searchQuery": "Yakushima Accommodation",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Nature Walk and Departure",
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a hearty breakfast at a local café, enjoying fresh pastries and coffee to fuel your adventure ahead.",
+          "searchQuery": "Yakushima Local Café",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "Hike to Jomon Sugi",
+          "description": "Embark on an exhilarating hike to Jomon Sugi, the ancient cedar tree that is over 7,000 years old. The trail offers stunning views of the lush forest and unique flora, making it a must-see for nature lovers.",
+          "searchQuery": "Jomon Sugi",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Anbo River",
+          "description": "Enjoy a packed lunch by the Anbo River, surrounded by the serene sounds of nature. Take a moment to relax and recharge before continuing your exploration.",
+          "searchQuery": "Anbo River",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Explore the Moss Forest",
+          "description": "After lunch, venture into the enchanting Moss Forest. The vibrant green moss covering the trees creates a magical atmosphere, perfect for photography and appreciating the beauty of nature.",
+          "searchQuery": "Moss Forest Yakushima",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Return Hike to Trailhead",
+          "description": "Begin your return hike to the trailhead, taking in the sights and sounds of the forest one last time. Keep an eye out for local wildlife along the way!",
+          "searchQuery": "Yakushima Hiking Trails",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Departure from Yakushima Airport",
+          "description": "Head to Yakushima Airport for your departure. Reflect on the incredible experiences and breathtaking landscapes you've encountered during your stay.",
+          "searchQuery": "Yakushima Airport",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,511 @@
+{
+  "id": "0eb8a410-c8e9-4c62-b8e6-e33f30cafead",
+  "destination": "フィジー",
+  "description": "フィジーの美しいビーチと豊かな自然に囲まれた7日間の旅。リラックスしながらアクティビティを楽しむ、家族での特別なひとときをお過ごしください。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からフィジーへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "ナンディ",
+          "time": "18:00"
+        },
+        "duration": "9h",
+        "memo": "直行便でフィジーへ。機内でリラックスしながら、到着を楽しみに待ちましょう。"
+      },
+      "activities": [
+        {
+          "time": "18:30",
+          "activity": "ナンディ空港からデナラウへ移動",
+          "description": "ナンディ空港からデナラウまでタクシーで約30分の移動。美しいフィジーの風景を楽しみながら、リゾートへ向かいます。",
+          "searchQuery": "Denarau Island",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "リゾートでディナー",
+          "description": "デナラウのリゾート内のレストランで、フィジーの新鮮なシーフードを使ったディナーを楽しみます。地元の食材を活かした料理が魅力です。",
+          "searchQuery": "The Westin Denarau Island Resort & Spa",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "リゾートでのんびり",
+          "description": "ディナーの後は、リゾートのプールサイドでリラックス。星空を眺めながら、家族との時間を楽しみましょう。",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "デナラウでのリラックスデイ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "リゾート内での朝食",
+          "description": "デナラウのリゾート内で、トロピカルフルーツや地元の料理を楽しむ朝食。美しい海を眺めながら、ゆったりとした時間を過ごします。",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "デナラウビーチでのビーチタイム",
+          "description": "デナラウビーチでのんびりと過ごします。白い砂浜と青い海で、スノーケリングや日光浴を楽しむのがおすすめです。",
+          "searchQuery": "Denarau Beach",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ビーチサイドでランチ",
+          "description": "ビーチ沿いのレストランで新鮮なシーフードランチを楽しみます。海の音を聞きながら、リラックスしたひとときを。",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "リゾートスパでのトリートメント",
+          "description": "デナラウのリゾートスパで、マッサージやフェイシャルを受けて心身ともにリフレッシュ。贅沢な時間を堪能しましょう。",
+          "searchQuery": "Denarau Resort Spa",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "プールサイドでのんびり",
+          "description": "リゾートのプールサイドで、カクテルを片手にリラックス。家族と一緒に楽しい会話を楽しみながら、穏やかな時間を過ごします。",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "リゾート内でのディナー",
+          "description": "デナラウのリゾート内のレストランで、地元の食材を使ったディナーを楽しみます。美しい夕日を眺めながら、特別なひとときを。",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "フィジーの文化体験",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "デナラウ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ママヌザ諸島",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "デナラウからママヌザ諸島へのボート移動。美しい海を眺めながらの移動です。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "ママヌザ諸島到着",
+          "description": "美しいビーチと青い海に囲まれたママヌザ諸島に到着。リゾートの雰囲気を楽しみながら、ゆったりとした時間を過ごします。",
+          "searchQuery": "Mamanuca Islands",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "リゾート内でランチ",
+          "description": "リゾート内のレストランで新鮮なシーフードを使ったランチを楽しみます。地元の食材を活かした料理が魅力です。",
+          "searchQuery": "Mamanuca Islands Restaurant",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "伝統的な村訪問",
+          "description": "地元の村を訪れ、フィジーの文化や伝統を学びます。村人との交流を通じて、フィジーの温かいおもてなしを体験しましょう。",
+          "searchQuery": "Fijian Village",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ビーチでリラックス",
+          "description": "美しいビーチでのんびりと過ごします。海に入ったり、日光浴を楽しんだり、心地よい時間を満喫しましょう。",
+          "searchQuery": "Mamanuca Islands Beach",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "リゾートでディナー",
+          "description": "リゾート内のレストランで、フィジーの伝統料理を楽しむディナー。新鮮な魚や地元の野菜を使った料理が堪能できます。",
+          "searchQuery": "Mamanuca Islands Dinner",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "アクティブな一日",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ママヌザ諸島で朝食",
+          "description": "美しい海を眺めながら、リゾート内のレストランで新鮮なフルーツやトースト、卵料理を楽しむ朝食。",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "シュノーケリング体験",
+          "description": "透明度の高い海で色とりどりの魚たちと泳ぐシュノーケリング。ガイドがついているので初心者でも安心して楽しめます。",
+          "searchQuery": "Mamanuca Islands Snorkeling",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ビーチでランチ",
+          "description": "ビーチサイドのカフェで、地元のシーフードを使ったランチを楽しみます。新鮮な魚のグリルやサラダが絶品。",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ビーチアクティビティ",
+          "description": "カヤックやスタンドアップパドルボードを楽しむ時間。家族で競争したり、のんびりと海を満喫しましょう。",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "リゾートでリラックス",
+          "description": "午後はリゾートのプールサイドでリラックス。カクテルを片手に、ゆったりとした時間を過ごします。",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ビーチディナー",
+          "description": "夕日を眺めながら、ビーチでの特別なディナー。地元の食材を使ったコース料理を堪能します。",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "フィジーの自然を満喫",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "ママヌザ諸島",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ナミエタ国立公園",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "ボートでナミエタ国立公園へ向かいます。美しい海を眺めながらの移動は、フィジーの自然を感じる絶好の時間です。"
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "ナミエタ国立公園ハイキング",
+          "description": "ナミエタ国立公園内のトレイルをハイキング。豊かな自然と多様な動植物を観察しながら、フィジーの美しい風景を楽しみます。",
+          "searchQuery": "Namena Marine Reserve",
+          "locationEn": "Namena Marine Reserve, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ピクニックランチ",
+          "description": "公園内でのピクニックランチ。地元の食材を使ったサンドイッチやフルーツを楽しみながら、自然の中でリラックスした時間を過ごします。",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "シュノーケリング体験",
+          "description": "ナミエタ国立公園の美しいサンゴ礁でシュノーケリング。色とりどりの魚たちと一緒に泳ぎ、フィジーの海の魅力を体感します。",
+          "searchQuery": "Namena Marine Reserve",
+          "locationEn": "Namena Marine Reserve, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ボートでナンディへ移動",
+          "description": "ナンディへ戻るボートの時間。夕日を眺めながらの移動は、心に残るひとときです。",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ナンディでディナー",
+          "description": "ナンディのレストランでフィジー料理を楽しむディナー。新鮮なシーフードや地元の特産品を使った料理を堪能します。",
+          "searchQuery": "The Bounty Restaurant",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルチェックイン",
+          "description": "ナンディのホテルにチェックイン。リラックスした雰囲気の中で、明日の計画を立てながらゆったりと過ごします。",
+          "searchQuery": "Radisson Blu Resort Fiji",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ナンディでの自由時間",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ナンディ市場で朝食",
+          "description": "地元の人々に愛されるナンディ市場で、新鮮なフルーツや地元の朝食を楽しみましょう。特に、フレッシュなココナッツジュースはおすすめです。",
+          "searchQuery": "Nadi Market",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ナンディ市場散策",
+          "description": "市場内を散策し、地元の手工芸品やお土産を探してみましょう。色とりどりのスパイスやフルーツが並ぶ様子は、まさに南国の雰囲気を感じさせます。",
+          "searchQuery": "Nadi Market",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ナンディの地元レストランで、フィジー料理を堪能しましょう。特に、ローカルな魚料理やカレーは絶品です。",
+          "searchQuery": "Local Restaurant Nadi",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ナンディビーチでリラックス",
+          "description": "ナンディビーチでのんびりと過ごしましょう。白い砂浜と青い海に囲まれ、心地よい風を感じながらリラックスできます。",
+          "searchQuery": "Nadi Beach",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ビーチサイドでサンセットを楽しむ",
+          "description": "夕暮れ時のビーチは特別な時間。美しいサンセットを眺めながら、家族との素敵なひとときを過ごしましょう。",
+          "searchQuery": "Nadi Beach Sunset",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ナンディのレストランでディナー",
+          "description": "ナンディの人気レストランで、フィジーの新鮮なシーフードを楽しむディナー。地元のビールやカクテルもお忘れなく。",
+          "searchQuery": "Nadi Restaurant",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "フィジーから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ナンディ",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "18:00"
+        },
+        "duration": "8h",
+        "memo": "ナンディ空港から東京への直行便です。時差に注意！"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "フィジーのリゾートホテルで、トロピカルフルーツやパンケーキを楽しむ朝食。海を眺めながら、ゆったりとした時間を過ごします。",
+          "searchQuery": "Fiji Resort Hotel",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ナンディビーチでリラックス",
+          "description": "ナンディビーチでのんびりとした時間を過ごします。白い砂浜と青い海に囲まれ、ビーチチェアでリラックス。シュノーケリングやビーチバレーも楽しめます。",
+          "searchQuery": "Nadi Beach",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ナンディ空港へ移動",
+          "description": "ナンディビーチからナンディ空港へ移動します。空港までの道のりを楽しみながら、フィジーの最後の景色を堪能。",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

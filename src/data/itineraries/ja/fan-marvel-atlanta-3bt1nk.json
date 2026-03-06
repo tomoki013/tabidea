@@ -1,0 +1,523 @@
+{
+  "id": "9a61874f-6aea-4eca-8115-4c3b9dcc6763",
+  "destination": "アトランタ",
+  "description": "アトランタの街を舞台に、Marvelの世界観を存分に楽しむ6日間の旅へ。歴史と文化が息づくこの都市で、推し活をしながら、ショッピングや美味しいグルメも満喫しましょう。アトランタの魅力を感じるスポットを巡り、特別な思い出を作る旅が待っています。",
+  "days": [
+    {
+      "day": 1,
+      "title": "アトランタ到着と街の散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "アトランタ国際空港到着",
+          "description": "アトランタ国際空港に到着し、旅の始まりを感じます。空港内の案内所で地図を手に入れ、これからの冒険に備えましょう。",
+          "searchQuery": "Hartsfield-Jackson Atlanta International Airport",
+          "locationEn": "Atlanta, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ダウンタウンアトランタ散策",
+          "description": "ダウンタウンアトランタの中心部を散策します。特に、アトランタのシンボルであるCNNセンターや、近くのオリンピック公園を訪れてみてください。",
+          "searchQuery": "CNN Center",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ：The Varsity",
+          "description": "アトランタ名物のホットドッグやハンバーガーを楽しめる老舗のファーストフード店です。地元の人々にも愛される味を堪能しましょう。",
+          "searchQuery": "The Varsity",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "マーチャンダイズマート訪問",
+          "description": "アトランタのショッピングスポット、マーチャンダイズマートでファングッズを探しましょう。Marvel関連のアイテムが豊富に揃っています。",
+          "searchQuery": "Merchandise Mart",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "アトランタ美術館",
+          "description": "アトランタ美術館でアートを楽しみながら、文化的なひとときを過ごします。特にアメリカの現代アートに焦点を当てた展示が魅力です。",
+          "searchQuery": "High Museum of Art",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "夕食：Ponce City Market",
+          "description": "Ponce City Marketで多様な料理を楽しむディナー。地元の食材を使ったレストランが集まっており、ショッピングも楽しめます。",
+          "searchQuery": "Ponce City Market",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "アトランタの夜景を楽しむ",
+          "description": "アトランタの美しい夜景を楽しむために、SkyView Atlantaの観覧車に乗ってみましょう。市内の素晴らしい景色を一望できます。",
+          "searchQuery": "SkyView Atlanta",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルチェックイン",
+          "description": "本日の宿泊先にチェックイン。ゆっくりと旅の疲れを癒し、明日の冒険に備えましょう。",
+          "searchQuery": "Hotel in Atlanta",
+          "locationEn": "Atlanta, USA",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Marvelの聖地を巡る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アトランタのホテルで、アメリカンブレックファーストを楽しみます。ボリューム満点のパンケーキやベーコンで、元気に一日をスタート！",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "アトランタのマーベルショップ",
+          "description": "アトランタの中心部にあるマーベルショップで、最新のファングッズをチェック！限定アイテムやコレクターズアイテムが揃っており、マーベルファンにはたまらないスポットです。",
+          "searchQuery": "Marvel Store Atlanta",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ：アトランタの人気カフェ",
+          "description": "地元の人に愛されるカフェで、サンドイッチやサラダを楽しみます。新鮮な食材を使った料理が自慢で、リラックスした雰囲気の中で食事ができます。",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "映画ロケ地巡り",
+          "description": "アトランタで撮影されたマーベル映画のロケ地を巡ります。特に『ブラックパンサー』や『スパイダーマン：ホームカミング』の撮影場所を訪れ、映画の世界に浸りましょう。",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アトランタのショッピングモール",
+          "description": "マーベル関連商品をさらに探すため、アトランタの大型ショッピングモールへ。多くの店舗が揃っており、ファッションやお土産を楽しむことができます。",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー：アトランタのレストラン",
+          "description": "地元の食材を使ったアメリカン料理を楽しむディナータイム。カジュアルな雰囲気の中で、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "アトランタの夜景を楽しむ",
+          "description": "アトランタの美しい夜景を眺めながら、ロマンティックなひとときを過ごします。特に、スカイラインが美しいスポットでの散策がおすすめです。",
+          "locationEn": "Atlanta, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "文化と歴史を感じる一日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アトランタのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、フレッシュフルーツでエネルギーをチャージ。",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "アトランタ歴史センター",
+          "description": "アトランタの歴史を深く知ることができるアトランタ歴史センターを訪れます。南北戦争の歴史や、アトランタの文化に触れる展示が豊富です。",
+          "searchQuery": "Atlanta History Center",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "近くのカフェでランチ",
+          "description": "アトランタ歴史センター近くのカフェで軽食を楽しみます。地元の食材を使ったサンドイッチやサラダがおすすめです。",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "マーティン・ルーサー・キング・ジュニア国立歴史公園",
+          "description": "マーティン・ルーサー・キング・ジュニアの生誕地を訪れ、彼の偉業を学びます。公園内には彼の記念碑や教会もあり、感慨深い時間を過ごせます。",
+          "searchQuery": "Martin Luther King Jr. National Historical Park",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "アトランタのショッピングエリア散策",
+          "description": "アトランタのショッピングエリアでファングッズを探しながら散策します。特にマーベル関連のアイテムが豊富なショップを訪れるのが楽しみです。",
+          "locationEn": "Atlanta, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "アトランタの人気レストランで、南部料理を堪能します。フライドチキンやコーンブレッドなど、アメリカ南部の味を楽しんでください。",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ショッピングとグルメを楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アトランタのホテルで、アメリカンブレックファーストを楽しみます。新鮮なフルーツや卵料理、ベーコンなど、ボリューム満点の朝食で一日をスタート。",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "アトランタのマーベル関連ショップ訪問",
+          "description": "アトランタにはマーベルのグッズを取り扱う専門店があります。ここでお気に入りのキャラクターのフィギュアやアパレルを見つけて、思い出を作りましょう。",
+          "searchQuery": "Marvel Store Atlanta",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "アトランタのフードマーケットでランチ",
+          "description": "地元のフードマーケットで、様々な料理を楽しめるランチタイム。タコスやバーベキュー、デザートまで、アトランタの多様な食文化を味わえます。",
+          "searchQuery": "Ponce City Market",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アトランタのアートギャラリー巡り",
+          "description": "アトランタのアートシーンを楽しむために、いくつかのギャラリーを訪れます。地元アーティストの作品や、マーベルにインスパイアされたアートも見られるかもしれません。",
+          "searchQuery": "Atlanta Art Galleries",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ショッピングモールでファングッズ探し",
+          "description": "アトランタの大型ショッピングモールで、マーベルのファングッズを探しましょう。最新のコレクションや限定商品が見つかるかもしれません。",
+          "searchQuery": "Lenox Square",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "アトランタのレストランでディナー",
+          "description": "地元の人気レストランでディナーを楽しみます。アメリカ南部の料理を堪能しながら、旅の思い出を語り合いましょう。",
+          "searchQuery": "Southern Food Restaurant Atlanta",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "アトランタのナイトライフを楽しむ",
+          "description": "アトランタのバーやライブハウスで、地元の音楽や雰囲気を楽しむ夜を過ごします。カクテルを片手に、素敵な夜を締めくくりましょう。",
+          "searchQuery": "Atlanta Nightlife",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "アトランタの自然を満喫",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "アトランタのホテルで、アメリカンブレックファーストを楽しみます。新鮮なフルーツやオムレツ、トーストでエネルギーをチャージ。",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "アトランタ植物園",
+          "description": "美しい植物が広がるアトランタ植物園で、自然の中を散策します。特に、フラワーガーデンや温室の多様な植物が見どころです。",
+          "searchQuery": "Atlanta Botanical Garden",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "近くのカフェでランチ",
+          "description": "アトランタ植物園近くのカフェで、サンドイッチやサラダを楽しみます。地元の食材を使った料理が魅力です。",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ピードモント公園散策",
+          "description": "アトランタの中心に位置するピードモント公園で、リラックスした時間を過ごします。広々とした芝生や池があり、散歩やピクニックに最適です。",
+          "searchQuery": "Piedmont Park",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Marvel関連ショップ訪問",
+          "description": "アトランタのショッピングエリアで、Marvelのファングッズを探します。限定商品やコレクターズアイテムが見つかるかも！",
+          "searchQuery": "Marvel Store Atlanta",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。アトランタの街並みを楽しみながらの帰路です。",
+          "locationEn": "Atlanta, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "アトランタの地元料理を楽しむため、人気のレストランでディナーを。南部料理の名物を堪能しましょう。",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "帰路につく前のひととき",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "アトランタのカフェで朝食",
+          "description": "アトランタの人気カフェで、地元の新鮮な食材を使った朝食を楽しみましょう。特に、アボカドトーストや自家製のベーカリーが絶品です。",
+          "searchQuery": "Atlanta Cafe",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "アトランタのマーベル関連ショップ訪問",
+          "description": "アトランタにはマーベルのファングッズが豊富に揃うショップがあります。ここでお気に入りのキャラクターのグッズを見つけて、旅の思い出を持ち帰りましょう。",
+          "searchQuery": "Marvel Store Atlanta",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "アトランタのレストランでランチ",
+          "description": "地元の人気レストランで、南部料理を堪能しましょう。フライドチキンやバーベキューリブなど、アメリカ南部の味を楽しむことができます。",
+          "searchQuery": "Southern Restaurant Atlanta",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アトランタの文化施設訪問",
+          "description": "アトランタの文化施設で、地元のアートや歴史を学びましょう。特に、マーベルの影響を受けたアート作品が展示されていることもあります。",
+          "searchQuery": "Cultural Center Atlanta",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アトランタ国際空港へ移動",
+          "description": "帰路につく前に、アトランタ国際空港へ向かいます。空港までの移動は、タクシーやライドシェアを利用すると便利です。",
+          "locationEn": "Atlanta, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "アトランタ国際空港での出発準備",
+          "description": "空港に到着したら、出発手続きを済ませて、最後のアトランタの思い出を振り返りましょう。お土産を買う時間も忘れずに。",
+          "locationEn": "Atlanta, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

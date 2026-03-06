@@ -1,0 +1,530 @@
+{
+  "id": "c70402f5-57c8-4b16-b1e8-0ab5cdf0ddbc",
+  "destination": "Atlanta",
+  "description": "Immerse yourself in the vibrant culture and history of Atlanta, a city that pulses with energy and creativity. This 6-day solo adventure is designed for the passionate Marvel fan, blending iconic attractions with hidden gems, ensuring you experience the best of what Atlanta has to offer. From thrilling activities to unique shopping experiences, get ready to explore the heart of the South while indulging in your favorite fandom!",
+  "heroImage": "https://images.unsplash.com/photo-1686340519586-2f1dd6bb2667?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODk4Mjl8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Chrishaun Byrom",
+  "heroImagePhotographerUrl": "https://unsplash.com/@chrishaun?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Departure from Washington D.C. to Atlanta",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Washington D.C.",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Hartsfield-Jackson Atlanta International Airport",
+          "time": "11:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Direct flight to Atlanta."
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Varsity",
+          "description": "Dive into a classic Atlanta experience at The Varsity, famous for its chili dogs and onion rings. This iconic fast-food joint is a must-visit for a quick and delicious meal.",
+          "searchQuery": "The Varsity",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the World of Coca-Cola",
+          "description": "Explore the fascinating history of the world's most famous beverage at the World of Coca-Cola. Enjoy interactive exhibits and taste different Coca-Cola products from around the globe.",
+          "searchQuery": "World of Coca-Cola",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the Georgia Aquarium",
+          "description": "Home to thousands of marine animals, the Georgia Aquarium is one of the largest in the world. Don't miss the mesmerizing underwater tunnel and the dolphin show!",
+          "searchQuery": "Georgia Aquarium",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Mary Mac's Tea Room",
+          "description": "Indulge in Southern comfort food at Mary Mac's Tea Room, a beloved local institution. Try their fried chicken and peach cobbler for a true taste of Atlanta.",
+          "searchQuery": "Mary Mac's Tea Room",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Shopping at Ponce City Market",
+          "description": "End your day at Ponce City Market, where you can find unique Marvel merchandise and local crafts. The vibrant atmosphere and rooftop views make it a perfect evening spot.",
+          "searchQuery": "Ponce City Market",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Marvel Universe Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Flying Biscuit Cafe",
+          "description": "Start your day with a delicious breakfast at this local favorite known for its fluffy biscuits and hearty Southern dishes. Don't miss their signature Flying Biscuit!",
+          "searchQuery": "Flying Biscuit Cafe",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit The World of Coca-Cola",
+          "description": "Dive into the world of Coca-Cola, where you can explore the history of this iconic beverage, taste different Coke products from around the globe, and even meet the Coca-Cola polar bear!",
+          "searchQuery": "World of Coca-Cola",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Ponce City Market",
+          "description": "Head over to Ponce City Market for lunch, where you can choose from a variety of food vendors offering everything from gourmet tacos to artisanal sandwiches. Enjoy the vibrant atmosphere!",
+          "searchQuery": "Ponce City Market",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Centennial Olympic Park",
+          "description": "Stroll through Centennial Olympic Park, a beautiful green space that was the centerpiece of the 1996 Olympics. Don't forget to check out the iconic Fountain of Rings!",
+          "searchQuery": "Centennial Olympic Park",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Marvel Store at Ponce City Market",
+          "description": "After exploring the park, return to Ponce City Market to visit the Marvel Store. Here, you can find exclusive Marvel merchandise and collectibles to take home as souvenirs.",
+          "searchQuery": "Marvel Store Ponce City Market",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Antico Pizza",
+          "description": "Enjoy a delicious dinner at Antico Pizza, famous for its authentic Neapolitan-style pizzas. The lively atmosphere and fresh ingredients make it a must-visit!",
+          "searchQuery": "Antico Pizza",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening at the Fox Theatre",
+          "description": "End your day with a show at the historic Fox Theatre. Check the schedule for any Marvel-related performances or events happening during your visit!",
+          "searchQuery": "Fox Theatre Atlanta",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion and Shopping Spree",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Flying Biscuit Cafe",
+          "description": "Start your day with a hearty Southern breakfast at this beloved local spot. Their famous biscuits and gravy are a must-try!",
+          "searchQuery": "The Flying Biscuit Cafe",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Martin Luther King Jr. National Historical Park",
+          "description": "Explore the rich history of the Civil Rights Movement at this significant site. Visit Dr. King's childhood home and the Ebenezer Baptist Church where he preached.",
+          "searchQuery": "Martin Luther King Jr. National Historical Park",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Mary Mac's Tea Room",
+          "description": "Enjoy a traditional Southern meal at this iconic restaurant. Don't miss their fried chicken and sweet tea, a true taste of Atlanta.",
+          "searchQuery": "Mary Mac's Tea Room",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Little Five Points Exploration",
+          "description": "Dive into the eclectic vibe of Little Five Points, known for its unique shops and street art. Perfect for finding Marvel merchandise and quirky souvenirs.",
+          "searchQuery": "Little Five Points",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Atlanta Botanical Garden",
+          "description": "Take a leisurely stroll through this beautiful garden featuring stunning plant collections and art installations. A peaceful escape in the heart of the city.",
+          "searchQuery": "Atlanta Botanical Garden",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Optimist",
+          "description": "Indulge in a seafood feast at this upscale restaurant known for its fresh catches and vibrant atmosphere. A perfect way to end your day.",
+          "searchQuery": "The Optimist",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Shopping for Marvel Merchandise at The Battery Atlanta",
+          "description": "Head to The Battery Atlanta for a fun shopping experience. Look for exclusive Marvel collectibles and enjoy the lively atmosphere.",
+          "searchQuery": "The Battery Atlanta",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Marvelous Day at the Studios",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Flying Biscuit Cafe",
+          "description": "Start your day with a hearty Southern breakfast at this beloved local spot. Their famous biscuits and gravy are a must-try!",
+          "searchQuery": "The Flying Biscuit Cafe",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Pinewood Atlanta Studios Tour",
+          "description": "Dive into the world of filmmaking with a guided tour of Pinewood Atlanta Studios, where many Marvel films were shot. Get a behind-the-scenes look at the production process and see iconic sets!",
+          "searchQuery": "Pinewood Atlanta Studios",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Varsity",
+          "description": "Grab a quick bite at this iconic fast-food joint known for its chili dogs and burgers. It's a classic Atlanta experience!",
+          "searchQuery": "The Varsity",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "The Walking Dead Museum",
+          "description": "Explore the fascinating world of 'The Walking Dead' at this museum dedicated to the hit series. Check out props, costumes, and interactive exhibits that bring the show to life!",
+          "searchQuery": "The Walking Dead Museum",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping at Ponce City Market",
+          "description": "Head to Ponce City Market for some retail therapy. This historic building is filled with unique shops, including several that offer Marvel merchandise and collectibles.",
+          "searchQuery": "Ponce City Market",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at STK Atlanta",
+          "description": "Indulge in a high-end dining experience at STK, known for its modern steakhouse vibe and delicious dishes. Perfect for a special evening after a day of exploration!",
+          "searchQuery": "STK Atlanta",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll at Piedmont Park",
+          "description": "End your day with a relaxing stroll through Piedmont Park. Enjoy the beautiful skyline views and unwind in this urban oasis.",
+          "searchQuery": "Piedmont Park",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Final Marvel Stops and Return to Washington D.C.",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Flying Biscuit Cafe",
+          "description": "Start your day with a hearty Southern breakfast at this beloved local spot. Their fluffy biscuits and creamy grits are a must-try!",
+          "searchQuery": "Flying Biscuit Cafe",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Fox Theatre",
+          "description": "Explore the stunning Fox Theatre, an iconic venue known for its lavish architecture and rich history. Don't forget to check out the Marvel-themed events if available!",
+          "searchQuery": "Fox Theatre",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Marvel Store at Ponce City Market",
+          "description": "Head to Ponce City Market to visit the Marvel Store, where you can find exclusive merchandise and collectibles. Perfect for picking up some unique fan gear!",
+          "searchQuery": "Marvel Store Ponce City Market",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Ponce City Market",
+          "description": "Enjoy a variety of food options at this vibrant market. From gourmet tacos to artisanal sandwiches, there's something for every palate.",
+          "searchQuery": "Ponce City Market",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Atlanta History Center",
+          "description": "Dive into Atlanta's rich history at the Atlanta History Center. Explore exhibits on the Civil War, Southern history, and the city's role in the Marvel Cinematic Universe.",
+          "searchQuery": "Atlanta History Center",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Marvel Merchandise",
+          "description": "Spend some time exploring local shops for more Marvel merchandise. Look for unique items that you won't find anywhere else!",
+          "searchQuery": "Marvel merchandise shops Atlanta",
+          "locationEn": "Atlanta, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Optimist",
+          "description": "Indulge in a seafood dinner at The Optimist, known for its fresh catches and vibrant atmosphere. A perfect way to end your Atlanta adventure!",
+          "searchQuery": "The Optimist",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Hotel and Prepare for Departure",
+          "description": "Head back to your hotel to pack and prepare for your journey back to Washington D.C. Reflect on your amazing trip filled with Marvel adventures!",
+          "locationEn": "Atlanta, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Hartsfield-Jackson Atlanta International Airport",
+          "time": "14:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "15:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Direct flight to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Flying Biscuit Cafe",
+          "description": "Start your day with a hearty Southern breakfast at The Flying Biscuit Cafe, famous for its fluffy biscuits and creamy grits. A perfect way to fuel up before your adventures!",
+          "searchQuery": "The Flying Biscuit Cafe",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the World of Coca-Cola",
+          "description": "Explore the fascinating history of the Coca-Cola brand at this interactive museum. Sample different Coca-Cola products from around the world and learn about the brand's global impact.",
+          "searchQuery": "World of Coca-Cola",
+          "locationEn": "Atlanta, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Ponce City Market",
+          "description": "Head to Ponce City Market for lunch, where you can find a variety of food vendors offering everything from gourmet tacos to artisanal sandwiches. Enjoy the vibrant atmosphere and unique shops.",
+          "searchQuery": "Ponce City Market",
+          "locationEn": "Atlanta, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Flight to Washington D.C.",
+          "description": "Catch your flight back to Washington D.C. from Hartsfield-Jackson Atlanta International Airport. Enjoy the views as you leave Atlanta behind.",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

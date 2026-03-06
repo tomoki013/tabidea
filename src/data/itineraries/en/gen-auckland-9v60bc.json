@@ -1,0 +1,634 @@
+{
+  "id": "c307d224-1c24-4ee1-a58f-44dc12c68602",
+  "destination": "Auckland",
+  "description": "Immerse yourself in the vibrant culture and stunning natural beauty of Auckland, New Zealand's largest city. Over the course of this 7-day journey, you and your partner will explore a delightful mix of art galleries, exquisite dining experiences, and breathtaking landscapes. From the iconic Sky Tower to the serene beaches of Waiheke Island, each day is designed to unveil the unique charm of this coastal metropolis while allowing for a leisurely pace to savor every moment.",
+  "heroImage": "https://images.unsplash.com/photo-1580618240354-7a8600e2ad44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTQ4Njh8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Kishan Modi",
+  "heroImagePhotographerUrl": "https://unsplash.com/@quiche2k?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Auckland",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Federal Delicatessen",
+          "description": "Start your day with a hearty breakfast at this popular eatery known for its classic New York-style deli dishes. Try their famous bagels or the delicious eggs benedict to fuel up for the day ahead.",
+          "searchQuery": "Federal Delicatessen",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Sky Tower",
+          "description": "Head to the iconic Sky Tower, where you can enjoy breathtaking panoramic views of Auckland from the observation deck. Don't miss the chance to try the SkyWalk or SkyJump for an adrenaline rush!",
+          "searchQuery": "Sky Tower",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Viaduct Harbour",
+          "description": "Enjoy a leisurely lunch at one of the many waterfront restaurants in Viaduct Harbour. Savor fresh seafood or local dishes while taking in the stunning views of the marina.",
+          "searchQuery": "Viaduct Harbour",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Auckland Art Gallery Toi o Tāmaki",
+          "description": "Explore New Zealand's most extensive collection of national and international art at the Auckland Art Gallery. The stunning architecture and diverse exhibitions make it a must-visit for art lovers.",
+          "searchQuery": "Auckland Art Gallery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Stroll through Albert Park",
+          "description": "Take a relaxing walk in Albert Park, a beautiful green space filled with gardens and sculptures. It's a perfect spot to unwind and enjoy the natural beauty of Auckland.",
+          "searchQuery": "Albert Park",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Glass Goose Bar & Eatery",
+          "description": "End your day with a delightful dinner at The Glass Goose, known for its vibrant atmosphere and delicious menu featuring local ingredients. Don't forget to try their signature cocktails!",
+          "searchQuery": "The Glass Goose Bar & Eatery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Art and Culture Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Federal Delicatessen",
+          "description": "Start your day with a hearty breakfast at this popular eatery known for its delicious bagels and classic New York-style deli fare. The vibrant atmosphere and friendly staff will set a positive tone for your day.",
+          "searchQuery": "Federal Delicatessen",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Auckland Art Gallery",
+          "description": "Explore the stunning Auckland Art Gallery, home to an impressive collection of New Zealand and international art. Don't miss the beautiful architecture and the serene gardens surrounding the gallery.",
+          "searchQuery": "Auckland Art Gallery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at La Cigale French Market",
+          "description": "Enjoy a delightful lunch at La Cigale, where you can sample fresh French cuisine and local delicacies. The market atmosphere is lively, and you can also pick up some artisanal goods to take home.",
+          "searchQuery": "La Cigale French Market",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "K'Road Exploration",
+          "description": "Stroll along K'Road, a vibrant street filled with eclectic shops, galleries, and street art. This area is known for its bohemian vibe and is a great place to discover local culture and creativity.",
+          "searchQuery": "K'Road",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit to the Auckland War Memorial Museum",
+          "description": "Dive into New Zealand's rich history and culture at the Auckland War Memorial Museum. The exhibits range from Maori artifacts to natural history, providing a comprehensive view of the country's heritage.",
+          "searchQuery": "Auckland War Memorial Museum",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Glass Goose Bar & Eatery",
+          "description": "End your day with a delicious dinner at The Glass Goose, known for its fresh, locally sourced ingredients and a cozy atmosphere. Try their signature dishes and enjoy a glass of New Zealand wine.",
+          "searchQuery": "The Glass Goose Bar & Eatery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk at Auckland Waterfront",
+          "description": "Take a leisurely evening stroll along the Auckland Waterfront. The views of the harbor and the skyline are breathtaking, especially as the sun sets. It's a perfect way to wind down after a day of exploration.",
+          "searchQuery": "Auckland Waterfront",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Nature and Scenic Views",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Glass Goose Bar & Eatery",
+          "description": "Start your day with a hearty breakfast at The Glass Goose, known for its vibrant atmosphere and delicious brunch options. Try their famous eggs benedict or the classic avocado toast for a delightful morning meal.",
+          "searchQuery": "The Glass Goose Bar & Eatery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Mount Eden",
+          "description": "Head to Mount Eden, the highest natural point in Auckland, for stunning panoramic views of the city and its surroundings. The walk to the summit is invigorating, and the crater itself is a fascinating sight.",
+          "searchQuery": "Mount Eden",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore Auckland Domain",
+          "description": "Stroll through Auckland Domain, the city's oldest park, which features beautiful gardens and the Auckland War Memorial Museum. Take your time to enjoy the lush greenery and perhaps have a picnic in the park.",
+          "searchQuery": "Auckland Domain",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at La Fourchette",
+          "description": "Enjoy a leisurely lunch at La Fourchette, a charming French bistro in the heart of Auckland. Their seasonal menu features fresh ingredients and classic French dishes, perfect for a romantic meal.",
+          "searchQuery": "La Fourchette",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit Auckland Art Gallery Toi o Tāmaki",
+          "description": "Immerse yourselves in the local art scene at the Auckland Art Gallery, which houses an impressive collection of New Zealand and international art. The architecture of the gallery itself is a work of art worth admiring.",
+          "searchQuery": "Auckland Art Gallery Toi o Tāmaki",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Walk along the Waterfront",
+          "description": "Take a leisurely walk along Auckland's waterfront, enjoying the views of the harbor and the bustling atmosphere. Stop by the Viaduct Harbour for a coffee or a sweet treat at one of the many cafes.",
+          "searchQuery": "Viaduct Harbour",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Soul Bar & Bistro",
+          "description": "End your day with a delightful dinner at Soul Bar & Bistro, known for its fresh seafood and stunning views of the harbor. The ambiance is perfect for a romantic evening out.",
+          "searchQuery": "Soul Bar & Bistro",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Relax at your hotel",
+          "description": "After a fulfilling day of exploration, return to your hotel to unwind. Enjoy a glass of wine on your balcony or take a stroll around the neighborhood to soak in the evening atmosphere.",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Day Trip to Waiheke Island",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Auckland",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Waiheke Island",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Enjoy a scenic flight to Waiheke Island for a day of exploration."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Oneroa Beach",
+          "description": "Start your day at Oneroa Beach, a beautiful spot perfect for a morning stroll or relaxing on the sandy shores. The beach is known for its stunning views and vibrant atmosphere, making it a great place to unwind.",
+          "searchQuery": "Oneroa Beach",
+          "locationEn": "Waiheke Island, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Oyster Inn",
+          "description": "Enjoy a delicious seafood lunch at The Oyster Inn, renowned for its fresh oysters and local cuisine. The restaurant offers a lovely view of the beach, enhancing your dining experience.",
+          "searchQuery": "The Oyster Inn",
+          "locationEn": "Waiheke Island, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Waiheke Island Wine Tour",
+          "description": "Join a guided wine tour to explore some of Waiheke's famous vineyards. Sample exquisite local wines and learn about the winemaking process while enjoying the picturesque landscapes.",
+          "searchQuery": "Waiheke Island Wine Tour",
+          "locationEn": "Waiheke Island, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit to Waiheke Community Art Gallery",
+          "description": "Explore the Waiheke Community Art Gallery, showcasing local artists and their works. This gallery is a great place to appreciate the island's vibrant art scene and perhaps purchase a unique piece.",
+          "searchQuery": "Waiheke Community Art Gallery",
+          "locationEn": "Waiheke Island, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Mudbrick Vineyard",
+          "description": "End your day with a romantic dinner at Mudbrick Vineyard, where you can enjoy fine dining paired with stunning sunset views over the vineyards. A perfect way to conclude your day on Waiheke Island.",
+          "searchQuery": "Mudbrick Vineyard",
+          "locationEn": "Waiheke Island, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Culinary Delights",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at La Tropezienne",
+          "description": "Start your day with a delightful breakfast at La Tropezienne, known for its delicious pastries and fresh coffee. The ambiance is cozy, perfect for a relaxed morning with your partner.",
+          "searchQuery": "La Tropezienne",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Auckland Art Gallery",
+          "description": "Explore the Auckland Art Gallery, home to an impressive collection of New Zealand and international art. Don't miss the stunning architecture of the building itself, which beautifully complements the art within.",
+          "searchQuery": "Auckland Art Gallery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at the Fish Market",
+          "description": "Head to the Auckland Fish Market for a fresh seafood lunch. Enjoy a variety of dishes, from sushi to fish and chips, all made with the freshest catch of the day.",
+          "searchQuery": "Auckland Fish Market",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through Britomart",
+          "description": "After lunch, take a leisurely stroll through Britomart, a vibrant area filled with boutique shops, cafes, and art installations. It's a great place to soak in the local culture and perhaps pick up a unique souvenir.",
+          "searchQuery": "Britomart",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Sky Tower",
+          "description": "No trip to Auckland is complete without a visit to the Sky Tower. Take the elevator up for breathtaking panoramic views of the city and beyond. If you're feeling adventurous, try the SkyWalk or SkyJump!",
+          "searchQuery": "Sky Tower",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Glass Goose Bar & Eatery",
+          "description": "End your day with a romantic dinner at The Glass Goose, known for its seasonal menu and beautiful outdoor seating. Enjoy a mix of local and international dishes, paired with a fine selection of wines.",
+          "searchQuery": "The Glass Goose Bar & Eatery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Historical Insights",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Glass Goose Bar & Eatery",
+          "description": "Start your day with a hearty breakfast at The Glass Goose, known for its vibrant atmosphere and delicious brunch options. Try their famous eggs benedict or a classic avocado toast to fuel your day ahead.",
+          "searchQuery": "The Glass Goose Bar & Eatery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Howick Historical Village",
+          "description": "Step back in time at Howick Historical Village, an open-air museum that showcases New Zealand's colonial past. Wander through the charming streets lined with historic buildings and learn about the lives of early settlers.",
+          "searchQuery": "Howick Historical Village",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Good Home",
+          "description": "Enjoy a relaxed lunch at The Good Home, a local favorite offering a diverse menu with fresh, seasonal ingredients. Their burgers and craft beers are particularly popular among visitors.",
+          "searchQuery": "The Good Home",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Devonport",
+          "description": "Take a scenic ferry ride to Devonport, a charming seaside village. Stroll along the waterfront, visit local boutiques, and enjoy stunning views of Auckland's skyline from Mount Victoria.",
+          "searchQuery": "Devonport",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Visit the Devonport Museum",
+          "description": "Discover the rich history of Devonport at the local museum. Exhibits include artifacts from the area's maritime history and insights into the lives of its early inhabitants.",
+          "searchQuery": "Devonport Museum",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Engine Room",
+          "description": "End your day with a delightful dinner at The Engine Room, known for its seasonal menu and cozy atmosphere. Don't miss their fresh seafood dishes and delectable desserts.",
+          "searchQuery": "The Engine Room",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll along the Devonport waterfront",
+          "description": "Take a leisurely evening stroll along the waterfront, soaking in the beautiful views of the harbor and the city lights. It's a perfect way to unwind after a day of exploration.",
+          "searchQuery": "Devonport waterfront",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure from Auckland",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Auckland",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Auckland Airport",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Prepare for departure and check out of the hotel."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Glass Goose Bar & Eatery",
+          "description": "Start your day with a hearty breakfast at The Glass Goose, known for its fresh ingredients and vibrant atmosphere. Try their famous eggs benedict or a classic avocado toast to fuel your day.",
+          "searchQuery": "The Glass Goose Bar & Eatery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Auckland Art Gallery Toi o Tāmaki",
+          "description": "Explore New Zealand's most extensive collection of national and international art at the Auckland Art Gallery. The stunning architecture and diverse exhibitions make it a must-visit for art lovers.",
+          "searchQuery": "Auckland Art Gallery Toi o Tāmaki",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Depot Eatery",
+          "description": "Enjoy a casual lunch at Depot, a popular eatery known for its fresh seafood and local produce. Don't miss their famous oysters and the delicious fish tacos.",
+          "searchQuery": "Depot Eatery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Stroll through Albert Park",
+          "description": "Take a leisurely walk through Albert Park, a beautiful green space filled with historic trees and sculptures. It's a perfect spot to relax and enjoy the natural beauty of Auckland.",
+          "searchQuery": "Albert Park",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the Auckland War Memorial Museum",
+          "description": "Dive into New Zealand's history and culture at the Auckland War Memorial Museum. The museum features fascinating exhibits on Maori culture and the natural history of the region.",
+          "searchQuery": "Auckland War Memorial Museum",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at The Sugar Club",
+          "description": "End your day with a memorable dinner at The Sugar Club, located on the 53rd floor of the Sky Tower. Enjoy stunning views of the city while savoring a menu that blends local ingredients with international flavors.",
+          "searchQuery": "The Sugar Club",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Head to Auckland Airport for Departure",
+          "description": "Make your way to Auckland Airport for your departure. Ensure you arrive with plenty of time to check in and relax before your flight.",
+          "searchQuery": "Auckland Airport",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

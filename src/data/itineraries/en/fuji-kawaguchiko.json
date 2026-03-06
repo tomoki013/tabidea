@@ -1,0 +1,181 @@
+{
+  "id": "1c2a8af3-8140-45c6-be2c-6a26d13b2f84",
+  "destination": "河口湖",
+  "description": "Escape to the serene beauty of Lake Kawaguchi, where the majestic Mount Fuji stands as a breathtaking backdrop. This two-day adventure is perfect for nature lovers and thrill-seekers alike, combining stunning landscapes, exhilarating activities, and delicious local cuisine. Get ready to immerse yourself in the tranquility of this picturesque region, while also enjoying the excitement of Fuji-Q Highland amusement park.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Exploring Nature and Thrills",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a hearty breakfast at a cozy café near Lake Kawaguchi. Enjoy fresh pastries and local specialties while soaking in the serene views of the lake and Mount Fuji in the background.",
+          "searchQuery": "Lake Kawaguchi Café",
+          "locationEn": "Kawaguchi, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Oishi Park",
+          "description": "Head to Oishi Park, where you can enjoy stunning views of Mount Fuji framed by beautiful flower fields. Take a leisurely stroll along the lakeside and capture some breathtaking photos.",
+          "searchQuery": "Oishi Park",
+          "locationEn": "Kawaguchi, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Hoto Fudo",
+          "description": "Savor a delicious bowl of Hoto, a local noodle dish, at Hoto Fudo. This restaurant is famous for its hearty, miso-based soup filled with seasonal vegetables and thick noodles, perfect for recharging after your morning activities.",
+          "searchQuery": "Hoto Fudo",
+          "locationEn": "Kawaguchi, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Fuji-Q Highland",
+          "description": "Spend the afternoon at Fuji-Q Highland, an amusement park known for its thrilling rides and stunning views of Mount Fuji. Don't miss the famous roller coasters and the haunted house for an adrenaline rush!",
+          "searchQuery": "Fuji-Q Highland",
+          "locationEn": "Fujiyoshida, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Lake Kawaguchi",
+          "description": "After an exciting day at Fuji-Q Highland, head back to Lake Kawaguchi. Enjoy the scenic drive back as the sun begins to set, casting a golden glow over the lake and mountains.",
+          "searchQuery": "Lake Kawaguchi",
+          "locationEn": "Kawaguchi, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "Experience a traditional Japanese dining experience at a local izakaya. Enjoy a variety of small dishes, including grilled fish, sashimi, and seasonal vegetables, paired with local sake.",
+          "searchQuery": "Kawaguchi Izakaya",
+          "locationEn": "Kawaguchi, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll by the Lake",
+          "description": "End your day with a peaceful evening stroll along the shores of Lake Kawaguchi. The reflections of Mount Fuji on the water at dusk create a magical atmosphere, perfect for unwinding after a fun-filled day.",
+          "searchQuery": "Lake Kawaguchi",
+          "locationEn": "Kawaguchi, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Culinary Delights and Scenic Views",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Lake Kawaguchi",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Kawaguchiko Music Forest",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "A short walk to enjoy the beautiful scenery."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Kawaguchiko Music Forest",
+          "description": "Start your day at the Kawaguchiko Music Forest, a charming park featuring beautiful gardens and music-themed exhibits. Don't miss the stunning views of Mount Fuji from the park!",
+          "searchQuery": "Kawaguchiko Music Forest",
+          "locationEn": "Lake Kawaguchi, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Local Soba Restaurant for Lunch",
+          "description": "Enjoy a delicious soba lunch at a local restaurant. The handmade soba noodles are a must-try, especially with the fresh mountain water from the area.",
+          "searchQuery": "Soba Restaurant Kawaguchiko",
+          "locationEn": "Lake Kawaguchi, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Mount Fuji Panoramic Ropeway",
+          "description": "Take the Mount Fuji Panoramic Ropeway for breathtaking views of the iconic mountain and the surrounding lakes. The ride offers fantastic photo opportunities, so have your camera ready!",
+          "searchQuery": "Mount Fuji Panoramic Ropeway",
+          "locationEn": "Lake Kawaguchi, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Fuji-Q Highland Amusement Park",
+          "description": "Head to Fuji-Q Highland for an afternoon of thrilling rides and attractions. With stunning views of Mount Fuji as a backdrop, this amusement park is perfect for adrenaline seekers!",
+          "searchQuery": "Fuji-Q Highland",
+          "locationEn": "Fujiyoshida, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "Wrap up your day with dinner at a cozy izakaya. Enjoy a variety of Japanese dishes and local sake while sharing stories with your friends about the day's adventures.",
+          "searchQuery": "Izakaya Kawaguchiko",
+          "locationEn": "Lake Kawaguchi, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

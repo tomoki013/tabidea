@@ -1,0 +1,586 @@
+{
+  "id": "ae25b823-1fd8-434f-a56d-2ca5900854d8",
+  "destination": "ストックホルム",
+  "description": "美しい水の都、ストックホルムでの7日間の旅は、アートとリラックスが融合した特別な体験です。街の中心に広がる美術館やギャラリーを巡りながら、スウェーデンの文化に浸り、心地よいカフェでのひとときや、静かな公園でのリラックスした時間を楽しむことができます。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ストックホルム到着",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "アーランダ空港到着",
+          "description": "ストックホルムのアーランダ空港に到着。空港から市内中心部へのアクセスは、快適なアーランダエクスプレスを利用するのがおすすめです。",
+          "searchQuery": "Arlanda Airport",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ホテルチェックイン",
+          "description": "市内中心部にある高級ホテルにチェックイン。リラックスできる空間で、旅の疲れを癒しましょう。",
+          "searchQuery": "Nobis Hotel Stockholm",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ホテル近くのカフェでランチ",
+          "description": "ストックホルムのカフェ文化を楽しむために、地元の人気カフェで軽食を。サンドイッチやスイーツを味わいながら、ゆったりとした時間を過ごします。",
+          "searchQuery": "Vete-Katten",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ストックホルム市立美術館",
+          "description": "ストックホルム市立美術館を訪れ、スウェーデンのアートを堪能。美しい建物の中で、印象派や現代アートの作品を楽しむことができます。",
+          "searchQuery": "Stockholm City Museum",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ガムラスタン散策",
+          "description": "ストックホルムの旧市街・ガムラスタンを散策。カラフルな建物や石畳の道を歩きながら、歴史を感じるひとときを楽しみましょう。",
+          "searchQuery": "Gamla Stan",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ストックホルムの地元料理を楽しむために、評判の良いレストランでディナーを。新鮮なシーフードやスウェーデンの伝統料理を堪能できます。",
+          "searchQuery": "Pelikan",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルでリラックス",
+          "description": "一日の観光を終えたら、ホテルでリラックス。スパやサウナを利用して、心身ともにリフレッシュしましょう。",
+          "searchQuery": "Nobis Hotel Stockholm",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アートと歴史の探訪",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ストックホルムのホテルで、スウェーデンの伝統的な朝食を楽しみます。新鮮なパンやスモークサーモン、クリームチーズなど、地元の味を堪能しましょう。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ストックホルム宮殿",
+          "description": "ストックホルム宮殿を訪れ、スウェーデン王室の歴史を学びます。壮大な建築と美しい庭園を散策しながら、王室の生活を垣間見ることができます。",
+          "searchQuery": "Stockholm Palace",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "近くのカフェでランチ",
+          "description": "ストックホルム宮殿の近くにあるカフェで、軽食を楽しみます。地元の人々に人気のサンドイッチやスープを味わいながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ノーベル博物館",
+          "description": "ノーベル博物館を訪れ、ノーベル賞の歴史や受賞者の業績を学びます。展示はインタラクティブで、アートと科学の融合を楽しむことができます。",
+          "searchQuery": "Nobel Museum",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ガムラスタン散策",
+          "description": "ストックホルムの旧市街・ガムラスタンを散策します。カラフルな建物や狭い路地を歩きながら、歴史的な雰囲気を楽しみましょう。お土産屋やカフェも多く、気軽に立ち寄れます。",
+          "searchQuery": "Gamla Stan",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ストックホルムの地元レストランで、スウェーデン料理を堪能します。特に、ミートボールやハリバットなどの伝統料理をぜひ試してみてください。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の観光を終え、ホテルに戻ります。リラックスした時間を過ごし、明日の計画を立てるのも良いでしょう。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "美術館巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ストックホルムのホテルで、北欧スタイルの豊かな朝食を楽しみます。新鮮なパンやスモークサーモン、ヨーグルトなど、地元の食材を使った料理が揃っています。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "シグナル博物館",
+          "description": "ストックホルムのシグナル博物館で、現代アートとインタラクティブな展示を楽しみましょう。特に、地元アーティストの作品が多く展示されており、アートに触れながらリラックスした時間を過ごせます。",
+          "searchQuery": "Signal Museum",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "近くのカフェでランチ",
+          "description": "シグナル博物館の近くにあるカフェで、軽食やサンドイッチを楽しみます。地元の人々に人気のカフェで、アートをテーマにしたメニューも魅力的です。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "モダン美術館",
+          "description": "ストックホルムのモダン美術館を訪れ、現代アートのコレクションを堪能します。美術館のカフェからは美しい水辺の景色も楽しめ、アートと自然の両方を感じることができます。",
+          "searchQuery": "Moderna Museet",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "美術館のカフェでお茶",
+          "description": "モダン美術館内のカフェで、アートを眺めながらリラックスしたひとときを過ごします。美味しいケーキと共に、ストックホルムの美しい景色を楽しんでください。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルに戻る",
+          "description": "美術館を後にし、ホテルへ戻ります。ストックホルムの街並みを楽しみながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "リラックスと自然",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ストックホルムのホテルで、地元の食材を使った美味しい朝食を楽しみます。スウェーデンのパンやスモークサーモン、ヨーグルトなど、ヘルシーで充実したメニューが揃っています。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "スカンセン",
+          "description": "スカンセンは、スウェーデンの伝統的な生活様式を体験できる野外博物館です。美しい自然の中で、古い建物や動物たちと触れ合いながら、リラックスした時間を過ごせます。特に、スウェーデンの民俗文化に興味がある方にはおすすめです。",
+          "searchQuery": "Skansen",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "スカンセン内のカフェでランチ",
+          "description": "スカンセン内にあるカフェで、地元の食材を使った軽食を楽しみます。特に、スウェーデンの伝統的なオープンサンドイッチ（スモーガスボード）は絶品です。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ドロットニングホルム宮殿",
+          "description": "ユネスコ世界遺産にも登録されているドロットニングホルム宮殿を訪れます。美しい庭園や宮殿内部の豪華な装飾を見学しながら、スウェーデン王室の歴史に触れることができます。",
+          "searchQuery": "Drottningholm Palace",
+          "locationEn": "Drottningholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ドロットニングホルム宮殿の庭園散策",
+          "description": "宮殿の庭園を散策し、静かな時間を楽しみます。美しい花々や池を眺めながら、リラックスしたひとときを過ごせます。",
+          "locationEn": "Drottningholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ストックホルム市内のレストランでディナー",
+          "description": "ストックホルム市内の人気レストランで、スウェーデン料理を堪能します。地元の新鮮な食材を使った料理が楽しめるお店を選び、特別なディナーをお楽しみください。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "カフェとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ストックホルムのホテルで、地元の食材を使った美味しい朝食を楽しみます。新鮮なパンやスモークサーモン、ヨーグルトなど、北欧の味覚を堪能。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "オーディン広場散策",
+          "description": "ストックホルムの中心に位置するオーディン広場を散策。周囲にはカフェやショップが立ち並び、リラックスした雰囲気の中でショッピングや人間観察が楽しめます。",
+          "searchQuery": "Odenplan",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "カフェでランチ",
+          "description": "オーディン広場近くのカフェで軽めのランチ。サンドイッチやサラダ、スウェーデンの伝統的なスイーツを味わいながら、ゆったりとした時間を過ごします。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "スウェーデンデザインセンター訪問",
+          "description": "スウェーデンデザインセンターで、北欧デザインの魅力を体感。展示されているアートやデザイン作品を楽しみながら、インスピレーションを得ることができます。",
+          "searchQuery": "Swedish Design Museum",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "カフェで休憩",
+          "description": "デザインセンター近くのカフェで、コーヒーと共にスウェーデンのペストリーを楽しむひととき。リラックスした雰囲気の中で、アートの余韻に浸ります。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "ストックホルムのショップ巡り",
+          "description": "ストックホルムの個性的なショップを巡り、アートやデザインに触れながらショッピングを楽しみます。特に地元のアーティストの作品を扱う店は見逃せません。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ストックホルムの地元レストランで、スウェーデン料理のディナーを堪能。新鮮な魚料理や伝統的なミートボールを楽しみながら、旅の締めくくりを。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ストックホルムの隠れた魅力",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ストックホルムのホテルで、スウェーデンの伝統的な朝食を楽しみます。新鮮なパンやスモークサーモン、クリームチーズなど、地元の食材を使った美味しい朝食で一日をスタート。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ウプサラ訪問",
+          "description": "ストックホルムから電車で約40分のウプサラへ。美しい街並みと歴史的な建物が魅力のこの街では、ウプサラ大聖堂やウプサラ大学を散策し、静かな時間を過ごせます。",
+          "searchQuery": "Uppsala Cathedral",
+          "locationEn": "Uppsala, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ウプサラでランチ",
+          "description": "ウプサラのカフェで、地元の食材を使ったランチを楽しみます。特に、スウェーデンの伝統料理であるミートボールや、サーモン料理がおすすめです。",
+          "locationEn": "Uppsala, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ビスビーハウス見学",
+          "description": "ウプサルからストックホルムに戻り、ビスビーハウスを訪れます。ここでは、スウェーデンのアートやデザインを楽しむことができ、リラックスした雰囲気の中でアートに触れることができます。",
+          "searchQuery": "Vasastan",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ストックホルムの公園で散策",
+          "description": "ストックホルムの美しい公園で、自然に囲まれながらのんびりとした時間を過ごします。特に、スケンデルスカ公園は静かでリラックスできるスポットです。",
+          "searchQuery": "Skansen",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ストックホルムでディナー",
+          "description": "地元のレストランで、スウェーデン料理を楽しむディナー。特に、シーフード料理や地元のビールを味わうことができます。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すために、ホテルに戻り、リラックスした時間を過ごします。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "帰国の準備",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ストックホルム",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "アーランダ空港",
+          "time": "11:00"
+        },
+        "duration": "1h",
+        "memo": "ストックホルムからアーランダ空港へのフライト。空港には早めに到着しましょう。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ストックホルムのホテルで、スウェーデンの伝統的な朝食を楽しみます。新鮮なパンやスモークサーモン、クリームチーズが絶品です。",
+          "searchQuery": "Hotel breakfast",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ストックホルム市立美術館訪問",
+          "description": "ストックホルム市立美術館では、スウェーデンのアートや国際的な作品を楽しむことができます。静かな環境でリラックスしながらアートに触れましょう。",
+          "searchQuery": "Stockholm City Museum",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "アーランダ空港へ移動",
+          "description": "美術館を後にして、アーランダ空港へ向かいます。空港までの移動は、タクシーや公共交通機関を利用できます。",
+          "searchQuery": "Arlanda Airport",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "空港でランチ",
+          "description": "アーランダ空港内のレストランで軽食を取りながら、帰国の準備を整えます。スウェーデンのサンドイッチやスープがおすすめです。",
+          "searchQuery": "Arlanda Airport restaurant",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "帰国のフライト",
+          "description": "ストックホルムからの帰国フライトに搭乗します。旅の思い出を振り返りながら、次の冒険を楽しみにしましょう。",
+          "searchQuery": "Flight from Arlanda Airport",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

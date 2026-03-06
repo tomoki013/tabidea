@@ -1,0 +1,572 @@
+{
+  "id": "f14337d7-efdf-4560-aadb-a684b8db1659",
+  "destination": "ブダペスト",
+  "description": "ブダペストの魅力を存分に味わう6日間の旅。歴史的な建築物、温泉、そして美しい夜景が織りなすこの街で、友人と共に特別な思い出を作りましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ブダペスト到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ブダペストのホテルで、地元の食材を使った朝食を楽しみます。ハンガリーの伝統的なパンやチーズ、ハムを味わいながら、旅の始まりを感じましょう。",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "英雄広場",
+          "description": "ブダペストのシンボルとも言える英雄広場を訪れます。歴史的なモニュメントや彫像が並ぶ広場は、写真撮影にも最適です。特に朝の光の中での景色は美しいです。",
+          "searchQuery": "Heroes' Square",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "アンドラーシ通り散策",
+          "description": "アンドラーシ通りを歩きながら、ブダペストの美しい建築を楽しみます。カフェやショップが立ち並ぶこの通りは、散策にぴったりです。",
+          "searchQuery": "Andrássy Avenue",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "カフェ・ニューヨークでランチ",
+          "description": "ブダペストの名店、カフェ・ニューヨークでランチを楽しみます。豪華な内装の中で、ハンガリー料理やデザートを堪能できます。",
+          "searchQuery": "New York Café",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "セーチェニ温泉",
+          "description": "ブダペストの名物、セーチェニ温泉でリラックス。温泉に浸かりながら、心身ともにリフレッシュしましょう。特に外の温泉プールは、夜景を楽しむのにも最適です。",
+          "searchQuery": "Széchenyi Thermal Bath",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕食",
+          "description": "温泉でリフレッシュした後は、近くのレストランでハンガリー料理を楽しみます。地元のワインと共に、心温まる料理を味わいましょう。",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ドナウ川クルーズ",
+          "description": "夜のドナウ川をクルーズしながら、ブダペストの美しい夜景を楽しみます。ライトアップされた国会議事堂や城が水面に映る様子は、まさにフォトジェニックです。",
+          "searchQuery": "Danube River Cruise",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ブダとペストの魅力を堪能",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ブダペストのホテルで、地元の食材を使った美味しい朝食を楽しみます。ハンガリーの伝統的なパンやチーズ、ハムを味わいながら、今日の冒険に備えましょう。",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ブダ城",
+          "description": "ブダペストのシンボル、ブダ城を訪れます。美しい景色を眺めながら、歴史的な建物や博物館を散策し、ハンガリーの歴史に触れましょう。特に、城からの眺めは絶景です。",
+          "searchQuery": "Buda Castle",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "漁夫の砦でランチ",
+          "description": "漁夫の砦近くのカフェで、ハンガリーの伝統料理を楽しむランチタイム。特に、グヤーシュ（ハンガリー風シチュー）はおすすめです。美しい建築を眺めながら、ゆったりとした時間を過ごしましょう。",
+          "searchQuery": "Fisherman's Bastion",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "漁夫の砦",
+          "description": "漁夫の砦を訪れ、ドナウ川とペスト側の美しい景色を堪能します。特に、夕暮れ時の景色はフォトジェニックで、素晴らしい写真が撮れるスポットです。",
+          "searchQuery": "Fisherman's Bastion",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "セーチェニ鎖橋を渡る",
+          "description": "セーチェニ鎖橋を渡り、ブダペストの象徴的な景色を楽しみます。橋の上からの眺めは特に美しく、写真撮影にも最適です。",
+          "searchQuery": "Chain Bridge",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "温泉でリラックス",
+          "description": "ブダペストの有名な温泉、ゲッレールト温泉でリラックス。温かい湯に浸かりながら、日々の疲れを癒しましょう。特に、屋外の温泉は夜景を楽しむのに最適です。",
+          "searchQuery": "Gellert Baths",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "夜景を楽しむディナー",
+          "description": "ドナウ川沿いのレストランで、夜景を眺めながらディナーを楽しみます。特に、ライトアップされた国会議事堂の景色は圧巻です。",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ドナウ川クルーズ",
+          "description": "夜のドナウ川をクルーズしながら、ブダペストの美しい夜景を堪能します。ライトアップされた建物を眺めながら、特別なひとときを過ごしましょう。",
+          "searchQuery": "Danube River Cruise",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "温泉と夜景",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ブダペストのホテルで、ハンガリーの伝統的な朝食を楽しみます。新鮮なパンやハム、チーズ、そして甘いペストリーが並び、エネルギーをチャージ。",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "セーチェニ温泉",
+          "description": "ブダペストの名物、セーチェニ温泉でリラックス。広々とした温泉プールやサウナで、心身ともにリフレッシュできます。特に屋外の温泉は、冬でも楽しめるのでおすすめです。",
+          "searchQuery": "Szechenyi Thermal Bath",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "近くのカフェでランチ",
+          "description": "セーチェニ温泉の近くにあるカフェで、軽食やサンドイッチを楽しみます。地元の人々に人気のあるお店で、ハンガリーのスイーツもぜひ試してみて。",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ドナウ川クルーズ",
+          "description": "ドナウ川をクルーズしながら、ブダペストの美しい景色を堪能。特に国会議事堂や漁夫の砦など、川からの眺めは絶景です。",
+          "searchQuery": "Danube River Cruise",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "国会議事堂見学",
+          "description": "ブダペストのシンボル、国会議事堂を見学。壮大な建築と美しい内装に圧倒されること間違いなし。事前予約をおすすめします。",
+          "searchQuery": "Hungarian Parliament Building",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "夕食",
+          "description": "国会議事堂近くのレストランで、ハンガリー料理を楽しみます。特にグヤーシュやパプリカ料理は絶品です。",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "夜景観賞",
+          "description": "ドナウ川沿いでブダペストの夜景を楽しみます。特に国会議事堂のライトアップは美しく、写真撮影にも最適なスポットです。",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "アートと文化を楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ブダペストのホテルで、ハンガリーの伝統的な朝食を楽しみます。新鮮なパンやハム、チーズ、そして甘いペストリーが並び、エネルギーをチャージ。",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ハンガリー国立美術館",
+          "description": "ハンガリー国立美術館で、国内外の美術作品を鑑賞します。特にルネサンスやバロックの作品が豊富で、アート好きにはたまらないスポットです。",
+          "searchQuery": "Hungarian National Gallery",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カフェ・ニューヨークでランチ",
+          "description": "美しい内装のカフェ・ニューヨークで、ハンガリー料理を楽しみながら、優雅な雰囲気に浸ります。特にデザートのパフェは絶品です。",
+          "searchQuery": "Café New York",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "大聖堂を訪れる",
+          "description": "セント・イシュトヴァーン大聖堂を訪れ、その壮大な建築と美しいステンドグラスを堪能します。展望台からの眺めも素晴らしく、ブダペストの街並みを一望できます。",
+          "searchQuery": "St. Stephen's Basilica",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "温泉でリラックス",
+          "description": "ブダペストの有名な温泉、ゲッレールト温泉でリラックス。美しいアールヌーボー様式の建物の中で、温かい湯に浸かりながら日頃の疲れを癒します。",
+          "searchQuery": "Gellért Thermal Bath",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "夜景を楽しむディナー",
+          "description": "ドナウ川沿いのレストランでディナーを楽しみながら、ブダペストの美しい夜景を堪能します。特に国会議事堂のライトアップは圧巻です。",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ドナウ川クルーズ",
+          "description": "夜のドナウ川をクルーズしながら、ブダペストの美しい夜景を楽しみます。ライトアップされた建物が水面に映り、幻想的な雰囲気を味わえます。",
+          "searchQuery": "Danube River Cruise",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ブダペストの隠れた魅力",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ブダペストのカフェで、地元の人々に人気の朝食を楽しみます。新鮮なペストリーやコーヒーでエネルギーをチャージしましょう。",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "中央市場を散策",
+          "description": "ブダペストの中央市場で、地元の食材や手作りの工芸品を見て回ります。色とりどりの野菜やハンガリー特産のパプリカをぜひお土産に。",
+          "searchQuery": "Central Market Hall",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "市場内でランチ",
+          "description": "中央市場内の屋台で、ハンガリーの伝統料理「グヤーシュ」を味わいます。温かいスープと共に、地元の雰囲気を楽しんでください。",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ユダヤ人街を散策",
+          "description": "ユダヤ人街を歩きながら、歴史的なシナゴーグやアートギャラリーを訪れます。特にドハーニ街シナゴーグは圧巻です。",
+          "searchQuery": "Dohány Street Synagogue",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ルダシュ温泉でリラックス",
+          "description": "ブダペストの名物、ルダシュ温泉でゆったりとした時間を過ごします。温泉に浸かりながら、心身ともにリフレッシュしましょう。",
+          "searchQuery": "Rudas Baths",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "温泉内で軽食",
+          "description": "温泉内のカフェで軽食を楽しみながら、リラックスしたひとときを過ごします。ハンガリーのスナックを試してみてください。",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "夜景を楽しむためのクルーズ",
+          "description": "ドナウ川の夜景クルーズに参加し、ブダペストの美しい夜景を堪能します。ライトアップされた国会議事堂やチェーンブリッジは必見です。",
+          "searchQuery": "Danube River Night Cruise",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:30",
+          "activity": "クルーズ後のディナー",
+          "description": "クルーズ後、川沿いのレストランでディナーを楽しみます。ハンガリー料理を味わいながら、素敵な夜を締めくくりましょう。",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "帰国の準備",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Budapest",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Tokyo",
+          "time": "06:00"
+        },
+        "duration": "12h",
+        "memo": "直行便で東京へ帰国します。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ブダペストのホテルで、ハンガリーの伝統的な朝食を楽しみます。新鮮なパンやハム、チーズが並び、エネルギーをチャージ。",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "自由広場散策",
+          "description": "ブダペストの中心に位置する自由広場を散策。周囲の美しい建築や彫刻を眺めながら、写真撮影にも最適なスポットです。",
+          "searchQuery": "Liberty Square",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "お土産探し",
+          "description": "自由広場近くのマーケットで、ハンガリーの特産品やお土産を探します。パプリカやトカイワインなど、友人へのお土産にぴったり。",
+          "searchQuery": "Great Market Hall",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ランチ",
+          "description": "地元のレストランでハンガリー料理のランチを楽しみます。グヤーシュやパプリカチキンなど、名物料理を堪能。",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "温泉でリラックス",
+          "description": "ブダペストの有名な温泉、セーチェニ温泉でリラックス。美しい建築の中で、温かい湯に浸かりながら旅の疲れを癒します。",
+          "searchQuery": "Széchenyi Thermal Bath",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕食",
+          "description": "温泉の後は、近くのレストランで夕食。ハンガリーのワインと共に、地元の料理を楽しみます。",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ブダペストの夜景観賞",
+          "description": "ドナウ川沿いの展望スポットで、ブダペストの美しい夜景を楽しみます。特に国会議事堂のライトアップは圧巻です。",
+          "searchQuery": "Danube Promenade",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

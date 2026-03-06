@@ -1,0 +1,257 @@
+{
+  "id": "e19e23a3-daa4-44d3-8709-dce6ab59db0c",
+  "destination": "Hanoi",
+  "description": "Immerse yourself in the vibrant culture and culinary delights of Hanoi, where ancient traditions meet modern comforts. This 3-day getaway is designed for the solo traveler seeking a blend of relaxation and gourmet experiences. From exploring the bustling streets filled with tantalizing street food to unwinding in luxurious resorts, this itinerary offers a perfect balance of adventure and tranquility.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Culinary Exploration",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Check-in at Hotel de l'Opera Hanoi",
+          "description": "Settle into the luxurious Hotel de l'Opera, a stunning blend of French colonial architecture and modern comfort. Enjoy a refreshing welcome drink as you prepare for your culinary adventure in Hanoi.",
+          "searchQuery": "Hotel de l'Opera Hanoi",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Lunch at Cha Ca Thang Long",
+          "description": "Savor the famous Cha Ca, a traditional Hanoi dish of grilled fish marinated with turmeric and dill, served with vermicelli noodles and fresh herbs. This local favorite is a must-try for any food lover.",
+          "searchQuery": "Cha Ca Thang Long",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Hoan Kiem Lake",
+          "description": "Stroll around the picturesque Hoan Kiem Lake, a serene oasis in the heart of the city. Don't miss the iconic Turtle Tower and the beautiful Ngoc Son Temple located on an island in the lake.",
+          "searchQuery": "Hoan Kiem Lake",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Visit the Old Quarter",
+          "description": "Wander through the bustling streets of the Old Quarter, where you can find charming shops, street food stalls, and vibrant local culture. Be sure to try some egg coffee at a local café for a unique treat.",
+          "searchQuery": "Old Quarter",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Home Hanoi Restaurant",
+          "description": "Indulge in a delightful dinner at Home Hanoi, known for its authentic Vietnamese cuisine and elegant ambiance. Enjoy dishes made from fresh, local ingredients in a beautifully restored colonial house.",
+          "searchQuery": "Home Hanoi Restaurant",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Walk in the Old Quarter",
+          "description": "Take a leisurely evening stroll through the Old Quarter, where the streets come alive with lights and sounds. Experience the vibrant nightlife and perhaps stop for a nightcap at a rooftop bar with a view.",
+          "searchQuery": "Old Quarter",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Immersion and Resort Relaxation",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Hanoi Social Club",
+          "description": "Start your day with a delightful breakfast at The Hanoi Social Club, known for its cozy atmosphere and delicious options like avocado toast and Vietnamese coffee. It's a perfect spot to fuel up before a day of exploration.",
+          "searchQuery": "The Hanoi Social Club",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Temple of Literature",
+          "description": "Visit the Temple of Literature, Vietnam's first national university, where you can stroll through beautiful gardens and admire ancient architecture. This serene place is a great introduction to Vietnamese culture and history.",
+          "searchQuery": "Temple of Literature",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Cha Ca Thang Long",
+          "description": "Enjoy a traditional Vietnamese lunch at Cha Ca Thang Long, famous for its grilled fish dish served with herbs and rice noodles. This local favorite offers an authentic taste of Hanoi's culinary scene.",
+          "searchQuery": "Cha Ca Thang Long",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Thang Long Water Puppet Theatre",
+          "description": "Experience the unique art of water puppetry at the Thang Long Water Puppet Theatre. This traditional Vietnamese performance is both entertaining and culturally enriching, showcasing stories from Vietnamese folklore.",
+          "searchQuery": "Thang Long Water Puppet Theatre",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Sofitel Legend Metropole Hanoi",
+          "description": "Unwind at the luxurious Sofitel Legend Metropole Hanoi, where you can enjoy a refreshing drink by the pool or indulge in a spa treatment. This historic hotel offers a perfect blend of relaxation and elegance.",
+          "searchQuery": "Sofitel Legend Metropole Hanoi",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Home Hanoi Restaurant",
+          "description": "Savor a delightful dinner at Home Hanoi Restaurant, which offers a modern twist on traditional Vietnamese dishes. The ambiance is warm and inviting, making it a great place to reflect on your day.",
+          "searchQuery": "Home Hanoi Restaurant",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Stroll around Hoan Kiem Lake",
+          "description": "End your day with a leisurely stroll around Hoan Kiem Lake. The peaceful atmosphere and beautiful night lights create a perfect setting for relaxation and reflection after a busy day.",
+          "searchQuery": "Hoan Kiem Lake",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Leisurely Morning and Departure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Hanoi Social Club",
+          "description": "Start your day with a delightful breakfast at The Hanoi Social Club, known for its cozy atmosphere and delicious options like avocado toast and Vietnamese coffee. It's a great spot to relax and enjoy the local vibe.",
+          "searchQuery": "The Hanoi Social Club",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit West Lake",
+          "description": "Take a leisurely stroll around West Lake, the largest lake in Hanoi. Enjoy the serene views and perhaps stop by one of the lakeside cafes for a refreshing drink. The peaceful ambiance makes it a perfect spot for reflection.",
+          "searchQuery": "West Lake",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore Local Markets",
+          "description": "Wander through the local markets near West Lake, where you can find fresh produce, handmade crafts, and local delicacies. It's a great opportunity to immerse yourself in the local culture and pick up some unique souvenirs.",
+          "searchQuery": "Local Markets Hanoi",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Cha Ca Thang Long",
+          "description": "Indulge in a traditional Vietnamese dish, Cha Ca, at Cha Ca Thang Long. This restaurant is famous for its grilled fish served with herbs and rice noodles, offering a true taste of Hanoi's culinary heritage.",
+          "searchQuery": "Cha Ca Thang Long",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relax at a Spa",
+          "description": "Treat yourself to a relaxing spa session at one of Hanoi's top spas. Enjoy a massage or a facial to unwind before your departure. It's the perfect way to pamper yourself after a few days of exploration.",
+          "searchQuery": "Spa in Hanoi",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Hotel and Prepare for Departure",
+          "description": "Head back to your hotel to pack and prepare for your journey home. Take a moment to reflect on your wonderful experiences in Hanoi.",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

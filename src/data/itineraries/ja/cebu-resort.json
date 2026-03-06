@@ -1,0 +1,346 @@
+{
+  "id": "efbe9dc5-ee21-4f65-83df-d701a8f8775d",
+  "destination": "セブ島",
+  "description": "セブ島の美しいビーチとアクティビティを満喫する4日間の旅へようこそ。青い海と白い砂浜が広がるこの楽園で、リゾート気分を味わいながら、ジンベイザメとの素晴らしい出会いを楽しみましょう。アクティブなカップルにぴったりのプランで、自然の絶景を堪能し、心に残る思い出を作ることができます。",
+  "days": [
+    {
+      "day": 1,
+      "title": "セブ島到着とリゾートでのひととき",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リゾート内のレストランで、ビュッフェスタイルの朝食を楽しみます。新鮮なフルーツや地元の料理を味わいながら、リゾート気分を満喫しましょう。",
+          "locationEn": "Mactan Island, Philippines",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "マクタン島のビーチでリラックス",
+          "description": "美しい白砂のビーチで、海の青さを眺めながらのんびり過ごします。シュノーケリングやビーチバレーも楽しめるので、アクティブな時間を過ごせます。",
+          "searchQuery": "Mactan Island Beach",
+          "locationEn": "Mactan Island, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "リゾート内でランチ",
+          "description": "リゾートのプールサイドで、軽めのランチを楽しみます。新鮮なシーフードや地元の特産品を使った料理が揃っています。",
+          "locationEn": "Mactan Island, Philippines",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ジンベイザメと泳ぐツアー",
+          "description": "オスロブへ移動し、ジンベイザメと一緒に泳ぐ体験をします。大きなジンベイザメと間近で触れ合える貴重な体験です。事前に予約をしておくと安心です。",
+          "searchQuery": "Oslob Whale Shark Watching",
+          "locationEn": "Oslob, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "リゾートに戻り、プールでリフレッシュ",
+          "description": "ツアーから戻ったら、リゾートのプールでひと泳ぎ。夕日を眺めながら、リラックスした時間を過ごします。",
+          "locationEn": "Mactan Island, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "リゾート内でディナー",
+          "description": "地元の食材を使ったディナーを楽しみます。特にシーフード料理は絶品で、リゾートの雰囲気を楽しみながら食事ができます。",
+          "locationEn": "Mactan Island, Philippines",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ジンベイザメと泳ぐ冒険",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "マクタン島",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "オスロブ",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "マクタン島からオスロブまでのバス移動。早めに出発して、ジンベイザメとの出会いに備えましょう。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "オスロブでジンベイザメと泳ぐ",
+          "description": "オスロブの美しい海でジンベイザメと一緒に泳ぐ体験。透明度の高い海で、迫力満点のジンベイザメを間近で見ることができます。",
+          "searchQuery": "Oslob Whale Shark Watching",
+          "locationEn": "Oslob, Cebu, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "オスロブでランチ",
+          "description": "地元のレストランで新鮮なシーフードランチを楽しみます。特に、シーフードのグリルや地元の特産品を味わうのがおすすめです。",
+          "searchQuery": "Oslob Seafood Restaurant",
+          "locationEn": "Oslob, Cebu, Philippines",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "スミロン島へボート移動",
+          "description": "オスロブからスミロン島へボートで移動。約30分のクルーズで、青い海と美しい景色を楽しみながらリゾート気分を満喫。",
+          "searchQuery": "Sumilon Island",
+          "locationEn": "Sumilon Island, Cebu, Philippines",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "スミロン島でビーチタイム",
+          "description": "スミロン島の白い砂浜でリラックス。シュノーケリングやビーチバレーを楽しんだり、ただのんびりと過ごすのも良いでしょう。",
+          "searchQuery": "Sumilon Island Beach",
+          "locationEn": "Sumilon Island, Cebu, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "スミロン島で夕日鑑賞",
+          "description": "スミロン島のビーチで美しい夕日を眺めながら、ロマンチックなひとときを過ごします。カップルにぴったりの瞬間です。",
+          "searchQuery": "Sumilon Island Sunset",
+          "locationEn": "Sumilon Island, Cebu, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "マクタン島に戻りディナー",
+          "description": "マクタン島に戻り、地元のレストランでディナー。フィリピン料理を楽しみながら、今日の冒険を振り返りましょう。",
+          "searchQuery": "Mactan Island Restaurant",
+          "locationEn": "Mactan Island, Cebu, Philippines",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "セブ島の自然を満喫する日",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "マクタン島",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "モアルボアル",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "モアルボアルへ向かうバスは、マクタン島の主要なバス停から出発します。早めに出発して、素晴らしい自然を楽しみましょう。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "カワサン滝",
+          "description": "セブ島の美しいカワサン滝で、青い水と緑に囲まれた自然を満喫。滝の近くで泳いだり、写真を撮ったりして、リフレッシュしましょう。",
+          "searchQuery": "Kawasan Falls",
+          "locationEn": "Cebu, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "カワサン滝近くのローカルレストランでランチ",
+          "description": "地元の食材を使ったフィリピン料理を楽しめるレストランで、アドボやシニガンを味わいましょう。カワサン滝から徒歩圏内です。",
+          "searchQuery": "Kawasan Falls Restaurant",
+          "locationEn": "Cebu, Philippines",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "モアルボアルでシュノーケリング",
+          "description": "モアルボアルの美しいビーチでシュノーケリングを楽しみます。色とりどりの魚たちと一緒に泳ぎ、海の中の世界を体験しましょう。",
+          "searchQuery": "Moalboal Beach",
+          "locationEn": "Cebu, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "モアルボアルのビーチでリラックス",
+          "description": "シュノーケリングの後は、モアルボアルのビーチでのんびりと過ごしましょう。美しい夕日を眺めながら、リゾート気分を満喫できます。",
+          "searchQuery": "Moalboal Beach",
+          "locationEn": "Cebu, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "モアルボアルのレストランでディナー",
+          "description": "海の幸をふんだんに使ったシーフードディナーを楽しみます。新鮮な魚介類を使った料理が自慢のレストランで、特別な夜を演出しましょう。",
+          "searchQuery": "Moalboal Seafood Restaurant",
+          "locationEn": "Cebu, Philippines",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "セブ島の美しいビーチでリラックス",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "モアルボアル",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "オスロブ",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "ジンベイザメと泳ぐためにオスロブへ移動します。早めに出発して、混雑を避けましょう。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "ジンベイザメと泳ぐ",
+          "description": "オスロブでジンベイザメと一緒に泳ぐ体験。透明度の高い海で、優雅に泳ぐジンベイザメを間近で見ることができます。",
+          "searchQuery": "Oslob Whale Shark Watching",
+          "locationEn": "Oslob, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "オスロブの地元のレストランで新鮮なシーフードランチを楽しみます。特に、グリルした魚やシーフードパスタがおすすめです。",
+          "searchQuery": "Oslob Seafood Restaurant",
+          "locationEn": "Oslob, Philippines",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "モアルボアルに戻る",
+          "description": "モアルボアルに戻り、午後はビーチでリラックス。",
+          "locationEn": "Moalboal, Philippines",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ホワイトビーチでのんびり",
+          "description": "モアルボアルのホワイトビーチで、青い海と白い砂浜を楽しみながらリラックス。シュノーケリングや日光浴も楽しめます。",
+          "searchQuery": "White Beach Moalboal",
+          "locationEn": "Moalboal, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "リゾート施設でのスパ",
+          "description": "リゾート内のスパで、マッサージやトリートメントを受けて、旅の疲れを癒します。",
+          "searchQuery": "Moalboal Resort Spa",
+          "locationEn": "Moalboal, Philippines",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "リゾートでディナー",
+          "description": "リゾート内のレストランで、ロマンチックなディナーを楽しみます。地元の食材を使った料理が堪能できます。",
+          "searchQuery": "Moalboal Resort Restaurant",
+          "locationEn": "Moalboal, Philippines",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

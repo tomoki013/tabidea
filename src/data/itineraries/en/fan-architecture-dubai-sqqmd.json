@@ -1,0 +1,285 @@
+{
+  "id": "ea14fbbf-9d38-45f3-8bd3-5de4a0e71d26",
+  "destination": "Dubai",
+  "description": "Escape to the dazzling city of Dubai, where modern architecture meets rich cultural heritage. Over three leisurely days, immerse yourself in the vibrant atmosphere of this cosmopolitan hub, perfect for couples looking to explore, relax, and indulge in their passions. From the iconic Burj Khalifa to the bustling souks, each moment will be filled with unforgettable experiences and delightful discoveries.",
+  "heroImage": "https://images.unsplash.com/photo-1721719652608-17d8da968537?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODk2Nzd8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Nelemson Guevarra",
+  "heroImagePhotographerUrl": "https://unsplash.com/@nelemson?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Cultural Immersion and Architectural Wonders",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Arabian Tea House",
+          "description": "Start your day with a traditional Emirati breakfast at the Arabian Tea House. Enjoy dishes like foul medames (fava beans) and freshly baked bread in a charming, rustic setting.",
+          "searchQuery": "Arabian Tea House",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Dubai Mall",
+          "description": "Explore the vast Dubai Mall, home to over 1,200 shops, an aquarium, and an ice rink. Don't miss the chance to pick up some unique merchandise and fan goods from your favorite brands.",
+          "searchQuery": "Dubai Mall",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Social House",
+          "description": "Enjoy a relaxed lunch at Social House, offering a diverse menu with stunning views of the Burj Khalifa. Try their signature sushi or a hearty burger for a satisfying meal.",
+          "searchQuery": "Social House",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Burj Khalifa Observation Deck",
+          "description": "Ascend to the 148th floor of the Burj Khalifa for breathtaking panoramic views of the city. The experience is enhanced by informative displays about the building's architecture and Dubai's history.",
+          "searchQuery": "Burj Khalifa",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Dubai Fountain Show",
+          "description": "Witness the mesmerizing Dubai Fountain show, where water dances to music and lights. This spectacular performance is a perfect way to relax and enjoy the evening ambiance.",
+          "searchQuery": "Dubai Fountain",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Cheesecake Factory",
+          "description": "Indulge in a delightful dinner at The Cheesecake Factory, known for its extensive menu and delicious cheesecakes. A great spot to unwind after a day of exploration.",
+          "searchQuery": "The Cheesecake Factory",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll at Dubai Marina",
+          "description": "End your day with a leisurely stroll along the Dubai Marina promenade. Enjoy the stunning skyline and vibrant atmosphere, perfect for a romantic evening.",
+          "searchQuery": "Dubai Marina",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the Old Dubai and Souk Adventures",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Arabian Tea House",
+          "description": "Start your day with a traditional Emirati breakfast at the charming Arabian Tea House. Enjoy dishes like foul medames (fava beans) and freshly baked bread in a cozy, authentic setting.",
+          "searchQuery": "Arabian Tea House",
+          "locationEn": "Dubai, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Al Fahidi Historical Neighborhood",
+          "description": "Stroll through the Al Fahidi Historical Neighborhood, where you can admire the beautifully preserved wind-tower architecture and explore the narrow lanes filled with art galleries and cultural exhibits. This area offers a glimpse into Dubai's rich history.",
+          "searchQuery": "Al Fahidi Historical Neighborhood",
+          "locationEn": "Dubai, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Local Restaurant",
+          "description": "Enjoy a leisurely lunch at a local restaurant, where you can savor authentic Middle Eastern dishes such as shawarma or kebabs. This is a great opportunity to experience the local flavors and hospitality.",
+          "searchQuery": "Local Restaurant",
+          "locationEn": "Dubai, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Dubai Creek",
+          "description": "Take a relaxing walk along Dubai Creek, where you can watch traditional dhows sail by and enjoy the vibrant atmosphere. Consider taking an abra (water taxi) for a short ride across the creek for a unique perspective of the city.",
+          "searchQuery": "Dubai Creek",
+          "locationEn": "Dubai, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit Gold Souk",
+          "description": "Head to the famous Gold Souk, where you can browse through countless shops filled with stunning gold jewelry and unique souvenirs. Don't forget to haggle for the best prices!",
+          "searchQuery": "Gold Souk",
+          "locationEn": "Dubai, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at a Café",
+          "description": "Take a break at a nearby café, where you can enjoy a refreshing drink and some light snacks. This is the perfect time to relax and soak in the local atmosphere before continuing your adventures.",
+          "searchQuery": "Café in Dubai",
+          "locationEn": "Dubai, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Al Mallah",
+          "description": "End your day with a delicious dinner at Al Mallah, known for its tasty shawarmas and falafel. This casual eatery is a favorite among locals and offers a great taste of Middle Eastern cuisine.",
+          "searchQuery": "Al Mallah",
+          "locationEn": "Dubai, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Relaxation and Local Experiences",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Arabian Tea House",
+          "description": "Start your day with a delightful breakfast at the Arabian Tea House, where you can enjoy traditional Emirati dishes in a charming setting adorned with local art. Don't miss their famous Arabic coffee and freshly baked bread!",
+          "searchQuery": "Arabian Tea House",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Jumeirah Beach",
+          "description": "After breakfast, head to Jumeirah Beach for a relaxing morning by the sea. The soft white sands and stunning views of the Burj Al Arab make it a perfect spot to unwind. You can take a leisurely stroll along the beach or simply soak up the sun.",
+          "searchQuery": "Jumeirah Beach",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Bu Qtair",
+          "description": "Enjoy a casual lunch at Bu Qtair, a local favorite known for its fresh seafood. The laid-back atmosphere and delicious grilled fish will give you a taste of authentic Dubai cuisine. It's a short drive from the beach, making it a convenient stop.",
+          "searchQuery": "Bu Qtair",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Dubai Marina",
+          "description": "Take a stroll through the vibrant Dubai Marina, where you can admire the stunning architecture and luxurious yachts. This area is perfect for a leisurely walk, and you can stop by local shops to pick up some unique souvenirs and fan merchandise.",
+          "searchQuery": "Dubai Marina",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Coffee Break at The Sum of Us",
+          "description": "Take a break at The Sum of Us, a cozy café known for its artisanal coffee and delicious pastries. It's a great place to relax and recharge while enjoying the local café culture.",
+          "searchQuery": "The Sum of Us",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Visit the Dubai Mall and Burj Khalifa",
+          "description": "Head to the iconic Dubai Mall, where you can explore a variety of shops and attractions. Don't forget to visit the Burj Khalifa observation deck for breathtaking views of the city. It's a fantastic way to end your day with a stunning sunset.",
+          "searchQuery": "Burj Khalifa",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at Social House",
+          "description": "Wrap up your day with dinner at Social House, located in the Dubai Mall. The restaurant offers a diverse menu with both local and international dishes, perfect for a relaxed dining experience after a day of exploration.",
+          "searchQuery": "Social House",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

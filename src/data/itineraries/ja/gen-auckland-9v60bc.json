@@ -1,0 +1,590 @@
+{
+  "id": "ce6f35bb-ff74-47d6-93f1-bc9f46523f90",
+  "destination": "オークランド",
+  "description": "オークランドでの7日間は、アートと美食、自然の絶景、そして豊かな文化に浸る旅。美しい港町の魅力を存分に味わいながら、地元の人々が愛するスポットや隠れた名店を巡り、心に残る思い出を作りましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1595125990323-885cec5217ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTQ4NDR8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Sulthan Auliya",
+  "heroImagePhotographerUrl": "https://unsplash.com/@swafie?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からオークランドへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "オークランド",
+          "time": "14:00"
+        },
+        "duration": "10h",
+        "memo": "直行便での移動。機内食を楽しみながら、オークランドの到着を待ちます。"
+      },
+      "activities": [
+        {
+          "time": "15:00",
+          "activity": "オークランド空港から市内中心部へ移動",
+          "description": "空港から市内中心部へは、エアポートシャトルやタクシーを利用して、約30分の移動です。オークランドの街並みを楽しみながら、ホテルに向かいます。",
+          "searchQuery": "Auckland City",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ホテルチェックイン",
+          "description": "オークランド中心部に位置する快適なホテルにチェックイン。観光の拠点として便利な立地です。",
+          "searchQuery": "SkyCity Hotel",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "オークランド美術館訪問",
+          "description": "オークランド美術館（Auckland Art Gallery）でニュージーランドのアートを堪能。特に先住民マオリのアート作品が見どころです。",
+          "searchQuery": "Auckland Art Gallery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "オークランドの人気レストランで、ニュージーランドの新鮮なシーフードを楽しみます。地元のワインと共に、素敵なディナータイムを過ごしましょう。",
+          "searchQuery": "Soul Bar & Bistro",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アートと文化を楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "オークランドのカフェで、地元の新鮮な食材を使った朝食を楽しみます。アボカドトーストや自家製ベーカリーのパンが人気です。",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "オークランド美術館",
+          "description": "オークランド美術館でニュージーランドのアートを堪能。特にマオリ文化に関する展示が魅力的で、アートと歴史が融合した空間を楽しめます。",
+          "searchQuery": "Auckland Art Gallery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "blog, アートと文化を楽しむオークランド, https://example.com/auckland-art-culture, high"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：Federal Delicatessen",
+          "description": "オークランドの人気デリカテッセンで、ボリューム満点のサンドイッチやスープを楽しみましょう。地元の人々にも愛されるお店です。",
+          "searchQuery": "Federal Delicatessen",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "blog, オークランドのグルメスポット, https://example.com/auckland-gourmet, high"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "クイーンストリート散策",
+          "description": "オークランドの中心地、クイーンストリートを散策。おしゃれなショップやカフェが立ち並び、地元の雰囲気を感じながらショッピングを楽しめます。",
+          "searchQuery": "Queen Street",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ヴィクトリア公園",
+          "description": "自然を感じながらリラックスできるヴィクトリア公園へ。美しい庭園や池があり、散策やピクニックに最適な場所です。",
+          "searchQuery": "Victoria Park",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー：The Glass Goose Bar & Eatery",
+          "description": "オークランドの人気レストランで、地元の食材を使った創作料理を楽しみます。特に新鮮なシーフードが絶品です。",
+          "searchQuery": "The Glass Goose Bar & Eatery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "blog, オークランドのおすすめレストラン, https://example.com/auckland-restaurants, high"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "自然の絶景を満喫",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "オークランド",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ワイヘキ島",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "オークランドからワイヘキ島へのフェリーでの移動。美しい海の景色を楽しみながらの旅です。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "ワイヘキ島ワイナリー巡り",
+          "description": "ワイヘキ島の美しい風景を背景に、地元のワイナリーを訪れ、試飲を楽しみます。特にオリジナルのワインを味わうことができるので、ワイン好きにはたまらない体験です。",
+          "searchQuery": "Waiheke Island Wineries",
+          "locationEn": "Waiheke Island, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ワイヘキ島でランチ",
+          "description": "地元のレストランで新鮮なシーフードランチを楽しみます。特に海の幸を使った料理は絶品で、ワイナリー巡りの後にぴったりです。",
+          "searchQuery": "Waiheke Island Seafood Restaurant",
+          "locationEn": "Waiheke Island, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "オークランドハーバーブリッジ散策",
+          "description": "ワイヘキ島から戻った後、オークランドハーバーブリッジを散策します。橋の上からの眺めは素晴らしく、オークランドの街並みと海を一望できます。",
+          "searchQuery": "Auckland Harbour Bridge",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "オークランド美術館訪問",
+          "description": "オークランド美術館でニュージーランドのアートを堪能します。特にマオリアートのコレクションは見応えがあります。",
+          "searchQuery": "Auckland Art Gallery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "オークランドでディナー",
+          "description": "地元の人気レストランでディナーを楽しみます。ニュージーランドの食材を使った創作料理が楽しめるお店で、特別な夜を演出します。",
+          "searchQuery": "Auckland Restaurant",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "地元のグルメを堪能",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "オークランドのホテルで、地元の食材を使った美味しい朝食を楽しみます。新鮮なフルーツやベーカリーのパンが並び、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ファーネル・マーケット散策",
+          "description": "地元の人々に愛されるファーネル・マーケットで、様々な食材や手作りの品々を楽しみながら散策します。新鮮な野菜やフルーツ、アート作品が並び、地元の雰囲気を感じることができます。",
+          "searchQuery": "Farnell Market",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "マーケット内でランチ",
+          "description": "ファーネル・マーケット内のフードスタンドで、地元のストリートフードを味わいます。特におすすめは、ニュージーランド産のラム肉を使ったタコスや、フレッシュなシーフード料理です。",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "オークランド美術館訪問",
+          "description": "オークランド美術館で、ニュージーランドのアートや文化に触れます。特にマオリアートのコレクションは必見で、地元の歴史を学ぶ良い機会です。",
+          "searchQuery": "Auckland Art Gallery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ミッションベイビーチでリラックス",
+          "description": "美しいミッションベイビーチで、海を眺めながらのんびり過ごします。ビーチ沿いのカフェでコーヒーを楽しむのも良いでしょう。",
+          "searchQuery": "Mission Bay Beach",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ミッションベイでディナー",
+          "description": "ミッションベイの海沿いのレストランで、新鮮なシーフードを使ったディナーを楽しみます。特に、地元のワインと一緒に味わう料理は格別です。",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。オークランドの夜景を楽しみながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "歴史と文化の探訪",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "オークランドのカフェで、地元の新鮮な食材を使った朝食を楽しみます。アボカドトーストや自家製ベーカリーのペストリーが特におすすめです。",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "オークランド戦争記念館",
+          "description": "オークランド戦争記念館を訪れ、ニュージーランドの歴史や文化を学びます。美しい公園に囲まれたこの場所は、静かなひとときを過ごすのに最適です。",
+          "searchQuery": "Auckland War Memorial Museum",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：Mamma Mia",
+          "description": "オークランドの人気イタリアンレストランで、手作りのパスタやピザを楽しみます。地元のワインと共に、リラックスしたランチタイムを過ごしましょう。",
+          "searchQuery": "Mamma Mia",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "スカイタワー",
+          "description": "オークランドのシンボル、スカイタワーに登り、360度のパノラマビューを楽しみます。晴れた日には、遠くの山々や海まで見渡せます。",
+          "searchQuery": "Sky Tower",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アートギャラリー訪問",
+          "description": "オークランドアートギャラリーで、ニュージーランドの現代アートや先住民マオリのアートを鑑賞します。多様な作品に触れ、アートの世界に浸りましょう。",
+          "searchQuery": "Auckland Art Gallery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー：Depot Eatery",
+          "description": "地元の食材を使った創作料理が楽しめるDepot Eateryで、カジュアルなディナーを。シェフのおすすめメニューをぜひ試してみてください。",
+          "searchQuery": "Depot Eatery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "オークランドの夜景散策",
+          "description": "ディナーの後は、オークランドの美しい夜景を楽しみながら散策。特にワイタケレ山からの眺めは絶景です。",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "アートとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "オークランドのホテルで、地元の食材を使った美味しい朝食を楽しみましょう。新鮮なフルーツやベーカリーのパンが揃っています。",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "オークランドアートギャラリー",
+          "description": "オークランドアートギャラリーで、ニュージーランドのアートシーンを堪能。特に先住民マオリのアート作品は必見です。",
+          "searchQuery": "Auckland Art Gallery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：The Glass Goose Bar & Eatery",
+          "description": "アートギャラリーから徒歩圏内の人気レストランで、地元の食材を使った創作料理を楽しみましょう。特に新鮮なシーフードが評判です。",
+          "searchQuery": "The Glass Goose Bar & Eatery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ニューマーケット散策",
+          "description": "オークランドのショッピングエリア、ニューマーケットでお買い物。おしゃれなブティックやカフェが立ち並び、地元の雰囲気を楽しめます。",
+          "searchQuery": "Newmarket",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アートギャラリー巡り",
+          "description": "ニューマーケット近くの小さなアートギャラリーを訪れ、地元アーティストの作品を鑑賞。ユニークなアートに出会えるかもしれません。",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー：Mamma Mia",
+          "description": "イタリアンレストランで、手作りのパスタやピザを楽しみましょう。アットホームな雰囲気で、カップルにぴったりのディナーです。",
+          "searchQuery": "Mamma Mia",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "オークランドの夜景を楽しむ",
+          "description": "スカイタワーからの夜景は絶景。オークランドの街並みを一望しながら、ロマンティックなひとときを過ごしましょう。",
+          "searchQuery": "Sky Tower",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "オークランドから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "オークランド空港",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "18:00"
+        },
+        "duration": "11h",
+        "memo": "直行便で東京へ向かいます。機内食を楽しみながら、ゆったりとした時間を過ごしましょう。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "オークランドのホテルで、地元の食材を使った朝食を楽しみます。フレッシュなフルーツやベーカリーのパンが絶品です。",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "オークランド美術館",
+          "description": "オークランド美術館でニュージーランドのアートを堪能。特にマオリ文化に関する展示が魅力的で、アートと歴史を同時に楽しめます。",
+          "searchQuery": "Auckland Art Gallery",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ（地元のカフェ）",
+          "description": "オークランドの人気カフェでランチ。新鮮なサラダやサンドイッチを楽しみながら、地元の雰囲気を味わいます。",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "スカイタワー",
+          "description": "オークランドのシンボル、スカイタワーに登ります。展望台からの360度のパノラマビューは圧巻で、特に晴れた日には遠くの山々まで見渡せます。",
+          "searchQuery": "Sky Tower",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "オークランドの公園散策",
+          "description": "オークランドの美しい公園を散策。自然に囲まれた静かな時間を過ごし、リラックスしたひとときを楽しみます。",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "オークランド空港へ移動",
+          "description": "オークランド空港へ向かいます。出発の準備を整え、最後のオークランドの景色を楽しみましょう。",
+          "locationEn": "Auckland, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,634 @@
+{
+  "id": "158ebf6f-5b82-4c81-9313-8dfee44ea2d2",
+  "destination": "Madrid",
+  "description": "Immerse yourself in the vibrant culture and history of Madrid while indulging in your passion for LaLiga. This 7-day journey is designed for a family of adults, combining leisurely exploration with the thrill of football fandom. From iconic stadiums to local shops brimming with memorabilia, this trip promises to be a delightful blend of relaxation and excitement. Get ready to savor authentic Spanish cuisine, soak in the artistic heritage, and create unforgettable memories in the heart of Spain.",
+  "heroImage": "https://images.unsplash.com/photo-1661615073242-a8fb9b696182?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODk0ODB8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Haitam ELKADIRI",
+  "heroImagePhotographerUrl": "https://unsplash.com/@haykad684?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Madrid",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de Oriente",
+          "description": "Start your day with a delightful breakfast at Café de Oriente, where you can enjoy traditional Spanish pastries and coffee while overlooking the Royal Palace. It's a perfect spot to soak in the morning sun and the beautiful architecture around you.",
+          "searchQuery": "Café de Oriente",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Royal Palace of Madrid",
+          "description": "Explore the stunning Royal Palace, the official residence of the Spanish royal family. With its opulent rooms and beautiful gardens, this site offers a glimpse into Spain's rich history and royal heritage. Don't forget to check out the impressive throne room!",
+          "searchQuery": "Royal Palace of Madrid",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Mercado de San Miguel",
+          "description": "Head to Mercado de San Miguel for lunch, where you can sample a variety of Spanish tapas and local delicacies. This vibrant market is a food lover's paradise, perfect for trying different flavors and enjoying the lively atmosphere.",
+          "searchQuery": "Mercado de San Miguel",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Plaza Mayor",
+          "description": "Stroll through the historic Plaza Mayor, a grand square surrounded by beautiful architecture and bustling cafes. It's a great place to relax, people-watch, and take in the vibrant atmosphere of Madrid.",
+          "searchQuery": "Plaza Mayor",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit the Santiago Bernabéu Stadium",
+          "description": "Dive into the world of LaLiga by visiting the iconic Santiago Bernabéu Stadium, home to Real Madrid. Take a guided tour to learn about the club's history and see the trophy room, players' tunnel, and more. A must for any football fan!",
+          "searchQuery": "Santiago Bernabéu Stadium",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Shopping for LaLiga Merchandise",
+          "description": "After the stadium tour, head to the official Real Madrid store nearby to pick up some fan merchandise. From jerseys to scarves, you'll find plenty of items to show your support for the team.",
+          "searchQuery": "Real Madrid Official Store",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Casa Lucio",
+          "description": "End your day with a traditional Spanish dinner at Casa Lucio, famous for its delicious huevos rotos (broken eggs). This family-friendly restaurant offers a cozy atmosphere and authentic Spanish cuisine, perfect for unwinding after a day of exploration.",
+          "searchQuery": "Casa Lucio",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the Heart of Madrid",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de Oriente",
+          "description": "Start your day with a delightful breakfast at Café de Oriente, where you can enjoy traditional Spanish pastries and coffee while overlooking the Royal Palace. The ambiance is perfect for a relaxed morning.",
+          "searchQuery": "Café de Oriente",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Royal Palace of Madrid",
+          "description": "Explore the magnificent Royal Palace, the official residence of the Spanish royal family. Don't miss the stunning architecture and the beautiful gardens surrounding the palace. Guided tours are available for a deeper insight into its history.",
+          "searchQuery": "Royal Palace of Madrid",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Mercado de San Miguel",
+          "description": "Head to Mercado de San Miguel for lunch, where you can sample a variety of Spanish tapas and local delicacies. This vibrant market is a feast for the senses, with colorful stalls and delicious aromas wafting through the air.",
+          "searchQuery": "Mercado de San Miguel",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Almudena Cathedral",
+          "description": "Just a short walk from the Royal Palace, visit Almudena Cathedral, known for its stunning neo-Romanesque architecture. Take your time to admire the beautiful stained glass windows and the peaceful atmosphere inside.",
+          "searchQuery": "Almudena Cathedral",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore LaLiga Store",
+          "description": "Dive into the world of LaLiga at the official LaLiga Store. Here, you can find a wide range of merchandise, from jerseys to memorabilia, perfect for any football fan looking to take home a piece of their favorite league.",
+          "searchQuery": "LaLiga Store",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Retiro Park",
+          "description": "Unwind at Retiro Park, a beautiful green oasis in the heart of Madrid. Take a leisurely stroll, rent a rowboat on the lake, or simply relax on the grass and enjoy the peaceful surroundings.",
+          "searchQuery": "Retiro Park",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Sobrino de Botín",
+          "description": "End your day with dinner at Sobrino de Botín, the oldest restaurant in the world, according to the Guinness World Records. Indulge in traditional Spanish cuisine, especially their famous roast suckling pig, for an unforgettable dining experience.",
+          "searchQuery": "Sobrino de Botín",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "LaLiga Stadium Tour",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de Oriente",
+          "description": "Start your day with a delightful breakfast at Café de Oriente, where you can enjoy a traditional Spanish breakfast with stunning views of the Royal Palace. The café offers a cozy atmosphere, perfect for families.",
+          "searchQuery": "Café de Oriente",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Santiago Bernabéu Stadium Tour",
+          "description": "Dive into the world of football with a guided tour of the iconic Santiago Bernabéu Stadium. Explore the trophy room, the pitch, and the Real Madrid Museum, where you can learn about the club's rich history and see memorabilia from legendary players.",
+          "searchQuery": "Santiago Bernabéu Stadium",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at La Taberna de Elia",
+          "description": "Enjoy a hearty lunch at La Taberna de Elia, known for its delicious tapas and local dishes. This family-friendly restaurant offers a warm atmosphere and a variety of options to satisfy everyone's taste buds.",
+          "searchQuery": "La Taberna de Elia",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Real Madrid Museum",
+          "description": "After lunch, continue your exploration at the Real Madrid Museum, located within the stadium. Discover the history of one of the most successful football clubs in the world through interactive exhibits and impressive displays.",
+          "searchQuery": "Real Madrid Museum",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Real Madrid Merchandise",
+          "description": "Head to the official Real Madrid store located at the stadium to pick up some fan merchandise. From jerseys to souvenirs, this is the perfect place to find something special to remember your visit.",
+          "searchQuery": "Real Madrid Official Store",
+          "locationEn": "Madrid, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Relax at Parque de la Ventas",
+          "description": "Unwind at Parque de la Ventas, a beautiful park nearby where you can take a leisurely stroll or simply relax on the grass. It's a great spot to enjoy some family time and reflect on the day's adventures.",
+          "searchQuery": "Parque de la Ventas",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Restaurante Casa Lucio",
+          "description": "End your day with a delicious dinner at Casa Lucio, famous for its traditional Spanish cuisine, especially the iconic 'huevos rotos'. The warm ambiance and friendly service make it a perfect family dining experience.",
+          "searchQuery": "Restaurante Casa Lucio",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Art and Culture Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de Oriente",
+          "description": "Start your day with a delightful breakfast at Café de Oriente, where you can enjoy traditional Spanish pastries and coffee while overlooking the Royal Palace. It's a perfect spot to soak in the morning sun and the beautiful views.",
+          "searchQuery": "Café de Oriente",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Prado Museum",
+          "description": "Explore the world-renowned Prado Museum, home to masterpieces by Spanish artists like Velázquez and Goya. Take your time to admire the stunning art collections and immerse yourself in Spain's rich cultural heritage.",
+          "searchQuery": "Prado Museum",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at La Taberna de El Sur",
+          "description": "Enjoy a leisurely lunch at La Taberna de El Sur, known for its authentic tapas and friendly atmosphere. Try their famous tortilla española and a selection of local wines for a true taste of Madrid.",
+          "searchQuery": "La Taberna de El Sur",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Stroll through Retiro Park",
+          "description": "After lunch, take a relaxing stroll through Retiro Park, a beautiful green oasis in the heart of Madrid. Don't miss the Crystal Palace and the serene lake where you can rent a rowboat for a peaceful afternoon.",
+          "searchQuery": "Retiro Park",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Real Madrid Store",
+          "description": "For LaLiga fans, a visit to the Real Madrid Store is a must! Browse through a wide range of merchandise, from jerseys to memorabilia, and pick up some fan gear to take home as a souvenir.",
+          "searchQuery": "Real Madrid Store",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Sobrino de Botín",
+          "description": "End your day with dinner at Sobrino de Botín, the oldest restaurant in the world. Indulge in their famous roast suckling pig and traditional Spanish dishes in a charming, historic setting.",
+          "searchQuery": "Sobrino de Botín",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening walk around Plaza Mayor",
+          "description": "Take a leisurely evening walk around Plaza Mayor, one of Madrid's most iconic squares. Enjoy the lively atmosphere, grab a churro from a nearby stand, and soak in the vibrant nightlife of the city.",
+          "searchQuery": "Plaza Mayor",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Day Trip to Valle de los Caídos",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de Oriente",
+          "description": "Start your day with a delightful breakfast at Café de Oriente, where you can enjoy traditional Spanish pastries and coffee while overlooking the Royal Palace.",
+          "searchQuery": "Café de Oriente",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Valle de los Caídos",
+          "description": "Take a guided tour to Valle de los Caídos, a monumental site dedicated to the Spanish Civil War. The basilica and the stunning views from the hilltop are truly breathtaking.",
+          "searchQuery": "Valle de los Caídos",
+          "locationEn": "Valle de los Caídos, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Restaurante El Escorial",
+          "description": "Enjoy a hearty lunch at Restaurante El Escorial, known for its local dishes and warm atmosphere. Try the cochinillo (suckling pig) for a true taste of the region.",
+          "searchQuery": "Restaurante El Escorial",
+          "locationEn": "San Lorenzo de El Escorial, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore El Escorial Monastery",
+          "description": "After lunch, visit the magnificent El Escorial Monastery, a UNESCO World Heritage site. Marvel at its impressive architecture and rich history as you wander through its halls.",
+          "searchQuery": "El Escorial Monastery",
+          "locationEn": "San Lorenzo de El Escorial, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Shopping for LaLiga Merchandise",
+          "description": "Head back to Madrid and visit the official LaLiga store to pick up some fan merchandise. Whether it's jerseys, scarves, or memorabilia, you'll find something for every fan.",
+          "searchQuery": "LaLiga Store",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at La Taberna de Elia",
+          "description": "End your day with a cozy dinner at La Taberna de Elia, where you can savor traditional Spanish tapas and enjoy a relaxed atmosphere with your family.",
+          "searchQuery": "La Taberna de Elia",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Shopping and LaLiga Fan Experience",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de Oriente",
+          "description": "Start your day with a delightful breakfast at Café de Oriente, where you can enjoy traditional Spanish pastries and a stunning view of the Royal Palace. It's a perfect spot to fuel up for a day of shopping and exploration.",
+          "searchQuery": "Café de Oriente",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Gran Via",
+          "description": "Stroll along Gran Via, Madrid's bustling main street known for its impressive architecture and vibrant atmosphere. Here, you'll find a mix of high-end shops and local boutiques, perfect for picking up LaLiga merchandise and souvenirs.",
+          "searchQuery": "Gran Via",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at La Casa de las Tortillas",
+          "description": "Enjoy a casual lunch at La Casa de las Tortillas, famous for its delicious Spanish omelets. This cozy eatery is a local favorite and offers a taste of authentic Madrid cuisine.",
+          "searchQuery": "La Casa de las Tortillas",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore LaLiga Merchandise Stores",
+          "description": "Visit various LaLiga merchandise stores around the city, including the official Real Madrid and Atlético Madrid shops. Here, you can find jerseys, scarves, and other fan gear to take home as a memento of your trip.",
+          "searchQuery": "Real Madrid Store",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Retiro Park",
+          "description": "Take a leisurely stroll or relax at Retiro Park, a beautiful green space in the heart of Madrid. Enjoy the serene atmosphere, and if you're lucky, you might catch a street performer or a local artist at work.",
+          "searchQuery": "Retiro Park",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Mercado de San Miguel",
+          "description": "End your day with dinner at Mercado de San Miguel, a vibrant food market where you can sample a variety of Spanish tapas and local delicacies. It's a great place to unwind and enjoy the lively atmosphere.",
+          "searchQuery": "Mercado de San Miguel",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk through Plaza Mayor",
+          "description": "Take a leisurely evening walk through Plaza Mayor, one of Madrid's most iconic squares. The illuminated buildings and lively ambiance make it a perfect spot to reflect on your day and soak in the local culture.",
+          "searchQuery": "Plaza Mayor",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure from Madrid",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Madrid",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Madrid-Barajas Airport",
+          "time": "12:00"
+        },
+        "duration": "2h",
+        "memo": "Flight to Madrid-Barajas Airport for departure."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café de Oriente",
+          "description": "Start your day with a delightful breakfast at Café de Oriente, where you can enjoy traditional Spanish pastries and coffee while overlooking the Royal Palace.",
+          "searchQuery": "Café de Oriente",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Santiago Bernabéu Stadium",
+          "description": "Explore the iconic home of Real Madrid, Santiago Bernabéu Stadium. Take a guided tour to see the trophy room, the pitch, and the impressive stands. A must for any football fan!",
+          "searchQuery": "Santiago Bernabéu Stadium",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at La Taberna de Elia",
+          "description": "Enjoy a leisurely lunch at La Taberna de Elia, known for its delicious tapas and local dishes. It's a great spot to relax and savor the flavors of Madrid.",
+          "searchQuery": "La Taberna de Elia",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Shopping for LaLiga Merchandise",
+          "description": "Head to the nearby sports shops to pick up some LaLiga merchandise. Whether it's jerseys, scarves, or other fan gear, you'll find plenty of options to take home a piece of the action.",
+          "searchQuery": "LaLiga Merchandise Store",
+          "locationEn": "Madrid, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Stroll through Retiro Park",
+          "description": "Take a relaxing stroll through Retiro Park, a beautiful green space in the heart of Madrid. Enjoy the serene atmosphere, and if you have time, rent a rowboat on the lake.",
+          "searchQuery": "Retiro Park",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Coffee at Chocolatería San Ginés",
+          "description": "End your day with a sweet treat at Chocolatería San Ginés, famous for its churros and hot chocolate. It's the perfect way to unwind before your departure.",
+          "searchQuery": "Chocolatería San Ginés",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "id": "598639e6-f40c-4365-8938-6edd0d950443",
+  "destination": "New York City",
+  "description": "Immerse yourself in the vibrant pulse of New York City, where the iconic skyline meets the rich tapestry of culture and history. This 3-day adventure is designed for you and your friends to explore the Marvel universe while indulging in the city's diverse offerings. From thrilling activities to hidden gems, this trip promises unforgettable memories and a chance to connect with your favorite fandom in the heart of the Big Apple.",
+  "heroImage": "https://images.unsplash.com/photo-1659554052509-94fbbb69b783?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODk3Nzd8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Humza Khalil",
+  "heroImagePhotographerUrl": "https://unsplash.com/@haksquared?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Marvelous Beginnings in Manhattan",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Jack's Wife Freda",
+          "description": "Start your day with a hearty breakfast at this cozy spot known for its delicious Mediterranean-inspired dishes. Try their famous Green Shakshuka for a unique twist on a classic breakfast.",
+          "searchQuery": "Jack's Wife Freda",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Times Square",
+          "description": "Immerse yourself in the vibrant energy of Times Square, where the bright lights and bustling crowds create an unforgettable atmosphere. Don't forget to snap some photos with the iconic billboards!",
+          "searchQuery": "Times Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Counter",
+          "description": "Enjoy a customizable burger experience at The Counter, where you can build your own burger with a variety of toppings and sauces. Perfect for a quick and satisfying meal before more adventures!",
+          "searchQuery": "The Counter",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore the Marvel Store",
+          "description": "Dive into the world of Marvel at the flagship store in Times Square. Browse through a wide range of merchandise, from action figures to apparel, and find the perfect souvenirs to take home.",
+          "searchQuery": "Marvel Store",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Stroll through Central Park",
+          "description": "Take a leisurely walk through Central Park, a beautiful oasis in the heart of the city. Enjoy the scenic views, and if you're lucky, catch a glimpse of street performers showcasing their talents.",
+          "searchQuery": "Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at The Modern",
+          "description": "Indulge in a fine dining experience at The Modern, located at the Museum of Modern Art. Enjoy contemporary American cuisine with a stunning view of the sculpture garden.",
+          "searchQuery": "The Modern",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Catch a Broadway Show",
+          "description": "End your day with an unforgettable Broadway show. Choose from a variety of performances, including Marvel-themed productions, for an exciting night of entertainment.",
+          "searchQuery": "Broadway Shows",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Marvels and Historic Adventures",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Jack's Wife Freda",
+          "description": "Start your day with a delicious breakfast at this cozy spot known for its Mediterranean-inspired dishes. Try their famous green shakshuka for a flavorful kick!",
+          "searchQuery": "Jack's Wife Freda",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit The Metropolitan Museum of Art",
+          "description": "Explore one of the largest and most prestigious art museums in the world. Don't miss the rooftop garden for stunning views of Central Park and the city skyline!",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Modern",
+          "description": "Enjoy a refined lunch at this Michelin-starred restaurant located at the Museum of Modern Art. The seasonal menu features contemporary American cuisine with a twist.",
+          "searchQuery": "The Modern",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Hell's Kitchen",
+          "description": "Stroll through the vibrant Hell's Kitchen neighborhood, known for its diverse dining options and lively atmosphere. Perfect for shopping for Marvel merchandise at local stores!",
+          "searchQuery": "Hell's Kitchen",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit the Marvel Store",
+          "description": "Dive into the world of Marvel at this flagship store. From collectibles to apparel, it's a paradise for any Marvel fan looking to grab some exclusive merchandise!",
+          "searchQuery": "Marvel Store",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Becco",
+          "description": "Indulge in a delightful Italian dinner at Becco, famous for its pasta and extensive wine list. The lively atmosphere makes it a great spot to unwind after a day of exploration.",
+          "searchQuery": "Becco",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Broadway Show",
+          "description": "End your day with an unforgettable Broadway show. Be sure to check out what's playing and book your tickets in advance for the best experience!",
+          "searchQuery": "Broadway Show",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Final Marvels and Return to D.C.",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "New York City"
+        },
+        "arrival": {
+          "place": "Washington D.C."
+        },
+        "memo": "Travel back to Washington D.C. after a day of exploring."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Jack's Wife Freda",
+          "description": "Start your day with a hearty breakfast at this cozy spot known for its Mediterranean-inspired dishes. Try the Green Shakshuka for a unique twist on a classic breakfast.",
+          "searchQuery": "Jack's Wife Freda",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Brooklyn Bridge Walk",
+          "description": "Take a leisurely stroll across the iconic Brooklyn Bridge. Enjoy stunning views of the Manhattan skyline and the East River as you make your way to Brooklyn.",
+          "searchQuery": "Brooklyn Bridge",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "DUMBO Exploration",
+          "description": "Once in Brooklyn, explore the DUMBO neighborhood. Check out the trendy shops and art galleries, and don't forget to snap a photo at the famous Manhattan Bridge view.",
+          "searchQuery": "DUMBO",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Time Out Market",
+          "description": "Head to Time Out Market for lunch, where you can sample a variety of local foods from different vendors. It's a great place to try some New York favorites in one spot.",
+          "searchQuery": "Time Out Market",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "One World Observatory",
+          "description": "Visit the One World Observatory for breathtaking views of New York City from the top of the One World Trade Center. The experience includes an informative video about the city’s history.",
+          "searchQuery": "One World Observatory",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Shopping for Marvel Merchandise at Midtown Comics",
+          "description": "After the observatory, head to Midtown Comics to find a wide range of Marvel merchandise. It's a must-visit for any Marvel fan looking to grab some unique collectibles.",
+          "searchQuery": "Midtown Comics",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at The Capital Grille",
+          "description": "Enjoy a luxurious dinner at The Capital Grille, known for its dry-aged steaks and extensive wine list. A perfect way to end your New York adventure before heading back to D.C.",
+          "searchQuery": "The Capital Grille",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Transit back to Washington D.C.",
+          "description": "After dinner, prepare for your journey back to Washington D.C. Reflect on the amazing experiences you've had in New York City!",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,349 @@
+{
+  "id": "bc90a53f-48b3-411c-9c40-d0d633d48217",
+  "destination": "Cebu Island",
+  "description": "Escape to the stunning Cebu Island, where azure waters meet golden sands, and adventure awaits at every turn. This tropical paradise is not just about relaxation; it’s a hub for thrilling activities, including swimming with majestic whale sharks and exploring vibrant coral reefs. Over four days, immerse yourself in the natural beauty and rich culture of Cebu, creating unforgettable memories with your partner. Get ready for an active getaway filled with breathtaking landscapes, delicious local cuisine, and the warm hospitality of the Filipino people.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Beach Relaxation",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Check-in at Mactan Island Resort",
+          "description": "Arrive at your resort on Mactan Island, where you can unwind and soak in the tropical atmosphere. Enjoy a welcome drink and get settled in your comfortable room with stunning ocean views.",
+          "searchQuery": "Mactan Island Resort",
+          "locationEn": "Mactan Island, Philippines",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Lunch at The Cove",
+          "description": "Savor a delicious lunch at The Cove, a beachfront restaurant offering fresh seafood and local dishes. The relaxing ambiance and ocean breeze make it a perfect spot to start your vacation.",
+          "searchQuery": "The Cove Mactan",
+          "locationEn": "Mactan Island, Philippines",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Beach Time at White Beach",
+          "description": "Head to White Beach, known for its powdery white sand and crystal-clear waters. Spend the afternoon swimming, sunbathing, or simply enjoying the beautiful scenery. Don't forget your sunscreen!",
+          "searchQuery": "White Beach Mactan",
+          "locationEn": "Mactan Island, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Sunset at the Beach",
+          "description": "As the sun begins to set, find a cozy spot on the beach to watch the breathtaking sunset. The vibrant colors reflecting on the water create a magical atmosphere, perfect for a romantic moment.",
+          "searchQuery": "White Beach Mactan",
+          "locationEn": "Mactan Island, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at La Vie Parisienne",
+          "description": "Enjoy a delightful dinner at La Vie Parisienne, a charming French restaurant. Indulge in a variety of dishes, from fresh salads to delectable pastries, all while enjoying the cozy ambiance.",
+          "searchQuery": "La Vie Parisienne Mactan",
+          "locationEn": "Mactan Island, Philippines",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Whale Shark Encounter and Snorkeling",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Mactan Island",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Oslob",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Take a bus from Mactan Island to Oslob for the whale shark encounter."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Whale Shark Encounter",
+          "description": "Experience the thrill of swimming with gentle whale sharks in Oslob. This unforgettable encounter allows you to get up close with these magnificent creatures in their natural habitat. Remember to follow the guidelines to ensure a safe and respectful interaction with the sharks.",
+          "searchQuery": "Oslob Whale Shark Watching",
+          "locationEn": "Oslob, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Eatery",
+          "description": "Enjoy a delicious lunch at a local eatery nearby, where you can savor fresh seafood dishes and traditional Filipino cuisine. Try the grilled fish or shrimp, which are local specialties.",
+          "searchQuery": "Local Eatery Oslob",
+          "locationEn": "Oslob, Philippines",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Tumalog Falls Visit",
+          "description": "After lunch, head to Tumalog Falls, a stunning waterfall surrounded by lush greenery. Take a refreshing dip in the cool waters and enjoy the serene atmosphere. The short hike to the falls is worth the breathtaking views.",
+          "searchQuery": "Tumalog Falls",
+          "locationEn": "Oslob, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at the Beach",
+          "description": "Spend the late afternoon relaxing at a nearby beach. Enjoy the soft sand and clear waters, perfect for unwinding after an exciting day. You can also try some beach activities like paddleboarding or simply soak up the sun.",
+          "searchQuery": "Oslob Beach",
+          "locationEn": "Oslob, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Beachfront Restaurant",
+          "description": "End your day with a romantic dinner at a beachfront restaurant. Enjoy the sunset views while indulging in local dishes and fresh seafood. The ambiance is perfect for couples looking to unwind after a day of adventure.",
+          "searchQuery": "Beachfront Restaurant Oslob",
+          "locationEn": "Oslob, Philippines",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Island Hopping Adventure",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Oslob",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Moalboal",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "Travel by boat from Oslob to Moalboal, enjoying the scenic views of the coastline."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Breakfast at The Pleasure Principle Resto-Bar",
+          "description": "Start your day with a hearty breakfast at this popular spot known for its delicious pancakes and local dishes. The relaxed atmosphere is perfect for couples looking to enjoy a leisurely meal before their adventure.",
+          "searchQuery": "The Pleasure Principle Resto-Bar",
+          "locationEn": "Moalboal, Philippines",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Snorkeling at Pescador Island",
+          "description": "Dive into the crystal-clear waters of Pescador Island, famous for its vibrant marine life. Swim alongside colorful fish and, if you're lucky, catch a glimpse of a sea turtle!",
+          "searchQuery": "Pescador Island",
+          "locationEn": "Pescador Island, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Beachfront Restaurant",
+          "description": "Enjoy a delicious seafood lunch at one of the beachfront restaurants in Moalboal. Savor fresh catch of the day while soaking in the stunning ocean views.",
+          "searchQuery": "Moalboal Beachfront Restaurant",
+          "locationEn": "Moalboal, Philippines",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Kawasan Falls Canyoneering",
+          "description": "Experience an exhilarating canyoneering adventure at Kawasan Falls. Navigate through stunning canyons, jump into refreshing pools, and marvel at the breathtaking waterfalls. A must-do for thrill-seekers!",
+          "searchQuery": "Kawasan Falls",
+          "locationEn": "Kawasan Falls, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at White Beach",
+          "description": "Unwind at the beautiful White Beach in Moalboal. Enjoy the soft sand and clear waters, perfect for a romantic sunset stroll or simply lounging together.",
+          "searchQuery": "White Beach Moalboal",
+          "locationEn": "Moalboal, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Ven'z Kitchen",
+          "description": "End your day with a cozy dinner at Ven'z Kitchen, known for its local dishes and friendly service. Try their famous grilled seafood for a taste of the region.",
+          "searchQuery": "Ven'z Kitchen",
+          "locationEn": "Moalboal, Philippines",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Cultural Exploration and Departure",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Moalboal",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Cebu City",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Traveling from Moalboal to Cebu City for sightseeing."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Magellan's Cross",
+          "description": "Visit the historic Magellan's Cross, a significant landmark in Cebu City that symbolizes the arrival of Christianity in the Philippines. The cross is housed in a small chapel and is surrounded by beautiful murals depicting the history of Cebu.",
+          "searchQuery": "Magellan's Cross",
+          "locationEn": "Cebu City, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Cebu City Tour",
+          "description": "Explore the vibrant streets of Cebu City, visiting key sites such as the Basilica Minore del Santo Niño and Fort San Pedro. Immerse yourself in the local culture and history as you stroll through these iconic locations.",
+          "searchQuery": "Basilica Minore del Santo Niño",
+          "locationEn": "Cebu City, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Lantaw Native Restaurant",
+          "description": "Enjoy a delicious lunch at Lantaw Native Restaurant, known for its authentic Filipino dishes and stunning views of the ocean. Try their fresh seafood and local specialties for a true taste of Cebu.",
+          "searchQuery": "Lantaw Native Restaurant",
+          "locationEn": "Cebu City, Philippines",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Return to Moalboal",
+          "description": "Head back to Moalboal to relax and prepare for your next adventure. Enjoy the scenic drive back, taking in the beautiful landscapes of Cebu.",
+          "locationEn": "Moalboal, Philippines",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Snorkeling with Whale Sharks",
+          "description": "Experience the thrill of snorkeling with whale sharks in Oslob, just a short drive from Moalboal. This unforgettable experience allows you to swim alongside these gentle giants in their natural habitat.",
+          "searchQuery": "Oslob Whale Shark Watching",
+          "locationEn": "Oslob, Philippines",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Pleasure Principle",
+          "description": "End your day with a delightful dinner at The Pleasure Principle, a cozy restaurant known for its fresh seafood and local dishes. Enjoy the relaxed atmosphere and savor the flavors of Cebu.",
+          "searchQuery": "The Pleasure Principle",
+          "locationEn": "Moalboal, Philippines",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Beach Walk",
+          "description": "Take a leisurely stroll along the beautiful beaches of Moalboal. Enjoy the sunset and the calming sound of the waves, reflecting on your amazing adventures in Cebu.",
+          "locationEn": "Moalboal, Philippines",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,280 @@
+{
+  "id": "5ed33eed-4ef4-4c10-8a56-56cb7c8049e4",
+  "destination": "屋久島",
+  "description": "屋久島の大自然に身を委ね、世界遺産の美しさを体感する3日間の冒険へようこそ。友人と共に、縄文杉の神秘や苔の森の幻想的な景色を堪能し、心に残る思い出を作りましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1638994276954-e264dd6fa3b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODY2MTB8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Marek Piwnicki",
+  "heroImagePhotographerUrl": "https://unsplash.com/@marekpiwnicki?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "屋久島の自然を感じる",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "屋久島空港到着",
+          "description": "屋久島空港に到着し、自然豊かな屋久島の冒険が始まります。空港からはレンタカーを借りて、まずは白谷雲水峡へ向かいましょう。",
+          "searchQuery": "Yakushima Airport",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "白谷雲水峡",
+          "description": "白谷雲水峡の美しいトレイルを歩きながら、屋久島の豊かな自然を満喫します。苔むした森や清流が広がる中、縄文杉への道を進む準備をしましょう。",
+          "searchQuery": "Shiratani Unsuikyo",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "白谷雲水峡でランチ",
+          "description": "トレッキングの合間に、持参したお弁当や軽食を楽しみましょう。自然の中で食べる食事は格別です。",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "縄文杉トレッキング",
+          "description": "いよいよ縄文杉を目指して出発！約10時間のハイキングですが、途中の景色や自然の美しさに心を奪われることでしょう。",
+          "searchQuery": "Jomon Sugi",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "縄文杉到着",
+          "description": "ついに縄文杉に到着！その圧倒的な存在感に感動し、写真をたくさん撮りましょう。帰り道も楽しみながら、ゆっくりと戻ります。",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "宿泊先チェックイン",
+          "description": "本日の宿泊先にチェックイン。疲れた体を癒すために、温かいお風呂でリラックスしましょう。",
+          "searchQuery": "Yakushima Hotel",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "縄文杉への挑戦",
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "ホテルで朝食",
+          "description": "屋久島の地元食材を使った和朝食で、エネルギーをチャージ。新鮮な魚や野菜を使った料理が楽しめます。",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "縄文杉へのハイキング開始",
+          "description": "縄文杉を目指して出発。大自然の中を歩きながら、苔むした森や美しい景色を楽しむことができます。約6時間の道のりです。",
+          "searchQuery": "Jomon Sugi",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "縄文杉到着",
+          "description": "ついに縄文杉に到着！その圧倒的な存在感に感動し、写真をたくさん撮りましょう。周囲の自然も楽しんでください。",
+          "searchQuery": "Jomon Sugi",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "昼食（お弁当）",
+          "description": "ハイキング中に持参したお弁当を縄文杉の近くでいただきます。自然の中での食事は格別です。",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "苔の森散策",
+          "description": "縄文杉から戻る途中、苔の森を散策。幻想的な雰囲気の中で、苔むした木々や小川の流れを楽しみながら、写真を撮りましょう。",
+          "searchQuery": "Moss Forest",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ハイキング終了、ホテルへ戻る",
+          "description": "無事にハイキングを終え、ホテルへ戻ります。疲れた体を癒すために、温泉に入るのもおすすめです。",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "夕食（地元の居酒屋）",
+          "description": "屋久島の新鮮な海の幸を楽しめる居酒屋で、地元の料理を堪能。友人と一緒に楽しいひとときを過ごしましょう。",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "屋久島の魅力を再発見",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "屋久島",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "縄文杉",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "屋久島の自然を満喫しながら、縄文杉へ向かいます。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "屋久島の朝食",
+          "description": "地元の食材を使った朝食を楽しみ、エネルギーをチャージ。特に、屋久島の新鮮な魚や野菜を使った料理がおすすめです。",
+          "searchQuery": "屋久島 朝食",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "縄文杉ハイキング",
+          "description": "屋久島のシンボル、縄文杉を目指してハイキング。途中の美しい森や苔の景色に心を奪われることでしょう。",
+          "searchQuery": "Jomon Sugi",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "昼食（屋久島の地元料理）",
+          "description": "ハイキングの後は、地元の食材を使ったランチを楽しみましょう。特に、屋久島の名物である「屋久島そば」がおすすめです。",
+          "searchQuery": "屋久島そば",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "苔の森散策",
+          "description": "縄文杉の近くに広がる苔の森を散策。幻想的な雰囲気の中で、写真を撮るのにぴったりのスポットです。",
+          "searchQuery": "Koke no Mori",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "屋久島の海岸散策",
+          "description": "屋久島の美しい海岸を散策し、夕日を眺めながらリラックス。自然の音に耳を傾けながら、心を癒す時間を過ごします。",
+          "searchQuery": "Yakushima Coast",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "夕食（地元の居酒屋）",
+          "description": "地元の居酒屋で新鮮な海の幸を楽しむディナー。特に、屋久島の魚介類は絶品です。",
+          "searchQuery": "Yakushima Izakaya",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "宿泊先へ戻る",
+          "description": "一日の疲れを癒すため、宿泊先へ戻ります。屋久島の静かな夜を楽しんでください。",
+          "searchQuery": "宿泊先",
+          "locationEn": "Yakushima, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

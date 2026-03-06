@@ -1,0 +1,459 @@
+{
+  "id": "9a7cc358-daaf-4a47-b4d5-09f4efb22c92",
+  "destination": "Liverpool",
+  "description": "Escape to the vibrant city of Liverpool, where the echoes of the past blend seamlessly with the pulse of contemporary culture. This 5-day adventure is designed for the solo traveler eager to explore the rich tapestry of history, indulge in the local football scene, and unwind amidst stunning natural beauty. From the iconic waterfront to the charming neighborhoods, Liverpool promises a delightful mix of experiences that will leave you refreshed and inspired.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Liverpool and Exploring the Waterfront",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Baltic Social",
+          "description": "Start your day with a hearty breakfast at The Baltic Social, known for its locally sourced ingredients and vibrant atmosphere. Try their famous 'Full English' for a true taste of British breakfast.",
+          "searchQuery": "The Baltic Social",
+          "locationEn": "Liverpool, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Albert Dock",
+          "description": "Stroll around the historic Albert Dock, a UNESCO World Heritage site. Enjoy the stunning waterfront views and explore the various shops and galleries housed in the converted warehouses.",
+          "searchQuery": "Albert Dock",
+          "locationEn": "Liverpool, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Pump House",
+          "description": "Enjoy a relaxed lunch at The Pump House, a charming pub located by the dock. Their menu features classic British dishes and a selection of local ales.",
+          "searchQuery": "The Pump House",
+          "locationEn": "Liverpool, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "The Beatles Story",
+          "description": "Dive into the world of The Beatles at The Beatles Story museum. This immersive experience showcases the band's history and their impact on music and culture.",
+          "searchQuery": "The Beatles Story",
+          "locationEn": "Liverpool, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore the Royal Albert Dock",
+          "description": "Continue your exploration at the Royal Albert Dock, where you can find unique shops and cafes. Don't forget to check out the Tate Liverpool for contemporary art exhibitions.",
+          "searchQuery": "Royal Albert Dock",
+          "locationEn": "Liverpool, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at The Smugglers Cove",
+          "description": "End your day with dinner at The Smugglers Cove, a pirate-themed restaurant offering a variety of dishes from burgers to seafood, perfect for a relaxed evening.",
+          "searchQuery": "The Smugglers Cove",
+          "locationEn": "Liverpool, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening Walk along the Waterfront",
+          "description": "Take a leisurely evening stroll along the waterfront, enjoying the views of the Mersey River and the iconic Liverpool skyline as the sun sets.",
+          "searchQuery": "Liverpool Waterfront",
+          "locationEn": "Liverpool, UK",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Premier League Passion and Local Culture",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Brunch Club",
+          "description": "Start your day with a hearty breakfast at The Brunch Club, known for its delicious pancakes and full English breakfasts. It's a cozy spot that will fuel you for a day of exploring!",
+          "searchQuery": "The Brunch Club",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Anfield Stadium",
+          "description": "Dive into the heart of Liverpool FC by visiting Anfield Stadium. Take a guided tour to explore the iconic stadium and learn about the club's rich history. Don't forget to snap a photo at the famous Shankly Gates!",
+          "searchQuery": "Anfield Stadium",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Anfield's Boot Room Restaurant",
+          "description": "Enjoy a meal at the Boot Room Restaurant located within Anfield. The menu features a variety of dishes inspired by the club's history, making it a perfect spot for fans.",
+          "searchQuery": "Boot Room Restaurant",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Liverpool FC Museum",
+          "description": "After lunch, explore the Liverpool FC Museum. Discover trophies, memorabilia, and interactive exhibits that celebrate the club's legacy. It's a must-visit for any football fan!",
+          "searchQuery": "Liverpool FC Museum",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Goodison Park",
+          "description": "Take a short walk to Goodison Park, home of Everton FC. While there, you can take a stadium tour and learn about the club's history. The atmosphere is electric, especially on match days!",
+          "searchQuery": "Goodison Park",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Baltic Social",
+          "description": "End your day with dinner at The Baltic Social, a trendy restaurant known for its relaxed vibe and delicious comfort food. Try their famous 'Baltic Burger' for a satisfying meal!",
+          "searchQuery": "The Baltic Social",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll along the Albert Dock",
+          "description": "Take a leisurely evening stroll along the picturesque Albert Dock. Enjoy the beautiful views of the waterfront and the historic buildings, perfect for winding down after a busy day.",
+          "searchQuery": "Albert Dock",
+          "locationEn": "Liverpool, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Art, History, and Relaxation",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Brunch Club",
+          "description": "Start your day with a hearty breakfast at The Brunch Club, known for its delicious pancakes and full English breakfast. It's a cozy spot that sets the perfect tone for a day of exploration.",
+          "searchQuery": "The Brunch Club",
+          "locationEn": "Liverpool, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Tate Liverpool",
+          "description": "Explore contemporary art at Tate Liverpool, located in the Albert Dock. The gallery features a diverse collection of modern art and often hosts temporary exhibitions that are worth checking out.",
+          "searchQuery": "Tate Liverpool",
+          "locationEn": "Liverpool, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Baltic Market",
+          "description": "Head to Baltic Market for lunch, a vibrant food hall offering a variety of street food options. Enjoy local delicacies and international flavors in a lively atmosphere.",
+          "searchQuery": "Baltic Market",
+          "locationEn": "Liverpool, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Walker Art Gallery",
+          "description": "After lunch, visit the Walker Art Gallery, home to an impressive collection of fine art, including works by famous British artists. The gallery's architecture is also a sight to behold.",
+          "searchQuery": "Walker Art Gallery",
+          "locationEn": "Liverpool, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll through Sefton Park",
+          "description": "Take a leisurely stroll in Sefton Park, a beautiful green space perfect for relaxation. Enjoy the serene lake and the stunning Palm House, a Victorian glasshouse filled with exotic plants.",
+          "searchQuery": "Sefton Park",
+          "locationEn": "Liverpool, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Italian Club Fish",
+          "description": "Indulge in a delightful dinner at The Italian Club Fish, known for its fresh seafood and Italian-inspired dishes. The cozy ambiance makes it a great place to unwind after a day of sightseeing.",
+          "searchQuery": "The Italian Club Fish",
+          "locationEn": "Liverpool, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Visit Liverpool FC Store",
+          "description": "End your day with a visit to the Liverpool FC Store at Anfield. Browse through a wide range of fan merchandise and memorabilia to take home a piece of your Premier League experience.",
+          "searchQuery": "Liverpool FC Store",
+          "locationEn": "Liverpool, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Nature and Scenic Views",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Brunch Club",
+          "description": "Start your day with a hearty breakfast at The Brunch Club, known for its delicious pancakes and fresh smoothies. It's a cozy spot to fuel up before a day of exploration.",
+          "searchQuery": "The Brunch Club",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Formby Beach",
+          "description": "Head to Formby Beach, a stunning stretch of sand and dunes. Enjoy a leisurely walk along the shore, and if you're lucky, you might spot some red squirrels in the nearby pine woods.",
+          "searchQuery": "Formby Beach",
+          "locationEn": "Formby, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Freshfield",
+          "description": "Enjoy a relaxed lunch at The Freshfield, a charming pub near Formby Beach. Try their famous fish and chips or a hearty burger while soaking in the local atmosphere.",
+          "searchQuery": "The Freshfield",
+          "locationEn": "Formby, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Crosby Beach and Anthony Gormley's Another Place",
+          "description": "Visit Crosby Beach to see Anthony Gormley's 'Another Place', featuring 100 cast-iron figures scattered along the shore. It's a unique art installation that offers a perfect backdrop for photos and reflection.",
+          "searchQuery": "Crosby Beach",
+          "locationEn": "Crosby, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at the Beach",
+          "description": "Take some time to relax on the beach, enjoy the sea breeze, and perhaps read a book or simply watch the waves. This is a great way to unwind and soak in the natural beauty of the area.",
+          "locationEn": "Crosby, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Watering Can",
+          "description": "End your day with dinner at The Watering Can, a lovely restaurant with a garden setting. Their menu features locally sourced ingredients, and it's a perfect spot to unwind after a day of exploration.",
+          "searchQuery": "The Watering Can",
+          "locationEn": "Crosby, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Liverpool",
+          "description": "Head back to Liverpool for a restful evening. You can take a leisurely stroll around the city center or relax at your accommodation.",
+          "locationEn": "Liverpool, England",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Final Day of Exploration and Return",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Brunch Club",
+          "description": "Start your day with a hearty breakfast at The Brunch Club, known for its delicious pancakes and full English breakfast. It's a cozy spot that will fuel you for a day of exploration.",
+          "searchQuery": "The Brunch Club",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit St. George's Hall",
+          "description": "Explore the magnificent St. George's Hall, a neoclassical masterpiece. Take a guided tour to learn about its history and admire the stunning architecture and beautiful concert hall.",
+          "searchQuery": "St. George's Hall",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Baltic Social",
+          "description": "Enjoy a relaxed lunch at The Baltic Social, a trendy eatery offering a mix of British and international dishes. Don't miss their famous 'Bacon Jam' on toast!",
+          "searchQuery": "The Baltic Social",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Liverpool ONE",
+          "description": "Head to Liverpool ONE, a vibrant shopping district. Here, you can shop for Premier League merchandise and enjoy the lively atmosphere. It's a great place to find souvenirs and fan gear.",
+          "searchQuery": "Liverpool ONE",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit Anfield Stadium",
+          "description": "Take a tour of Anfield, home of Liverpool FC. Learn about the club's rich history and see the iconic stadium up close. This is a must for any football fan!",
+          "searchQuery": "Anfield Stadium",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at The Sandon",
+          "description": "Wrap up your day with dinner at The Sandon, a pub with a rich football history. Enjoy traditional pub fare and soak in the atmosphere surrounded by fellow fans.",
+          "searchQuery": "The Sandon",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Return to Hotel and Relax",
+          "description": "After a fulfilling day, return to your hotel to unwind. Reflect on your adventures in Liverpool and prepare for your journey home.",
+          "locationEn": "Liverpool, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

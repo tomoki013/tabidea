@@ -1,0 +1,518 @@
+{
+  "id": "779b61d4-78c8-4fc8-8f58-d1fe8a021f23",
+  "destination": "ストックホルム",
+  "description": "北欧の魅力が詰まったストックホルムで、友人と共に街歩きやショッピングを楽しむ6日間の旅へ出かけましょう。魔女の宅急便のモデルとなった美しい街並みを散策し、フォトジェニックなスポットで思い出を残し、北欧雑貨を手に入れるための特別な体験をお届けします。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ストックホルム到着と市内散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ストックホルムのホテルで、北欧スタイルのビュッフェ朝食を楽しみます。新鮮なパンやスモークサーモン、ヨーグルトなど、地元の食材を使った料理が並びます。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ガムラスタン散策",
+          "description": "ストックホルムの旧市街・ガムラスタンを散策します。カラフルな建物や石畳の道が続くこのエリアは、まるで魔女の宅急便の世界に迷い込んだかのよう。小さなカフェや雑貨店を見つけながら、ゆっくりと歩きましょう。",
+          "searchQuery": "Gamla Stan",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カフェでランチ",
+          "description": "ガムラスタンの隠れ家カフェで、スウェーデンの伝統的なオープンサンドイッチ（スモーガスボード）を楽しみます。地元の人々に愛されるお店で、リラックスしたひとときを過ごしましょう。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ストックホルム市庁舎見学",
+          "description": "ストックホルム市庁舎を訪れ、その美しい建築と壮大な内部を見学します。特に、金色の間は圧巻で、ストックホルムのシンボルとも言える場所です。",
+          "searchQuery": "Stockholm City Hall",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "北欧雑貨店巡り",
+          "description": "ストックホルムの人気雑貨店を巡り、北欧デザインの雑貨やインテリアを探します。特に、スウェーデンの伝統的なデザインが楽しめるお店が多いので、素敵なアイテムが見つかるかもしれません。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー",
+          "description": "ストックホルムのレストランで、地元の食材を使ったディナーを楽しみます。スウェーデン料理の代表格であるミートボールや、季節の魚料理をぜひ味わってみてください。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のガムラスタン散策",
+          "description": "夕暮れ時のガムラスタンを再度散策し、ライトアップされた美しい街並みを楽しみます。夜の雰囲気の中で、素敵な写真を撮るチャンスです。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ガムラスタンとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ストックホルムのホテルで、スウェーデンの伝統的な朝食を楽しみます。スモークサーモンやクリームチーズ、ライ麦パンなど、地元の味を堪能しましょう。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ガムラスタン散策",
+          "description": "ストックホルムの旧市街、ガムラスタンを散策します。カラフルな建物や石畳の道が魅力的で、フォトジェニックなスポットがたくさんあります。特に、ノーベル博物館や王宮周辺は見逃せません。",
+          "searchQuery": "Gamla Stan",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "スウェーデン王宮見学",
+          "description": "スウェーデン王宮を訪れ、豪華な内装や歴史的な展示を楽しみます。王宮内の衛兵交代式も見逃せません。",
+          "searchQuery": "Royal Palace of Stockholm",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "スウェーデン料理のランチ",
+          "description": "ガムラスタンのレストランで、スウェーデン料理のランチを楽しみます。ミートボールやハリッサソースのサーモンなど、地元の味を堪能しましょう。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ドロットニングホルム宮殿訪問",
+          "description": "ストックホルムから少し離れたドロットニングホルム宮殿を訪れます。美しい庭園と歴史的な建物が魅力で、ゆったりとした時間を過ごせます。",
+          "searchQuery": "Drottningholm Palace",
+          "locationEn": "Drottningholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "北欧雑貨のショッピング",
+          "description": "ストックホルムの人気雑貨店で北欧デザインの雑貨を探します。ユニークなアイテムが揃っており、お土産にもぴったりです。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ストックホルムの地元のレストランでディナーを楽しみます。新鮮なシーフードや地元の食材を使った料理を堪能しましょう。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "フォトジェニックなスポット巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ストックホルムのホテルで、北欧スタイルの朝食を楽しみます。新鮮なパンやスモークサーモン、ヨーグルトなど、地元の味を堪能できる贅沢なひとときです。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "スカンセン",
+          "description": "スカンセンは、スウェーデンの伝統的な生活様式を体験できる野外博物館です。美しい自然の中で、古い建物や動物たちと触れ合いながら、フォトジェニックなスポットを巡りましょう。",
+          "searchQuery": "Skansen",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "アバ博物館でランチ",
+          "description": "アバ博物館内のカフェで、スウェーデンの伝統料理を楽しみます。特に、スウェーデン風ミートボールは絶品です。食事をしながら、アバの歴史を振り返ることもできます。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アバ博物館",
+          "description": "アバ博物館では、スウェーデンの伝説的なバンドABBAの歴史を学び、彼らの衣装や楽曲を楽しむことができます。インタラクティブな展示が多く、写真撮影にもぴったりのスポットです。",
+          "searchQuery": "ABBA The Museum",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "オーディンの広場散策",
+          "description": "オーディンの広場は、ストックホルムの中心に位置する美しい広場です。周囲にはカフェやショップが立ち並び、北欧雑貨を探すのに最適な場所です。散策しながら、フォトジェニックな風景を楽しみましょう。",
+          "searchQuery": "Odenplan",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "北欧雑貨店でショッピング",
+          "description": "オーディンの広場近くの雑貨店で、北欧デザインの雑貨を購入します。ユニークなアイテムが揃っており、友人へのお土産にもぴったりです。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "ストックホルムの地元のレストランで、スウェーデン料理を楽しみます。新鮮な魚料理や地元の野菜を使った料理が堪能できる、居心地の良いお店です。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "北欧雑貨探しとカフェ巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ストックホルムのホテルで、スウェーデンの伝統的な朝食を楽しみます。新鮮なパンやスモークサーモン、クリームチーズなど、地元の味を堪能しましょう。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "スウェーデンデザインセンター",
+          "description": "北欧デザインの魅力を体感できるスウェーデンデザインセンターを訪れます。最新のデザインやアートに触れながら、インスピレーションを得ることができます。",
+          "searchQuery": "Swedish Design Center",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "エリクソンのカフェでランチ",
+          "description": "エリクソンのカフェで、スウェーデンのカフェ文化を楽しみながらランチを。サンドイッチやスイーツが豊富で、特に自家製のケーキは絶品です。",
+          "searchQuery": "Ericsson Cafe",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "北欧雑貨店巡り",
+          "description": "ストックホルムの人気雑貨店を巡り、ユニークな北欧雑貨を探します。特に、デザイン性の高いアイテムが揃うお店が多いので、見ているだけでも楽しめます。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "オスカーのカフェで休憩",
+          "description": "オスカーのカフェで一息つきましょう。ここでは、スウェーデンの伝統的なフィーカを楽しむことができます。コーヒーと共に、スイーツをぜひ味わってください。",
+          "searchQuery": "Oskars Cafe",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ストックホルムの街を散策",
+          "description": "ストックホルムの美しい街並みを散策しながら、フォトジェニックなスポットを探します。特に、ガムラスタン（旧市街）のカラフルな建物は必見です。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ストックホルムの地元のレストランで、スウェーデン料理を楽しみます。新鮮な魚料理や肉料理を堪能し、旅の締めくくりにふさわしいディナーを。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ストックホルムの美術館巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ストックホルムのホテルで、スウェーデンの伝統的な朝食を楽しみます。新鮮なパンやスモークサーモン、クリームチーズなど、地元の味を堪能しましょう。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "モダン美術館",
+          "description": "ストックホルムのモダン美術館を訪れ、現代アートの魅力に触れます。特にスウェーデンのアーティストの作品が多く展示されており、フォトジェニックなスポットもたくさんあります。",
+          "searchQuery": "Moderna Museet",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "近くのカフェでランチ",
+          "description": "モダン美術館近くのカフェで軽食を楽しみます。スウェーデンのサンドイッチやスープを味わいながら、アートの余韻に浸りましょう。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ナショナル美術館",
+          "description": "ストックホルムのナショナル美術館を訪れ、スウェーデンの歴史的なアートコレクションを堪能します。美しい建物の中で、名画をじっくりと鑑賞しましょう。",
+          "searchQuery": "Nationalmuseum",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "ストックホルムの雑貨店巡り",
+          "description": "ストックホルムの街を散策し、北欧雑貨を扱うおしゃれなショップを訪れます。ユニークなデザインのアイテムを見つけて、お土産や自分用に購入しましょう。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ストックホルムの地元レストランで、スウェーデン料理を楽しみます。特にミートボールやハーブを使った料理がおすすめです。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ストックホルムから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ストックホルム",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "06:00"
+        },
+        "duration": "12h",
+        "memo": "ストックホルムから東京への直行便。機内での食事や休息を楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ストックホルムのホテルで、北欧スタイルの朝食を楽しみます。新鮮なパンやスモークサーモン、ヨーグルトなど、地元の味を堪能。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ストックホルム旧市街（ガムラスタン）散策",
+          "description": "魔女の宅急便のモデルになった街並みを楽しむため、ガムラスタンを散策。カラフルな建物や石畳の道が魅力的で、フォトジェニックなスポットがたくさんあります。",
+          "searchQuery": "Gamla Stan",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "北欧雑貨店でショッピング",
+          "description": "ガムラスタン内の北欧雑貨店で、ユニークな雑貨やお土産を探します。デザイン性の高いアイテムが揃っており、友人へのプレゼントにもぴったり。",
+          "searchQuery": "Nordiska Kompaniet",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ストックホルム市庁舎見学",
+          "description": "ストックホルム市庁舎を訪れ、その美しい建築と内部の装飾を楽しみます。特に青の間は必見で、ストックホルムのシンボル的存在です。",
+          "searchQuery": "Stockholm City Hall",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "カフェで休憩",
+          "description": "ストックホルムのカフェで、スウェーデンの伝統的なシナモンロールとコーヒーを楽しみながら、旅の思い出を振り返ります。",
+          "searchQuery": "Vete-Katten",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "空港へ移動",
+          "description": "ストックホルム市内から空港へ向かいます。タクシーや公共交通機関を利用して、余裕を持って出発しましょう。",
+          "locationEn": "Stockholm, Sweden",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

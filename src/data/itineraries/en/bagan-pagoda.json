@@ -1,0 +1,523 @@
+{
+  "id": "84bb4fc8-31b3-4396-a1cc-3d3af82be9e5",
+  "destination": "バガン",
+  "description": "Immerse yourself in the enchanting world of Bagan, where ancient temples rise majestically from the plains, creating a breathtaking landscape that feels like stepping back in time. This 5-day journey is designed for the solo traveler seeking to explore the rich history, stunning vistas, and cultural treasures of this UNESCO World Heritage site. From sunrise balloon rides over the pagodas to sunset views that paint the sky in vibrant hues, each day promises unforgettable experiences and photo opportunities that will leave you in awe.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Bagan and Sunset Temples",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Moon (2)",
+          "description": "Enjoy a delicious meal at The Moon, known for its authentic Burmese cuisine. Try the traditional Mohinga or the fresh salads made with local ingredients. It's a great way to recharge after your journey!",
+          "searchQuery": "The Moon (2)",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Shwezigon Pagoda",
+          "description": "Visit the iconic Shwezigon Pagoda, a stunning gold-plated stupa that is one of the most important religious sites in Bagan. The intricate architecture and serene atmosphere make it a perfect spot for photography and reflection.",
+          "searchQuery": "Shwezigon Pagoda",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Thatbyinnyu Temple",
+          "description": "Explore Thatbyinnyu Temple, the tallest temple in Bagan. Climb to the top for breathtaking panoramic views of the surrounding temples and the Irrawaddy River. The sunset from here is particularly spectacular!",
+          "searchQuery": "Thatbyinnyu Temple",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Sunset at Bagan Temples",
+          "description": "Find a quiet spot among the temples to witness the magical sunset over Bagan. The sight of the sun setting behind the ancient pagodas is a photographer's dream and a perfect way to end your first day.",
+          "searchQuery": "Bagan Temples",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Star Beam Restaurant",
+          "description": "Savor a delightful dinner at Star Beam Restaurant, where you can enjoy a mix of local and international dishes. The ambiance is cozy, and it's a great place to reflect on your day while enjoying the local flavors.",
+          "searchQuery": "Star Beam Restaurant",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Check-in at Hotel",
+          "description": "Settle into your accommodation for the night. Choose a budget-friendly hotel that offers comfort and a good location to explore Bagan easily.",
+          "searchQuery": "Hotel in Bagan",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Ancient Temples",
+      "activities": [
+        {
+          "time": "05:30",
+          "activity": "Sunrise at Bagan Temples",
+          "description": "Start your day early to catch the breathtaking sunrise over the ancient temples of Bagan. The golden rays illuminating the pagodas create a magical atmosphere, perfect for photography and reflection.",
+          "searchQuery": "Bagan Sunrise",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "07:00",
+          "activity": "Breakfast at Local Eatery",
+          "description": "Enjoy a traditional Burmese breakfast at a local eatery. Try the mohinga, a flavorful fish soup with rice noodles, to fuel your day of exploration.",
+          "searchQuery": "Local Eatery Bagan",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:30",
+          "activity": "Ananda Temple",
+          "description": "Visit the stunning Ananda Temple, known for its impressive architecture and beautiful Buddha statues. The temple's serene ambiance makes it a must-see in Bagan.",
+          "searchQuery": "Ananda Temple",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Dhammayangyi Temple",
+          "description": "Explore the Dhammayangyi Temple, the largest temple in Bagan. Its unique architecture and the surrounding landscape provide excellent photo opportunities.",
+          "searchQuery": "Dhammayangyi Temple",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Moon Restaurant",
+          "description": "Savor a delicious lunch at The Moon Restaurant, known for its fresh ingredients and traditional Burmese dishes. The relaxed atmosphere is perfect for a midday break.",
+          "searchQuery": "The Moon Restaurant Bagan",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Htilominlo Temple",
+          "description": "Visit Htilominlo Temple, famous for its intricate stucco work and towering spires. Climb to the upper level for panoramic views of the surrounding temples.",
+          "searchQuery": "Htilominlo Temple",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore Local Markets",
+          "description": "Wander through the local markets in Bagan, where you can find handmade crafts, souvenirs, and local snacks. Engage with friendly vendors and immerse yourself in the local culture.",
+          "searchQuery": "Bagan Local Market",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Sunset at Shwesandaw Pagoda",
+          "description": "Head to Shwesandaw Pagoda for one of the best sunset views in Bagan. The sight of the sun setting behind the temple-studded horizon is truly unforgettable.",
+          "searchQuery": "Shwesandaw Pagoda",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Star Beam Restaurant",
+          "description": "Enjoy dinner at Star Beam Restaurant, offering a variety of local and international dishes. The outdoor seating provides a lovely ambiance under the stars.",
+          "searchQuery": "Star Beam Restaurant Bagan",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Hot Air Balloon Ride and Cultural Experiences",
+      "activities": [
+        {
+          "time": "05:30",
+          "activity": "Hot Air Balloon Ride",
+          "description": "Experience the breathtaking sunrise over Bagan's ancient temples from a hot air balloon. This magical ride offers stunning panoramic views of the pagodas and the Irrawaddy River, making it a perfect start to your day.",
+          "searchQuery": "Hot Air Balloon Ride Bagan",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Enjoy a hearty breakfast at a local café, where you can savor traditional Burmese dishes like Mohinga (fish soup) or a simple toast with local coffee. It's a great way to fuel up for a day of exploration.",
+          "searchQuery": "Local Café Bagan",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Ananda Temple",
+          "description": "Explore the stunning Ananda Temple, one of Bagan's most revered temples. Its impressive architecture and beautiful golden stupa are a photographer's dream, especially in the soft morning light.",
+          "searchQuery": "Ananda Temple",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore Local Market",
+          "description": "Wander through a local market where you can find handmade crafts, fresh produce, and local delicacies. It's a perfect opportunity to interact with locals and experience the vibrant culture of Bagan.",
+          "searchQuery": "Bagan Local Market",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Traditional Restaurant",
+          "description": "Savor a delicious lunch at a traditional restaurant, where you can try local specialties like tea leaf salad and curry. The ambiance reflects the rich culture of Bagan, enhancing your dining experience.",
+          "searchQuery": "Traditional Restaurant Bagan",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Lacquerware Workshop Visit",
+          "description": "Visit a local lacquerware workshop to see artisans at work. Learn about the intricate process of creating these beautiful crafts and even try your hand at making your own piece to take home.",
+          "searchQuery": "Lacquerware Workshop Bagan",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Sunset at Shwesandaw Pagoda",
+          "description": "Head to Shwesandaw Pagoda for one of the best sunset views in Bagan. Climb to the top and witness the sun setting over the vast plains dotted with ancient temples, creating a magical atmosphere.",
+          "searchQuery": "Shwesandaw Pagoda",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Riverside Restaurant",
+          "description": "Enjoy dinner at a riverside restaurant, where you can relax and reflect on your day while enjoying delicious Burmese cuisine. The view of the Irrawaddy River at night adds to the charm of your meal.",
+          "searchQuery": "Riverside Restaurant Bagan",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Sunrise Views and Local Villages",
+      "activities": [
+        {
+          "time": "05:30",
+          "activity": "Sunrise at Bagan",
+          "description": "Wake up early to witness the breathtaking sunrise over the ancient temples of Bagan. The sight of the sun rising behind the pagodas creates a magical atmosphere, perfect for photography enthusiasts. Make sure to find a good vantage point, such as the Shwesandaw Pagoda, for an unforgettable view.",
+          "searchQuery": "Shwesandaw Pagoda",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "07:00",
+          "activity": "Breakfast at Local Eatery",
+          "description": "Enjoy a traditional Burmese breakfast at a local eatery. Try the Mohinga, a fish soup with rice noodles, which is a popular breakfast choice among locals. It's a great way to fuel up for a day of exploration!",
+          "searchQuery": "Local Eatery Bagan",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:30",
+          "activity": "Local Village Tour",
+          "description": "Take a guided tour of a nearby village to experience the local culture and lifestyle. Interact with the villagers, learn about their crafts, and perhaps even participate in some traditional activities. This immersive experience will give you a deeper understanding of the region's heritage.",
+          "searchQuery": "Bagan Local Village",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Moon (2)",
+          "description": "Savor a delicious lunch at The Moon (2), known for its fresh ingredients and traditional Burmese dishes. The cozy atmosphere and friendly staff make it a perfect spot to relax after your morning adventures.",
+          "searchQuery": "The Moon (2) Bagan",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Mingalazedi Pagoda",
+          "description": "Visit Mingalazedi Pagoda, one of the lesser-known but stunning pagodas in Bagan. Its unique architecture and serene surroundings make it a peaceful spot to explore and take photos. Don't forget to climb to the top for panoramic views of the surrounding temples!",
+          "searchQuery": "Mingalazedi Pagoda",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore the Temples of Bagan",
+          "description": "Spend the afternoon exploring more of Bagan's iconic temples. Rent a bicycle or e-bike to cover more ground and discover hidden gems off the beaten path. Each temple has its own unique charm and history, so take your time to appreciate them.",
+          "searchQuery": "Bagan Temples",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Sunset at Bagan",
+          "description": "Find a perfect spot to watch the sunset over the temples of Bagan. The golden hues of the setting sun casting shadows over the ancient structures create a picturesque scene that is truly unforgettable. Popular spots include the top of the Pyathadar Temple.",
+          "searchQuery": "Pyathadar Temple",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Star Beam Restaurant",
+          "description": "End your day with dinner at Star Beam Restaurant, where you can enjoy a mix of local and international dishes. The relaxed atmosphere and beautiful views of the temples at night make it a lovely dining experience.",
+          "searchQuery": "Star Beam Restaurant Bagan",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Final Day in Bagan and Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Nyaung U Airport, Bagan",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C., USA",
+          "time": "19:00"
+        },
+        "duration": "20h",
+        "memo": "Connecting flight with a layover."
+      },
+      "activities": [
+        {
+          "time": "06:00",
+          "activity": "Sunrise at Shwesandaw Pagoda",
+          "description": "Start your day early with a breathtaking sunrise view from Shwesandaw Pagoda. This iconic pagoda offers panoramic views of the Bagan plains dotted with ancient temples, making it a perfect spot for photography enthusiasts.",
+          "searchQuery": "Shwesandaw Pagoda",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Moon (Be Kind to Animals)",
+          "description": "Enjoy a hearty breakfast at this popular local restaurant known for its delicious Burmese dishes and friendly atmosphere. Try their traditional Mohinga or a fresh fruit salad to fuel your day.",
+          "searchQuery": "The Moon (Be Kind to Animals)",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Bagan Archaeological Museum",
+          "description": "Explore the Bagan Archaeological Museum to learn about the rich history and culture of the ancient city. The museum houses a vast collection of artifacts, including sculptures and ancient manuscripts.",
+          "searchQuery": "Bagan Archaeological Museum",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Star Beam Restaurant",
+          "description": "Savor a delicious lunch at Star Beam, where you can enjoy a mix of local and international cuisine. The restaurant's ambiance and views of the temples make it a delightful dining experience.",
+          "searchQuery": "Star Beam Restaurant",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Ananda Temple",
+          "description": "Visit the stunning Ananda Temple, one of Bagan's most revered temples. Marvel at its impressive architecture and intricate murals, and take some time to reflect in its serene atmosphere.",
+          "searchQuery": "Ananda Temple",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Horse Cart Ride through Bagan Temples",
+          "description": "Experience the charm of Bagan with a horse cart ride through the temple-studded landscape. This leisurely ride allows you to soak in the beauty of the ancient structures and the surrounding scenery.",
+          "searchQuery": "Horse Cart Ride Bagan",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Sunset at Bagan Temples",
+          "description": "End your day with a magical sunset view from one of the lesser-known temples. The golden hues reflecting off the ancient pagodas create a picturesque scene that is perfect for photography.",
+          "searchQuery": "Bagan Temples Sunset",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Green Elephant",
+          "description": "Enjoy a relaxing dinner at The Green Elephant, known for its delicious vegetarian options and local dishes. It's a great way to reflect on your adventures in Bagan before your journey home.",
+          "searchQuery": "The Green Elephant",
+          "locationEn": "Bagan, Myanmar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

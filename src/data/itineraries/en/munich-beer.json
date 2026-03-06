@@ -1,0 +1,528 @@
+{
+  "id": "518b7dab-7d06-4cf2-8dc2-1272f75362b9",
+  "destination": "ミュンヘン",
+  "description": "Immerse yourself in the vibrant culture and rich history of Munich, where every corner tells a story and every meal is a celebration. This 6-day adventure is designed for you and your friends to explore the culinary delights, majestic castles, and breathtaking views that this Bavarian gem has to offer. From savoring local beers to wandering through historic streets, prepare for an unforgettable journey filled with laughter and discovery.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Munich and Local Delights",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Frischhut",
+          "description": "Start your day with a delicious Bavarian breakfast at Café Frischhut, famous for its freshly baked pastries, especially the Schmalznudeln, a type of fluffy donut. Enjoy a cup of coffee as you soak in the local atmosphere.",
+          "searchQuery": "Café Frischhut",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Marienplatz",
+          "description": "Stroll through Marienplatz, the heart of Munich, where you can admire the stunning New Town Hall and its famous Glockenspiel. This lively square is perfect for people-watching and soaking up the city's vibrant culture.",
+          "searchQuery": "Marienplatz",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Viktualienmarkt",
+          "description": "Head to Viktualienmarkt, a bustling food market where you can sample local delicacies. Try some traditional Weisswurst (white sausage) with sweet mustard, paired with a refreshing beer from one of the market's stalls.",
+          "searchQuery": "Viktualienmarkt",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Hofbräuhaus",
+          "description": "No trip to Munich is complete without a visit to Hofbräuhaus, the iconic beer hall. Enjoy a pint of their famous lager while listening to live traditional music. The atmosphere is lively and perfect for making new friends.",
+          "searchQuery": "Hofbräuhaus München",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Nymphenburg Palace",
+          "description": "Take a leisurely stroll to Nymphenburg Palace, a stunning Baroque palace surrounded by beautiful gardens. Explore the opulent rooms and learn about the history of the Bavarian royal family.",
+          "searchQuery": "Nymphenburg Palace",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Augustiner Bräu",
+          "description": "End your day with dinner at Augustiner Bräu, one of Munich's oldest breweries. Savor hearty Bavarian dishes like pork knuckle and dumplings, all washed down with their renowned beer.",
+          "searchQuery": "Augustiner Bräu",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Walk along the Isar River",
+          "description": "Take a relaxing evening walk along the Isar River. The riverside paths are perfect for unwinding after a busy day, and you might catch a glimpse of locals enjoying the nightlife.",
+          "searchQuery": "Isar River",
+          "locationEn": "Munich, Germany",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Castles and Scenic Views",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Munich",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Hohenschwangau",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Take a scenic train ride to Hohenschwangau, enjoying the beautiful Bavarian countryside."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Hohenschwangau Castle",
+          "description": "Explore the charming Hohenschwangau Castle, where King Ludwig II spent his childhood. The castle offers stunning views of the surrounding mountains and lakes, making it a perfect start to your castle adventure.",
+          "searchQuery": "Hohenschwangau Castle",
+          "locationEn": "Hohenschwangau, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurant Müller",
+          "description": "Enjoy a hearty Bavarian lunch at Restaurant Müller, located near the castle. Try the traditional Weisswurst (white sausage) and a refreshing beer to fuel up for the afternoon.",
+          "searchQuery": "Restaurant Müller Hohenschwangau",
+          "locationEn": "Hohenschwangau, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Neuschwanstein Castle",
+          "description": "Visit the iconic Neuschwanstein Castle, the fairy-tale castle that inspired Disney. The guided tour will take you through its opulent rooms and provide fascinating insights into King Ludwig II's life.",
+          "searchQuery": "Neuschwanstein Castle",
+          "locationEn": "Neuschwanstein, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Scenic Walk to Marienbrücke",
+          "description": "Take a scenic walk to Marienbrücke (Mary's Bridge) for breathtaking views of Neuschwanstein Castle and the surrounding landscape. This is a perfect spot for photos and to soak in the beauty of Bavaria.",
+          "searchQuery": "Marienbrücke",
+          "locationEn": "Neuschwanstein, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Return to Munich by Train",
+          "description": "Head back to Munich, reflecting on the day's adventures. The train ride offers a chance to relax and enjoy the picturesque scenery once more.",
+          "locationEn": "Munich, Germany",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Hofbräuhaus München",
+          "description": "End your day at the famous Hofbräuhaus, where you can indulge in traditional Bavarian dishes and, of course, enjoy a stein of authentic German beer. The lively atmosphere is perfect for unwinding after a day of exploration.",
+          "searchQuery": "Hofbräuhaus München",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Exploration and Beer Tasting",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Frischhut",
+          "description": "Start your day with a delicious Bavarian breakfast at Café Frischhut, famous for its freshly baked pastries and traditional Weisswurst. Enjoy a cozy atmosphere as you fuel up for a day of exploration.",
+          "searchQuery": "Café Frischhut",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Nymphenburg Palace",
+          "description": "Visit the stunning Nymphenburg Palace, a magnificent Baroque palace surrounded by beautiful gardens. Explore the opulent rooms and learn about the history of the Bavarian royal family. Don't miss the Marstallmuseum, showcasing royal carriages.",
+          "searchQuery": "Nymphenburg Palace",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Augustiner Bräu",
+          "description": "Head to Augustiner Bräu, Munich's oldest brewery, for a hearty lunch. Savor traditional Bavarian dishes like pretzels, sausages, and schnitzel, all paired with their famous beer brewed on-site. The beer garden is a must-visit in nice weather!",
+          "searchQuery": "Augustiner Bräu",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Munich Residenz",
+          "description": "After lunch, visit the Munich Residenz, the former royal palace of the Bavarian monarchs. Wander through its lavish rooms and impressive museums, including the Treasury, which houses a stunning collection of royal artifacts.",
+          "searchQuery": "Munich Residenz",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Beer Tasting at Hofbräuhaus",
+          "description": "Experience the lively atmosphere at Hofbräuhaus, one of the most famous beer halls in the world. Enjoy a beer tasting session and sample a variety of local brews while soaking in the traditional Bavarian ambiance with live music.",
+          "searchQuery": "Hofbräuhaus",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Schneider Bräuhaus",
+          "description": "End your day with dinner at Schneider Bräuhaus, known for its wheat beers and delicious Bavarian cuisine. Try their signature dishes like Weisswurst and Obatzda, a creamy cheese spread, while enjoying the warm, inviting atmosphere.",
+          "searchQuery": "Schneider Bräuhaus",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Day Trip to Dachau and Beer Gardens",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Munich",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Dachau",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the S2 train from Munich to Dachau for a quick and scenic ride."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Dachau Concentration Camp Memorial Site",
+          "description": "Visit the poignant Dachau Concentration Camp Memorial Site, where you can learn about the history of the Holocaust and pay your respects. The site offers a deep insight into the past and is a significant place for reflection.",
+          "searchQuery": "Dachau Concentration Camp Memorial Site",
+          "locationEn": "Dachau, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Gasthaus zum Löwen",
+          "description": "Enjoy a traditional Bavarian lunch at Gasthaus zum Löwen, known for its hearty dishes like Weisswurst and pretzels. This cozy restaurant offers a taste of local flavors and is a great spot to recharge after your visit.",
+          "searchQuery": "Gasthaus zum Löwen",
+          "locationEn": "Dachau, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Return to Munich",
+          "description": "Head back to Munich by train, reflecting on the morning's experiences. The journey takes about 30 minutes, giving you time to relax before the next adventure.",
+          "locationEn": "Munich, Germany",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Englischer Garten",
+          "description": "Stroll through the beautiful Englischer Garten, one of the largest urban parks in the world. Enjoy the serene landscapes, and if you're lucky, you might catch surfers riding the waves at the Eisbach.",
+          "searchQuery": "Englischer Garten",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Beer Garden at Chinesischer Turm",
+          "description": "Relax at the famous beer garden located near the Chinesischer Turm. Enjoy a refreshing Maß of beer and traditional snacks like pretzels and sausages while soaking in the lively atmosphere.",
+          "searchQuery": "Chinesischer Turm Beer Garden",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Hofbräuhaus München",
+          "description": "End your day with dinner at the iconic Hofbräuhaus München. Experience the vibrant atmosphere, live music, and indulge in classic Bavarian dishes paired with their renowned beer.",
+          "searchQuery": "Hofbräuhaus München",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Explore Munich's Art and History",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Frischhut",
+          "description": "Start your day with a traditional Bavarian breakfast at Café Frischhut, famous for its delicious pastries and hearty dishes. Don't miss their Schmalznudeln, a local doughnut-like treat!",
+          "searchQuery": "Café Frischhut",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Deutsches Museum",
+          "description": "Dive into the world of science and technology at the Deutsches Museum, one of the largest museums of its kind. Explore fascinating exhibits ranging from aviation to renewable energy, perfect for curious minds!",
+          "searchQuery": "Deutsches Museum",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Hofbräuhaus München",
+          "description": "Enjoy a hearty lunch at the iconic Hofbräuhaus, where you can savor traditional Bavarian dishes like Weisswurst and pretzels, all while enjoying a refreshing pint of their famous beer.",
+          "searchQuery": "Hofbräuhaus München",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Pinakothek der Moderne",
+          "description": "After lunch, head to the Pinakothek der Moderne, home to an impressive collection of modern art, design, and architecture. The museum's sleek architecture is as captivating as the art it houses.",
+          "searchQuery": "Pinakothek der Moderne",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Stroll through the English Garden",
+          "description": "Take a leisurely stroll through the beautiful English Garden, one of the largest urban parks in the world. Relax by the serene lake or watch surfers ride the waves at the Eisbach.",
+          "searchQuery": "English Garden",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Augustiner Bräu",
+          "description": "End your day with dinner at Augustiner Bräu, Munich's oldest brewery. Enjoy traditional Bavarian fare paired with their renowned beer, brewed on-site for a truly authentic experience.",
+          "searchQuery": "Augustiner Bräu",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Munich Airport",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C. International Airport",
+          "time": "15:00"
+        },
+        "duration": "9h",
+        "memo": "Direct flight back to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café Frischhut",
+          "description": "Start your day with a delicious breakfast at Café Frischhut, famous for its traditional Bavarian pastries, especially the Schmalznudeln. Pair it with a strong cup of coffee for a perfect send-off.",
+          "searchQuery": "Café Frischhut",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Nymphenburg Palace",
+          "description": "Explore the stunning Nymphenburg Palace, a magnificent Baroque palace with beautiful gardens. Don't miss the Marstallmuseum, showcasing royal carriages and sleighs.",
+          "searchQuery": "Nymphenburg Palace",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Stroll through the Palace Gardens",
+          "description": "Take a leisurely walk through the expansive gardens of Nymphenburg Palace, enjoying the serene atmosphere and picturesque views of the palace.",
+          "searchQuery": "Nymphenburg Palace Gardens",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Augustiner Bräu",
+          "description": "Savor a hearty Bavarian lunch at Augustiner Bräu, one of Munich's oldest breweries. Enjoy traditional dishes like Weisswurst and pretzels, paired with their famous beer.",
+          "searchQuery": "Augustiner Bräu",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Last-minute shopping at Viktualienmarkt",
+          "description": "Before heading to the airport, visit Viktualienmarkt, a vibrant food market where you can pick up some local delicacies and souvenirs to take home.",
+          "searchQuery": "Viktualienmarkt",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Departure from Munich",
+          "description": "Head to Munich Airport for your flight back to Washington D.C. Reflect on the wonderful memories made during your trip!",
+          "locationEn": "Munich, Germany",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

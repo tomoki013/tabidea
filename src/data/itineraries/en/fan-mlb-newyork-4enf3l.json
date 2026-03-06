@@ -1,0 +1,577 @@
+{
+  "id": "dc61da58-5545-4f33-8b13-9709875ecb71",
+  "destination": "New York City",
+  "description": "Immerse yourself in the vibrant energy of New York City, where every corner is alive with culture, history, and the thrill of your favorite sports. Over six unforgettable days, you and your partner will explore iconic landmarks, indulge in delicious cuisine, and dive deep into the world of MLB, all while discovering hidden gems that make the Big Apple truly special. Get ready for a journey filled with unforgettable memories and experiences that will bring you closer together!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Departure from Washington D.C. to New York City",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Washington D.C.",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "New York City",
+          "time": "11:30"
+        },
+        "duration": "2h 30m",
+        "memo": "Enjoy the scenic ride along the East Coast."
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Katz's Delicatessen",
+          "description": "Savor a classic pastrami sandwich at this iconic deli, famous for its rich history and delicious food. Don't forget to grab a pickle on the side!",
+          "searchQuery": "Katz's Delicatessen",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit the National Baseball Hall of Fame and Museum",
+          "description": "Explore the rich history of baseball at this museum located in Cooperstown, NY. Discover exhibits featuring legendary players and memorabilia that every baseball fan will love.",
+          "searchQuery": "National Baseball Hall of Fame and Museum",
+          "locationEn": "Cooperstown, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Times Square",
+          "description": "Immerse yourself in the vibrant atmosphere of Times Square, with its dazzling lights and bustling crowds. Perfect for some photo opportunities and shopping for MLB merchandise!",
+          "searchQuery": "Times Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Junior's Restaurant",
+          "description": "Indulge in a delicious meal at Junior's, known for its famous New York cheesecake and classic American diner fare. A great spot to relax after a day of exploring!",
+          "searchQuery": "Junior's Restaurant",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Catch a Broadway Show",
+          "description": "End your day with a spectacular Broadway performance. Choose from a variety of shows that will leave you entertained and amazed!",
+          "searchQuery": "Broadway Shows",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "MLB Fan Day in the Bronx",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "New York City",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Yankee Stadium",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the subway from Manhattan to the Bronx."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Yankee Stadium Tour",
+          "description": "Start your day with an exciting tour of Yankee Stadium, home of the New York Yankees. Explore the iconic ballpark, learn about its rich history, and take photos in front of the famous Monument Park.",
+          "searchQuery": "Yankee Stadium",
+          "locationEn": "Bronx, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Bronx Bombers Store",
+          "description": "After the tour, visit the Bronx Bombers Store located within Yankee Stadium. Here, you can find a wide range of Yankees merchandise, from jerseys to caps, perfect for any fan looking to take home a piece of memorabilia.",
+          "searchQuery": "Bronx Bombers Store",
+          "locationEn": "Bronx, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Arthur Avenue",
+          "description": "Head to Arthur Avenue, known as the real Little Italy of New York. Enjoy authentic Italian cuisine at one of the local eateries, where you can savor delicious pasta, pizza, or a classic Italian sandwich.",
+          "searchQuery": "Arthur Avenue",
+          "locationEn": "Bronx, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Arthur Avenue Market",
+          "description": "After lunch, stroll through the Arthur Avenue Retail Market. This vibrant market is filled with local vendors selling fresh produce, meats, and baked goods. It's a great place to pick up some unique snacks or gifts.",
+          "searchQuery": "Arthur Avenue Retail Market",
+          "locationEn": "Bronx, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit the Bronx Walk of Fame",
+          "description": "Take a leisurely walk along the Bronx Walk of Fame, where you can see plaques honoring notable Bronx residents. It's a nice way to appreciate the cultural contributions of the area while enjoying the local scenery.",
+          "searchQuery": "Bronx Walk of Fame",
+          "locationEn": "Bronx, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to New York City",
+          "description": "Wrap up your day in the Bronx and head back to New York City. You can take the subway back to Manhattan, reflecting on the fun-filled day you had as an MLB fan.",
+          "locationEn": "New York City, New York, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Enjoy dinner at a local restaurant in Manhattan. Choose from a variety of cuisines, whether you're in the mood for classic American fare or something more exotic. It's the perfect way to end your MLB-themed day.",
+          "locationEn": "New York City, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Exploration of Manhattan",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "New York City",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Central Park",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Start the day with a leisurely stroll to Central Park."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Stroll through Central Park",
+          "description": "Begin your day with a refreshing walk in Central Park. Enjoy the lush greenery, iconic landmarks like Bethesda Terrace, and perhaps even catch a glimpse of a street performer. It's a perfect way to soak in the vibrant atmosphere of New York City.",
+          "searchQuery": "Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Visit The Metropolitan Museum of Art",
+          "description": "Explore one of the world's largest and finest art museums. The Met houses an extensive collection that spans 5,000 years, including works from ancient Egypt to modern American art. Don't miss the rooftop garden for stunning views of the city!",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Met's Cafeteria",
+          "description": "Enjoy a casual lunch at the museum's cafeteria, which offers a variety of options from salads to sandwiches. It's a convenient spot to refuel before continuing your cultural exploration.",
+          "searchQuery": "The Met Cafeteria",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore MLB-related spots in Manhattan",
+          "description": "Visit the MLB Store in Manhattan to find exclusive merchandise and fan gear. This is a must-visit for any baseball enthusiast looking to pick up some memorabilia or gifts.",
+          "searchQuery": "MLB Store",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Catch a Broadway Show",
+          "description": "End your day with a thrilling Broadway show. Whether it's a classic musical or a new hit, experiencing the energy of live theater in New York is unforgettable. Be sure to book your tickets in advance!",
+          "searchQuery": "Broadway Shows",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Carmine's Italian Restaurant",
+          "description": "Savor a hearty Italian dinner at Carmine's, known for its family-style portions and delicious pasta dishes. It's a great place to unwind after a day of exploration.",
+          "searchQuery": "Carmine's Italian Restaurant",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening stroll in Times Square",
+          "description": "Finish your day with a stroll through the dazzling lights of Times Square. The vibrant atmosphere and energy of the crowd make it a perfect way to wrap up your cultural day in Manhattan.",
+          "searchQuery": "Times Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Brooklyn Adventure",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "New York City",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Brooklyn",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the subway to Brooklyn for a day of exploration."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Brooklyn Bridge",
+          "description": "Start your day with a walk across the iconic Brooklyn Bridge. Enjoy stunning views of the Manhattan skyline and the East River as you stroll along this historic landmark.",
+          "searchQuery": "Brooklyn Bridge",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "DUMBO Exploration",
+          "description": "Explore the trendy DUMBO neighborhood, known for its cobblestone streets and stunning waterfront views. Don't forget to snap a photo at the famous Manhattan Bridge view point!",
+          "searchQuery": "DUMBO",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Time Out Market",
+          "description": "Enjoy a variety of local food options at Time Out Market, featuring some of Brooklyn's best eateries. Sample everything from artisanal pizza to gourmet tacos.",
+          "searchQuery": "Time Out Market",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Brooklyn Cyclones Game (Seasonal)",
+          "description": "If you're visiting during baseball season, catch a Brooklyn Cyclones game at MCU Park. Experience the excitement of minor league baseball and grab some fan gear!",
+          "searchQuery": "Brooklyn Cyclones",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Coney Island Boardwalk",
+          "description": "Head to Coney Island to stroll along the famous boardwalk. Enjoy the beach atmosphere, grab a hot dog at Nathan's, and take in the sights of Luna Park.",
+          "searchQuery": "Coney Island Boardwalk",
+          "locationEn": "Coney Island, Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Gargiulo's",
+          "description": "Indulge in a classic Italian dinner at Gargiulo's, a Coney Island staple known for its delicious pasta and seafood dishes. A perfect way to end your Brooklyn adventure!",
+          "searchQuery": "Gargiulo's",
+          "locationEn": "Coney Island, Brooklyn, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Return to New York City",
+          "description": "After a fun-filled day, take the subway back to Manhattan and relax at your hotel, reminiscing about the day's adventures.",
+          "locationEn": "New York City, New York, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "MLB Game Day and Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Sarabeth's",
+          "description": "Start your day with a delightful breakfast at Sarabeth's, known for its delicious pancakes and fresh fruit. It's a cozy spot to fuel up before a day of excitement!",
+          "searchQuery": "Sarabeth's Central Park South",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Yankee Stadium Tour",
+          "description": "Take a guided tour of the iconic Yankee Stadium, home of the New York Yankees. Explore the history of the team, visit the Monument Park, and get a glimpse behind the scenes of this legendary ballpark.",
+          "searchQuery": "Yankee Stadium",
+          "locationEn": "Bronx, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Hard Rock Cafe",
+          "description": "Enjoy a hearty lunch at The Hard Rock Cafe, located near Yankee Stadium. Savor classic American dishes while surrounded by rock 'n' roll memorabilia.",
+          "searchQuery": "Hard Rock Cafe Yankee Stadium",
+          "locationEn": "Bronx, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "MLB Store at Yankee Stadium",
+          "description": "After lunch, head to the MLB Store located at Yankee Stadium. It's the perfect place to find official Yankees merchandise and fan gear to take home as souvenirs.",
+          "searchQuery": "MLB Store Yankee Stadium",
+          "locationEn": "Bronx, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Subway to 5th Avenue",
+          "description": "Take the subway from Yankee Stadium to 5th Avenue, where you can explore some of the best shopping in New York City. It's a quick ride that will get you to the heart of the city.",
+          "locationEn": "New York City, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping on 5th Avenue",
+          "description": "Stroll along 5th Avenue and indulge in some shopping. From luxury brands to unique boutiques, there's something for every taste and budget. Don't forget to check out the flagship stores!",
+          "searchQuery": "5th Avenue",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Carmine's Italian Restaurant",
+          "description": "Wrap up your day with a delicious family-style dinner at Carmine's, known for its hearty Italian dishes. Share a plate of pasta and enjoy the lively atmosphere.",
+          "searchQuery": "Carmine's Italian Restaurant",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk in Central Park",
+          "description": "End your day with a romantic evening walk in Central Park. Enjoy the serene beauty of the park as the sun sets, making it a perfect way to unwind after a busy day.",
+          "searchQuery": "Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "New York City",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "Amtrak train from Penn Station to Union Station."
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "Lunch at Shake Shack",
+          "description": "Enjoy a delicious burger and crinkle-cut fries at Shake Shack, a beloved fast-casual chain that originated in New York. It's a perfect spot to refuel after your journey!",
+          "searchQuery": "Shake Shack",
+          "locationEn": "Washington D.C., USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Visit the National Mall",
+          "description": "Stroll through the iconic National Mall, where you can see the Lincoln Memorial, Washington Monument, and the U.S. Capitol. It's a great way to soak in the history and culture of the nation.",
+          "searchQuery": "National Mall",
+          "locationEn": "Washington D.C., USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore the National Museum of American History",
+          "description": "Dive into the rich tapestry of American history at this fascinating museum. Don't miss the Star-Spangled Banner and the First Ladies' Inaugural Gowns exhibits!",
+          "searchQuery": "National Museum of American History",
+          "locationEn": "Washington D.C., USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Founding Farmers",
+          "description": "Savor a hearty meal at Founding Farmers, a popular farm-to-table restaurant known for its comfort food and sustainable practices. Be sure to try their famous fried chicken!",
+          "searchQuery": "Founding Farmers",
+          "locationEn": "Washington D.C., USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening stroll at the Tidal Basin",
+          "description": "End your day with a romantic walk around the Tidal Basin, especially beautiful at sunset. The views of the Jefferson Memorial are stunning and perfect for a couple's photo op!",
+          "searchQuery": "Tidal Basin",
+          "locationEn": "Washington D.C., USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

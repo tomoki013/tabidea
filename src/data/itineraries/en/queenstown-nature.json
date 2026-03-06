@@ -1,0 +1,642 @@
+{
+  "id": "eb30352c-c033-4806-85d7-ce52b80c022a",
+  "destination": "クイーンズタウン",
+  "description": "Escape to the breathtaking landscapes of Queenstown, New Zealand, where adventure meets tranquility. Nestled between the stunning Remarkables mountain range and the shimmering Lake Wakatipu, this vibrant town is a paradise for nature lovers and thrill-seekers alike. Over the course of seven days, immerse yourself in exhilarating activities, indulge in gourmet dining, and unwind in the serene beauty of this remarkable destination. Get ready for an unforgettable journey filled with scenic vistas, adrenaline-pumping adventures, and moments of pure relaxation.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Queenstown",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Vudu Cafe & Larder",
+          "description": "Start your day with a delicious breakfast at Vudu Cafe, known for its fresh, locally sourced ingredients and cozy atmosphere. Try their famous pancakes or a hearty breakfast bowl to fuel up for the day ahead.",
+          "searchQuery": "Vudu Cafe & Larder",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Skyline Gondola",
+          "description": "Take a scenic ride on the Skyline Gondola for breathtaking views of Queenstown and Lake Wakatipu. Once at the top, enjoy panoramic vistas and consider trying the luge for some fun downhill racing.",
+          "searchQuery": "Skyline Gondola",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Stratosfare Restaurant",
+          "description": "Indulge in a leisurely lunch at Stratosfare, located at the top of the gondola. Enjoy a buffet featuring local delicacies while soaking in the stunning views of the Remarkables mountain range.",
+          "searchQuery": "Stratosfare Restaurant",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Lake Wakatipu",
+          "description": "After lunch, take a stroll along the shores of Lake Wakatipu. The crystal-clear waters and surrounding mountains create a perfect backdrop for a romantic walk or some peaceful moments by the lake.",
+          "searchQuery": "Lake Wakatipu",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Queenstown Gardens",
+          "description": "Head to the Queenstown Gardens for a relaxing afternoon. Enjoy the beautifully landscaped gardens, take a leisurely walk, or simply sit and enjoy the serene environment.",
+          "searchQuery": "Queenstown Gardens",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Botswana Butchery",
+          "description": "For dinner, treat yourselves to a fine dining experience at Botswana Butchery. Known for its exquisite meat dishes and extensive wine list, this restaurant promises a memorable culinary experience.",
+          "searchQuery": "Botswana Butchery",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll along the Waterfront",
+          "description": "End your day with a romantic evening stroll along the waterfront. The twinkling lights reflecting on the lake create a magical atmosphere, perfect for winding down after an exciting day.",
+          "searchQuery": "Queenstown Waterfront",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Adventure Awaits: Bungee Jumping & Jet Boating",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Vudu Cafe",
+          "description": "Start your day with a hearty breakfast at Vudu Cafe, known for its delicious coffee and fresh, locally sourced ingredients. Try their famous eggs benedict or a smoothie bowl to fuel up for the adventures ahead.",
+          "searchQuery": "Vudu Cafe",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Bungee Jumping at Kawarau Bridge",
+          "description": "Experience the thrill of bungee jumping from the iconic Kawarau Bridge, the world's first commercial bungee jump. Take in the breathtaking views of the river and canyon before taking the plunge!",
+          "searchQuery": "Kawarau Bridge",
+          "locationEn": "Kawarau Bridge, Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Jet Boating on the Shotover River",
+          "description": "Feel the adrenaline rush as you hop on a jet boat for an exhilarating ride through the stunning Shotover River canyons. The 360-degree spins and high-speed maneuvers will leave you breathless!",
+          "searchQuery": "Shotover Jet",
+          "locationEn": "Shotover River, Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Cow Restaurant",
+          "description": "After your thrilling morning, enjoy a cozy lunch at The Cow Restaurant, famous for its delicious pizzas and rustic atmosphere. It's the perfect spot to relax and refuel.",
+          "searchQuery": "The Cow Restaurant",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Queenstown Gardens",
+          "description": "Take a leisurely stroll through the beautiful Queenstown Gardens. Enjoy the stunning views of Lake Wakatipu and the Remarkables mountain range while soaking in the peaceful atmosphere.",
+          "searchQuery": "Queenstown Gardens",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Onsen Hot Pools",
+          "description": "Unwind after an action-packed day at the Onsen Hot Pools. Enjoy a private hot pool with stunning views of the surrounding mountains, perfect for a romantic and relaxing experience.",
+          "searchQuery": "Onsen Hot Pools",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Rātā",
+          "description": "Indulge in a fine dining experience at Rātā, a restaurant by renowned chef Josh Emett. Savor seasonal dishes made from local ingredients in a stylish setting.",
+          "searchQuery": "Rātā",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Explore the Fiordlands: Milford Sound Day Trip",
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "Breakfast at Vudu Cafe & Larder",
+          "description": "Start your day with a delicious breakfast at Vudu Cafe, known for its fresh ingredients and cozy atmosphere. Try their famous pancakes or a hearty breakfast bowl to fuel up for the adventure ahead.",
+          "searchQuery": "Vudu Cafe & Larder",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:30",
+          "activity": "Milford Sound Day Trip",
+          "description": "Embark on a breathtaking day trip to Milford Sound, one of New Zealand's most iconic natural wonders. Enjoy stunning views of towering cliffs, cascading waterfalls, and lush rainforests as you cruise through the fjord. Keep an eye out for playful dolphins and seals!",
+          "searchQuery": "Milford Sound",
+          "locationEn": "Milford Sound, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch on the Cruise",
+          "description": "Enjoy a packed lunch on board the cruise while soaking in the magnificent scenery of Milford Sound. The combination of delicious food and stunning views makes for an unforgettable dining experience.",
+          "searchQuery": "Milford Sound Cruise",
+          "locationEn": "Milford Sound, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Te Anau",
+          "description": "After returning from Milford Sound, take some time to explore the charming town of Te Anau. Stroll along the lakefront, visit local shops, or relax at a café with a view of the serene lake.",
+          "searchQuery": "Te Anau",
+          "locationEn": "Te Anau, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Queenstown",
+          "description": "Head back to Queenstown, reflecting on the day's adventures in the stunning Fiordlands. The drive offers more picturesque views, so keep your camera ready!",
+          "searchQuery": "Queenstown",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Botswana Butchery",
+          "description": "Indulge in a fine dining experience at Botswana Butchery, where you can savor exquisite dishes made from locally sourced ingredients. The ambiance is perfect for a romantic evening after a day of exploration.",
+          "searchQuery": "Botswana Butchery",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll by Lake Wakatipu",
+          "description": "End your day with a peaceful stroll along the shores of Lake Wakatipu. The sunset over the lake creates a magical atmosphere, perfect for a romantic moment together.",
+          "searchQuery": "Lake Wakatipu",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Relaxation and Scenic Views",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Vudu Cafe",
+          "description": "Start your day with a delicious breakfast at Vudu Cafe, known for its fresh ingredients and vibrant atmosphere. Try their famous pancakes or the eggs benedict for a delightful morning treat.",
+          "searchQuery": "Vudu Cafe",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Glenorchy Scenic Drive",
+          "description": "Embark on a breathtaking drive to Glenorchy, just 45 minutes from Queenstown. The route offers stunning views of Lake Wakatipu and the surrounding mountains, making it a perfect photo opportunity.",
+          "searchQuery": "Glenorchy",
+          "locationEn": "Glenorchy, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Glenorchy",
+          "description": "Once in Glenorchy, take some time to explore this charming village. Stroll along the waterfront, visit local shops, and soak in the serene atmosphere of this picturesque location.",
+          "searchQuery": "Glenorchy",
+          "locationEn": "Glenorchy, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Glenorchy Cafe",
+          "description": "Enjoy a cozy lunch at Glenorchy Cafe, where you can savor homemade pies and fresh salads while enjoying views of the mountains. It's a great spot to refuel before your next adventure.",
+          "searchQuery": "Glenorchy Cafe",
+          "locationEn": "Glenorchy, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Routeburn Track Hike",
+          "description": "Set off on a section of the famous Routeburn Track. This hike offers stunning views of the surrounding landscapes, including lush forests and majestic mountains. Make sure to bring your camera!",
+          "searchQuery": "Routeburn Track",
+          "locationEn": "Routeburn Track, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Queenstown",
+          "description": "After your hike, head back to Queenstown. The drive back will give you another chance to enjoy the beautiful scenery along the way.",
+          "searchQuery": "Queenstown",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Botswana Butchery",
+          "description": "Indulge in a fine dining experience at Botswana Butchery, known for its exquisite meat dishes and extensive wine list. Enjoy a romantic dinner with views of the lake and mountains.",
+          "searchQuery": "Botswana Butchery",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll along Lake Wakatipu",
+          "description": "End your day with a leisurely stroll along the shores of Lake Wakatipu. The sunset over the lake is a magical sight, perfect for a romantic evening together.",
+          "searchQuery": "Lake Wakatipu",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Wine Tasting and Gourmet Dining",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Vudu Cafe",
+          "description": "Start your day with a delicious breakfast at Vudu Cafe, known for its fresh ingredients and vibrant atmosphere. Try their famous pancakes or a hearty eggs benedict to fuel up for the day ahead.",
+          "searchQuery": "Vudu Cafe",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Wine Tasting at Central Otago",
+          "description": "Embark on a scenic drive to the Central Otago wine region, renowned for its stunning landscapes and exceptional Pinot Noir. Visit a couple of local wineries for tastings and learn about the winemaking process from passionate vintners.",
+          "searchQuery": "Central Otago Wine Region",
+          "locationEn": "Central Otago, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Akarua Wines & Kitchen by Artisan",
+          "description": "Enjoy a gourmet lunch at Akarua, where you can savor seasonal dishes paired with their exquisite wines. The restaurant offers beautiful views of the vineyards, making it a perfect spot to relax and indulge.",
+          "searchQuery": "Akarua Wines & Kitchen by Artisan",
+          "locationEn": "Central Otago, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Arrowtown",
+          "description": "After lunch, head to the charming town of Arrowtown. Stroll through its historic streets lined with gold rush-era buildings, visit the local shops, and take in the stunning autumn foliage if you're visiting in fall.",
+          "searchQuery": "Arrowtown",
+          "locationEn": "Arrowtown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Lake Hayes",
+          "description": "End your day with a peaceful walk around Lake Hayes. The lake's reflective waters and surrounding mountains create a breathtaking backdrop, perfect for a romantic sunset stroll.",
+          "searchQuery": "Lake Hayes",
+          "locationEn": "Lake Hayes, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Rātā",
+          "description": "Savor a fine dining experience at Rātā, a restaurant by renowned chef Josh Emett. The menu features locally sourced ingredients and innovative dishes that showcase the flavors of New Zealand.",
+          "searchQuery": "Rātā",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Skydiving and Lake Activities",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Vudu Cafe & Larder",
+          "description": "Start your day with a delicious breakfast at Vudu Cafe, known for its fresh ingredients and vibrant atmosphere. Try their famous eggs benedict or a hearty smoothie bowl to fuel up for the adventures ahead.",
+          "searchQuery": "Vudu Cafe & Larder",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Skydiving over Lake Wakatipu",
+          "description": "Experience the thrill of skydiving with breathtaking views of Lake Wakatipu and the surrounding mountains. This exhilarating activity offers a unique perspective of Queenstown's stunning landscapes as you freefall from 15,000 feet!",
+          "searchQuery": "Skydiving Queenstown",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Fergburger",
+          "description": "After your adrenaline rush, head to Fergburger for a legendary burger experience. Their gourmet burgers are a must-try, with options ranging from classic beef to vegetarian delights. Be prepared for a queue, but it's worth the wait!",
+          "searchQuery": "Fergburger",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Lake Wakatipu Cruise",
+          "description": "Relax and take in the stunning scenery on a scenic cruise across Lake Wakatipu. Enjoy the serene waters and majestic mountains while learning about the area's history from the onboard commentary.",
+          "searchQuery": "Lake Wakatipu Cruise",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Jet Boating on the Shotover River",
+          "description": "Get your adrenaline pumping again with a thrilling jet boat ride on the Shotover River. Experience high-speed turns and spins while navigating through narrow canyons, surrounded by breathtaking scenery.",
+          "searchQuery": "Shotover Jet",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Onsen Hot Pools",
+          "description": "Unwind after an action-packed day at the Onsen Hot Pools. Enjoy a private hot pool with stunning views of the Shotover River and mountains, perfect for a romantic evening together.",
+          "searchQuery": "Onsen Hot Pools",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Botswana Butchery",
+          "description": "End your day with a fine dining experience at Botswana Butchery. Indulge in exquisite dishes made from locally sourced ingredients, paired with an extensive wine list for a memorable evening.",
+          "searchQuery": "Botswana Butchery",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure from Queenstown",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Vudu Cafe",
+          "description": "Start your day with a delicious breakfast at Vudu Cafe, known for its fresh ingredients and cozy atmosphere. Try their famous pancakes or the eggs benedict for a delightful morning treat.",
+          "searchQuery": "Vudu Cafe",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Queenstown Gardens",
+          "description": "Take a leisurely stroll through the beautiful Queenstown Gardens. Enjoy the stunning views of Lake Wakatipu and the surrounding mountains while exploring the diverse plant life and tranquil pathways.",
+          "searchQuery": "Queenstown Gardens",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Shopping in Queenstown's Shopping District",
+          "description": "Explore the vibrant shopping district of Queenstown, where you can find unique souvenirs, local crafts, and high-end boutiques. Don't miss the chance to pick up some local wine or artisan chocolates.",
+          "searchQuery": "Queenstown Shopping District",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Fergburger",
+          "description": "Indulge in one of the best burgers in New Zealand at Fergburger. This iconic eatery is famous for its gourmet burgers made with fresh, local ingredients. Be prepared for a queue, but it's worth the wait!",
+          "searchQuery": "Fergburger",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Skyline Queenstown Gondola",
+          "description": "Take a scenic gondola ride up to Bob's Peak for breathtaking panoramic views of Queenstown and the Remarkables mountain range. Once at the top, enjoy the stunning vistas and consider trying the luge for some fun!",
+          "searchQuery": "Skyline Queenstown",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Onsen Hot Pools",
+          "description": "Unwind in the luxurious Onsen Hot Pools, where you can soak in private hot tubs overlooking the stunning Shotover River canyon. This is the perfect way to relax after an active week in Queenstown.",
+          "searchQuery": "Onsen Hot Pools",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Rātā",
+          "description": "End your day with a fine dining experience at Rātā, a restaurant by renowned chef Josh Emett. Enjoy a menu that showcases the best of New Zealand's seasonal produce in a stylish setting.",
+          "searchQuery": "Rātā",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "id": "2ac0c94b-9ea1-4481-aede-e40b4b789de3",
+  "destination": "Matamata",
+  "description": "Escape to the enchanting landscapes of Matamata, New Zealand, where the magic of Middle-earth comes alive. Nestled in the lush Waikato region, this charming town is not only a gateway to the iconic Hobbiton Movie Set but also a haven for nature lovers and culture enthusiasts. Over the next three days, immerse yourself in the rich history, stunning scenery, and delightful local experiences that Matamata has to offer. From exploring the whimsical Hobbit holes to savoring local delicacies, this trip promises to be a memorable adventure for couples seeking a blend of relaxation and excitement.",
+  "heroImage": "https://images.unsplash.com/photo-1693342166254-22ab5f201979?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODk5MzV8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Pedro Romero",
+  "heroImagePhotographerUrl": "https://unsplash.com/@pedrox99?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Hobbiton Adventure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a local café",
+          "description": "Start your day with a hearty breakfast at a cozy café in Matamata. Enjoy classic Kiwi fare like eggs benedict or a fresh fruit salad to fuel up for your Hobbiton adventure.",
+          "searchQuery": "Matamata Café",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Hobbiton Movie Set Tour",
+          "description": "Embark on a magical journey through the Hobbiton Movie Set, where you can explore the iconic hobbit holes, the Green Dragon Inn, and the stunning landscapes that brought Middle-earth to life. Don't forget your camera!",
+          "searchQuery": "Hobbiton Movie Set",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at the Green Dragon Inn",
+          "description": "Enjoy a delightful lunch at the Green Dragon Inn, where you can savor traditional ales and hearty meals inspired by the Shire. The atmosphere is perfect for fans of the Lord of the Rings.",
+          "searchQuery": "Green Dragon Inn",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Matamata Town Center",
+          "description": "After your Hobbiton tour, take some time to wander around Matamata's charming town center. Visit local shops for unique souvenirs and collectibles related to the Lord of the Rings.",
+          "searchQuery": "Matamata Town Center",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Hobbiton Gift Shop",
+          "description": "Don't miss the Hobbiton Gift Shop, where you can find exclusive merchandise and memorabilia from the films. It's the perfect place to pick up a special gift or a memento of your visit.",
+          "searchQuery": "Hobbiton Gift Shop",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a local restaurant",
+          "description": "End your day with a relaxing dinner at a local restaurant. Try some New Zealand lamb or fresh seafood, paired with a glass of local wine for a perfect finish to your day.",
+          "searchQuery": "Matamata Restaurant",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Check-in at your accommodation",
+          "description": "Settle into your cozy accommodation for the night. Enjoy the peaceful surroundings and reflect on your exciting day exploring Hobbiton.",
+          "searchQuery": "Matamata Accommodation",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Nature and Local Culture",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Redoubt",
+          "description": "Start your day with a hearty breakfast at The Redoubt, known for its cozy atmosphere and delicious options like pancakes and eggs benedict. It's a local favorite and a great way to fuel up for the day ahead.",
+          "searchQuery": "The Redoubt",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Wairere Falls",
+          "description": "Embark on a scenic hike to Wairere Falls, one of the tallest waterfalls in the North Island. The trail offers stunning views of the surrounding landscape, and the sound of the cascading water is truly refreshing. Don't forget your camera!",
+          "searchQuery": "Wairere Falls",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Matamata's Local Market",
+          "description": "After your hike, head to the local market for lunch. Enjoy fresh produce, artisanal foods, and perhaps a delicious pie from one of the stalls. It's a perfect spot to mingle with locals and experience the community vibe.",
+          "searchQuery": "Matamata Local Market",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Hobbiton Movie Set",
+          "description": "Dive into the magical world of 'The Lord of the Rings' at the Hobbiton Movie Set. Take a guided tour through the iconic film locations, including the Hobbit holes and the Green Dragon Inn. This is a must for any fan!",
+          "searchQuery": "Hobbiton Movie Set",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Lord of the Rings Merchandise",
+          "description": "After your tour, spend some time at the Hobbiton gift shop where you can find exclusive 'Lord of the Rings' merchandise. From collectibles to apparel, it's the perfect place to pick up some souvenirs.",
+          "searchQuery": "Hobbiton Gift Shop",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Green Dragon Inn",
+          "description": "End your day with dinner at The Green Dragon Inn, a charming pub located within Hobbiton. Enjoy hearty meals and local brews in a cozy setting that feels straight out of the movies.",
+          "searchQuery": "The Green Dragon Inn",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll in Matamata",
+          "description": "Take a leisurely evening stroll around Matamata. The town has a quaint charm, and it's a lovely way to wind down after a day filled with adventure. Look out for any local events or markets that might be happening.",
+          "searchQuery": "Matamata",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Relaxation and Return Journey",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Matamata",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Firth Tower Museum",
+          "time": "09:15"
+        },
+        "duration": "15m",
+        "memo": "A short drive to start the day."
+      },
+      "activities": [
+        {
+          "time": "09:15",
+          "activity": "Firth Tower Museum",
+          "description": "Explore the Firth Tower Museum, a charming historical site that showcases the rich history of Matamata and the surrounding area. The tower offers stunning views and a glimpse into the past, making it a perfect spot for history buffs and nature lovers alike.",
+          "searchQuery": "Firth Tower Museum",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Local Café for Brunch",
+          "description": "Enjoy a leisurely brunch at a local café, where you can savor delicious homemade pastries and freshly brewed coffee. It's a great way to relax and soak in the local atmosphere before heading back.",
+          "searchQuery": "Matamata Café",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Shopping for Lord of the Rings Merchandise",
+          "description": "Visit a nearby shop specializing in Lord of the Rings merchandise. From collectibles to apparel, you’ll find the perfect souvenirs to remember your trip by.",
+          "searchQuery": "Lord of the Rings Shop Matamata",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Return to Accommodation",
+          "description": "Head back to your accommodation to pack and prepare for your journey home. Take a moment to reflect on the wonderful experiences you've had during your stay.",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Departure from Matamata",
+          "description": "Check out from your accommodation and begin your journey back home, filled with memories of your adventure in the enchanting world of Middle-earth.",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

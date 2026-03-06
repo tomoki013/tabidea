@@ -1,0 +1,453 @@
+{
+  "id": "8cc22dac-0d6b-44f1-ad3f-bd437f4b0dc3",
+  "destination": "Northern Ireland",
+  "description": "Immerse yourself in the enchanting landscapes and rich history of Northern Ireland, where the stunning coastlines and ancient castles whisper tales of the past. This 5-day adventure is designed for couples eager to explore the filming locations of their favorite series, Game of Thrones, while indulging in the local culture and cuisine. From the rugged beauty of the Giant's Causeway to the vibrant streets of Belfast, each day promises a blend of excitement and romance. Get ready to discover hidden gems and iconic sites that will make your hearts race and your spirits soar!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Belfast and Game of Thrones Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Dock Cafe",
+          "description": "Start your day with a hearty breakfast at The Dock Cafe, known for its locally sourced ingredients and cozy atmosphere. Try their famous full Irish breakfast to fuel up for a day of exploration!",
+          "searchQuery": "The Dock Cafe",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Titanic Belfast",
+          "description": "Dive into the rich maritime history of Belfast at Titanic Belfast. This award-winning visitor attraction tells the story of the Titanic, from her conception in the city to her tragic end. Don't miss the interactive exhibits and the stunning architecture!",
+          "searchQuery": "Titanic Belfast",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Harland Bar",
+          "description": "Enjoy a casual lunch at The Harland Bar, located near the Titanic Quarter. Their menu features a variety of local dishes and craft beers, perfect for a relaxing break after your museum visit.",
+          "searchQuery": "The Harland Bar",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Game of Thrones Studio Tour",
+          "description": "Immerse yourself in the world of Westeros at the Game of Thrones Studio Tour. Walk through iconic sets, see costumes, and learn behind-the-scenes secrets from the making of the series. A must for any fan!",
+          "searchQuery": "Game of Thrones Studio Tour",
+          "locationEn": "Banbridge, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit Belfast Castle",
+          "description": "Head to Belfast Castle for stunning views of the city and a chance to explore the beautiful gardens. The castle's rich history and picturesque setting make it a perfect spot for a leisurely stroll.",
+          "searchQuery": "Belfast Castle",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Ginger Bistro",
+          "description": "Indulge in a delightful dinner at The Ginger Bistro, known for its creative dishes and vibrant atmosphere. Their menu features a mix of local and international flavors, ensuring a memorable dining experience.",
+          "searchQuery": "The Ginger Bistro",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening stroll along the River Lagan",
+          "description": "End your day with a romantic evening stroll along the River Lagan. The riverside walk offers beautiful views of the city lights and is a perfect way to unwind after a busy day of exploration.",
+          "searchQuery": "River Lagan",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Giant's Causeway and Dark Hedges",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Belfast",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Giant's Causeway",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Enjoy the scenic drive along the coast."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Giant's Causeway",
+          "description": "Explore the iconic Giant's Causeway, a UNESCO World Heritage site known for its unique hexagonal basalt columns formed by volcanic activity. Take a leisurely walk along the coastal paths and enjoy the stunning views of the Atlantic Ocean.",
+          "searchQuery": "Giant's Causeway",
+          "locationEn": "County Antrim, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Nook",
+          "description": "Enjoy a delicious lunch at The Nook, located near the Giant's Causeway. This cozy spot offers local dishes and a great view of the surrounding landscape, perfect for recharging after your morning exploration.",
+          "searchQuery": "The Nook",
+          "locationEn": "Bushmills, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Dark Hedges",
+          "description": "Visit the Dark Hedges, a stunning avenue of beech trees that has become famous as a filming location for Game of Thrones. Walk along the tree-lined road and capture some memorable photos in this enchanting setting.",
+          "searchQuery": "Dark Hedges",
+          "locationEn": "Ballymoney, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Ballintoy Harbour",
+          "description": "Head to Ballintoy Harbour, another picturesque location featured in Game of Thrones. Enjoy the rugged coastline and perhaps grab a coffee at the local café while soaking in the dramatic scenery.",
+          "searchQuery": "Ballintoy Harbour",
+          "locationEn": "Ballintoy, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Belfast",
+          "description": "Drive back to Belfast, reflecting on the day's adventures and the stunning landscapes you've encountered. The drive will take about an hour, giving you time to relax before dinner.",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at The Crown Liquor Saloon",
+          "description": "Dine at The Crown Liquor Saloon, a historic pub known for its Victorian decor and delicious traditional Irish fare. It's a great place to unwind and enjoy the local atmosphere after a day of exploration.",
+          "searchQuery": "The Crown Liquor Saloon",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Shopping for Game of Thrones Merchandise",
+          "description": "Spend your evening shopping for Game of Thrones merchandise at local shops in Belfast. Look for unique souvenirs and collectibles to take home as a reminder of your adventure in Northern Ireland.",
+          "searchQuery": "Game of Thrones merchandise",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Derry and the Walls",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Belfast",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Derry",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Enjoy the scenic drive through Northern Ireland's countryside."
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "Derry Walls",
+          "description": "Start your exploration at the iconic Derry Walls, which offer a fascinating glimpse into the city's history. Walk along the ramparts and enjoy stunning views of the city and the River Foyle.",
+          "searchQuery": "Derry City Walls",
+          "locationEn": "Derry, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Exchange",
+          "description": "Savor a delicious lunch at The Exchange, a cozy café known for its locally sourced ingredients and hearty dishes. Try their famous Irish stew or a classic fish and chips.",
+          "searchQuery": "The Exchange",
+          "locationEn": "Derry, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Museum of Free Derry",
+          "description": "Visit the Museum of Free Derry to learn about the city's tumultuous history and the civil rights movement. The exhibits are powerful and thought-provoking, providing insight into the struggles faced by the local community.",
+          "searchQuery": "Museum of Free Derry",
+          "locationEn": "Derry, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the Craft Village",
+          "description": "Stroll through the Craft Village, a charming area filled with artisan shops and galleries. It's a perfect spot to pick up unique souvenirs and Game of Thrones merchandise.",
+          "searchQuery": "Derry Craft Village",
+          "locationEn": "Derry, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Sooty Olive",
+          "description": "Enjoy dinner at The Sooty Olive, a popular restaurant offering a modern twist on traditional Irish cuisine. Their menu features seasonal dishes and a great selection of local beers.",
+          "searchQuery": "The Sooty Olive",
+          "locationEn": "Derry, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the River Foyle",
+          "description": "End your day with a leisurely walk along the River Foyle. The riverside path is beautifully lit at night, providing a romantic atmosphere to reflect on your day.",
+          "searchQuery": "River Foyle",
+          "locationEn": "Derry, Northern Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Belfast and Game of Thrones Studio Tour",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Derry",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Belfast",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Enjoy the scenic drive from Derry to Belfast."
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "Game of Thrones Studio Tour",
+          "description": "Dive into the world of Westeros at the Game of Thrones Studio Tour. Explore iconic sets, costumes, and props from the series, and learn behind-the-scenes secrets that brought the epic story to life.",
+          "searchQuery": "Game of Thrones Studio Tour",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Lunch at The Dirty Onion",
+          "description": "Savor a hearty lunch at The Dirty Onion, a rustic pub known for its traditional Irish dishes and vibrant atmosphere. Try their famous Irish stew or a classic fish and chips.",
+          "searchQuery": "The Dirty Onion",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Belfast City Centre Exploration",
+          "description": "Stroll through Belfast City Centre, where you can admire the stunning architecture and vibrant street art. Don't miss the iconic City Hall and the nearby shopping areas for some local souvenirs.",
+          "searchQuery": "Belfast City Centre",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit St. George's Market",
+          "description": "Explore St. George's Market, one of Belfast's oldest attractions. Here, you can find local crafts, delicious food stalls, and unique Game of Thrones merchandise to take home as souvenirs.",
+          "searchQuery": "St. George's Market",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Crown Liquor Saloon",
+          "description": "End your day with dinner at The Crown Liquor Saloon, a beautifully restored Victorian pub. Enjoy a selection of local beers and traditional dishes in a stunning setting.",
+          "searchQuery": "The Crown Liquor Saloon",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Check-in at Hotel",
+          "description": "Relax and unwind at your hotel after a day filled with adventure. Enjoy the comfort and amenities before resting for the night.",
+          "searchQuery": "Hotel in Belfast",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Belfast International Airport",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "13:00"
+        },
+        "duration": "7h",
+        "memo": "Direct flight back to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Fitzwilliam Hotel",
+          "description": "Start your day with a hearty breakfast at The Fitzwilliam Hotel, known for its delicious Irish breakfast options. Enjoy a mix of traditional dishes to fuel your journey ahead.",
+          "searchQuery": "The Fitzwilliam Hotel",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Visit the Game of Thrones Studio Tour",
+          "description": "Dive into the world of Westeros at the Game of Thrones Studio Tour. Explore the iconic sets, costumes, and props from the series, and learn behind-the-scenes secrets that brought the show to life.",
+          "searchQuery": "Game of Thrones Studio Tour",
+          "locationEn": "Banbridge, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Potted Hen",
+          "description": "Enjoy a delightful lunch at The Potted Hen, a cozy restaurant offering a variety of local dishes and a great selection of drinks. Perfect for a relaxing meal before your flight.",
+          "searchQuery": "The Potted Hen",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Shopping for Game of Thrones Merchandise",
+          "description": "Before heading to the airport, take some time to shop for exclusive Game of Thrones merchandise at local shops in Belfast. Find unique souvenirs to remember your trip.",
+          "searchQuery": "Game of Thrones Merchandise",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

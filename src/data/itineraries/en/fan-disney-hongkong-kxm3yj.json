@@ -1,0 +1,423 @@
+{
+  "id": "bb010432-dd72-409b-b8be-33e02ef9bb45",
+  "destination": "Hong Kong",
+  "description": "Escape to the vibrant streets of Hong Kong, where the fusion of cultures creates a unique atmosphere that is both exhilarating and inviting. This 4-day adventure is perfect for couples looking to explore the enchanting world of Disney while immersing themselves in the rich history and culture of this dynamic city. From the magical realms of Disney to the bustling markets and serene parks, each day is designed to balance excitement with relaxation, ensuring a memorable experience together.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Disney Magic",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Disneyland Hotel",
+          "description": "Start your magical day with a delightful breakfast at the Disneyland Hotel. Enjoy a variety of Western and Asian dishes in a whimsical setting, perfect for fueling up before a day of fun!",
+          "searchQuery": "Disneyland Hotel",
+          "locationEn": "Hong Kong Disneyland, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Hong Kong Disneyland",
+          "description": "Dive into the enchanting world of Hong Kong Disneyland! Explore themed lands, meet beloved characters, and enjoy thrilling rides. Don't miss the iconic Sleeping Beauty Castle and the chance to snap photos with your favorite Disney characters!",
+          "searchQuery": "Hong Kong Disneyland",
+          "locationEn": "Hong Kong Disneyland, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Royal Banquet Hall",
+          "description": "Indulge in a royal feast at the Royal Banquet Hall, where you can savor delicious Asian and Western cuisine in a beautifully themed environment. It's a great spot to recharge before more adventures!",
+          "searchQuery": "Royal Banquet Hall",
+          "locationEn": "Hong Kong Disneyland, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Disney Merchandise Shops",
+          "description": "Take some time to browse the various merchandise shops throughout the park. From plush toys to exclusive collectibles, find the perfect Disney souvenirs to take home and cherish your memories!",
+          "searchQuery": "Disney Merchandise Shops",
+          "locationEn": "Hong Kong Disneyland, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Enjoy Afternoon Parades",
+          "description": "Find a good spot to watch the vibrant afternoon parade featuring your favorite Disney characters. The colorful floats and lively performances are sure to bring a smile to your face!",
+          "searchQuery": "Hong Kong Disneyland Parade",
+          "locationEn": "Hong Kong Disneyland, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Enchanted Garden Restaurant",
+          "description": "Dine at the Enchanted Garden Restaurant, where you can enjoy a buffet featuring a variety of international dishes. The charming atmosphere and character appearances make it a memorable dining experience!",
+          "searchQuery": "Enchanted Garden Restaurant",
+          "locationEn": "Hong Kong Disneyland, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Nighttime Spectacular Show",
+          "description": "End your magical day with the breathtaking nighttime spectacular show. Watch as fireworks light up the sky above the castle, accompanied by enchanting music and stunning visuals. A perfect way to conclude your first day!",
+          "searchQuery": "Hong Kong Disneyland Night Show",
+          "locationEn": "Hong Kong Disneyland, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Disney and Local Culture",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Hong Kong Disneyland",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Lantau Island",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the MTR from Disneyland Resort Station to Tung Chung Station, then transfer to the Ngong Ping 360 cable car."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hong Kong Disneyland Hotel",
+          "description": "Start your day with a delightful breakfast at the hotel, featuring a variety of Western and Asian dishes to fuel your adventures ahead.",
+          "searchQuery": "Hong Kong Disneyland Hotel",
+          "locationEn": "Hong Kong, China",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Ngong Ping 360 Cable Car",
+          "description": "Enjoy a scenic ride on the Ngong Ping 360 cable car, offering breathtaking views of Lantau Island and the South China Sea. Don't forget your camera!",
+          "searchQuery": "Ngong Ping 360",
+          "locationEn": "Lantau Island, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Tian Tan Buddha",
+          "description": "Explore the majestic Tian Tan Buddha, a 34-meter tall bronze statue that symbolizes peace and harmony. Climb the 268 steps for a closer view and enjoy the serene surroundings.",
+          "searchQuery": "Tian Tan Buddha",
+          "locationEn": "Lantau Island, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Ngong Ping Village",
+          "description": "Savor a local meal at one of the restaurants in Ngong Ping Village. Try some traditional dim sum or a hearty bowl of wonton noodles for an authentic taste of Hong Kong.",
+          "searchQuery": "Ngong Ping Village",
+          "locationEn": "Lantau Island, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Po Lin Monastery",
+          "description": "Visit the nearby Po Lin Monastery, known for its beautiful architecture and tranquil atmosphere. Take a moment to appreciate the intricate details and peaceful gardens.",
+          "searchQuery": "Po Lin Monastery",
+          "locationEn": "Lantau Island, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Return to Hong Kong Disneyland",
+          "description": "Head back to Hong Kong Disneyland via the cable car and MTR, ready to dive back into the magical world of Disney.",
+          "searchQuery": "Hong Kong Disneyland",
+          "locationEn": "Hong Kong, China",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Disney Merchandise",
+          "description": "Spend the afternoon shopping for exclusive Disney merchandise at the park. From plush toys to apparel, find the perfect souvenirs to take home.",
+          "searchQuery": "Hong Kong Disneyland",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Crystal Lotus",
+          "description": "Indulge in a unique dining experience at Crystal Lotus, where you can enjoy exquisite Chinese cuisine in a beautifully themed setting inspired by Disney characters.",
+          "searchQuery": "Crystal Lotus",
+          "locationEn": "Hong Kong Disneyland, Hong Kong, China",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Disneyland Night Parade",
+          "description": "End your day with the enchanting Disneyland Night Parade, featuring dazzling floats and beloved Disney characters. A magical way to conclude your Disney adventure!",
+          "searchQuery": "Disneyland Night Parade",
+          "locationEn": "Hong Kong Disneyland, Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion and Relaxation",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Hong Kong Disneyland",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Tsim Sha Tsui",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the MTR from Hong Kong Disneyland to Tsim Sha Tsui."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Breakfast at Crystal Lotus",
+          "description": "Start your day with a delightful breakfast at Crystal Lotus, known for its creative dim sum inspired by Disney characters. Enjoy a whimsical dining experience that sets a magical tone for the day.",
+          "searchQuery": "Crystal Lotus",
+          "locationEn": "Hong Kong Disneyland, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Visit Tsim Sha Tsui Promenade",
+          "description": "Stroll along the Tsim Sha Tsui Promenade, where you can enjoy stunning views of Victoria Harbour and the iconic Hong Kong skyline. It's a perfect spot for photos and soaking in the vibrant atmosphere.",
+          "searchQuery": "Tsim Sha Tsui Promenade",
+          "locationEn": "Tsim Sha Tsui, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Spaghetti House",
+          "description": "Indulge in a casual lunch at The Spaghetti House, a popular eatery offering a variety of Italian dishes. It's a great place to recharge before continuing your adventure.",
+          "searchQuery": "The Spaghetti House",
+          "locationEn": "Tsim Sha Tsui, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Shopping at Harbour City",
+          "description": "Explore Harbour City, one of Hong Kong's largest shopping centers, where you can find a wide range of shops, including Disney merchandise. It's a paradise for fans looking to grab exclusive souvenirs.",
+          "searchQuery": "Harbour City",
+          "locationEn": "Tsim Sha Tsui, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Hong Kong Museum of History",
+          "description": "Dive into Hong Kong's rich cultural heritage at the Hong Kong Museum of History. The exhibits provide fascinating insights into the city's past, making it a perfect cultural stop.",
+          "searchQuery": "Hong Kong Museum of History",
+          "locationEn": "Tsim Sha Tsui, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Din Tai Fung",
+          "description": "Savor a delicious dinner at Din Tai Fung, famous for its xiaolongbao (soup dumplings). The restaurant's reputation for quality and flavor makes it a must-visit for food lovers.",
+          "searchQuery": "Din Tai Fung",
+          "locationEn": "Tsim Sha Tsui, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Symphony of Lights Show",
+          "description": "End your day with the spectacular Symphony of Lights show, a dazzling display of lights and music that illuminates the skyline of Hong Kong. It's a magical way to conclude your cultural immersion.",
+          "searchQuery": "Symphony of Lights",
+          "locationEn": "Tsim Sha Tsui, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Last Day in Hong Kong",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Tsim Sha Tsui",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Mong Kok",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the MTR from Tsim Sha Tsui to Mong Kok for a quick start to the day."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Breakfast at Australia Dairy Company",
+          "description": "Start your day with a hearty Hong Kong-style breakfast at this popular spot known for its toast and milk tea. The fast-paced environment adds to the local charm.",
+          "searchQuery": "Australia Dairy Company",
+          "locationEn": "Hong Kong, China",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Mong Kok's Sneaker Street",
+          "description": "Wander through the bustling streets of Mong Kok, particularly the famous Sneaker Street, where you can find exclusive Disney-themed sneakers and merchandise. It's a paradise for sneaker lovers and Disney fans alike!",
+          "searchQuery": "Sneaker Street",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at DimDimSum Dim Sum Specialty Store",
+          "description": "Enjoy a delicious dim sum lunch at this well-loved eatery. Try their signature dishes like shrimp dumplings and pork buns, perfect for sharing.",
+          "searchQuery": "DimDimSum Dim Sum Specialty Store",
+          "locationEn": "Hong Kong, China",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit the Hong Kong Disneyland Store in Mong Kok",
+          "description": "Check out the official Disney store in Mong Kok for exclusive merchandise and souvenirs. It's a great place to find unique Disney items to take home.",
+          "searchQuery": "Hong Kong Disneyland Store",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Temple Street Night Market",
+          "description": "Stroll through the vibrant Temple Street Night Market, where you can find everything from street food to trinkets. It's a great spot to soak in the local culture and maybe find some Disney-themed goodies!",
+          "searchQuery": "Temple Street Night Market",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Wrap up your day with dinner at a local restaurant nearby. Try some classic Cantonese dishes to end your Hong Kong adventure on a high note.",
+          "searchQuery": "Local Cantonese Restaurant",
+          "locationEn": "Hong Kong, China",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

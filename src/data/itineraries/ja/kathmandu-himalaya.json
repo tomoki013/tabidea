@@ -1,0 +1,558 @@
+{
+  "id": "5ce39672-92ca-4cbc-b3c5-7006b7bf3899",
+  "destination": "カトマンズ",
+  "description": "ヒマラヤの壮大な山々と古代の寺院が織りなすカトマンズ。ここでは、自然の美しさと文化の深さを同時に体感できます。6日間の旅では、ゆったりとしたペースで街を散策し、地元の人々とのふれあいを楽しみながら、心に残る思い出を作りましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "カトマンズ到着",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "カトマンズのホテルで、ネパールの伝統的な朝食を楽しみます。ダルバート（豆と米のセット）や、フレッシュなフルーツが並ぶ朝食は、エネルギーをチャージするのにぴったりです。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "トリブバン国際空港到着",
+          "description": "カトマンズのトリブバン国際空港に到着。空港から市内への移動はタクシーが便利で、約30分ほどでタメル地区に到着します。",
+          "searchQuery": "Tribhuvan International Airport",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "タメル地区散策",
+          "description": "カトマンズの観光の中心地、タメル地区を散策します。お土産屋やカフェが立ち並ぶ賑やかな通りを歩きながら、地元の雰囲気を楽しみましょう。",
+          "searchQuery": "Thamel",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "タメル地区でランチ",
+          "description": "タメル地区の人気レストランで、ネパール料理のランチを楽しみます。モモ（蒸し餃子）やダルバートをぜひ試してみてください。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "スワヤンブナート（猿の寺）訪問",
+          "description": "カトマンズのシンボルとも言えるスワヤンブナートへ。丘の上にある寺院からは、カトマンズの街並みを一望できます。多くの猿たちがいるので、注意しながら散策を楽しんでください。",
+          "searchQuery": "Swayambhunath Stupa",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ダルバール広場散策",
+          "description": "カトマンズの歴史的なダルバール広場を訪れます。古い寺院や王宮が立ち並ぶこの場所は、ネパールの文化を感じることができるスポットです。",
+          "searchQuery": "Kathmandu Durbar Square",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "タメル地区でディナー",
+          "description": "タメル地区のレストランで、ネパールの伝統料理を楽しむディナー。地元の人々に人気のあるお店で、リラックスした雰囲気の中で食事を楽しめます。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の冒険に備えて、ゆっくり休んでください。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "カトマンズの文化を感じる",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "カトマンズのホテルで、ネパールの伝統的な朝食を楽しみます。ダルバートやモモなど、地元の味を堪能し、エネルギーをチャージしましょう。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ダルバール広場",
+          "description": "カトマンズの中心に位置するダルバール広場を訪れます。歴史的な建物や寺院が立ち並び、ネパールの文化を感じることができます。特に、カトマンズ王宮や女神の寺院は必見です。",
+          "searchQuery": "Kathmandu Durbar Square",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ダルバール広場近くの地元のレストランで、ネパール料理のランチを楽しみます。モモやセモリナのスープなど、地元の味を堪能しましょう。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "スワヤンブナート（猿の寺）",
+          "description": "スワヤンブナートへ向かいます。丘の上にあるこの寺院からは、カトマンズの美しい景色が一望できます。多くの猿たちがいるので、注意しながら散策を楽しんでください。",
+          "searchQuery": "Swayambhunath Stupa",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "周辺の散策",
+          "description": "スワヤンブナート周辺をゆっくり散策します。地元の人々の生活を感じながら、静かな時間を過ごしましょう。お土産屋さんやカフェも点在しているので、気になる場所に立ち寄ってみてください。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルに戻る",
+          "description": "ホテルに戻り、少し休憩します。夕食までの時間をリラックスして過ごしましょう。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "カトマンズの地元のレストランで、ネパールの伝統的なディナーを楽しみます。ダルバートやタンドリーチキンなど、豊富なメニューから選んでみてください。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "パシュパティナート寺院とボダナート",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "カトマンズのホテルで、ネパールの伝統的な朝食を楽しみます。ダルバートやチャイでエネルギーをチャージして、素晴らしい一日をスタートしましょう。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "パシュパティナート寺院",
+          "description": "ヒンドゥー教の聖地、パシュパティナート寺院を訪れます。壮大な寺院群とガンジス川の風景が広がり、神聖な雰囲気に包まれます。特に朝の静けさの中での訪問がオススメです。",
+          "searchQuery": "Pashupatinath Temple",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ローカルレストランでランチ",
+          "description": "カトマンズの地元のレストランで、ネパール料理のランチを楽しみます。モモ（餃子）やダルバートを味わいながら、地元の人々との交流を楽しんでみてください。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ボダナート",
+          "description": "ボダナートのストゥーパを訪れ、仏教の聖地を散策します。大きなストゥーパの周りを歩きながら、静かな時間を過ごし、ヒマラヤの山々を背景にした美しい景色を楽しみましょう。",
+          "searchQuery": "Boudhanath Stupa",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ボダナート周辺のカフェで休憩",
+          "description": "ボダナートの近くにあるカフェで、ティータイムを楽しみます。ヒマラヤの景色を眺めながら、リラックスしたひとときを過ごしましょう。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "カトマンズの街を散策",
+          "description": "カトマンズの古い街並みをゆっくりと散策します。歴史的な建物や地元の市場を訪れ、ネパールの文化に触れる貴重な体験を楽しんでください。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "カトマンズのホテルで、ネパール料理のディナーを楽しみます。地元の食材を使った料理を堪能し、旅の疲れを癒しましょう。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ヒマラヤの絶景を求めて",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "カトマンズ",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ナガルコット",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "カトマンズからナガルコットへはバスで約1時間の移動です。早めに出発して、絶景を楽しむ時間を確保しましょう。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "ナガルコットの展望台",
+          "description": "ナガルコットの展望台からは、ヒマラヤ山脈の壮大な景色が広がります。特に朝の光の中での眺めは格別で、心が洗われるような体験ができます。",
+          "searchQuery": "Nagarkot View Tower",
+          "locationEn": "Nagarkot, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ナガルコットの地元のレストランで、ネパール料理を楽しみましょう。ダルバート（ご飯とカレーのセット）は特におすすめです。",
+          "searchQuery": "Nagarkot Local Restaurant",
+          "locationEn": "Nagarkot, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ナガルコットのハイキング",
+          "description": "ナガルコット周辺の自然を満喫するハイキングに出かけましょう。美しい風景を眺めながら、ゆっくりとしたペースで歩くことができます。",
+          "searchQuery": "Nagarkot Hiking Trails",
+          "locationEn": "Nagarkot, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "夕日を眺める",
+          "description": "ナガルコットの丘から夕日を眺めるのは、旅のハイライトの一つです。山々が夕焼けに染まる様子は、心に残る美しい瞬間です。",
+          "searchQuery": "Nagarkot Sunset Point",
+          "locationEn": "Nagarkot, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ナガルコットの宿でディナー",
+          "description": "宿泊先のレストランで、地元の食材を使ったディナーを楽しみましょう。リラックスした雰囲気の中で、旅の疲れを癒してください。",
+          "searchQuery": "Nagarkot Hotel Restaurant",
+          "locationEn": "Nagarkot, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ナガルコットからの朝日とハイキング",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "ナガルコット",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "カトマンズ",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "ナガルコットからカトマンズへバスで移動します。早朝の美しい景色を楽しみながらの移動です。"
+      },
+      "activities": [
+        {
+          "time": "05:30",
+          "activity": "ナガルコットの展望台で朝日鑑賞",
+          "description": "ナガルコットの展望台で、ヒマラヤの山々から昇る美しい朝日を眺めます。静かな朝の空気の中で、心が洗われる瞬間を体験できます。",
+          "searchQuery": "Nagarkot View Tower",
+          "locationEn": "Nagarkot, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "07:00",
+          "activity": "ナガルコットで朝食",
+          "description": "地元のカフェで、ネパールの伝統的な朝食を楽しみます。ダルバートやトースト、フレッシュフルーツなど、エネルギーをチャージしてハイキングに備えましょう。",
+          "searchQuery": "Nagarkot Cafe",
+          "locationEn": "Nagarkot, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "カトマンズへ移動",
+          "description": "ナガルコットからカトマンズへバスで移動します。途中の景色を楽しみながら、約1時間の旅です。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ボダナート仏塔訪問",
+          "description": "世界遺産にも登録されているボダナート仏塔を訪れます。巨大なストゥーパを囲むように歩きながら、地元の人々の信仰を感じることができます。",
+          "searchQuery": "Boudhanath Stupa",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カトマンズでランチ",
+          "description": "地元のレストランで、ネパール料理のランチを楽しみます。モモ（餃子）やダルバートを味わいながら、ネパールの食文化に触れましょう。",
+          "searchQuery": "Local Nepali Restaurant",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "パシュパティナート寺院訪問",
+          "description": "ヒンドゥー教の聖地、パシュパティナート寺院を訪れます。神聖な雰囲気の中で、寺院の美しい建築や儀式を観察できます。",
+          "searchQuery": "Pashupatinath Temple",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "タメル地区散策",
+          "description": "カトマンズのタメル地区を散策し、地元のショップやカフェを楽しみます。お土産探しや、地元の人々との交流も楽しめます。",
+          "searchQuery": "Thamel",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "カトマンズでディナー",
+          "description": "タメル地区のレストランで、ネパール料理のディナーを楽しみます。地元の雰囲気を感じながら、旅の思い出を語り合いましょう。",
+          "searchQuery": "Thamel Restaurant",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "カトマンズの最後の散策と帰路",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "カトマンズのホテルで、ネパールの伝統的な朝食を楽しみます。ダルバートやチャイでエネルギーをチャージして、素敵な一日をスタートしましょう。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "タメル地区散策",
+          "description": "カトマンズのタメル地区を散策します。おしゃれなカフェやお土産屋が立ち並ぶこのエリアは、地元の雰囲気を感じながらゆっくりと歩くのに最適です。",
+          "searchQuery": "Thamel",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元の市場でランチ",
+          "description": "タメル地区近くの地元の市場で、ネパールのストリートフードを楽しみます。モモ（餃子）やチャットマサラを味わいながら、地元の人々の生活を感じてみてください。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "スワヤンブナート（猿の寺）訪問",
+          "description": "カトマンズの絶景スポット、スワヤンブナートへ。丘の上からの眺めは素晴らしく、ヒマラヤの山々を背景にした寺院の美しさを堪能できます。",
+          "searchQuery": "Swayambhunath Stupa",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "カトマンズの街並み散策",
+          "description": "カトマンズの古い街並みをゆっくりと散策します。歴史的な建物や寺院を見ながら、地元の文化に触れる貴重な時間を過ごしましょう。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルで休憩",
+          "description": "散策の後は、ホテルで少し休憩。旅の思い出を振り返りながら、リラックスした時間を過ごします。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "カトマンズでの最後のディナー",
+          "description": "地元のレストランで、ネパール料理のディナーを楽しみます。最後の夜を美味しい料理で締めくくりましょう。",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

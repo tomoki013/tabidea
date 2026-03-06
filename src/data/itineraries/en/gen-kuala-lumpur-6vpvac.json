@@ -1,0 +1,542 @@
+{
+  "id": "1e2e12c4-5ab5-4e71-8fce-c6f08b45565e",
+  "destination": "Kuala Lumpur",
+  "description": "Escape to the vibrant city of Kuala Lumpur, where modern skyscrapers meet lush greenery, creating a perfect backdrop for a family adventure. Over six days, immerse yourself in the rich culture, indulge in delightful local cuisine, and unwind at beautiful resorts. From the iconic Petronas Towers to the serene Batu Caves, this journey promises a blend of excitement and relaxation, making it an ideal getaway for families seeking both adventure and tranquility.",
+  "heroImage": "https://images.unsplash.com/photo-1740969136569-0299e953f530?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTUxNjZ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "You Le",
+  "heroImagePhotographerUrl": "https://unsplash.com/@le_y0u?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Kuala Lumpur",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at the Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring a mix of local Malaysian dishes and international favorites to fuel your adventures ahead.",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Petronas Towers",
+          "description": "Explore the iconic Petronas Towers, the tallest twin towers in the world. Don't miss the sky bridge for breathtaking views of the city!",
+          "searchQuery": "Petronas Towers",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Suria KLCC",
+          "description": "Enjoy lunch at Suria KLCC, the shopping mall at the base of the Petronas Towers. Choose from a variety of eateries offering local and international cuisine.",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "KLCC Park",
+          "description": "Stroll through the beautiful KLCC Park, located right next to the Petronas Towers. The park features a playground for kids, a lake, and walking paths, perfect for a family outing.",
+          "searchQuery": "KLCC Park",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Aquaria KLCC",
+          "description": "Visit Aquaria KLCC, an oceanarium located beneath the Kuala Lumpur Convention Centre. It's a fun and educational experience for the whole family, showcasing marine life from around the world.",
+          "searchQuery": "Aquaria KLCC",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Jalan Alor",
+          "description": "Head to Jalan Alor, a famous food street, for dinner. Sample a variety of local street food, from satay to noodles, in a vibrant atmosphere.",
+          "searchQuery": "Jalan Alor",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Hotel",
+          "description": "After a day of exploration, return to your hotel to relax and unwind. Enjoy the amenities and prepare for another exciting day ahead!",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the City",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Village Park Restaurant",
+          "description": "Start your day with a delicious Malaysian breakfast at Village Park Restaurant, famous for its Nasi Lemak. The fragrant rice paired with spicy sambal and crispy anchovies is a must-try!",
+          "searchQuery": "Village Park Restaurant",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "KL Bird Park",
+          "description": "Visit the KL Bird Park, one of the largest free-flight aviaries in the world. Here, you can see exotic birds in a lush, tropical setting, making it a fun and educational experience for the whole family.",
+          "searchQuery": "KL Bird Park",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restoran Rebung Chef Ismail",
+          "description": "Enjoy a traditional Malaysian buffet lunch at Restoran Rebung, where you can sample a variety of local dishes in a cozy atmosphere. It's a great way to experience the flavors of Malaysia!",
+          "searchQuery": "Restoran Rebung Chef Ismail",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Perdana Botanical Gardens",
+          "description": "Stroll through the beautiful Perdana Botanical Gardens, a serene oasis in the city. The gardens feature a variety of plants, flowers, and even a butterfly park, perfect for a relaxing afternoon with the family.",
+          "searchQuery": "Perdana Botanical Gardens",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Islamic Arts Museum Malaysia",
+          "description": "Explore the Islamic Arts Museum, which houses an impressive collection of Islamic decorative arts. The museum's architecture is stunning, and it's a great place to learn about the rich history of Islamic culture.",
+          "searchQuery": "Islamic Arts Museum Malaysia",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Jalan Alor Night Market",
+          "description": "Head to Jalan Alor Night Market for dinner, where you can indulge in a variety of street food options. From satay to grilled seafood, the vibrant atmosphere and delicious food make it a family favorite.",
+          "searchQuery": "Jalan Alor Night Market",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Relax at the hotel",
+          "description": "After a busy day of exploring, return to your hotel to relax and unwind. Enjoy some family time by the pool or plan for the next day's adventures!",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Day",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring a mix of local and international dishes to fuel your adventures ahead.",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Batu Caves",
+          "description": "Explore the stunning Batu Caves, a limestone hill featuring a series of caves and cave temples. The iconic golden statue of Lord Murugan greets you at the entrance, and the colorful steps leading up to the caves are a sight to behold. Don't forget to keep an eye out for the cheeky monkeys!",
+          "searchQuery": "Batu Caves",
+          "locationEn": "Batu Caves, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restoran Rani",
+          "description": "Enjoy a delicious lunch at Restoran Rani, known for its authentic Malaysian cuisine. Try the Nasi Lemak or Roti Canai for a true taste of local flavors.",
+          "searchQuery": "Restoran Rani",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Little India (Brickfields)",
+          "description": "Stroll through Little India, where vibrant colors and aromatic spices fill the air. Visit local shops, and don't miss the chance to try some Indian sweets from the many stalls around.",
+          "searchQuery": "Little India Brickfields",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the National Museum",
+          "description": "Dive into Malaysia's rich history at the National Museum. The exhibits showcase the diverse cultures and heritage of the country, making it a great educational stop for the whole family.",
+          "searchQuery": "National Museum of Malaysia",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at KLCC Park",
+          "description": "Unwind at KLCC Park, a beautiful green space in the heart of the city. Let the kids play in the playground while you enjoy the view of the iconic Petronas Towers.",
+          "searchQuery": "KLCC Park",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Jalan Alor Night Market",
+          "description": "Experience the bustling atmosphere of Jalan Alor Night Market. Sample a variety of street food, from satay to grilled seafood, and enjoy the lively vibe of this popular dining spot.",
+          "searchQuery": "Jalan Alor Night Market",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Resort Day",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring a mix of local and international dishes to fuel your adventures ahead.",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Sunway Lagoon Theme Park",
+          "description": "Head to Sunway Lagoon, a massive theme park that offers thrilling rides, a water park, and even a wildlife park. It's perfect for families, with something for everyone to enjoy!",
+          "searchQuery": "Sunway Lagoon Theme Park",
+          "locationEn": "Sunway Lagoon, Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Sunway Lagoon",
+          "description": "Enjoy lunch at one of the many eateries within the park, offering a variety of options from local Malaysian dishes to international favorites.",
+          "locationEn": "Sunway Lagoon, Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Continue Exploring Sunway Lagoon",
+          "description": "Spend the afternoon enjoying more attractions at Sunway Lagoon. Don't miss the wave pool and the thrilling roller coasters!",
+          "locationEn": "Sunway Lagoon, Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Hotel and Relax",
+          "description": "After a fun-filled day, head back to your hotel to relax and freshen up. Enjoy some downtime by the pool or in your room.",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Savor a delicious dinner at a nearby local restaurant, where you can try traditional Malaysian dishes like Nasi Lemak or Satay.",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Evening Stroll at KLCC Park",
+          "description": "End your day with a leisurely stroll at KLCC Park, where you can enjoy the beautiful views of the Petronas Towers illuminated at night.",
+          "searchQuery": "KLCC Park",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Nature and Relaxation",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring a mix of local and international dishes to fuel your adventures ahead.",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "KL Forest Eco Park",
+          "description": "Explore the lush greenery of KL Forest Eco Park, a hidden gem in the heart of the city. Walk along the canopy walkway and enjoy the serene atmosphere, perfect for families to connect with nature.",
+          "searchQuery": "KL Forest Eco Park",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Enjoy a delicious lunch at a nearby local restaurant, where you can savor traditional Malaysian dishes like Nasi Lemak or Roti Canai, perfect for a family meal.",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Menara Kuala Lumpur (KL Tower)",
+          "description": "Visit Menara Kuala Lumpur, one of the tallest towers in the world. Take the elevator to the observation deck for breathtaking views of the city skyline and surrounding hills. Don't forget to snap some family photos!",
+          "searchQuery": "Menara Kuala Lumpur",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at the Hotel Pool",
+          "description": "After a day of exploration, unwind at your hotel’s pool. Let the kids splash around while you relax and enjoy the sun, making it a perfect end to your day.",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Jalan Alor Night Market",
+          "description": "Head to Jalan Alor Night Market for dinner, where you can indulge in a variety of street food options. From satay to grilled seafood, there's something for everyone in the family to enjoy.",
+          "searchQuery": "Jalan Alor Night Market",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll in Bukit Bintang",
+          "description": "Take a leisurely evening stroll around Bukit Bintang, soaking in the vibrant atmosphere of the city. Enjoy the lights, sounds, and perhaps grab a dessert at a local café before heading back to your hotel.",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Departure",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Kuala Lumpur",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Home",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Flight back home from Kuala Lumpur International Airport."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Breakfast Thief",
+          "description": "Start your day with a hearty breakfast at The Breakfast Thief, known for its delicious local and Western breakfast options. The cozy atmosphere is perfect for families, and the kids will love the pancakes!",
+          "searchQuery": "The Breakfast Thief",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Visit Kuala Lumpur Bird Park",
+          "description": "Explore the world's largest free-flight walk-in aviary at Kuala Lumpur Bird Park. It's a fantastic place for kids to see exotic birds up close and learn about wildlife conservation. Don't forget your camera for some great family photos!",
+          "searchQuery": "Kuala Lumpur Bird Park",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restoran Rebung",
+          "description": "Enjoy a traditional Malaysian lunch at Restoran Rebung, where you can savor a variety of local dishes in a buffet style. The restaurant is family-friendly and offers a great selection for everyone.",
+          "searchQuery": "Restoran Rebung",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Perdana Botanical Gardens",
+          "description": "Stroll through the beautiful Perdana Botanical Gardens, a perfect spot for families to relax and enjoy nature. The gardens feature a variety of plants, a lake, and even a playground for the kids to enjoy.",
+          "searchQuery": "Perdana Botanical Gardens",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Return to Hotel and Check-out",
+          "description": "Head back to your hotel to pack up and check out. Make sure to gather all your belongings and settle any outstanding bills before heading to the airport.",
+          "searchQuery": "Hotel",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Departure from Kuala Lumpur International Airport",
+          "description": "Arrive at the airport in time for your flight. Make sure to check in and go through security with plenty of time to spare. Safe travels!",
+          "searchQuery": "Kuala Lumpur International Airport",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

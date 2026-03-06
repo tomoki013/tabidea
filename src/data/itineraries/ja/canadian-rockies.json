@@ -1,0 +1,614 @@
+{
+  "id": "46cb24db-757f-4fa6-94d3-203e68bc65b9",
+  "destination": "バンフ・ジャスパー",
+  "description": "カナダの大自然が織り成す美しい風景を満喫する7日間の旅。バンフとジャスパーの国立公園を巡り、色とりどりの湖や壮大な山々、そして豊かな野生動物に出会うことができます。家族でのハイキングやドライブを通じて、自然の中での特別な思い出を作りましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からバンフへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "カルガリー",
+          "time": "10:30"
+        },
+        "duration": "12h 30m",
+        "memo": "直行便でカルガリーへ。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "バンフ国立公園へ移動",
+          "description": "カルガリー空港からレンタカーでバンフ国立公園へ向かいます。美しい山々に囲まれた道をドライブしながら、自然の美しさを堪能しましょう。",
+          "searchQuery": "Banff National Park",
+          "locationEn": "Banff, Canada",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "バンフの街散策",
+          "description": "バンフの中心街を散策し、地元のショップやカフェを楽しみます。お土産を探したり、カナダの雰囲気を感じるのにぴったりの場所です。",
+          "searchQuery": "Banff Avenue",
+          "locationEn": "Banff, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "バンフスプリングスホテル見学",
+          "description": "歴史的なバンフスプリングスホテルを訪れ、その美しい建築と周囲の景色を楽しみます。ホテル内のカフェで一息つくのもおすすめです。",
+          "searchQuery": "Fairmont Banff Springs",
+          "locationEn": "Banff, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "湖畔でピクニック",
+          "description": "バンフの美しい湖のほとりでピクニックを楽しみます。家族でのんびりとした時間を過ごし、自然の中でリフレッシュしましょう。",
+          "searchQuery": "Lake Minnewanka",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "バンフのレストランでディナー",
+          "description": "地元の食材を使った料理が楽しめるレストランでディナーを。特にバンフの自然を感じる料理を堪能しましょう。",
+          "searchQuery": "The Maple Leaf",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルチェックイン",
+          "description": "バンフのホテルにチェックイン。家族でゆったりとした夜を過ごし、明日の冒険に備えましょう。",
+          "searchQuery": "Banff Park Lodge",
+          "locationEn": "Banff, Canada",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "バンフ国立公園の絶景を楽しむ",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "バンフ",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "レイクルイーズ",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "バンフからレイクルイーズまでの美しいドライブを楽しみます。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "レイクルイーズ",
+          "description": "エメラルドグリーンの湖面が美しいレイクルイーズで、家族でのんびりとした時間を過ごします。湖の周りを散策し、写真撮影を楽しむのもおすすめです。",
+          "searchQuery": "Lake Louise",
+          "locationEn": "Lake Louise, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "レイクルイーズでのランチ",
+          "description": "湖の近くにあるレストランで、地元の食材を使った美味しいランチを楽しみます。特に、バンフの名物料理を試してみてください。",
+          "searchQuery": "Lake Louise Restaurant",
+          "locationEn": "Lake Louise, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "モレーン湖",
+          "description": "モレーン湖へ向かい、壮大な山々に囲まれた美しい湖を堪能します。湖の色は季節によって変わるので、訪れるたびに新しい発見があります。",
+          "searchQuery": "Moraine Lake",
+          "locationEn": "Moraine Lake, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "モレーン湖周辺のハイキング",
+          "description": "モレーン湖周辺のトレイルを家族でハイキング。自然の中でのアクティビティは、子供たちにとっても素晴らしい体験になります。",
+          "searchQuery": "Moraine Lake Hiking Trails",
+          "locationEn": "Moraine Lake, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "バンフに戻る",
+          "description": "モレーン湖からバンフへ戻る途中、夕焼けに染まる山々を楽しみながらドライブします。",
+          "locationEn": "Banff, Canada",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "バンフでディナー",
+          "description": "バンフの中心部にあるレストランで、家族での楽しいディナータイム。地元のビールやワインを楽しむのも良いでしょう。",
+          "searchQuery": "Banff Restaurant",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "バンフからジャスパーへドライブ",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "バンフ",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ジャスパー",
+          "time": "12:00"
+        },
+        "duration": "4h",
+        "memo": "アイスフィールドパークウェイを通りながら美しい景色を楽しむドライブ。途中で休憩を取りながら進みましょう。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "バンフで朝食",
+          "description": "地元のカフェで、フレッシュなベーカリーやオムレツを楽しみながら、今日の冒険に備えます。",
+          "searchQuery": "Banff Cafe",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "アイスフィールドパークウェイをドライブ",
+          "description": "カナディアンロッキーの絶景を堪能しながら、アイスフィールドパークウェイを北上します。途中、壮大な山々や美しい湖が広がります。",
+          "searchQuery": "Icefields Parkway",
+          "locationEn": "Icefields Parkway, Canada",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "アサバスカ氷河観光",
+          "description": "アサバスカ氷河に到着。氷河の上を歩くツアーに参加し、氷河の神秘的な世界を体験しましょう。",
+          "searchQuery": "Athabasca Glacier",
+          "locationEn": "Athabasca Glacier, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ジャスパー到着・昼食",
+          "description": "ジャスパーに到着後、地元のレストランでランチを楽しみます。新鮮な地元の食材を使った料理が魅力です。",
+          "searchQuery": "Jasper Restaurant",
+          "locationEn": "Jasper, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ジャスパー国立公園散策",
+          "description": "ジャスパー国立公園内を散策し、壮大な自然を満喫します。特にマリーン湖の美しい青色は必見です。",
+          "searchQuery": "Jasper National Park",
+          "locationEn": "Jasper National Park, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ジャスパーでの夕食",
+          "description": "ジャスパーの人気レストランで、地元の料理を楽しみながら、家族との素敵な時間を過ごします。",
+          "searchQuery": "Jasper Dinner Restaurant",
+          "locationEn": "Jasper, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ジャスパーの星空観賞",
+          "description": "夜はジャスパーの美しい星空を楽しむ時間。天候が良ければ、満天の星空が広がります。",
+          "searchQuery": "Jasper Dark Sky Preserve",
+          "locationEn": "Jasper, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ジャスパー国立公園での冒険",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ジャスパーのホテルで、地元の食材を使った美味しい朝食を楽しみます。特に、カナダのパンケーキやベーコンは絶品です。",
+          "locationEn": "Jasper, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "マルミ湖散策",
+          "description": "美しいエメラルドグリーンの湖、マルミ湖へ。湖畔を散策しながら、周囲の山々の壮大な景色を楽しむことができます。特に、晴れた日には湖面に映る山々が絶景です。",
+          "searchQuery": "Maligne Lake",
+          "locationEn": "Maligne Lake, Jasper, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "湖畔でピクニックランチ",
+          "description": "マルミ湖の湖畔で、家族でピクニックランチを楽しみます。地元のデリで購入したサンドイッチやフルーツを持参して、自然の中での食事を満喫しましょう。",
+          "locationEn": "Maligne Lake, Jasper, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ジャスパーの街散策",
+          "description": "ジャスパーの中心街を散策し、地元のショップやカフェを訪れます。お土産探しや、地元のアートを楽しむのも良いでしょう。",
+          "searchQuery": "Jasper",
+          "locationEn": "Jasper, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ジャスパー国立公園ハイキング",
+          "description": "ジャスパー国立公園内のハイキングコースを歩きます。家族向けのコースも多く、自然の中でリフレッシュできます。特に、野生動物に出会えるチャンスもあります。",
+          "searchQuery": "Jasper National Park",
+          "locationEn": "Jasper National Park, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ジャスパーでディナー",
+          "description": "ジャスパーの人気レストランで、地元の食材を使ったディナーを楽しみます。特に、アルバータビーフや新鮮な魚料理がおすすめです。",
+          "locationEn": "Jasper, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "星空観賞",
+          "description": "ジャスパーは世界的に有名な星空観賞スポットです。夜空に広がる無数の星々を眺めながら、家族で特別な時間を過ごしましょう。",
+          "locationEn": "Jasper, Canada",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ジャスパーからバンフへ戻る",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ジャスパー",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "バンフ",
+          "time": "12:00"
+        },
+        "duration": "3h",
+        "memo": "美しい風景を楽しみながらのドライブです。途中で休憩を取りながら進みましょう。"
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "ペイト湖でのピクニックランチ",
+          "description": "ペイト湖の美しい景色を眺めながら、家族でピクニックランチを楽しみます。湖の青い色と周囲の山々が織りなす絶景は、心に残る思い出になるでしょう。",
+          "searchQuery": "Peyto Lake",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ボウ滝の散策",
+          "description": "ボウ滝へ向かい、滝の音を聞きながら散策します。滝の近くでは、マイナスイオンを感じながらリフレッシュできます。子供たちも楽しめる短いハイキングコースです。",
+          "searchQuery": "Bow Falls",
+          "locationEn": "Banff, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "バンフ国立公園内のハイキング",
+          "description": "バンフ国立公園内のトレイルを選び、家族でハイキングを楽しみます。自然の中でのアクティビティは、子供たちにとっても貴重な体験になるでしょう。",
+          "searchQuery": "Banff National Park",
+          "locationEn": "Banff, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "バンフのレストランでディナー",
+          "description": "バンフの中心部にあるレストランで、地元の食材を使ったディナーを楽しみます。家族での楽しい時間を過ごしましょう。",
+          "searchQuery": "Banff Restaurant",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "バンフでのリラックスデー",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "バンフのホテルで、地元の食材を使った美味しい朝食を楽しみます。特に、パンケーキやベーコンは絶品です。",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "バンフ温泉",
+          "description": "バンフ温泉でリラックス。温泉に浸かりながら、周囲の美しい山々を眺める贅沢なひとときを過ごします。家族みんなで楽しめるスパ施設も完備。",
+          "searchQuery": "Banff Upper Hot Springs",
+          "locationEn": "Banff, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "バンフの街でランチ",
+          "description": "バンフの中心街にあるカフェで、地元の食材を使ったサンドイッチやサラダを楽しみます。テラス席からの眺めも素晴らしいです。",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "バンフショッピングエリア散策",
+          "description": "バンフのショッピングエリアを散策。お土産や地元アートを探しながら、家族で楽しい時間を過ごします。特に、カナディアン・アートのギャラリーは見逃せません。",
+          "searchQuery": "Banff Avenue",
+          "locationEn": "Banff, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "バンフ国立公園内ハイキング",
+          "description": "バンフ国立公園内のトレイルを家族でハイキング。美しい湖や山々を眺めながら、自然の中でリフレッシュします。子供たちも楽しめるコースを選びましょう。",
+          "searchQuery": "Banff National Park",
+          "locationEn": "Banff, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "バンフでディナー",
+          "description": "バンフの人気レストランで、地元の食材を使ったディナーを楽しみます。特に、ビーフやシーフード料理が評判です。",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "星空観賞",
+          "description": "バンフの澄んだ空気の中で、星空を観賞。家族で夜空を見上げながら、星座を探して楽しむ時間を過ごします。",
+          "locationEn": "Banff, Canada",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "バンフから東京へ帰路",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "バンフ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "15:00"
+        },
+        "duration": "10h",
+        "memo": "バンフからカナダの空港を経由して東京へ帰ります。"
+      },
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "ホテルで朝食",
+          "description": "バンフのホテルで、地元の食材を使った美味しい朝食を楽しみます。特に、パンケーキやベーコンは絶品です。",
+          "searchQuery": "Banff Hotel Breakfast",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "バンフ国立公園散策",
+          "description": "朝の清々しい空気の中、バンフ国立公園を散策します。美しい山々と湖の景色を楽しみながら、家族でのんびりとした時間を過ごしましょう。",
+          "searchQuery": "Banff National Park",
+          "locationEn": "Banff, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "バンフの街を散策",
+          "description": "バンフの中心街を散策し、地元のショップやカフェを訪れます。お土産を探したり、カフェで一息つくのも良いでしょう。",
+          "searchQuery": "Banff Town",
+          "locationEn": "Banff, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ（地元のレストラン）",
+          "description": "バンフの人気レストランで、カナディアン料理を楽しみます。特に、ジビエ料理や地元のビールはおすすめです。",
+          "searchQuery": "Banff Local Restaurant",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "バンフから空港へ移動",
+          "description": "バンフから空港へ向かいます。移動中に美しい景色を楽しみながら、帰路の準備をしましょう。",
+          "searchQuery": "Banff to Airport",
+          "locationEn": "Banff, Canada",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

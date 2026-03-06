@@ -1,0 +1,531 @@
+{
+  "id": "fb54e8ae-e61d-44f6-bf3a-6e45d13edb99",
+  "destination": "Anaheim",
+  "description": "Escape to the enchanting world of Anaheim, where the magic of Disney meets the vibrant culture of Southern California. This 6-day adventure is perfect for families looking to immerse themselves in the whimsical charm of Disneyland, explore local shopping gems, and unwind in the sunny Californian atmosphere. With a mix of thrilling attractions and relaxing downtime, your family will create unforgettable memories together. Get ready for a week filled with fun, laughter, and a sprinkle of magic!",
+  "heroImage": "https://images.unsplash.com/photo-1641478861214-b1c22f4e2b32?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODg4Mzh8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Aubrey Odom",
+  "heroImagePhotographerUrl": "https://unsplash.com/@octoberroses?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Anaheim",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Denny's",
+          "description": "Start your day with a hearty breakfast at Denny's, where you can enjoy classic American dishes like pancakes and omelets. It's a family-friendly spot that offers something for everyone.",
+          "searchQuery": "Denny's",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Disneyland Resort",
+          "description": "Dive into the magic at Disneyland Resort! Explore iconic attractions like Sleeping Beauty Castle and meet beloved Disney characters. Make sure to grab a map and plan your day to hit all the must-see spots.",
+          "searchQuery": "Disneyland Park",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Plaza Inn",
+          "description": "Enjoy a delicious lunch at Plaza Inn, famous for its hearty fried chicken. The restaurant's charming decor and proximity to the park make it a perfect spot to refuel for the afternoon.",
+          "searchQuery": "Plaza Inn",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Downtown Disney District",
+          "description": "Stroll through Downtown Disney District, where you can shop for exclusive Disney merchandise and enjoy street performances. Don't forget to check out the World of Disney store for unique souvenirs and fan gear.",
+          "searchQuery": "Downtown Disney District",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Naples Ristorante e Pizzeria",
+          "description": "Savor authentic Italian cuisine at Naples Ristorante e Pizzeria. Their wood-fired pizzas are a hit with families, and the vibrant atmosphere adds to the dining experience.",
+          "searchQuery": "Naples Ristorante e Pizzeria",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening stroll at Disneyland",
+          "description": "Return to Disneyland for an evening stroll. Enjoy the magical ambiance as the park lights up at night. Catch the fireworks show if you can, it's a perfect way to end your first day in Anaheim!",
+          "searchQuery": "Disneyland Park",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Disneyland Adventure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Denny's",
+          "description": "Start your day with a hearty breakfast at Denny's, where you can enjoy classic American breakfast options like pancakes, omelets, and more. It's a family-friendly spot just a short drive from Disneyland.",
+          "searchQuery": "Denny's Anaheim",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Disneyland Park",
+          "description": "Dive into the magic at Disneyland Park! Explore iconic attractions like the Haunted Mansion and Pirates of the Caribbean, and don't forget to snap a photo in front of Sleeping Beauty Castle. Arrive early to beat the crowds and maximize your fun!",
+          "searchQuery": "Disneyland Park",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Plaza Inn",
+          "description": "Enjoy a delicious lunch at Plaza Inn, famous for its hearty fried chicken and family-friendly atmosphere. It's conveniently located within the park, making it easy to refuel before more adventures.",
+          "searchQuery": "Plaza Inn Disneyland",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Star Wars: Galaxy's Edge",
+          "description": "Step into a galaxy far, far away at Star Wars: Galaxy's Edge. Experience thrilling rides like Millennium Falcon: Smugglers Run and explore the immersive world of Batuu. Perfect for fans of all ages!",
+          "searchQuery": "Star Wars: Galaxy's Edge",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Shopping for Disney Merchandise",
+          "description": "Take a break from the rides and indulge in some shopping! Visit the various shops throughout Disneyland to find exclusive Disney merchandise, from plush toys to apparel. A great way to bring home a piece of the magic!",
+          "searchQuery": "Disney Merchandise",
+          "locationEn": "Anaheim, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at the Carnation Café",
+          "description": "Wrap up your day with a delightful dinner at the Carnation Café, where you can enjoy classic American dishes in a charming setting. It's a great spot to relax and reflect on your day at the park.",
+          "searchQuery": "Carnation Café Disneyland",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Disneyland Fireworks Show",
+          "description": "End your magical day with the spectacular fireworks show over Sleeping Beauty Castle. It's a breathtaking sight that captures the essence of Disney magic, perfect for families to enjoy together!",
+          "searchQuery": "Disneyland Fireworks",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Disney California Adventure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Denny's",
+          "description": "Start your day with a hearty breakfast at Denny's, where you can enjoy classic American breakfast options like pancakes, omelets, and more. It's a family-friendly spot just a short drive from Disneyland.",
+          "searchQuery": "Denny's Anaheim",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Disney California Adventure Park",
+          "description": "Dive into the magical world of Disney California Adventure! Explore attractions like Radiator Springs Racers and the thrilling Incredicoaster. Don't forget to take photos with your favorite characters!",
+          "searchQuery": "Disney California Adventure Park",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Cocina Cucamonga Mexican Grill",
+          "description": "Enjoy a delicious lunch at Cocina Cucamonga, where you can savor authentic Mexican dishes like tacos and burritos. It's a great spot to recharge before more adventures!",
+          "searchQuery": "Cocina Cucamonga Mexican Grill",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Pixar Pier",
+          "description": "Head over to Pixar Pier, where you can enjoy fun rides and games inspired by your favorite Pixar movies. Be sure to try the iconic Pixar Pal-A-Round for stunning views of the park!",
+          "searchQuery": "Pixar Pier",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Avengers Campus",
+          "description": "Join the Avengers at Avengers Campus! Experience thrilling attractions like WEB SLINGERS: A Spider-Man Adventure and meet your favorite superheroes. Perfect for the whole family!",
+          "searchQuery": "Avengers Campus",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Plaza Inn",
+          "description": "Indulge in a family-friendly dinner at Plaza Inn, famous for its delicious fried chicken and hearty sides. It's a great way to end your day at the park!",
+          "searchQuery": "Plaza Inn",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Shopping at World of Disney",
+          "description": "Wrap up your day with some shopping at the World of Disney store in Downtown Disney. Find exclusive Disney merchandise and souvenirs to take home!",
+          "searchQuery": "World of Disney",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Shopping and Relaxation",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Denny's",
+          "description": "Start your day with a hearty American breakfast at Denny's, where you can enjoy pancakes, eggs, and bacon. It's a family-friendly spot that offers a variety of options for everyone.",
+          "searchQuery": "Denny's Anaheim",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Anaheim GardenWalk",
+          "description": "Stroll through Anaheim GardenWalk, an outdoor shopping and entertainment center. Enjoy the vibrant atmosphere, explore unique shops, and take a break at one of the cafes. It's a great place for family fun and relaxation.",
+          "searchQuery": "Anaheim GardenWalk",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Cheesecake Factory",
+          "description": "Indulge in a delicious lunch at The Cheesecake Factory, known for its extensive menu and, of course, its famous cheesecakes. The kids will love the variety of options available.",
+          "searchQuery": "The Cheesecake Factory Anaheim",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "The Outlets at Orange",
+          "description": "Head to The Outlets at Orange for some serious shopping! With a wide range of stores offering discounts on popular brands, it's the perfect place to find Disney merchandise and other souvenirs.",
+          "searchQuery": "The Outlets at Orange",
+          "locationEn": "Orange, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Ruby's Diner",
+          "description": "Enjoy a classic American diner experience at Ruby's Diner, where you can savor burgers, milkshakes, and more in a nostalgic setting. It's a fun spot for the whole family.",
+          "searchQuery": "Ruby's Diner Orange",
+          "locationEn": "Orange, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Relax at the Hotel Pool",
+          "description": "After a busy day, unwind at your hotel pool. Let the kids splash around while you relax and enjoy the evening. It's a perfect way to end the day.",
+          "locationEn": "Anaheim, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Cultural Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Denny's",
+          "description": "Start your day with a hearty American breakfast at Denny's, where you can enjoy pancakes, eggs, and bacon in a family-friendly atmosphere. It's a great way to fuel up for a day of exploration!",
+          "searchQuery": "Denny's",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit Muzeo Museum and Cultural Center",
+          "description": "Explore the Muzeo Museum, which features rotating exhibits that highlight local history and culture. It's a perfect spot for families to learn and engage with art and history in a fun way.",
+          "searchQuery": "Muzeo Museum and Cultural Center",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Pizza Press",
+          "description": "Enjoy a delicious lunch at The Pizza Press, where you can customize your own pizza with fresh ingredients. It's a casual dining experience that kids will love!",
+          "searchQuery": "The Pizza Press",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Old Towne Orange",
+          "description": "Stroll through the charming streets of Old Towne Orange, filled with unique shops and boutiques. This area is perfect for finding Disney-themed merchandise and other souvenirs.",
+          "searchQuery": "Old Towne Orange",
+          "locationEn": "Orange, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit the Orange Circle Antique Mall",
+          "description": "Discover a treasure trove of vintage items and collectibles at the Orange Circle Antique Mall. It's a fun place to hunt for unique Disney memorabilia and other quirky finds.",
+          "searchQuery": "Orange Circle Antique Mall",
+          "locationEn": "Orange, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at The Filling Station Cafe",
+          "description": "Wrap up your day with a cozy dinner at The Filling Station Cafe, known for its comfort food and welcoming atmosphere. It's a great spot to relax and reflect on your day.",
+          "searchQuery": "The Filling Station Cafe",
+          "locationEn": "Orange, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening stroll at the Anaheim GardenWalk",
+          "description": "Take a leisurely evening stroll at the Anaheim GardenWalk, where you can enjoy the vibrant atmosphere, shop for last-minute souvenirs, and perhaps catch a live performance.",
+          "searchQuery": "Anaheim GardenWalk",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "John Wayne Airport, Anaheim",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Washington D.C. (Dulles International Airport)",
+          "time": "18:00"
+        },
+        "duration": "5h",
+        "memo": "Direct flight back to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Denny's",
+          "description": "Start your day with a hearty breakfast at Denny's, where you can enjoy classic American breakfast options like pancakes, eggs, and bacon. It's a family-friendly spot that will fuel you up for the day ahead.",
+          "searchQuery": "Denny's Anaheim",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Visit Disneyland Resort",
+          "description": "Spend your morning at the iconic Disneyland Resort. Explore the magical world of Disney, enjoy thrilling rides, and meet your favorite characters. Make sure to grab some fun merchandise to take home!",
+          "searchQuery": "Disneyland Park",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Plaza Inn",
+          "description": "Enjoy a delicious lunch at Plaza Inn, famous for its hearty fried chicken and family-friendly atmosphere. It's conveniently located within Disneyland, so you can refuel without missing any fun!",
+          "searchQuery": "Plaza Inn Disneyland",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Downtown Disney District",
+          "description": "After lunch, head to the Downtown Disney District for some shopping and entertainment. Browse through unique shops for Disney merchandise and enjoy the vibrant atmosphere. Don't forget to check out the live entertainment!",
+          "searchQuery": "Downtown Disney District",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Relax at the hotel pool",
+          "description": "Take some time to relax at your hotel pool before your flight. It's a great way to unwind and enjoy the California sunshine with your family.",
+          "searchQuery": "Anaheim hotel pool",
+          "locationEn": "Anaheim, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Head to John Wayne Airport",
+          "description": "Make your way to John Wayne Airport for your flight back to Washington D.C. Ensure you arrive with enough time to check in and go through security.",
+          "searchQuery": "John Wayne Airport",
+          "locationEn": "Anaheim, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

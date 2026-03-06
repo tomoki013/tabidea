@@ -1,0 +1,424 @@
+{
+  "id": "0c54f1d3-5531-4fdb-b9bd-c78177dc60d7",
+  "destination": "チェンマイ",
+  "description": "チェンマイの魅力を存分に味わう5日間の旅へようこそ。歴史ある寺院、絶景の山々、そして可愛らしい雑貨屋さんが点在するこの街で、友人と共にゆったりとした時間を過ごしましょう。特に、夜空に舞い上がるランタン祭りの幻想的な光景は、心に残る思い出となることでしょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "チェンマイ到着と旧市街散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "チェンマイのカフェで、タイの伝統的な朝食を楽しみます。カオソーイやフルーツサラダなど、地元の味を堪能しましょう。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ワット・プラシン",
+          "description": "チェンマイのシンボルとも言える美しい寺院、ワット・プラシンを訪れます。金色の仏像と荘厳な建築に心を奪われることでしょう。",
+          "searchQuery": "Wat Phra Singh",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "旧市街でランチ",
+          "description": "旧市街のローカルレストランで、タイ料理のランチを楽しみます。特に、パッタイやトムヤムクンはおすすめです。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "旧市街散策",
+          "description": "歴史的な建物やカフェが立ち並ぶ旧市街をゆっくり散策します。かわいい雑貨屋さんやアートギャラリーも見逃せません。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "カフェ巡り",
+          "description": "おしゃれなカフェで一息。チェンマイには個性的なカフェがたくさんあり、コーヒーやスイーツを楽しみながらリラックスできます。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ナイトバザール散策",
+          "description": "夕方からはナイトバザールへ。地元の手作り雑貨やお土産を探しながら、活気ある雰囲気を楽しみましょう。",
+          "searchQuery": "Chiang Mai Night Bazaar",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ナイトバザールでディナー",
+          "description": "ナイトバザール内の屋台で、タイのストリートフードを楽しみます。特に、サテやフライドバナナは絶品です。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "寺院巡りとカフェタイム",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "チェンマイのホテルで、タイの伝統的な朝食を楽しみます。カオソーイやフルーツが盛りだくさんのビュッフェスタイルで、エネルギーをチャージしましょう。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ワット・チェディルアン",
+          "description": "チェンマイの中心に位置するワット・チェディルアンを訪れます。壮大なチェディと静かな雰囲気の中で、タイの歴史を感じることができます。特に朝の光の中での参拝は格別です。",
+          "searchQuery": "Wat Chedi Luang",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "カフェでランチ",
+          "description": "地元の人気カフェで、タイ風のサンドイッチやスムージーを楽しみます。おしゃれなインテリアの中で、リラックスした時間を過ごしましょう。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ワット・スアンドーク",
+          "description": "美しい庭園に囲まれたワット・スアンドークを訪れます。ここでは、仏塔とともに素晴らしい景色を楽しむことができ、写真撮影にも最適です。",
+          "searchQuery": "Wat Suan Dok",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "雑貨屋巡り",
+          "description": "チェンマイのかわいい雑貨屋を巡ります。手作りのアクセサリーやタイの伝統的な工芸品を見つけることができる楽しい時間です。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "カフェで休憩",
+          "description": "おしゃれなカフェで、タイのデザートやコーヒーを楽しみながら、友人とゆったりとした時間を過ごします。特に、マンゴーともち米のデザートはおすすめです。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ランタン祭りの景色を楽しむ",
+          "description": "夜になると、ランタン祭りの美しい光景が広がります。空に舞い上がるランタンを見上げながら、幻想的な雰囲気を楽しみましょう。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "絶景のドイステープと雑貨屋巡り",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "チェンマイのホテルで、タイの伝統的な朝食を楽しみます。カオソーイやフルーツが並ぶビュッフェスタイルで、エネルギーをチャージしましょう。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ドイステープ寺院訪問",
+          "description": "チェンマイのシンボル、ドイステープ寺院へ。美しい山の中に位置し、寺院からの眺望は圧巻です。朝の静けさの中で、心を落ち着けるひとときを過ごしましょう。",
+          "searchQuery": "Wat Phra That Doi Suthep",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のカフェでランチ",
+          "description": "ドイステープから戻った後、地元のカフェでランチを楽しみます。新鮮なサラダやタイ風のサンドイッチが人気です。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "雑貨屋巡り",
+          "description": "チェンマイのかわいい雑貨屋を巡ります。手作りのアクセサリーやタイの伝統的な工芸品が揃っており、素敵なお土産を見つけるチャンスです。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "地元マーケット散策",
+          "description": "地元のマーケットを訪れ、タイの食材や手作りの品々を見て回ります。活気ある雰囲気の中で、地元の人々との交流も楽しめます。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ランタン祭りの景色を楽しむ",
+          "description": "夕方からはランタン祭りの準備が始まります。美しいランタンが空に舞い上がる様子を見ながら、特別な夜を過ごしましょう。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "チェンマイの地元料理を楽しめるレストランでディナー。カオソーイやラープなど、タイの味を堪能しましょう。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ランタン祭りの準備と夜の楽しみ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "チェンマイのホテルで、タイの伝統的な朝食を楽しみます。カオソーイやフルーツサラダなど、地元の味を堪能して一日をスタートしましょう。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ランタン祭り会場の下見",
+          "description": "ランタン祭りが行われる会場を訪れ、準備の様子を見学します。美しいランタンが空に舞い上がる瞬間を想像しながら、ワクワク感を高めましょう。",
+          "searchQuery": "Yi Peng Lantern Festival",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のカフェでランチ",
+          "description": "おしゃれなカフェで、タイ風サンドイッチやスムージーを楽しみます。リラックスした雰囲気の中で、友人と楽しい会話を交わしましょう。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "雑貨屋巡り",
+          "description": "チェンマイのかわいい雑貨屋を巡ります。手作りのアクセサリーやタイシルク製品など、ユニークなお土産を見つける楽しみがあります。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ナイトバザールで夕食",
+          "description": "ナイトバザールで、屋台の美味しい料理を楽しみます。タイのストリートフードを堪能しながら、賑やかな雰囲気を満喫しましょう。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ランタン祭りの参加",
+          "description": "いよいよランタン祭りの始まりです。美しいランタンを空に放ち、幻想的な光景を楽しみましょう。友人と一緒に特別な思い出を作ります。",
+          "searchQuery": "Yi Peng Lantern Festival",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "チェンマイの思い出を胸に帰路へ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "チェンマイのカフェで、タイの伝統的な朝食を楽しみます。カオソーイやフルーツサラダでエネルギーをチャージしましょう。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "旧市街散策",
+          "description": "チェンマイの旧市街をゆっくり散策。美しい寺院や歴史的な建物を見ながら、地元の雰囲気を楽しみます。特にワット・プラシンは必見です。",
+          "searchQuery": "Wat Phra Singh",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "カフェでランチ",
+          "description": "おしゃれなカフェでランチを楽しみます。地元のコーヒーと共に、サンドイッチやサラダを味わいましょう。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "雑貨屋巡り",
+          "description": "チェンマイのかわいい雑貨屋を巡ります。手作りのアクセサリーやタイの伝統工芸品を見つける楽しみがあります。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ランタン祭りの景色を楽しむ",
+          "description": "夕方までの時間を利用して、ランタン祭りの準備を見学。美しいランタンが空に舞い上がる様子を楽しみましょう。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕食",
+          "description": "地元のレストランでタイ料理の夕食を楽しみます。特に、トムヤムクンやパッタイは外せません。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ランタン祭り参加",
+          "description": "いよいよランタン祭りのメインイベント。自分のランタンを空に放ち、幻想的な光景を楽しみましょう。",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

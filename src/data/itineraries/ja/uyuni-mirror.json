@@ -1,0 +1,817 @@
+{
+  "id": "b2a7dbe5-79e1-4a62-909d-99f0666e7b00",
+  "destination": "ウユニ",
+  "description": "ウユニの大地は、まるで別世界のような絶景が広がっています。特に、ウユニ塩湖の鏡張りの景色は、訪れる人々を魅了し、心に残る瞬間を提供してくれます。星空の下でのキャンプや、地元の文化を体験する冒険が待っています。友人と共に、自然の美しさを存分に楽しむ旅に出かけましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からウユニへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ウユニ",
+          "time": "12:30"
+        },
+        "duration": "3h 30m",
+        "memo": "直行便でウユニへ向かいます。"
+      },
+      "activities": [
+        {
+          "time": "13:00",
+          "activity": "ウユニ塩湖観光",
+          "description": "ウユニ塩湖に到着したら、まずはその絶景を堪能しましょう。特に鏡張りの時期には、空が湖面に映り込む幻想的な光景が広がります。",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "塩のホテル見学",
+          "description": "ウユニの名物、塩のホテルを訪れます。塩でできた独特の建築を見学し、写真撮影を楽しんでください。",
+          "searchQuery": "Hotel Palacio de Sal",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "夕日鑑賞",
+          "description": "ウユニ塩湖での夕日鑑賞は必見です。夕焼けに染まる湖面は、まるで別世界のような美しさです。",
+          "searchQuery": "Salar de Uyuni Sunset",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランで夕食",
+          "description": "ウユニの地元料理を楽しむために、評判の良いレストランで夕食を取ります。ボリビアの伝統的な料理を味わいましょう。",
+          "searchQuery": "Minuteman Revolutionary Pizza",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "星空観賞",
+          "description": "ウユニの夜空は星が非常に美しく見えます。塩湖の上で星空を見上げ、流れ星を探してみましょう。",
+          "searchQuery": "Salar de Uyuni Stargazing",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ウユニ塩湖の絶景",
+      "activities": [
+        {
+          "time": "06:30",
+          "activity": "ウユニ塩湖で日の出鑑賞",
+          "description": "ウユニ塩湖の広大な白い大地に、朝日が昇る瞬間を目撃します。湖面が鏡のように反射する美しい光景は、まさに息を呑むほどの絶景です。",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "地元の食材を使った朝食を楽しみながら、今日の冒険に備えます。特に、ボリビアのパンやフルーツは絶品です。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ウユニ塩湖ツアー",
+          "description": "ウユニ塩湖を巡るツアーに参加し、塩のホテルや奇岩群を訪れます。特に、塩のホテルはユニークな体験です。",
+          "searchQuery": "Salt Hotel",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ツアー中のランチ",
+          "description": "ツアーの途中で、地元の食材を使ったランチを楽しみます。特に、ボリビアの伝統料理を味わうチャンスです。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ウユニ塩湖でのフォトセッション",
+          "description": "鏡張りのウユニ塩湖で、友人と一緒にフォトジェニックな写真を撮影します。特に、夕方の光が湖面を美しく照らします。",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ウユニ塩湖での夕日鑑賞",
+          "description": "夕日が沈む瞬間、湖面がオレンジ色に染まる美しい光景を楽しみます。心に残る瞬間を友人と共有しましょう。",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "星空観賞",
+          "description": "ウユニ塩湖の広大な空の下で、満天の星空を楽しみます。特に、星座を探したり、流れ星を見つけたりするのが楽しいです。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルでディナー",
+          "description": "ウユニのホテルで、地元の料理を楽しむディナー。特に、ボリビアのワインと共に味わう料理は格別です。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "鏡張りのウユニ塩湖",
+      "activities": [
+        {
+          "time": "06:30",
+          "activity": "ウユニ塩湖での朝日鑑賞",
+          "description": "早朝、ウユニ塩湖で美しい朝日を迎えます。湖面が鏡のように反射する光景は、まるで夢の中にいるかのよう。静寂の中でのひとときを楽しんでください。",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ウユニのホテルで、ボリビアの伝統的な朝食を楽しみます。新鮮なフルーツやパン、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ウユニ塩湖観光",
+          "description": "ウユニ塩湖の広大な景色を堪能します。特に鏡張りの時期には、幻想的な風景が広がり、フォトジェニックな写真が撮れます。",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ウユニのレストランでランチ",
+          "description": "地元のレストランで、ボリビア料理を楽しみます。特に、サルテーニャ（肉入りパイ）は絶品です。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ウユニ塩湖でのフォトセッション",
+          "description": "鏡張りのウユニ塩湖で、友人と一緒にフォトセッションを楽しみます。ユニークなポーズやアイデアで、素敵な思い出を残しましょう。",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ウユニ塩湖での夕日鑑賞",
+          "description": "夕暮れ時、ウユニ塩湖での夕日を楽しみます。湖面に映るオレンジ色の空は、心に残る美しい瞬間です。",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "星空観賞",
+          "description": "夜はウユニ塩湖で星空を観賞します。空一面に広がる星々は、まるで手が届きそうなほど近く感じられます。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "ホテルでディナー",
+          "description": "ウユニのホテルで、地元の食材を使ったディナーを楽しみます。ボリビアのワインと共に、素敵な夜を締めくくりましょう。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ウユニの星空",
+      "activities": [
+        {
+          "time": "06:00",
+          "activity": "ウユニ塩湖で日の出観賞",
+          "description": "ウユニ塩湖の美しい日の出を楽しむために早起き。湖面が朝日で輝く様子は、まるで夢の中にいるような幻想的な光景です。",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "地元の食材を使った朝食を楽しみながら、今日の冒険に備えます。特に、ボリビアのパンやフルーツは絶品です。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ウユニ塩湖で鏡張りの写真撮影",
+          "description": "ウユニ塩湖の広大な白い大地が水を含んで鏡のようになる瞬間を捉えます。特に雨季のこの時期は、幻想的な風景が広がります。",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ウユニの地元料理を楽しめるレストランで、ボリビアの伝統的な料理を味わいます。特に、サルテーニャ（肉入りパイ）はおすすめです。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ウユニ塩湖の観光",
+          "description": "ウユニ塩湖の中を散策し、独特の地形や風景を楽しみます。特に、塩の結晶が作り出す模様はフォトジェニックです。",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "夕日観賞",
+          "description": "ウユニ塩湖での夕日観賞は、特に美しい瞬間です。湖面に映る夕焼けの色合いは、心に残る思い出となるでしょう。",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "星空観賞",
+          "description": "ウユニの澄んだ空気の中で、満天の星空を楽しみます。特に、天の川が見える時期は絶好の観賞チャンスです。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "今日の冒険を振り返りながら、ホテルに戻ります。明日の計画を立てるのも楽しみの一つです。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "トレッキングと自然探訪",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ウユニのホテルで、ボリビアの伝統的な朝食を楽しみます。新鮮なフルーツやパン、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ウユニ塩湖でのトレッキング",
+          "description": "ウユニ塩湖の広大な白い大地を歩きながら、絶景の中でのトレッキングを楽しみます。特に、鏡張りの時期には幻想的な風景が広がります。",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ウユニの地元のレストランで、ボリビア料理を堪能します。特に、サルテーニャ（肉入りパイ）が絶品です。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "トレッキング続行",
+          "description": "午後も引き続きウユニ塩湖を探索。特に、塩の結晶や独特の地形を観察しながら、フォトジェニックなスポットを見つけましょう。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ウユニ塩湖でのサンセット観賞",
+          "description": "ウユニ塩湖での美しい夕日を眺めます。夕日が湖面に映る様子は、まるで夢の中にいるような美しさです。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "星空観賞",
+          "description": "夜はウユニ塩湖で星空を楽しみます。空一面に広がる星々は、都会では味わえない圧倒的な美しさです。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "ホテルでディナー",
+          "description": "ホテルに戻り、地元の食材を使ったディナーを楽しみます。ボリビアのワインと共に、旅の疲れを癒しましょう。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ウユニの文化体験",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ウユニのホテルで、地元の食材を使った朝食を楽しみます。新鮮なフルーツやパン、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ウユニ塩湖での鏡張り体験",
+          "description": "ウユニ塩湖の広大な白い大地が、空を映し出す美しい鏡のような景色を楽しみます。特に雨季のこの時期は、幻想的な写真が撮れる絶好のチャンスです。",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ウユニの地元のレストランで、ボリビアの伝統料理を味わいます。特に、サルテーニャ（肉入りパイ）は絶品です。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "地元の村訪問",
+          "description": "ウユニ近郊の村を訪れ、地元の人々の生活や文化に触れます。手作りの工芸品や伝統的な料理を体験できるチャンスです。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ウユニ塩湖での夕日鑑賞",
+          "description": "ウユニ塩湖での夕日を眺めながら、日が沈む瞬間の美しさを堪能します。空がオレンジ色に染まる様子は、心に残る思い出になるでしょう。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "星空観賞",
+          "description": "ウユニの澄んだ空気の中で、満天の星空を楽しみます。特に、天の川が見える時期には、星座を探しながらロマンチックなひとときを過ごせます。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻り、ディナー",
+          "description": "ホテルに戻り、地元の食材を使ったディナーを楽しみます。ウユニの夜を締めくくる素敵な食事です。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "ウユニからラパスへ",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "ウユニ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ラパス",
+          "time": "13:00"
+        },
+        "duration": "4h",
+        "memo": "ウユニからラパスへのバス移動。美しい風景を楽しみながらの移動です。"
+      },
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "ホテルで朝食",
+          "description": "ウユニのホテルで、地元の食材を使った朝食を楽しみます。特に、ボリビアのパンやフルーツが美味しいです。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "ウユニ塩湖での写真撮影",
+          "description": "ウユニ塩湖の広大な白い大地で、鏡張りの絶景を撮影します。特に朝の光が反射する時間帯は、幻想的な写真が撮れるチャンスです。",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ウユニでランチ",
+          "description": "ウユニの地元のレストランで、ボリビア料理を楽しみます。特に、サルテーニャ（肉入りパイ）は絶品です。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ラパスへ移動",
+          "description": "ウユニからラパスへ向かうバスに乗ります。途中の風景を楽しみながら、約4時間の旅です。",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ラパス市街地散策",
+          "description": "ラパスの市街地を散策し、地元のマーケットやカラフルな建物を楽しみます。特に、ワイナ・パチャの市場は見逃せません。",
+          "searchQuery": "Wina Pacha Market",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ラパスでディナー",
+          "description": "ラパスの人気レストランで、ボリビアの伝統料理を堪能します。特に、クイ（モルモット）の料理は一度試してみる価値あり。",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "星空観賞",
+          "description": "ラパスの郊外で星空を観賞します。高地に位置するラパスでは、澄んだ空気の中で美しい星々が広がります。",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "ラパス観光",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "ラパス",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "月の谷",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "ラパスから月の谷へのバス移動。美しい風景を楽しみながらの移動です。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "月の谷",
+          "description": "ラパス近郊の月の谷で、独特な岩の形成を楽しみましょう。まるで月面にいるかのような風景が広がり、フォトジェニックなスポットがたくさんあります。",
+          "searchQuery": "Valle de la Luna",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ラパスの地元料理を楽しめるレストランで、ボリビアの伝統的な料理を味わいましょう。特に、サルテーニャ（肉入りパイ）は絶品です。",
+          "searchQuery": "local restaurant La Paz",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ラパスの市場散策",
+          "description": "地元の人々が集まる市場を訪れ、色とりどりの食材や手工芸品を見て回ります。お土産探しにもぴったりの場所です。",
+          "searchQuery": "Mercado de las Brujas",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ラパスの展望台で夕日鑑賞",
+          "description": "ラパスの美しい夕日を展望台から眺めましょう。街がオレンジ色に染まる瞬間は、心に残る思い出になります。",
+          "searchQuery": "Mirador Killi Killi",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "星空観賞",
+          "description": "ウユニ塩湖へ移動し、夜空に広がる星々を楽しみます。鏡張りの塩湖に映る星空は、まさに絶景です。",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 9,
+      "title": "ラパスから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ラパス",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "18:00"
+        },
+        "duration": "12h",
+        "memo": "ラパスから東京への直行便。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ラパスのホテルで、ボリビアの伝統的な朝食を楽しみます。新鮮なフルーツやパン、コーヒーでエネルギーをチャージ。",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ウユニ塩湖への日帰りツアー",
+          "description": "ウユニ塩湖の絶景を求めて、日帰りツアーに参加します。鏡張りの湖面が広がる幻想的な風景を堪能し、フォトジェニックなスポットでの撮影タイムも。",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ウユニでランチ",
+          "description": "ウユニの地元のレストランで、ボリビア料理を楽しみます。特に、サルテーニャ（肉入りパイ）が人気です。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ウユニ塩湖での撮影",
+          "description": "午後はウユニ塩湖での撮影タイム。特に夕方の光が湖面に反射する瞬間は絶景です。",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "星空観賞",
+          "description": "日が沈んだ後、ウユニ塩湖での星空観賞。空一面に広がる星々は、まるで別世界にいるかのような美しさです。",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ウユニからラパスへ移動",
+          "description": "ツアーが終わったら、ラパスへ戻ります。移動中に美しい夕焼けを楽しむことができるかもしれません。",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

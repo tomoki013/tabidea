@@ -1,0 +1,645 @@
+{
+  "id": "a44401be-97b9-4507-9dec-af49cb0f47b7",
+  "destination": "San Francisco",
+  "description": "Escape to the vibrant city of San Francisco, where the iconic Golden Gate Bridge meets the rich tapestry of culture and history. This 7-day adventure is designed for couples who are passionate about exploring the local scene, indulging in unique activities, and immersing themselves in the heart of NBA fandom. From the bustling streets of Chinatown to the serene beauty of Golden Gate Park, each day promises a blend of excitement and relaxation, with plenty of opportunities to shop for your favorite team merchandise and enjoy the local culinary delights.",
+  "heroImage": "https://images.unsplash.com/photo-1693126322822-621e1ea0d06d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI0MTR8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Mo",
+  "heroImagePhotographerUrl": "https://unsplash.com/@mo_design_3d?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in San Francisco",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Mama's on Washington Square",
+          "description": "Start your day with a delicious breakfast at Mama's, known for its fresh ingredients and homemade dishes. Try their famous French toast or crab omelet for a true San Francisco experience.",
+          "searchQuery": "Mama's on Washington Square",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Fisherman's Wharf",
+          "description": "Explore the bustling Fisherman's Wharf, where you can enjoy street performances, visit the sea lions at Pier 39, and indulge in some clam chowder served in a sourdough bread bowl.",
+          "searchQuery": "Fisherman's Wharf",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Boudin Bakery",
+          "description": "Enjoy a casual lunch at Boudin Bakery, famous for its sourdough bread. Don't miss the chance to watch the bakers at work through the glass windows.",
+          "searchQuery": "Boudin Bakery",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Pier 39",
+          "description": "Stroll through Pier 39, where you can shop for NBA merchandise at the official team store, enjoy street performers, and take in the views of the Bay.",
+          "searchQuery": "Pier 39",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the San Francisco Museum of Modern Art (SFMOMA)",
+          "description": "Immerse yourself in contemporary art at SFMOMA, one of the largest modern art museums in the country. The museum features works by renowned artists and often hosts special exhibitions.",
+          "searchQuery": "San Francisco Museum of Modern Art",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Stinking Rose",
+          "description": "Savor a unique dining experience at The Stinking Rose, a garlic-themed restaurant. Their signature dishes are infused with garlic, making for a flavorful meal.",
+          "searchQuery": "The Stinking Rose",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll along the Embarcadero",
+          "description": "End your day with a romantic stroll along the Embarcadero, enjoying the views of the Bay Bridge illuminated at night. It's a perfect way to unwind after a busy day.",
+          "searchQuery": "Embarcadero",
+          "locationEn": "San Francisco, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "NBA Culture and Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Mama's on Washington Square",
+          "description": "Start your day with a delicious breakfast at Mama's, known for its fresh ingredients and homemade dishes. Try their famous French toast or crab omelet for a true San Francisco treat!",
+          "searchQuery": "Mama's on Washington Square",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Chase Center",
+          "description": "Head over to the Chase Center, home of the Golden State Warriors. Take a guided tour to learn about the team's history and see the impressive arena up close. Don't forget to check out the Warriors' championship banners!",
+          "searchQuery": "Chase Center",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Mission District",
+          "description": "Explore the vibrant Mission District and grab lunch at one of the local taquerias. Try the famous Mission-style burrito at La Taqueria or El Farolito for a filling and flavorful meal.",
+          "searchQuery": "La Taqueria",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Mission District Murals",
+          "description": "After lunch, take a stroll through the Mission District to admire the stunning street art and murals that tell the story of the neighborhood's culture and history. Don't miss the iconic Balmy Alley!",
+          "searchQuery": "Mission District Murals",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for NBA Merchandise",
+          "description": "Visit the Warriors Team Store at Chase Center or check out local sports shops in the area for exclusive NBA merchandise and fan gear. It's the perfect opportunity to grab some souvenirs!",
+          "searchQuery": "Warriors Team Store",
+          "locationEn": "San Francisco, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Stinking Rose",
+          "description": "Enjoy a unique dining experience at The Stinking Rose, a garlic-themed restaurant. Indulge in their famous garlic dishes, including garlic-infused pasta and roasted garlic bulbs, for a flavorful end to your day.",
+          "searchQuery": "The Stinking Rose",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk at Embarcadero",
+          "description": "End your day with a leisurely walk along the Embarcadero. Enjoy the stunning views of the Bay Bridge illuminated at night and soak in the vibrant atmosphere of the waterfront.",
+          "searchQuery": "Embarcadero",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Mama's on Washington Square",
+          "description": "Start your day with a delicious breakfast at Mama's, known for its fresh ingredients and homemade dishes. Try their famous French toast or crab omelet for a true San Francisco treat!",
+          "searchQuery": "Mama's on Washington Square",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Chase Center",
+          "description": "Explore the Chase Center, home of the Golden State Warriors. Take a guided tour to learn about the team's history and see the impressive arena up close. Don't forget to check out the Warriors' merchandise store for some fan gear!",
+          "searchQuery": "Chase Center",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Creamery",
+          "description": "Enjoy a casual lunch at The Creamery, where you can savor classic American comfort food. Their burgers and milkshakes are a must-try!",
+          "searchQuery": "The Creamery",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Chinatown",
+          "description": "Stroll through San Francisco's vibrant Chinatown, the oldest in North America. Visit local shops for unique souvenirs and fan merchandise, and don't miss the iconic Dragon Gate!",
+          "searchQuery": "Chinatown San Francisco",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Golden Gate Park",
+          "description": "Take a leisurely walk in Golden Gate Park, where you can enjoy beautiful gardens and scenic views. Stop by the Japanese Tea Garden for a peaceful experience and some great photo opportunities.",
+          "searchQuery": "Golden Gate Park",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at House of Prime Rib",
+          "description": "Indulge in a hearty dinner at House of Prime Rib, famous for its classic prime rib served with all the traditional sides. Make sure to reserve a table in advance!",
+          "searchQuery": "House of Prime Rib",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Attend an NBA Game at Chase Center",
+          "description": "End your day with an exhilarating NBA game at the Chase Center. Experience the excitement of live basketball and cheer for the Golden State Warriors!",
+          "searchQuery": "Golden State Warriors",
+          "locationEn": "San Francisco, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Nature and Relaxation",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Mama's on Washington Square",
+          "description": "Start your day with a delicious breakfast at Mama's, known for its fresh ingredients and homemade dishes. Try their famous French toast or crab omelet for a true San Francisco treat!",
+          "searchQuery": "Mama's on Washington Square",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Golden Gate Park",
+          "description": "Explore the vast expanse of Golden Gate Park, where you can stroll through beautiful gardens, visit the de Young Museum, or relax by Stow Lake. Don't miss the Japanese Tea Garden for a serene experience.",
+          "searchQuery": "Golden Gate Park",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Park Chalet",
+          "description": "Enjoy a casual lunch at Park Chalet, located right at the edge of the park. Their menu features fresh seafood and local ingredients, with a lovely view of the ocean.",
+          "searchQuery": "Park Chalet",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Ocean Beach",
+          "description": "Take a leisurely walk along Ocean Beach, where you can enjoy the sound of the waves and the stunning views of the Pacific Ocean. It's a perfect spot for a romantic stroll or to simply relax on the sand.",
+          "searchQuery": "Ocean Beach",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the California Academy of Sciences",
+          "description": "Head to the California Academy of Sciences, where you can explore an aquarium, planetarium, and natural history museum all under one roof. It's an engaging experience for both of you!",
+          "searchQuery": "California Academy of Sciences",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at The Stinking Rose",
+          "description": "Indulge in a unique dining experience at The Stinking Rose, famous for its garlic-infused dishes. Try their garlic roasted prime rib or garlic ice cream for a fun twist!",
+          "searchQuery": "The Stinking Rose",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "NBA Merchandise Shopping at the Chase Center",
+          "description": "End your day with a visit to the Chase Center, home of the Golden State Warriors. Check out the team store for exclusive NBA merchandise and souvenirs to take home!",
+          "searchQuery": "Chase Center",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Shopping and Local Flavors",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Mama's on Washington Square",
+          "description": "Start your day with a hearty breakfast at Mama's, famous for its delicious French toast and crab omelets. The cozy atmosphere and friendly service make it a perfect spot to fuel up for a day of exploration.",
+          "searchQuery": "Mama's on Washington Square",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Chase Center",
+          "description": "Head to the Chase Center, home of the Golden State Warriors. Take a guided tour to learn about the team's history and see the impressive arena. If you're lucky, you might catch a glimpse of a practice session!",
+          "searchQuery": "Chase Center",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Bird",
+          "description": "Enjoy a casual lunch at The Bird, known for its mouthwatering fried chicken sandwiches. It's a local favorite and a great place to relax before continuing your day.",
+          "searchQuery": "The Bird",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Shopping at Union Square",
+          "description": "Spend the afternoon shopping in Union Square, where you can find a variety of stores, including those selling NBA merchandise. Don't forget to check out the local boutiques for unique finds!",
+          "searchQuery": "Union Square",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Haight-Ashbury",
+          "description": "Stroll through the iconic Haight-Ashbury district, known for its vibrant history and eclectic shops. Look for vintage stores and local art galleries, and soak in the bohemian atmosphere.",
+          "searchQuery": "Haight-Ashbury",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Stinking Rose",
+          "description": "Indulge in a unique dining experience at The Stinking Rose, a garlic-themed restaurant. Try their famous garlic dishes and enjoy the quirky decor that celebrates this flavorful ingredient.",
+          "searchQuery": "The Stinking Rose",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk at Pier 39",
+          "description": "End your day with a leisurely walk at Pier 39. Enjoy the lively atmosphere, watch the sea lions, and take in the stunning views of the Bay. It's a perfect way to unwind after a busy day.",
+          "searchQuery": "Pier 39",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Exploring Beyond the City",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Mama's on Washington Square",
+          "description": "Start your day with a delicious breakfast at Mama's, known for its fresh ingredients and homemade dishes. Try their famous French toast or crab omelet for a true San Francisco treat!",
+          "searchQuery": "Mama's on Washington Square",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Muir Woods National Monument",
+          "description": "Take a short drive to Muir Woods, where you can stroll among towering redwoods and enjoy the serene beauty of nature. The trails are well-marked, making it easy to explore this stunning forest.",
+          "searchQuery": "Muir Woods National Monument",
+          "locationEn": "Mill Valley, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Pelican Inn",
+          "description": "Enjoy a cozy lunch at The Pelican Inn, a charming British-style pub near Muir Woods. Their fish and chips are a must-try, and the atmosphere is perfect for a relaxing meal after your hike.",
+          "searchQuery": "The Pelican Inn",
+          "locationEn": "Muir Beach, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Sausalito",
+          "description": "After lunch, head to Sausalito, a picturesque waterfront town. Stroll along the marina, browse local shops, and take in the stunning views of the San Francisco skyline across the bay.",
+          "searchQuery": "Sausalito",
+          "locationEn": "Sausalito, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit the Sausalito Art Galleries",
+          "description": "Sausalito is home to many art galleries showcasing local artists. Spend some time exploring these galleries and perhaps find a unique piece to take home as a souvenir.",
+          "searchQuery": "Sausalito Art Galleries",
+          "locationEn": "Sausalito, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to San Francisco",
+          "description": "Head back to San Francisco and enjoy the scenic views along the way. You might catch a glimpse of the Golden Gate Bridge from the car!",
+          "locationEn": "San Francisco, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Cheesecake Factory",
+          "description": "End your day with dinner at The Cheesecake Factory located at Union Square. With an extensive menu and a stunning view of the city, it's a great spot to relax and enjoy a meal together.",
+          "searchQuery": "The Cheesecake Factory",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Visit the Chase Center",
+          "description": "If there's a game or event, head to the Chase Center, home of the Golden State Warriors. Experience the excitement of an NBA game and grab some fan merchandise to commemorate your visit!",
+          "searchQuery": "Chase Center",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "San Francisco International Airport",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "20:00"
+        },
+        "duration": "5h 0m",
+        "memo": "Direct flight back to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Mama's on Washington Square",
+          "description": "Start your day with a hearty breakfast at this beloved local spot known for its delicious French toast and crab omelets. It's a perfect way to fuel up before your travels!",
+          "searchQuery": "Mama's on Washington Square",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Chase Center",
+          "description": "Explore the Chase Center, home of the Golden State Warriors. You can take a guided tour to learn about the team's history and see behind-the-scenes areas. Don't forget to check out the Warriors' merchandise store for some fan gear!",
+          "searchQuery": "Chase Center",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Shopping for NBA Merchandise at the Warriors Team Store",
+          "description": "After the tour, head to the Warriors Team Store located at the Chase Center to pick up some exclusive NBA merchandise and souvenirs to remember your trip!",
+          "searchQuery": "Warriors Team Store",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Lunch at The Bird",
+          "description": "Enjoy a casual lunch at The Bird, famous for its fried chicken sandwiches. It's a great spot to relax and refuel before your flight.",
+          "searchQuery": "The Bird",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Head to San Francisco International Airport",
+          "description": "Make your way to the airport for your flight back to Washington D.C. Ensure you arrive at least two hours before your departure time.",
+          "searchQuery": "San Francisco International Airport",
+          "locationEn": "San Francisco, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

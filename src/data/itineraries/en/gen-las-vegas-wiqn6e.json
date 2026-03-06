@@ -1,0 +1,567 @@
+{
+  "id": "fe5b6b6e-f1be-4d83-bf79-6b1572e2e218",
+  "destination": "Las Vegas",
+  "description": "Escape to the dazzling city of Las Vegas, where the bright lights and vibrant energy create an unforgettable experience. Over the next six days, you and your partner will explore the cultural gems and natural wonders surrounding this iconic destination. From the bustling Strip to the serene beauty of nearby Red Rock Canyon, this trip promises a perfect blend of excitement and relaxation, all while indulging in the culinary delights that Las Vegas has to offer.",
+  "heroImage": "https://images.unsplash.com/photo-1551651943-48fd8a308fd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTUzODR8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Nikola Knezevic",
+  "heroImagePhotographerUrl": "https://unsplash.com/@nknezevic?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Las Vegas",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Egg & I",
+          "description": "Start your day with a hearty breakfast at The Egg & I, known for its delicious omelets and pancakes. It's a cozy spot to fuel up before exploring the city.",
+          "searchQuery": "The Egg & I",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit The Strip",
+          "description": "Stroll along The Strip, where you can marvel at the iconic hotels and casinos. Don't miss the Bellagio Fountains, which put on a stunning water show every half hour.",
+          "searchQuery": "Bellagio Fountains",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at In-N-Out Burger",
+          "description": "Grab a quick and tasty lunch at In-N-Out Burger, a California classic. Their burgers and fries are a must-try for any visitor.",
+          "searchQuery": "In-N-Out Burger",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Neon Museum",
+          "description": "Visit the Neon Museum, where you can see a collection of iconic Las Vegas signs. It's a great way to learn about the city's history and its vibrant culture.",
+          "searchQuery": "Neon Museum",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Fremont Street Experience",
+          "description": "Head to Fremont Street for a taste of old Las Vegas. Enjoy the vibrant atmosphere, live music, and the dazzling light show on the Viva Vision canopy.",
+          "searchQuery": "Fremont Street Experience",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Capital Grille",
+          "description": "Indulge in a fine dining experience at The Capital Grille, known for its dry-aged steaks and extensive wine list. A perfect way to unwind after a day of exploration.",
+          "searchQuery": "The Capital Grille",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Catch a Show on The Strip",
+          "description": "End your day with a spectacular show on The Strip. Whether it's Cirque du Soleil or a famous headliner, there's something for everyone.",
+          "searchQuery": "Cirque du Soleil",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Egg & I",
+          "description": "Start your day with a hearty breakfast at The Egg & I, known for its delicious omelets and pancakes. The cozy atmosphere makes it a perfect spot to fuel up for a day of exploration.",
+          "searchQuery": "The Egg & I",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "The Neon Museum",
+          "description": "Explore the vibrant history of Las Vegas at The Neon Museum, where iconic neon signs from old casinos and businesses are preserved. It's a fantastic way to appreciate the city's unique culture and history.",
+          "searchQuery": "The Neon Museum",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Modern Vegan",
+          "description": "Enjoy a delightful lunch at The Modern Vegan, a popular spot for plant-based cuisine. Their creative dishes are not only healthy but also bursting with flavor, perfect for a midday recharge.",
+          "searchQuery": "The Modern Vegan",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "The Mob Museum",
+          "description": "Dive into the fascinating world of organized crime at The Mob Museum. This interactive museum offers a deep look into the history of the mob in America, with engaging exhibits and artifacts.",
+          "searchQuery": "The Mob Museum",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Explore Fremont Street Experience",
+          "description": "Stroll through the Fremont Street Experience, a pedestrian mall known for its vibrant atmosphere, live music, and dazzling light shows. It's a great place to soak in the local culture and enjoy street performances.",
+          "searchQuery": "Fremont Street Experience",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Heart Attack Grill",
+          "description": "For a unique dining experience, head to the Heart Attack Grill, famous for its indulgent burgers and hospital-themed decor. It's a fun and quirky spot to enjoy a hearty meal.",
+          "searchQuery": "Heart Attack Grill",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk at The Strip",
+          "description": "End your day with a leisurely walk along The Strip, where you can admire the stunning lights and architecture of the famous hotels and casinos. It's a magical experience that captures the essence of Las Vegas.",
+          "searchQuery": "Las Vegas Strip",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Natural Wonders",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Egg & I",
+          "description": "Start your day with a hearty breakfast at The Egg & I, known for its delicious omelets and fresh ingredients. It's a cozy spot to fuel up before a day of adventure.",
+          "searchQuery": "The Egg & I",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Red Rock Canyon National Conservation Area",
+          "description": "Explore the stunning Red Rock Canyon, just a short drive from Las Vegas. Hike the scenic trails and marvel at the vibrant red rock formations that make this area a natural wonder.",
+          "searchQuery": "Red Rock Canyon National Conservation Area",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Blue Diamond Saloon",
+          "description": "Enjoy a casual lunch at Blue Diamond Saloon, where you can savor classic American fare in a relaxed atmosphere. Their burgers and fries are a must-try!",
+          "searchQuery": "Blue Diamond Saloon",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Spring Mountain Ranch State Park",
+          "description": "Visit Spring Mountain Ranch State Park, a beautiful area with historical significance. Take a guided tour of the historic ranch house and enjoy a leisurely walk through the picturesque grounds.",
+          "searchQuery": "Spring Mountain Ranch State Park",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Las Vegas Strip",
+          "description": "Head back to the Las Vegas Strip and take some time to explore the iconic hotels and attractions. Don't miss the Bellagio Fountains for a stunning water show!",
+          "searchQuery": "Bellagio Fountains",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Mon Ami Gabi",
+          "description": "Indulge in a romantic dinner at Mon Ami Gabi, a French bistro located at the Paris Las Vegas. Enjoy classic French dishes while overlooking the Strip's vibrant lights.",
+          "searchQuery": "Mon Ami Gabi",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Stroll on the Strip",
+          "description": "End your day with a leisurely stroll along the Las Vegas Strip. Take in the dazzling lights and lively atmosphere, and perhaps stop for a nightcap at one of the many bars.",
+          "searchQuery": "Las Vegas Strip",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Day Trip to Hoover Dam",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Egg & I",
+          "description": "Start your day with a hearty breakfast at The Egg & I, known for its delicious omelets and fresh ingredients. It's a great way to fuel up for a day of adventure!",
+          "searchQuery": "The Egg & I",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Drive to Hoover Dam",
+          "description": "Take a scenic drive to the iconic Hoover Dam, just 30 miles from Las Vegas. Enjoy the stunning views of Lake Mead along the way.",
+          "searchQuery": "Hoover Dam",
+          "locationEn": "Hoover Dam, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Explore Hoover Dam",
+          "description": "Upon arrival, take a guided tour of the Hoover Dam. Learn about its history, engineering marvels, and the impact it has on the region. Don't forget to take photos from the observation deck!",
+          "searchQuery": "Hoover Dam",
+          "locationEn": "Hoover Dam, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Hoover Dam Cafe",
+          "description": "Enjoy a casual lunch at The Hoover Dam Cafe, where you can savor classic American fare while soaking in views of the dam.",
+          "searchQuery": "The Hoover Dam Cafe",
+          "locationEn": "Hoover Dam, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Lake Mead National Recreation Area",
+          "description": "After lunch, head to Lake Mead National Recreation Area. Take a leisurely walk along the shoreline or rent a kayak to explore the beautiful waters of the lake.",
+          "searchQuery": "Lake Mead National Recreation Area",
+          "locationEn": "Lake Mead, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Return to Las Vegas",
+          "description": "Drive back to Las Vegas, reflecting on the stunning sights of the day. You might want to stop for a quick photo op at the iconic Las Vegas sign!",
+          "searchQuery": "Welcome to Fabulous Las Vegas Sign",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Mon Ami Gabi",
+          "description": "Indulge in a romantic dinner at Mon Ami Gabi, a French bistro located at the Paris Las Vegas Hotel. Enjoy classic French dishes while overlooking the Strip.",
+          "searchQuery": "Mon Ami Gabi",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll on the Las Vegas Strip",
+          "description": "Take a leisurely stroll along the Las Vegas Strip. Enjoy the vibrant lights, street performances, and perhaps catch a glimpse of the famous Bellagio Fountains show.",
+          "searchQuery": "Bellagio Fountains",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Art and Entertainment",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Mon Ami Gabi",
+          "description": "Start your day with a delightful breakfast at Mon Ami Gabi, a charming French bistro located at the Paris Las Vegas Hotel. Enjoy classic dishes like crepes and croissants while overlooking the Strip.",
+          "searchQuery": "Mon Ami Gabi",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Bellagio Gallery of Fine Art",
+          "description": "Visit the Bellagio Gallery of Fine Art, where you can immerse yourself in stunning exhibitions featuring works from renowned artists. The gallery often showcases a mix of contemporary and classic art, making it a perfect cultural stop.",
+          "searchQuery": "Bellagio Gallery of Fine Art",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Buffet at Bellagio",
+          "description": "Indulge in a lavish lunch at The Buffet at Bellagio, known for its diverse selection of international cuisines. From fresh seafood to decadent desserts, there's something for every palate.",
+          "searchQuery": "The Buffet at Bellagio",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Bellagio Conservatory & Botanical Gardens",
+          "description": "Stroll through the breathtaking Bellagio Conservatory & Botanical Gardens, where seasonal displays of flowers and plants create a stunning visual experience. It's a serene escape from the bustling Strip.",
+          "searchQuery": "Bellagio Conservatory & Botanical Gardens",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Cirque du Soleil Show - O",
+          "description": "Experience the magic of Cirque du Soleil with the mesmerizing water-themed show 'O' at the Bellagio. This performance combines acrobatics, synchronized swimming, and stunning visuals, making it a must-see in Las Vegas.",
+          "searchQuery": "Cirque du Soleil O",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Lago by Julian Serrano",
+          "description": "Enjoy a romantic dinner at Lago, where you can savor Italian cuisine with a view of the Bellagio Fountains. The vibrant atmosphere and exquisite dishes make for a perfect evening.",
+          "searchQuery": "Lago by Julian Serrano",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Bellagio Fountains Show",
+          "description": "End your day with the iconic Bellagio Fountains show. Watch as the fountains dance to music and lights, creating a spectacular display that captures the essence of Las Vegas.",
+          "searchQuery": "Bellagio Fountains",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Las Vegas",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "18:00"
+        },
+        "duration": "5h",
+        "memo": "Direct flight from Las Vegas to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Egg & I",
+          "description": "Start your day with a hearty breakfast at The Egg & I, known for its delicious omelets and pancakes. It's a cozy spot that will fuel you for the day ahead.",
+          "searchQuery": "The Egg & I Las Vegas",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Neon Museum",
+          "description": "Explore the Neon Museum, where you can see iconic Las Vegas signs from the past. The outdoor exhibition space, known as the 'Neon Boneyard', is a fantastic place to learn about the city's history through its vibrant signage.",
+          "searchQuery": "Neon Museum",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Lunch at Lotus of Siam",
+          "description": "Enjoy a delicious lunch at Lotus of Siam, often hailed as one of the best Thai restaurants in America. Their Northern Thai specialties are a must-try, and the ambiance is perfect for a relaxed meal.",
+          "searchQuery": "Lotus of Siam",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Explore the Las Vegas Arts District",
+          "description": "Stroll through the Las Vegas Arts District, where you can find local galleries, street art, and unique shops. This area showcases the creative side of Las Vegas, away from the glitz of the Strip.",
+          "searchQuery": "Las Vegas Arts District",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the Mob Museum",
+          "description": "Dive into the fascinating history of organized crime at the Mob Museum. This interactive museum offers a deep look at the impact of mobsters on Las Vegas and American history.",
+          "searchQuery": "Mob Museum",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Head to the Airport",
+          "description": "Make your way to the airport for your flight back to Washington D.C. Reflect on your amazing trip to Las Vegas as you prepare to board your flight.",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

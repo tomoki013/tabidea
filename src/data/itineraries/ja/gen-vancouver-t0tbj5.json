@@ -1,0 +1,372 @@
+{
+  "id": "0c0cc9b9-ceb7-486b-bf09-811668f59990",
+  "destination": "バンクーバー",
+  "description": "バンクーバーの美しい自然と多文化の魅力を楽しむ4日間の旅。グルメ、アート、リラックスをテーマに、友人と共に心に残る体験を満喫しましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "バンクーバー到着とダウンタウン散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "バンクーバーのカフェで、地元の新鮮な食材を使ったブレックファーストを楽しみます。特に、アボカドトーストやスムージーボウルがおすすめです。",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "スタンレーパーク散策",
+          "description": "広大なスタンレーパークを散策し、自然の美しさを満喫。特にトーテムポールや海沿いの道は絶景です。自転車を借りてサイクリングするのも楽しいですよ。",
+          "searchQuery": "Stanley Park",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "グランビルアイランドでランチ",
+          "description": "グランビルアイランドのパブリックマーケットで、地元の食材を使った料理を楽しみましょう。新鮮なシーフードやアートなスナックが揃っています。",
+          "searchQuery": "Granville Island Public Market",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "グランビルアイランドアートギャラリー訪問",
+          "description": "アート好きにはたまらない、地元アーティストの作品が展示されているギャラリーです。ユニークなアート作品を見ながら、アートの世界に浸りましょう。",
+          "searchQuery": "Granville Island Gallery",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ダウンタウン散策",
+          "description": "バンクーバーのダウンタウンを散策し、ショッピングやカフェ巡りを楽しみます。特にロブソンストリートは賑やかで、様々なお店が立ち並んでいます。",
+          "searchQuery": "Robson Street",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ダウンタウンでディナー",
+          "description": "ダウンタウンの人気レストランで、バンクーバーの多国籍料理を楽しみましょう。特にシーフード料理が評判です。",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のバンクーバー散策",
+          "description": "夜のバンクーバーを散策し、ライトアップされた街並みを楽しみます。特にカナダプレイス周辺は美しい夜景が広がります。",
+          "searchQuery": "Canada Place",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "グルメとアートの一日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "バンクーバーのホテルで、地元の食材を使った美味しい朝食を楽しみます。新鮮なフルーツやベーカリーのパンが並ぶビュッフェスタイルがおすすめです。",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "グランビルアイランド散策",
+          "description": "バンクーバーの人気スポット、グランビルアイランドへ。アートギャラリーやユニークなショップが立ち並び、地元のマーケットでは新鮮な食材や手作りのスイーツを楽しめます。",
+          "searchQuery": "Granville Island",
+          "locationEn": "Granville Island, Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "グランビルアイランドのフードコートでランチ",
+          "description": "グランビルアイランドのフードコートで、様々な料理を楽しむランチタイム。地元のシーフードやアジア料理など、選び放題です。",
+          "searchQuery": "Granville Island Public Market",
+          "locationEn": "Granville Island, Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "バンクーバー美術館訪問",
+          "description": "バンクーバー美術館で、カナダのアートや国際的な展覧会を楽しみます。特に、先住民アートのコレクションは必見です。",
+          "searchQuery": "Vancouver Art Gallery",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "イエールタウン散策",
+          "description": "イエールタウンの歴史的な街並みを散策。おしゃれなカフェやショップが立ち並び、アートな雰囲気を楽しめます。",
+          "searchQuery": "Yaletown",
+          "locationEn": "Yaletown, Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "イエールタウンでディナー",
+          "description": "イエールタウンの人気レストランで、カナダの地元料理を堪能します。特にシーフード料理が評判です。",
+          "locationEn": "Yaletown, Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "バンクーバーの夜景を楽しむ",
+          "description": "バンクーバーの美しい夜景を楽しむために、スタンレーパークへ。海と街のコントラストが素晴らしいです。",
+          "searchQuery": "Stanley Park",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "自然を満喫するリラックスデー",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "バンクーバーのホテルで、地元の食材を使った美味しい朝食を楽しみます。新鮮なフルーツやオムレツ、トーストなど、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "スタンレーパーク散策",
+          "description": "バンクーバーのシンボル、スタンレーパークを散策。美しい海岸線や緑豊かな森林の中を歩きながら、心地よい自然を満喫できます。特に、トーテムポールやビーチの景色は必見です。",
+          "searchQuery": "Stanley Park",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のカフェでランチ",
+          "description": "スタンレーパーク近くのカフェで、サンドイッチやサラダなどの軽食を楽しみます。地元のアートが飾られたおしゃれな空間で、リラックスしたひとときを過ごしましょう。",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ノースバンクーバーへ移動",
+          "description": "ノースバンクーバーへは、フェリーを利用して移動します。美しい海の景色を楽しみながら、約15分の船旅です。",
+          "locationEn": "North Vancouver, Canada",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "キャピラノ吊り橋公園",
+          "description": "キャピラノ吊り橋公園で、壮大な吊り橋を渡りながら自然の美しさを体感。周囲の森林や川の景色が素晴らしく、アドベンチャー気分を味わえます。",
+          "searchQuery": "Capilano Suspension Bridge Park",
+          "locationEn": "North Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "ノースバンクーバーのアートギャラリー訪問",
+          "description": "ノースバンクーバーにあるアートギャラリーを訪れ、地元アーティストの作品を鑑賞します。アートに触れながら、リラックスした時間を過ごしましょう。",
+          "searchQuery": "North Vancouver Art Gallery",
+          "locationEn": "North Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ノースバンクーバーでディナー",
+          "description": "地元のレストランで、新鮮なシーフードやグリル料理を楽しみます。バンクーバーの美味しい食材を使った料理を堪能し、素敵な夜を締めくくりましょう。",
+          "locationEn": "North Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "バンクーバーに戻る",
+          "description": "ディナーの後、フェリーでバンクーバーに戻ります。夜の海の景色を楽しみながら、リラックスした気分で帰路につきます。",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "バンクーバーの余韻を楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "バンクーバーのカフェで、地元の新鮮な食材を使った朝食を楽しみます。特に、アボカドトーストやスムージーボウルがおすすめです。",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "カナダプレイス散策",
+          "description": "バンクーバーのシンボル、カナダプレイスを訪れます。美しい海の景色を眺めながら、散策や写真撮影を楽しんでください。",
+          "searchQuery": "Canada Place",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ロブソンストリートでランチ",
+          "description": "バンクーバーの人気ショッピングストリート、ロブソンストリートでランチを。多彩なレストランが並び、特にアジア料理やカフェが充実しています。",
+          "searchQuery": "Robson Street",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "バンクーバー水族館",
+          "description": "バンクーバー水族館で海の生き物たちと触れ合いましょう。特に、アシカやイルカのショーは必見です。",
+          "searchQuery": "Vancouver Aquarium",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "スタンレーパーク散策",
+          "description": "スタンレーパークの美しい自然を楽しみながら、散策します。特にトーテムポールや海岸線の景色は素晴らしいです。",
+          "searchQuery": "Stanley Park",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ダウンタウンでディナー",
+          "description": "バンクーバーのダウンタウンで、地元のシーフードを楽しむディナーを。特に、サーモンやロブスター料理が人気です。",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のバンクーバーを楽しむ",
+          "description": "夜のバンクーバーを散策し、ライトアップされた街並みを楽しみます。特に、カナダプレイスの夜景は美しいです。",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

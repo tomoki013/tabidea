@@ -1,0 +1,553 @@
+{
+  "id": "8b1160e8-495d-4231-9fcc-9fb0a890b0f1",
+  "destination": "Dublin",
+  "description": "Immerse yourself in the vibrant culture and rich history of Dublin, where every corner tells a story and every pub sings a tune. Over the next six days, you and your friends will explore the city's culinary delights, historical landmarks, and lively nightlife, all while indulging in the world-famous Guinness beer. From the cobblestone streets of Temple Bar to the serene beauty of St. Stephen's Green, this trip promises an unforgettable experience filled with laughter, music, and the warm hospitality of the Irish people.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Dublin",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Woollen Mills",
+          "description": "Start your Dublin adventure with a hearty lunch at The Woollen Mills, a beloved local eatery. Enjoy traditional Irish dishes like beef and Guinness stew, all made with fresh, locally sourced ingredients. The cozy atmosphere is perfect for relaxing after your journey.",
+          "searchQuery": "The Woollen Mills",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Trinity College and the Book of Kells",
+          "description": "Visit Trinity College, home to the stunning Book of Kells, an illuminated manuscript dating back to the 9th century. The Long Room library is a breathtaking sight, filled with ancient books and a rich history that will captivate any visitor.",
+          "searchQuery": "Trinity College Dublin",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Stroll through Temple Bar",
+          "description": "Wander through the vibrant Temple Bar district, known for its cobblestone streets, colorful pubs, and lively atmosphere. This area is perfect for soaking in the local culture, with street performers and artisan shops lining the streets.",
+          "searchQuery": "Temple Bar",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Enjoy a pint at The Temple Bar Pub",
+          "description": "No visit to Dublin is complete without a pint of Guinness at The Temple Bar Pub. This iconic pub is famous for its lively atmosphere and traditional Irish music. Grab a seat, enjoy the music, and soak in the local vibe.",
+          "searchQuery": "The Temple Bar Pub",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Brazen Head",
+          "description": "For dinner, head to The Brazen Head, Ireland's oldest pub. Enjoy classic Irish fare while listening to live traditional music. The warm, welcoming atmosphere makes it a perfect spot to end your first day in Dublin.",
+          "searchQuery": "The Brazen Head",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Exploration and Pub Hopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Woollen Mills",
+          "description": "Start your day with a hearty Irish breakfast at The Woollen Mills, a cozy spot known for its locally sourced ingredients. Enjoy traditional dishes like black pudding and scrambled eggs to fuel your day of exploration.",
+          "searchQuery": "The Woollen Mills",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Trinity College and The Book of Kells",
+          "description": "Visit Trinity College, home to the stunning Book of Kells. This illuminated manuscript is a masterpiece of medieval art, and the Long Room library is a sight to behold, filled with ancient texts and a beautiful wooden interior.",
+          "searchQuery": "Trinity College Dublin",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Brazen Head",
+          "description": "Enjoy lunch at The Brazen Head, Ireland's oldest pub, dating back to 1198. Savor classic Irish dishes like beef and Guinness stew while soaking in the pub's rich history and atmosphere.",
+          "searchQuery": "The Brazen Head",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Dublin Castle",
+          "description": "Explore Dublin Castle, a historic complex that has played a central role in the history of the city. Take a guided tour to learn about its fascinating past and admire the beautiful State Apartments.",
+          "searchQuery": "Dublin Castle",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll through Temple Bar",
+          "description": "Wander through the vibrant Temple Bar district, known for its lively atmosphere, street performers, and colorful buildings. This area is perfect for taking photos and enjoying the local culture.",
+          "searchQuery": "Temple Bar",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Porterhouse",
+          "description": "Head to The Porterhouse for dinner, where you can enjoy a variety of craft beers brewed on-site. Pair your drink with delicious pub fare, such as fish and chips or a gourmet burger.",
+          "searchQuery": "The Porterhouse",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Live Music at The Temple Bar Pub",
+          "description": "End your day with a night of live music at The Temple Bar Pub. Enjoy the lively atmosphere as you sip on a pint of Guinness and listen to traditional Irish music performed by local artists.",
+          "searchQuery": "The Temple Bar Pub",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Historical Sights and Local Flavors",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Woollen Mills",
+          "description": "Start your day with a hearty Irish breakfast at The Woollen Mills, a cozy spot known for its locally sourced ingredients and traditional dishes. Enjoy a plate of eggs, sausages, and black pudding to fuel your day ahead.",
+          "searchQuery": "The Woollen Mills",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Kilmainham Gaol",
+          "description": "Explore the historic Kilmainham Gaol, a former prison that played a significant role in Irish history. Take a guided tour to learn about the political prisoners who were held here and the impact of the gaol on Ireland's fight for independence.",
+          "searchQuery": "Kilmainham Gaol",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Brazen Head",
+          "description": "Enjoy lunch at The Brazen Head, Ireland's oldest pub, where you can savor traditional Irish dishes like beef and Guinness stew. The pub's rich history and warm atmosphere make it a perfect spot to relax before your next adventure.",
+          "searchQuery": "The Brazen Head",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Guinness Storehouse Tour",
+          "description": "Dive into the world of Guinness at the Guinness Storehouse. Learn about the brewing process, the history of this iconic beer, and enjoy a pint at the Gravity Bar with stunning views of Dublin's skyline.",
+          "searchQuery": "Guinness Storehouse",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "St. James's Gate Brewery Walk",
+          "description": "Take a leisurely walk around the historic St. James's Gate Brewery area. Enjoy the vibrant atmosphere and perhaps stop by a local shop for some souvenirs or a quick snack.",
+          "searchQuery": "St. James's Gate Brewery",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Porterhouse",
+          "description": "Head to The Porterhouse for dinner, a renowned pub that offers a wide selection of craft beers and delicious pub fare. Enjoy the lively atmosphere and perhaps catch some live music while you dine.",
+          "searchQuery": "The Porterhouse",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Live Music at O'Donoghue's",
+          "description": "End your day at O'Donoghue's, a famous pub known for its traditional Irish music sessions. Enjoy a pint of Guinness while soaking in the lively tunes and the friendly atmosphere.",
+          "searchQuery": "O'Donoghue's",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Day Trip to the Irish Countryside",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Dublin",
+          "time": "08:30"
+        },
+        "arrival": {
+          "place": "Howth",
+          "time": "09:00"
+        },
+        "duration": "30m",
+        "memo": "Take a scenic DART train from Dublin to Howth for stunning coastal views."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Summit Inn",
+          "description": "Start your day with a hearty Irish breakfast at The Summit Inn, located at the top of Howth Hill. Enjoy the breathtaking views of Dublin Bay while savoring traditional dishes like black pudding and eggs.",
+          "searchQuery": "The Summit Inn",
+          "locationEn": "Howth, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Howth Cliff Walk",
+          "description": "Embark on a picturesque cliff walk around Howth. This 6km loop offers stunning views of the Irish Sea and the rugged coastline, making it a perfect way to experience the natural beauty of Ireland.",
+          "searchQuery": "Howth Cliff Walk",
+          "locationEn": "Howth, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Oar House",
+          "description": "Enjoy fresh seafood at The Oar House, a local favorite known for its delicious fish and chips and friendly atmosphere. Don't forget to try their homemade chowder!",
+          "searchQuery": "The Oar House",
+          "locationEn": "Howth, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Cliffs of Moher",
+          "description": "Travel to the iconic Cliffs of Moher, one of Ireland's most famous natural attractions. Marvel at the dramatic cliffs rising 214 meters above the Atlantic Ocean and take in the breathtaking views.",
+          "searchQuery": "Cliffs of Moher",
+          "locationEn": "Cliffs of Moher, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Dublin",
+          "description": "Head back to Dublin after a day of exploring the stunning Irish countryside. Relax and reflect on the beautiful sights you've seen.",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Brazen Head",
+          "description": "Dine at The Brazen Head, Ireland's oldest pub, where you can enjoy traditional Irish dishes and live music. It's the perfect place to unwind and soak in the lively atmosphere.",
+          "searchQuery": "The Brazen Head",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Enjoy Live Music at The Temple Bar",
+          "description": "End your day at The Temple Bar, a vibrant pub known for its live music and extensive selection of Guinness. Join the locals and enjoy a night filled with traditional Irish tunes.",
+          "searchQuery": "The Temple Bar",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Art, Music, and More Pubs",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Woollen Mills",
+          "description": "Start your day with a hearty Irish breakfast at The Woollen Mills, a cozy spot known for its locally sourced ingredients and traditional dishes. Don't miss their homemade brown bread!",
+          "searchQuery": "The Woollen Mills",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the National Gallery of Ireland",
+          "description": "Explore the National Gallery of Ireland, home to an impressive collection of European and Irish art. The gallery is free to enter, making it a perfect cultural stop to admire works by masters like Caravaggio and Van Gogh.",
+          "searchQuery": "National Gallery of Ireland",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Church Café",
+          "description": "Enjoy lunch at The Church Café, a unique venue set in a restored church. Savor their delicious pub fare while soaking in the stunning architecture and vibrant atmosphere.",
+          "searchQuery": "The Church Café",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll along Grafton Street",
+          "description": "Take a leisurely stroll down Grafton Street, Dublin's famous shopping district. Enjoy street performances and pop into local shops for unique souvenirs. It's a great way to soak up the lively atmosphere of the city.",
+          "searchQuery": "Grafton Street",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore O'Connell Street",
+          "description": "Head to O'Connell Street, the main thoroughfare of Dublin. Here, you can see the iconic Spire and the General Post Office, a historic site that played a key role in the 1916 Easter Rising.",
+          "searchQuery": "O'Connell Street",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit a Traditional Irish Pub",
+          "description": "Experience the heart of Dublin's pub culture by visiting a traditional Irish pub. Enjoy a pint of Guinness while listening to live music, immersing yourself in the local vibe. The Brazen Head, Ireland's oldest pub, is a great choice!",
+          "searchQuery": "The Brazen Head",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at The Porterhouse",
+          "description": "For dinner, head to The Porterhouse, a renowned brewpub offering a variety of craft beers and delicious food. Try their fish and chips or a hearty burger paired with a locally brewed stout.",
+          "searchQuery": "The Porterhouse",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Enjoy Live Music at Whelan's",
+          "description": "End your day at Whelan's, one of Dublin's most famous music venues. Enjoy live performances ranging from traditional Irish music to contemporary acts, all in a vibrant and welcoming atmosphere.",
+          "searchQuery": "Whelan's",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Departure from Dublin",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Dublin",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Dublin Airport",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Prepare for departure and check out of the hotel."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Woollen Mills",
+          "description": "Start your day with a hearty Irish breakfast at The Woollen Mills, a beloved local spot known for its traditional dishes and cozy atmosphere. Don't miss their homemade brown bread!",
+          "searchQuery": "The Woollen Mills",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Last-minute shopping at Grafton Street",
+          "description": "Stroll down Grafton Street, Dublin's premier shopping destination. Enjoy the lively street performances and pick up some souvenirs or local crafts from the various shops along the way.",
+          "searchQuery": "Grafton Street",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Visit Trinity College and the Book of Kells",
+          "description": "Explore the historic Trinity College, home to the famous Book of Kells. The stunning Long Room in the Old Library is a must-see, filled with ancient texts and a beautiful atmosphere.",
+          "searchQuery": "Trinity College Dublin",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Brazen Head",
+          "description": "Enjoy a traditional Irish lunch at The Brazen Head, Ireland's oldest pub. Savor classic dishes like Irish stew or fish and chips while soaking in the pub's rich history.",
+          "searchQuery": "The Brazen Head",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Relax at St. Stephen's Green",
+          "description": "Take a leisurely walk through St. Stephen's Green, a beautiful park in the heart of Dublin. It's a perfect spot to unwind and enjoy the greenery before your departure.",
+          "searchQuery": "St. Stephen's Green",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Head to Dublin Airport",
+          "description": "Make your way to Dublin Airport for your departure. Ensure you arrive with plenty of time to check in and relax before your flight.",
+          "searchQuery": "Dublin Airport",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

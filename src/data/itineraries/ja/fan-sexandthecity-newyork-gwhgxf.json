@@ -1,0 +1,548 @@
+{
+  "id": "5d2f83da-55c2-4118-b4f1-b9ccfc0f9a62",
+  "destination": "ニューヨーク",
+  "description": "セックス・アンド・ザ・シティの舞台、ニューヨークでの特別な6日間をお楽しみください。文化、歴史、アートが交錯するこの街で、あなたの推し活を満喫しながら、素敵な思い出を作りましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ニューヨーク到着とセックス・アンド・ザ・シティの世界へ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マンハッタンのスタイリッシュなカフェで、ニューヨークらしいブランチを楽しみます。エッグベネディクトやパンケーキなど、ボリューム満点のメニューが揃っています。",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "セントラルパーク散策",
+          "description": "セックス・アンド・ザ・シティの名シーンが思い起こされるセントラルパークを散策。美しい景色を楽しみながら、キャリーが歩いた道を辿ってみましょう。",
+          "searchQuery": "Central Park",
+          "locationEn": "Central Park, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "キャリーのアパート前で記念撮影",
+          "description": "キャリー・ブラッドショーのアパートがある場所で、思い出の一枚を撮影。ファンにはたまらないスポットです。周辺にはおしゃれなショップもあります。",
+          "searchQuery": "Carrie Bradshaw's Apartment",
+          "locationEn": "66 Perry St, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ランチ：セックス・アンド・ザ・シティのテーマカフェ",
+          "description": "セックス・アンド・ザ・シティのファンには必見のカフェで、特製のカクテルやデザートを楽しみながら、ドラマの思い出に浸ります。",
+          "searchQuery": "The Butter",
+          "locationEn": "Butter, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ウエストビレッジ散策",
+          "description": "セックス・アンド・ザ・シティの舞台となったウエストビレッジを散策。おしゃれなブティックやカフェが立ち並び、ショッピングやスナックを楽しむのに最適です。",
+          "searchQuery": "West Village",
+          "locationEn": "West Village, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ファングッズ購入",
+          "description": "セックス・アンド・ザ・シティの関連商品を取り扱うショップで、オリジナルグッズやお土産を探しましょう。特にキャリーのファッションアイテムは必見です。",
+          "searchQuery": "Sex and the City Merchandise",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディナー：マンハッタンの高級レストラン",
+          "description": "ニューヨークの夜景を楽しみながら、洗練された料理を提供する高級レストランでディナー。特別な夜を演出します。",
+          "searchQuery": "Le Bernardin",
+          "locationEn": "Le Bernardin, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "夜のマンハッタン散策",
+          "description": "ディナーの後は、夜のマンハッタンを散策。美しい夜景を楽しみながら、ロマンチックなひとときを過ごします。",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アートと文化を楽しむ一日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マンハッタンの高級ホテルで、アメリカンブレックファーストを楽しみます。新鮮なフルーツやオムレツ、ベーグルなど、ボリューム満点の朝食で一日をスタート。",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "メトロポリタン美術館",
+          "description": "世界的に有名なメトロポリタン美術館を訪れます。古代から現代までの膨大なコレクションを楽しみながら、アートに浸る贅沢な時間を過ごしましょう。特に印象派の作品は必見です。",
+          "searchQuery": "Metropolitan Museum of Art",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "アッパーイーストサイドでランチ",
+          "description": "アッパーイーストサイドの人気カフェでランチを楽しみます。地元の人々に愛されるサンドイッチやサラダを味わいながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Upper East Side, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "セックス・アンド・ザ・シティのショップ巡り",
+          "description": "セックス・アンド・ザ・シティのファンにはたまらない、関連ショップを巡ります。キャリーの靴やファッションアイテムを探しながら、ドラマの舞台を感じることができます。",
+          "searchQuery": "Sex and the City Shop",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "セントラルパーク散策",
+          "description": "セントラルパークでのんびりと散策します。美しい景色を楽しみながら、カップルでのんびりとした時間を過ごすのにぴったりの場所です。",
+          "searchQuery": "Central Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "マンハッタンでディナー",
+          "description": "マンハッタンの高級レストランでディナーを楽しみます。地元の新鮮な食材を使った料理を堪能し、特別な夜を演出しましょう。",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ブロードウェイとセックス・アンド・ザ・シティの名所巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マンハッタンのホテルで、ニューヨークらしいアメリカンブレックファーストを楽しみます。新鮮なフルーツやパンケーキ、ベーコンなど、エネルギーをチャージして一日をスタート！",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "セックス・アンド・ザ・シティの名所巡り",
+          "description": "セックス・アンド・ザ・シティのファンにはたまらないスポットを巡ります。まずは、サラ・ジェシカ・パーカーが経営する靴屋「SJP by Sarah Jessica Parker」を訪れ、彼女のスタイルを感じてみましょう。",
+          "searchQuery": "SJP by Sarah Jessica Parker",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ：カフェ・ル・ペック",
+          "description": "セックス・アンド・ザ・シティの撮影にも使われたカフェ・ル・ペックでランチを楽しみます。おしゃれな雰囲気の中で、サンドイッチやサラダを味わいながら、ドラマの世界に浸りましょう。",
+          "searchQuery": "Cafe Loup",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "グリニッジ・ヴィレッジ散策",
+          "description": "セックス・アンド・ザ・シティの舞台となったグリニッジ・ヴィレッジを散策。おしゃれなブティックやカフェが立ち並ぶ通りを歩きながら、地元の雰囲気を楽しみます。",
+          "locationEn": "Greenwich Village, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "セックス・アンド・ザ・シティの撮影スポット巡り",
+          "description": "ドラマの名シーンが撮影された場所を訪れます。特に、キャリーが住んでいたアパートの前で写真を撮るのは外せません！",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ブロードウェイのミュージカル観賞",
+          "description": "夕方はブロードウェイでミュージカルを観賞。人気の作品を事前に予約しておくと、特別な夜を楽しめます。",
+          "locationEn": "Broadway, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ディナー：ジョン・ダリオのレストラン",
+          "description": "ブロードウェイの近くにあるジョン・ダリオのレストランでディナー。美味しい料理とともに、素敵な夜を締めくくりましょう。",
+          "searchQuery": "John Dory Oyster Bar",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ニューヨークの街を散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マンハッタンのホテルで、アメリカンブレックファーストを楽しみます。新鮮なフルーツやパンケーキ、ベーコンなど、ボリューム満点の朝食で一日をスタートしましょう。",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ウエスト・ヴィレッジ散策",
+          "description": "ウエスト・ヴィレッジの魅力的な街並みを散策します。おしゃれなカフェやブティックが立ち並ぶエリアで、映画『セックス・アンド・ザ・シティ』の舞台にもなった場所を訪れましょう。",
+          "searchQuery": "West Village",
+          "locationEn": "West Village, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "カフェでランチ",
+          "description": "ウエスト・ヴィレッジの人気カフェで軽めのランチを楽しみます。サンドイッチやサラダ、コーヒーを味わいながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "West Village, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "チェルシーマーケット訪問",
+          "description": "チェルシーマーケットでショッピングを楽しみます。地元のアートやファングッズを探しながら、食べ歩きも楽しめるスポットです。特に『セックス・アンド・ザ・シティ』ファンにはたまらないアイテムが見つかるかも！",
+          "searchQuery": "Chelsea Market",
+          "locationEn": "Chelsea Market, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ハイライン散策",
+          "description": "ハイラインを歩きながら、ニューヨークの街を一望します。緑豊かな公園の中を散策し、アート作品や景色を楽しむことができます。",
+          "searchQuery": "High Line",
+          "locationEn": "High Line, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アートギャラリー巡り",
+          "description": "チェルシーエリアのアートギャラリーを訪れ、現代アートを楽しみます。多様な作品に触れながら、アートの世界に浸りましょう。",
+          "locationEn": "Chelsea, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "レストランでディナー",
+          "description": "マンハッタンの人気レストランでディナーを楽しみます。ニューヨークスタイルのステーキやシーフードを堪能し、特別な夜を演出しましょう。",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ニューヨークの夜を楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マンハッタンのホテルで、アメリカンブレックファーストを楽しみます。新鮮なフルーツやオムレツ、ベーコンなど、ボリューム満点の朝食で一日をスタート。",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ロックフェラーセンター観光",
+          "description": "ロックフェラーセンターを訪れ、展望台「トップ・オブ・ザ・ロック」からの絶景を楽しみます。特に晴れた日には、マンハッタンの街並みが一望でき、心に残る瞬間を提供してくれます。",
+          "searchQuery": "Top of the Rock Observation Deck",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カフェ・ル・ドゥ・モンドでランチ",
+          "description": "フレンチトーストやベネディクトを楽しめるカフェ・ル・ドゥ・モンドでランチ。おしゃれな雰囲気の中で、ゆったりとした時間を過ごせます。",
+          "searchQuery": "Cafe Le Monde",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "セックス・アンド・ザ・シティのカフェ巡り",
+          "description": "ドラマに登場したカフェを巡ります。特に「セントラルパークの近くにあるカフェ」で、ドラマの名シーンを思い出しながら、コーヒーを楽しむのがおすすめです。",
+          "searchQuery": "Central Perk Cafe",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ファングッズショッピング",
+          "description": "セックス・アンド・ザ・シティの関連商品を取り扱うショップで、オリジナルグッズを探します。特にTシャツやマグカップなど、思い出に残るアイテムが見つかるかも。",
+          "searchQuery": "Sex and the City Shop",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "タイムズスクエア散策",
+          "description": "世界的に有名なタイムズスクエアを散策。ネオンの光に包まれた街並みを楽しみながら、観光客や地元の人々の活気を感じることができます。",
+          "searchQuery": "Times Square",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "マンハッタンでディナー",
+          "description": "ニューヨークの人気レストランでディナーを楽しみます。地元の食材を使った料理や、アメリカンスタイルのステーキを堪能し、特別な夜を演出します。",
+          "searchQuery": "Best Restaurant in Manhattan",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ブロードウェイのショー観賞",
+          "description": "ブロードウェイでのショーを観賞。事前にチケットを購入しておくと、人気のミュージカルや演劇を楽しむことができます。",
+          "searchQuery": "Broadway Show",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "帰国の準備と最後のショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マンハッタンのホテルで、アメリカンブレックファーストを楽しみます。新鮮なフルーツやオムレツ、トーストでエネルギーをチャージ。",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "5番街でショッピング",
+          "description": "ニューヨークの象徴的なショッピングストリート、5番街を散策。高級ブランド店やデパートが立ち並び、ウィンドウショッピングを楽しむのに最適です。",
+          "searchQuery": "5th Avenue",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：The Modern",
+          "description": "モダンアートミュージアム内にあるレストランで、アートを楽しみながらランチ。季節の食材を使った創作料理が堪能できます。",
+          "searchQuery": "The Modern",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ソーホーでファングッズ探し",
+          "description": "ソーホーエリアを訪れ、セックス・アンド・ザ・シティの関連グッズを探します。ユニークなショップやブティックが多く、掘り出し物が見つかるかも。",
+          "searchQuery": "SoHo",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "セックス・アンド・ザ・シティのロケ地巡り",
+          "description": "ドラマの名シーンが撮影された場所を巡ります。キャリーのアパートや、オープニングのカフェなど、ファンにはたまらないスポットです。",
+          "searchQuery": "Carrie's Apartment",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー：Balthazar",
+          "description": "フレンチビストロで、最後の晩餐を楽しみます。おしゃれな雰囲気の中で、特製の料理を堪能し、旅の締めくくりにふさわしいディナーです。",
+          "searchQuery": "Balthazar",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻り、帰国の準備",
+          "description": "ホテルに戻り、帰国の準備をします。お土産や思い出を整理し、素敵な旅の締めくくりを。",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

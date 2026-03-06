@@ -1,0 +1,525 @@
+{
+  "id": "b833895e-55f5-413c-a491-626e2db91997",
+  "destination": "ダブリン",
+  "description": "ダブリンの街を友人と共に巡り、歴史的な魅力と美味しいグルメ、そして陽気なパブ文化を満喫する6日間の旅へ出かけましょう。古き良きアイルランドの雰囲気を感じながら、街歩きやお酒を楽しむ素敵な時間を過ごします。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ダブリン到着と街の散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ダブリンの伝統的な朝食を楽しむ時間です。ベーコン、ソーセージ、卵、トーストなど、ボリューム満点の朝食でエネルギーをチャージしましょう。",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "トリニティ・カレッジ見学",
+          "description": "アイルランド最古の大学、トリニティ・カレッジを訪れます。美しいキャンパス内を散策し、壮大な「ケルズの書」を見学するのがおすすめです。",
+          "searchQuery": "Trinity College Dublin",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ダブリン城の見学",
+          "description": "歴史的なダブリン城を訪れ、アイルランドの歴史に触れましょう。美しい庭園もあり、散策するのにぴったりです。",
+          "searchQuery": "Dublin Castle",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "地元のパブでランチ",
+          "description": "ダブリンの地元のパブで、アイルランドの伝統料理を楽しみます。シェパーズパイやフィッシュ＆チップスがおすすめです。",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "テンプルバー地区散策",
+          "description": "ダブリンの文化的中心地、テンプルバー地区を散策します。アートギャラリーやショップが立ち並び、活気ある雰囲気を楽しめます。",
+          "searchQuery": "Temple Bar",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ギネスストアハウス見学",
+          "description": "本場のギネスビールを学びながら楽しむことができるギネスストアハウスを訪れます。最上階のパノラマバーからの眺めも絶景です。",
+          "searchQuery": "Guinness Storehouse",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "パブでディナーと音楽",
+          "description": "ダブリンのパブでディナーを楽しみながら、アイルランドの伝統音楽を堪能します。陽気な雰囲気の中で、友人と楽しい時間を過ごしましょう。",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ダブリンの文化と歴史を探る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ダブリンの伝統的な朝食を楽しむ時間です。ベーコン、ソーセージ、卵、トーストなど、ボリューム満点の朝食でエネルギーをチャージしましょう。",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "アイルランド国立博物館",
+          "description": "アイルランドの歴史と文化を深く知ることができる博物館です。特に、アイルランドの美術品や考古学的な展示が見どころ。入場は無料なので、気軽に立ち寄れます。",
+          "searchQuery": "National Museum of Ireland",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "The Woollen Millsでランチ",
+          "description": "地元の食材を使ったアイルランド料理を楽しめるカジュアルなレストランです。特に、シチューやサンドイッチが人気で、アイルランドの味を堪能できます。",
+          "searchQuery": "The Woollen Mills",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ギネスストアハウス",
+          "description": "ギネスビールの歴史を学びながら、実際にビールを試飲できるスポットです。最上階のパノラマバーからはダブリンの美しい景色を楽しむことができます。",
+          "searchQuery": "Guinness Storehouse",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ダブリン城周辺を散策",
+          "description": "ダブリン城の周りを散策しながら、歴史的な建物や美しい庭園を楽しみましょう。周辺にはカフェやショップも多く、気軽に立ち寄れます。",
+          "searchQuery": "Dublin Castle",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "パブでディナーと音楽を楽しむ",
+          "description": "ダブリンの伝統的なパブで、アイルランド料理を楽しみながら生演奏を聴くことができます。陽気な雰囲気の中で、友人と楽しい時間を過ごしましょう。",
+          "searchQuery": "The Temple Bar",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ダブリンの美味しいグルメを堪能",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ダブリンの地元のカフェで、アイルランドの伝統的な朝食を楽しみます。ソーセージやベーコン、卵、トーストが盛りだくさんで、エネルギー満点のスタートを切りましょう。",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ダブリンの屋台巡り",
+          "description": "ダブリンの街中に点在する屋台を巡り、地元のストリートフードを楽しみます。特に、アイルランドの伝統的なスナックであるスモークサーモンや、ホットポットを試してみてください。",
+          "searchQuery": "Dublin Street Food",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "アイルランド料理レストランでランチ",
+          "description": "アイルランドの家庭料理を提供するレストランで、シチューやボクスティ（ポテトのパンケーキ）を味わいます。地元の食材を使った料理が楽しめるので、ぜひお試しを。",
+          "searchQuery": "Irish Restaurant Dublin",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ダブリン城見学",
+          "description": "歴史的なダブリン城を訪れ、その美しい庭園や建物を散策します。城内の展示も興味深く、アイルランドの歴史を学ぶ良い機会です。",
+          "searchQuery": "Dublin Castle",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ギネスストアハウス見学",
+          "description": "本場のギネスビールの製造過程を学び、試飲も楽しめるギネスストアハウスを訪れます。最上階のパノラマバーからの眺めは絶景です。",
+          "searchQuery": "Guinness Storehouse",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "パブでディナーと音楽",
+          "description": "ダブリンの伝統的なパブで、アイルランド料理を楽しみながら、陽気な音楽を聴きます。地元の人々と一緒に楽しいひとときを過ごしましょう。",
+          "searchQuery": "Traditional Irish Pub Dublin",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "パブでのライブ音楽",
+          "description": "ディナーの後は、パブでのライブ音楽を楽しみます。アイルランドのフォークソングやダンスミュージックに合わせて、楽しい夜を過ごしましょう。",
+          "searchQuery": "Live Music Pub Dublin",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "アイルランドの自然を感じる",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ダブリンのホテルで、アイルランドの伝統的な朝食を楽しみます。ソーセージやベーコン、卵、トーストが並ぶ豪華な朝食で、エネルギーをチャージしましょう。",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "グレンダーロッホ訪問",
+          "description": "美しい湖と山々に囲まれたグレンダーロッホへ。自然の中でのハイキングや、古代の修道院跡を見学しながら、アイルランドの歴史と自然を感じることができます。",
+          "searchQuery": "Glendalough",
+          "locationEn": "Glendalough, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "近くのカフェでランチ",
+          "description": "グレンダーロッホ近くのカフェで、地元の食材を使った軽食を楽しみます。アイルランドの田舎の風景を眺めながら、リラックスしたひとときを過ごしましょう。",
+          "locationEn": "Glendalough, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "モハーの断崖観光",
+          "description": "壮大なモハーの断崖へ向かいます。海に面した断崖からの絶景は圧巻で、風を感じながらの散策が楽しめます。特に晴れた日には、遠くの島々まで見渡せます。",
+          "searchQuery": "Cliffs of Moher",
+          "locationEn": "Cliffs of Moher, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ダブリンへ戻る",
+          "description": "モハーの断崖からダブリンへ戻ります。美しい風景を楽しみながらのドライブで、アイルランドの自然を満喫しましょう。",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ダブリンのパブでディナー",
+          "description": "本場のギネスビールを楽しめるパブで、アイルランド料理のディナーを堪能します。陽気な音楽と共に、友人と楽しい時間を過ごしましょう。",
+          "searchQuery": "The Temple Bar",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "パブでのライブ音楽",
+          "description": "ダブリンの有名なパブで、地元のバンドによる生演奏を楽しみます。アイルランドの伝統音楽に浸りながら、楽しい夜を過ごしましょう。",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ダブリンのパブ文化を楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ダブリンの伝統的な朝食を楽しむ時間です。ソーセージやベーコン、卵、トーストが並ぶボリューム満点の朝食で、エネルギーをチャージしましょう。",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "トリニティ・カレッジ・ダブリン見学",
+          "description": "アイルランド最古の大学、トリニティ・カレッジを訪れます。美しいキャンパス内を散策し、世界的に有名な「ケルズの書」を見学。歴史を感じるひとときを過ごせます。",
+          "searchQuery": "Trinity College Dublin",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "The Woollen Millsでランチ",
+          "description": "地元の人々に人気のカジュアルなレストランで、アイルランドの伝統料理を楽しみます。特に、シチューやサンドイッチが絶品です。",
+          "searchQuery": "The Woollen Mills",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ダブリン城見学",
+          "description": "歴史的なダブリン城を訪れ、その壮大な建築と歴史を学びます。ガイドツアーに参加すると、より深くダブリンの歴史を理解できます。",
+          "searchQuery": "Dublin Castle",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "パブ巡り",
+          "description": "ダブリンの名物、パブ文化を体験します。地元の人々と交流しながら、ギネスビールを楽しむのがポイント。特に「The Temple Bar」は観光客にも人気のスポットです。",
+          "searchQuery": "The Temple Bar",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "The Brazen Headでディナー",
+          "description": "アイルランド最古のパブで、伝統的なアイルランド料理を楽しみながら、ライブ音楽を堪能します。雰囲気も抜群で、楽しい夜を過ごせます。",
+          "searchQuery": "The Brazen Head",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "パブでのライブ音楽鑑賞",
+          "description": "ダブリンのパブでは、地元のミュージシャンによる生演奏が楽しめます。陽気な音楽に合わせて、アイルランドの文化を体感しましょう。",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ダブリンでの最後のひととき",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ダブリンのカフェで、アイルランドの伝統的な朝食を楽しみます。ベーコン、ソーセージ、卵、トーストが盛りだくさんで、エネルギーをチャージ！",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "トリニティ・カレッジ・ダブリン訪問",
+          "description": "アイルランド最古の大学、トリニティ・カレッジを訪れます。美しいキャンパス内を散策し、世界的に有名な「ケルズの書」を見学。歴史と文化に触れる貴重な体験です。",
+          "searchQuery": "Trinity College Dublin",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ダブリンのカフェでランチ",
+          "description": "地元の人に人気のカフェで、サンドイッチやスープを楽しみます。アイルランドの食材を使った料理が味わえるので、ぜひ試してみてください。",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ダブリン城見学",
+          "description": "ダブリン城を訪れ、その歴史的な建物や美しい庭園を散策します。城内の展示も興味深く、アイルランドの歴史を学ぶ良い機会です。",
+          "searchQuery": "Dublin Castle",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "お土産探し",
+          "description": "ダブリンの中心街でお土産を探します。アイルランドの伝統的な工芸品やギネスビール関連のアイテムを見つけるチャンスです。",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ギネスストアハウス訪問",
+          "description": "本場のギネスビールを楽しむため、ギネスストアハウスを訪れます。ビールの製造過程を学び、最上階のパノラマバーでダブリンの景色を眺めながらビールを味わいましょう。",
+          "searchQuery": "Guinness Storehouse",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "パブでディナーと音楽",
+          "description": "ダブリンの伝統的なパブで、アイルランド料理を楽しみながら生演奏を聴きます。陽気な雰囲気の中で、友人と楽しい時間を過ごしましょう。",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

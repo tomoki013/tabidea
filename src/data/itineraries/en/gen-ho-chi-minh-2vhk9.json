@@ -1,0 +1,295 @@
+{
+  "id": "ccfda17a-76b6-4a5e-953a-d51e28351056",
+  "destination": "Ho Chi Minh City",
+  "description": "Immerse yourself in the vibrant culture and culinary delights of Ho Chi Minh City, where the bustling streets are filled with the aroma of street food and the charm of historical landmarks. This 3-day itinerary is designed for families seeking a blend of relaxation, adventure, and gastronomic experiences in this dynamic city. From exploring lush parks to indulging in local delicacies, each day offers a unique glimpse into the heart of Vietnam.",
+  "heroImage": "https://images.unsplash.com/photo-1702902108138-d9d1081c1e70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTUyNjd8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "XT7 Core",
+  "heroImagePhotographerUrl": "https://unsplash.com/@xt7core?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and City Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Pho Hoa",
+          "description": "Start your day with a delicious bowl of Pho at Pho Hoa, a local favorite known for its rich broth and fresh ingredients. It's a great way to experience authentic Vietnamese cuisine right in the heart of Ho Chi Minh City.",
+          "searchQuery": "Pho Hoa",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Ben Thanh Market",
+          "description": "Explore the bustling Ben Thanh Market, where you can find everything from local handicrafts to delicious street food. Don't forget to haggle for souvenirs and try some fresh spring rolls from the food stalls!",
+          "searchQuery": "Ben Thanh Market",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Quan An Ngon",
+          "description": "Enjoy a leisurely lunch at Quan An Ngon, a restaurant that offers a variety of traditional Vietnamese dishes in a charming setting. The fresh ingredients and vibrant flavors will surely satisfy your taste buds.",
+          "searchQuery": "Quan An Ngon",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Saigon Notre-Dame Basilica",
+          "description": "Visit the iconic Saigon Notre-Dame Basilica, a stunning example of French colonial architecture. Take some time to admire the beautiful stained glass windows and the peaceful atmosphere of this historic site.",
+          "searchQuery": "Saigon Notre-Dame Basilica",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "War Remnants Museum",
+          "description": "Delve into Vietnam's history at the War Remnants Museum. The exhibits provide a poignant insight into the Vietnam War and its impact on the country. It's a must-visit for those interested in history.",
+          "searchQuery": "War Remnants Museum",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Relax at a Rooftop Bar",
+          "description": "Unwind at one of Ho Chi Minh City's rooftop bars, such as the Bitexco Financial Tower's Sky Deck. Enjoy stunning views of the city skyline as the sun sets, making for a perfect end to your day.",
+          "searchQuery": "Bitexco Financial Tower",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Nha Hang Ngon",
+          "description": "Savor a delightful dinner at Nha Hang Ngon, where you can sample a variety of Vietnamese dishes in a beautiful garden setting. It's a great place to relax and enjoy the local flavors.",
+          "searchQuery": "Nha Hang Ngon",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Return to Hotel",
+          "description": "After a fulfilling day of exploration, head back to your hotel to rest and recharge for another exciting day ahead in Ho Chi Minh City.",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Nature and Relaxation",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Pho Hoa",
+          "description": "Start your day with a delicious bowl of Pho at Pho Hoa, a local favorite known for its rich broth and fresh ingredients. It's a great way to fuel up for a day of exploration!",
+          "searchQuery": "Pho Hoa",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Cu Chi Tunnels",
+          "description": "Explore the fascinating Cu Chi Tunnels, an extensive network of underground tunnels used during the Vietnam War. You'll learn about the history and significance of this site while navigating through the tunnels. A guided tour is recommended for a deeper understanding.",
+          "searchQuery": "Cu Chi Tunnels",
+          "locationEn": "Cu Chi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Local Eatery",
+          "description": "Enjoy a traditional Vietnamese lunch at a nearby local eatery. Try dishes like banh mi or spring rolls, which are both delicious and budget-friendly.",
+          "searchQuery": "Local Vietnamese Eatery",
+          "locationEn": "Cu Chi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Return to Ho Chi Minh City",
+          "description": "Head back to Ho Chi Minh City after your visit to the Cu Chi Tunnels. The journey will give you a chance to relax and reflect on the morning's adventures.",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Tao Dan Park",
+          "description": "Take a leisurely stroll through Tao Dan Park, a beautiful green space in the heart of the city. Enjoy the serene atmosphere, lush gardens, and perhaps even catch a local tai chi class in action.",
+          "searchQuery": "Tao Dan Park",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping at Ben Thanh Market",
+          "description": "Explore the vibrant Ben Thanh Market, where you can shop for souvenirs, local handicrafts, and delicious street food. Don't forget to haggle for the best prices!",
+          "searchQuery": "Ben Thanh Market",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Nha Hang Ngon",
+          "description": "End your day with a delightful dinner at Nha Hang Ngon, known for its wide variety of authentic Vietnamese dishes in a charming setting. It's a perfect place to unwind after a busy day.",
+          "searchQuery": "Nha Hang Ngon",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Shopping and Departure",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Ho Chi Minh City",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Binh Tay Market",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "A short taxi ride to start the day."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Binh Tay Market",
+          "description": "Dive into the vibrant atmosphere of Binh Tay Market, where you can find everything from fresh produce to local handicrafts. It's a great spot to pick up souvenirs and experience the local culture.",
+          "searchQuery": "Binh Tay Market",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Lunch at Pho Hoa",
+          "description": "Enjoy a delicious bowl of Pho at Pho Hoa, one of the most famous pho restaurants in Ho Chi Minh City. The rich broth and fresh ingredients will surely satisfy your taste buds.",
+          "searchQuery": "Pho Hoa",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Saigon River Cruise",
+          "description": "Take a relaxing cruise along the Saigon River. Enjoy the scenic views of the city skyline and the lush greenery along the banks. This is a perfect way to unwind before your departure.",
+          "searchQuery": "Saigon River Cruise",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Shopping at Ben Thanh Market",
+          "description": "Head to Ben Thanh Market for some last-minute shopping. This bustling market offers a variety of goods, from clothing to local delicacies. Don't forget to bargain for the best prices!",
+          "searchQuery": "Ben Thanh Market",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Quan An Ngon",
+          "description": "Savor a delightful dinner at Quan An Ngon, where you can sample a variety of traditional Vietnamese dishes in a charming setting. It's a great way to end your trip on a high note.",
+          "searchQuery": "Quan An Ngon",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Return to Hotel and Departure Preparation",
+          "description": "Head back to your hotel to pack and prepare for your departure. Reflect on the wonderful experiences you've had in Ho Chi Minh City.",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

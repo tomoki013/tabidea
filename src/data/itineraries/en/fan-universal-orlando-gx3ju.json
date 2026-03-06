@@ -1,0 +1,336 @@
+{
+  "id": "9b458bd6-b8b2-4a53-84b0-5cfff95cf962",
+  "destination": "Orlando",
+  "description": "Escape to the vibrant world of Orlando, where the magic of theme parks meets the charm of local culture and nature. Over four days, immerse yourself in the exhilarating atmosphere of Universal Studios, indulge in delicious cuisine, and explore the natural beauty surrounding this iconic city. Whether you're chasing thrills or seeking serene landscapes, Orlando offers a perfect blend of excitement and relaxation for you and your friends. Get ready for an unforgettable adventure!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Universal Studios Adventure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at IHOP",
+          "description": "Start your day with a hearty breakfast at IHOP, famous for its fluffy pancakes and delicious omelets. It's a great way to fuel up for a day of adventure!",
+          "searchQuery": "IHOP",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Universal Studios Florida",
+          "description": "Dive into the thrilling world of Universal Studios Florida! Experience rides and attractions based on your favorite movies, from Harry Potter to Jurassic Park. Don't miss the Wizarding World of Harry Potter for a magical experience!",
+          "searchQuery": "Universal Studios Florida",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Leaky Cauldron",
+          "description": "Enjoy a themed lunch at The Leaky Cauldron, where you can savor British fare like fish and chips or shepherd's pie, all while soaking in the Harry Potter atmosphere.",
+          "searchQuery": "The Leaky Cauldron",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore CityWalk",
+          "description": "After the park, head to Universal CityWalk for shopping and entertainment. This vibrant area is perfect for picking up some unique Universal merchandise and enjoying the lively atmosphere.",
+          "searchQuery": "Universal CityWalk",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Hard Rock Cafe",
+          "description": "Wrap up your day with dinner at the iconic Hard Rock Cafe. Enjoy classic American dishes in a rock 'n' roll setting, surrounded by music memorabilia.",
+          "searchQuery": "Hard Rock Cafe Orlando",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening stroll at Universal CityWalk",
+          "description": "Take a leisurely evening stroll through CityWalk, where you can enjoy the vibrant nightlife and perhaps catch some live music or entertainment.",
+          "searchQuery": "Universal CityWalk",
+          "locationEn": "Orlando, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Islands of Adventure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Toothsome Chocolate Emporium",
+          "description": "Start your day with a delightful breakfast at this whimsical restaurant known for its decadent chocolate creations. Try their famous chocolate French toast or a hearty breakfast burrito to fuel up for a day of adventure!",
+          "searchQuery": "The Toothsome Chocolate Emporium",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Islands of Adventure",
+          "description": "Dive into the thrilling world of Islands of Adventure! Experience the adrenaline rush of rides like The Incredible Hulk Coaster and the magical atmosphere of The Wizarding World of Harry Potter. Don't forget to grab a Butterbeer while you're there!",
+          "searchQuery": "Islands of Adventure",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Mythos Restaurant",
+          "description": "Enjoy a delicious lunch at Mythos, an award-winning restaurant located within Islands of Adventure. The Mediterranean-inspired menu offers a variety of options, from fresh salads to hearty entrees, all in a stunning setting.",
+          "searchQuery": "Mythos Restaurant",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "The Wizarding World of Harry Potter",
+          "description": "Immerse yourself in the enchanting world of Harry Potter. Explore Diagon Alley, ride the Escape from Gringotts, and visit Ollivanders to see if you can find your perfect wand. This area is a must-see for any fan!",
+          "searchQuery": "The Wizarding World of Harry Potter",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping for Harry Potter Merchandise",
+          "description": "Take some time to shop for exclusive Harry Potter merchandise. From wands to house robes, you'll find plenty of magical souvenirs to take home. Don't miss the shops in Hogsmeade for unique items!",
+          "searchQuery": "Harry Potter Merchandise",
+          "locationEn": "Orlando, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at CityWalk",
+          "description": "End your day with a casual dinner at Universal CityWalk. Choose from a variety of restaurants, including the popular Hard Rock Cafe or the vibrant Vivo Italian Kitchen, perfect for unwinding after a fun-filled day.",
+          "searchQuery": "Universal CityWalk",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Delights and Nature Escapes",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Keke's Breakfast Cafe",
+          "description": "Start your day with a hearty breakfast at Keke's, known for its delicious pancakes and fresh fruit. It's a local favorite that will fuel you for a day of adventure!",
+          "searchQuery": "Keke's Breakfast Cafe",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Leu Gardens",
+          "description": "Explore the beautiful Harry P. Leu Gardens, a stunning 50-acre botanical garden featuring tropical and subtropical plants. Take a leisurely stroll through the rose garden and enjoy the peaceful atmosphere.",
+          "searchQuery": "Harry P. Leu Gardens",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Ravenous Pig",
+          "description": "Indulge in a delicious lunch at The Ravenous Pig, a gastropub that offers a creative menu with locally sourced ingredients. Don't miss their famous charcuterie board!",
+          "searchQuery": "The Ravenous Pig",
+          "locationEn": "Winter Park, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Downtown Orlando",
+          "description": "After lunch, head to Downtown Orlando. Visit Lake Eola Park for a relaxing walk around the lake, and check out the local shops and street art. It's a great place to soak in the local culture.",
+          "searchQuery": "Lake Eola Park",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Universal CityWalk for Shopping",
+          "description": "Make your way to Universal CityWalk, where you can shop for exclusive Universal merchandise and fan gear. It's a vibrant area filled with shops, restaurants, and entertainment options.",
+          "searchQuery": "Universal CityWalk",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Toothsome Chocolate Emporium",
+          "description": "Enjoy a unique dining experience at Toothsome Chocolate Emporium, where you can savor delicious dishes and indulge in decadent desserts. The atmosphere is whimsical and perfect for a fun evening.",
+          "searchQuery": "Toothsome Chocolate Emporium",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll at Universal CityWalk",
+          "description": "After dinner, take a leisurely stroll around Universal CityWalk. Enjoy the lively atmosphere, live music, and perhaps grab a dessert to end your day on a sweet note!",
+          "searchQuery": "Universal CityWalk",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Final Day of Fun and Return Home",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at IHOP",
+          "description": "Start your day with a hearty breakfast at IHOP, known for its delicious pancakes and classic American breakfast options. It's a great way to fuel up for a day of fun!",
+          "searchQuery": "IHOP",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Universal's CityWalk",
+          "description": "Head over to Universal's CityWalk, the vibrant entertainment district filled with shops, restaurants, and live music. Explore the unique stores for some exclusive merchandise and enjoy the lively atmosphere.",
+          "searchQuery": "Universal CityWalk",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Cowfish Sushi Burger Bar",
+          "description": "Enjoy a unique dining experience at The Cowfish, where you can indulge in both sushi and burgers. Their fusion dishes are a hit, making it a fun spot for lunch.",
+          "searchQuery": "The Cowfish Sushi Burger Bar",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Universal Studios Florida",
+          "description": "Spend the afternoon at Universal Studios Florida, where you can experience thrilling rides and attractions based on your favorite movies. Don't miss the Wizarding World of Harry Potter for a magical experience!",
+          "searchQuery": "Universal Studios Florida",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Margaritaville",
+          "description": "Wrap up your day with a laid-back dinner at Margaritaville, where you can enjoy tropical-inspired dishes and drinks. The fun atmosphere is perfect for reminiscing about your trip with friends.",
+          "searchQuery": "Margaritaville Orlando",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Shopping for Merchandise at Universal's CityWalk",
+          "description": "Before heading back, take some time to shop for Universal-themed merchandise at CityWalk. It's the perfect opportunity to grab souvenirs and gifts for friends and family.",
+          "searchQuery": "Universal Merchandise",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

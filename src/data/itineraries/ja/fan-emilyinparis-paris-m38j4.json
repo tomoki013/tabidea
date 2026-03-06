@@ -1,0 +1,276 @@
+{
+  "id": "f7eb77c3-abd8-41e2-b1ba-6f7665906f08",
+  "destination": "パリ",
+  "description": "エミリー・パリスの舞台となった街で、ロマンチックなひとときを過ごしましょう。美しい街並みや文化的なスポットを巡りながら、グルメを楽しみ、リラックスした時間を過ごすことができます。特に、エミリーが訪れた場所やファングッズを探しながら、二人の思い出を深める旅に出かけましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1585944285854-d06c019aaca3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTE1MDh8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Marloes Hilckmann",
+  "heroImagePhotographerUrl": "https://unsplash.com/@marloeshilckmann?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "エミリーの足跡を辿る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "パリのカフェでクロワッサンとカフェオレを楽しみながら、エミリーの冒険を思い描く素敵な朝のスタート。",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "モンマルトル散策",
+          "description": "エミリーが訪れたモンマルトルの街を散策。アーティストたちが集うこのエリアでは、ストリートパフォーマンスやアート作品を楽しむことができます。特に、サクレ・クール寺院からの眺めは絶景です。",
+          "searchQuery": "Montmartre",
+          "locationEn": "Montmartre, Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "カフェ・デ・ドゥ・ムーランでランチ",
+          "description": "エミリーがよく訪れるカフェ・デ・ドゥ・ムーランで、フランスの伝統的なランチを楽しみましょう。特に、タルタルステーキやフレンチオニオンスープがおすすめです。",
+          "searchQuery": "Café des Deux Moulins",
+          "locationEn": "Café des Deux Moulins, Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "サクレ・クール寺院訪問",
+          "description": "モンマルトルの高台に位置するサクレ・クール寺院を訪れ、荘厳な建築と美しい内装を堪能。寺院の前の広場からはパリの街並みを一望できます。",
+          "searchQuery": "Sacré-Cœur Basilica",
+          "locationEn": "Sacré-Cœur Basilica, Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "エミリーのファングッズ探し",
+          "description": "モンマルトル周辺のショップやブティックで、エミリーに関連するファングッズを探してみましょう。特に、オリジナルのグッズやアート作品が見つかるかもしれません。",
+          "searchQuery": "Emily in Paris merchandise",
+          "locationEn": "Montmartre, Paris, France",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "セーヌ川沿いの散策",
+          "description": "セーヌ川沿いを散策しながら、パリの美しい風景を楽しみます。夕暮れ時の川面に映る街の灯りは、ロマンチックな雰囲気を醸し出します。",
+          "locationEn": "Seine River, Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のビストロでディナー",
+          "description": "パリの地元のビストロで、フランス料理を堪能。特に、鴨のコンフィやタルトタタンがおすすめです。エミリーのように、食事を楽しみながら素敵な夜を過ごしましょう。",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "パリの美食と文化を満喫",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "パリのカフェでクロワッサンとカフェオレを楽しみながら、ゆったりとした朝を迎えます。地元の人々に混じって、朝のひとときを過ごしましょう。",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ルーブル美術館",
+          "description": "世界的に有名なルーブル美術館を訪れ、モナリザやミロのヴィーナスなどの名作を鑑賞します。美術館内は広大なので、事前に見たい作品を決めておくと良いでしょう。",
+          "searchQuery": "Louvre Museum",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "カフェ・ド・フロールでランチ",
+          "description": "パリの名店、カフェ・ド・フロールで軽めのランチを。サンドイッチやサラダを楽しみながら、パリの雰囲気を満喫できます。",
+          "searchQuery": "Café de Flore",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "セーヌ川クルーズ",
+          "description": "セーヌ川をクルーズしながら、エッフェル塔やノートルダム大聖堂などの名所を水上から楽しみます。特に午後の光が美しい時間帯がおすすめです。",
+          "searchQuery": "Seine River Cruise",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "シャンゼリゼ通り散策",
+          "description": "シャンゼリゼ通りを散策しながら、ショップやカフェを楽しみます。EmilyInParisのファングッズを探すのにもぴったりのエリアです。",
+          "searchQuery": "Champs-Élysées",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "レストランでディナー",
+          "description": "パリのビストロで、フランス料理を堪能します。地元のワインと共に、特別な夜を演出しましょう。",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "エッフェル塔の夜景観賞",
+          "description": "エッフェル塔のライトアップを見ながら、ロマンチックなひとときを過ごします。特に夜の時間帯は幻想的な雰囲気が漂います。",
+          "searchQuery": "Eiffel Tower",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "エミリーのファングッズ探しと帰路",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "パリのカフェでクロワッサンとカフェオレを楽しみながら、エミリーの冒険を振り返る素敵な朝を迎えます。",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "マレ地区散策",
+          "description": "エミリーが訪れたおしゃれなマレ地区を散策。アートギャラリーやブティックが立ち並び、特にファッションや雑貨のショップが充実しています。",
+          "searchQuery": "Le Marais",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "カフェでランチ",
+          "description": "マレ地区の隠れ家的なカフェで、サンドイッチやサラダを楽しみます。地元の人々に混じって、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "サン・ジェルマン・デ・プレ散策",
+          "description": "エミリーが訪れたサン・ジェルマン・デ・プレ地区へ。歴史的なカフェやアートショップが点在し、エミリーのファンにはたまらないスポットです。",
+          "searchQuery": "Saint-Germain-des-Prés",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ギャラリー・ラファイエットでショッピング",
+          "description": "パリの有名デパート、ギャラリー・ラファイエットでファングッズを探しましょう。エミリーの関連商品やパリの最新トレンドを見つけるチャンスです。",
+          "searchQuery": "Galeries Lafayette",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "カフェで休憩",
+          "description": "ショッピングの後は、ギャラリー・ラファイエット近くのカフェで一息。エミリーのようにパリの雰囲気を楽しみながら、スイーツを味わいましょう。",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "空港へ移動",
+          "description": "パリの空港へ向かい、帰路につきます。エミリーの思い出を胸に、次の旅を楽しみに。",
+          "locationEn": "Paris, France",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

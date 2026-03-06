@@ -1,0 +1,412 @@
+{
+  "id": "46ac584e-2393-4bcc-807e-e4aeb405046e",
+  "destination": "シェムリアップ",
+  "description": "シェムリアップは、カンボジアの文化と歴史が息づく魅力的な街です。アンコール遺跡群をはじめ、アートや美術館も豊富で、カップルでのんびりとした時間を過ごすのにぴったりの場所です。美しい夕日を眺めながら、地元の料理を楽しむことができるロマンティックな旅をお楽しみください。",
+  "days": [
+    {
+      "day": 1,
+      "title": "シェムリアップ到着と街の散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "シェムリアップのホテルで、カンボジアの伝統的な朝食を楽しみます。フルーツや米のスープ、バナナパンケーキなど、地元の味を堪能しましょう。",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "アンコールワット観光",
+          "description": "世界遺産のアンコールワットを訪れます。壮大な寺院の建築美と、朝の光に照らされた神秘的な雰囲気を楽しみながら、歴史を感じるひとときを過ごしましょう。",
+          "searchQuery": "Angkor Wat",
+          "locationEn": "Angkor Wat, Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "地元のレストランでランチ",
+          "description": "シェムリアップの地元のレストランで、カンボジア料理のランチを楽しみます。アモック（魚の蒸し料理）やノムバンチョック（米麺）をぜひ試してみてください。",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "アートセンター・ダイアログ訪問",
+          "description": "シェムリアップのアートセンター・ダイアログで、地元アーティストの作品を鑑賞します。カンボジアの現代アートに触れ、アートの魅力を再発見しましょう。",
+          "searchQuery": "Art Center Dialogue",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "パブストリート散策",
+          "description": "シェムリアップの賑やかなパブストリートを散策します。カフェやショップが立ち並び、アートや文化を感じることができるスポットです。お土産探しにもぴったり。",
+          "searchQuery": "Pub Street",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "パブストリートでディナー",
+          "description": "パブストリートのレストランで、カンボジアのビールや地元料理を楽しみながら、賑やかな雰囲気を満喫します。夜のシェムリアップの魅力を感じる時間です。",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の観光を終え、ホテルに戻ります。明日の冒険に備えて、ゆっくりと休息を取りましょう。",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アンコール遺跡群探訪",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "シェムリアップのホテルで、カンボジアの伝統的な朝食を楽しみます。フルーツや米粉のパンケーキなど、地元の味を堪能しながら一日をスタート。",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "アンコールトム",
+          "description": "壮大なアンコールトムを訪れます。バイヨン寺院の顔の彫刻や、象のテラスを見学し、歴史の息吹を感じることができます。",
+          "searchQuery": "Angkor Thom",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "シェムリアップの地元のレストランで、カンボジア料理を楽しみます。アモック（魚のカレー蒸し）やロックラック（牛肉の炒め物）がおすすめです。",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "タ・プローム",
+          "description": "映画『トゥームレイダー』の舞台にもなったタ・プロームを訪れます。木々に覆われた遺跡の神秘的な雰囲気を楽しみながら、歴史を感じることができます。",
+          "searchQuery": "Ta Prohm",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "シェムリアップのアートギャラリー巡り",
+          "description": "地元アーティストの作品を展示するアートギャラリーを訪れ、カンボジアの現代アートに触れます。特に、シェムリアップアートセンターは見逃せません。",
+          "searchQuery": "Angkor Art Gallery",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルで休憩",
+          "description": "観光の後はホテルで一息。プールサイドでリラックスしたり、軽食を楽しんだりして、夕食に備えます。",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "シェムリアップの人気レストランで、カンボジアの伝統料理を楽しみます。特に、シーフード料理が新鮮でおすすめです。",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "アートと文化を楽しむ日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "シェムリアップのホテルで、カンボジアの伝統的な朝食を楽しみます。フレッシュなフルーツやアモック（魚の蒸し料理）など、地元の味を堪能しましょう。",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "プノン・バケン",
+          "description": "シェムリアップの郊外にあるプノン・バケンへ。ここからのサンセットは絶景で、遺跡の上から広がる景色は心に残る思い出になるでしょう。早めに訪れて、静かな時間を楽しむのがおすすめです。",
+          "searchQuery": "Phnom Bakheng",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "カンボジア料理を楽しめる地元のレストランでランチ。特に、ノム・バンチョック（米粉のヌードル）や、カンボジア風サラダをぜひ試してみてください。",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "シェムリアップアートセンター",
+          "description": "シェムリアップアートセンターを訪れ、地元アーティストの作品を鑑賞します。現代アートから伝統的なアートまで、多様な作品が展示されており、カンボジアの文化を深く理解することができます。",
+          "searchQuery": "Siem Reap Art Center",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アートセンター周辺を散策",
+          "description": "アートセンター周辺には小さなギャラリーやショップが点在しています。地元のアーティストによる手作りの工芸品やアート作品を見ながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルに戻り、休憩",
+          "description": "ホテルに戻り、少し休憩。夕食までの時間をリラックスして過ごしましょう。",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "シェムリアップの人気レストランで、カンボジア料理のディナーを楽しみます。特に、アモックやロックラック（牛肉のグリル）は絶品です。",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "地元の市場と料理体験",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "シェムリアップ市場で朝食",
+          "description": "地元の人々に混じって、シェムリアップ市場で新鮮なフルーツやバインミー（ベトナムサンドイッチ）を楽しみましょう。市場の活気を感じながら、朝のエネルギーをチャージできます。",
+          "searchQuery": "Siem Reap Market",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "シェムリアップ市場散策",
+          "description": "市場内を散策し、地元の特産品や手工芸品を見て回りましょう。カンボジアの文化を感じることができる素敵な場所です。",
+          "searchQuery": "Siem Reap Market",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "カンボジアの伝統料理を提供するレストランで、アモック（魚のココナッツカレー）やロックラック（牛肉のグリル）を味わいましょう。地元の味を堪能できます。",
+          "searchQuery": "Khmer Restaurant Siem Reap",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "クメール料理教室",
+          "description": "地元のシェフと一緒にクメール料理を学ぶ体験です。新鮮な食材を使って、伝統的な料理を作りながら、カンボジアの食文化を深く理解しましょう。",
+          "searchQuery": "Khmer Cooking Class Siem Reap",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アートセンター・ダイアログ訪問",
+          "description": "シェムリアップのアートセンターで、地元アーティストの作品を鑑賞しましょう。カンボジアの現代アートに触れる貴重な機会です。",
+          "searchQuery": "Art Center Dialogue Siem Reap",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "夕食は、シェムリアップの人気レストランで、カンボジアの伝統的な料理を楽しみましょう。地元の雰囲気を感じながら、素敵なディナーを過ごせます。",
+          "searchQuery": "Local Restaurant Siem Reap",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "シェムリアップから東京へ帰路",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "シェムリアップ国際空港",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "18:00"
+        },
+        "duration": "6h",
+        "memo": "直行便での帰国。機内でのんびり過ごしましょう。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "シェムリアップのホテルで、カンボジアの伝統的な朝食を楽しみます。フルーツや米粉のパンケーキなど、地元の味を堪能。",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "アートセンター・ダイアログ",
+          "description": "シェムリアップのアートセンターで、地元アーティストの作品を鑑賞。カンボジアの現代アートに触れ、アートの魅力を再発見。",
+          "searchQuery": "Art Center Dialogue",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "最後のショッピング",
+          "description": "シェムリアップの市場やショップでお土産を購入。手作りの工芸品やアート作品を探しながら、旅の思い出を持ち帰りましょう。",
+          "searchQuery": "Siem Reap Market",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "シェムリアップ国際空港へ移動",
+          "description": "空港へ向かうため、タクシーで移動します。出発の準備を整えましょう。",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

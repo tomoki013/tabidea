@@ -1,0 +1,407 @@
+{
+  "id": "f7b58e72-f404-4888-9cbf-1ca459c18705",
+  "destination": "Tahiti",
+  "description": "Escape to the enchanting paradise of Tahiti, where lush landscapes meet azure waters and vibrant culture. This 5-day family adventure is designed to immerse you in the beauty of the islands while indulging in thrilling activities and delightful shopping experiences. From snorkeling in coral reefs to exploring local markets, each day promises a blend of relaxation and excitement, perfect for creating unforgettable memories with your loved ones.",
+  "heroImage": "https://images.unsplash.com/photo-1738762478614-6b6ef2d09355?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTQ5Njd8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Roméo A.",
+  "heroImagePhotographerUrl": "https://unsplash.com/@gronemo?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Tahiti",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Le Grillardin",
+          "description": "Indulge in a delightful lunch at Le Grillardin, known for its fresh seafood and local flavors. Enjoy the beautiful view of the harbor while savoring dishes like grilled fish and tropical salads.",
+          "searchQuery": "Le Grillardin",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Papeete Market",
+          "description": "Stroll through the vibrant Papeete Market, where you can find local crafts, fresh produce, and souvenirs. It's a great place to immerse yourself in the local culture and pick up unique gifts.",
+          "searchQuery": "Papeete Market",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Paul Gauguin Museum",
+          "description": "Discover the life and works of the famous artist Paul Gauguin at this dedicated museum. The beautiful setting and insightful exhibits provide a deeper understanding of his connection to Tahiti.",
+          "searchQuery": "Paul Gauguin Museum",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Le Coco's",
+          "description": "Enjoy a fine dining experience at Le Coco's, where you can taste exquisite French cuisine with a Polynesian twist. The ambiance is perfect for a family dinner, and the sunset views are breathtaking.",
+          "searchQuery": "Le Coco's",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Relax at the Hotel",
+          "description": "After a day of exploration, unwind at your hotel. Enjoy the amenities and perhaps take a stroll along the beach to soak in the tranquil atmosphere of Tahiti.",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Papeete",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Le Velvet",
+          "description": "Start your day with a delightful breakfast at Le Velvet, known for its fresh pastries and local coffee. Enjoy the cozy atmosphere and the friendly service as you fuel up for a day of exploration.",
+          "searchQuery": "Le Velvet",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Papeete Market",
+          "description": "Dive into the vibrant Papeete Market, where you can find local crafts, fresh produce, and delicious street food. It's a perfect spot to soak in the local culture and pick up unique souvenirs.",
+          "searchQuery": "Papeete Market",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Le Grillardin",
+          "description": "Savor a delicious lunch at Le Grillardin, famous for its grilled seafood and traditional Tahitian dishes. The restaurant's outdoor seating offers a lovely view of the harbor.",
+          "searchQuery": "Le Grillardin",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Museum of Tahiti and the Islands",
+          "description": "Explore the Museum of Tahiti and the Islands, where you can learn about the rich history and culture of Tahiti through fascinating exhibits and artifacts. Don't miss the beautiful gardens outside.",
+          "searchQuery": "Museum of Tahiti and the Islands",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at the Beach",
+          "description": "Spend a leisurely afternoon at a nearby beach, such as Plage de la Pointe Venus. Enjoy the sun, swim in the warm waters, or simply relax on the sand with your family.",
+          "searchQuery": "Plage de la Pointe Venus",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Le Coco's",
+          "description": "Indulge in a fine dining experience at Le Coco's, where you can enjoy gourmet dishes made with fresh local ingredients. The restaurant's ambiance and service are top-notch, making it a perfect end to your day.",
+          "searchQuery": "Le Coco's",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Adventure on Moorea",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Papeete",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Moorea",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take a scenic ferry ride from Papeete to Moorea."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Belvedere Lookout",
+          "description": "Start your day with a visit to the stunning Belvedere Lookout. The panoramic views of Moorea's lush mountains and turquoise lagoons are breathtaking and perfect for family photos.",
+          "searchQuery": "Belvedere Lookout",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Snack Mahana",
+          "description": "Enjoy a delicious lunch at Snack Mahana, known for its fresh seafood and local dishes. The beachfront setting adds to the charm, making it a perfect spot to relax and refuel.",
+          "searchQuery": "Snack Mahana",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Snorkeling at Opunohu Bay",
+          "description": "Dive into the crystal-clear waters of Opunohu Bay for an unforgettable snorkeling experience. Explore vibrant coral reefs and swim alongside colorful fish in this aquatic paradise.",
+          "searchQuery": "Opunohu Bay",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at the Beach",
+          "description": "After snorkeling, unwind at one of Moorea's beautiful beaches. Enjoy the soft sand and gentle waves, perfect for a family afternoon of relaxation and fun.",
+          "searchQuery": "Moorea Beach",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Le Mayflower",
+          "description": "Savor a delightful dinner at Le Mayflower, where you can indulge in a mix of French and Polynesian cuisine. The ambiance is cozy, making it a great place to end your day.",
+          "searchQuery": "Le Mayflower",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll",
+          "description": "Take a leisurely evening stroll along the beach, enjoying the sunset and the sound of the waves. It's a perfect way to wrap up your adventurous day on Moorea.",
+          "searchQuery": "Moorea Beach",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Relaxation and Shopping",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Moorea",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Papeete",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Enjoy a scenic ferry ride from Moorea to Papeete."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Visit Papeete Market",
+          "description": "Start your day at the vibrant Papeete Market, where you can explore local crafts, fresh produce, and souvenirs. It's a great place to immerse yourself in the local culture and pick up unique gifts for family and friends.",
+          "searchQuery": "Papeete Market",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Le Grillardin",
+          "description": "Savor a delicious lunch at Le Grillardin, known for its fresh seafood and local dishes. The restaurant offers a cozy atmosphere and is perfect for enjoying a leisurely meal with family.",
+          "searchQuery": "Le Grillardin",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Waterfront",
+          "description": "Take a stroll along the beautiful waterfront of Papeete. Enjoy the stunning views of the ocean and the nearby islands while relaxing at one of the many benches or cafes along the promenade.",
+          "searchQuery": "Papeete Waterfront",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping at Local Boutiques",
+          "description": "Discover local boutiques and shops in Papeete, where you can find handmade crafts, jewelry, and clothing. This is a great opportunity to support local artisans and find unique items to take home.",
+          "searchQuery": "Papeete Local Shops",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Le Coco's",
+          "description": "End your day with a delightful dinner at Le Coco's, a restaurant known for its exquisite French cuisine with a Polynesian twist. Enjoy the beautiful sunset views while indulging in a gourmet meal.",
+          "searchQuery": "Le Coco's",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Departure from Tahiti",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Moorea",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Papeete",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Take a ferry from Moorea to Papeete for a scenic ride across the lagoon."
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "Last-minute Shopping at Papeete Market",
+          "description": "Explore the vibrant Papeete Market, where you can find local crafts, fresh produce, and souvenirs. It's a great place to pick up some Tahitian vanilla or handmade jewelry before you leave.",
+          "searchQuery": "Papeete Market",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Le Grillardin",
+          "description": "Enjoy a delicious lunch at Le Grillardin, known for its fresh seafood and local dishes. The ambiance is cozy, making it a perfect spot to relax before your departure.",
+          "searchQuery": "Le Grillardin",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit the Museum of Tahiti and the Islands",
+          "description": "Take a short trip to the Museum of Tahiti and the Islands to learn about the rich culture and history of the region. The exhibits are engaging and provide a deeper understanding of Tahitian heritage.",
+          "searchQuery": "Museum of Tahiti and the Islands",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Coffee Break at Café de la Paix",
+          "description": "Stop by Café de la Paix for a refreshing coffee or a sweet treat. It's a lovely place to unwind and reflect on your trip while enjoying the local atmosphere.",
+          "searchQuery": "Café de la Paix",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Head to the Airport",
+          "description": "Make your way to the airport for your departure flight. Ensure you arrive with plenty of time to check in and relax before your journey home.",
+          "searchQuery": "Fa'a'ā International Airport",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

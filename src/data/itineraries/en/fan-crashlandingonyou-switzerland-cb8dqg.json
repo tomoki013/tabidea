@@ -1,0 +1,475 @@
+{
+  "id": "8b7fadf5-555a-4c28-a753-19dc5d384677",
+  "destination": "Switzerland",
+  "description": "Immerse yourself in the breathtaking landscapes and rich culture of Switzerland, where the charm of the Alps meets the vibrant cities. This 5-day journey is designed for couples who are fans of 'Crash Landing on You', allowing you to explore iconic filming locations while indulging in the local culture and history. From the picturesque streets of Zurich to the serene beauty of Lucerne, each day is filled with memorable experiences and delightful surprises.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Zurich",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Sprüngli",
+          "description": "Start your day with a delightful breakfast at Café Sprüngli, famous for its luxurious pastries and rich hot chocolate. Enjoy the cozy atmosphere as you savor a traditional Swiss breakfast.",
+          "searchQuery": "Café Sprüngli",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Zurich Old Town",
+          "description": "Stroll through the charming streets of Zurich Old Town, where medieval buildings and vibrant shops create a picturesque setting. Don't miss the iconic Grossmünster church and the beautiful views from Lindenhof hill.",
+          "searchQuery": "Zurich Old Town",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Zeughauskeller",
+          "description": "Enjoy a hearty Swiss lunch at Zeughauskeller, a historic restaurant known for its traditional dishes like Zürcher Geschnetzeltes (sliced veal) and delicious sausages. The rustic ambiance adds to the experience.",
+          "searchQuery": "Zeughauskeller",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Lake Zurich",
+          "description": "Take a leisurely walk along Lake Zurich, where you can enjoy the serene views and perhaps even rent a paddleboat. The lakeside promenade is perfect for a romantic stroll.",
+          "searchQuery": "Lake Zurich",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Crash Landing on You merchandise",
+          "description": "Head to the local shops in Zurich to find exclusive Crash Landing on You merchandise. Look for themed souvenirs and fan goods that will remind you of your favorite moments from the show.",
+          "searchQuery": "Crash Landing on You merchandise",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Restaurant Swiss Chuchi",
+          "description": "Indulge in a traditional Swiss dinner at Restaurant Swiss Chuchi, where you can try authentic fondue and raclette. The warm atmosphere and delicious food make it a perfect end to your day.",
+          "searchQuery": "Restaurant Swiss Chuchi",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening walk along the Limmat River",
+          "description": "End your day with a peaceful evening walk along the Limmat River. The illuminated buildings and calm waters create a romantic setting, perfect for couples.",
+          "searchQuery": "Limmat River",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Zurich and Day Trip to Lucerne",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Zurich",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Lucerne",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Enjoy a scenic train ride from Zurich to Lucerne."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Chapel Bridge",
+          "description": "Start your day in Lucerne by visiting the iconic Chapel Bridge, a beautiful wooden bridge adorned with paintings that depict the city's history. It's a perfect spot for a romantic stroll and some lovely photos.",
+          "searchQuery": "Chapel Bridge",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Lake Lucerne Boat Tour",
+          "description": "Take a relaxing boat tour on Lake Lucerne, surrounded by stunning mountain scenery. This is a great way to soak in the natural beauty of the area and enjoy some peaceful moments together.",
+          "searchQuery": "Lake Lucerne Boat Tour",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Restaurant Fritschi",
+          "description": "Enjoy a traditional Swiss lunch at Restaurant Fritschi, known for its cozy atmosphere and delicious local dishes. Try the Swiss cheese fondue for an authentic experience!",
+          "searchQuery": "Restaurant Fritschi",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit Richard Wagner Museum",
+          "description": "Explore the Richard Wagner Museum, located in the villa where the composer lived. The museum offers insights into his life and works, set against the backdrop of beautiful gardens and views of the lake.",
+          "searchQuery": "Richard Wagner Museum",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Crash Landing on You Merchandise",
+          "description": "Head to the local shops in Lucerne to find exclusive Crash Landing on You merchandise. Look for souvenirs that will remind you of your favorite moments from the show!",
+          "searchQuery": "Crash Landing on You Merchandise",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Wirtshaus Galliker",
+          "description": "End your day with dinner at Wirtshaus Galliker, a charming restaurant known for its hearty Swiss cuisine. Enjoy a cozy atmosphere and try their famous rösti, a Swiss potato dish.",
+          "searchQuery": "Wirtshaus Galliker",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Zurich",
+          "description": "Take the train back to Zurich after a fulfilling day in Lucerne. Relax and reflect on the beautiful sights and experiences you've had.",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Journey to Interlaken and Grindelwald",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Zurich",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Interlaken",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Enjoy the scenic train ride through the Swiss countryside."
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "Explore Interlaken",
+          "description": "Stroll around the charming town of Interlaken, nestled between Lake Thun and Lake Brienz. Take in the stunning views of the surrounding mountains and enjoy the fresh alpine air.",
+          "searchQuery": "Interlaken",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Restaurant Taverne",
+          "description": "Savor a delicious Swiss lunch at Restaurant Taverne, known for its cozy atmosphere and traditional dishes like Rösti and fondue. Perfect for refueling before your next adventure!",
+          "searchQuery": "Restaurant Taverne",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Train to Grindelwald",
+          "description": "Hop on the train to Grindelwald, a picturesque village that serves as a gateway to the Jungfrau region. The journey offers breathtaking views of the Eiger mountain.",
+          "searchQuery": "Grindelwald",
+          "locationEn": "Grindelwald, Switzerland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Grindelwald",
+          "description": "Once in Grindelwald, take a leisurely walk through the village and enjoy the stunning scenery. Don't forget to check out the local shops for unique souvenirs and fan goods related to 'Crash Landing on You'.",
+          "searchQuery": "Grindelwald",
+          "locationEn": "Grindelwald, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Grindelwald First Cliff Walk",
+          "description": "Experience the thrill of the First Cliff Walk by Tissot, a suspension bridge offering panoramic views of the Alps. It's a perfect spot for memorable photos!",
+          "searchQuery": "First Cliff Walk by Tissot",
+          "locationEn": "Grindelwald, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Restaurant Belvedere",
+          "description": "Enjoy a romantic dinner at Restaurant Belvedere, where you can indulge in Swiss cuisine while overlooking the stunning mountain landscape. A perfect end to your day!",
+          "searchQuery": "Restaurant Belvedere",
+          "locationEn": "Grindelwald, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Interlaken",
+          "description": "Take the train back to Interlaken for a restful night. Reflect on the day's adventures and prepare for more exploration tomorrow!",
+          "searchQuery": "Interlaken",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Visit to Bern and Return to Zurich",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Interlaken",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Bern",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy the scenic train ride through the Swiss countryside."
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "Explore Bern Old Town",
+          "description": "Stroll through the UNESCO World Heritage-listed Old Town of Bern, where you can admire the medieval architecture and charming streets. Don't miss the famous Zytglogge clock tower, which puts on a delightful show every hour.",
+          "searchQuery": "Bern Old Town",
+          "locationEn": "Bern, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Restaurant Rosengarten",
+          "description": "Enjoy a delicious lunch at Restaurant Rosengarten, which offers stunning views of the city and a menu featuring local Swiss cuisine. Try the rösti, a Swiss potato dish that is a must-try!",
+          "searchQuery": "Restaurant Rosengarten",
+          "locationEn": "Bern, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Zytglogge",
+          "description": "Visit the iconic Zytglogge clock tower, where you can learn about its history and watch the animated figurines come to life at the hour. It's a great spot for photos!",
+          "searchQuery": "Zytglogge",
+          "locationEn": "Bern, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Shopping for Crash Landing on You Merchandise",
+          "description": "Head to a local shop that specializes in K-drama merchandise, including items from Crash Landing on You. It's the perfect place to find souvenirs and gifts for fans!",
+          "searchQuery": "K-drama merchandise shop",
+          "locationEn": "Bern, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Train to Zurich",
+          "description": "Catch a train back to Zurich, where you can relax and reflect on your day in Bern. The train ride offers beautiful views of the Swiss landscape.",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Swiss Chuchi",
+          "description": "Enjoy a cozy dinner at Swiss Chuchi, known for its traditional Swiss fondue. It's a great way to end your day with a warm and hearty meal.",
+          "searchQuery": "Swiss Chuchi",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll by Lake Zurich",
+          "description": "Take a leisurely evening stroll along Lake Zurich. The serene atmosphere and beautiful views of the city lights reflecting on the water make for a romantic end to your day.",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Zurich Airport",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C. International Airport",
+          "time": "15:00"
+        },
+        "duration": "9h",
+        "memo": "Direct flight back to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café Sprüngli",
+          "description": "Start your day with a delightful breakfast at Café Sprüngli, famous for its luxurious pastries and hot chocolate. Enjoy a cozy atmosphere as you savor their signature Luxemburgerli macarons alongside a fresh coffee.",
+          "searchQuery": "Café Sprüngli",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Swiss National Museum",
+          "description": "Explore the rich cultural history of Switzerland at the Swiss National Museum. The museum showcases a vast collection of artifacts, including items related to the history of the beloved series 'Crash Landing on You'.",
+          "searchQuery": "Swiss National Museum",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Zeughauskeller",
+          "description": "Enjoy a hearty Swiss lunch at Zeughauskeller, a historic restaurant known for its traditional Swiss dishes like Zürcher Geschnetzeltes. The ambiance is lively, making it a perfect spot to relax before your flight.",
+          "searchQuery": "Zeughauskeller",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Shopping for Crash Landing on You Merchandise",
+          "description": "Before heading to the airport, take some time to shop for 'Crash Landing on You' merchandise at local stores. Look for unique souvenirs that celebrate your favorite moments from the series.",
+          "searchQuery": "Crash Landing on You merchandise",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

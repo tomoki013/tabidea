@@ -1,0 +1,283 @@
+{
+  "id": "96932788-cc63-4f9a-b87c-4e3ad03a5a81",
+  "destination": "五島列島",
+  "description": "Escape to the tranquil beauty of the Goto Islands, where the azure waters meet lush greenery and the whispers of history echo through charming churches. This 3-day solo journey invites you to immerse yourself in the serene landscapes, explore the rich cultural heritage, and unwind on pristine beaches. Perfect for those seeking solace and a deeper connection with nature, this itinerary balances exploration with relaxation, ensuring you return rejuvenated and inspired.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Exploring Fukue Island",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious breakfast at a cozy café on Fukue Island, where you can enjoy fresh local ingredients and a warm atmosphere. Don't miss the homemade pastries!",
+          "searchQuery": "Fukue Island Café",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Oshima Church",
+          "description": "Explore the beautiful Oshima Church, a stunning example of Western architecture surrounded by lush greenery. The serene atmosphere makes it a perfect spot for reflection and photography.",
+          "searchQuery": "Oshima Church",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Seafood Restaurant",
+          "description": "Savor the flavors of Fukue Island with a lunch featuring fresh seafood caught that morning. Enjoy the local specialty, sashimi, while overlooking the ocean.",
+          "searchQuery": "Fukue Island Seafood Restaurant",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relax at the Beach",
+          "description": "Spend your afternoon unwinding at one of Fukue Island's pristine beaches. The crystal-clear waters and soft sands are perfect for a peaceful escape, allowing you to soak in the sun and enjoy the tranquil surroundings.",
+          "searchQuery": "Fukue Island Beach",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Explore Naru Island",
+          "description": "Take a short boat ride to Naru Island, known for its untouched nature and scenic views. Spend some time hiking the trails and enjoying the breathtaking coastal scenery.",
+          "searchQuery": "Naru Island",
+          "locationEn": "Naru Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "End your day with dinner at a local izakaya, where you can enjoy a variety of small dishes and drinks in a friendly atmosphere. It's a great way to experience local culture and cuisine.",
+          "searchQuery": "Fukue Island Izakaya",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Overnight at a Guesthouse",
+          "description": "Stay overnight at a charming guesthouse that offers a cozy and welcoming environment. Enjoy the hospitality of the locals and share stories with fellow travelers.",
+          "searchQuery": "Fukue Island Guesthouse",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Immersion and Beach Relaxation",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Fukue Island Café",
+          "description": "Start your day with a delightful breakfast at a local café, enjoying fresh pastries and coffee while soaking in the serene island atmosphere.",
+          "searchQuery": "Fukue Island Café",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit Fukue Church",
+          "description": "Explore the beautiful Fukue Church, known for its stunning architecture and peaceful surroundings. Take a moment to reflect and enjoy the view of the ocean from the church grounds.",
+          "searchQuery": "Fukue Church",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Local Seafood Restaurant",
+          "description": "Savor a delicious lunch featuring fresh seafood caught from the surrounding waters. The local flavors will give you a taste of the island's culinary heritage.",
+          "searchQuery": "Fukue Island Seafood Restaurant",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Relax at Matsushima Beach",
+          "description": "Spend a leisurely afternoon at Matsushima Beach, where you can unwind on the sandy shores and take in the breathtaking views of the crystal-clear waters. Perfect for a peaceful escape.",
+          "searchQuery": "Matsushima Beach",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Katsumoto Church",
+          "description": "Head to Katsumoto Church, another beautiful church on the island. Its unique design and tranquil setting make it a perfect spot for contemplation and photography.",
+          "searchQuery": "Katsumoto Church",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "Enjoy dinner at a cozy izakaya, where you can try various local dishes and perhaps even some regional sake. The friendly atmosphere will make you feel right at home.",
+          "searchQuery": "Fukue Island Izakaya",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll Along the Beach",
+          "description": "End your day with a peaceful stroll along the beach, listening to the gentle waves and enjoying the starry sky. A perfect way to reflect on your day and unwind before bed.",
+          "searchQuery": "Matsushima Beach",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Departure and Reflection",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Fukue Island",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Fukue Island",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Enjoy a leisurely morning on Fukue Island before departing."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious breakfast at a cozy café on Fukue Island, where you can enjoy fresh local ingredients and a warm atmosphere.",
+          "searchQuery": "Fukue Island Café",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Church of St. Mary",
+          "description": "Explore the beautiful Church of St. Mary, a serene spot that showcases stunning architecture and offers a peaceful environment for reflection.",
+          "searchQuery": "Church of St. Mary Fukue Island",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Fukue Island Local Market",
+          "description": "Savor a variety of local dishes at the Fukue Island Local Market, where you can taste fresh seafood and traditional island cuisine.",
+          "searchQuery": "Fukue Island Local Market",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relax at the Beach",
+          "description": "Spend a relaxing afternoon at one of Fukue Island's pristine beaches. Enjoy the sun, take a swim, or simply unwind while listening to the gentle waves.",
+          "searchQuery": "Fukue Island Beach",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the Island's Scenic Views",
+          "description": "Take a leisurely stroll along the coastal paths to enjoy breathtaking views of the ocean and surrounding landscapes, perfect for some quiet reflection.",
+          "searchQuery": "Fukue Island Scenic Viewpoints",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local Seafood Restaurant",
+          "description": "Indulge in a delightful dinner featuring the freshest seafood caught around Fukue Island, offering a true taste of the region's culinary heritage.",
+          "searchQuery": "Fukue Island Seafood Restaurant",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

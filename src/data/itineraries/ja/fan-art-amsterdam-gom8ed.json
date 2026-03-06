@@ -1,0 +1,266 @@
+{
+  "id": "779dfbf3-2fe1-4858-a990-0d7298b08e3c",
+  "destination": "アムステルダム",
+  "description": "アムステルダムの街は、運河に囲まれた美しい風景と豊かな文化が魅力の場所です。歴史的な建物やアートスポットが点在し、グルメやショッピングも楽しめるこの街で、あなたの推し活を満喫しましょう。特にアート関連のスポットを巡りながら、ファングッズを探す旅は、心温まる体験となることでしょう。",
+  "heroImage": "https://images.unsplash.com/photo-1499762524203-b47f7b1b26a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTIzMzh8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Václav Pluhař",
+  "heroImagePhotographerUrl": "https://unsplash.com/@vaclavpluhar?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "アムステルダムのアートと歴史を楽しむ日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アムステルダムのカフェで、地元のパンやチーズを使った朝食を楽しみます。新鮮なオレンジジュースと共に、ゆったりとした朝のひとときを過ごしましょう。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "アムステルダム国立美術館",
+          "description": "オランダの名画が揃うアムステルダム国立美術館を訪れます。レンブラントやフェルメールの作品を間近で鑑賞し、アートの深い世界に浸りましょう。",
+          "searchQuery": "Rijksmuseum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カフェ・アムステルダムでランチ",
+          "description": "美術館近くのカフェ・アムステルダムで、オランダの伝統的な料理を楽しみます。特に、ハーリング（生ニシン）やポテトフライはおすすめです。",
+          "searchQuery": "Café Amsterdam",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ダム広場散策",
+          "description": "アムステルダムの中心、ダム広場を散策します。広場の周りには歴史的な建物やショップが立ち並び、観光客や地元の人々で賑わっています。",
+          "searchQuery": "Dam Square",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "アンネ・フランクの家",
+          "description": "歴史的なアンネ・フランクの家を訪れ、彼女の物語に触れます。彼女が隠れていた場所を見学し、戦争の悲劇を学ぶ貴重な体験です。",
+          "searchQuery": "Anne Frank House",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アートショップでファングッズ購入",
+          "description": "アムステルダムのアートショップで、好きなアーティストのファングッズを探します。ポストカードやアートブックなど、思い出に残るアイテムを見つけましょう。",
+          "searchQuery": "art shop Amsterdam",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "アムステルダムの地元のレストランで、オランダ料理を楽しみます。特に、ストロープワッフルやビールは外せません。",
+          "searchQuery": "local restaurant Amsterdam",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アムステルダムのグルメとショッピングを満喫する日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アムステルダムのカフェで、地元の人々に人気のある朝食を楽しみます。新鮮なパンやチーズ、フルーツを使ったヘルシーなメニューが揃っています。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ジョルダーン地区散策",
+          "description": "アムステルダムの魅力的なジョルダーン地区を散策します。美しい運河沿いの風景や、アートギャラリー、個性的なショップが立ち並ぶエリアで、アート関連のグッズを探してみましょう。",
+          "searchQuery": "Jordaan",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "デ・ニッツでランチ",
+          "description": "アムステルダムの人気カフェ「デ・ニッツ」でランチを楽しみます。地元の食材を使った美味しい料理が揃い、特にサンドイッチやサラダが評判です。",
+          "searchQuery": "De Nits",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アムステルダム国立美術館訪問",
+          "description": "オランダの名画を多数所蔵するアムステルダム国立美術館を訪れます。レンブラントやフェルメールの作品を間近で鑑賞し、アートの深い世界に浸りましょう。",
+          "searchQuery": "Rijksmuseum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アムステルダムのアートショップ巡り",
+          "description": "アムステルダムのアートショップを巡り、ファングッズやアート関連のアイテムを探します。ユニークなデザインのポストカードやアートブックが見つかるかもしれません。",
+          "searchQuery": "art shops in Amsterdam",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "アムステルダムのレストランでディナー",
+          "description": "地元のレストランでディナーを楽しみます。オランダ料理や国際色豊かなメニューが揃い、特にシーフード料理が人気です。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "アムステルダムの運河を楽しむ日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アムステルダムのカフェで、地元のパンやチーズを使った朝食を楽しみます。特に、オランダの伝統的なパンケーキは絶品です。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "運河クルーズ",
+          "description": "アムステルダムの美しい運河をクルーズしながら、街の歴史や文化を学びます。水上から見る風景は、まるで絵画のようです。",
+          "searchQuery": "Amsterdam Canal Cruise",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "フラワーマーケット訪問",
+          "description": "アムステルダムの有名なフラワーマーケットで、色とりどりの花々を楽しみながら、オランダのチューリップの球根をお土産に購入できます。",
+          "searchQuery": "Bloemenmarkt",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "地元のカフェでランチ",
+          "description": "フラワーマーケット近くのカフェで、オランダのサンドイッチやスープを味わいます。特に、ハムとチーズのサンドイッチはおすすめです。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "アムステルダム国立美術館",
+          "description": "オランダの巨匠たちの作品が揃うアムステルダム国立美術館を訪れ、レンブラントやフェルメールの名作を鑑賞します。",
+          "searchQuery": "Rijksmuseum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "アートショップでファングッズ購入",
+          "description": "美術館近くのアートショップで、好きなアーティストのファングッズやアートブックを探します。ユニークなアイテムが見つかるかも！",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "アムステルダムのレストランで、オランダ料理を楽しみます。特に、シチューやハーリング（生ニシン）は試してみる価値ありです。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,490 @@
+{
+  "id": "263e65a2-662e-4254-ac99-51452aa6c655",
+  "destination": "カンクン",
+  "description": "カンクンでの7日間は、リゾートの贅沢と自然の美しさが融合した夢のような時間を提供します。透き通る青い海、白い砂浜、そして神秘的なセノーテを訪れることで、心身ともにリフレッシュできる旅が待っています。オールインクルーシブのリゾートで、食事や飲み物を気にせず楽しむことができるのも魅力の一つです。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からカンクンへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "カンクン空港",
+          "time": "15:00"
+        },
+        "duration": "14h",
+        "memo": "直行便でカンクンへ。機内でリラックスしながら、到着を楽しみに待ちましょう。"
+      },
+      "activities": [
+        {
+          "time": "15:30",
+          "activity": "リゾートホテルチェックイン",
+          "description": "カンクンの美しいビーチに面したリゾートホテルにチェックイン。オーシャンビューの部屋で、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Hotel Zone Cancun",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ビーチでのんびり",
+          "description": "ホテルのプライベートビーチで、夕日を眺めながらのんびりと過ごします。波の音を聞きながら、カリブ海の美しさを堪能しましょう。",
+          "searchQuery": "Cancun Beach",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテル内レストランでディナー",
+          "description": "オールインクルーシブの特典を活かして、ホテル内のレストランで豪華なディナーを楽しみます。新鮮なシーフードやメキシコ料理を心ゆくまで味わいましょう。",
+          "searchQuery": "Hotel Restaurant Cancun",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ビーチでのんびり",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "オールインクルーシブのリゾートホテルで、豊富な朝食ビュッフェを楽しみます。新鮮なフルーツやメキシコの伝統的な料理を味わいながら、ゆったりとした朝を迎えましょう。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "カンクンビーチでリラックス",
+          "description": "美しい白砂のカンクンビーチで、青い海を眺めながらのんびりと過ごします。ビーチチェアに寝転び、波の音を聞きながらリラックスする至福の時間。",
+          "searchQuery": "Cancun Beach",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ビーチサイドでランチ",
+          "description": "ビーチ沿いのレストランで新鮮なシーフードランチを楽しみます。カリブ海の風を感じながら、地元の料理を堪能しましょう。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "セノーテ探訪",
+          "description": "カンクン近郊のセノーテへ向かい、自然の美しさを体験します。透明度の高い水で泳いだり、写真を撮ったりして、特別な思い出を作りましょう。",
+          "searchQuery": "Cenote",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "リゾートプールでのんびり",
+          "description": "リゾートのプールサイドで、カクテルを片手にリラックス。日差しを浴びながら、プールでのひとときを楽しみましょう。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "オールインクルーシブのディナーを楽しみます。多国籍料理やメキシコ料理を心ゆくまで堪能し、素敵な夜を過ごしましょう。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "セノーテ探訪",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "オールインクルーシブのリゾートホテルで、豊富なビュッフェスタイルの朝食を楽しみます。新鮮なフルーツやメキシコの伝統的な料理を味わいながら、リラックスした朝を迎えましょう。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "セノーテ・イク・キル",
+          "description": "美しい自然に囲まれたセノーテ・イク・キルで、透明度の高い水に飛び込んでリフレッシュ。周囲の緑と青い水のコントラストが素晴らしく、写真撮影にも最適です。",
+          "searchQuery": "Ik Kil Cenote",
+          "locationEn": "Ik Kil, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "セノーテ・ドス・オホス",
+          "description": "次に、セノーテ・ドス・オホスへ移動。ここでは、洞窟の中でのシュノーケリングや、神秘的な水中の景色を楽しむことができます。",
+          "searchQuery": "Dos Ojos Cenote",
+          "locationEn": "Dos Ojos, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "リゾートに戻って昼食",
+          "description": "リゾートに戻り、オールインクルーシブのランチを楽しみます。新鮮なシーフードやメキシコ料理を心ゆくまで堪能しましょう。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ビーチでリラックス",
+          "description": "午後はビーチでのんびりと過ごします。白い砂浜と青い海を眺めながら、カクテルを片手にリラックスした時間を楽しんでください。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "リゾートでディナー",
+          "description": "夜はリゾート内のレストランでディナー。多国籍料理を楽しみながら、ロマンチックなひとときを過ごしましょう。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "マヤ遺跡の探訪",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "オールインクルーシブのホテルで、豊富なビュッフェスタイルの朝食を楽しみます。新鮮なフルーツやメキシコの伝統的な料理を味わいながら、リラックスした朝を迎えましょう。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "チチェン・イッツァ訪問",
+          "description": "世界遺産に登録されているチチェン・イッツァへ。古代マヤ文明の壮大な遺跡を探索し、特に有名なククルカンのピラミッドを間近で見ることができます。歴史を感じながら、写真撮影にも最適なスポットです。",
+          "searchQuery": "Chichen Itza",
+          "locationEn": "Chichen Itza, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "セノーテ・イキルでの昼食と泳ぎ",
+          "description": "セノーテ・イキルでの昼食を楽しんだ後、透明度の高い水でのスイミングを満喫。自然の美しさに囲まれたこの場所で、リフレッシュすることができます。",
+          "searchQuery": "Cenote Ik Kil",
+          "locationEn": "Cenote Ik Kil, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "セノーテ・イキルでのリラックスタイム",
+          "description": "セノーテの美しい環境で、ゆったりとした時間を過ごします。周囲の自然を楽しみながら、心身ともにリフレッシュしましょう。",
+          "locationEn": "Cenote Ik Kil, Mexico",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "カンクンに戻る",
+          "description": "チチェン・イッツァとセノーテ・イキルでの素晴らしい体験を終え、カンクンのホテルへ戻ります。移動中は、今日の思い出を振り返りながらリラックス。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "オールインクルーシブのホテルで、豪華なディナーを楽しみます。メキシコ料理や国際色豊かな料理が揃い、食事を心ゆくまで堪能できます。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "リゾートでの贅沢な一日",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "オールインクルーシブのリゾートホテルで、豊富なビュッフェスタイルの朝食を楽しみます。新鮮なフルーツや地元の料理を味わいながら、ゆったりとした朝のひとときを過ごしましょう。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "セノーテでのスイミング",
+          "description": "カンクン近郊の美しいセノーテで、透明度の高い水に飛び込んでリフレッシュ。自然に囲まれたこの場所で、シュノーケリングや泳ぎを楽しむことができます。",
+          "searchQuery": "Cenote Ik Kil",
+          "locationEn": "Cenote Ik Kil, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "セノーテ近くのレストランでランチ",
+          "description": "セノーテの近くにあるレストランで、メキシコの伝統料理を楽しみます。タコスやエンチラーダなど、地元の味を堪能しましょう。",
+          "locationEn": "Cenote Ik Kil, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ビーチサイドバーでリラックス",
+          "description": "リゾートのビーチサイドバーで、カクテルを片手に海の景色を楽しみながら、のんびりとした時間を過ごします。心地よい風に吹かれながら、リラックスしたひとときを。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "スパでのトリートメント",
+          "description": "リゾート内のスパで、マッサージやフェイシャルなどのトリートメントを受けて、心身ともにリフレッシュ。贅沢な時間を過ごし、日頃の疲れを癒しましょう。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "オールインクルーシブのディナーを楽しみます。多国籍料理が揃ったビュッフェスタイルで、好きなものを好きなだけ堪能できます。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "カンクンの街を散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "オールインクルーシブのホテルで、豊富なビュッフェスタイルの朝食を楽しみます。新鮮なフルーツやメキシコの伝統的な料理を味わいながら、リラックスした朝を迎えましょう。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "カンクン市場を散策",
+          "description": "地元の人々が集まるカンクン市場で、手作りの工芸品やお土産を探しましょう。色とりどりの品々が並ぶ中、メキシコの文化を感じることができます。",
+          "searchQuery": "Mercado 28",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のレストランでランチ",
+          "description": "カンクン市場近くの地元のレストランで、タコスやセビーチェなどのメキシコ料理を堪能します。新鮮な海の幸を使った料理は絶品です。",
+          "searchQuery": "La Habichuela",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "セノーテ探訪",
+          "description": "カンクン近郊の美しいセノーテへ向かいます。透明度の高い水に囲まれた自然の中で、泳いだり、リラックスしたりする贅沢な時間を過ごしましょう。",
+          "searchQuery": "Cenote Ik Kil",
+          "locationEn": "Chichen Itza, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルに戻り、プールでリラックス",
+          "description": "ホテルに戻ったら、プールサイドでのんびりと過ごします。カクテルを片手に、夕日を眺めながらリラックスした時間を楽しんでください。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ホテルでディナー",
+          "description": "オールインクルーシブのディナーを楽しみます。多国籍料理やメキシコ料理を心ゆくまで堪能し、特別な夜を過ごしましょう。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "カンクンから東京へ帰国",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "カンクン国際空港",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "成田国際空港",
+          "time": "16:00"
+        },
+        "duration": "12h",
+        "memo": "カンクンから東京への直行便で、快適な空の旅を楽しみましょう。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "オールインクルーシブのホテルで、豊富なビュッフェスタイルの朝食を楽しみます。新鮮なフルーツや地元の料理を味わいながら、リゾートの最後の朝を満喫。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "カンクンビーチでリラックス",
+          "description": "美しいカンクンのビーチで、最後のひとときを過ごします。白い砂浜と青い海に囲まれながら、のんびりとした時間を楽しんでください。",
+          "searchQuery": "Cancun Beach",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "チェックアウト",
+          "description": "ホテルをチェックアウトし、カンクン国際空港へ向かいます。",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

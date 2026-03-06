@@ -1,0 +1,597 @@
+{
+  "id": "3d8b5ebd-65a9-444d-babd-71027683b0cf",
+  "destination": "マサイマラ国立保護区",
+  "description": "Embark on an unforgettable 8-day adventure in the heart of Kenya's wilderness, where the vast savannahs of the Maasai Mara await your family's exploration. This journey promises thrilling wildlife encounters, breathtaking landscapes, and a chance to witness the majestic lions in their natural habitat. Perfect for families seeking adventure and connection with nature, each day is designed to immerse you in the beauty of the African landscape while ensuring a relaxed pace for your children to enjoy every moment. From thrilling safari rides to cultural experiences with the Maasai people, this trip will create lasting memories for your family.",
+  "heroImage": "https://images.unsplash.com/photo-1507128641416-ad9628caa6ba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODU5MTZ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Matthias Mullie",
+  "heroImagePhotographerUrl": "https://unsplash.com/@matthiasmullie?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Departure to Nairobi",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Tokyo, Japan",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Nairobi, Kenya",
+          "time": "16:00"
+        },
+        "duration": "12h",
+        "memo": "Direct flight from Tokyo to Nairobi."
+      },
+      "activities": [
+        {
+          "time": "17:00",
+          "activity": "Check-in at Sarova Panafric Hotel",
+          "description": "Settle into the luxurious Sarova Panafric Hotel, known for its family-friendly amenities and beautiful gardens. Enjoy a refreshing drink by the pool after your long flight.",
+          "searchQuery": "Sarova Panafric Hotel",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Carnivore Restaurant",
+          "description": "Experience a unique dining adventure at The Carnivore, famous for its variety of meats served in a traditional African style. Kids will love the fun atmosphere and the chance to try exotic dishes.",
+          "searchQuery": "The Carnivore Restaurant",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening stroll at Nairobi National Park",
+          "description": "Take a short evening drive to Nairobi National Park for a chance to see wildlife at dusk. This is a great way to kick off your safari adventure and spot some animals in their natural habitat.",
+          "searchQuery": "Nairobi National Park",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Journey to Maasai Mara",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Nairobi",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Maasai Mara National Reserve",
+          "time": "12:00"
+        },
+        "duration": "4h",
+        "memo": "Enjoy the scenic drive through the Great Rift Valley."
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "Lunch at Mara River Lodge",
+          "description": "Savor a delicious lunch at Mara River Lodge, where you can enjoy views of the river and possibly spot wildlife while you eat. The lodge offers a variety of local and international dishes, perfect for refueling after your journey.",
+          "searchQuery": "Mara River Lodge",
+          "locationEn": "Maasai Mara National Reserve, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Afternoon Safari Drive",
+          "description": "Hop into a safari vehicle for an exhilarating afternoon game drive in Maasai Mara. This is your chance to see lions, elephants, and other wildlife in their natural habitat. The experienced guides will share fascinating insights about the animals and the ecosystem.",
+          "searchQuery": "Maasai Mara National Reserve",
+          "locationEn": "Maasai Mara National Reserve, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Return to Lodge and Dinner",
+          "description": "After an exciting day of wildlife viewing, return to the lodge for dinner. Enjoy a hearty meal while sharing stories of the day's adventures with your family. The lodge often features local cuisine, giving you a taste of Kenyan flavors.",
+          "searchQuery": "Mara River Lodge",
+          "locationEn": "Maasai Mara National Reserve, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Relaxation at the Lodge",
+          "description": "Unwind at the lodge after dinner. You can enjoy the sounds of the African night, perhaps even spotting some nocturnal wildlife from the lodge's viewing deck. It's a perfect way to end your first day in Maasai Mara.",
+          "locationEn": "Maasai Mara National Reserve, Kenya",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "First Safari Adventure",
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "Breakfast at the Lodge",
+          "description": "Start your day with a hearty breakfast at your lodge, featuring a variety of local and international dishes to fuel your safari adventure. Enjoy the stunning views of the Maasai Mara as you dine.",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:30",
+          "activity": "Morning Game Drive",
+          "description": "Hop into a safari vehicle for an exhilarating morning game drive. Keep your eyes peeled for the majestic lions, elephants, and other wildlife that roam freely in the Maasai Mara. The early morning is the best time to spot animals as they are most active.",
+          "searchQuery": "Maasai Mara National Reserve",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at the Lodge",
+          "description": "Return to the lodge for a delicious lunch. Enjoy a selection of local dishes while sharing stories about the wildlife you've seen so far. This is a great time to relax and recharge for the afternoon activities.",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Afternoon Game Drive",
+          "description": "Set out again for an afternoon game drive. This is another chance to see the incredible wildlife of the Maasai Mara, including the famous Big Five. The golden hour before sunset provides perfect lighting for photography.",
+          "searchQuery": "Maasai Mara National Reserve",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at the Lodge",
+          "description": "After a thrilling day, enjoy a relaxing dinner at the lodge. Savor traditional Kenyan cuisine while listening to the sounds of the African night. This is a perfect time to reflect on the day's adventures with your family.",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Stargazing Experience",
+          "description": "End your day with a stargazing experience. The clear skies of the Maasai Mara offer a breathtaking view of the stars. Your guide will point out constellations and share stories about the night sky.",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Exploring the Wilderness",
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "Breakfast at the Lodge",
+          "description": "Start your day with a hearty breakfast at your lodge, featuring a variety of local and international dishes to fuel your adventure in the Maasai Mara.",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:30",
+          "activity": "Morning Safari Drive",
+          "description": "Embark on an exciting morning safari drive in a comfortable 4x4 vehicle. Keep your eyes peeled for the majestic lions and other wildlife that roam freely in the Maasai Mara.",
+          "searchQuery": "Maasai Mara National Reserve",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at the Lodge",
+          "description": "Return to the lodge for a delicious lunch, where you can relax and share stories about the wildlife you've seen so far.",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Afternoon Safari Drive",
+          "description": "Set out for another thrilling safari drive in the afternoon. This is the perfect time to spot lions as they are often more active during this period. Enjoy the stunning landscapes and diverse wildlife.",
+          "searchQuery": "Maasai Mara National Reserve",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Return to Lodge and Relax",
+          "description": "After an exhilarating day, return to your lodge to unwind. Enjoy the beautiful sunset views over the savannah while sipping on a refreshing drink.",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at the Lodge",
+          "description": "Indulge in a delightful dinner featuring local cuisine, where you can reflect on the day's adventures and plan for tomorrow's explorations.",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Stargazing Experience",
+          "description": "End your day with a magical stargazing experience. The clear skies of the Maasai Mara offer a breathtaking view of the stars, perfect for family bonding.",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Cultural Experience with the Maasai",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Lodge",
+          "description": "Start your day with a hearty breakfast at your lodge, featuring fresh fruits, local pastries, and traditional Kenyan dishes to fuel your adventure ahead.",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Maasai Village Visit",
+          "description": "Experience the vibrant culture of the Maasai people. Engage with the locals, learn about their traditions, and enjoy a traditional dance performance. This immersive experience is perfect for families and offers a unique insight into their way of life.",
+          "searchQuery": "Maasai Village",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Safari Drive in Maasai Mara National Reserve",
+          "description": "Hop into a safari vehicle for an exciting drive through the Maasai Mara. Keep your eyes peeled for the majestic lions, elephants, and other wildlife that roam freely in this stunning landscape. A perfect opportunity for your children to see real lions in their natural habitat!",
+          "searchQuery": "Maasai Mara National Reserve",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch in the Wild",
+          "description": "Enjoy a picnic lunch in the heart of the reserve, surrounded by nature. Delight in a selection of local dishes while listening to the sounds of the wild. This is a great way to relax and recharge before continuing your adventure.",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Afternoon Safari Drive",
+          "description": "Continue your safari adventure with an afternoon drive. Explore different areas of the reserve and increase your chances of spotting the Big Five. The golden hour light makes for stunning photographs, so have your cameras ready!",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Return to Lodge and Relax",
+          "description": "After an exhilarating day, return to your lodge to unwind. Enjoy the beautiful sunset views over the savannah while sipping on a refreshing drink. This is a perfect time for the kids to share their favorite moments from the day.",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at the Lodge",
+          "description": "Savor a delicious dinner at your lodge, featuring a mix of local and international cuisine. Share stories from your day and enjoy the warm atmosphere as you wind down for the evening.",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "More Safari Excitement",
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "Breakfast at the Lodge",
+          "description": "Start your day with a hearty breakfast at your lodge, featuring a variety of local and international dishes to fuel your safari adventure. Enjoy the stunning views of the Maasai Mara as you dine.",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:30",
+          "activity": "Morning Game Drive",
+          "description": "Hop into a safari vehicle for an exhilarating morning game drive. Keep your eyes peeled for the majestic lions, elephants, and other wildlife that roam freely in the Maasai Mara. This is the perfect time to spot predators as they are most active in the cooler morning hours.",
+          "searchQuery": "Maasai Mara National Reserve",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at the Lodge",
+          "description": "Return to the lodge for a delicious lunch. Enjoy a selection of fresh salads, grilled meats, and local specialties while sharing stories about the morning's wildlife encounters.",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Afternoon Game Drive",
+          "description": "Set out again for an afternoon game drive. This time, explore different areas of the reserve, looking for the famous Big Five. The golden hour before sunset offers fantastic lighting for photography, so be ready to capture the beauty of the savannah.",
+          "searchQuery": "Maasai Mara National Reserve",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Return to Lodge and Relax",
+          "description": "After an exciting day of wildlife viewing, return to your lodge. Take some time to relax by the pool or enjoy the sunset views from your balcony.",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at the Lodge",
+          "description": "Gather for dinner at the lodge, where you can savor a mix of local and international cuisine. Share your favorite moments from the day with your family as you enjoy the sounds of the African night.",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Return to Nairobi",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Maasai Mara",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Nairobi",
+          "time": "12:00"
+        },
+        "duration": "4h",
+        "memo": "Enjoy the scenic drive back to Nairobi, taking in the beautiful landscapes of the Great Rift Valley."
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "Lunch at Carnivore Restaurant",
+          "description": "Indulge in a unique dining experience at the famous Carnivore Restaurant, known for its variety of meats including game meat. A must-visit for meat lovers!",
+          "searchQuery": "Carnivore Restaurant",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Nairobi National Park",
+          "description": "Explore Nairobi National Park, where you can see lions, giraffes, and rhinos against the backdrop of the city skyline. A perfect way to end your safari adventure!",
+          "searchQuery": "Nairobi National Park",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Giraffe Centre",
+          "description": "Visit the Giraffe Centre to feed and learn about the endangered Rothschild giraffes. It's a fun and educational experience for the whole family!",
+          "searchQuery": "Giraffe Centre",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Talisman",
+          "description": "Enjoy a delightful dinner at The Talisman, a restaurant known for its eclectic menu and cozy atmosphere. Perfect for a family meal after a day of adventure.",
+          "searchQuery": "The Talisman",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "Departure back to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Jomo Kenyatta International Airport, Nairobi",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C., USA",
+          "time": "19:00"
+        },
+        "duration": "15h",
+        "memo": "Direct flight back to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the hotel",
+          "description": "Enjoy a hearty breakfast at your hotel, featuring a mix of local and international dishes to fuel your journey home.",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Visit Nairobi National Park",
+          "description": "Take a final morning safari at Nairobi National Park, where you can spot lions, giraffes, and rhinos against the backdrop of the city skyline. This is a perfect way to end your Kenyan adventure with your family.",
+          "searchQuery": "Nairobi National Park",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Return to the hotel and check out",
+          "description": "Head back to your hotel to pack up and check out. Make sure to gather all your belongings and souvenirs from your trip.",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Carnivore Restaurant",
+          "description": "Savor a unique dining experience at the famous Carnivore Restaurant, known for its variety of meats served in a traditional African style. A great way to indulge in local flavors before your flight.",
+          "searchQuery": "Carnivore Restaurant",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Transfer to Jomo Kenyatta International Airport",
+          "description": "Leave for the airport, allowing ample time for check-in and security procedures. Enjoy the last glimpses of Nairobi as you head to the airport.",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

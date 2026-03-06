@@ -1,0 +1,273 @@
+{
+  "id": "6e80f7aa-c696-49b0-b06c-9c65aa670d3c",
+  "destination": "London",
+  "description": "Immerse yourself in the vibrant culture and history of London while indulging in your passion for Harry Potter. This 3-day adventure is perfect for couples looking to explore iconic landmarks, savor delicious food, and discover hidden gems that celebrate the magic of the wizarding world. From the bustling streets of Diagon Alley to the enchanting halls of the British Museum, each day is filled with excitement and discovery. Get ready to create unforgettable memories as you embark on this magical journey!",
+  "heroImage": "https://images.unsplash.com/photo-1609673497456-9c4937d3b30a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODg5NDN8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Ana Paula Grimaldi",
+  "heroImagePhotographerUrl": "https://unsplash.com/@ovo_frito?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Exploring the Wizarding World",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Breakfast Club",
+          "description": "Start your day with a hearty breakfast at The Breakfast Club, known for its delicious pancakes and classic English breakfast options. It's a cozy spot that sets the perfect tone for a magical day ahead.",
+          "searchQuery": "The Breakfast Club",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit King's Cross Station",
+          "description": "Head to King's Cross Station, where you can take photos at the iconic Platform 9¾. Don't forget to check out the shop for some exclusive Harry Potter merchandise!",
+          "searchQuery": "King's Cross Station",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Explore Platform 9¾",
+          "description": "At Platform 9¾, you can pose with the luggage trolley that appears to be disappearing through the wall. It's a must-do for any Harry Potter fan!",
+          "searchQuery": "Platform 9¾",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Harry Potter Studio Tour Café",
+          "description": "Enjoy a magical lunch at the café within the Harry Potter Studio Tour. Try some themed dishes and recharge before your next adventure!",
+          "searchQuery": "Harry Potter Studio Tour Café",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit The British Library",
+          "description": "After lunch, head to The British Library. While not exclusively Harry Potter-themed, it houses many historical texts and manuscripts that inspired J.K. Rowling. It's a cultural gem worth exploring!",
+          "searchQuery": "The British Library",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping at The Harry Potter Shop at Platform 9¾",
+          "description": "Return to King's Cross to visit The Harry Potter Shop, where you can find a wide range of merchandise, from wands to clothing. Perfect for picking up some souvenirs!",
+          "searchQuery": "The Harry Potter Shop at Platform 9¾",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Cauldron",
+          "description": "End your day with a magical dining experience at The Cauldron, where you can enjoy a themed meal and even brew your own potions! It's a unique dining experience that every Harry Potter fan will love.",
+          "searchQuery": "The Cauldron",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Art, Culture, and Harry Potter",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Dishoom",
+          "description": "Start your day with a delicious breakfast at Dishoom, known for its Bombay-style dishes. Try the bacon naan roll and a cup of chai for a delightful morning treat.",
+          "searchQuery": "Dishoom Covent Garden",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Warner Bros. Studio Tour - The Making of Harry Potter",
+          "description": "Dive into the magical world of Harry Potter at the Warner Bros. Studio Tour. Explore iconic sets, see props, and learn about the filmmaking process. Don't forget to grab some exclusive merchandise from the shop!",
+          "searchQuery": "Warner Bros. Studio Tour",
+          "locationEn": "Leavesden, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Lunch at The Great Hall Café",
+          "description": "Enjoy a themed lunch at The Great Hall Café, where you can savor dishes inspired by the Harry Potter series. It's a perfect way to refuel after your magical tour!",
+          "searchQuery": "The Great Hall Café",
+          "locationEn": "Leavesden, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Return to London and visit Covent Garden",
+          "description": "Head back to London and explore Covent Garden. This vibrant area is filled with shops, street performers, and cafes. It's a great spot to find unique Harry Potter merchandise and enjoy the lively atmosphere.",
+          "searchQuery": "Covent Garden",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit The National Gallery",
+          "description": "Immerse yourself in art at The National Gallery, home to an impressive collection of European paintings. Take your time to appreciate masterpieces by Van Gogh, Monet, and more. Admission is free!",
+          "searchQuery": "The National Gallery",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Ivy",
+          "description": "End your day with a lovely dinner at The Ivy, a classic British restaurant. Enjoy a cozy atmosphere and a menu featuring seasonal dishes. It's a perfect way to unwind after a day of exploration.",
+          "searchQuery": "The Ivy",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "A Taste of London and Farewell",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Breakfast Club",
+          "description": "Start your day with a hearty breakfast at The Breakfast Club, known for its delicious pancakes and classic English breakfast options. It's a cozy spot that will fuel you for a day of exploration!",
+          "searchQuery": "The Breakfast Club",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Harry Potter Studio Tour",
+          "description": "Dive into the magical world of Harry Potter at the Warner Bros. Studio Tour. Explore the sets, props, and costumes from the films, and don't forget to take a photo on Platform 9¾!",
+          "searchQuery": "Warner Bros. Studio Tour London",
+          "locationEn": "Leavesden, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Borough Market",
+          "description": "Head to Borough Market for lunch, where you can sample a variety of street food from around the world. Try the famous cheese toasties or indulge in some artisanal pastries while soaking in the vibrant atmosphere.",
+          "searchQuery": "Borough Market",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore South Bank",
+          "description": "Stroll along the South Bank of the River Thames, enjoying views of iconic landmarks like the London Eye and the Tate Modern. This area is perfect for a leisurely walk and offers plenty of photo opportunities.",
+          "searchQuery": "South Bank",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit The Shard",
+          "description": "Take a trip to The Shard, the tallest building in the UK. Enjoy breathtaking views of London from the observation deck, and if you're lucky, catch a glimpse of the sunset over the city.",
+          "searchQuery": "The Shard",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping for Harry Potter Merchandise",
+          "description": "Before you leave, stop by the Harry Potter shop at Platform 9¾ in King's Cross Station to pick up some exclusive merchandise and souvenirs to remember your magical trip!",
+          "searchQuery": "Harry Potter Shop at Platform 9¾",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Dishoom",
+          "description": "End your day with a delightful dinner at Dishoom, a popular Indian restaurant inspired by the old Irani cafés of Bombay. The ambiance is charming, and the food is simply delicious!",
+          "searchQuery": "Dishoom",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

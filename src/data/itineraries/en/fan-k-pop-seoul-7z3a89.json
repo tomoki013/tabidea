@@ -1,0 +1,291 @@
+{
+  "id": "8a288df2-35c7-4fb4-b629-5225fccbdc69",
+  "destination": "Seoul",
+  "description": "Immerse yourself in the vibrant culture and artistic spirit of Seoul, where K-Pop reigns supreme and history whispers through the streets. This 3-day adventure is designed for couples eager to explore the heart of Korea's capital, blending the excitement of K-Pop with the rich tapestry of culture and art. From iconic landmarks to hidden gems, prepare for a journey that celebrates your love for all things Korean.",
+  "heroImage": "https://images.unsplash.com/photo-1671101583294-37ba4195d252?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTE0NDB8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Venancio Dionela",
+  "heroImagePhotographerUrl": "https://unsplash.com/@vdionelajr?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "K-Pop Culture and Historic Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious breakfast at a cozy café in Myeongdong, where you can enjoy Korean-style toast and fresh fruit juices. It's a great way to fuel up for a day of exploration!",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Gyeongbokgung Palace",
+          "description": "Visit the grand Gyeongbokgung Palace, the largest of the Five Grand Palaces built during the Joseon Dynasty. Don't miss the changing of the guard ceremony, which takes place at the main gate!",
+          "searchQuery": "Gyeongbokgung Palace",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Tosokchon Samgyetang",
+          "description": "Enjoy a hearty lunch at Tosokchon, famous for its ginseng chicken soup (samgyetang). This dish is not only delicious but also a local favorite for its health benefits.",
+          "searchQuery": "Tosokchon Samgyetang",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Bukchon Hanok Village",
+          "description": "Stroll through Bukchon Hanok Village, a picturesque area filled with traditional Korean hanoks. It's a perfect spot for photos and to experience the charm of old Seoul.",
+          "searchQuery": "Bukchon Hanok Village",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "K-Pop Merchandise Shopping in Myeongdong",
+          "description": "Head back to Myeongdong for some K-Pop shopping! Explore various stores selling albums, merchandise, and fan goods from your favorite idols. Don't forget to check out the themed cafes!",
+          "searchQuery": "Myeongdong",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit the Dongdaemun Design Plaza (DDP)",
+          "description": "Explore the Dongdaemun Design Plaza, an architectural marvel that hosts exhibitions and events. The area is also great for evening strolls and has a vibrant atmosphere.",
+          "searchQuery": "Dongdaemun Design Plaza",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Korean BBQ Restaurant",
+          "description": "End your day with a delicious Korean BBQ dinner at a local restaurant. Grill your own meat and enjoy it with various side dishes (banchan) for a true Korean dining experience.",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Explore Myeongdong Night Market",
+          "description": "After dinner, take a leisurely walk through the Myeongdong Night Market. Sample street food, shop for late-night snacks, and soak in the lively atmosphere of this bustling area.",
+          "searchQuery": "Myeongdong Night Market",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Art and Shopping Extravaganza",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious breakfast at a cozy café in Hongdae, known for its vibrant atmosphere. Enjoy a classic Korean breakfast set with rice, soup, and side dishes to fuel your day ahead.",
+          "searchQuery": "Hongdae Café",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Explore Hongdae's Street Art",
+          "description": "Wander through the artistic streets of Hongdae, where colorful murals and street performances create a lively ambiance. Don't forget to snap some photos with the unique art pieces that reflect the local culture.",
+          "searchQuery": "Hongdae Street Art",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a K-Pop Themed Restaurant",
+          "description": "Indulge in a fun lunch at a K-Pop themed restaurant, where you can enjoy Korean dishes while surrounded by memorabilia of your favorite idols. It's a perfect spot to soak in the K-Pop culture.",
+          "searchQuery": "K-Pop Themed Restaurant",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit Dongdaemun Design Plaza (DDP)",
+          "description": "Head to the iconic Dongdaemun Design Plaza, a hub for design and fashion. Explore the exhibitions and enjoy the futuristic architecture, which is a great backdrop for photos.",
+          "searchQuery": "Dongdaemun Design Plaza",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Shopping for K-Pop Merchandise",
+          "description": "Dive into the world of K-Pop at the nearby shopping centers where you can find a variety of merchandise, from albums to exclusive fan goods. It's a must-visit for any K-Pop fan!",
+          "searchQuery": "K-Pop Merchandise Store",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Stroll through Insadong",
+          "description": "Take a leisurely walk through Insadong, known for its traditional Korean culture. Browse through art galleries, craft shops, and tea houses, and perhaps pick up some unique souvenirs.",
+          "searchQuery": "Insadong",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Traditional Korean Restaurant",
+          "description": "End your day with a hearty dinner at a traditional Korean restaurant. Savor dishes like bulgogi or bibimbap, and enjoy the warm atmosphere that reflects Korean hospitality.",
+          "searchQuery": "Traditional Korean Restaurant",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Final Day of K-Pop and Farewell",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a cozy breakfast at a local café in Seoul, enjoying traditional Korean dishes like kimchi fried rice or a simple yet delicious toast with coffee. It's a great way to fuel up for a day of exploration!",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit COEX Mall",
+          "description": "Head to COEX Mall, a massive underground shopping complex where you can find K-Pop merchandise, including albums, posters, and exclusive fan goods. Don't miss the Starfield Library, a stunning space perfect for photos!",
+          "searchQuery": "COEX Mall",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a K-Pop Themed Café",
+          "description": "Enjoy lunch at a K-Pop themed café where you can indulge in cute desserts and drinks inspired by your favorite idols. It's a fun way to immerse yourself in the K-Pop culture while enjoying a meal!",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Gangnam District",
+          "description": "Stroll through the trendy Gangnam district, famous for its upscale shops and vibrant atmosphere. Be sure to check out the K-Star Road, where you can find the Gangnamdol, a series of cute K-Pop character statues!",
+          "searchQuery": "K-Star Road",
+          "locationEn": "Gangnam, Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit Lotte World Tower",
+          "description": "Make your way to Lotte World Tower, the tallest building in South Korea. Take the elevator to the observation deck for breathtaking views of the city. It's a perfect spot to reflect on your trip and take some memorable photos!",
+          "searchQuery": "Lotte World Tower",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at a Local BBQ Restaurant",
+          "description": "Wrap up your trip with a delicious Korean BBQ dinner. Grill your own meat and enjoy it with a variety of side dishes. It's a must-try experience that will leave you with great memories of Korean cuisine!",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Last-minute Shopping for K-Pop Goods",
+          "description": "Before heading back, take some time for last-minute shopping at nearby stores for K-Pop merchandise. It's the perfect way to bring a piece of your trip back home!",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

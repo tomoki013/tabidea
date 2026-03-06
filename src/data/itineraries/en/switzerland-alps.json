@@ -1,0 +1,605 @@
+{
+  "id": "2d60c359-a14d-4db0-b947-18ec7ca02893",
+  "destination": "Interlaken & Zermatt",
+  "description": "Embark on an unforgettable 7-day journey through the stunning landscapes of Switzerland, where the majestic Alps stand tall and the charm of quaint villages beckons. This itinerary is designed for families seeking adventure and breathtaking views, combining exhilarating hikes with scenic train rides that showcase the best of nature's artistry. Get ready to immerse yourself in the heart of the Swiss Alps, where every moment is a postcard-perfect memory waiting to happen.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Interlaken",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurant Taverne",
+          "description": "Enjoy a hearty Swiss lunch at Restaurant Taverne, known for its traditional dishes like Rösti and fondue. The cozy atmosphere is perfect for a family meal after your journey.",
+          "searchQuery": "Restaurant Taverne",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Lake Thun",
+          "description": "Take a leisurely stroll along the shores of Lake Thun, where the stunning views of the surrounding mountains will take your breath away. You can also rent a paddle boat for a fun family activity on the lake.",
+          "searchQuery": "Lake Thun",
+          "locationEn": "Lake Thun, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit Harder Kulm",
+          "description": "Take the funicular to Harder Kulm, the viewpoint overlooking Interlaken. The panoramic views of the Eiger, Mönch, and Jungfrau mountains are simply unforgettable, especially at sunset.",
+          "searchQuery": "Harder Kulm",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Restaurant Laterne",
+          "description": "Savor a delightful dinner at Restaurant Laterne, where you can indulge in Swiss specialties and enjoy a warm, family-friendly atmosphere. Don't miss their delicious homemade desserts!",
+          "searchQuery": "Restaurant Laterne",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Check-in at Hotel Interlaken",
+          "description": "Settle into your comfortable accommodations at Hotel Interlaken, a charming hotel surrounded by beautiful gardens and close to the city center. Perfect for relaxing after a day of travel.",
+          "searchQuery": "Hotel Interlaken",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Interlaken and Lake Thun",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel Interlaken",
+          "description": "Start your day with a delightful breakfast at Hotel Interlaken, featuring a variety of fresh pastries, local cheeses, and fruits to fuel your adventures ahead.",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Lake Thun Boat Cruise",
+          "description": "Embark on a scenic boat cruise on Lake Thun, surrounded by stunning mountain views. This relaxing journey allows you to appreciate the beauty of the Swiss Alps from the water.",
+          "searchQuery": "Lake Thun Boat Cruise",
+          "locationEn": "Lake Thun, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurant Thunerseee",
+          "description": "Enjoy a lakeside lunch at Restaurant Thunerseee, where you can savor traditional Swiss dishes while taking in the breathtaking views of the lake and mountains.",
+          "searchQuery": "Restaurant Thunerseee",
+          "locationEn": "Thun, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Harder Kulm",
+          "description": "Take the funicular from Interlaken to Harder Kulm, the local mountain. The panoramic views from the top are simply unforgettable, offering a perfect photo opportunity of the Eiger, Mönch, and Jungfrau peaks.",
+          "searchQuery": "Harder Kulm",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Hiking around Harder Kulm",
+          "description": "Enjoy a leisurely hike around the trails near Harder Kulm. The paths are well-marked and provide stunning vistas of the surrounding mountains and valleys, perfect for nature lovers.",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Restaurant Taverne",
+          "description": "End your day with a delicious dinner at Restaurant Taverne, known for its cozy atmosphere and exquisite Swiss cuisine, including fondue and raclette.",
+          "searchQuery": "Restaurant Taverne",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Hiking in the Jungfrau Region",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel Interlaken",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring fresh local bread, cheeses, and a selection of Swiss meats to fuel your hiking adventure.",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Take the Train to Grindelwald",
+          "description": "Board the scenic train from Interlaken to Grindelwald. Enjoy breathtaking views of the Swiss Alps as you travel through picturesque landscapes.",
+          "searchQuery": "Grindelwald",
+          "locationEn": "Grindelwald, Switzerland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "First Cliff Walk by Tissot",
+          "description": "Upon arrival in Grindelwald, take the cable car up to First. Experience the thrilling Cliff Walk, a suspended walkway offering stunning views of the Eiger mountain and the valley below.",
+          "searchQuery": "First Cliff Walk by Tissot",
+          "locationEn": "Grindelwald, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Hiking from First to Bachalpsee",
+          "description": "Embark on a scenic hike from First to Bachalpsee, a beautiful alpine lake. The trail is well-marked and offers panoramic views of the surrounding peaks, making it a perfect spot for photos.",
+          "searchQuery": "Bachalpsee",
+          "locationEn": "Grindelwald, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Bergrestaurant First",
+          "description": "Enjoy a delicious lunch at the mountain restaurant, featuring local specialties and stunning views of the Alps. Don't miss the chance to try some Swiss fondue!",
+          "searchQuery": "Bergrestaurant First",
+          "locationEn": "Grindelwald, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Hiking back to Grindelwald",
+          "description": "After lunch, hike back to Grindelwald, taking in the fresh mountain air and the beautiful scenery. This leisurely hike allows you to soak in the tranquility of the Alps.",
+          "locationEn": "Grindelwald, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Grindelwald Village",
+          "description": "Spend some time exploring the charming village of Grindelwald. Visit local shops, enjoy a coffee at a cozy café, and take in the stunning views of the surrounding mountains.",
+          "searchQuery": "Grindelwald",
+          "locationEn": "Grindelwald, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Restaurant Belvedere",
+          "description": "Indulge in a delightful dinner at Restaurant Belvedere, known for its exquisite Swiss cuisine and warm atmosphere. A perfect way to end your day in the mountains.",
+          "searchQuery": "Restaurant Belvedere",
+          "locationEn": "Grindelwald, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Interlaken",
+          "description": "Take the train back to Interlaken, reflecting on the day's adventures in the stunning Jungfrau region. The evening train ride offers a beautiful view of the sunset over the mountains.",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Journey to Zermatt",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Interlaken",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Zermatt",
+          "time": "11:30"
+        },
+        "duration": "2h 30m",
+        "memo": "Enjoy the scenic train ride through the Swiss Alps."
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurant Walliserkanne",
+          "description": "Savor traditional Swiss cuisine at this cozy restaurant, known for its fondue and raclette. A perfect way to recharge after your journey!",
+          "searchQuery": "Restaurant Walliserkanne",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Gornergrat Railway",
+          "description": "Take the Gornergrat Railway for breathtaking views of the Matterhorn and surrounding peaks. The ride offers stunning panoramas that will leave you in awe!",
+          "searchQuery": "Gornergrat Railway",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Hiking near Gornergrat",
+          "description": "Embark on a scenic hike around Gornergrat, where you can enjoy the fresh mountain air and stunning vistas of the Alps. Perfect for nature lovers!",
+          "searchQuery": "Gornergrat",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Restaurant Schäferstube",
+          "description": "Indulge in a delightful dinner featuring local specialties in a warm, rustic setting. The atmosphere is perfect for a family meal after a day of adventure.",
+          "searchQuery": "Restaurant Schäferstube",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll in Zermatt",
+          "description": "Take a leisurely evening walk through the charming streets of Zermatt, soaking in the alpine ambiance and perhaps stopping for a nightcap at a local bar.",
+          "searchQuery": "Zermatt",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Hiking with a View of the Matterhorn",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel in Zermatt, featuring local Swiss cheeses, fresh bread, and pastries to fuel your hiking adventure.",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Gornergrat Railway to Gornergrat",
+          "description": "Take the scenic Gornergrat Railway from Zermatt to Gornergrat. Enjoy breathtaking views of the Matterhorn and surrounding peaks as you ascend to 3,089 meters.",
+          "searchQuery": "Gornergrat Railway",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Hiking around Gornergrat",
+          "description": "Once at Gornergrat, embark on a hiking trail that offers stunning panoramic views of the Alps. The trail is well-marked and suitable for various fitness levels, making it perfect for families.",
+          "locationEn": "Gornergrat, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Gornergrat Restaurant",
+          "description": "Enjoy a delicious lunch at the Gornergrat Restaurant, where you can savor Swiss specialties while taking in the magnificent mountain scenery.",
+          "locationEn": "Gornergrat, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Hike to Riffelsee",
+          "description": "Continue your hike towards Riffelsee, a picturesque lake that reflects the Matterhorn. This is a perfect spot for family photos and a moment of tranquility in nature.",
+          "locationEn": "Riffelsee, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Zermatt via Gornergrat Railway",
+          "description": "After enjoying the views at Riffelsee, take the Gornergrat Railway back to Zermatt. Relax and soak in the last glimpses of the stunning landscape.",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Dinner at Restaurant Schäferstube",
+          "description": "End your day with a delightful dinner at Restaurant Schäferstube, known for its cozy atmosphere and traditional Swiss dishes, including fondue and raclette.",
+          "searchQuery": "Restaurant Schäferstube",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Exploring Zermatt and Surroundings",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring local Swiss cheeses, fresh bread, and pastries to fuel your adventures ahead.",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Gornergrat Railway to Gornergrat",
+          "description": "Take the iconic Gornergrat Railway, a scenic train ride that offers breathtaking views of the Matterhorn and surrounding peaks. The journey takes about 30 minutes, and the panoramic views from the top are simply unforgettable.",
+          "searchQuery": "Gornergrat Railway",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Hiking at Gornergrat",
+          "description": "Once at Gornergrat, enjoy a leisurely hike along the well-marked trails. The stunning vistas of the Matterhorn and the glaciers will make this hike a memorable experience. Don't forget your camera!",
+          "locationEn": "Gornergrat, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Gornergrat Restaurant",
+          "description": "Savor a delicious lunch at the Gornergrat Restaurant, where you can enjoy traditional Swiss dishes while soaking in the panoramic mountain views.",
+          "searchQuery": "Gornergrat Restaurant",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Return to Zermatt via Gornergrat Railway",
+          "description": "Head back down to Zermatt on the Gornergrat Railway, taking in the stunning scenery once more. This is a great time to relax and reflect on the morning's adventures.",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Zermatt Village",
+          "description": "Stroll through the charming streets of Zermatt, lined with traditional wooden chalets and boutique shops. Visit the Matterhorn Museum to learn about the history of this iconic mountain and the town itself.",
+          "searchQuery": "Matterhorn Museum",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Restaurant Schäferstube",
+          "description": "Enjoy a delightful dinner at Restaurant Schäferstube, known for its cozy atmosphere and delicious Swiss cuisine, including fondue and raclette, perfect for a family meal after a day of exploration.",
+          "searchQuery": "Restaurant Schäferstube",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening Walk along the River",
+          "description": "End your day with a peaceful evening walk along the river that runs through Zermatt. The sound of the water and the view of the illuminated Matterhorn will create a magical atmosphere.",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Return to Interlaken and Departure",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Zermatt",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Interlaken",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "Enjoy the scenic train ride through the Swiss Alps."
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "Brunch at Restaurant Taverne",
+          "description": "Start your day with a hearty brunch at Restaurant Taverne, known for its delicious Swiss specialties and cozy atmosphere. Try the Rösti, a Swiss potato dish that will fuel you for the day ahead.",
+          "searchQuery": "Restaurant Taverne",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Explore Harder Kulm",
+          "description": "Take the funicular to Harder Kulm, the viewpoint overlooking Interlaken. The panoramic views of the Eiger, Mönch, and Jungfrau mountains are breathtaking. Don't forget your camera!",
+          "searchQuery": "Harder Kulm",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Stroll around Lake Brienz",
+          "description": "Enjoy a leisurely walk along the shores of Lake Brienz. The turquoise waters and surrounding mountains create a serene atmosphere, perfect for a relaxing afternoon.",
+          "searchQuery": "Lake Brienz",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Restaurant Laterne",
+          "description": "End your day with a delightful dinner at Restaurant Laterne, where you can savor traditional Swiss cuisine in a charming setting. The fondue here is a must-try!",
+          "searchQuery": "Restaurant Laterne",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Departure from Interlaken",
+          "description": "Prepare for your departure from Interlaken, taking with you unforgettable memories of the Swiss Alps and the beautiful landscapes you've explored.",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,387 @@
+{
+  "id": "69c7da45-3b5e-4deb-b01d-5987818f7d3a",
+  "destination": "Seoul",
+  "description": "Immerse yourself in the vibrant culture and stunning nature of Seoul, where modernity meets tradition. This 4-day escape is designed for relaxation and exploration, allowing you to unwind while discovering breathtaking landscapes and the city's rich heritage. From serene parks to bustling markets, each day offers a unique blend of experiences that will rejuvenate your spirit and create lasting memories with your friends.",
+  "heroImage": "https://images.unsplash.com/photo-1617283458655-1ef09d4f17f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTU1MjZ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Andrea De Santis",
+  "heroImagePhotographerUrl": "https://unsplash.com/@santesson89?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Exploring the Heart of Seoul",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a hearty breakfast at a cozy café in the heart of Seoul. Try a traditional Korean breakfast set with rice, soup, and side dishes for an authentic taste.",
+          "searchQuery": "Local Café Seoul",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Gyeongbokgung Palace",
+          "description": "Visit the majestic Gyeongbokgung Palace, the largest of the Five Grand Palaces. Don't miss the changing of the guard ceremony, which takes place at the main gate. The beautiful gardens and traditional architecture make it a perfect spot for photos.",
+          "searchQuery": "Gyeongbokgung Palace",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Tosokchon Samgyetang",
+          "description": "Enjoy a delicious bowl of samgyetang (ginseng chicken soup) at Tosokchon, a popular restaurant known for its rich flavors and comforting dishes. It's a local favorite and a must-try when in Seoul.",
+          "searchQuery": "Tosokchon Samgyetang",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Bukchon Hanok Village",
+          "description": "Stroll through Bukchon Hanok Village, a picturesque area filled with traditional Korean houses (hanoks). The narrow alleys and stunning views of the city provide a unique glimpse into Korea's past.",
+          "searchQuery": "Bukchon Hanok Village",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Insadong Cultural Street",
+          "description": "Explore Insadong, a vibrant neighborhood known for its art galleries, antique shops, and traditional tea houses. Take your time to browse the unique crafts and perhaps enjoy a cup of tea at a local teahouse.",
+          "searchQuery": "Insadong",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Korean BBQ Restaurant",
+          "description": "Indulge in a classic Korean BBQ dinner where you can grill your own meat at the table. It's a fun and interactive dining experience that you shouldn't miss while in Seoul.",
+          "searchQuery": "Korean BBQ Restaurant Seoul",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along Cheonggyecheon Stream",
+          "description": "End your day with a relaxing walk along Cheonggyecheon Stream. The illuminated pathways and serene atmosphere make it a perfect spot to unwind after a day of exploration.",
+          "searchQuery": "Cheonggyecheon Stream",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Nature Retreat in Bukhansan National Park",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a hearty breakfast at a cozy café in Seoul. Enjoy a traditional Korean breakfast set with rice, soup, and side dishes, perfect for fueling your adventure ahead.",
+          "searchQuery": "Seoul Local Café",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Bukhansan National Park Hike",
+          "description": "Head to Bukhansan National Park for a refreshing hike. The trails offer stunning views of the surrounding mountains and valleys, making it a perfect escape into nature. Don't forget your camera for the breathtaking scenery!",
+          "searchQuery": "Bukhansan National Park",
+          "locationEn": "Bukhansan National Park, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Mountain Restaurant",
+          "description": "After your hike, enjoy a delicious lunch at a local mountain restaurant. Try the famous Korean dish 'pajeon' (green onion pancake) paired with a warm bowl of 'makgeolli' (rice wine) for a true local experience.",
+          "searchQuery": "Bukhansan Mountain Restaurant",
+          "locationEn": "Bukhansan National Park, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Uiryeong Valley",
+          "description": "Take a leisurely stroll through Uiryeong Valley, known for its serene atmosphere and beautiful landscapes. This hidden gem is perfect for relaxation and enjoying the tranquility of nature.",
+          "searchQuery": "Uiryeong Valley",
+          "locationEn": "Uiryeong Valley, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Seoul",
+          "description": "After a day filled with nature, head back to Seoul. Enjoy the scenic views along the way as you reflect on your adventure in the mountains.",
+          "searchQuery": "Seoul",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local BBQ Restaurant",
+          "description": "Indulge in a classic Korean BBQ dinner at a local restaurant. Grill your own meat and enjoy it with an array of side dishes, a perfect way to end your day.",
+          "searchQuery": "Korean BBQ Restaurant",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk Along the Han River",
+          "description": "Finish your day with a peaceful evening walk along the Han River. The illuminated city skyline provides a stunning backdrop as you unwind and enjoy the fresh air.",
+          "searchQuery": "Han River Park",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Relaxing Day at Han River and Surroundings",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a hearty breakfast at a cozy café near your accommodation. Enjoy a classic Korean breakfast set with rice, soup, and side dishes, perfect for fueling your day ahead.",
+          "searchQuery": "Seoul Café",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Han River Park",
+          "description": "Take a leisurely stroll along Han River Park, where you can enjoy the beautiful riverside views and the fresh air. Rent a bike if you're feeling adventurous, or simply relax on the grass and soak in the scenery.",
+          "searchQuery": "Han River Park",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Han River Restaurant",
+          "description": "Savor a delicious lunch at one of the riverside restaurants, where you can try local specialties like bibimbap or grilled fish while enjoying the view of the river.",
+          "searchQuery": "Han River Restaurant",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Banpo Bridge and Rainbow Fountain",
+          "description": "Visit the iconic Banpo Bridge, famous for its stunning rainbow fountain show. Take some time to relax by the water and capture beautiful photos of the bridge and the city skyline.",
+          "searchQuery": "Banpo Bridge",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Seoul Forest",
+          "description": "Head to Seoul Forest, a large green space that offers walking paths, deer parks, and beautiful gardens. It's a perfect spot to unwind and enjoy nature, especially in the afternoon light.",
+          "searchQuery": "Seoul Forest",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local BBQ Restaurant",
+          "description": "Indulge in a traditional Korean BBQ dinner at a local restaurant. Grill your own meat and enjoy it with a variety of side dishes, a true Korean dining experience.",
+          "searchQuery": "Korean BBQ Restaurant",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk Along the Han River",
+          "description": "End your day with a peaceful evening walk along the Han River. The city lights reflecting on the water create a magical atmosphere, perfect for winding down after a day of exploration.",
+          "searchQuery": "Han River Evening Walk",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Cultural Immersion and Departure",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Seoul",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Namsan Tower",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take a taxi to Namsan Tower for a scenic start to the day."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Namsan Tower",
+          "description": "Start your day with a visit to Namsan Tower, where you can enjoy panoramic views of Seoul. The hike up to the tower is invigorating, and the sight from the top is breathtaking, especially in the morning light.",
+          "searchQuery": "Namsan Tower",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Myeongdong Street Food",
+          "description": "Head to Myeongdong for a delightful street food experience. Sample local favorites like tteokbokki (spicy rice cakes) and hotteok (sweet pancakes) as you stroll through the bustling streets filled with shops and vendors.",
+          "searchQuery": "Myeongdong Street Food",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Myeongdong Kyoja",
+          "description": "Enjoy a hearty meal at Myeongdong Kyoja, famous for its handmade noodles and dumplings. The cozy atmosphere and delicious food make it a perfect spot to recharge before more sightseeing.",
+          "searchQuery": "Myeongdong Kyoja",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Dongdaemun Design Plaza",
+          "description": "Visit the Dongdaemun Design Plaza, an architectural marvel known for its futuristic design. Explore the exhibitions and enjoy the surrounding park, which is a great place to relax and take photos.",
+          "searchQuery": "Dongdaemun Design Plaza",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Cheonggyecheon Stream",
+          "description": "Take a leisurely stroll along Cheonggyecheon Stream, a beautiful urban oasis in the heart of Seoul. The serene atmosphere and gentle sounds of flowing water provide a perfect escape from the city's hustle and bustle.",
+          "searchQuery": "Cheonggyecheon Stream",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Gwangjang Market",
+          "description": "End your day with dinner at Gwangjang Market, where you can indulge in traditional Korean dishes like bibimbap and bindaetteok (mung bean pancakes). The vibrant market atmosphere adds to the experience.",
+          "searchQuery": "Gwangjang Market",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Hotel and Departure",
+          "description": "After a fulfilling day, return to your hotel to collect your belongings before heading to the airport for your departure. Reflect on the wonderful memories made in Seoul!",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

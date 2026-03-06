@@ -1,0 +1,541 @@
+{
+  "id": "c5c9f61b-3d46-4e8f-a4a9-42969e307a2f",
+  "destination": "サン・セバスティアン",
+  "description": "美食の街、サン・セバスティアンでの6日間の旅は、友人との素晴らしい思い出を作るための完璧な舞台です。海に面したこの美しい街では、ピンチョスを楽しみながら、街歩きやビーチでのリラックスも満喫できます。地元のバルを巡り、スペインの美味しい料理とお酒に酔いしれる旅へ出かけましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からサン・セバスティアンへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "サン・セバスティアン",
+          "time": "14:00"
+        },
+        "duration": "13h",
+        "memo": "直行便ではなく、乗り継ぎが必要です。"
+      },
+      "activities": [
+        {
+          "time": "14:30",
+          "activity": "ホテルチェックイン",
+          "description": "サン・セバスティアンの中心部にあるホテルにチェックイン。荷物を置いて、早速街歩きに出かけましょう。",
+          "searchQuery": "Hotel de Londres y de Inglaterra",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ラ・コンチャビーチ散策",
+          "description": "美しいラ・コンチャビーチを散策。海の青さと白い砂浜が広がり、リラックスした時間を過ごせます。ビーチ沿いのカフェで一息つくのもおすすめ。",
+          "searchQuery": "La Concha Beach",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ピンチョス巡りスタート",
+          "description": "サン・セバスティアン名物のピンチョスを楽しむため、バルをハシゴします。地元の人に人気のバルを訪れ、様々なピンチョスを味わいましょう。",
+          "searchQuery": "Bar Nestor",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "バル巡り続行",
+          "description": "さらに数軒のバルを巡り、異なるスタイルのピンチョスを堪能。地元のワインやサングリアと一緒に楽しむのがポイントです。",
+          "searchQuery": "La Cuchara de San Telmo",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "夜の街歩き",
+          "description": "バル巡りの後は、サン・セバスティアンの夜の雰囲気を楽しむために街を散策。美しい街並みとともに、地元の人々の生活を感じることができます。",
+          "searchQuery": "San Sebastián Old Town",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ピンチョス巡りと街歩き",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "サン・セバスティアンのホテルで、地元の食材を使った美味しい朝食を楽しみます。特に、バスク地方のチーズやハムは絶品です。",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "旧市街散策",
+          "description": "サン・セバスティアンの旧市街を散策しながら、歴史的な建物や美しい広場を楽しみます。特に、サン・ビセンテ教会や市庁舎は見逃せません。",
+          "searchQuery": "San Sebastián Old Town",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ピンチョスランチ",
+          "description": "地元のバルでピンチョスを楽しむランチタイム。新鮮な魚介類や肉を使った多彩なピンチョスを味わいながら、友人と楽しいひとときを過ごします。",
+          "searchQuery": "La Cuchara de San Telmo",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "バル巡り",
+          "description": "旧市街のバルをハシゴしながら、様々なピンチョスを楽しみます。特に、地元の人に人気のバルを訪れると、より本格的な味わいが楽しめます。",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ビーチ散策",
+          "description": "ラ・コンチャビーチを散策し、海の景色を楽しみます。ビーチ沿いのカフェで一息つくのもおすすめです。",
+          "searchQuery": "La Concha Beach",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "夕食にピンチョス",
+          "description": "再びバルに戻り、夕食としてピンチョスを楽しみます。特に、地元のワインと一緒に味わうと、より一層美味しさが引き立ちます。",
+          "searchQuery": "Bodegón Alejandro",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "夜の街歩き",
+          "description": "夜のサン・セバスティアンを散策し、ライトアップされた街並みを楽しみます。バルの雰囲気を感じながら、友人と楽しい時間を過ごしましょう。",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ビーチでのんびりと",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "サン・セバスティアンのホテルで、地元の食材を使った美味しい朝食を楽しみます。特に、トーストにトマトとオリーブオイルをかけた「パン・コン・トマテ」は絶品です。",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ラ・コンチャビーチ散策",
+          "description": "美しいラ・コンチャビーチでのんびりと過ごします。青い海と白い砂浜が広がるこのビーチは、リラックスするには最適な場所です。海を眺めながら、友人とおしゃべりを楽しんでください。",
+          "searchQuery": "La Concha Beach",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のバルでランチ",
+          "description": "ビーチ近くのバルで、ピンチョスを楽しみながらランチ。新鮮なシーフードや地元の特産品を使ったピンチョスをぜひ味わってみてください。",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "サン・セバスティアンの海岸沿い散策",
+          "description": "海岸沿いを散策しながら、素敵な景色を楽しみます。途中で写真を撮ったり、地元のアートを楽しんだりするのも良いでしょう。",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "バル巡り",
+          "description": "サン・セバスティアンの有名なバルを何軒もハシゴして、様々なピンチョスを楽しみます。特に、地元の人に人気のあるバルを訪れると、より本格的な体験ができます。",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "夕食は海の見えるレストランで",
+          "description": "海を眺めながら、地元の料理を楽しむディナータイム。新鮮な魚介類や、バスク地方の伝統料理を堪能してください。",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "夜のビーチ散策",
+          "description": "夕食後は、ビーチを散策しながら夜の雰囲気を楽しみます。波の音を聞きながら、友人との楽しい時間を過ごしてください。",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "周辺観光とグルメ体験",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "サン・セバスティアン",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ゲタリア",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "サン・セバスティアンからゲタリアへバスで移動します。美しい海岸線を楽しみながらの移動です。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "ゲタリアのビーチ散策",
+          "description": "美しいビーチでのんびりと過ごします。海の香りを感じながら、友人とリラックスした時間を楽しんでください。",
+          "searchQuery": "Getaria Beach",
+          "locationEn": "Getaria, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のワイナリーでワインテイスティング",
+          "description": "ゲタリアの名物、白ワインを楽しむテイスティング体験。地元のワインの特徴や製造過程を学びながら、数種類のワインを味わえます。",
+          "searchQuery": "Bodega Txakoli",
+          "locationEn": "Getaria, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ゲタリアでピンチョスランチ",
+          "description": "地元のバルで新鮮なピンチョスを楽しみます。シーフードや地元の食材を使った美味しい一品を堪能してください。",
+          "searchQuery": "Bar Restaurante Txoko",
+          "locationEn": "Getaria, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "サン・セバスティアンに戻る",
+          "description": "バスでサン・セバスティアンに戻ります。移動中に景色を楽しんでください。",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "サン・セバスティアンの旧市街散策",
+          "description": "旧市街の狭い路地を散策しながら、地元のバルをハシゴしてピンチョスを楽しみます。友人と一緒にお気に入りのバルを見つけてください。",
+          "searchQuery": "San Sebastián Old Town",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "夕食にバルでピンチョス",
+          "description": "夕食は、サン・セバスティアンの人気バルでピンチョスを楽しみます。地元の人々と一緒に賑やかな雰囲気を味わいましょう。",
+          "searchQuery": "Bar Nestor",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "サン・セバスティアンの夜景を楽しむ",
+          "description": "美しい夜景を眺めながら、友人と一緒にゆったりとした時間を過ごします。海岸沿いの散歩もおすすめです。",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "最後のピンチョスハシゴ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "サン・セバスティアンのホテルで、地元の食材を使った朝食を楽しみます。新鮮なパンやフルーツ、コーヒーでエネルギーをチャージ。",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "サン・セバスティアンのバル巡り",
+          "description": "サン・セバスティアンのバルでピンチョスを楽しむ一日が始まります。まずは、地元の人々に人気のバル「バー・アマラ」で、絶品のタコのピンチョスを味わいましょう。",
+          "searchQuery": "Bar Amara",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "マーケットでの食材探索",
+          "description": "地元のマーケットを訪れ、新鮮な食材や特産品を見て回ります。色とりどりの野菜や魚介類が並ぶ様子は、目にも楽しいです。",
+          "searchQuery": "Mercado de la Bretxa",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "バルでランチ",
+          "description": "マーケット近くの「バー・エル・カンポ」で、地元のワインと共にピンチョスランチを楽しみます。特に、ハモンセラーノとチーズの組み合わせは絶品です。",
+          "searchQuery": "Bar El Campo",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ビーチ散策",
+          "description": "サン・セバスティアンの美しいラ・コンチャビーチを散策。海の香りを感じながら、リラックスした時間を過ごします。",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "バル巡り再開",
+          "description": "午後のバル巡りを再開。「バー・ラ・ウルス」で、地元の人に愛されるピンチョスを堪能。特に、シーフード系のピンチョスが人気です。",
+          "searchQuery": "Bar La Uru",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "最後のディナー",
+          "description": "「バー・トリビュナ」で、最後のピンチョスを楽しみます。ここでは、特製のサングリアと共に、様々なピンチョスをシェアして楽しむのがオススメです。",
+          "searchQuery": "Bar Tribuna",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "夜の散策",
+          "description": "ディナーの後は、サン・セバスティアンの夜の街を散策。ライトアップされた街並みを楽しみながら、最後の夜を締めくくります。",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "サン・セバスティアンから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "サン・セバスティアン",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "18:00"
+        },
+        "duration": "12h",
+        "memo": "サン・セバスティアンから東京への直行便を利用します。空港までの移動時間を考慮して、早めに出発しましょう。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "地元の食材を使った美味しい朝食を楽しみます。特に、バスク地方の特製トーストや新鮮なフルーツが絶品です。",
+          "searchQuery": "San Sebastián Hotel Breakfast",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "サン・セバスティアンのビーチ散策",
+          "description": "美しいラ・コンチャビーチを散策し、朝の海の風を感じながらリラックス。ビーチ沿いのカフェでコーヒーを楽しむのもおすすめです。",
+          "searchQuery": "La Concha Beach",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ピンチョス巡り",
+          "description": "サン・セバスティアンのバルをハシゴしながら、絶品のピンチョスを堪能します。特に、地元の人に人気のバルを訪れると、より本格的な体験ができます。",
+          "searchQuery": "San Sebastián Pintxos Bars",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "サン・セバスティアン空港へ移動",
+          "description": "空港へ向かうため、タクシーまたは公共交通機関を利用します。出発の2時間前には空港に到着するようにしましょう。",
+          "searchQuery": "San Sebastián Airport",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "東京到着",
+          "description": "東京に到着後、ホテルへ移動し、旅の疲れを癒します。",
+          "searchQuery": "Tokyo",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

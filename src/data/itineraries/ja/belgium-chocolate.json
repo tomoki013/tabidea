@@ -1,0 +1,569 @@
+{
+  "id": "e67004e9-338a-4dd6-8c97-4604513f2d16",
+  "destination": "ブリュッセル・ブルージュ",
+  "description": "美味しいチョコレートとワッフルを求めて、ベルギーの魅力を存分に味わう6日間の旅へ出かけましょう。ブリュッセルの賑やかな街並みと、ブルージュの可愛らしい運河沿いの風景が、あなたを待っています。友人と共に、グルメやショッピングを楽しみながら、歴史的な世界遺産を巡る贅沢な時間を過ごしましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からブリュッセルへ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ブリュッセル中央広場で朝食",
+          "description": "ブリュッセル中央広場のカフェで、フレッシュなクロワッサンとコーヒーを楽しみます。美しい広場を眺めながら、ゆったりとした朝のひとときを過ごしましょう。",
+          "searchQuery": "Brussels Central Square",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ブリュッセル中央広場観光",
+          "description": "世界遺産にも登録されているブリュッセル中央広場を散策。壮大な建物に囲まれたこの広場は、歴史的な雰囲気が漂い、写真撮影にも最適です。",
+          "searchQuery": "Grand Place",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "チョコレートショップ巡り",
+          "description": "ブリュッセルはチョコレートの名産地。地元の人気店をいくつか訪れ、試食しながらお気に入りのチョコレートを見つけましょう。特に「Pierre Marcolini」や「Neuhaus」はおすすめです。",
+          "searchQuery": "Pierre Marcolini",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "地元のレストランでランチ",
+          "description": "ブリュッセル名物のムール貝を楽しめるレストランでランチ。新鮮なムール貝とフライドポテトの組み合わせは絶品です。",
+          "searchQuery": "Chez Léon",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ワッフルショップでスイーツタイム",
+          "description": "ブリュッセルのワッフルを楽しむために、地元のワッフルショップ「Maison Dandoy」へ。クリームやフルーツをトッピングしたワッフルは、甘いひとときを提供してくれます。",
+          "searchQuery": "Maison Dandoy",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "グランプラス周辺を散策",
+          "description": "グランプラス周辺の小道を散策しながら、かわいいお土産屋やカフェを見つけましょう。地元のアートや手作りの品々が並ぶショップも魅力的です。",
+          "searchQuery": "Grand Place",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕食はビールと共に",
+          "description": "ブリュッセルのビアバーで、地元のビールを楽しみながら夕食。ベルギー料理を堪能し、友人と楽しい時間を過ごしましょう。",
+          "searchQuery": "Delirium Café",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルチェックイン",
+          "description": "本日の宿泊先にチェックイン。ゆっくりと疲れを癒し、明日の冒険に備えましょう。",
+          "searchQuery": "Hotel Amigo",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ブリュッセルの魅力を堪能",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ブリュッセルのホテルで、地元のパンやチーズを使った朝食を楽しみます。特に、フレッシュなクロワッサンは絶品です。",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "アトミウム",
+          "description": "ブリュッセルのシンボル、アトミウムを訪れます。巨大な原子模型の形をしたこの建物からは、ブリュッセルの美しい景色を一望できます。特に晴れた日には、周囲の公園も散策するのがおすすめです。",
+          "searchQuery": "Atomium",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "チョコレートショップ巡り",
+          "description": "ブリュッセルはチョコレートの名産地。地元の人気店をいくつか訪れ、試食しながらお気に入りのチョコレートを見つけましょう。特に、Pierre MarcoliniやNeuhausは外せません。",
+          "searchQuery": "Pierre Marcolini",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "グランプラス散策",
+          "description": "ユネスコ世界遺産にも登録されているグランプラスを散策します。美しい建物に囲まれた広場で、カフェに立ち寄って、名物のワッフルを楽しむのも良いでしょう。",
+          "searchQuery": "Grand Place",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "マネケン・ピス像見学",
+          "description": "ブリュッセルの象徴的な小便小僧、マネケン・ピス像を訪れます。周囲にはお土産屋も多く、記念撮影にもぴったりのスポットです。",
+          "searchQuery": "Manneken Pis",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のビストロでディナー",
+          "description": "ブリュッセルのビストロで、ムール貝やフリッツを楽しむディナー。地元のビールと一緒に味わうのが最高です。",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のブリュッセル散策",
+          "description": "夕食後は、ライトアップされた街並みを散策。特にグランプラスの夜景は美しく、ロマンチックな雰囲気を楽しめます。",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ブルージュの美しい街並み",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Brussels",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Bruges",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "ブリュッセルからブルージュへは電車で約1時間の快適な旅です。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "ブルージュ運河クルーズ",
+          "description": "美しい街並みを水上から楽しむ運河クルーズ。歴史的な建物や風景を眺めながら、ブルージュの魅力を堪能できます。",
+          "searchQuery": "Bruges Canal Cruise",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "レストランでランチ",
+          "description": "地元のレストランで新鮮なシーフードやベルギー料理を楽しみましょう。特にムール貝の料理はおすすめです。",
+          "searchQuery": "Restaurant in Bruges",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "マルクト広場散策",
+          "description": "ブルージュの中心地、マルクト広場を散策。美しいゴシック様式の建物や、地元のショップでのショッピングを楽しめます。",
+          "searchQuery": "Markt",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "チョコレートショップ巡り",
+          "description": "ブルージュはチョコレートの名産地。地元の人気チョコレートショップを巡り、試食しながらお気に入りの一品を見つけましょう。",
+          "searchQuery": "Chocolatier in Bruges",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ブルージュのワッフルを楽しむ",
+          "description": "街のカフェで、ベルギー名物のワッフルを味わいましょう。トッピングを選んで、自分だけのワッフルを楽しむことができます。",
+          "searchQuery": "Waffle in Bruges",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ブルージュのホテルにチェックイン",
+          "description": "本日の宿泊先にチェックイン。可愛らしい街並みを眺めながら、ゆったりとした夜を過ごしましょう。",
+          "searchQuery": "Hotel in Bruges",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ブルージュでのんびりと",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ブルージュのホテルで、地元の食材を使った美味しい朝食を楽しみます。特に、フレッシュなパンとジャムは絶品です。",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "聖血礼拝堂",
+          "description": "ブルージュの象徴ともいえる聖血礼拝堂を訪れます。美しいゴシック様式の建物と、聖なる血を祀る祭壇は必見です。",
+          "searchQuery": "Basilica of the Holy Blood",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "チョコレート工房見学",
+          "description": "地元のチョコレート工房を訪れ、職人の手によるチョコレート作りを見学します。試食もできるので、甘いひとときを楽しんでください。",
+          "searchQuery": "Choco-Story Bruges",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ランチにワッフルを",
+          "description": "ブルージュの名物ワッフルを楽しむため、人気のワッフル店へ。クリームやフルーツをトッピングしたワッフルは、見た目も味も満足度抜群です。",
+          "searchQuery": "Chez Albert",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ブルージュの街歩き",
+          "description": "美しい運河沿いを散策しながら、可愛らしい街並みを楽しみます。小さなショップやカフェに立ち寄りながら、のんびりとした時間を過ごしましょう。",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ブルージュの広場で休憩",
+          "description": "マルクト広場で、周囲の美しい建物を眺めながら一休み。地元の人々や観光客が集まるこの場所で、ゆったりとした時間を楽しみます。",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナーに地元料理を",
+          "description": "ブルージュのレストランで、地元の料理を楽しむディナー。新鮮なシーフードや伝統的なベルギー料理を堪能しましょう。",
+          "searchQuery": "De Halve Maan",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のブルージュ散策",
+          "description": "ライトアップされたブルージュの街を散策。運河沿いのロマンチックな雰囲気を楽しみながら、素敵な写真を撮るチャンスです。",
+          "locationEn": "Bruges, Belgium",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "再びブリュッセルへ",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Bruges",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Brussels",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "ブルージュからブリュッセルへ電車で移動します。快適な車内でのんびり過ごしましょう。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "王立美術館",
+          "description": "ブリュッセルの王立美術館で、フランドル絵画の名作を鑑賞。特にルーベンスの作品は必見です。美術館内のカフェで一息つくのもおすすめ。",
+          "searchQuery": "Royal Museums of Fine Arts of Belgium",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のカフェでランチ",
+          "description": "ブリュッセルのカフェで、名物のムール貝やフリッツを楽しみましょう。地元の人々に愛されるお店で、アットホームな雰囲気を味わえます。",
+          "searchQuery": "Chez Léon",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "グランプラス散策",
+          "description": "ブリュッセルの中心、グランプラスを散策。美しい建物に囲まれた広場で、写真を撮ったり、周辺のショップを覗いたりして楽しみましょう。",
+          "searchQuery": "Grand Place",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "チョコレートショップ巡り",
+          "description": "ブリュッセルはチョコレートの名産地。人気のショコラティエを訪れ、試食しながらお気に入りのチョコレートを見つけましょう。特にピエール・マルコリーニはおすすめです。",
+          "searchQuery": "Pierre Marcolini",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ショッピング街でお買い物",
+          "description": "ブリュッセルのショッピング街で、地元のファッションやお土産を探しましょう。特にアーケード内のブティックは可愛いアイテムが揃っています。",
+          "searchQuery": "Avenue Louise",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ワッフル専門店でディナー",
+          "description": "ブリュッセル名物のワッフルを楽しむために、ワッフル専門店へ。クリームやフルーツをトッピングして、自分好みの一品を堪能しましょう。",
+          "searchQuery": "Maison Dandoy",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ブリュッセルから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ブリュッセル",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "14:00"
+        },
+        "duration": "12h",
+        "memo": "ブリュッセルから東京への直行便。機内での食事を楽しみながら、次の旅の計画を練りましょう。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ブリュッセルのホテルで、地元のパンやチーズを使った朝食を楽しみます。特に、フレッシュなクロワッサンは絶品です。",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "グランプラス散策",
+          "description": "ブリュッセルの中心に位置するグランプラスを散策。美しい建物に囲まれた広場で、歴史を感じながら写真を撮るのに最適なスポットです。",
+          "searchQuery": "Grand Place",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "チョコレートショップ巡り",
+          "description": "ブリュッセル名物のチョコレートを求めて、人気のチョコレートショップを巡ります。特に、ピエール・マルコリーニやゴディバは外せません。",
+          "searchQuery": "Pierre Marcolini",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ワッフルランチ",
+          "description": "ブリュッセル名物のベルギーワッフルをランチに。クリームやフルーツをトッピングしたワッフルを楽しみながら、街の雰囲気を味わいます。",
+          "searchQuery": "Maison Dandoy",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ブリュッセル中央駅へ移動",
+          "description": "ブリュッセル中央駅へ向かい、東京行きのフライトに備えます。駅周辺のショップでお土産を買うのも良いでしょう。",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "空港へ移動",
+          "description": "ブリュッセル中央駅から空港へ移動します。フライトのチェックインを済ませ、最後のベルギーの味を楽しむ時間を持ちましょう。",
+          "locationEn": "Brussels, Belgium",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

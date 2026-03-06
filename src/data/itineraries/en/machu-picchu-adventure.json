@@ -1,0 +1,731 @@
+{
+  "id": "4f61440e-db72-4a18-8d0a-dba23b58d79d",
+  "destination": "Cusco & Machu Picchu",
+  "description": "Embark on an unforgettable journey through the heart of Peru, where ancient history meets breathtaking landscapes. This 8-day adventure will take you from the vibrant streets of Cusco, a UNESCO World Heritage site, to the awe-inspiring ruins of Machu Picchu, nestled high in the Andes. Experience the rich culture, indulge in local cuisine, and immerse yourself in the stunning natural beauty that surrounds you. Get ready for an active exploration filled with adventure, history, and unforgettable memories!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Cusco",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Jack's Café",
+          "description": "Start your day with a hearty breakfast at Jack's Café, known for its delicious pancakes and fresh juices. It's a favorite among locals and travelers alike, providing a cozy atmosphere to fuel up for your adventures ahead.",
+          "searchQuery": "Jack's Café",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Plaza de Armas",
+          "description": "Stroll through the vibrant Plaza de Armas, the heart of Cusco. Surrounded by stunning colonial architecture, this square is perfect for people-watching and soaking in the local culture. Don't forget to snap some photos of the impressive cathedral!",
+          "searchQuery": "Plaza de Armas",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Mercado San Pedro",
+          "description": "Head to Mercado San Pedro for lunch, where you can sample local Peruvian dishes. Try the ceviche or a hearty lomo saltado while mingling with locals in this bustling market atmosphere.",
+          "searchQuery": "Mercado San Pedro",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Qorikancha (Temple of the Sun)",
+          "description": "Discover the fascinating history of Qorikancha, once the most important temple in the Inca Empire. Marvel at the impressive stonework and learn about the temple's transformation into the Santo Domingo Church.",
+          "searchQuery": "Qorikancha",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Coffee Break at Café de la Paz",
+          "description": "Take a break at Café de la Paz, a charming spot known for its excellent coffee and pastries. Relax and enjoy the view of the bustling streets of Cusco before continuing your exploration.",
+          "searchQuery": "Café de la Paz",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Explore San Blas Neighborhood",
+          "description": "Wander through the artistic San Blas neighborhood, famous for its narrow streets and artisan shops. This area is perfect for picking up unique souvenirs and enjoying the bohemian vibe of Cusco.",
+          "searchQuery": "San Blas",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Chicha por Gastón Acurio",
+          "description": "Indulge in a culinary experience at Chicha, a restaurant by renowned chef Gastón Acurio. Enjoy a modern twist on traditional Peruvian cuisine, with dishes made from fresh, local ingredients.",
+          "searchQuery": "Chicha por Gastón Acurio",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Cusco",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Jack's Café",
+          "description": "Start your day with a hearty breakfast at Jack's Café, known for its delicious pancakes and fresh juices. It's a favorite among locals and travelers alike, providing a cozy atmosphere to fuel up for the day ahead.",
+          "searchQuery": "Jack's Café",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Sacsayhuamán",
+          "description": "Explore the impressive Incan ruins of Sacsayhuamán, located just outside of Cusco. The massive stone walls and stunning views of the city make this a must-see historical site. Don't forget your camera for the breathtaking panoramas!",
+          "searchQuery": "Sacsayhuamán",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Mercado San Pedro",
+          "description": "Head to Mercado San Pedro for a vibrant lunch experience. This local market offers a variety of traditional Peruvian dishes, including ceviche and alpaca meat. Enjoy the lively atmosphere and perhaps pick up some souvenirs while you're there!",
+          "searchQuery": "Mercado San Pedro",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Qenqo",
+          "description": "After lunch, visit Qenqo, another fascinating archaeological site nearby. Known for its unique rock formations and ceremonial altars, it's a great place to learn about Incan culture and history. The site is less crowded, allowing for a more intimate experience.",
+          "searchQuery": "Qenqo",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Alpaca Encounter at Awana Kancha",
+          "description": "Take a short trip to Awana Kancha, a living museum where you can meet and interact with alpacas and llamas. Learn about the traditional weaving techniques of the Andes and enjoy the beautiful surroundings. It's a perfect opportunity for some memorable photos!",
+          "searchQuery": "Awana Kancha",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Chicha por Gastón Acurio",
+          "description": "End your day with a delightful dinner at Chicha, a restaurant by renowned chef Gastón Acurio. Enjoy a modern twist on traditional Peruvian cuisine, featuring local ingredients and flavors. The ambiance is warm and inviting, perfect for sharing stories of your day's adventures.",
+          "searchQuery": "Chicha por Gastón Acurio",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Sacred Valley Adventure",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Cusco",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Ollantaytambo",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Enjoy the scenic train ride through the Sacred Valley."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Explore Ollantaytambo Ruins",
+          "description": "Start your adventure at the impressive Ollantaytambo ruins, a key archaeological site with stunning terraces and temples. The views of the surrounding mountains are breathtaking, making it a perfect spot for photos.",
+          "searchQuery": "Ollantaytambo Ruins",
+          "locationEn": "Ollantaytambo, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Apu Veronica Restaurant",
+          "description": "Savor a delicious Peruvian lunch at Apu Veronica, known for its local dishes and cozy atmosphere. Try the alpaca steak for a unique taste of the Andes!",
+          "searchQuery": "Apu Veronica Restaurant",
+          "locationEn": "Ollantaytambo, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit Chinchero",
+          "description": "Travel to Chinchero, a charming village famous for its traditional weaving and stunning views of the Andes. Don't miss the colorful market and the beautiful colonial church.",
+          "searchQuery": "Chinchero",
+          "locationEn": "Chinchero, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Alpaca Encounter",
+          "description": "Meet friendly alpacas at a local farm in Chinchero. Learn about these fascinating animals and even take some memorable photos with them!",
+          "searchQuery": "Chinchero Alpaca Farm",
+          "locationEn": "Chinchero, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at El Albergue Restaurant",
+          "description": "End your day with a delightful dinner at El Albergue, known for its farm-to-table dining experience. Enjoy fresh ingredients sourced from local farms while soaking in the beautiful views of the valley.",
+          "searchQuery": "El Albergue Restaurant",
+          "locationEn": "Ollantaytambo, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Machu Picchu Exploration",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Ollantaytambo",
+          "time": "07:00"
+        },
+        "arrival": {
+          "place": "Aguas Calientes",
+          "time": "08:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Enjoy the scenic train ride through the Sacred Valley."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Machu Picchu Guided Tour",
+          "description": "Start your adventure with a guided tour of the breathtaking Machu Picchu. Explore the ancient ruins and learn about the fascinating history of the Inca civilization.",
+          "searchQuery": "Machu Picchu",
+          "locationEn": "Machu Picchu, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Tinkuy Buffet Restaurant",
+          "description": "Enjoy a delicious buffet lunch at Tinkuy, located near the entrance of Machu Picchu. Savor a variety of Peruvian dishes while taking in stunning views of the surrounding mountains.",
+          "searchQuery": "Tinkuy Buffet Restaurant",
+          "locationEn": "Machu Picchu, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Huayna Picchu Hike",
+          "description": "For the adventurous, hike up Huayna Picchu for a panoramic view of Machu Picchu. The trail is steep but offers breathtaking vistas that are worth the effort.",
+          "searchQuery": "Huayna Picchu",
+          "locationEn": "Machu Picchu, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Aguas Calientes",
+          "description": "After a day of exploration, take the bus back down to Aguas Calientes. Relax and enjoy the beautiful scenery along the way.",
+          "searchQuery": "Aguas Calientes",
+          "locationEn": "Aguas Calientes, Peru",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Dinner at Indio Feliz",
+          "description": "Indulge in a delightful dinner at Indio Feliz, a charming restaurant known for its fusion of Peruvian and French cuisine. Don't miss their famous alpaca steak!",
+          "searchQuery": "Indio Feliz",
+          "locationEn": "Aguas Calientes, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening Stroll in Aguas Calientes",
+          "description": "Take a leisurely evening stroll through the quaint streets of Aguas Calientes. Enjoy the vibrant atmosphere and perhaps pick up some souvenirs from local shops.",
+          "searchQuery": "Aguas Calientes",
+          "locationEn": "Aguas Calientes, Peru",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Cusco",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Aguas Calientes",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Cusco",
+          "time": "11:00"
+        },
+        "duration": "3h",
+        "memo": "Enjoy the scenic train ride back to Cusco, taking in the breathtaking views of the Andes."
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "Lunch at Green Point",
+          "description": "Savor a delicious vegetarian meal at Green Point, known for its fresh ingredients and local flavors. A great way to recharge after your journey!",
+          "searchQuery": "Green Point",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Cuzco Cathedral",
+          "description": "Visit the stunning Cuzco Cathedral, a UNESCO World Heritage site. Marvel at its intricate architecture and rich history, showcasing the blend of Inca and colonial influences.",
+          "searchQuery": "Cuzco Cathedral",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Inca Museum",
+          "description": "Explore the Inca Museum, where you can learn about the fascinating history and culture of the Inca civilization through various artifacts and exhibits.",
+          "searchQuery": "Inca Museum",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Stroll through San Blas",
+          "description": "Wander through the charming streets of San Blas, known for its artisan shops and vibrant atmosphere. Don't miss the chance to pick up unique souvenirs!",
+          "searchQuery": "San Blas",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Chicha by Gastón Acurio",
+          "description": "Indulge in a culinary experience at Chicha, where you can enjoy contemporary Peruvian cuisine crafted by renowned chef Gastón Acurio. A perfect way to end your day!",
+          "searchQuery": "Chicha by Gastón Acurio",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Journey to the Amazon",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Cusco",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Puerto Maldonado",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "Flight to Puerto Maldonado to start the Amazon adventure."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Arrival at Puerto Maldonado",
+          "description": "Upon landing in Puerto Maldonado, you'll be greeted by the lush greenery of the Amazon rainforest. Prepare for an exciting journey ahead as you head to your lodge.",
+          "searchQuery": "Puerto Maldonado",
+          "locationEn": "Puerto Maldonado, Peru",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Transfer to Amazon Lodge",
+          "description": "Enjoy a scenic boat ride along the Tambopata River to reach your Amazon Lodge. Keep an eye out for wildlife along the way!",
+          "searchQuery": "Tambopata National Reserve",
+          "locationEn": "Tambopata National Reserve, Peru",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at the Lodge",
+          "description": "Savor a delicious lunch featuring local ingredients and flavors, prepared by the lodge's chefs. A perfect way to recharge after your journey.",
+          "locationEn": "Tambopata National Reserve, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Guided Jungle Walk",
+          "description": "Join a knowledgeable guide for a walk through the Amazon rainforest. Discover the incredible biodiversity, including exotic plants and animals, and learn about the ecosystem.",
+          "searchQuery": "Tambopata National Reserve",
+          "locationEn": "Tambopata National Reserve, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit to an Indigenous Community",
+          "description": "Experience the culture of the local indigenous community. Engage with the locals, learn about their traditions, and perhaps even try your hand at traditional crafts.",
+          "searchQuery": "Indigenous Community in Tambopata",
+          "locationEn": "Tambopata National Reserve, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at the Lodge",
+          "description": "Enjoy another delightful meal at the lodge, featuring local dishes that highlight the flavors of the Amazon region.",
+          "locationEn": "Tambopata National Reserve, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Evening Wildlife Spotting",
+          "description": "As night falls, embark on a guided night walk to spot nocturnal wildlife. Listen to the sounds of the jungle and keep your eyes peeled for creatures like frogs and insects.",
+          "searchQuery": "Tambopata National Reserve",
+          "locationEn": "Tambopata National Reserve, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Return to Lodge and Relax",
+          "description": "After an adventurous day, return to the lodge to relax and share stories with your friends. Enjoy the sounds of the Amazon as you unwind for the night.",
+          "locationEn": "Tambopata National Reserve, Peru",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Amazon Wildlife Adventure",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Amazon Lodge",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Cusco",
+          "time": "10:00"
+        },
+        "duration": "2h",
+        "memo": "Return flight to Cusco."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Amazon Lodge",
+          "description": "Enjoy a hearty breakfast at the lodge, featuring local fruits and traditional Peruvian dishes to fuel your adventure ahead.",
+          "locationEn": "Amazon Lodge, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Wildlife Tour in the Amazon",
+          "description": "Embark on a guided wildlife tour through the lush Amazon rainforest. Keep your eyes peeled for exotic birds, monkeys, and other wildlife in their natural habitat.",
+          "searchQuery": "Amazon Wildlife Tour",
+          "locationEn": "Amazon Rainforest, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Amazon Lodge",
+          "description": "Return to the lodge for a delicious lunch, featuring fresh ingredients sourced from the surrounding rainforest.",
+          "locationEn": "Amazon Lodge, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Canopy Walkway Experience",
+          "description": "Experience the thrill of walking high above the forest floor on the canopy walkway. Enjoy breathtaking views of the treetops and the chance to spot wildlife from above.",
+          "searchQuery": "Amazon Canopy Walkway",
+          "locationEn": "Amazon Rainforest, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit to an Alpaca Farm",
+          "description": "Meet and interact with friendly alpacas at a nearby farm. Learn about their significance in Peruvian culture and enjoy some photo opportunities with these adorable animals.",
+          "searchQuery": "Alpaca Farm Peru",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Flight back to Cusco",
+          "description": "Catch your flight back to Cusco, where you can relax and reflect on your Amazon adventure.",
+          "locationEn": "Cusco, Peru",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Restaurant in Cusco",
+          "description": "Savor a traditional Peruvian dinner at a local restaurant, featuring dishes like ceviche and lomo saltado, to end your day on a delicious note.",
+          "searchQuery": "Local Restaurant Cusco",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "Departure from Cusco",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Amazon Lodge",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Cusco City Center",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy the scenic drive back to Cusco."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Breakfast at Jack's Cafe",
+          "description": "Start your day with a hearty breakfast at Jack's Cafe, known for its delicious pancakes and fresh juices. It's a favorite among locals and travelers alike, perfect for fueling up before your last day in Cusco.",
+          "searchQuery": "Jack's Cafe",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Last-minute shopping at San Pedro Market",
+          "description": "Explore the vibrant San Pedro Market, where you can find local handicrafts, fresh produce, and souvenirs. It's a great place to pick up unique gifts and experience the local culture.",
+          "searchQuery": "San Pedro Market",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at La Bodega 138",
+          "description": "Enjoy a delicious lunch at La Bodega 138, famous for its wood-fired pizzas and cozy atmosphere. It's a great spot to relax and reflect on your adventures in Peru.",
+          "searchQuery": "La Bodega 138",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit Qorikancha (Temple of the Sun)",
+          "description": "Discover the fascinating history of Qorikancha, once the most important temple in the Inca Empire. The impressive architecture and beautiful gardens make it a must-visit site in Cusco.",
+          "searchQuery": "Qorikancha",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Coffee break at Cafe Ayllu",
+          "description": "Take a break at Cafe Ayllu, a charming cafe known for its excellent coffee and relaxing ambiance. It's the perfect place to unwind before your departure.",
+          "searchQuery": "Cafe Ayllu",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Departure from Cusco",
+          "description": "Prepare for your journey home, taking with you unforgettable memories of Machu Picchu and the beauty of Peru.",
+          "locationEn": "Cusco, Peru",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

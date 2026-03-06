@@ -1,0 +1,374 @@
+{
+  "id": "06d93840-5268-412f-a9ed-55c99dcd0d99",
+  "destination": "プラハ",
+  "description": "プラハの美しい街並みと豊かな文化、歴史を家族で楽しむ4日間の旅に出かけましょう。古い街並みが残るプラハの中心部を散策し、地元のグルメを堪能しながら、子供たちと一緒に楽しい思い出を作ることができます。",
+  "heroImage": "https://images.unsplash.com/photo-1600623471616-8c1966c91ff6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTU2NTF8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "William Zhang",
+  "heroImagePhotographerUrl": "https://unsplash.com/@ceye2eye?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "プラハ到着と旧市街散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "プラハの伝統的な朝食を楽しみます。地元のパンやチーズ、ハムを使った朝食で、エネルギーをチャージしましょう。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "旧市街広場散策",
+          "description": "プラハの中心、旧市街広場を散策。美しいバロック様式の建物や、歴史的な天文時計を見学しながら、街の雰囲気を楽しみます。",
+          "searchQuery": "Old Town Square",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "カフェ・ルネッサンスでランチ",
+          "description": "旧市街広場近くのカフェ・ルネッサンスで、チェコ料理を楽しむランチ。特に、グラーシュ（牛肉の煮込み）がおすすめです。",
+          "searchQuery": "Cafe Renaissance",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "天文時計見学",
+          "description": "旧市街広場にある天文時計を見学。毎正時に行われる人形劇は子供たちにも大人気です。",
+          "searchQuery": "Astronomical Clock",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "カレル橋散策",
+          "description": "カレル橋を渡りながら、プラハ城やヴルタヴァ川の美しい景色を楽しみます。橋の上には多くの彫刻が並び、写真スポットもたくさんあります。",
+          "searchQuery": "Charles Bridge",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "プラハ城見学",
+          "description": "プラハ城を訪れ、歴史的な建物や美しい庭園を散策します。城内の聖ヴィート大聖堂も必見です。",
+          "searchQuery": "Prague Castle",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "プラハの地元料理を楽しむディナー。特に、豚肉のローストや、チェコビールを味わうのがおすすめです。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "プラハ城と文化体験",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "プラハの伝統的な朝食を楽しみます。新鮮なパンやハム、チーズ、そして地元のヨーグルトでエネルギーをチャージ。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "プラハ城",
+          "description": "プラハのシンボル、プラハ城を訪れます。壮大な建築と美しい庭園を散策しながら、歴史を感じることができます。特に、城からの眺めは絶景です。",
+          "searchQuery": "Prague Castle",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "聖ヴィート大聖堂",
+          "description": "プラハ城内にある聖ヴィート大聖堂を見学。ゴシック様式の美しい教会で、内部のステンドグラスは必見です。",
+          "searchQuery": "St. Vitus Cathedral",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "レストランでランチ",
+          "description": "地元のレストランでチェコ料理を楽しみます。特に、グラーシュ（牛肉の煮込み）やトゥルデルニーク（スイーツ）は子供にも人気です。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "黄金の小道散策",
+          "description": "プラハ城の近くにある黄金の小道を散策。カラフルな家々が並ぶこの小道は、昔の職人たちの住居で、今ではお土産屋さんが並んでいます。",
+          "searchQuery": "Golden Lane",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "プラハの旧市街広場",
+          "description": "プラハの旧市街広場へ移動し、天文時計やティーン教会を見学。広場の雰囲気を楽しみながら、アイスクリームを食べるのもおすすめです。",
+          "searchQuery": "Old Town Square",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のビアホールでディナー",
+          "description": "プラハのビアホールでディナーを楽しみます。地元のビールと共に、ボヘミア風の料理を堪能。子供向けのメニューも充実しています。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の観光を終え、ホテルに戻ります。家族での楽しい思い出を振り返りながら、ゆっくりと休息を取ります。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "地元のグルメと博物館巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "プラハの伝統的な朝食を楽しむ時間です。地元のパンやハム、チーズを使った朝食で、エネルギーをチャージしましょう。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "国立博物館",
+          "description": "プラハの国立博物館を訪れ、チェコの歴史や文化を学びましょう。特に自然史の展示は子供たちにも楽しめる内容です。",
+          "searchQuery": "National Museum",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元の市場でランチ",
+          "description": "プラハの地元市場で新鮮な食材を使った料理を楽しみます。特に、トラディショナルなチェコ料理を提供する屋台が多く、家族みんなでシェアしながら楽しむのがおすすめです。",
+          "searchQuery": "Prague Farmers Market",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ヴルタヴァ川沿いの散策",
+          "description": "美しいヴルタヴァ川沿いを散策しながら、プラハの風景を楽しみましょう。川の景色を眺めながら、家族でのんびりとした時間を過ごせます。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "プラハ城見学",
+          "description": "プラハ城を訪れ、その壮大な建築と歴史を体感します。城内の聖ヴィート大聖堂は特に見応えがあります。",
+          "searchQuery": "Prague Castle",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "プラハの地元レストランで、チェコ料理を堪能します。特に、グラーシュ（牛肉のシチュー）やトゥルデルニーク（スイーツ）は子供たちにも人気です。",
+          "searchQuery": "Lokál Dlouhááá",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の観光を終え、ホテルに戻ります。家族での楽しい思い出を振り返りながら、ゆっくりと休みましょう。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "プラハの自然と帰国",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "プラハのホテルで、地元の食材を使った朝食を楽しみます。新鮮なパンやハム、チーズが並び、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ペトシーン公園散策",
+          "description": "美しい緑に囲まれたペトシーン公園で、家族みんなでのんびり散策。公園内の展望台からはプラハの街並みが一望でき、特に子供たちにとっては楽しい冒険の場です。",
+          "searchQuery": "Petrin Hill",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "公園近くのカフェでランチ",
+          "description": "ペトシーン公園の近くにあるカフェで、軽めのランチを楽しみます。サンドイッチやサラダ、地元のビールを味わいながら、リラックスしたひとときを過ごしましょう。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "プラハ城訪問",
+          "description": "プラハのシンボル、プラハ城を訪れます。歴史的な建物や美しい庭園を見学し、子供たちにも興味深い歴史を学ぶ良い機会です。",
+          "searchQuery": "Prague Castle",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "カレル橋散策",
+          "description": "プラハの名所、カレル橋を渡りながら、ストリートパフォーマンスやアートを楽しみます。橋の上からの眺めも素晴らしく、家族での思い出作りにぴったりです。",
+          "searchQuery": "Charles Bridge",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルで荷物整理",
+          "description": "帰国の準備をしながら、ホテルでゆっくりと過ごします。子供たちと一緒に旅行の思い出を振り返るのも良い時間です。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "空港へ移動",
+          "description": "プラハの空港へ向けて出発します。帰国のフライトに備えて、余裕を持って移動しましょう。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

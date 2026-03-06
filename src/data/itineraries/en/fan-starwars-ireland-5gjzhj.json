@@ -1,0 +1,464 @@
+{
+  "id": "a5baea58-fe0b-456d-af66-3f7654eb0208",
+  "destination": "Ireland",
+  "description": "Escape to the enchanting landscapes of Ireland, where the lush green hills meet the rugged coastlines, and the rich tapestry of culture and history awaits your exploration. This 5-day solo journey is designed for the avid Star Wars fan, blending the thrill of discovering iconic filming locations with the serene beauty of the Irish countryside. Immerse yourself in the vibrant local culture, indulge in delightful cuisine, and unwind in some of the most picturesque spots the Emerald Isle has to offer. Get ready for an adventure that promises both excitement and relaxation!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Dublin & Star Wars Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Woollen Mills",
+          "description": "Start your day with a hearty Irish breakfast at The Woollen Mills, a cozy spot known for its locally sourced ingredients and traditional dishes. Enjoy a full Irish breakfast with eggs, sausages, and black pudding to fuel your day of exploration.",
+          "searchQuery": "The Woollen Mills",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Dublin Castle",
+          "description": "Explore the historic Dublin Castle, a key site in Ireland's history. Take a guided tour to learn about its fascinating past and enjoy the beautiful gardens surrounding the castle.",
+          "searchQuery": "Dublin Castle",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Church Café",
+          "description": "Enjoy lunch at The Church Café, a unique venue set in a restored church. Try their delicious Irish stew or a classic fish and chips while soaking in the stunning architecture.",
+          "searchQuery": "The Church Café",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Star Wars Filming Locations Tour",
+          "description": "Join a guided tour that takes you to various filming locations from Star Wars: The Last Jedi, including the iconic Skellig Michael. Experience the breathtaking views and learn about the film's production.",
+          "searchQuery": "Skellig Michael",
+          "locationEn": "County Kerry, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Explore the Irish Film Institute",
+          "description": "Visit the Irish Film Institute to discover more about Ireland's film history, including exhibitions related to Star Wars. You might even catch a screening of a classic film.",
+          "searchQuery": "Irish Film Institute",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Exchequer",
+          "description": "End your day with dinner at The Exchequer, a stylish gastropub known for its modern Irish cuisine. Try their famous burgers or seasonal dishes paired with a local craft beer.",
+          "searchQuery": "The Exchequer",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Shopping for Star Wars Merchandise at Forbidden Planet",
+          "description": "Visit Forbidden Planet, a popular store for fans, to find exclusive Star Wars merchandise, collectibles, and memorabilia. It's the perfect place to pick up some unique fan gear.",
+          "searchQuery": "Forbidden Planet",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Dublin to County Kerry - The Force Awakens",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Dublin",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Kerry",
+          "time": "12:00"
+        },
+        "duration": "3h",
+        "memo": "Enjoy the scenic drive through the Irish countryside."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Woollen Mills",
+          "description": "Start your day with a hearty Irish breakfast at The Woollen Mills, a cozy spot known for its locally sourced ingredients and traditional dishes.",
+          "searchQuery": "The Woollen Mills",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit the Star Wars Exhibition at the Science Gallery",
+          "description": "Explore the fascinating Star Wars Exhibition, showcasing props, costumes, and interactive displays that celebrate the iconic franchise. A must-see for any fan!",
+          "searchQuery": "Star Wars Exhibition",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Church",
+          "description": "Enjoy a unique dining experience at The Church, a beautifully restored church turned restaurant. Savor delicious Irish dishes while soaking in the stunning architecture.",
+          "searchQuery": "The Church",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Drive to County Kerry",
+          "description": "Hit the road and enjoy the picturesque views as you drive towards County Kerry, known for its breathtaking landscapes and charming towns.",
+          "locationEn": "County Kerry, Ireland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Dingle Peninsula",
+          "description": "Arrive at Dingle Peninsula, where you can take in the stunning coastal views and visit iconic filming locations from Star Wars: The Last Jedi. Don't forget your camera!",
+          "searchQuery": "Dingle Peninsula",
+          "locationEn": "Dingle, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Chart House",
+          "description": "Indulge in a delightful dinner at The Chart House, known for its fresh seafood and warm atmosphere. A perfect way to end your day in Dingle.",
+          "searchQuery": "The Chart House",
+          "locationEn": "Dingle, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Check-in at The Dingle Skellig Hotel",
+          "description": "Relax and unwind at The Dingle Skellig Hotel, offering stunning views of the Atlantic Ocean and comfortable accommodations. A great place to recharge for tomorrow's adventures!",
+          "searchQuery": "The Dingle Skellig Hotel",
+          "locationEn": "Dingle, Ireland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Star Wars Locations & Scenic Views",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Rose Hotel",
+          "description": "Start your day with a hearty breakfast at The Rose Hotel, known for its delicious Irish breakfast featuring local ingredients. It's a great way to fuel up for a day of exploration!",
+          "searchQuery": "The Rose Hotel",
+          "locationEn": "Kerry, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Dingle Peninsula",
+          "description": "Explore the stunning Dingle Peninsula, a key filming location for Star Wars: The Last Jedi. The dramatic cliffs and breathtaking views will leave you in awe as you walk along the rugged coastline.",
+          "searchQuery": "Dingle Peninsula",
+          "locationEn": "Dingle, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Chart House",
+          "description": "Enjoy a delicious lunch at The Chart House, a local favorite known for its fresh seafood and cozy atmosphere. Don't forget to try their famous chowder!",
+          "searchQuery": "The Chart House",
+          "locationEn": "Dingle, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Slea Head Drive",
+          "description": "Take a scenic drive along Slea Head Drive, where you can see iconic Star Wars filming locations. Stop at various viewpoints to capture the stunning landscapes and maybe spot some local wildlife!",
+          "searchQuery": "Slea Head Drive",
+          "locationEn": "Dingle, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Dingle Oceanworld Aquarium",
+          "description": "Take a break from the outdoors and visit the Dingle Oceanworld Aquarium. It's a great spot to relax and learn about marine life, plus it's family-friendly!",
+          "searchQuery": "Dingle Oceanworld Aquarium",
+          "locationEn": "Dingle, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Fish Box",
+          "description": "End your day with a delightful dinner at The Fish Box, where you can enjoy fresh fish and chips in a casual setting. It's a perfect way to unwind after a day of adventure!",
+          "searchQuery": "The Fish Box",
+          "locationEn": "Dingle, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Explore Dingle Town for Star Wars Merchandise",
+          "description": "Stroll through Dingle Town and visit local shops for unique Star Wars merchandise and memorabilia. It's a great way to find souvenirs and connect with fellow fans!",
+          "searchQuery": "Dingle Town",
+          "locationEn": "Dingle, Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Relaxation & Culture in Galway",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Kerry",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Galway",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Enjoy the scenic drive from Kerry to Galway, taking in the beautiful Irish countryside."
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "Galway Cathedral",
+          "description": "Start your day by visiting the stunning Galway Cathedral, known for its impressive architecture and beautiful stained glass windows. Take a moment to appreciate the serene atmosphere and the intricate details of this iconic landmark.",
+          "searchQuery": "Galway Cathedral",
+          "locationEn": "Galway, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Quay Street Kitchen",
+          "description": "Savor a delicious lunch at The Quay Street Kitchen, a cozy spot known for its locally sourced ingredients and hearty Irish dishes. Don't miss their famous seafood chowder, perfect for a relaxing meal.",
+          "searchQuery": "The Quay Street Kitchen",
+          "locationEn": "Galway, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Latin Quarter",
+          "description": "Stroll through the vibrant Latin Quarter, filled with colorful shops, street performers, and charming cafes. This area is perfect for picking up unique Star Wars merchandise and local crafts, making it a great spot for fans and shoppers alike.",
+          "searchQuery": "Latin Quarter Galway",
+          "locationEn": "Galway, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Cliffs of Moher",
+          "description": "Take a scenic drive to the Cliffs of Moher, one of Ireland's most breathtaking natural wonders. Walk along the cliff edge and enjoy the stunning views of the Atlantic Ocean. This iconic location has also been featured in Star Wars films, making it a must-visit for fans.",
+          "searchQuery": "Cliffs of Moher",
+          "locationEn": "Cliffs of Moher, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at The Seafood Bar",
+          "description": "End your day with a delightful dinner at The Seafood Bar, where you can indulge in fresh seafood dishes while enjoying views of the harbor. The atmosphere is relaxed, making it the perfect place to unwind after a day of exploration.",
+          "searchQuery": "The Seafood Bar Galway",
+          "locationEn": "Galway, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll along the Salthill Promenade",
+          "description": "Take a leisurely evening stroll along the Salthill Promenade, enjoying the fresh sea breeze and beautiful sunset views over Galway Bay. It's a perfect way to relax and reflect on your day.",
+          "searchQuery": "Salthill Promenade",
+          "locationEn": "Galway, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Dublin & Departure",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Galway",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Dublin",
+          "time": "11:30"
+        },
+        "duration": "2h 30m",
+        "memo": "Enjoy the scenic drive from Galway to Dublin."
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Woollen Mills",
+          "description": "Savor a delicious meal at this popular eatery known for its locally sourced ingredients and traditional Irish dishes. Don't miss their famous Irish stew!",
+          "searchQuery": "The Woollen Mills",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit the Star Wars Exhibition at the Science Gallery",
+          "description": "Explore the fascinating Star Wars exhibition showcasing props, costumes, and interactive displays. A must-visit for any fan!",
+          "searchQuery": "Star Wars Exhibition",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Shopping for Star Wars Merchandise at Forbidden Planet",
+          "description": "Dive into the world of collectibles and find exclusive Star Wars merchandise at this iconic comic book store. Perfect for picking up unique fan gear!",
+          "searchQuery": "Forbidden Planet",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at St. Stephen's Green",
+          "description": "Take a leisurely stroll through this beautiful park, a perfect spot to unwind before your departure. Enjoy the lush greenery and serene atmosphere.",
+          "searchQuery": "St. Stephen's Green",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Church",
+          "description": "End your trip with a memorable dinner at this unique venue, a converted church offering a vibrant atmosphere and a diverse menu. Try their famous fish and chips!",
+          "searchQuery": "The Church",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

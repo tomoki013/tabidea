@@ -1,0 +1,451 @@
+{
+  "id": "fd739135-081f-4e90-8d20-92b7d9e102b3",
+  "destination": "ヌメア",
+  "description": "ヌメアの美しいビーチとフランス料理を堪能する6日間の旅へようこそ。青い海と白い砂浜、そして地元の食材を活かした絶品料理が待っています。リラックスしたペースで、自然の美しさとグルメを楽しむ贅沢なひとときをお過ごしください。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からヌメアへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ヌメア",
+          "time": "16:00"
+        },
+        "duration": "9h",
+        "memo": "直行便での移動。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "17:00",
+          "activity": "ヌメア市内観光",
+          "description": "ヌメアの美しいビーチを散策しながら、リゾート気分を満喫。特にラ・プレー・ド・ヌメアは透明度の高い海が広がり、夕日が沈む時間帯は特にロマンチックです。",
+          "searchQuery": "Anse Vata Beach",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "レストランでディナー",
+          "description": "ヌメアの海辺にあるフランス料理レストランで、地元の新鮮なシーフードを使った料理を楽しみます。特に、ムール貝のワイン蒸しや、地元の魚のグリルが絶品です。",
+          "searchQuery": "Le Roof",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ビーチで星空観賞",
+          "description": "ヌメアのビーチで、満天の星空を眺めながらロマンチックなひとときを過ごします。海の音を聞きながら、ゆったりとした時間を楽しんでください。",
+          "searchQuery": "Anse Vata Beach",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "美しいビーチでのんびり",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ヌメアのホテルで、フランスのパンや新鮮なフルーツを使った朝食を楽しみます。地元の食材を使った料理で、リゾート気分を満喫。",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ラグーンビーチでリラックス",
+          "description": "透明度の高い海と白い砂浜が広がるラグーンビーチで、のんびりとした時間を過ごします。シュノーケリングや日光浴を楽しむのに最適なスポットです。",
+          "searchQuery": "Lagoon Beach",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ビーチ近くのレストランでランチ",
+          "description": "海を眺めながら、新鮮なシーフードやフランス料理を楽しめるレストランでランチ。地元のワインと共に、贅沢なひとときを。",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アンスバタビーチでのんびり",
+          "description": "アンスバタビーチへ移動し、さらにリラックス。ビーチ沿いのカフェで冷たい飲み物を楽しみながら、海の景色を堪能します。",
+          "searchQuery": "Anse Vata Beach",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ビーチでサンセットを鑑賞",
+          "description": "アンスバタビーチで美しいサンセットを眺めます。夕日が海に沈む瞬間は、ロマンチックなひととき。",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ビーチサイドのレストランでディナー",
+          "description": "夕食はビーチサイドのレストランで、地元の食材を使ったフランス料理を楽しみます。海の音を聞きながら、特別な夜を過ごしましょう。",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "地元のグルメを楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ヌメアのホテルで、フランスの影響を受けた美味しい朝食を楽しみます。新鮮なフルーツやクロワッサン、コーヒーで一日をスタートしましょう。",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ヌメア市場訪問",
+          "description": "地元の人々が集まるヌメア市場で、新鮮な魚介類や地元の特産品を見て回ります。色とりどりの食材や手作りの品々に触れ、地元の雰囲気を楽しんでください。",
+          "searchQuery": "Nouméa Market",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "レストラン「ラ・テラス」でランチ",
+          "description": "美しい海を眺めながら、フランス料理を堪能できる「ラ・テラス」でランチ。新鮮なシーフードや地元の食材を使った料理が楽しめます。",
+          "searchQuery": "La Terrasse",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ビーチでリラックス",
+          "description": "ヌメアの美しいビーチで、ゆったりとした時間を過ごします。青い海と白い砂浜で、日光浴や海水浴を楽しんで、リフレッシュしましょう。",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ビーチ沿いのカフェでお茶",
+          "description": "ビーチ沿いのカフェで、夕暮れを眺めながらお茶を楽しみます。地元のスイーツや軽食を味わいながら、のんびりとしたひとときを過ごしましょう。",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "ホテル内のレストランで、フランス料理のディナーを楽しみます。地元のワインと共に、特別な夜を演出してくれる料理を堪能してください。",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "自然を満喫する日",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ヌメアのリゾートホテルで、フレッシュなフルーツやクロワッサン、コーヒーを楽しむ贅沢な朝食。海を眺めながら、ゆったりとした時間を過ごします。",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ウベア島へのシュノーケリングツアー",
+          "description": "ウベア島へ向かうシュノーケリングツアーに参加。美しいサンゴ礁と色とりどりの魚たちが待っています。透明度の高い海でのシュノーケリングは、まさに楽園のような体験です。",
+          "searchQuery": "Uvea Island",
+          "locationEn": "Uvea Island, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ウベア島でのランチ",
+          "description": "ウベア島のビーチサイドレストランで、新鮮なシーフードを使ったフランス料理を堪能。特に、地元の魚を使ったグリル料理は絶品です。",
+          "locationEn": "Uvea Island, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ウベア島のビーチでリラックス",
+          "description": "美しいビーチでのんびりと過ごす時間。白い砂浜と青い海に囲まれ、心地よい風を感じながら、読書や日光浴を楽しみます。",
+          "locationEn": "Uvea Island, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ヌメアへ帰る",
+          "description": "シュノーケリングツアーを終え、ヌメアへ戻ります。船の上からの夕日が美しい瞬間を楽しんでください。",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ヌメアのレストランでディナー",
+          "description": "ヌメアの人気フランス料理レストランで、地元の食材を使ったディナーを楽しみます。特に、デザートのタルトタタンはおすすめです。",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルでのんびり",
+          "description": "ディナーの後は、ホテルのプールサイドでリラックス。星空を眺めながら、旅の思い出を語り合う素敵な時間を過ごします。",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "リゾートでの贅沢な時間",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ヌメアのリゾートホテルで、フレッシュなフルーツやクロワッサン、コーヒーを楽しむ贅沢な朝食。海を眺めながら、ゆったりとした時間を過ごします。",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ビーチでリラックス",
+          "description": "美しいビーチでのんびりと過ごします。透明度の高い海で泳いだり、砂浜で日光浴を楽しんだり、心地よい潮風に癒される時間を満喫。",
+          "searchQuery": "Anse Vata Beach",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ビーチサイドのレストランでランチ",
+          "description": "ビーチを眺めながら、地元の新鮮なシーフードを使ったフランス料理を楽しむランチ。特に、海の幸をふんだんに使ったパスタやサラダがおすすめです。",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "スパでリフレッシュ",
+          "description": "リゾート内のスパで、マッサージやトリートメントを受けて心身ともにリフレッシュ。リラックスした後は、スパのラウンジでハーブティーを楽しむのも良いでしょう。",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ヌメアの観光スポット巡り",
+          "description": "ヌメアの美しい景色を楽しむために、ラ・パース岬へ。ここからの眺めは絶景で、特に夕暮れ時にはロマンチックな雰囲気が漂います。",
+          "searchQuery": "La Promenade du Ouen Toro",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "フランス料理のディナー",
+          "description": "ヌメアの人気フランス料理レストランで、地元の食材を使った創作料理を堪能。ワインと共に、特別な夜を演出します。",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ヌメアから東京へ帰る",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ヌメア空港",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "18:00"
+        },
+        "duration": "8h",
+        "memo": "直行便で東京へ帰ります。機内での食事を楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ヌメアのリゾートホテルで、フランス風のビュッフェスタイルの朝食を楽しみます。新鮮なフルーツやペストリーが揃い、優雅な朝のひとときを過ごせます。",
+          "searchQuery": "Nouvata Park Hotel",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ラグーンでのビーチタイム",
+          "description": "ヌメアの美しいラグーンで、最後のビーチタイムを満喫します。透明度の高い海でシュノーケリングを楽しんだり、砂浜でリラックスしたりして、南国の雰囲気を堪能しましょう。",
+          "searchQuery": "Anse Vata Beach",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ヌメアの市場でお土産探し",
+          "description": "ヌメアの地元市場を訪れ、手作りの工芸品や地元の特産品を探します。お土産にぴったりなアイテムが見つかるかもしれません。",
+          "searchQuery": "Port Moselle Market",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "フランス料理のランチ",
+          "description": "ヌメアの人気フレンチレストランで、地元の新鮮な食材を使ったランチを楽しみます。海の幸を使った料理や、デザートも絶品です。",
+          "searchQuery": "Le Roof",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ヌメア空港へ移動",
+          "description": "ホテルからヌメア空港へ移動します。最後のヌメアの景色を楽しみながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

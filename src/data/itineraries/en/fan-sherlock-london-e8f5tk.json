@@ -1,0 +1,466 @@
+{
+  "id": "94a32a60-d024-426c-83db-6a3496233efc",
+  "destination": "London",
+  "description": "Immerse yourself in the vibrant culture and rich history of London over five exhilarating days, where every corner reveals a new adventure. From the iconic landmarks to the hidden gems of the city, this trip is designed for you and your friends to explore the world of Sherlock Holmes while indulging in the arts and local culture. Get ready for an unforgettable journey filled with excitement, discovery, and a touch of mystery!",
+  "heroImage": "https://images.unsplash.com/photo-1652569612521-88a62e7e85be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODkzMzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Isaac Abdiev",
+  "heroImagePhotographerUrl": "https://unsplash.com/@butterxflv?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in London and Sherlock's World",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Breakfast Club",
+          "description": "Start your day with a hearty breakfast at The Breakfast Club, known for its delicious pancakes and classic English breakfast. It's a cozy spot that sets the perfect tone for your London adventure.",
+          "searchQuery": "The Breakfast Club",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Sherlock Holmes Museum",
+          "description": "Dive into the world of Sherlock Holmes at the famous museum located at 221B Baker Street. Explore the rooms filled with memorabilia and learn about the legendary detective's adventures. Don't forget to snap a photo with the iconic statue outside!",
+          "searchQuery": "Sherlock Holmes Museum",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Sherlock Holmes Pub",
+          "description": "Enjoy a themed lunch at The Sherlock Holmes Pub, where you can savor traditional British fare in a setting that celebrates the detective's legacy. Try the fish and chips or a hearty pie for a true taste of London.",
+          "searchQuery": "The Sherlock Holmes Pub",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Baker Street",
+          "description": "Stroll along Baker Street, where you can find various shops selling Sherlock-themed merchandise. It's a great place to pick up some unique fan goods and souvenirs to remember your visit.",
+          "searchQuery": "Baker Street",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Relax at Regent's Park",
+          "description": "Take a leisurely walk to nearby Regent's Park, one of London's most beautiful parks. Enjoy the lush gardens and perhaps even a boat ride on the lake. It's a perfect spot to unwind after your morning adventures.",
+          "searchQuery": "Regent's Park",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Dishoom",
+          "description": "Indulge in a delightful dinner at Dishoom, a popular Indian restaurant inspired by the old Irani cafés of Bombay. The ambiance is vibrant, and the food is simply exquisite—don't miss the house chai and the black daal!",
+          "searchQuery": "Dishoom",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Evening stroll along the Thames",
+          "description": "End your day with a scenic walk along the River Thames. The views of the city skyline at night are breathtaking, and it's a lovely way to reflect on your first day in London.",
+          "searchQuery": "Thames River",
+          "locationEn": "London, UK",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the Heart of London",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Dishoom",
+          "description": "Start your day with a delicious breakfast at Dishoom, a Bombay-style café known for its vibrant atmosphere and mouthwatering dishes like the Bacon Naan Roll and Masala Chai. It's a perfect spot to fuel up before a day of exploration.",
+          "searchQuery": "Dishoom",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the British Museum",
+          "description": "Dive into the rich history and culture at the British Museum, home to a vast collection of art and antiquities from around the world. Don't miss the Rosetta Stone and the Egyptian mummies! Admission is free, but consider booking a guided tour for deeper insights.",
+          "searchQuery": "British Museum",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Great Court Restaurant",
+          "description": "Enjoy a leisurely lunch at The Great Court Restaurant located within the British Museum. The menu features seasonal British dishes, and the stunning glass roof adds to the dining experience.",
+          "searchQuery": "The Great Court Restaurant",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Covent Garden",
+          "description": "Stroll through Covent Garden, a lively area filled with shops, street performers, and cafés. It's a great place to pick up some Sherlock-themed merchandise at the nearby shops, including the Sherlock Holmes Museum.",
+          "searchQuery": "Covent Garden",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Sherlock Holmes Museum",
+          "description": "Head to the iconic 221B Baker Street, the famous address of Sherlock Holmes. The museum is dedicated to the life and times of the legendary detective, featuring memorabilia and exhibits that bring his stories to life.",
+          "searchQuery": "Sherlock Holmes Museum",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Sherlock Holmes Pub",
+          "description": "Wrap up your day with dinner at The Sherlock Holmes Pub, a cozy spot filled with memorabilia from the stories. Enjoy traditional British fare like fish and chips or a hearty pie while soaking in the atmosphere.",
+          "searchQuery": "The Sherlock Holmes Pub",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll in Soho",
+          "description": "Take a leisurely evening stroll through Soho, known for its vibrant nightlife and eclectic atmosphere. Explore the unique shops and perhaps grab a dessert at one of the many cafés. It's a perfect way to end your day in London.",
+          "searchQuery": "Soho",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Art and Culture Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Breakfast Club",
+          "description": "Start your day with a hearty breakfast at The Breakfast Club, known for its vibrant atmosphere and delicious brunch options. Try their famous pancakes or a full English breakfast to fuel your day of exploration!",
+          "searchQuery": "The Breakfast Club",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Tate Modern",
+          "description": "Explore the Tate Modern, one of the world's leading contemporary art museums housed in a former power station. Don't miss the stunning views of the Thames from the viewing level!",
+          "searchQuery": "Tate Modern",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Borough Market",
+          "description": "Head to Borough Market for lunch, where you can sample a variety of gourmet foods from local vendors. It's a perfect spot to grab a quick bite and enjoy the bustling atmosphere.",
+          "searchQuery": "Borough Market",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll along Southbank",
+          "description": "Take a leisurely walk along the Southbank, enjoying the riverside views and street performances. This area is vibrant and full of life, making it a great place to soak in the local culture.",
+          "searchQuery": "Southbank",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit Shakespeare's Globe",
+          "description": "Explore Shakespeare's Globe, a reconstruction of the original theatre where many of Shakespeare's plays were performed. Consider taking a guided tour to learn more about the history of this iconic venue.",
+          "searchQuery": "Shakespeare's Globe",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Sherlock Holmes Museum",
+          "description": "Dive into the world of Sherlock Holmes at the Sherlock Holmes Museum located at 221B Baker Street. Discover memorabilia and exhibits dedicated to the famous detective and his adventures.",
+          "searchQuery": "Sherlock Holmes Museum",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Ivy",
+          "description": "Enjoy a luxurious dinner at The Ivy, a classic British restaurant known for its elegant atmosphere and diverse menu. It's a perfect way to unwind after a day of exploration.",
+          "searchQuery": "The Ivy",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Shopping for Sherlock Merchandise",
+          "description": "End your day with some shopping for Sherlock-themed merchandise. Head to nearby shops or bookstores that offer a range of collectibles and souvenirs related to the beloved detective.",
+          "searchQuery": "Sherlock merchandise",
+          "locationEn": "London, UK",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Sherlock Holmes and Beyond",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Breakfast Club",
+          "description": "Start your day with a hearty breakfast at The Breakfast Club, known for its vibrant atmosphere and delicious brunch options. Try their famous pancakes or a classic English breakfast to fuel your day of exploration!",
+          "searchQuery": "The Breakfast Club",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "221B Baker Street",
+          "description": "Visit the iconic 221B Baker Street, the fictional home of Sherlock Holmes. Explore the Sherlock Holmes Museum, where you can see exhibits related to the famous detective and his adventures. Don't forget to take a photo outside the famous door!",
+          "searchQuery": "Sherlock Holmes Museum",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Sherlock Holmes Pub",
+          "description": "Enjoy lunch at The Sherlock Holmes Pub, a cozy spot filled with memorabilia from the detective's stories. Try their traditional British fare, like fish and chips or a hearty pie, while soaking in the atmosphere.",
+          "searchQuery": "The Sherlock Holmes Pub",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "London Eye",
+          "description": "Take a ride on the London Eye for stunning views of the city. This giant Ferris wheel offers a unique perspective of London, including landmarks like Big Ben and the Houses of Parliament. It's a perfect way to relax and enjoy the skyline.",
+          "searchQuery": "London Eye",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Westminster Abbey",
+          "description": "Visit the historic Westminster Abbey, a UNESCO World Heritage Site. Explore the stunning architecture and learn about its significance in British history. Keep an eye out for the Poets' Corner, where many famous writers are buried.",
+          "searchQuery": "Westminster Abbey",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping at Forbidden Planet",
+          "description": "Head to Forbidden Planet, a famous comic book and collectibles store. Here, you can find a variety of Sherlock Holmes merchandise, from books to figurines, perfect for any fan looking to take home a piece of the adventure.",
+          "searchQuery": "Forbidden Planet",
+          "locationEn": "London, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Dishoom",
+          "description": "End your day with dinner at Dishoom, a popular Indian restaurant inspired by the old Irani cafés of Bombay. Enjoy a vibrant atmosphere and delicious dishes like their famous black daal and lamb biryani.",
+          "searchQuery": "Dishoom",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "London",
+          "time": "14:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "17:00"
+        },
+        "duration": "8h",
+        "memo": "Direct flight from London to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Breakfast Club",
+          "description": "Start your day with a hearty breakfast at The Breakfast Club, known for its delicious pancakes and vibrant atmosphere. It's a great spot to fuel up before a day of exploring!",
+          "searchQuery": "The Breakfast Club London",
+          "locationEn": "London, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit 221B Baker Street",
+          "description": "Explore the iconic home of Sherlock Holmes at 221B Baker Street. The museum offers a fascinating glimpse into the life of the famous detective, complete with exhibits and memorabilia.",
+          "searchQuery": "Sherlock Holmes Museum",
+          "locationEn": "London, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Sherlock Holmes Pub",
+          "description": "Enjoy a themed lunch at The Sherlock Holmes Pub, where you can savor traditional British fare in a cozy setting adorned with Sherlock memorabilia. Don't forget to try their famous fish and chips!",
+          "searchQuery": "The Sherlock Holmes Pub",
+          "locationEn": "London, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore the British Museum",
+          "description": "Visit the British Museum, home to a vast collection of art and antiquities from around the world. Be sure to check out the Egyptian mummies and the Rosetta Stone!",
+          "searchQuery": "British Museum",
+          "locationEn": "London, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Sherlock Merchandise at Forbidden Planet",
+          "description": "Head to Forbidden Planet, a renowned store for comic books and collectibles, where you can find a variety of Sherlock Holmes merchandise and fan gear to take home as souvenirs.",
+          "searchQuery": "Forbidden Planet London",
+          "locationEn": "London, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

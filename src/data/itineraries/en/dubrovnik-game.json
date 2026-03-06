@@ -1,0 +1,528 @@
+{
+  "id": "aa597e55-2732-44e9-9ea3-e292418de75f",
+  "destination": "Dubrovnik",
+  "description": "Immerse yourself in the enchanting beauty of Dubrovnik, a UNESCO World Heritage site that boasts stunning medieval architecture, breathtaking coastal views, and a vibrant culinary scene. This six-day getaway is designed for couples seeking romance and adventure, where every moment is filled with the charm of this Adriatic gem. From wandering the ancient city walls to savoring fresh seafood by the sea, your journey will be a delightful blend of exploration and relaxation, reminiscent of the picturesque landscapes from 'Kiki's Delivery Service.'",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Dubrovnik",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Konoba Dubrava",
+          "description": "Start your Dubrovnik adventure with a delightful seafood lunch at Konoba Dubrava, known for its fresh catch of the day and local specialties. Enjoy the rustic ambiance and friendly service as you savor dishes like grilled fish and octopus salad.",
+          "searchQuery": "Konoba Dubrava",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Old Town",
+          "description": "Stroll through the UNESCO World Heritage-listed Old Town, where every corner reveals stunning medieval architecture. Don't miss the iconic Stradun, the main street lined with shops and cafes, and the beautiful Sponza Palace, a gem of Renaissance architecture.",
+          "searchQuery": "Old Town Dubrovnik",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Sponza Palace",
+          "description": "Step inside Sponza Palace, a historical building that showcases the rich history of Dubrovnik. The intricate stonework and beautiful courtyard make it a perfect spot for photos and a moment of reflection on the city's past.",
+          "searchQuery": "Sponza Palace",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Restaurant 360",
+          "description": "Indulge in a romantic dinner at Restaurant 360, which offers breathtaking views of the Old Town and the Adriatic Sea. The menu features a blend of Mediterranean and Croatian cuisine, perfect for a special evening.",
+          "searchQuery": "Restaurant 360",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk Along the City Walls",
+          "description": "End your day with a leisurely walk along the ancient city walls. The panoramic views of the sunset over the sea and the illuminated Old Town create a magical atmosphere, reminiscent of scenes from 'Kiki's Delivery Service'.",
+          "searchQuery": "Dubrovnik City Walls",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the City Walls and Beaches",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Royal",
+          "description": "Start your day with a delightful breakfast at Café Royal, known for its fresh pastries and local delicacies. Enjoy a cup of Croatian coffee while soaking in the charming atmosphere of Dubrovnik's Old Town.",
+          "searchQuery": "Café Royal Dubrovnik",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Walk the City Walls",
+          "description": "Embark on a scenic walk along the ancient city walls of Dubrovnik. This UNESCO World Heritage site offers breathtaking views of the Adriatic Sea and the terracotta rooftops of the Old Town. The walk takes about 1.5 to 2 hours, so take your time and capture the stunning vistas.",
+          "searchQuery": "Dubrovnik City Walls",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Konoba Dubrava",
+          "description": "Savor a delicious seafood lunch at Konoba Dubrava, a local favorite. Try their fresh catch of the day, grilled to perfection, and pair it with a glass of local wine for a true taste of the Adriatic.",
+          "searchQuery": "Konoba Dubrava",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Fort Lovrijenac",
+          "description": "Explore Fort Lovrijenac, a stunning fortress that offers panoramic views of the city and the sea. Known as 'Dubrovnik's Gibraltar', this historic site is a must-visit for its impressive architecture and rich history.",
+          "searchQuery": "Fort Lovrijenac",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Banje Beach",
+          "description": "Unwind at Banje Beach, one of Dubrovnik's most popular beaches. Enjoy the sun, take a dip in the crystal-clear waters, and perhaps indulge in a refreshing cocktail at one of the beach bars. The views of the Old Town from the beach are simply magical.",
+          "searchQuery": "Banje Beach",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Nautika Restaurant",
+          "description": "End your day with a romantic dinner at Nautika, renowned for its exquisite seafood dishes and stunning views of the sea and city walls. Make sure to reserve a table in advance to enjoy a sunset meal that feels like a scene from a movie.",
+          "searchQuery": "Nautika Restaurant",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Island Hopping Adventure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café Royal",
+          "description": "Start your day with a delightful breakfast at Café Royal, known for its fresh pastries and local delicacies. Enjoy a cup of Croatian coffee while soaking in the charming atmosphere of Dubrovnik's Old Town.",
+          "searchQuery": "Café Royal Dubrovnik",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Ferry to Lokrum Island",
+          "description": "Catch a ferry from Dubrovnik to Lokrum Island, a serene escape just a short ride away. Explore the lush gardens, ancient ruins, and the beautiful beaches that make this island a perfect getaway.",
+          "searchQuery": "Lokrum Island",
+          "locationEn": "Lokrum, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Explore Lokrum Island",
+          "description": "Wander through the botanical gardens and visit the historic Benedictine monastery. Don't miss the chance to take a dip in the crystal-clear waters at the beach.",
+          "searchQuery": "Lokrum Island",
+          "locationEn": "Lokrum, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Restaurant Lacroma",
+          "description": "Enjoy a seafood lunch at Restaurant Lacroma on Lokrum Island. Savor fresh fish dishes and local specialties while overlooking the stunning Adriatic Sea.",
+          "searchQuery": "Restaurant Lacroma",
+          "locationEn": "Lokrum, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Return Ferry to Dubrovnik",
+          "description": "Take the ferry back to Dubrovnik and enjoy the scenic views of the coastline as you approach the city.",
+          "searchQuery": "Ferry to Dubrovnik",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit Cavtat",
+          "description": "Head to the picturesque town of Cavtat, known for its beautiful waterfront and charming streets. Stroll along the promenade and enjoy the laid-back atmosphere.",
+          "searchQuery": "Cavtat",
+          "locationEn": "Cavtat, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Coffee at Café de Mar",
+          "description": "Relax with a coffee at Café de Mar, a lovely spot in Cavtat with stunning views of the sea. It's the perfect place to unwind after exploring the town.",
+          "searchQuery": "Café de Mar Cavtat",
+          "locationEn": "Cavtat, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Return to Dubrovnik",
+          "description": "Make your way back to Dubrovnik, taking in the beautiful sunset views along the way.",
+          "searchQuery": "Return to Dubrovnik",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Dinner at Nautika Restaurant",
+          "description": "Indulge in a romantic dinner at Nautika, renowned for its exquisite seafood and breathtaking views of the Old Town and the sea. A perfect way to end your day of adventure.",
+          "searchQuery": "Nautika Restaurant",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Cultural Immersion and Culinary Delights",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Royal",
+          "description": "Start your day with a delightful breakfast at Café Royal, known for its fresh pastries and local coffee. The charming atmosphere will set the perfect tone for your day in Dubrovnik.",
+          "searchQuery": "Café Royal Dubrovnik",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Rector's Palace",
+          "description": "Explore the stunning Rector's Palace, a masterpiece of Gothic and Renaissance architecture. The museum inside showcases the rich history of Dubrovnik, making it a must-visit for culture enthusiasts.",
+          "searchQuery": "Rector's Palace",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Proto Fish Restaurant",
+          "description": "Indulge in a seafood feast at Proto, a renowned restaurant that specializes in fresh local fish dishes. Enjoy the beautiful views of the Old Town while savoring the flavors of the Adriatic.",
+          "searchQuery": "Proto Fish Restaurant",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through Gundulić Square",
+          "description": "Take a leisurely walk through Gundulić Square, where you can find local vendors selling fresh produce and handmade crafts. It's a perfect spot to soak in the local culture and perhaps pick up a souvenir.",
+          "searchQuery": "Gundulić Square",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Relax at Banje Beach",
+          "description": "Head to Banje Beach for some relaxation by the sea. Enjoy the stunning views of the Old Town from the beach, and take a refreshing dip in the crystal-clear waters of the Adriatic.",
+          "searchQuery": "Banje Beach",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Nautika Restaurant",
+          "description": "End your day with a romantic dinner at Nautika, known for its exquisite seafood and breathtaking views of the sea and city walls. This upscale dining experience is perfect for a special evening.",
+          "searchQuery": "Nautika Restaurant",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Day Trip to Montenegro",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café Royal",
+          "description": "Start your day with a delightful breakfast at Café Royal, known for its fresh pastries and local delicacies. Enjoy a cup of rich Croatian coffee while soaking in the charming atmosphere of Dubrovnik.",
+          "searchQuery": "Café Royal Dubrovnik",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Travel to Kotor",
+          "description": "Set off for Kotor, a UNESCO World Heritage site, known for its stunning fjord-like bay and medieval architecture. The drive takes about 1.5 hours, offering beautiful coastal views along the way.",
+          "searchQuery": "Kotor",
+          "locationEn": "Kotor, Montenegro",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore Kotor Old Town",
+          "description": "Wander through the narrow cobblestone streets of Kotor's Old Town, where you can admire the well-preserved medieval buildings and visit St. Tryphon Cathedral. Don't forget to climb the fortress for breathtaking views of the bay!",
+          "searchQuery": "Kotor Old Town",
+          "locationEn": "Kotor, Montenegro",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Konoba Scala Santa",
+          "description": "Enjoy a delicious seafood lunch at Konoba Scala Santa, a local favorite known for its fresh catch and traditional Montenegrin dishes. Try the grilled fish or seafood risotto for a true taste of the Adriatic.",
+          "searchQuery": "Konoba Scala Santa",
+          "locationEn": "Kotor, Montenegro",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit Perast",
+          "description": "After lunch, take a short drive to Perast, a picturesque town on the Bay of Kotor. Stroll along the waterfront and visit the stunning Our Lady of the Rocks island, accessible by a short boat ride.",
+          "searchQuery": "Our Lady of the Rocks",
+          "locationEn": "Perast, Montenegro",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Relax at the Beach in Perast",
+          "description": "Spend some time relaxing at one of the small beaches in Perast. Enjoy the serene views of the bay and the surrounding mountains, perfect for unwinding after a day of exploration.",
+          "searchQuery": "Perast Beach",
+          "locationEn": "Perast, Montenegro",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Return to Dubrovnik",
+          "description": "Head back to Dubrovnik, reflecting on the beautiful sights of Montenegro. The drive will take about 1.5 hours, giving you time to relax and enjoy the scenery one last time.",
+          "searchQuery": "Dubrovnik",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at Restaurant 360",
+          "description": "End your day with a romantic dinner at Restaurant 360, offering stunning views of the Old Town and the sea. Indulge in exquisite seafood dishes and fine wines for a memorable dining experience.",
+          "searchQuery": "Restaurant 360",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Relaxation and Departure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Royal",
+          "description": "Start your day with a delightful breakfast at Café Royal, known for its fresh pastries and local delicacies. Enjoy a leisurely meal while soaking in the charming atmosphere of Dubrovnik's Old Town.",
+          "searchQuery": "Café Royal",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Lapad Beach",
+          "description": "Spend a relaxing morning at Lapad Beach, where you can unwind on the sandy shores and take a refreshing swim in the crystal-clear waters. The beach is surrounded by lush greenery, making it a perfect spot for a romantic day.",
+          "searchQuery": "Lapad Beach",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Restaurant 360",
+          "description": "Indulge in a gourmet seafood lunch at Restaurant 360, which offers stunning views of the Old Town and the Adriatic Sea. Their fresh seafood dishes are a must-try, perfectly capturing the flavors of the region.",
+          "searchQuery": "Restaurant 360",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Cable Car Ride to Mount Srđ",
+          "description": "Take a scenic cable car ride up to Mount Srđ for breathtaking panoramic views of Dubrovnik and the surrounding coastline. This is a perfect spot for capturing those magical moments reminiscent of 'Kiki's Delivery Service'.",
+          "searchQuery": "Dubrovnik Cable Car",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll through Old Town",
+          "description": "Wander through the historic streets of Dubrovnik's Old Town, a UNESCO World Heritage site. Explore the charming alleys, visit local shops, and admire the stunning architecture that makes this city so enchanting.",
+          "searchQuery": "Old Town Dubrovnik",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Nautika Restaurant",
+          "description": "Enjoy a farewell dinner at Nautika, renowned for its exquisite seafood and breathtaking views of the sea. The romantic setting and delicious cuisine will be the perfect end to your Dubrovnik adventure.",
+          "searchQuery": "Nautika Restaurant",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

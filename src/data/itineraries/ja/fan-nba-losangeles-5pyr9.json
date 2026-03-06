@@ -1,0 +1,444 @@
+{
+  "id": "98d16f70-7103-4bb9-92f4-4111b193433e",
+  "destination": "ロサンゼルス",
+  "description": "ロサンゼルスでの5日間は、NBAの熱気を感じながら、文化やグルメを楽しむ特別な旅。友人とともに、街の魅力を存分に味わい、推し活を満喫するプランをご提案します。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ロサンゼルス到着とダウンタウン散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロサンゼルスのカジュアルなカフェで、アメリカンブレックファーストを楽しみます。パンケーキやオムレツなど、ボリューム満点の朝食でエネルギーをチャージ！",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ウォルト・ディズニー・コンサートホール見学",
+          "description": "美しい外観が特徴のウォルト・ディズニー・コンサートホールを訪れます。建築家フランク・ゲーリーのデザインによるこのホールは、内部の音響も素晴らしく、見学ツアーもおすすめです。",
+          "searchQuery": "Walt Disney Concert Hall",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ダウンタウンのフードトラックでランチ",
+          "description": "ダウンタウンのフードトラックで、タコスやバーガーなどのストリートフードを楽しみます。地元の人々に人気のトラックを探して、手軽に美味しいランチを味わいましょう。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "エンジェルスフライト乗車",
+          "description": "ロサンゼルスの歴史的なケーブルカー、エンジェルスフライトに乗って、ダウンタウンの景色を楽しみます。短い距離ですが、独特の雰囲気を味わえるスポットです。",
+          "searchQuery": "Angels Flight",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "NBAストアでファングッズ購入",
+          "description": "NBAファン必見のNBAストアで、チームのユニフォームやグッズを購入します。お気に入りのチームのアイテムを手に入れて、旅の思い出を作りましょう！",
+          "searchQuery": "NBA Store",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ダウンタウン散策",
+          "description": "ダウンタウンの街並みを散策しながら、アートやストリートパフォーマンスを楽しみます。ロサンゼルスの文化を感じることができるエリアです。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ダウンタウンのレストランでディナー",
+          "description": "ダウンタウンの人気レストランで、アメリカンスタイルのディナーを楽しみます。地元の食材を使った料理を味わいながら、友人との楽しい時間を過ごしましょう。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "NBAの聖地を巡る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロサンゼルスのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ！",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ステイプルセンター見学",
+          "description": "NBAの試合が行われるステイプルセンターを訪れます。外観を眺めながら、歴史的なアリーナの雰囲気を感じましょう。ツアーもあるので、内部の見学もおすすめです。",
+          "searchQuery": "Staples Center",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "NBAストアでショッピング",
+          "description": "NBAファン必見のNBAストアで、チームのグッズやアパレルを購入しましょう。お気に入りの選手のユニフォームや、限定アイテムが見つかるかも！",
+          "searchQuery": "NBA Store",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "近くのカフェでランチ",
+          "description": "NBAストアの近くにあるカフェで軽食を楽しみます。サンドイッチやサラダなど、手軽に食べられるメニューが揃っています。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ロサンゼルス・クリッパーズの練習場見学",
+          "description": "ロサンゼルス・クリッパーズの練習場を訪れ、選手たちの練習風景を見学します。運が良ければ、選手に会えるかもしれません！",
+          "searchQuery": "Los Angeles Clippers Practice Facility",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "近くの公園でリラックス",
+          "description": "練習場の近くにある公園で、少し休憩。周囲の景色を楽しみながら、友人とNBAの話で盛り上がりましょう。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ロサンゼルスのレストランでディナー",
+          "description": "地元の人気レストランで、アメリカンスタイルのディナーを楽しみます。ハンバーガーやステーキなど、アメリカの味を堪能しましょう。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ハリウッドとグルメ体験",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロサンゼルスのカジュアルなカフェで、アメリカンブレックファーストを楽しみます。ボリューム満点のパンケーキやオムレツでエネルギーをチャージ！",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ハリウッド・ウォーク・オブ・フェイム",
+          "description": "スターたちの名前が刻まれた歩道を散策しながら、映画の世界に浸ります。お気に入りのスターの星を見つけて、記念写真を撮るのもお忘れなく！",
+          "searchQuery": "Hollywood Walk of Fame",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ロサンゼルスのフードトラックでランチ",
+          "description": "地元のフードトラックでタコスやバーガーを楽しみます。手軽で美味しいストリートフードを味わいながら、ロサンゼルスの食文化を体験しましょう。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "グリフィス天文台",
+          "description": "ロサンゼルスの絶景スポット、グリフィス天文台へ。天文台からの眺めは素晴らしく、特に夕方の時間帯はロサンゼルスの街が美しく輝きます。",
+          "searchQuery": "Griffith Observatory",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "NBAショップでファングッズ購入",
+          "description": "NBAの公式ショップで、お気に入りのチームのグッズを探しましょう。ユニフォームやキャップなど、ファン必見のアイテムが揃っています。",
+          "searchQuery": "NBA Store",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ロサンゼルスのフードトラックでディナー",
+          "description": "夕食は再びフードトラックで、今度はバーベキューやエスニック料理を楽しみます。多様な料理が楽しめるのがロサンゼルスの魅力です。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ハリウッドの夜景を楽しむ",
+          "description": "ハリウッドの夜景を楽しみながら、友人と一緒に素敵な時間を過ごします。夜の街の雰囲気を感じながら、思い出に残るひとときを。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ビーチとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロサンゼルスのカジュアルなカフェで、アメリカンブレックファーストを楽しみます。ボリューム満点のパンケーキやオムレツでエネルギーをチャージ！",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "サンタモニカビーチ",
+          "description": "美しい海岸線が広がるサンタモニカビーチで、リラックスした時間を過ごします。ビーチ沿いの遊歩道を散策したり、ビーチバレーを楽しむのもおすすめです。",
+          "searchQuery": "Santa Monica Beach",
+          "locationEn": "Santa Monica, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "サンタモニカピアでランチ",
+          "description": "サンタモニカピアのフードスタンドで、タコスやホットドッグを味わいながら、海の景色を楽しみます。カジュアルな雰囲気で、友人と楽しいひとときを。",
+          "searchQuery": "Santa Monica Pier",
+          "locationEn": "Santa Monica, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ベニスビーチ散策",
+          "description": "サンタモニカから徒歩でベニスビーチへ移動。アートやストリートパフォーマンスが楽しめる賑やかなビーチで、個性的なショップやカフェも立ち寄りながら散策します。",
+          "searchQuery": "Venice Beach",
+          "locationEn": "Venice, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "NBA関連グッズ購入",
+          "description": "ベニスビーチ近くのスポーツショップで、NBAのファングッズを探します。お気に入りのチームのアイテムを見つけて、思い出に残る一品をゲット！",
+          "searchQuery": "NBA Store",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "サンタモニカプレミアムアウトレットでショッピング",
+          "description": "サンタモニカプレミアムアウトレットで、ブランド品をお得にゲット。友人と一緒にショッピングを楽しみながら、素敵なアイテムを見つけましょう。",
+          "searchQuery": "Santa Monica Premium Outlets",
+          "locationEn": "Santa Monica, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "アウトレット内でディナー",
+          "description": "アウトレット内のカジュアルなレストランで、アメリカンスタイルのディナーを楽しみます。ハンバーガーやサラダなど、ボリューム満点のメニューが揃っています。",
+          "locationEn": "Santa Monica, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ロサンゼルスの最後のひととき",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロサンゼルスのカフェで、アメリカンブレックファーストを楽しみます。ボリューム満点のパンケーキやエッグベネディクトで、元気に一日をスタートしましょう。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ロサンゼルス・アート・ディストリクト散策",
+          "description": "アート・ディストリクトのストリートアートやギャラリーを巡り、独特の雰囲気を楽しみます。地元のアーティストたちの作品に触れながら、インスピレーションを得ることができます。",
+          "searchQuery": "Los Angeles Arts District",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：地元のカフェで軽食",
+          "description": "アート・ディストリクト内のカフェで、サンドイッチやサラダを楽しみます。地元の食材を使った料理が多く、ヘルシーで美味しいランチが堪能できます。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "NBA関連ショップ巡り",
+          "description": "ロサンゼルスのNBA関連ショップを訪れ、ファングッズを購入します。特にレイカーズやクリッパーズのグッズは必見！お気に入りの選手のユニフォームやキャップを手に入れましょう。",
+          "searchQuery": "Lakers Team Store",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ロサンゼルス・ダウンタウン散策",
+          "description": "ダウンタウンの名所を散策しながら、最後のひとときを楽しみます。ウォルト・ディズニー・コンサートホールやグラミー博物館など、文化的なスポットも見逃せません。",
+          "searchQuery": "Walt Disney Concert Hall",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー：ロサンゼルスの人気レストラン",
+          "description": "ロサンゼルスの人気レストランで、アメリカンスタイルのディナーを楽しみます。地元のビールやワインと共に、アメリカの味を堪能しましょう。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の帰国に備えて、ゆっくりと休息を取りましょう。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

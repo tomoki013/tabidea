@@ -1,0 +1,371 @@
+{
+  "id": "8cd403e5-a48c-4441-81fb-524b6144dac4",
+  "destination": "サンフランシスコ",
+  "description": "サンフランシスコの魅力を存分に味わう4日間の一人旅。NBAファン必見のスポットを巡りながら、地元の文化や美味しいグルメも楽しむアクティブなプランです。",
+  "days": [
+    {
+      "day": 1,
+      "title": "サンフランシスコ到着とNBA体験",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "サンフランシスコのカフェで、地元の新鮮な食材を使った朝食を楽しみます。アボカドトーストやベーカリーのペストリーが人気です。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "AT&Tパーク見学",
+          "description": "サンフランシスコ・ジャイアンツの本拠地、AT&Tパークを訪れます。美しい湾の景色を楽しみながら、スタジアムの歴史や雰囲気を感じることができます。",
+          "searchQuery": "AT&T Park",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "フィッシャーマンズワーフでランチ",
+          "description": "フィッシャーマンズワーフの名物、クラムチャウダーをパンの器で楽しみます。観光名所が集まるエリアで、食事の後はお土産探しも楽しめます。",
+          "searchQuery": "Fisherman's Wharf",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "NBAストア訪問",
+          "description": "サンフランシスコのNBAストアで、好きなチームのファングッズを探します。ユニフォームやキャップなど、ここでしか手に入らないアイテムが揃っています。",
+          "searchQuery": "NBA Store",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "オラクルアリーナ見学",
+          "description": "オラクルアリーナを訪れ、ウォリアーズのホームゲームの雰囲気を感じます。試合がない日でも、周辺の雰囲気を楽しむことができます。",
+          "searchQuery": "Oracle Arena",
+          "locationEn": "Oakland, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "サンフランシスコの地元料理を楽しめるレストランで、シーフードやイタリアンを堪能します。特に新鮮なシーフードはおすすめです。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のフィッシャーマンズワーフ散策",
+          "description": "夜のフィッシャーマンズワーフを散策し、ライトアップされた景色を楽しみます。観光客で賑わう中、ストリートパフォーマンスも見逃せません。",
+          "searchQuery": "Fisherman's Wharf",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "NBA関連スポット巡りとグルメ体験",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "サンフランシスコのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ！",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "オラクルアリーナ見学",
+          "description": "NBAのゴールデンステイト・ウォリアーズの本拠地、オラクルアリーナを訪れます。試合がない日でも、アリーナのツアーに参加して、選手たちの歴史や名場面を振り返ることができます。",
+          "searchQuery": "Oracle Arena",
+          "locationEn": "Oakland, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ダウンタウンでランチ",
+          "description": "ダウンタウンの人気レストランで、サンドイッチやサラダを楽しみます。地元の食材を使った料理が多く、特にヘルシー志向のメニューが豊富です。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "NBAストアでファングッズ購入",
+          "description": "NBAストアでお気に入りのチームのグッズを探しましょう。ユニフォームやキャップ、サイン入りのアイテムなど、ファンにはたまらない商品が揃っています。",
+          "searchQuery": "NBA Store",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ユニオンスクエア散策",
+          "description": "ユニオンスクエアでショッピングやカフェ巡りを楽しみます。周辺にはアートギャラリーやブティックも多く、散策するだけでも楽しいエリアです。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "フィッシャーマンズワーフで夕食",
+          "description": "フィッシャーマンズワーフで新鮮なシーフードを楽しみます。特にクラムチャウダーのパンボウルは絶品！海を眺めながらの食事は格別です。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "サンフランシスコの夜景を楽しむ",
+          "description": "夕食後は、サンフランシスコの美しい夜景を楽しむために、ゴールデンゲートブリッジ周辺へ。ライトアップされた橋と街の景色は、心に残るひとときです。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "サンフランシスコの文化と歴史を探る",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "サンフランシスコのカフェで、地元の新鮮な食材を使った朝食を楽しみます。アボカドトーストやフレンチトーストが人気です。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ゴールデンゲートブリッジ散策",
+          "description": "サンフランシスコのシンボル、ゴールデンゲートブリッジを歩いて渡ります。美しい景色を楽しみながら、写真撮影にも最適なスポットです。",
+          "searchQuery": "Golden Gate Bridge",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "アルカトラズ島ツアー",
+          "description": "歴史的なアルカトラズ島を訪れ、かつての刑務所の内部を見学します。オーディオガイドで囚人たちの物語を聞きながら、興味深い歴史に触れられます。",
+          "searchQuery": "Alcatraz Island",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "フィッシャーマンズワーフでランチ",
+          "description": "フィッシャーマンズワーフの海鮮レストランで、新鮮なクラムチャウダーやシーフードプレートを楽しみます。観光名所が近く、食事後の散策にも便利です。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ミッション地区のストリートアート鑑賞",
+          "description": "ミッション地区を散策し、色とりどりのストリートアートを楽しみます。地元のアーティストによる作品が多く、フォトスポットもたくさんあります。",
+          "searchQuery": "Mission District",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "NBAショップでファングッズ購入",
+          "description": "サンフランシスコのNBAショップを訪れ、好きなチームのグッズを探します。ユニフォームやキャップなど、ファンにはたまらないアイテムが揃っています。",
+          "searchQuery": "NBA Store",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "サンフランシスコの人気レストランで、カリフォルニア料理を楽しみます。地元のワインと共に、旬の食材を使った料理を堪能しましょう。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のサンフランシスコ散策",
+          "description": "夜のサンフランシスコを散策し、ライトアップされた街並みを楽しみます。特にユニオンスクエア周辺は、ショッピングやカフェも充実しています。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "サンフランシスコの最後の冒険と帰路",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "サンフランシスコのカフェで、地元の新鮮な食材を使った朝食を楽しみます。アボカドトーストやベーカリーのペストリーが人気です。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "サンフランシスコ美術館訪問",
+          "description": "サンフランシスコ美術館で、現代アートやアメリカの名作を鑑賞します。特に、アートのインスタレーションが印象的で、ゆったりとした時間を過ごせます。",
+          "searchQuery": "San Francisco Museum of Modern Art",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "チャイナタウンでランチ",
+          "description": "サンフランシスコのチャイナタウンで、本格的な中華料理を楽しみます。特に、点心や北京ダックが絶品です。地元の人々に人気のレストランを選ぶと良いでしょう。",
+          "searchQuery": "Chinatown San Francisco",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "チャイナタウン散策",
+          "description": "チャイナタウンの狭い路地を散策しながら、地元のショップやお土産屋を訪れます。NBA関連のファングッズも見つかるかもしれません。",
+          "searchQuery": "Chinatown San Francisco",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "NBAストア訪問",
+          "description": "サンフランシスコのNBAストアで、チームのユニフォームやグッズを購入します。ファンにはたまらないアイテムが揃っています。",
+          "searchQuery": "NBA Store San Francisco",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "サンフランシスコの名物アイスクリーム店で休憩",
+          "description": "地元で人気のアイスクリーム店で、ユニークなフレーバーを楽しみながら、旅の思い出を振り返ります。",
+          "searchQuery": "Bi-Rite Creamery",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "空港へ移動",
+          "description": "サンフランシスコ国際空港へ向かい、帰路につきます。最後のサンフランシスコの景色を楽しみながら、旅の締めくくりです。",
+          "locationEn": "San Francisco International Airport",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,557 @@
+{
+  "id": "434fa94d-fd82-4d6a-9612-f4c39f0a01a0",
+  "destination": "Amalfi & Positano",
+  "description": "Escape to the breathtaking Amalfi Coast, where the azure waters kiss the rugged cliffs and charming villages dot the landscape. This 6-day romantic getaway is designed for couples seeking to immerse themselves in stunning scenery, delectable cuisine, and the enchanting atmosphere of this UNESCO World Heritage site. Picture yourself driving along the coastal roads, with the sun setting over the Mediterranean, while indulging in the finest pasta dishes at local trattorias. Each day unfolds like a postcard, inviting you to explore hidden gems and savor the essence of Italian coastal living.",
+  "heroImage": "https://images.unsplash.com/photo-1718800329397-80b8a150b5be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODY0NzV8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "The Now Time",
+  "heroImagePhotographerUrl": "https://unsplash.com/@thenowtime?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Amalfi",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Da Gemma",
+          "description": "Start your Amalfi adventure with a delightful lunch at Da Gemma, a renowned restaurant famous for its fresh seafood pasta and local flavors. Enjoy the charming ambiance and the view of the bustling Amalfi streets.",
+          "searchQuery": "Da Gemma",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Amalfi Cathedral",
+          "description": "After lunch, stroll over to the stunning Amalfi Cathedral, a masterpiece of medieval architecture. Don't miss the beautiful mosaics and the serene cloister, perfect for a romantic photo opportunity.",
+          "searchQuery": "Amalfi Cathedral",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Amalfi Town",
+          "description": "Wander through the picturesque streets of Amalfi Town, filled with charming shops and cafes. Take your time to soak in the vibrant atmosphere and perhaps pick up some local limoncello as a souvenir.",
+          "searchQuery": "Amalfi Town",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Trattoria Da Lorenzo",
+          "description": "Indulge in a romantic dinner at Trattoria Da Lorenzo, known for its homemade pasta and local dishes. The cozy setting and attentive service make it a perfect spot for couples.",
+          "searchQuery": "Trattoria Da Lorenzo",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll along the Amalfi Coast",
+          "description": "End your day with a leisurely evening stroll along the Amalfi Coast. The sunset views over the Mediterranean are breathtaking and create a perfect romantic atmosphere.",
+          "searchQuery": "Amalfi Coast",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Amalfi and Ravello",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Pasticceria Pansa",
+          "description": "Start your day with a delightful breakfast at Pasticceria Pansa, famous for its fresh pastries and rich Italian coffee. Enjoy a sfogliatella or a cornetto while soaking in the charming atmosphere of Amalfi.",
+          "searchQuery": "Pasticceria Pansa",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Amalfi Cathedral",
+          "description": "Explore the stunning Amalfi Cathedral, a masterpiece of medieval architecture. Don't miss the beautiful façade and the serene cloister, perfect for a romantic stroll.",
+          "searchQuery": "Amalfi Cathedral",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Trattoria Da Gemma",
+          "description": "Savor authentic Italian pasta dishes at Trattoria Da Gemma, known for its homemade pasta and local seafood. The terrace offers a lovely view of the bustling Amalfi streets.",
+          "searchQuery": "Trattoria Da Gemma",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Drive to Ravello",
+          "description": "Take a scenic drive along the Amalfi Coast to Ravello, where breathtaking views await. The winding roads offer stunning vistas of the coastline and the Mediterranean Sea.",
+          "searchQuery": "Ravello",
+          "locationEn": "Ravello, Italy",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Villa Rufolo",
+          "description": "Discover the enchanting Villa Rufolo, famous for its beautiful gardens and panoramic views of the coast. The villa's architecture and lush surroundings create a romantic atmosphere.",
+          "searchQuery": "Villa Rufolo",
+          "locationEn": "Ravello, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore Villa Cimbrone",
+          "description": "Stroll through the gardens of Villa Cimbrone, known for its stunning terrace overlooking the sea. This hidden gem is perfect for capturing memorable photos together.",
+          "searchQuery": "Villa Cimbrone",
+          "locationEn": "Ravello, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Coffee Break at Caffè Calce",
+          "description": "Take a break at Caffè Calce, a cozy café in Ravello. Enjoy a cup of espresso or a refreshing granita while admiring the beautiful surroundings.",
+          "searchQuery": "Caffè Calce",
+          "locationEn": "Ravello, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Return Drive to Amalfi",
+          "description": "Drive back to Amalfi as the sun begins to set, painting the sky with beautiful colors. This drive is a perfect way to end your day, filled with romance and scenic beauty.",
+          "searchQuery": "Amalfi",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at Ristorante Marina Grande",
+          "description": "Enjoy a romantic dinner at Ristorante Marina Grande, known for its seafood pasta and stunning views of the Amalfi coastline. The ambiance is perfect for a couple's evening.",
+          "searchQuery": "Ristorante Marina Grande",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Drive to Positano",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Pasticceria Pansa",
+          "description": "Start your day with a delightful breakfast at Pasticceria Pansa, famous for its fresh pastries and rich Italian coffee. Enjoy a cornetto filled with cream or jam, paired with a cappuccino, while soaking in the charming Amalfi atmosphere.",
+          "searchQuery": "Pasticceria Pansa",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Drive along the Amalfi Coast",
+          "description": "Set off on a scenic drive along the breathtaking Amalfi Coast. The winding roads offer stunning views of the cliffs and the sparkling Mediterranean Sea. Stop at various viewpoints to capture the beauty of this UNESCO World Heritage site.",
+          "searchQuery": "Amalfi Coast",
+          "locationEn": "Amalfi Coast, Italy",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Visit Positano Beach",
+          "description": "Arrive at Positano and head straight to the famous Positano Beach. Relax on the sandy shores, take a dip in the crystal-clear waters, or simply enjoy the picturesque views of the colorful cliffside houses.",
+          "searchQuery": "Positano Beach",
+          "locationEn": "Positano, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Chez Black",
+          "description": "Indulge in a delicious seafood pasta at Chez Black, a beachfront restaurant known for its fresh ingredients and stunning views. Try their spaghetti alle vongole (spaghetti with clams) for a true taste of the coast.",
+          "searchQuery": "Chez Black",
+          "locationEn": "Positano, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Spiaggia Grande",
+          "description": "Stroll along Spiaggia Grande, the main beach of Positano. Enjoy the vibrant atmosphere, browse local shops, and perhaps grab a gelato as you take in the stunning coastal scenery.",
+          "searchQuery": "Spiaggia Grande",
+          "locationEn": "Positano, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Hike the Path of the Gods",
+          "description": "For a bit of adventure, embark on a hike along the famous Path of the Gods. This trail offers breathtaking panoramic views of the coastline and is a perfect way to experience the natural beauty of the area. Make sure to wear comfortable shoes!",
+          "searchQuery": "Path of the Gods",
+          "locationEn": "Agerola, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at La Sponda",
+          "description": "End your day with a romantic dinner at La Sponda, located in Le Sirenuse Hotel. Enjoy exquisite Italian cuisine while overlooking the twinkling lights of Positano as the sun sets over the horizon.",
+          "searchQuery": "La Sponda",
+          "locationEn": "Positano, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Check-in at Hotel Le Sirenuse",
+          "description": "After a day filled with beautiful sights and delicious food, check in to Hotel Le Sirenuse, a luxurious hotel offering stunning views and top-notch amenities. Relax and unwind in your elegant room, ready for another day of exploration tomorrow.",
+          "searchQuery": "Hotel Le Sirenuse",
+          "locationEn": "Positano, Italy",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Leisure Day in Positano",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Casa e Bottega",
+          "description": "Start your day with a delightful breakfast at Casa e Bottega, known for its fresh, organic ingredients and beautiful presentation. Enjoy a healthy smoothie bowl or a classic Italian pastry with a view of the stunning coastline.",
+          "searchQuery": "Casa e Bottega",
+          "locationEn": "Positano, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Fornillo Beach",
+          "description": "Spend a relaxing morning at Fornillo Beach, a charming and less crowded spot compared to the main beach. Take a leisurely swim in the crystal-clear waters or simply soak up the sun on the soft sand while enjoying the picturesque views of the cliffs.",
+          "searchQuery": "Fornillo Beach",
+          "locationEn": "Positano, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Trattoria da Vincenzo",
+          "description": "Savor a delicious lunch at Trattoria da Vincenzo, a local favorite known for its homemade pasta and fresh seafood dishes. The cozy atmosphere and friendly service make it a perfect spot for a romantic meal.",
+          "searchQuery": "Trattoria da Vincenzo",
+          "locationEn": "Positano, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Local Shops",
+          "description": "Stroll through the charming streets of Positano and explore the local shops. Discover unique handmade ceramics, stylish beachwear, and artisanal products that make perfect souvenirs. Don't forget to take in the vibrant colors of the buildings and flowers along the way.",
+          "searchQuery": "Positano local shops",
+          "locationEn": "Positano, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Gelato at Gelateria Buca di Bacco",
+          "description": "Treat yourselves to some of the best gelato in Positano at Gelateria Buca di Bacco. Choose from a variety of flavors, including local specialties like lemon and pistachio, while enjoying the stunning views of the sea.",
+          "searchQuery": "Gelateria Buca di Bacco",
+          "locationEn": "Positano, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Sunset at the Beach",
+          "description": "End your day by watching the sunset at the beach. Find a cozy spot on the sand, sip on a refreshing drink, and enjoy the breathtaking views as the sun dips below the horizon, painting the sky in hues of orange and pink.",
+          "searchQuery": "Positano beach",
+          "locationEn": "Positano, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at La Pergola",
+          "description": "For dinner, head to La Pergola, a romantic restaurant with a terrace overlooking the sea. Indulge in exquisite Italian dishes, including fresh seafood and homemade pasta, while enjoying the enchanting ambiance of the Amalfi Coast.",
+          "searchQuery": "La Pergola",
+          "locationEn": "Positano, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Day Trip to Capri",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Positano",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Capri",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take a scenic ferry ride from Positano to Capri."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Visit the Blue Grotto",
+          "description": "Experience the magical Blue Grotto, where sunlight creates a stunning blue reflection in the water. Be prepared for a short boat ride to enter this natural wonder!",
+          "searchQuery": "Blue Grotto",
+          "locationEn": "Capri, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Da Paolino",
+          "description": "Enjoy a delicious meal at Da Paolino, famous for its lemon tree-covered terrace and fresh seafood pasta. A perfect spot to savor the flavors of Capri!",
+          "searchQuery": "Da Paolino",
+          "locationEn": "Capri, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Anacapri",
+          "description": "Stroll through the charming streets of Anacapri, visiting local shops and enjoying breathtaking views of the island. Don't miss the chance to take the chairlift to Monte Solaro for panoramic vistas!",
+          "searchQuery": "Anacapri",
+          "locationEn": "Anacapri, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Positano",
+          "description": "Take the ferry back to Positano, enjoying the stunning coastal views as you travel. This is a great time to relax and reflect on your day in Capri.",
+          "searchQuery": "Ferry from Capri to Positano",
+          "locationEn": "Positano, Italy",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at La Pergola",
+          "description": "End your day with a romantic dinner at La Pergola, where you can indulge in exquisite Italian cuisine while overlooking the beautiful coastline of Positano.",
+          "searchQuery": "La Pergola",
+          "locationEn": "Positano, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Amalfi and Departure",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Positano",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Amalfi",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Enjoy the scenic drive along the Amalfi Coast."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Breakfast at Casa e Bottega",
+          "description": "Start your day with a delicious breakfast at Casa e Bottega, known for its fresh, local ingredients and healthy options. The vibrant atmosphere and beautiful decor make it a perfect spot to enjoy a leisurely meal before your drive.",
+          "searchQuery": "Casa e Bottega",
+          "locationEn": "Positano, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore Amalfi Cathedral",
+          "description": "Visit the stunning Amalfi Cathedral, a masterpiece of medieval architecture. The intricate facade and beautiful interior are a must-see, and you can climb the steps for a breathtaking view of the town below.",
+          "searchQuery": "Amalfi Cathedral",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Trattoria Da Gemma",
+          "description": "Indulge in a traditional Italian lunch at Trattoria Da Gemma, famous for its homemade pasta and local seafood dishes. The charming ambiance and friendly service will enhance your dining experience.",
+          "searchQuery": "Trattoria Da Gemma",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through Amalfi's Local Markets",
+          "description": "Take a leisurely stroll through the local markets of Amalfi, where you can find fresh produce, handmade crafts, and local delicacies. It's a great opportunity to pick up some souvenirs and experience the local culture.",
+          "searchQuery": "Amalfi Local Market",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Drive along the Amalfi Coast",
+          "description": "Enjoy a scenic drive along the Amalfi Coast, taking in the breathtaking views of the cliffs and the sparkling Mediterranean Sea. Stop at picturesque towns like Ravello or Minori for photo opportunities and to soak in the beauty of the coast.",
+          "searchQuery": "Amalfi Coast Drive",
+          "locationEn": "Amalfi Coast, Italy",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Ristorante Il Capitano",
+          "description": "End your day with a romantic dinner at Ristorante Il Capitano, offering stunning views of the coast and a menu filled with delicious seafood and pasta dishes. It's the perfect way to savor your last evening in this beautiful region.",
+          "searchQuery": "Ristorante Il Capitano",
+          "locationEn": "Amalfi, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

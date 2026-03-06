@@ -1,0 +1,362 @@
+{
+  "id": "222e9264-098c-4a6f-ade9-c0e9bdc2c72e",
+  "destination": "Wellington",
+  "description": "Escape to the vibrant capital of New Zealand, Wellington, where the spirit of adventure meets a rich tapestry of culture and history. This 4-day journey will take you through the heart of the city, exploring its iconic landmarks, indulging in local delicacies, and diving deep into the world of 'Lord of the Rings'. Perfect for fans and culture enthusiasts alike, this trip promises a delightful blend of exploration and relaxation with your friends.",
+  "heroImage": "https://images.unsplash.com/photo-1750802917544-6d50a533028c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODk4ODJ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "W. D.",
+  "heroImagePhotographerUrl": "https://unsplash.com/@mopedwill?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and City Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Fidel's Cafe",
+          "description": "Start your day with a hearty breakfast at Fidel's Cafe, known for its delicious eggs benedict and vibrant atmosphere. It's a local favorite and a great way to fuel up for a day of exploration.",
+          "searchQuery": "Fidel's Cafe",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Te Papa Museum",
+          "description": "Visit Te Papa, New Zealand's national museum, where you can explore the rich cultural history and natural wonders of the country. Don't miss the interactive exhibits and the stunning views from the rooftop.",
+          "searchQuery": "Te Papa Museum",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Crab Shack",
+          "description": "Enjoy a casual lunch at The Crab Shack, where you can indulge in fresh seafood and a laid-back vibe. Their crab dishes are particularly popular, and the waterfront location adds to the experience.",
+          "searchQuery": "The Crab Shack",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Cuba Street Exploration",
+          "description": "Stroll down Cuba Street, known for its eclectic shops and vibrant street art. This is the perfect place to hunt for unique Lord of the Rings merchandise and local crafts.",
+          "searchQuery": "Cuba Street",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Wellington Waterfront Walk",
+          "description": "Take a leisurely walk along the Wellington Waterfront. Enjoy the scenic views of the harbor and the city skyline, and perhaps stop for a coffee at one of the many cafes along the way.",
+          "searchQuery": "Wellington Waterfront",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Wellington",
+          "description": "End your day with dinner at The Wellington, a cozy restaurant offering a mix of local and international dishes. It's a great spot to relax and reflect on your day of exploration.",
+          "searchQuery": "The Wellington",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Lord of the Rings Adventure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Fidel's Cafe",
+          "description": "Start your day with a hearty breakfast at Fidel's Cafe, known for its vibrant atmosphere and delicious options like the famous eggs benedict and fresh smoothies. It's a local favorite, perfect for fueling up before your adventure!",
+          "searchQuery": "Fidel's Cafe",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Weta Workshop Tour",
+          "description": "Dive into the world of film magic at Weta Workshop, where the magic of 'The Lord of the Rings' was brought to life. This guided tour will take you behind the scenes to see props, costumes, and the artistry that went into creating Middle-earth.",
+          "searchQuery": "Weta Workshop",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Hobbit Cafe",
+          "description": "Enjoy a themed lunch at The Hobbit Cafe, where you can indulge in hearty meals inspired by the Shire. Try the Hobbiton platter for a taste of Middle-earth!",
+          "searchQuery": "The Hobbit Cafe",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Mount Victoria Lookout",
+          "description": "Take a scenic walk up to Mount Victoria for stunning panoramic views of Wellington and the surrounding hills. This spot was featured in the films and is a great place to snap some memorable photos.",
+          "searchQuery": "Mount Victoria Lookout",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Lord of the Rings Merchandise",
+          "description": "Head to the local shops in Wellington to find exclusive 'Lord of the Rings' merchandise. From collectibles to apparel, you'll find plenty of goodies to take home as souvenirs.",
+          "searchQuery": "Lord of the Rings Merchandise",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Old Bailey",
+          "description": "Wrap up your day with dinner at The Old Bailey, a cozy pub offering a range of delicious dishes and local beers. It's a great spot to relax and reflect on your day of adventure!",
+          "searchQuery": "The Old Bailey",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll along the Waterfront",
+          "description": "Take a leisurely evening stroll along Wellington's waterfront. Enjoy the fresh sea breeze and the beautiful views of the harbor as you wind down from your exciting day.",
+          "searchQuery": "Wellington Waterfront",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion and Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Fidel's Cafe",
+          "description": "Start your day with a hearty breakfast at Fidel's Cafe, known for its vibrant atmosphere and delicious options like the famous eggs benedict and fresh smoothies. It's a local favorite that sets the perfect tone for your day of exploration.",
+          "searchQuery": "Fidel's Cafe",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Cuba Street",
+          "description": "Stroll down Cuba Street, Wellington's bohemian heart, filled with quirky shops, street performers, and vibrant cafes. Don't miss the chance to pick up some unique Lord of the Rings merchandise at the local shops, perfect for any fan!",
+          "searchQuery": "Cuba Street",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Green Man Pub",
+          "description": "Enjoy a casual lunch at The Green Man Pub, where you can savor classic Kiwi dishes in a cozy setting. Their fish and chips are a must-try, and the pub's atmosphere is perfect for relaxing with friends.",
+          "searchQuery": "The Green Man Pub",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Victoria University",
+          "description": "Take a leisurely walk around Victoria University, known for its beautiful campus and rich history. The university often hosts art exhibitions and cultural events, so check out what's on during your visit.",
+          "searchQuery": "Victoria University",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit Weta Workshop",
+          "description": "Dive into the world of film at Weta Workshop, where the magic of movies like Lord of the Rings comes to life. Join a guided tour to see behind-the-scenes creations and learn about the artistry involved in filmmaking.",
+          "searchQuery": "Weta Workshop",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping at Wellington's Local Markets",
+          "description": "Head to one of Wellington's local markets, such as the Harbourside Market, to browse through artisan goods, fresh produce, and unique crafts. It's a great place to find souvenirs and local snacks.",
+          "searchQuery": "Harbourside Market",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Bresolin",
+          "description": "Wrap up your day with dinner at The Bresolin, a stylish eatery known for its seasonal menu and relaxed vibe. Enjoy a variety of dishes made from locally sourced ingredients, perfect for a satisfying end to your day.",
+          "searchQuery": "The Bresolin",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Relaxation and Departure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Sweet Mother's Kitchen",
+          "description": "Start your day with a hearty breakfast at Sweet Mother's Kitchen, known for its delicious pancakes and friendly atmosphere. It's a great spot to fuel up before a day of exploration!",
+          "searchQuery": "Sweet Mother's Kitchen",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Wellington Botanical Gardens",
+          "description": "Stroll through the stunning Wellington Botanical Gardens, where you can enjoy the vibrant flora and take in the beautiful views of the city. Don't miss the iconic Lady Norwood Rose Garden!",
+          "searchQuery": "Wellington Botanical Gardens",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Chocolate Fish Cafe",
+          "description": "Enjoy a casual lunch at The Chocolate Fish Cafe, located by the waterfront. This cafe offers a variety of delicious meals, including fresh seafood and their famous fish and chips.",
+          "searchQuery": "The Chocolate Fish Cafe",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Oriental Bay",
+          "description": "Take a leisurely walk along Oriental Bay, a picturesque beach area perfect for relaxing and soaking up the sun. You can also find some local shops and cafes to explore.",
+          "searchQuery": "Oriental Bay",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Shopping for Lord of the Rings Merchandise",
+          "description": "Head to the Weta Workshop Store to find unique Lord of the Rings merchandise and collectibles. It's a must-visit for fans, offering everything from figurines to clothing.",
+          "searchQuery": "Weta Workshop Store",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Coffee Break at Fidel's Cafe",
+          "description": "Take a break at Fidel's Cafe, a local favorite known for its vibrant atmosphere and great coffee. It's the perfect spot to relax and reflect on your trip before heading home.",
+          "searchQuery": "Fidel's Cafe",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Return to Hotel and Prepare for Departure",
+          "description": "Head back to your hotel to pack up and prepare for your departure. Take a moment to relax and enjoy the last bits of your Wellington experience.",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

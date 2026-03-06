@@ -1,0 +1,586 @@
+{
+  "id": "4e01c83d-922d-40de-afe3-6767063b8c09",
+  "destination": "レイキャビク",
+  "description": "アイスランドの美しい自然と温泉を満喫する7日間の冒険へようこそ。友人と共に、壮大な絶景や温泉、オーロラの神秘を体験し、心に残る思い出を作りましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からレイキャビクへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Tokyo",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Reykjavik",
+          "time": "14:00"
+        },
+        "duration": "13h",
+        "memo": "直行便でレイキャビクへ。時差に注意！"
+      },
+      "activities": [
+        {
+          "time": "15:00",
+          "activity": "ハルパ音楽ホール",
+          "description": "レイキャビクの象徴的な建物、ハルパ音楽ホールを訪れます。美しいガラスの外観と、内部の音響設計が魅力的で、アートと音楽の融合を楽しめます。",
+          "searchQuery": "Harpa Concert Hall",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "レイキャビク市内散策",
+          "description": "市内中心部を散策し、カラフルな建物やおしゃれなカフェを楽しみます。地元のアートや文化に触れながら、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Reykjavik City Center",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "レイキャビクの地元料理を楽しむために、シーフードやアイスランドの伝統料理を提供するレストランを訪れます。新鮮な素材を使った料理が堪能できます。",
+          "searchQuery": "Seafood Restaurant Reykjavik",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "オーロラ観賞ツアー",
+          "description": "夜はオーロラ観賞ツアーに参加します。美しい自然の中で、幻想的なオーロラの光を楽しむ特別な体験です。",
+          "searchQuery": "Northern Lights Tour Reykjavik",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ゴールデンサークル探訪",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "レイキャビク",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "シンクヴェトリル国立公園",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "レンタカーでのドライブを楽しみながら、シンクヴェトリル国立公園へ向かいます。美しい風景が広がる道中も楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "シンクヴェトリル国立公園",
+          "description": "アイスランドの大自然を感じるシンクヴェトリル国立公園で、壮大な地形や美しい湖を散策します。ここはプレートの境界に位置し、地球の力を感じることができるスポットです。",
+          "searchQuery": "Thingvellir National Park",
+          "locationEn": "Thingvellir, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ゲイシールでランチ",
+          "description": "ゲイシール近くのレストランで、アイスランドの伝統料理を楽しみましょう。新鮮な魚やラム肉を使った料理が絶品です。",
+          "searchQuery": "Geysir Restaurant",
+          "locationEn": "Geysir, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ゲイシール",
+          "description": "間欠泉ゲイシールを訪れ、自然の驚異を目の当たりにします。ストロックル間欠泉が噴出する瞬間は圧巻で、ぜひカメラを構えてください。",
+          "searchQuery": "Geysir",
+          "locationEn": "Geysir, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "グトルフォスの滝",
+          "description": "アイスランドの名瀑、グトルフォスの滝を見学。滝の迫力に圧倒されること間違いなしです。周囲の自然も美しく、散策するのもおすすめ。",
+          "searchQuery": "Gullfoss Waterfall",
+          "locationEn": "Gullfoss, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "温泉でリラックス",
+          "description": "近くの温泉施設で、アイスランドの温泉文化を体験。温かい湯に浸かりながら、日々の疲れを癒しましょう。",
+          "searchQuery": "Secret Lagoon",
+          "locationEn": "Flúðir, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "レイキャビクでディナー",
+          "description": "レイキャビクに戻り、地元のレストランで新鮮なシーフードを楽しみます。アイスランドの食材を使った料理は、どれも絶品です。",
+          "searchQuery": "Fish Market",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "南海岸の絶景ドライブ",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "レイキャビク",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ヴィーク",
+          "time": "12:00"
+        },
+        "duration": "4h",
+        "memo": "美しい風景を楽しみながらのドライブです。途中で休憩を取りながら進みましょう。"
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "セリャラントスフォス",
+          "description": "美しい滝、セリャラントスフォスを訪れます。滝の裏側を歩くことができるので、迫力ある景色を間近で楽しめます。",
+          "searchQuery": "Seljalandsfoss",
+          "locationEn": "Seljalandsfoss, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "スコガフォス",
+          "description": "スコガフォス滝へ。高さ60メートルの滝は圧巻で、晴れた日には虹がかかることも。滝の上まで登ることもでき、絶景が広がります。",
+          "searchQuery": "Skogafoss",
+          "locationEn": "Skogafoss, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ヴィークの黒砂海岸",
+          "description": "ヴィークの黒砂海岸を散策。黒い砂浜と奇岩が織りなす風景は、まるで異世界にいるかのよう。海の音を聞きながら、ゆったりとした時間を過ごしましょう。",
+          "searchQuery": "Reynisfjara Beach",
+          "locationEn": "Vik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ヴィークでディナー",
+          "description": "地元のレストランで新鮮なシーフードを楽しみます。アイスランドの特産品を使った料理が堪能できるお店を選びましょう。",
+          "searchQuery": "Vik Restaurant",
+          "locationEn": "Vik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "オーロラ観賞",
+          "description": "夜空に広がるオーロラを楽しむため、ヴィーク周辺の暗い場所へ移動します。運が良ければ、幻想的な光のショーが見られます。",
+          "searchQuery": "Aurora Borealis",
+          "locationEn": "Vik, Iceland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ヴィークから温泉へ",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Vik, Iceland",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Reykjavik, Iceland",
+          "time": "10:30"
+        },
+        "duration": "2h 30m",
+        "memo": "ヴィークからレイキャビクへレンタカーでの移動。美しい風景を楽しみながらのドライブ。"
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "ブルーラグーン",
+          "description": "アイスランドの象徴的な温泉、ブルーラグーンでリラックス。ミネラル豊富な青い温泉に浸かりながら、周囲の火山岩の景色を楽しむことができます。",
+          "searchQuery": "Blue Lagoon",
+          "locationEn": "Grindavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ブルーラグーン内のレストランでランチ",
+          "description": "ブルーラグーン内のレストランで新鮮な地元の食材を使った料理を楽しみます。温泉の後にぴったりの軽食です。",
+          "searchQuery": "Blue Lagoon Restaurant",
+          "locationEn": "Grindavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "レイキャビク市内観光",
+          "description": "レイキャビクに戻り、ハルグリムス教会やソルファル像などの観光スポットを訪れます。街の中心部を散策しながら、アイスランドの文化を感じてください。",
+          "searchQuery": "Hallgrimskirkja",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "レイキャビクのレストランでディナー",
+          "description": "地元の食材を使ったアイスランド料理を楽しむディナー。新鮮なシーフードやラム肉が特におすすめです。",
+          "searchQuery": "Fish Market Reykjavik",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "オーロラ観賞",
+          "description": "夜空に広がるオーロラを観賞するために、レイキャビク近郊の暗い場所へ移動します。運が良ければ、幻想的な光のショーを楽しめます。",
+          "searchQuery": "Northern Lights Reykjavik",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "アイスランドの北部探検",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "レイキャビク",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "アクレイリ",
+          "time": "12:00"
+        },
+        "duration": "4h",
+        "memo": "美しい風景を楽しみながらのドライブ。途中、いくつかの景勝地に立ち寄ることも可能。"
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "アクレイリでランチ",
+          "description": "アクレイリの中心部にあるカフェで、地元の新鮮な食材を使った料理を楽しみます。特にシーフード料理が人気です。",
+          "searchQuery": "Akureyri Cafe",
+          "locationEn": "Akureyri, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アクレイリ植物園",
+          "description": "アイスランドの多様な植物を観察できる美しい植物園。特に夏には色とりどりの花々が咲き誇り、散策にぴったりです。",
+          "searchQuery": "Akureyri Botanical Garden",
+          "locationEn": "Akureyri, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "フーサヴィークへの移動",
+          "description": "アクレイリからフーサヴィークへ向かう途中、壮大な自然の景色を楽しみながらドライブします。",
+          "locationEn": "Húsavík, Iceland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "フーサヴィークでクジラウォッチング",
+          "description": "フーサヴィークはクジラウォッチングの名所。ボートに乗って、アイスランドの海でクジラを探しに出かけましょう。",
+          "searchQuery": "Húsavík Whale Watching",
+          "locationEn": "Húsavík, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "フーサヴィークでディナー",
+          "description": "海の幸をふんだんに使ったレストランで、アイスランドの伝統料理を堪能します。特に新鮮な魚料理が絶品です。",
+          "searchQuery": "Húsavík Restaurant",
+          "locationEn": "Húsavík, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "オーロラ観賞",
+          "description": "フーサヴィーク周辺の暗い場所で、オーロラを観賞します。運が良ければ、幻想的な光のショーを楽しめます。",
+          "locationEn": "Húsavík, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "オーロラ観賞と温泉",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "アクレイリ",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ミーヴァトン温泉",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "アクレイリからミーヴァトン温泉までのドライブは、アイスランドの美しい風景を楽しむ絶好の機会です。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ミーヴァトン温泉でリラックス",
+          "description": "ミーヴァトン温泉で、温かい温泉に浸かりながら周囲の美しい自然を楽しみます。特に冬の時期は、雪景色を眺めながらの入浴が最高です。",
+          "searchQuery": "Mývatn Nature Baths",
+          "locationEn": "Mývatn, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "温泉近くのカフェでランチ",
+          "description": "温泉の近くにあるカフェで、地元の食材を使った軽食を楽しみます。特にスープやサンドイッチが人気です。",
+          "searchQuery": "Mývatn Nature Baths Café",
+          "locationEn": "Mývatn, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ダイムボルグの火山湖を散策",
+          "description": "ダイムボルグの火山湖周辺を散策し、独特の地形や美しい風景を楽しみます。湖の周りには多くの野生動物も見られます。",
+          "searchQuery": "Dimmuborgir",
+          "locationEn": "Mývatn, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アクレイリに戻る",
+          "description": "アクレイリに戻り、夕食までの時間を自由に過ごします。街を散策したり、カフェで一息つくのも良いでしょう。",
+          "locationEn": "Akureyri, Iceland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "アクレイリでディナー",
+          "description": "アクレイリの人気レストランで、アイスランドの新鮮なシーフードや肉料理を楽しみます。地元のビールもお忘れなく。",
+          "searchQuery": "Strikið",
+          "locationEn": "Akureyri, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "オーロラ観賞",
+          "description": "アクレイリ周辺でオーロラ観賞。天候が良ければ、幻想的なオーロラの光景を楽しむことができます。暖かい服装を忘れずに。",
+          "searchQuery": "Northern Lights Akureyri",
+          "locationEn": "Akureyri, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "レイキャビクへ帰還",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "アクレイリ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "レイキャビク",
+          "time": "12:00"
+        },
+        "duration": "3h",
+        "memo": "アクレイリからレイキャビクまでの美しいドライブを楽しみながら、アイスランドの自然を満喫。途中、絶景ポイントでの休憩もおすすめ。"
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "レイキャビク市内でランチ",
+          "description": "地元の人気カフェで新鮮なシーフードサラダを楽しみます。アイスランドの新鮮な魚介類を使った料理は絶品です。",
+          "searchQuery": "Reykjavik Seafood",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ハルパ音楽ホール見学",
+          "description": "レイキャビクの象徴的な建物、ハルパ音楽ホールを訪れます。美しいガラスの外観と、内部の音響設計は必見です。",
+          "searchQuery": "Harpa Concert Hall",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "レイキャビク市内散策",
+          "description": "ハルパから徒歩圏内の市内を散策し、カラフルな建物やアートを楽しみます。地元のアートギャラリーやショップも訪れてみてください。",
+          "searchQuery": "Reykjavik City Center",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "温泉でリラックス",
+          "description": "レイキャビク近郊の温泉施設で、旅の疲れを癒します。温かい湯に浸かりながら、アイスランドの自然を感じる贅沢なひとときを。",
+          "searchQuery": "Laugardalslaug",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "レイキャビクでディナー",
+          "description": "地元のレストランでアイスランド料理を堪能。ラム肉や新鮮な魚を使った料理が楽しめます。",
+          "searchQuery": "Grillmarkadurinn",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

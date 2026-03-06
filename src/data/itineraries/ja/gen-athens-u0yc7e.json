@@ -1,0 +1,270 @@
+{
+  "id": "f7f28e75-2259-452a-a1e5-79ddd4f2976e",
+  "destination": "アテネ",
+  "description": "アテネの歴史と文化を感じながら、リゾートの魅力も満喫する3日間の旅へ。古代の遺跡と美しい海岸線を巡り、心に残る思い出を作りましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "アテネの古代遺跡を巡る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アテネのホテルで、ギリシャの伝統的な朝食を楽しみます。フレッシュなヨーグルトにハチミツ、オリーブオイルをかけたトーストなど、地元の味を堪能。",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "アクロポリス",
+          "description": "アテネのシンボル、アクロポリスを訪れます。パルテノン神殿の壮大さに圧倒され、古代ギリシャの歴史を感じることができます。特に朝の光の中での見学は格別です。",
+          "searchQuery": "Acropolis",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "プラカ地区でランチ",
+          "description": "アクロポリスの近くにあるプラカ地区で、地元のタベルナに立ち寄り、ムサカやギロピタを楽しみます。観光客で賑わう中、地元の雰囲気を味わえる絶好のスポットです。",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "プラカ地区散策",
+          "description": "プラカ地区の狭い路地を散策し、色とりどりのショップやカフェを楽しみます。アートギャラリーやお土産屋も多く、ゆっくりとした時間を過ごせます。",
+          "searchQuery": "Plaka",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "シンタグマ広場",
+          "description": "アテネの中心、シンタグマ広場を訪れます。国会議事堂や衛兵交代式を見学し、広場のカフェで一息つくのもおすすめ。",
+          "searchQuery": "Syntagma Square",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルに戻り休憩",
+          "description": "観光の後はホテルに戻り、少し休憩。アテネの夜を楽しむ準備をします。",
+          "locationEn": "Athens, Greece",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "アテネのレストランでディナー",
+          "description": "地元のレストランで、ギリシャ料理のディナーを楽しみます。新鮮なシーフードや地元のワインを堪能し、ロマンティックな夜を演出。",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アテネのビーチでリラックス",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アテネのホテルで、地元の食材を使ったギリシャの朝食を楽しみます。フレッシュなヨーグルトやハチミツ、オリーブオイルを使ったパンが絶品です。",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ヴォウロスビーチ",
+          "description": "アテネから車で約1時間のヴォウロスビーチで、青い海と白い砂浜を満喫。ビーチチェアに座りながら、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Vouliagmeni Beach",
+          "locationEn": "Vouliagmeni, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ビーチサイドでランチ",
+          "description": "ヴォウロスビーチのビーチサイドレストランで、新鮮なシーフードやギリシャサラダを楽しみます。海を眺めながらの食事は格別です。",
+          "locationEn": "Vouliagmeni, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アテネリゾートエリア散策",
+          "description": "アテネのリゾートエリアを散策し、地元のショップやカフェを訪れます。おしゃれなブティックやアートギャラリーも見逃せません。",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アテネの歴史的名所巡り",
+          "description": "アテネの中心部に戻り、アクロポリスやパルテノン神殿を訪れます。歴史を感じながら、壮大な景色を楽しみましょう。",
+          "searchQuery": "Acropolis of Athens",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "アテネのタベルナでディナー",
+          "description": "地元のタベルナで、ギリシャ料理のディナーを楽しみます。ムサカやスブラキなど、伝統的な料理を堪能しましょう。",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "アテネの夜景を楽しむ",
+          "description": "アテネの夜景を楽しむために、リカヴィトスの丘に登ります。美しい夜景を眺めながら、ロマンチックなひとときを過ごしましょう。",
+          "searchQuery": "Lycabettus Hill",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "アテネの文化とグルメを楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アテネのホテルで、地元の食材を使ったギリシャの朝食を楽しみます。フレッシュなヨーグルトやハチミツ、オリーブオイルを使ったパンが絶品です。",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "国立考古学博物館",
+          "description": "ギリシャの古代文化を深く知ることができる国立考古学博物館を訪れます。壮大な彫刻や美しい陶器が展示されており、特にミケーネ文明の遺物は必見です。",
+          "searchQuery": "National Archaeological Museum",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "モナスティラキ地区でランチ",
+          "description": "モナスティラキ地区の賑やかな雰囲気の中、地元のタベルナでランチを楽しみます。新鮮なサラダやグリルした肉料理が人気で、ギリシャの伝統的な味を堪能できます。",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "モナスティラキ地区散策",
+          "description": "モナスティラキ地区を散策し、地元のショップやカフェを楽しみます。アクロポリスの美しい景色を背景に、アートやお土産を探すのも楽しいひとときです。",
+          "searchQuery": "Monastiraki",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アクロポリスの丘",
+          "description": "アクロポリスの丘に登り、パルテノン神殿を見学します。歴史的な遺跡を間近で感じながら、アテネの街並みを一望することができます。夕方の光が美しい時間帯がおすすめです。",
+          "searchQuery": "Acropolis",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "アテネのレストランでディナー",
+          "description": "アテネの人気レストランで、地元の料理を楽しむディナータイム。新鮮な魚介類や伝統的なギリシャ料理を味わいながら、ロマンチックな雰囲気を満喫します。",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "アテネの夜景を楽しむ",
+          "description": "アテネの街を散策しながら、夜景を楽しみます。特にアクロポリスのライトアップは幻想的で、カップルにぴったりのロマンチックな時間です。",
+          "locationEn": "Athens, Greece",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

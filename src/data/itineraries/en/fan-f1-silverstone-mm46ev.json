@@ -1,0 +1,519 @@
+{
+  "id": "3dd6dfd4-aee1-4b6e-b89d-a7b7cfcf0ac4",
+  "destination": "Silverstone",
+  "description": "Escape to the heart of motorsport as you immerse yourself in the exhilarating world of Formula 1 at Silverstone. This 6-day journey is designed for you and your friends to explore the rich history, vibrant culture, and thrilling atmosphere of one of the most iconic racing circuits in the world. From indulging in local delicacies to shopping for exclusive F1 merchandise, every moment is crafted to ensure a memorable experience filled with excitement and camaraderie.",
+  "heroImage": "https://images.unsplash.com/photo-1659442810630-467202455bab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODkyODN8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "shaun Bexley",
+  "heroImagePhotographerUrl": "https://unsplash.com/@sbexley?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in London and Transfer to Silverstone",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "London",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Silverstone",
+          "time": "11:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Direct train from London to Silverstone."
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at The White Horse",
+          "description": "Enjoy a hearty lunch at The White Horse, a cozy pub known for its traditional British fare. Try their famous fish and chips or a classic burger for a satisfying meal after your journey.",
+          "searchQuery": "The White Horse Silverstone",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit Silverstone Circuit",
+          "description": "Explore the iconic Silverstone Circuit, home of the British Grand Prix. Take a guided tour to learn about the history of F1 racing and see behind-the-scenes areas like the paddock and pit lane.",
+          "searchQuery": "Silverstone Circuit",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Shopping for F1 Merchandise",
+          "description": "Head to the Silverstone shop to browse a wide range of F1 merchandise. From team apparel to memorabilia, it's the perfect place to pick up some souvenirs to remember your trip.",
+          "searchQuery": "Silverstone Circuit Shop",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at the Hotel",
+          "description": "Check into your hotel and take some time to relax. Enjoy the amenities or unwind in your room before heading out for dinner.",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Fox and Hounds",
+          "description": "End your day with dinner at The Fox and Hounds, a charming local pub. Savor their seasonal dishes and enjoy a pint of local ale in a friendly atmosphere.",
+          "searchQuery": "The Fox and Hounds Silverstone",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Silverstone Circuit",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The White Horse",
+          "description": "Start your day with a hearty breakfast at The White Horse, a cozy pub known for its traditional English breakfast. Enjoy eggs, bacon, and toast to fuel up for a day of exploration.",
+          "searchQuery": "The White Horse Silverstone",
+          "locationEn": "Silverstone, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Silverstone Circuit",
+          "description": "Head to the iconic Silverstone Circuit, the home of British motorsport. Take a guided tour to learn about its rich history and see behind the scenes of this legendary racetrack.",
+          "searchQuery": "Silverstone Circuit",
+          "locationEn": "Silverstone, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Silverstone Café",
+          "description": "Enjoy a casual lunch at The Silverstone Café, where you can grab a quick bite and relax while soaking in the motorsport atmosphere. Try their famous burgers or sandwiches.",
+          "searchQuery": "The Silverstone Café",
+          "locationEn": "Silverstone, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "F1 Museum Visit",
+          "description": "Explore the F1 Museum located at Silverstone, showcasing the history of Formula 1 with exhibits featuring cars, memorabilia, and interactive displays. A must-visit for any F1 fan!",
+          "searchQuery": "Silverstone F1 Museum",
+          "locationEn": "Silverstone, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for F1 Merchandise",
+          "description": "After the museum, head to the official Silverstone shop to browse a wide range of F1 merchandise. From team apparel to collectibles, find the perfect souvenirs to take home.",
+          "searchQuery": "Silverstone Official Merchandise Shop",
+          "locationEn": "Silverstone, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Fox and Hounds",
+          "description": "End your day with dinner at The Fox and Hounds, a charming pub offering a selection of hearty dishes and local ales. Enjoy a relaxed atmosphere and share stories from your day.",
+          "searchQuery": "The Fox and Hounds Silverstone",
+          "locationEn": "Silverstone, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll Around Silverstone",
+          "description": "Take a leisurely evening stroll around Silverstone village. Enjoy the peaceful surroundings and reflect on the day's adventures in motorsport.",
+          "searchQuery": "Silverstone Village",
+          "locationEn": "Silverstone, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Local Culture and Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Silverstone Café",
+          "description": "Start your day with a hearty breakfast at The Silverstone Café, known for its delicious full English breakfast and cozy atmosphere. It's the perfect fuel for a day of exploring!",
+          "searchQuery": "The Silverstone Café",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Silverstone Circuit",
+          "description": "Head over to the iconic Silverstone Circuit, the home of British motorsport. Explore the museum and learn about the history of Formula 1 in the UK. Don't forget to check out the memorabilia shop for some unique F1 merchandise!",
+          "searchQuery": "Silverstone Circuit",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Wing",
+          "description": "Enjoy lunch at The Wing, located at Silverstone Circuit. This modern restaurant offers a variety of dishes, including burgers and salads, with a great view of the track.",
+          "searchQuery": "The Wing Silverstone",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Towcester",
+          "description": "Take a short drive to the nearby town of Towcester. Stroll through the charming streets, visit local shops, and soak in the quaint atmosphere. It's a great place to find unique gifts and souvenirs.",
+          "searchQuery": "Towcester",
+          "locationEn": "Towcester, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for F1 Merchandise",
+          "description": "Visit local shops in Towcester that specialize in F1 merchandise. Look for unique items that showcase your favorite teams and drivers. This is a great opportunity to find something special to take home!",
+          "searchQuery": "F1 Merchandise Shops Towcester",
+          "locationEn": "Towcester, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Saracens Head",
+          "description": "End your day with a delightful dinner at The Saracens Head, a traditional pub in Towcester. Enjoy classic British dishes in a warm and welcoming environment.",
+          "searchQuery": "The Saracens Head Towcester",
+          "locationEn": "Towcester, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Silverstone",
+          "description": "After a fulfilling day of culture and shopping, head back to Silverstone to relax and unwind at your accommodation.",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Day Trip to Oxford",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Silverstone",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Oxford",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "A comfortable bus ride from Silverstone to Oxford."
+      },
+      "activities": [
+        {
+          "time": "10:15",
+          "activity": "Oxford University Tour",
+          "description": "Explore the historic and prestigious Oxford University. Visit iconic colleges like Christ Church and Magdalen, and soak in the rich academic atmosphere.",
+          "searchQuery": "University of Oxford",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Eagle and Child",
+          "description": "Enjoy a hearty lunch at this famous pub, known for its literary history and cozy atmosphere. Try the traditional fish and chips or a classic burger.",
+          "searchQuery": "The Eagle and Child",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Ashmolean Museum",
+          "description": "Visit the Ashmolean Museum, the world's first university museum, showcasing art and archaeology from around the globe. Don't miss the Egyptian mummies and the stunning art collections.",
+          "searchQuery": "Ashmolean Museum",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for F1 Merchandise",
+          "description": "Head to the nearby shops to find exclusive F1 merchandise. Look for unique items that celebrate your favorite teams and drivers.",
+          "searchQuery": "F1 Merchandise Oxford",
+          "locationEn": "Oxford, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Old Tom",
+          "description": "Wrap up your day with dinner at The Old Tom, a charming pub offering a selection of local ales and delicious pub fare. A perfect way to relax after a day of exploration.",
+          "searchQuery": "The Old Tom",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Silverstone",
+          "description": "Take the bus back to Silverstone, reflecting on a day filled with culture, history, and shopping.",
+          "searchQuery": "Silverstone",
+          "locationEn": "Silverstone, England",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Relaxation and Leisure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The White Horse",
+          "description": "Start your day with a hearty breakfast at The White Horse, a cozy pub known for its traditional English breakfast. Enjoy eggs, bacon, and toast to fuel your day of exploration.",
+          "searchQuery": "The White Horse Silverstone",
+          "locationEn": "Silverstone, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Silverstone Circuit",
+          "description": "Head over to the iconic Silverstone Circuit, the home of British motorsport. Explore the museum and learn about the history of Formula 1 in the UK. If you're lucky, you might catch some cars on the track!",
+          "searchQuery": "Silverstone Circuit",
+          "locationEn": "Silverstone, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Fox and Hounds",
+          "description": "Enjoy a relaxed lunch at The Fox and Hounds, a local pub offering a variety of classic British dishes. Try their famous fish and chips or a hearty burger.",
+          "searchQuery": "The Fox and Hounds Silverstone",
+          "locationEn": "Silverstone, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Shopping for F1 Merchandise",
+          "description": "Visit the official Silverstone shop to pick up some exclusive F1 merchandise. From team apparel to collectibles, it's a must-visit for any motorsport fan.",
+          "searchQuery": "Silverstone Shop",
+          "locationEn": "Silverstone, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore the Silverstone Village",
+          "description": "Take a leisurely stroll around Silverstone Village. Enjoy the quaint charm of this small community, and perhaps stop by a local café for a coffee or snack.",
+          "searchQuery": "Silverstone Village",
+          "locationEn": "Silverstone, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at The Olde Red Lion",
+          "description": "End your day with dinner at The Olde Red Lion, a traditional pub with a warm atmosphere. Savor some local ales and a comforting meal to wrap up your day.",
+          "searchQuery": "The Olde Red Lion Silverstone",
+          "locationEn": "Silverstone, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Relax at your accommodation",
+          "description": "Return to your accommodation in Silverstone for a relaxing evening. Reflect on your day and prepare for the adventures ahead!",
+          "locationEn": "Silverstone, England",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Silverstone",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "London",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Drive from Silverstone to London for the flight."
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "Visit the British Museum",
+          "description": "Explore the vast collections of the British Museum, including the Rosetta Stone and the Elgin Marbles. It's a perfect way to immerse yourself in history before heading back home.",
+          "searchQuery": "British Museum",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Dishoom",
+          "description": "Enjoy a delicious meal at Dishoom, a popular Indian restaurant inspired by the old Irani cafés of Bombay. Their breakfast naan rolls are a must-try!",
+          "searchQuery": "Dishoom Covent Garden",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Shopping at Covent Garden",
+          "description": "Stroll through Covent Garden, where you can find unique shops and boutiques. Don't forget to check out the F1 merchandise at the official store!",
+          "searchQuery": "Covent Garden",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Head to Heathrow Airport",
+          "description": "Make your way to Heathrow Airport for your flight back to Washington D.C. Make sure to arrive at least 2 hours before your departure.",
+          "searchQuery": "Heathrow Airport",
+          "locationEn": "London, England",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

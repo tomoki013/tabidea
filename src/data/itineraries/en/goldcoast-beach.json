@@ -1,0 +1,516 @@
+{
+  "id": "3778149b-c10a-4a22-8750-f10c8e2f5f55",
+  "destination": "ゴールドコースト",
+  "description": "Escape to the stunning Gold Coast, where golden beaches meet thrilling adventures, perfect for a family getaway. With its vibrant atmosphere, this destination offers a blend of sun-soaked relaxation, wildlife encounters, and exhilarating theme parks that will create unforgettable memories for both kids and adults alike. Get ready to dive into the beauty of nature and the excitement of the coast!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Beach Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Surfers Paradise",
+          "description": "Start your day with a hearty breakfast at a local café in Surfers Paradise. Enjoy fresh fruit, pancakes, or a classic Aussie breakfast to fuel up for a fun day ahead.",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Beach Time at Surfers Paradise",
+          "description": "Spend the morning soaking up the sun at the famous Surfers Paradise beach. The golden sands and gentle waves are perfect for kids to play and for the family to relax together.",
+          "searchQuery": "Surfers Paradise Beach",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Beachfront Restaurant",
+          "description": "Enjoy a casual lunch at one of the beachfront restaurants. Try some local seafood or a classic burger while enjoying the ocean view.",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Currumbin Wildlife Sanctuary",
+          "description": "Head to Currumbin Wildlife Sanctuary where you can cuddle a koala and take memorable photos. The sanctuary also features kangaroos and other native Australian animals, making it a fun experience for the kids.",
+          "searchQuery": "Currumbin Wildlife Sanctuary",
+          "locationEn": "Currumbin, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Surfers Paradise",
+          "description": "After a fun-filled afternoon with the animals, return to Surfers Paradise. Take a stroll along the beach or relax at your accommodation before dinner.",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Family-Friendly Restaurant",
+          "description": "End your day with dinner at a family-friendly restaurant in Surfers Paradise. Enjoy a variety of dishes that cater to both adults and kids, ensuring everyone leaves happy.",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Theme Park Thrills",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Surfers Paradise Beach Cafe",
+          "description": "Start your day with a hearty breakfast at the Beach Cafe, where you can enjoy fresh fruit, pancakes, and a stunning view of the ocean. It's a perfect spot to fuel up for a day of adventure!",
+          "searchQuery": "Surfers Paradise Beach Cafe",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Warner Bros. Movie World",
+          "description": "Dive into the magic of movies at Warner Bros. Movie World! Enjoy thrilling rides, meet your favorite characters, and watch live shows. Don't miss the Superman Escape ride for an adrenaline rush!",
+          "searchQuery": "Warner Bros. Movie World",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at the Movie World",
+          "description": "Grab a quick lunch at one of the many eateries inside Movie World. Try the delicious burgers or pizza to keep your energy up for more fun!",
+          "searchQuery": "Warner Bros. Movie World",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Wet'n'Wild Gold Coast",
+          "description": "Cool off at Wet'n'Wild, one of Australia's largest water parks! With slides, wave pools, and lazy rivers, it's a fantastic place for the whole family to relax and have fun. Don't forget to check out the kids' area!",
+          "searchQuery": "Wet'n'Wild Gold Coast",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Surfers Paradise",
+          "description": "After a fun-filled day at the parks, head back to Surfers Paradise to unwind. You can take a leisurely stroll along the beach or relax at your hotel before dinner.",
+          "searchQuery": "Surfers Paradise",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at The Island Rooftop",
+          "description": "Enjoy dinner at The Island Rooftop, where you can savor delicious Australian cuisine while taking in panoramic views of the Gold Coast skyline. It's a great way to end your exciting day!",
+          "searchQuery": "The Island Rooftop",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Wildlife Encounters",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Surfers Paradise",
+          "time": "08:30"
+        },
+        "arrival": {
+          "place": "Currumbin Wildlife Sanctuary",
+          "time": "09:00"
+        },
+        "duration": "30m",
+        "memo": "A short drive to start the day with wildlife adventures."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Currumbin Wildlife Sanctuary",
+          "description": "Start your day at Currumbin Wildlife Sanctuary, where you can cuddle a koala and take memorable photos. The sanctuary is home to a variety of Australian wildlife, and you can also enjoy the free-flight bird show.",
+          "searchQuery": "Currumbin Wildlife Sanctuary",
+          "locationEn": "Currumbin, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at the Sanctuary Café",
+          "description": "Enjoy a family-friendly lunch at the Sanctuary Café, offering a range of delicious meals including burgers, salads, and kid-friendly options. It's a great spot to relax before more adventures.",
+          "searchQuery": "Sanctuary Café",
+          "locationEn": "Currumbin, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Palm Beach",
+          "description": "After lunch, head to Palm Beach for some fun in the sun! The beach is perfect for families, with gentle waves and soft sand. Kids can play while you relax or join in the beach games.",
+          "searchQuery": "Palm Beach",
+          "locationEn": "Palm Beach, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Beach Activities",
+          "description": "Spend the afternoon enjoying various beach activities such as swimming, building sandcastles, or even trying out paddleboarding. The atmosphere is lively and perfect for family bonding.",
+          "searchQuery": "Palm Beach",
+          "locationEn": "Palm Beach, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Collective Palm Beach",
+          "description": "End your day with dinner at The Collective, a vibrant dining spot with a variety of food options from different cuisines. It's a great place for families, with a relaxed atmosphere and outdoor seating.",
+          "searchQuery": "The Collective Palm Beach",
+          "locationEn": "Palm Beach, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Natural Wonders and Scenic Views",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Palm Beach",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Lamington National Park",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy the scenic drive to Lamington National Park."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Lamington National Park Exploration",
+          "description": "Start your day surrounded by nature at Lamington National Park. Enjoy the lush rainforests, stunning waterfalls, and diverse wildlife. There are family-friendly walking trails that are perfect for kids to explore.",
+          "searchQuery": "Lamington National Park",
+          "locationEn": "Lamington National Park, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Picnic Lunch at O'Reilly's Rainforest Retreat",
+          "description": "Head to O'Reilly's Rainforest Retreat for a delightful picnic lunch. Enjoy fresh local produce while soaking in the breathtaking views of the rainforest. The kids will love the open space to run around!",
+          "searchQuery": "O'Reilly's Rainforest Retreat",
+          "locationEn": "O'Reilly's Rainforest Retreat, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Tree Top Walk at O'Reilly's",
+          "description": "Experience the thrill of the Tree Top Walk, a suspended walkway high above the forest floor. It's a fun and safe way for the family to see the rainforest from a unique perspective. Keep an eye out for native birds and wildlife!",
+          "searchQuery": "O'Reilly's Tree Top Walk",
+          "locationEn": "O'Reilly's Rainforest Retreat, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Koala Photo Opportunity",
+          "description": "Visit the nearby wildlife sanctuary where you can hold a koala and take memorable photos with these adorable creatures. It's a fantastic experience for the kids and a highlight of your trip!",
+          "searchQuery": "Koala Sanctuary",
+          "locationEn": "O'Reilly's Rainforest Retreat, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Palm Beach",
+          "description": "After a day filled with adventure, head back to Palm Beach. Relax and unwind at your accommodation or take a stroll along the beach as the sun sets.",
+          "searchQuery": "Palm Beach",
+          "locationEn": "Palm Beach, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Beachfront Restaurant",
+          "description": "Enjoy a family dinner at a beachfront restaurant in Palm Beach. Savor fresh seafood and local dishes while listening to the sound of the waves. A perfect way to end your day!",
+          "searchQuery": "Beachfront Restaurant Palm Beach",
+          "locationEn": "Palm Beach, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Beach Relaxation and Local Culture",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Palm Beach",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Burleigh Heads",
+          "time": "09:15"
+        },
+        "duration": "15m",
+        "memo": "A short drive to Burleigh Heads for a day of beach fun."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Burleigh Heads Beach",
+          "description": "Start your day at Burleigh Heads Beach, known for its stunning views and family-friendly atmosphere. Let the kids play in the soft sand while you relax under the sun or take a stroll along the scenic coastline.",
+          "searchQuery": "Burleigh Heads Beach",
+          "locationEn": "Burleigh Heads, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Burleigh Pavilion",
+          "description": "Enjoy a delicious lunch at Burleigh Pavilion, where you can savor fresh seafood and local dishes while overlooking the beach. The kids will love the casual vibe and the outdoor seating.",
+          "searchQuery": "Burleigh Pavilion",
+          "locationEn": "Burleigh Heads, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Tallebudgera Creek",
+          "description": "Head over to Tallebudgera Creek for some fun in the water! This calm creek is perfect for families, offering shallow areas for kids to splash around and beautiful spots for a picnic.",
+          "searchQuery": "Tallebudgera Creek",
+          "locationEn": "Tallebudgera, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Currumbin Wildlife Sanctuary",
+          "description": "Visit Currumbin Wildlife Sanctuary to meet Australian wildlife up close. Don't miss the chance to hold a koala and take memorable photos with these adorable creatures!",
+          "searchQuery": "Currumbin Wildlife Sanctuary",
+          "locationEn": "Currumbin, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Collective",
+          "description": "Wrap up your day with dinner at The Collective, a vibrant dining spot with a variety of cuisines to choose from. It's a great place for families, offering something for everyone’s taste.",
+          "searchQuery": "The Collective",
+          "locationEn": "Palm Beach, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Gold Coast Airport",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Washington D.C. International Airport",
+          "time": "18:00"
+        },
+        "duration": "14h",
+        "memo": "Direct flight back to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Burleigh Heads",
+          "description": "Start your day with a hearty breakfast at a local café in Burleigh Heads. Enjoy fresh fruit, pancakes, and coffee while soaking in the beach views.",
+          "searchQuery": "Burleigh Heads Cafe",
+          "locationEn": "Burleigh Heads, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Beach Time at Burleigh Heads",
+          "description": "Spend the morning playing at the beautiful Burleigh Heads beach. The gentle waves are perfect for kids to splash around, and the soft sand is ideal for building sandcastles.",
+          "searchQuery": "Burleigh Heads Beach",
+          "locationEn": "Burleigh Heads, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Visit Currumbin Wildlife Sanctuary",
+          "description": "Head to Currumbin Wildlife Sanctuary to meet Australian wildlife. Kids will love the chance to cuddle a koala and feed kangaroos in this interactive environment.",
+          "searchQuery": "Currumbin Wildlife Sanctuary",
+          "locationEn": "Currumbin, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Currumbin Wildlife Sanctuary Cafe",
+          "description": "Enjoy a casual lunch at the sanctuary's café, offering a variety of options from burgers to salads, perfect for refueling after a morning of fun.",
+          "searchQuery": "Currumbin Wildlife Sanctuary Cafe",
+          "locationEn": "Currumbin, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore the Sanctuary",
+          "description": "Continue exploring the sanctuary, watching the free-flight bird show and learning about the conservation efforts for native wildlife.",
+          "searchQuery": "Currumbin Wildlife Sanctuary",
+          "locationEn": "Currumbin, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Hotel and Prepare for Departure",
+          "description": "Head back to your accommodation to pack up and check out. Make sure to gather all your belongings and souvenirs from your trip.",
+          "searchQuery": "Burleigh Heads Hotel",
+          "locationEn": "Burleigh Heads, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Flight Departure",
+          "description": "Board your flight back to Washington D.C. with wonderful memories of your Gold Coast adventure.",
+          "searchQuery": "Gold Coast Airport",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

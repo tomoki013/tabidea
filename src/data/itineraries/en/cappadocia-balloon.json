@@ -1,0 +1,547 @@
+{
+  "id": "481d5232-b1b9-4f3c-aaf9-19e0f9317017",
+  "destination": "Cappadocia",
+  "description": "Escape to the enchanting landscapes of Cappadocia, where fairy chimneys rise from the earth like natural sculptures and ancient cave dwellings whisper stories of a bygone era. This 6-day journey is designed for couples seeking breathtaking views, unique experiences, and a touch of romance amidst the stunning backdrop of this UNESCO World Heritage site. From soaring high in a hot air balloon to exploring the intricate underground cities, each day promises to be filled with wonder and discovery.",
+  "heroImage": "https://images.unsplash.com/photo-1609519874787-1e1604de7f7b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODY0MjN8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Federico Scarionati",
+  "heroImagePhotographerUrl": "https://unsplash.com/@federicoscarionati?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Cappadocia",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Local Café",
+          "description": "Start your day with a traditional Turkish breakfast at a cozy local café. Enjoy fresh bread, olives, cheeses, and a variety of jams, all while soaking in the charming atmosphere of Göreme.",
+          "searchQuery": "Göreme Local Café",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Hot Air Balloon Ride",
+          "description": "Experience the breathtaking landscapes of Cappadocia from above! Soar over the fairy chimneys and valleys during a magical sunrise hot air balloon ride. This is a must-do for stunning views and unforgettable memories.",
+          "searchQuery": "Cappadocia Hot Air Balloon",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Topdeck Cave Restaurant",
+          "description": "Savor authentic Turkish cuisine in a unique cave setting. This restaurant is known for its delicious mezes and traditional dishes, making it a perfect spot to refuel after your morning adventure.",
+          "searchQuery": "Topdeck Cave Restaurant",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Göreme Open-Air Museum",
+          "description": "Explore this UNESCO World Heritage site, famous for its rock-cut churches and stunning frescoes. The museum offers a glimpse into the rich history and culture of early Christianity in the region.",
+          "searchQuery": "Göreme Open-Air Museum",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Uçhisar Castle",
+          "description": "Climb to the top of Uçhisar Castle for panoramic views of Cappadocia. The castle, carved into the rock, provides a perfect backdrop for photos and a chance to appreciate the unique landscape.",
+          "searchQuery": "Uçhisar Castle",
+          "locationEn": "Uçhisar, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Check-in at Cave Hotel",
+          "description": "Experience the charm of staying in a cave hotel, where you can enjoy modern comforts while surrounded by the unique geological formations of Cappadocia. Relax and unwind after a day of exploration.",
+          "searchQuery": "Cave Hotel in Göreme",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at Seten Restaurant",
+          "description": "Indulge in a delightful dinner at Seten, known for its exquisite local dishes and stunning terrace views. Enjoy a romantic evening with traditional flavors and a cozy ambiance.",
+          "searchQuery": "Seten Restaurant",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Hot Air Balloon Adventure and Göreme Open-Air Museum",
+      "activities": [
+        {
+          "time": "05:30",
+          "activity": "Hot Air Balloon Ride",
+          "description": "Experience the breathtaking views of Cappadocia at sunrise from a hot air balloon. As you ascend, witness the unique rock formations and fairy chimneys bathed in the golden light of dawn. This unforgettable adventure lasts about an hour, followed by a celebratory toast upon landing.",
+          "searchQuery": "Cappadocia Hot Air Balloon Ride",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Cave Hotel",
+          "description": "Enjoy a delightful breakfast at your cave hotel, featuring local delicacies such as fresh bread, olives, cheeses, and honey. The unique setting enhances the experience, making it a perfect start to your day.",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Göreme Open-Air Museum",
+          "description": "Explore the UNESCO World Heritage Site of Göreme Open-Air Museum, where you can admire ancient rock-cut churches adorned with stunning frescoes. This site offers a glimpse into the region's rich history and religious significance.",
+          "searchQuery": "Göreme Open-Air Museum",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Topdeck Cave Restaurant",
+          "description": "Savor traditional Turkish cuisine at Topdeck Cave Restaurant, known for its cozy atmosphere and delicious dishes. Try the pottery kebab, a local specialty, for a true taste of Cappadocia.",
+          "searchQuery": "Topdeck Cave Restaurant",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Pasabag Valley (Monks Valley)",
+          "description": "Visit Pasabag Valley, famous for its remarkable fairy chimneys. Take a leisurely walk through the valley, capturing stunning photos of these natural wonders and the unique landscape that surrounds them.",
+          "searchQuery": "Pasabag Valley",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Hotel and Relax",
+          "description": "Head back to your cave hotel to relax and unwind after a day of exploration. Enjoy the unique ambiance of your accommodation and perhaps take a short nap before dinner.",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Dibek Restaurant",
+          "description": "Indulge in a traditional Turkish dinner at Dibek Restaurant, where you can enjoy a cozy atmosphere and authentic dishes like testi kebab, cooked in a clay pot. The restaurant's charming decor adds to the overall experience.",
+          "searchQuery": "Dibek Restaurant",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Exploring Underground Cities and Ihlara Valley",
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "Hot Air Balloon Ride",
+          "description": "Start your day with an unforgettable hot air balloon ride over Cappadocia's stunning landscape. As the sun rises, you'll float above fairy chimneys and valleys, capturing breathtaking views that are perfect for photos.",
+          "searchQuery": "Cappadocia Hot Air Balloon",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Breakfast at your Cave Hotel",
+          "description": "Enjoy a delightful breakfast at your cave hotel, featuring local delicacies such as fresh bread, olives, cheeses, and honey. The unique ambiance of the cave setting adds to the experience.",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Derinkuyu Underground City",
+          "description": "Explore the fascinating Derinkuyu Underground City, one of the largest and deepest of its kind in Cappadocia. Discover its intricate tunnels and chambers that once sheltered thousands of people.",
+          "searchQuery": "Derinkuyu Underground City",
+          "locationEn": "Derinkuyu, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Savor traditional Turkish cuisine at a nearby restaurant. Try local specialties like testi kebab (pottery kebab) and gözleme (stuffed flatbread) for a hearty meal.",
+          "locationEn": "Derinkuyu, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Hike in Ihlara Valley",
+          "description": "After lunch, head to Ihlara Valley for a scenic hike. The lush greenery and the Melendiz River create a picturesque setting, with ancient rock-cut churches along the trail to explore.",
+          "searchQuery": "Ihlara Valley",
+          "locationEn": "Ihlara, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Return to Göreme",
+          "description": "After a day of exploration, return to Göreme. Enjoy the scenic views along the way as you reflect on the day's adventures.",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Seten Restaurant",
+          "description": "Indulge in a romantic dinner at Seten Restaurant, known for its authentic Cappadocian dishes and stunning views of the fairy chimneys. A perfect way to end your day.",
+          "searchQuery": "Seten Restaurant",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Stargazing from Your Cave Hotel",
+          "description": "End your day by stargazing from the terrace of your cave hotel. The clear skies of Cappadocia offer a spectacular view of the stars, making it a magical experience.",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Avanos and Pottery Workshop",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Cave Hotel",
+          "description": "Start your day with a delightful breakfast at your cave hotel, featuring local delicacies like fresh bread, olives, and cheeses, all served in a cozy, unique setting.",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Hot Air Balloon Ride",
+          "description": "Experience the breathtaking views of Cappadocia from above during a hot air balloon ride. As you ascend, watch the sun rise over the fairy chimneys and valleys, creating a magical landscape that’s perfect for photography.",
+          "searchQuery": "Cappadocia Hot Air Balloon",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Visit Avanos Pottery Workshop",
+          "description": "Head to Avanos, known for its pottery, and participate in a hands-on pottery workshop. Learn the ancient techniques from local artisans and create your own unique piece to take home as a souvenir.",
+          "searchQuery": "Avanos Pottery Workshop",
+          "locationEn": "Avanos, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at a Local Restaurant in Avanos",
+          "description": "Enjoy a traditional Turkish lunch at a local restaurant in Avanos, where you can savor dishes like testi kebab (pottery kebab) and fresh salads, all made with local ingredients.",
+          "locationEn": "Avanos, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Red Valley",
+          "description": "After lunch, take a scenic hike through Red Valley. The stunning rock formations and vibrant colors of the valley provide a perfect backdrop for a leisurely walk and photography.",
+          "searchQuery": "Red Valley",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Göreme",
+          "description": "Head back to Göreme, where you can relax at your cave hotel or explore the charming town at your own pace before dinner.",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Seten Restaurant",
+          "description": "Indulge in a delicious dinner at Seten Restaurant, known for its authentic Cappadocian cuisine. Enjoy dishes prepared with fresh, local ingredients in a beautiful setting.",
+          "searchQuery": "Seten Restaurant",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Relaxation and Sunset Views",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Local Café",
+          "description": "Start your day with a delightful Turkish breakfast at a local café in Göreme. Enjoy fresh bread, olives, tomatoes, and a variety of cheeses, paired with traditional Turkish tea for a perfect morning boost.",
+          "searchQuery": "Göreme Local Café",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Ortahisar Castle",
+          "description": "Explore the impressive Ortahisar Castle, a rock-cut fortress that offers panoramic views of the surrounding landscape. The climb to the top is rewarding, providing stunning vistas of Cappadocia's unique rock formations.",
+          "searchQuery": "Ortahisar Castle",
+          "locationEn": "Ortahisar, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Topdeck Cave Restaurant",
+          "description": "Savor a delicious lunch at Topdeck Cave Restaurant, known for its authentic Turkish cuisine served in a cozy cave setting. Don't miss their signature dishes like pottery kebab and mezes.",
+          "searchQuery": "Topdeck Cave Restaurant",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relax at Your Cave Hotel",
+          "description": "Return to your cave hotel for some relaxation. Enjoy the unique ambiance of your accommodation, perhaps with a cup of Turkish coffee on your terrace, soaking in the breathtaking views of the fairy chimneys.",
+          "searchQuery": "Cave Hotel in Göreme",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Sunset at Sunset Point",
+          "description": "Head to Sunset Point in Göreme for a magical sunset experience. This spot offers one of the best views in Cappadocia, where you can watch the sky transform into a canvas of colors as the sun sets behind the unique rock formations.",
+          "searchQuery": "Sunset Point Göreme",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Dibek Restaurant",
+          "description": "Enjoy a traditional dinner at Dibek Restaurant, famous for its pottery kebab and warm atmosphere. The restaurant is set in a charming cave, providing an authentic dining experience.",
+          "searchQuery": "Dibek Restaurant",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Göreme",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "15:00"
+        },
+        "duration": "15h",
+        "memo": "Connecting flight via Istanbul."
+      },
+      "activities": [
+        {
+          "time": "07:30",
+          "activity": "Breakfast at Local Café",
+          "description": "Start your day with a hearty Turkish breakfast at a cozy café in Göreme. Enjoy fresh bread, olives, cheeses, and a variety of jams to fuel up for your journey ahead.",
+          "searchQuery": "Göreme Local Café",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Hot Air Balloon Ride",
+          "description": "Experience the breathtaking landscapes of Cappadocia from above with a hot air balloon ride. Soar over the fairy chimneys and valleys as the sun rises, creating a magical atmosphere.",
+          "searchQuery": "Cappadocia Hot Air Balloon",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore Göreme Open-Air Museum",
+          "description": "Visit the UNESCO World Heritage site of Göreme Open-Air Museum, where you can admire ancient rock-cut churches adorned with beautiful frescoes. A must-see for history and art lovers!",
+          "searchQuery": "Göreme Open-Air Museum",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Dibek Restaurant",
+          "description": "Savor traditional Turkish cuisine at Dibek Restaurant, known for its pottery kebab and cozy atmosphere. Enjoy a meal that reflects the rich culinary heritage of the region.",
+          "searchQuery": "Dibek Restaurant",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit Uchisar Castle",
+          "description": "Head to Uchisar Castle, the highest point in Cappadocia, for stunning panoramic views of the surrounding landscape. The climb is worth it for the breathtaking vistas!",
+          "searchQuery": "Uchisar Castle",
+          "locationEn": "Uchisar, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Hotel and Check-out",
+          "description": "Return to your cave hotel to check out and prepare for your departure. Take a moment to reflect on your incredible experiences in Cappadocia.",
+          "searchQuery": "Cave Hotel",
+          "locationEn": "Göreme, Turkey",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

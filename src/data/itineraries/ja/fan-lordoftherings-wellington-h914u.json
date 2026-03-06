@@ -1,0 +1,361 @@
+{
+  "id": "96b38ee4-aeac-4301-88ed-2865482c93ad",
+  "destination": "ウェリントン",
+  "description": "ウェリントンの魅力を存分に味わいながら、特に『ロード・オブ・ザ・リング』のファンにはたまらないスポットを巡る旅。美しい自然と文化が融合したこの街で、友人と共にゆったりとした時間を過ごし、ショッピングやグルメも楽しむことができます。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ウェリントン到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ウェリントンのカフェで、地元の新鮮な食材を使った朝食を楽しみます。特に、アボカドトーストやコーヒーはおすすめです。",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "テパパ国立博物館",
+          "description": "ニュージーランドの文化や歴史を学べるテパパ国立博物館を訪れます。特に、マオリ文化の展示は見応えがあります。入場は無料なので、気軽に立ち寄れます。",
+          "searchQuery": "Te Papa Tongarewa",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のカフェでランチ",
+          "description": "テパパから徒歩圏内のカフェで、サンドイッチやスープなど軽めのランチを楽しみます。地元の人々に人気のあるお店で、雰囲気も抜群です。",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "キューバストリート散策",
+          "description": "ウェリントンのアートと文化の中心地、キューバストリートを散策します。個性的なショップやカフェが並び、特にファングッズを探すのにぴったりの場所です。",
+          "searchQuery": "Cuba Street",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ウェリントンの映画館で『ロード・オブ・ザ・リング』関連の映画鑑賞",
+          "description": "ウェリントンは『ロード・オブ・ザ・リング』の撮影地として有名です。映画館で関連作品を観ることで、より深くその世界観を楽しむことができます。",
+          "searchQuery": "The Embassy Theatre",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ウェリントンの地元料理を楽しめるレストランで、シーフードや肉料理を堪能します。特に、ニュージーランド産のラム肉は絶品です。",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の計画を立てながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "『ロード・オブ・ザ・リング』の世界に浸る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ウェリントンのホテルで、地元の食材を使った朝食を楽しみます。新鮮なフルーツやトースト、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ウェリントン映画スタジオ見学",
+          "description": "『ロード・オブ・ザ・リング』の撮影が行われた映画スタジオを訪れ、映画の裏側を学びます。セットや小道具を間近で見ることができ、ファンにはたまらない体験です。",
+          "searchQuery": "Wellington Film Studios",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のカフェでランチ",
+          "description": "映画スタジオ近くのカフェで、軽食やサンドイッチを楽しみます。地元の雰囲気を感じながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ミラマールの丘散策",
+          "description": "ミラマールの丘へ向かい、映画の撮影地を巡ります。美しい景色を眺めながら、映画のシーンを思い出すひとときを楽しんでください。",
+          "searchQuery": "Miramar Hill",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ハットフィールド・ストリートでショッピング",
+          "description": "ハットフィールド・ストリートにあるお土産屋やファングッズショップを巡り、映画関連のアイテムを探します。お気に入りのグッズを見つけて、思い出を持ち帰りましょう。",
+          "searchQuery": "Hatfield Street",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ウェリントンの人気レストランで、地元の料理を楽しみます。新鮮なシーフードや肉料理を堪能し、旅の疲れを癒しましょう。",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の計画を立てながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ショッピングと地元グルメを満喫",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ウェリントンのカフェで朝食",
+          "description": "地元の人気カフェで、フレッシュなコーヒーとともにトーストやベーカリーを楽しみます。朝のひとときをゆったりと過ごしましょう。",
+          "searchQuery": "Wellington Cafe",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "キューバストリート散策",
+          "description": "ウェリントンのアートと文化が息づくキューバストリートを散策。ユニークなショップやストリートアートを楽しみながら、地元の雰囲気を感じてください。",
+          "searchQuery": "Cuba Street",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ウェリントンの地元料理を楽しめるレストランで、シーフードや肉料理を堪能。新鮮な食材を使った料理が魅力です。",
+          "searchQuery": "Wellington Local Restaurant",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ウェリントンのマーケット訪問",
+          "description": "地元のマーケットで新鮮な食材や手作りの工芸品を探しながら、ショッピングを楽しみます。お土産やファングッズも見つかるかも！",
+          "searchQuery": "Wellington Market",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ロケ地巡り：ウェリントンの「ロード・オブ・ザ・リング」スポット",
+          "description": "映画「ロード・オブ・ザ・リング」の撮影地を訪れ、映画の世界に浸ります。美しい自然の中で、映画のシーンを思い出しながら散策しましょう。",
+          "searchQuery": "Wellington Lord of the Rings Locations",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ファングッズショップでショッピング",
+          "description": "「ロード・オブ・ザ・リング」関連のファングッズを取り扱うショップで、思い出の品を探します。ここでしか手に入らないアイテムも見つかるかもしれません。",
+          "searchQuery": "Wellington Lord of the Rings Merchandise Shop",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ウェリントンのレストランでディナー",
+          "description": "地元の食材を使ったディナーを楽しみながら、友人との楽しい時間を過ごします。リラックスした雰囲気の中で、旅の思い出を語り合いましょう。",
+          "searchQuery": "Wellington Dinner Restaurant",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ウェリントンから東京へ帰路",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ウェリントンのカフェで、地元の食材を使った美味しい朝食を楽しみます。特に、アボカドトーストやフラットホワイトはおすすめです。",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ウェリントン市街散策",
+          "description": "ウェリントンの中心部を散策しながら、アートや文化を感じることができます。特に、テパパ国立博物館は必見です。",
+          "searchQuery": "Te Papa Tongarewa",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ：ウェリントンのフィッシュ＆チップス",
+          "description": "地元の人気店で新鮮なフィッシュ＆チップスを味わいます。海の幸を楽しむ絶好の機会です。",
+          "searchQuery": "Ferg's Kayaks",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ロトルアのロケ地巡り",
+          "description": "『ロード・オブ・ザ・リング』の撮影地を訪れ、映画の世界に浸ります。特に、ウェリントン近郊のハットフィールド・フォレストは美しい景色が広がっています。",
+          "searchQuery": "Hutt Valley",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "お土産ショップでファングッズ購入",
+          "description": "ウェリントンのショップで、映画関連のファングッズを探します。特に、ホビットやエルフのアイテムが豊富です。",
+          "searchQuery": "Wellington Souvenir Shop",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "空港へ移動",
+          "description": "ウェリントン空港へ向かい、帰路につきます。空港では最後のお土産を買うチャンスも。",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ウェリントン空港から東京へ出発",
+          "description": "ウェリントン空港から東京行きのフライトに搭乗します。楽しい旅の思い出を胸に、帰路につきます。",
+          "locationEn": "Wellington, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,541 @@
+{
+  "id": "449a4b21-5973-465f-81c1-8cef378917bd",
+  "destination": "コペンハーゲン",
+  "description": "コペンハーゲンの魅力は、歴史と現代が融合した美しい街並み、アート、そして美味しい食文化にあります。特にカップルでの旅行にはぴったりのロマンチックなスポットが満載です。街歩きやショッピング、テーマパーク、アートを楽しむための6日間の旅を提案します。",
+  "days": [
+    {
+      "day": 1,
+      "title": "コペンハーゲンの街を歩く",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "コペンハーゲンのホテルで、地元の食材を使った美味しいオープンサンドを楽しみます。新鮮なハーブやスモークサーモンがトッピングされた一皿で、朝からエネルギーをチャージ！",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ニューハウン散策",
+          "description": "カラフルな建物が並ぶニューハウンで、のんびりと散策。運河沿いのカフェでコーヒーを楽しみながら、写真を撮るのにぴったりのスポットです。",
+          "searchQuery": "Nyhavn",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "アマリエンボー宮殿見学",
+          "description": "デンマーク王室の公式な居住地であるアマリエンボー宮殿を訪れ、衛兵交代式を見学。美しい庭園も散策しながら、歴史を感じるひとときを過ごします。",
+          "searchQuery": "Amalienborg Palace",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "地元のカフェでランチ",
+          "description": "アマリエンボー宮殿近くのカフェで、デンマークの伝統的なオープンサンド（スモーブロー）を楽しみます。新鮮な魚や野菜がたっぷりのった一皿は、見た目も美しく、食べるのが楽しみです。",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ストロイエでショッピング",
+          "description": "コペンハーゲンのメインストリート、ストロイエでショッピング。おしゃれなブティックやカフェが立ち並び、ウィンドウショッピングを楽しみながら、街の雰囲気を満喫します。",
+          "searchQuery": "Strøget",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ティヴォリ公園訪問",
+          "description": "世界的に有名なティヴォリ公園で、アートとエンターテイメントを楽しみます。美しい庭園やアトラクションがあり、夕方のライトアップも見逃せません。",
+          "searchQuery": "Tivoli Gardens",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "コペンハーゲンの人気レストランで、デンマーク料理を堪能。新鮮なシーフードや地元の食材を使った料理が楽しめます。",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アートと文化を楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "コペンハーゲンのホテルで、地元の食材を使った美味しいオープンサンドを楽しみます。新鮮なハーブやスモークサーモンがトッピングされた一皿で、朝からエネルギーをチャージ。",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "デンマーク国立美術館",
+          "description": "デンマーク国立美術館では、北欧のアートと歴史を堪能できます。特に、クリムトやモネの作品が展示されており、アート好きにはたまらないスポットです。美術館内のカフェで一息つくのもおすすめ。",
+          "searchQuery": "National Gallery of Denmark",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：Aamanns 1921",
+          "description": "オープンサンドの名店、Aamanns 1921でランチ。新鮮な素材を使ったオープンサンドは、見た目も美しく、味も絶品。特に、ビーツとクリームチーズの組み合わせが人気です。",
+          "searchQuery": "Aamanns 1921",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "トーヴェ・ヤンソンの家",
+          "description": "トーヴェ・ヤンソンの家を訪れ、彼女の作品や生涯について学びます。美しい庭と共に、彼女の創造的な世界に浸ることができます。",
+          "searchQuery": "Tove Jansson's House",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "クリスチャンスボー城",
+          "description": "クリスチャンスボー城を見学し、デンマークの王室の歴史を感じることができます。美しい庭園を散策しながら、写真撮影にも最適なスポットです。",
+          "searchQuery": "Christiansborg Palace",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー：Restaurant Schønnemann",
+          "description": "コペンハーゲンの伝統的なデンマーク料理を楽しめるRestaurant Schønnemannでディナー。特に、ハーリング（ニシン）の料理が絶品で、地元の人々にも愛されています。",
+          "searchQuery": "Restaurant Schønnemann",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ニューハウン散策",
+          "description": "夜のニューハウンを散策し、カラフルな建物と運河の美しい景色を楽しみます。ロマンチックな雰囲気の中で、素敵な写真を撮るチャンスです。",
+          "searchQuery": "Nyhavn",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "テーマパークで遊ぶ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "コペンハーゲンのホテルで、地元の食材を使った美味しいオープンサンドを楽しみます。新鮮なハムやチーズ、野菜がたっぷりのサンドイッチで、エネルギーをチャージ。",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ティヴォリ公園",
+          "description": "コペンハーゲンの象徴的なテーマパーク、ティヴォリ公園へ。美しい庭園やアトラクションが揃い、特に午後の光の中での散策は格別です。アートな雰囲気の中で、写真をたくさん撮りましょう。",
+          "searchQuery": "Tivoli Gardens",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "公園内のレストランでランチ",
+          "description": "ティヴォリ公園内のレストランで、軽めのランチを楽しみます。公園の美しい景色を眺めながら、地元の料理を味わう贅沢なひととき。",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アトラクションを楽しむ",
+          "description": "ティヴォリ公園内のアトラクションを楽しみます。特に観覧車からの眺めは素晴らしく、コペンハーゲンの街並みを一望できます。",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "公園内のアート展示を観覧",
+          "description": "ティヴォリ公園では、季節ごとに異なるアート展示が行われています。美しいアート作品を鑑賞しながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "公園を出て周辺を散策",
+          "description": "ティヴォリ公園を後にし、周辺のオシャレな街並みを散策します。カラフルな建物やショップが並ぶエリアで、素敵な写真を撮るチャンスです。",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "コペンハーゲンの地元レストランで、デンマーク料理を堪能します。新鮮なシーフードや伝統的な料理を楽しみながら、旅の思い出を語り合いましょう。",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ショッピングとカフェ巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "コペンハーゲンのホテルで、地元の食材を使った美味しい朝食を楽しみます。特に、デンマークのパンやチーズは絶品です。",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ラッペン通り散策",
+          "description": "おしゃれなショップやカフェが立ち並ぶラッペン通りを散策。アートな雰囲気の中で、素敵な写真をたくさん撮りましょう。",
+          "searchQuery": "Læderstræde",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "オープンサンドの名店でランチ",
+          "description": "デンマークの伝統的なオープンサンド（スモーブロー）を楽しめる名店で、色とりどりの具材が乗った美味しい一皿を堪能します。",
+          "searchQuery": "Restaurant Schønnemann",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ニハウン散策",
+          "description": "カラフルな建物が並ぶニハウンで、運河沿いの風景を楽しみながら散策。カフェで一息つくのもおすすめです。",
+          "searchQuery": "Nyhavn",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アートギャラリー訪問",
+          "description": "地元アーティストの作品を展示するギャラリーを訪れ、コペンハーゲンのアートシーンを感じてみましょう。",
+          "searchQuery": "Copenhagen Contemporary",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "カフェでディナー",
+          "description": "おしゃれなカフェで、軽めのディナーを楽しみます。デンマークのビールと共に、地元の料理を味わいましょう。",
+          "searchQuery": "Café Norden",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜の街並みを散策",
+          "description": "ライトアップされたコペンハーゲンの街並みを散策し、ロマンチックな雰囲気を楽しみます。特に、チボリ公園周辺は美しいです。",
+          "searchQuery": "Tivoli Gardens",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "コペンハーゲンの隠れた魅力を探る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "コペンハーゲンのカフェで、地元の人に人気のオープンサンドを楽しみます。新鮮な具材がたっぷりのったサンドイッチは、朝からエネルギーをチャージしてくれます。",
+          "searchQuery": "Café Norden",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "フォスボルグ公園散策",
+          "description": "美しい自然に囲まれたフォスボルグ公園で、ゆったりとした時間を過ごします。公園内の小道を散策しながら、色とりどりの花々や緑に癒されるひとときを。",
+          "searchQuery": "Fælledparken",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチにオープンサンド",
+          "description": "地元の人気店で、オープンサンドのランチを楽しみます。新鮮な魚や野菜がたっぷりのったサンドイッチは、見た目も美しく、インスタ映え間違いなし！",
+          "searchQuery": "Smørrebrød",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "カストラップのビーチへ",
+          "description": "カストラップのビーチで、海を眺めながらリラックス。美しい海岸線を散策し、写真を撮るのにも最適なスポットです。",
+          "searchQuery": "Amager Strandpark",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ビーチでのんびり",
+          "description": "ビーチでのんびりと過ごし、夕日を眺めながらロマンチックな時間を楽しみます。カップルでの特別な思い出を作るのにぴったりの場所です。",
+          "searchQuery": "Amager Strandpark",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ディナーに地元のレストラン",
+          "description": "コペンハーゲンの地元料理を楽しめるレストランでディナー。新鮮なシーフードやデンマークの伝統料理を堪能し、旅の締めくくりにふさわしい食事を。",
+          "searchQuery": "Restaurant Noma",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜の街歩き",
+          "description": "コペンハーゲンの美しい夜景を楽しみながら、街を散策します。おしゃれな街並みやライトアップされた建物を背景に、素敵な写真を撮るチャンスです。",
+          "searchQuery": "Copenhagen City Center",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "帰路につく",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "コペンハーゲンのホテルで、デンマークの伝統的なオープンサンドイッチ、スモーブローを楽しみます。新鮮な魚や野菜がたっぷりのった一皿で、朝からエネルギーをチャージ。",
+          "searchQuery": "Copenhagen hotel breakfast",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ニューハウン散策",
+          "description": "カラフルな建物が並ぶニューハウンで、ゆったりとした時間を過ごします。運河沿いを歩きながら、写真を撮ったり、地元のカフェでコーヒーを楽しむのもおすすめです。",
+          "searchQuery": "Nyhavn",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチにオープンサンドを",
+          "description": "地元の人気店で、デンマークのオープンサンドイッチを堪能。新鮮な素材を使ったスモーブローは、見た目も美しく、味も絶品です。",
+          "searchQuery": "Smørrebrød restaurant",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アマリエンボー宮殿見学",
+          "description": "デンマーク王室の公式な居所であるアマリエンボー宮殿を訪れます。衛兵交代式を見学し、宮殿内の美しい部屋を散策しましょう。",
+          "searchQuery": "Amalienborg Palace",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ローゼンボー城訪問",
+          "description": "美しい庭園に囲まれたローゼンボー城を見学。王室の宝物や歴史的な展示があり、デンマークの歴史を感じることができます。",
+          "searchQuery": "Rosenborg Castle",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "コペンハーゲン市内でショッピング",
+          "description": "ストロイエ通りでショッピングを楽しみます。おしゃれなブティックやデザインショップが立ち並び、素敵なお土産を見つけるチャンスです。",
+          "searchQuery": "Strøget",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディナー",
+          "description": "コペンハーゲンのレストランで、デンマーク料理を楽しむディナー。地元の食材を使った創作料理を堪能し、旅の締めくくりにふさわしいひとときを過ごします。",
+          "searchQuery": "Copenhagen restaurant",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

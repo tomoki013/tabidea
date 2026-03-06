@@ -1,0 +1,535 @@
+{
+  "id": "7b150894-0ab2-4235-8581-e643df0a33f4",
+  "destination": "ラスベガス",
+  "description": "ラスベガスの煌びやかなエンターテイメントと自然の絶景を満喫する6日間の旅へようこそ。カジノの興奮、豪華なショー、そして壮大なグランドキャニオンの大自然があなたを待っています。夜の街の灯りに包まれながら、特別な思い出を作りましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からラスベガスへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ラスベガス",
+          "time": "14:00"
+        },
+        "duration": "12h",
+        "memo": "直行便でラスベガスへ。時差に注意！"
+      },
+      "activities": [
+        {
+          "time": "15:00",
+          "activity": "ホテルチェックイン",
+          "description": "ラスベガスの中心に位置する「ベラージオホテル」にチェックイン。豪華な内装と美しい庭園が魅力のホテルです。",
+          "searchQuery": "Bellagio Hotel and Casino",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ベラージオの噴水ショー",
+          "description": "ベラージオの前で行われる噴水ショーは、音楽に合わせて水が踊る幻想的なパフォーマンス。夕方の光の中で見ると特に美しいです。",
+          "searchQuery": "Bellagio Fountains",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "カジノで遊ぶ",
+          "description": "ラスベガスの醍醐味、カジノで運試し！スロットやテーブルゲームを楽しみながら、非日常の雰囲気を満喫しましょう。",
+          "searchQuery": "Las Vegas Casino",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ディナー：オー・ラ・ラ",
+          "description": "フランス料理の名店「オー・ラ・ラ」で、豪華なディナーを楽しみます。シェフの特製コース料理は、見た目も味も素晴らしい！",
+          "searchQuery": "Ohlala Restaurant",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "22:00",
+          "activity": "豪華なショー観賞",
+          "description": "ラスベガスの夜を彩るショーを観賞。シルク・ドゥ・ソレイユの「O」や「KA」など、圧巻のパフォーマンスを体験しましょう。",
+          "searchQuery": "Cirque du Soleil O",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ラスベガスの魅力を堪能",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ラスベガスの高級ホテルで、豪華なビュッフェスタイルの朝食を楽しみます。新鮮なフルーツやオムレツ、ベーコンなど、朝から贅沢な気分を味わえます。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "シーザーズ・パレスを散策",
+          "description": "ラスベガスの象徴とも言えるシーザーズ・パレスを訪れ、豪華なカジノやショッピングエリアを散策します。ローマの雰囲気を感じながら、アートやデザインを楽しむことができます。",
+          "searchQuery": "Caesars Palace",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "フリーモントストリートでランチ",
+          "description": "フリーモントストリートの活気ある雰囲気の中で、地元の人気レストランでランチを楽しみます。アメリカンスタイルのバーガーやサンドイッチが絶品です。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "フリーモントストリート散策",
+          "description": "フリーモントストリートのストリートパフォーマンスやアートを楽しみながら、観光を続けます。特に、LEDのアーケードは圧巻で、写真撮影にも最適です。",
+          "searchQuery": "Fremont Street Experience",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "グランドキャニオンへのツアー",
+          "description": "ラスベガスからグランドキャニオンへの日帰りツアーに参加します。壮大な自然の景観を堪能し、絶景ポイントでの写真撮影も楽しめます。",
+          "searchQuery": "Grand Canyon Tour",
+          "locationEn": "Grand Canyon, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ラスベガスのショーを観賞",
+          "description": "夜はラスベガスの豪華なショーを観賞します。世界的に有名なパフォーマンスを楽しみながら、特別な夜を過ごしましょう。事前にチケットを予約しておくことをおすすめします。",
+          "searchQuery": "Las Vegas Show",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:30",
+          "activity": "ホテルでディナー",
+          "description": "ショーの後は、ホテル内の高級レストランでディナーを楽しみます。シェフの特製料理を堪能し、素敵な夜を締めくくりましょう。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "グランドキャニオンの大自然",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ラスベガス",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "グランドキャニオン国立公園",
+          "time": "10:00"
+        },
+        "duration": "2h",
+        "memo": "ラスベガスからグランドキャニオンまでのドライブは、壮大な景色を楽しめる絶好の機会です。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "グランドキャニオン国立公園観光",
+          "description": "世界遺産に登録されているグランドキャニオンの壮大な景色を堪能します。サウスリムからの眺望は特に美しく、写真撮影にも最適です。",
+          "searchQuery": "Grand Canyon National Park",
+          "locationEn": "Grand Canyon, Arizona, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "グランドキャニオン内でピクニックランチ",
+          "description": "公園内の指定されたエリアで、持参したランチを楽しみます。自然の中での食事は格別です。",
+          "locationEn": "Grand Canyon, Arizona, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ハイキング（ブライトエンジェルトレイル）",
+          "description": "ブライトエンジェルトレイルを少し歩いてみましょう。美しい景色を眺めながらのハイキングは、心身ともにリフレッシュできます。",
+          "searchQuery": "Bright Angel Trail",
+          "locationEn": "Grand Canyon, Arizona, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "グランドキャニオンのサンセット観賞",
+          "description": "夕暮れ時のグランドキャニオンは、色とりどりの景色が広がります。特にサンセットポイントからの眺めは圧巻です。",
+          "searchQuery": "Sunset Point",
+          "locationEn": "Grand Canyon, Arizona, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ラスベガスへ戻る",
+          "description": "グランドキャニオンを後にし、ラスベガスへ戻ります。夕食の準備を整えましょう。",
+          "locationEn": "Las Vegas, Nevada, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ラスベガスの豪華なショー観賞",
+          "description": "ラスベガスに戻ったら、豪華なショーを楽しみましょう。シルク・ドゥ・ソレイユのパフォーマンスなど、エンターテイメントの宝庫です。",
+          "searchQuery": "Cirque du Soleil",
+          "locationEn": "Las Vegas, Nevada, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "22:30",
+          "activity": "ラスベガスのカジノで遊ぶ",
+          "description": "夜はカジノで運試し！ラスベガスのカジノは多種多様で、楽しみ方も様々です。",
+          "searchQuery": "Las Vegas Casino",
+          "locationEn": "Las Vegas, Nevada, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ラスベガスの豪華ショー",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ラスベガスの高級ホテルで、アメリカンブレックファーストを楽しみます。新鮮なフルーツやオムレツ、ベーコンなど、ボリューム満点の朝食でエネルギーをチャージ。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ミラージュの火山ショー",
+          "description": "ミラージュホテル前で行われる火山ショーを観賞。迫力満点の炎と音楽が融合した演出は、ラスベガスならではのエンターテイメントです。昼間でも楽しめるので、早めに訪れるのがおすすめ。",
+          "searchQuery": "Mirage Volcano Show",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ：バフェスタイルの食事",
+          "description": "ラスベガスの有名なバフェで、世界各国の料理を楽しみます。シーフードや寿司、デザートまで多彩なメニューが揃い、食べ放題で満足感も抜群。",
+          "searchQuery": "Las Vegas Buffet",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "グランドキャニオン日帰りツアー",
+          "description": "グランドキャニオンへの日帰りツアーに参加。壮大な自然の景観を堪能し、絶景ポイントでの写真撮影も楽しめます。ツアーにはランチが含まれているので、移動中も安心。",
+          "searchQuery": "Grand Canyon Day Tour",
+          "locationEn": "Grand Canyon, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディナー：ストリップ沿いのレストラン",
+          "description": "ラスベガスストリップ沿いの高級レストランでディナー。美しい夜景を眺めながら、シェフ特製のコース料理を堪能します。特別な夜にぴったりのロマンティックな雰囲気。",
+          "searchQuery": "Las Vegas Strip Restaurant",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ラスベガスのショー観賞",
+          "description": "ラスベガスの豪華なショーを観賞。シルク・ドゥ・ソレイユのパフォーマンスや、人気のミュージカルなど、エンターテイメントの宝庫で特別な夜を楽しみます。",
+          "searchQuery": "Las Vegas Show",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ラスベガスの夜景とリラックス",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ラスベガスの高級ホテルで、豪華なビュッフェスタイルの朝食を楽しみます。新鮮なフルーツやオムレツ、ベーコンなど、朝から贅沢なひとときを過ごしましょう。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ハイローラー観覧車",
+          "description": "ラスベガスのシンボルとも言えるハイローラーに乗り、360度のパノラマビューを楽しみます。特に昼間の明るい時間帯に乗ると、街の景色が一望でき、素晴らしい写真スポットです。",
+          "searchQuery": "High Roller",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ルビーのバーでランチ",
+          "description": "おしゃれなルビーのバーで、カクテルと共に軽食を楽しみます。特に、ここでのサンドイッチやタパスは絶品で、リラックスした雰囲気の中で食事を楽しめます。",
+          "searchQuery": "Ruby's Bar",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "グランドキャニオン日帰りツアー",
+          "description": "ラスベガスからのグランドキャニオン日帰りツアーに参加します。壮大な自然の景観を堪能し、特にサウスリムからの眺めは圧巻です。ツアーにはガイドがつき、歴史や地理についての解説も楽しめます。",
+          "searchQuery": "Grand Canyon Day Tour",
+          "locationEn": "Grand Canyon, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ラスベガスの夜景を楽しむディナー",
+          "description": "ラスベガスの高層レストランで、夜景を眺めながらのディナーを楽しみます。特に、ストリップのライトアップを眺めることができる席を予約するのがおすすめです。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "豪華なショーを観賞",
+          "description": "ラスベガスの有名なショーを観賞します。シルク・ドゥ・ソレイユのパフォーマンスや、人気のミュージカルなど、エンターテイメントの宝庫であるラスベガスならではの体験をお楽しみください。",
+          "searchQuery": "Cirque du Soleil",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ラスベガスから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ラスベガス",
+          "time": "15:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "19:00"
+        },
+        "duration": "11h",
+        "memo": "ラスベガスから東京への直行便。機内での食事を楽しみながら、旅の思い出を振り返りましょう。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ラスベガスの高級ホテルで、豪華なビュッフェスタイルの朝食を楽しみます。新鮮なフルーツやオムレツ、ベーコンなど、アメリカンブレックファーストを堪能。",
+          "searchQuery": "Bellagio Hotel Buffet",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "グランドキャニオン日帰りツアー",
+          "description": "ラスベガスからのグランドキャニオン日帰りツアーに参加。壮大な自然の絶景を目の前にし、ハイキングや写真撮影を楽しむことができます。",
+          "searchQuery": "Grand Canyon Day Tour",
+          "locationEn": "Grand Canyon, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "グランドキャニオンでランチ",
+          "description": "ツアーに含まれるランチボックスを持参し、グランドキャニオンの絶景を眺めながらピクニックランチ。大自然の中での食事は格別です。",
+          "searchQuery": "Grand Canyon Picnic Lunch",
+          "locationEn": "Grand Canyon, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ラスベガスに戻る",
+          "description": "ツアーが終わり、ラスベガスに戻ります。移動中に美しい景色を楽しみながら、旅の思い出を語り合いましょう。",
+          "searchQuery": "Las Vegas Return",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ラスベガスのストリップ散策",
+          "description": "ラスベガスのストリップを散策し、煌びやかなネオンやエンターテイメントを楽しみます。カジノやショッピング、ストリートパフォーマンスを見逃さないで！",
+          "searchQuery": "Las Vegas Strip",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "空港へ移動",
+          "description": "ラスベガスの空港へ向かいます。出発前にお土産を買ったり、最後の食事を楽しむ時間を持ちましょう。",
+          "searchQuery": "Las Vegas Airport",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "東京行きのフライト",
+          "description": "ラスベガスから東京へのフライト。機内でのエンターテイメントを楽しみながら、次の旅の計画を立てるのも良いでしょう。",
+          "searchQuery": "Las Vegas to Tokyo Flight",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

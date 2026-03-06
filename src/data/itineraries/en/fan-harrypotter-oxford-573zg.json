@@ -1,0 +1,529 @@
+{
+  "id": "0fe393ae-8bab-4932-a78c-20250b2153ee",
+  "destination": "Oxford",
+  "description": "Immerse yourself in the enchanting world of Oxford, a city steeped in history and culture. From the iconic spires of the university to the lush greenery of its parks, this six-day adventure is designed for you and your friends to explore the magical realms of Harry Potter, indulge in shopping for memorabilia, and enjoy the natural beauty that surrounds this historic city. Each day promises a blend of excitement and relaxation, ensuring you experience the best of what Oxford has to offer.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Oxford",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Vaults & Garden",
+          "description": "Start your day with a hearty breakfast at The Vaults & Garden, located in the historic Radcliffe Square. Enjoy a selection of locally sourced ingredients in a cozy atmosphere, perfect for fueling up before a day of exploration.",
+          "searchQuery": "The Vaults & Garden",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Oxford University",
+          "description": "Explore the iconic Oxford University, one of the oldest universities in the world. Stroll through the beautiful colleges, including Christ Church and Magdalen College, and soak in the rich history and stunning architecture.",
+          "searchQuery": "University of Oxford",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Eagle and Child",
+          "description": "Enjoy lunch at The Eagle and Child, a historic pub frequented by famous authors like J.R.R. Tolkien and C.S. Lewis. Savor traditional British fare in a charming setting that feels like stepping back in time.",
+          "searchQuery": "The Eagle and Child",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Bodleian Library Tour",
+          "description": "Take a guided tour of the Bodleian Library, one of the oldest libraries in Europe. Marvel at its stunning architecture and learn about its fascinating history, including its connection to the Harry Potter films.",
+          "searchQuery": "Bodleian Library",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the Ashmolean Museum",
+          "description": "Visit the Ashmolean Museum, home to an impressive collection of art and archaeology. Don't miss the Egyptian mummies and the stunning Renaissance art pieces, perfect for a cultural afternoon.",
+          "searchQuery": "Ashmolean Museum",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Old Bookbinders Ale House",
+          "description": "End your day with dinner at The Old Bookbinders Ale House, a cozy pub known for its delicious homemade dishes and a great selection of ales. It's a perfect spot to relax and reflect on your day.",
+          "searchQuery": "The Old Bookbinders Ale House",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Shopping for Harry Potter Merchandise at The Harry Potter Shop at Platform 9¾",
+          "description": "After dinner, head to The Harry Potter Shop at Platform 9¾ to pick up some magical merchandise. From wands to house scarves, it's a must-visit for any Harry Potter fan!",
+          "searchQuery": "The Harry Potter Shop at Platform 9¾",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Harry Potter Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Vaults & Garden",
+          "description": "Start your day with a hearty breakfast at The Vaults & Garden, located in the historic Old Bodleian Library. Enjoy a selection of fresh pastries and locally sourced ingredients in a charming setting.",
+          "searchQuery": "The Vaults & Garden",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Christ Church College",
+          "description": "Visit Christ Church College, one of the most famous colleges in Oxford and a filming location for the Harry Potter movies. Explore the stunning Great Hall, which inspired the Hogwarts dining hall, and take in the beautiful architecture.",
+          "searchQuery": "Christ Church College",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Eagle and Child",
+          "description": "Enjoy lunch at The Eagle and Child, a historic pub frequented by J.R.R. Tolkien and C.S. Lewis. Savor traditional British fare in a cozy atmosphere, perfect for discussing your favorite Harry Potter moments.",
+          "searchQuery": "The Eagle and Child",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "The Great Hall",
+          "description": "After lunch, head back to Christ Church to explore the Great Hall in more detail. Marvel at the long tables and the enchanting atmosphere that brings the magic of Hogwarts to life.",
+          "searchQuery": "Christ Church Great Hall",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "The Bridge of Sighs",
+          "description": "Stroll over to the iconic Bridge of Sighs, a picturesque covered bridge that connects two parts of Hertford College. It's a great spot for photos and to soak in the beauty of Oxford's architecture.",
+          "searchQuery": "Bridge of Sighs",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Shopping for Harry Potter Merchandise at The Oxford Castle Quarter",
+          "description": "Head to The Oxford Castle Quarter for some shopping. Here, you can find a variety of shops selling Harry Potter merchandise, from wands to clothing, perfect for any fan looking to take home a piece of the magic.",
+          "searchQuery": "Oxford Castle Quarter",
+          "locationEn": "Oxford, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Old Tom",
+          "description": "Wrap up your day with dinner at The Old Tom, a cozy pub known for its warm atmosphere and delicious pub grub. Enjoy a pint and reflect on your magical day in Oxford.",
+          "searchQuery": "The Old Tom",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Handle Bar Cafe",
+          "description": "Start your day with a hearty breakfast at this popular cafe known for its locally sourced ingredients and delicious brunch options. The atmosphere is cozy, making it a perfect spot to fuel up for a day of exploration.",
+          "searchQuery": "The Handle Bar Cafe",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit Ashmolean Museum",
+          "description": "Explore the Ashmolean Museum, the world's first university museum, showcasing art and archaeology from around the globe. Don't miss the Egyptian mummies and the stunning collection of Renaissance art.",
+          "searchQuery": "Ashmolean Museum",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Eagle and Child",
+          "description": "Enjoy a traditional pub lunch at The Eagle and Child, a historic pub frequented by J.R.R. Tolkien and C.S. Lewis. Savor classic British dishes in a charming setting filled with literary history.",
+          "searchQuery": "The Eagle and Child",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Radcliffe Camera",
+          "description": "Take a stroll to the iconic Radcliffe Camera, a stunning architectural masterpiece and part of the Bodleian Library. Capture some great photos and enjoy the surrounding scenery of the university.",
+          "searchQuery": "Radcliffe Camera",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Walk through University Parks",
+          "description": "Relax and unwind with a leisurely walk through University Parks, a beautiful green space perfect for enjoying nature. It's a great spot for a picnic or simply to soak in the tranquility of the surroundings.",
+          "searchQuery": "University Parks",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping at The Covered Market",
+          "description": "Head to The Covered Market for some shopping! This historic market is filled with unique shops and stalls where you can find Harry Potter merchandise, local crafts, and delicious treats.",
+          "searchQuery": "The Covered Market",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Oxford Blue",
+          "description": "End your day with dinner at The Oxford Blue, a gastropub offering a modern twist on classic British cuisine. Enjoy a relaxed atmosphere and a menu that highlights seasonal ingredients.",
+          "searchQuery": "The Oxford Blue",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Shopping and Local Delights",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Handle Bar Cafe",
+          "description": "Start your day with a hearty breakfast at The Handle Bar Cafe, known for its locally sourced ingredients and delicious brunch options. Try their famous full English breakfast or a healthy smoothie bowl to fuel your day ahead.",
+          "searchQuery": "The Handle Bar Cafe",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Covered Market",
+          "description": "Explore the historic Covered Market, a vibrant hub of local vendors selling everything from fresh produce to unique crafts. Don’t miss the chance to pick up some Harry Potter-themed merchandise at the nearby shops!",
+          "searchQuery": "Covered Market",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Eagle and Child",
+          "description": "Enjoy lunch at The Eagle and Child, a pub famous for its literary history and as a meeting place for the Inklings, including J.R.R. Tolkien and C.S. Lewis. Savor traditional British fare in a cozy atmosphere.",
+          "searchQuery": "The Eagle and Child",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Cornmarket Street",
+          "description": "Stroll down Cornmarket Street, Oxford's main shopping thoroughfare. Here, you can find a mix of high street brands and independent shops, perfect for picking up some Harry Potter goodies and souvenirs.",
+          "searchQuery": "Cornmarket Street",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit Blackwell's Bookshop",
+          "description": "Head to Blackwell's Bookshop, one of the largest and most famous bookstores in the UK. Browse through their extensive collection of books, including a dedicated section for Harry Potter fans. It's a book lover's paradise!",
+          "searchQuery": "Blackwell's Bookshop",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at University Parks",
+          "description": "Take a leisurely walk or relax at University Parks, a beautiful green space perfect for unwinding after a day of shopping. Enjoy the natural scenery and perhaps have a small picnic with snacks from the market.",
+          "searchQuery": "University Parks",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Old Bookbinders Ale House",
+          "description": "End your day with dinner at The Old Bookbinders Ale House, a charming pub with a cozy atmosphere. Enjoy a selection of ales and hearty dishes, perfect for reflecting on your day of exploration.",
+          "searchQuery": "The Old Bookbinders Ale House",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Nature and Relaxation",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Handle Bar Cafe & Kitchen",
+          "description": "Start your day with a hearty breakfast at this popular cafe known for its locally sourced ingredients and delicious brunch options. Try their famous pancakes or a full English breakfast!",
+          "searchQuery": "The Handle Bar Cafe & Kitchen",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Port Meadow",
+          "description": "Stroll through the beautiful Port Meadow, a vast area of grazing land and wildflowers. Enjoy the serene views of the River Thames and the historic Oxford skyline. It's a perfect spot for a leisurely walk or a picnic.",
+          "searchQuery": "Port Meadow",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Trout Inn",
+          "description": "Enjoy a delightful lunch at The Trout Inn, a charming riverside pub. Savor traditional British dishes while taking in the picturesque views of the river and surrounding nature.",
+          "searchQuery": "The Trout Inn",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore University Parks",
+          "description": "Wander through University Parks, a beautiful green space perfect for a relaxing afternoon. With its lovely gardens, trees, and walking paths, it's an ideal place to unwind and enjoy nature.",
+          "searchQuery": "University Parks",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Oxford Botanic Garden",
+          "description": "Discover the stunning Oxford Botanic Garden, the oldest botanic garden in the UK. Explore its diverse plant collections and tranquil landscapes, a perfect escape from the city bustle.",
+          "searchQuery": "Oxford Botanic Garden",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Old Bookbinders Ale House",
+          "description": "End your day with dinner at this cozy pub known for its warm atmosphere and delicious food. Try their homemade pies or fish and chips for a true taste of British cuisine.",
+          "searchQuery": "The Old Bookbinders Ale House",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Shopping for Harry Potter Merchandise at The Harry Potter Shop at Platform 9¾",
+          "description": "Wrap up your day with a visit to The Harry Potter Shop at Platform 9¾, where you can find a variety of magical merchandise, from wands to clothing. A must-visit for any Harry Potter fan!",
+          "searchQuery": "The Harry Potter Shop at Platform 9¾",
+          "locationEn": "London, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Oxford",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "14:00"
+        },
+        "duration": "8h",
+        "memo": "Direct flight from London Heathrow to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Vaults & Garden",
+          "description": "Start your day with a hearty breakfast at The Vaults & Garden, located in the historic Oxford University Church. Enjoy a selection of fresh pastries and locally sourced ingredients in a charming setting.",
+          "searchQuery": "The Vaults & Garden",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Visit the Harry Potter Studio Tour",
+          "description": "Take a magical journey to the Warner Bros. Studio Tour in London, where you can explore the sets, props, and costumes from the Harry Potter films. Don't forget to grab some exclusive merchandise from the gift shop!",
+          "searchQuery": "Warner Bros. Studio Tour London",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Great Hall Restaurant",
+          "description": "Enjoy a themed lunch at The Great Hall Restaurant, where you can dine like a Hogwarts student. The atmosphere is enchanting, and the food is inspired by the wizarding world.",
+          "searchQuery": "The Great Hall Restaurant",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Oxford City Centre",
+          "description": "Before heading to the airport, take some time to stroll through Oxford City Centre. Visit the iconic Radcliffe Camera and the Bodleian Library, and perhaps pick up some last-minute souvenirs from local shops.",
+          "searchQuery": "Oxford City Centre",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,559 @@
+{
+  "id": "dede5741-d2f5-4f1e-aeb7-3bdf0fc67a53",
+  "destination": "ニューヨーク",
+  "description": "ニューヨークでの6日間の旅は、文化、歴史、そしてあなたの推し活を満喫する絶好の機会です。街の活気に包まれながら、特にMLB関連のスポットを巡り、ファングッズを手に入れることができる充実したプランをご提案します。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ニューヨーク到着とタイムズスクエア散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのダイナーでアメリカンブレックファーストを楽しみます。パンケーキやベーコン、エッグが揃ったボリューム満点の朝食で、元気に一日をスタート！",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "タイムズスクエア散策",
+          "description": "世界的に有名なタイムズスクエアを訪れ、巨大な広告看板や人々の賑わいを楽しみましょう。ここでは、ニューヨークのエネルギーを感じることができます。",
+          "searchQuery": "Times Square",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Shake Shackでランチ",
+          "description": "ニューヨーク発の人気ハンバーガーチェーン、Shake Shackでランチ。ジューシーなハンバーガーとクリスピーなフライドポテトを堪能しましょう。",
+          "searchQuery": "Shake Shack",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "メッツの本拠地・シティフィールド見学",
+          "description": "MLBのニューヨーク・メッツの本拠地、シティフィールドを訪れます。スタジアムツアーに参加して、選手たちの歴史や名場面を学びましょう。",
+          "searchQuery": "Citi Field",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "MLBショップでファングッズ購入",
+          "description": "シティフィールド内のMLBショップで、メッツのファングッズを購入。ユニフォームやキャップなど、思い出に残るアイテムを手に入れましょう。",
+          "searchQuery": "MLB Shop Citi Field",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ブロードウェイの劇場街散策",
+          "description": "ブロードウェイの劇場街を散策し、次の日の観劇に向けて雰囲気を楽しみます。劇場の外観やポスターを眺めながら、ワクワク感を高めましょう。",
+          "searchQuery": "Broadway Theatre District",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ブロードウェイでディナー",
+          "description": "ブロードウェイ近くのレストランでディナーを楽しみます。ニューヨークの多国籍料理を堪能し、劇場観劇の前にエネルギーをチャージ！",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "ブロードウェイミュージカル観劇",
+          "description": "待ちに待ったブロードウェイのミュージカルを観劇。感動的なパフォーマンスに心を奪われることでしょう。",
+          "locationEn": "New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "MLBの聖地・ヤンキー・スタジアム訪問",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "ニューヨーク",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ヤンキー・スタジアム",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "地下鉄での移動が便利です。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "ヤンキー・スタジアム見学ツアー",
+          "description": "MLBの聖地、ヤンキー・スタジアムの見学ツアーに参加。スタジアムの歴史や選手たちのエピソードを聞きながら、フィールドやロッカールームを見学できます。",
+          "searchQuery": "Yankee Stadium",
+          "locationEn": "Bronx, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "スタジアム内でランチ",
+          "description": "ヤンキー・スタジアム内のフードコートでホットドッグやピザを楽しみましょう。試合の日には特別メニューも登場します。",
+          "searchQuery": "Yankee Stadium Food Court",
+          "locationEn": "Bronx, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ブロンクス動物園訪問",
+          "description": "ヤンキー・スタジアムから徒歩圏内のブロンクス動物園で、さまざまな動物たちを観察。特にアフリカのサバンナエリアは見応えがあります。",
+          "searchQuery": "Bronx Zoo",
+          "locationEn": "Bronx, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ブロンクスのファングッズショップ訪問",
+          "description": "MLB関連のファングッズを取り扱うショップで、お気に入りのチームのグッズを探しましょう。特にヤンキースのアイテムが豊富です。",
+          "searchQuery": "Yankees Merchandise Store",
+          "locationEn": "Bronx, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ブロンクスの地元レストランで、アメリカンスタイルのディナーを楽しみます。特にステーキやシーフードが人気です。",
+          "searchQuery": "Bronx American Restaurant",
+          "locationEn": "Bronx, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ニューヨーク市内に戻る",
+          "description": "地下鉄でニューヨーク市内に戻り、夜の街を散策。タイムズスクエアのネオンを楽しみながら、素敵な一日を締めくくりましょう。",
+          "searchQuery": "Times Square",
+          "locationEn": "New York, New York, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "メッツの本拠地・シティ・フィールドと周辺観光",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "ニューヨーク",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "シティ・フィールド",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "地下鉄での移動が便利です。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "シティ・フィールド見学ツアー",
+          "description": "メッツの本拠地であるシティ・フィールドを見学。スタジアムの裏側やフィールドに立つ特別な体験ができます。",
+          "searchQuery": "Citi Field",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "シティ・フィールド周辺でランチ",
+          "description": "スタジアム近くのフードトラックやカジュアルなレストランで、ニューヨークのホットドッグやピザを楽しみましょう。",
+          "searchQuery": "Citi Field food options",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "フラッシング・メドウズ・コロナパーク散策",
+          "description": "広大なフラッシング・メドウズ・コロナパークを散策。ユニークな景観やアート作品を楽しみながら、リラックスした時間を過ごせます。",
+          "searchQuery": "Flushing Meadows Corona Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "メッツのファングッズ購入",
+          "description": "シティ・フィールド内のショップで、メッツの公式ファングッズを購入。ユニフォームやキャップなど、思い出に残るアイテムを手に入れましょう。",
+          "searchQuery": "Citi Field Team Store",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "夕食は地元のレストランで",
+          "description": "フラッシングエリアの中華料理店で、地元の人々に人気のある本格的な中華料理を楽しみます。",
+          "searchQuery": "Flushing Chinese restaurants",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "夜のフラッシング散策",
+          "description": "フラッシングの賑やかな街並みを散策し、地元の雰囲気を楽しみながら、カフェやスイーツ店を訪れてみましょう。",
+          "searchQuery": "Flushing NY",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ニューヨークの文化と歴史を感じる",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "ニューヨーク",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "セントラルパーク",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "地下鉄でセントラルパークへ向かいます。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "セントラルパーク散策",
+          "description": "ニューヨークのオアシス、セントラルパークを散策します。美しい景色を楽しみながら、ボート乗りやピクニックをする地元の人々の様子を観察しましょう。",
+          "searchQuery": "Central Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "メトロポリタン美術館",
+          "description": "世界的に有名なメトロポリタン美術館を訪れます。多様なアートコレクションを楽しみながら、特にアメリカの歴史に関する展示を見逃さないでください。",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "美術館近くのカフェでランチ",
+          "description": "メトロポリタン美術館近くのカフェで軽食を楽しみます。地元の食材を使ったサンドイッチやサラダがおすすめです。",
+          "searchQuery": "Cafe near The Metropolitan Museum of Art",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "MLB関連ショップ巡り",
+          "description": "ニューヨークのMLB関連ショップを巡り、ファングッズをゲットしましょう。特にヤンキースのグッズは人気です。",
+          "searchQuery": "Yankees Store",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ブロードウェイの劇場街散策",
+          "description": "ブロードウェイの劇場街を散策し、次回の観劇に向けて雰囲気を楽しみます。夜のショーのチケットもここで購入できます。",
+          "searchQuery": "Broadway Theatre District",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ニューヨークの地元レストランでディナーを楽しみます。ピザやハンバーガーなど、アメリカの定番料理を堪能しましょう。",
+          "searchQuery": "Local Restaurant in New York",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ファングッズ探しとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのカフェで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵など、ボリューム満点の朝食でエネルギーをチャージ！",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "メッツの本拠地シティ・フィールド見学",
+          "description": "ニューヨーク・メッツの本拠地であるシティ・フィールドを訪れ、スタジアムツアーに参加します。歴史や選手たちのエピソードを聞きながら、フィールドの迫力を体感しましょう。",
+          "searchQuery": "Citi Field",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：ファラフェルの名店で",
+          "description": "地元で人気のファラフェル専門店でランチ。サクサクのファラフェルと新鮮な野菜を使ったサンドイッチは、ヘルシーで美味しい！",
+          "searchQuery": "Taïm",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "MLBショップでファングッズ探し",
+          "description": "MLBの公式ショップで、好きなチームのファングッズを探します。ユニフォームやキャップ、記念品など、ここでしか手に入らないアイテムが揃っています。",
+          "searchQuery": "MLB Store",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "マンハッタンのショッピングエリア散策",
+          "description": "マンハッタンのショッピングエリアを散策し、様々なショップを巡ります。特にスポーツ用品店やおしゃれなブティックが立ち並ぶエリアは見逃せません。",
+          "searchQuery": "Manhattan Shopping District",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ディナー：ニューヨークスタイルのピザ",
+          "description": "ニューヨーク名物のピザを楽しむため、地元の人気ピザ店へ。薄い生地にたっぷりのトッピングが特徴で、食べ応え抜群です。",
+          "searchQuery": "Joe's Pizza",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ブロードウェイのショー観賞",
+          "description": "夜はブロードウェイでショーを観賞。事前にチケットを購入しておくと、スムーズに楽しめます。感動的なパフォーマンスで素敵な夜を締めくくりましょう。",
+          "searchQuery": "Broadway Show",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ニューヨーク観光の締めくくりと帰国",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのダイナーでアメリカンブレックファストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージしましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "自由の女神観光",
+          "description": "フェリーに乗って自由の女神像を訪れます。ニューヨークのシンボルであるこの像を間近で見ることができ、素晴らしい写真スポットです。",
+          "searchQuery": "Statue of Liberty",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ウォール街でランチ",
+          "description": "ウォール街周辺のカジュアルなレストランでランチを楽しみます。ニューヨークのビジネスエリアの雰囲気を感じながら、地元の料理を味わいましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "メッツの本拠地・シティ・フィールド見学",
+          "description": "メッツの本拠地であるシティ・フィールドを訪れ、スタジアムツアーに参加します。MLBの歴史やチームの魅力を学びながら、ファングッズも購入できます。",
+          "searchQuery": "Citi Field",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "MLBショップでファングッズ購入",
+          "description": "ニューヨークのMLBショップで、好きなチームのグッズを探しましょう。ユニフォームやキャップなど、思い出に残るアイテムが揃っています。",
+          "searchQuery": "MLB Store",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "空港へ移動",
+          "description": "帰国のため、空港へ向かいます。ニューヨークの思い出を胸に、次の旅へと出発しましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "帰国のフライト",
+          "description": "ニューヨークを出発し、東京へ向かいます。楽しい旅の締めくくりです。",
+          "locationEn": "New York, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

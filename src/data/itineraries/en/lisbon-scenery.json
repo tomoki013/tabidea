@@ -1,0 +1,588 @@
+{
+  "id": "a385a160-6a13-4fda-8ff3-de0b4f87d76f",
+  "destination": "Lisbon",
+  "description": "Immerse yourself in the vibrant streets of Lisbon, where every corner reveals a new story and every meal is a celebration of flavors. This 6-day solo journey is designed for the curious traveler, inviting you to explore the city's rich heritage, indulge in its culinary delights, and capture the stunning vistas that make Lisbon a photographer's dream. From the iconic trams that traverse the hills to the tantalizing taste of pastéis de nata, this adventure promises to be both relaxing and enriching.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Lisbon and Exploring Alfama",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Pastéis de Belém",
+          "description": "Start your day with the iconic Pastéis de Nata at this famous bakery. The flaky pastry filled with creamy custard is a must-try, and you can enjoy it fresh out of the oven with a sprinkle of cinnamon and powdered sugar.",
+          "searchQuery": "Pastéis de Belém",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Alfama District",
+          "description": "Wander through the narrow, winding streets of Alfama, the oldest district in Lisbon. This area is filled with colorful buildings, local shops, and stunning views. Don't forget your camera for some picturesque shots!",
+          "searchQuery": "Alfama",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at A Cevicheria",
+          "description": "Enjoy a delicious seafood lunch at A Cevicheria, known for its fresh ceviche and vibrant atmosphere. The chef's special is a must-try, and the restaurant's decor is perfect for some Instagram-worthy photos.",
+          "searchQuery": "A Cevicheria",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit Lisbon Cathedral (Sé de Lisboa)",
+          "description": "Explore the stunning Lisbon Cathedral, one of the city's oldest and most important landmarks. The Romanesque architecture and beautiful stained glass windows make it a perfect spot for photography.",
+          "searchQuery": "Lisbon Cathedral",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Miradouro de Santa Luzia",
+          "description": "Head to the Miradouro de Santa Luzia for breathtaking views of the city and the Tagus River. This viewpoint is adorned with beautiful azulejos (ceramic tiles) and is a great place to relax and take photos.",
+          "searchQuery": "Miradouro de Santa Luzia",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Egg Tart Tasting at Manteigaria",
+          "description": "Indulge in another round of Pastéis de Nata at Manteigaria, known for its deliciously creamy tarts. Compare the flavors and textures with those from Pastéis de Belém to find your favorite!",
+          "searchQuery": "Manteigaria",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Time Out Market",
+          "description": "End your day at the Time Out Market, where you can sample a variety of dishes from different vendors. It's a great place to experience Lisbon's culinary scene and enjoy a lively atmosphere.",
+          "searchQuery": "Time Out Market",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll along the Tagus River",
+          "description": "Take a leisurely stroll along the Tagus River, enjoying the evening breeze and the beautiful views of the city lights reflecting on the water. It's a perfect way to unwind after a day of exploration.",
+          "searchQuery": "Tagus River",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Historic Belém and Iconic Trams",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Pastéis de Belém",
+          "description": "Start your day with the famous Pastéis de Belém, the original custard tarts that have been delighting visitors since 1837. Enjoy them warm, with a sprinkle of cinnamon and powdered sugar, paired with a strong Portuguese coffee.",
+          "searchQuery": "Pastéis de Belém",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit Belém Tower",
+          "description": "Explore the iconic Belém Tower, a UNESCO World Heritage site that once guarded the entrance to the Tagus River. Climb to the top for stunning views of the river and the surrounding area, and capture some beautiful photos of this historic landmark.",
+          "searchQuery": "Belém Tower",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Jerónimos Monastery",
+          "description": "Next, head to the magnificent Jerónimos Monastery, another UNESCO World Heritage site. Marvel at the intricate Manueline architecture and the peaceful cloisters, which are perfect for photography enthusiasts.",
+          "searchQuery": "Jerónimos Monastery",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at O Prego da Peixaria",
+          "description": "Enjoy a delicious seafood prego (steak sandwich) at O Prego da Peixaria, a local favorite. The casual atmosphere and fresh ingredients make it a great spot to refuel before more sightseeing.",
+          "searchQuery": "O Prego da Peixaria",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Ride Tram 28",
+          "description": "Hop on the iconic Tram 28 for a scenic ride through the historic neighborhoods of Lisbon. This vintage tram offers a unique perspective of the city's charming streets and picturesque buildings, perfect for capturing memorable photos.",
+          "searchQuery": "Tram 28",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Alfama District",
+          "description": "Wander through the narrow, winding streets of the Alfama district, one of Lisbon's oldest neighborhoods. Discover hidden gems, local shops, and stunning viewpoints, all while soaking in the vibrant atmosphere.",
+          "searchQuery": "Alfama District",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Time Out Market",
+          "description": "Head to the Time Out Market for dinner, where you can sample a variety of dishes from some of Lisbon's best chefs. From traditional Portuguese cuisine to modern twists, there's something for every palate.",
+          "searchQuery": "Time Out Market",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll along the Tagus River",
+          "description": "End your day with a leisurely stroll along the Tagus River. The sunset views are breathtaking, and it's a perfect way to reflect on your day while enjoying the cool evening breeze.",
+          "searchQuery": "Tagus River",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Culinary Delights and Bairro Alto",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Pastéis de Belém",
+          "description": "Start your day with the iconic Pastéis de Belém, the original custard tarts of Lisbon. Enjoy the flaky pastry filled with creamy custard, best served warm with a sprinkle of cinnamon and powdered sugar.",
+          "searchQuery": "Pastéis de Belém",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Belém Tower",
+          "description": "Visit the historic Belém Tower, a UNESCO World Heritage site that once guarded the entrance to the Tagus River. Its stunning Manueline architecture and picturesque riverside location make it a perfect photo opportunity.",
+          "searchQuery": "Belém Tower",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Time Out Market",
+          "description": "Head to Time Out Market for lunch, where you can sample a variety of dishes from some of Lisbon's best chefs. From fresh seafood to traditional Portuguese dishes, there's something for every palate.",
+          "searchQuery": "Time Out Market",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Ride Tram 28",
+          "description": "Hop on the famous Tram 28 for a scenic ride through the historic neighborhoods of Lisbon. Capture stunning photos as the tram winds through narrow streets and past iconic landmarks.",
+          "searchQuery": "Tram 28",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit the Lisbon Cathedral",
+          "description": "Stop by the Lisbon Cathedral, the oldest church in the city. Its impressive Romanesque architecture and beautiful interior make it a must-see, and the views from the nearby viewpoint are breathtaking.",
+          "searchQuery": "Lisbon Cathedral",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Stroll through Bairro Alto",
+          "description": "Wander through the vibrant streets of Bairro Alto, known for its lively atmosphere and colorful buildings. This area is perfect for street photography and discovering local shops and cafes.",
+          "searchQuery": "Bairro Alto",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at A Cevicheria",
+          "description": "Enjoy dinner at A Cevicheria, a trendy restaurant known for its delicious ceviche and creative seafood dishes. The vibrant decor and lively atmosphere make it a great spot to unwind after a day of exploration.",
+          "searchQuery": "A Cevicheria",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Try more Pastéis de Nata at Manteigaria",
+          "description": "End your day with a visit to Manteigaria, another famous spot for Pastéis de Nata. Compare their version with the ones from Pastéis de Belém and indulge in the sweet, creamy goodness one last time.",
+          "searchQuery": "Manteigaria",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Sintra Day Trip",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Lisbon",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Sintra",
+          "time": "09:40"
+        },
+        "duration": "40m",
+        "memo": "Take the train from Rossio Station to Sintra for a scenic ride."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Pena Palace",
+          "description": "Start your day at the colorful Pena Palace, a UNESCO World Heritage site. Explore its stunning architecture and enjoy breathtaking views of the surrounding hills and forests.",
+          "searchQuery": "Pena Palace",
+          "locationEn": "Sintra, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Cantinho Gourmet",
+          "description": "Savor a delicious lunch at Cantinho Gourmet, known for its local dishes and cozy atmosphere. Don't miss their famous bifana sandwich, a local favorite!",
+          "searchQuery": "Cantinho Gourmet",
+          "locationEn": "Sintra, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Quinta da Regaleira",
+          "description": "Visit the enchanting Quinta da Regaleira, a magical estate filled with gardens, lakes, and mysterious initiatic wells. Perfect for photography and exploration.",
+          "searchQuery": "Quinta da Regaleira",
+          "locationEn": "Sintra, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Sintra National Palace",
+          "description": "Explore the Sintra National Palace, famous for its distinctive chimneys and beautiful tile work. Learn about its rich history and enjoy the stunning interiors.",
+          "searchQuery": "Sintra National Palace",
+          "locationEn": "Sintra, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Egg Tart Tasting at Piriquita",
+          "description": "Indulge in a tasting of the famous pastéis de nata at Piriquita, a beloved local bakery. Compare their unique take on this classic Portuguese treat!",
+          "searchQuery": "Piriquita",
+          "locationEn": "Sintra, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Return to Lisbon",
+          "description": "Take the train back to Lisbon, reflecting on your wonderful day in Sintra. The evening train ride offers a chance to relax and enjoy the scenery.",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Cascais and Coastal Views",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Pastéis de Belém",
+          "description": "Start your day with a delicious breakfast at the famous Pastéis de Belém, known for its iconic custard tarts. Enjoy the flaky pastry and creamy filling that has made this place a must-visit in Lisbon.",
+          "searchQuery": "Pastéis de Belém",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Tram 28 Ride",
+          "description": "Hop on the historic Tram 28 for a scenic ride through Lisbon's charming streets. This iconic tram takes you past beautiful neighborhoods and landmarks, perfect for capturing stunning photos.",
+          "searchQuery": "Tram 28",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Mercado da Ribeira",
+          "description": "Head to Mercado da Ribeira for lunch, where you can sample a variety of local dishes from different vendors. It's a great spot to try traditional Portuguese cuisine in a vibrant atmosphere.",
+          "searchQuery": "Mercado da Ribeira",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Travel to Cascais",
+          "description": "Take a short train ride from Lisbon to Cascais, a picturesque coastal town known for its stunning beaches and charming streets. The journey takes about 40 minutes, offering beautiful views along the way.",
+          "searchQuery": "Cascais",
+          "locationEn": "Cascais, Portugal",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Cascais Town Center",
+          "description": "Stroll through the quaint streets of Cascais, where you can admire the colorful buildings and enjoy the seaside atmosphere. Don't forget to take photos of the beautiful coastal views.",
+          "searchQuery": "Cascais Town Center",
+          "locationEn": "Cascais, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Boca do Inferno",
+          "description": "Make your way to Boca do Inferno, a dramatic cliff formation where the waves crash against the rocks. It's a stunning spot for photography, especially with the ocean backdrop.",
+          "searchQuery": "Boca do Inferno",
+          "locationEn": "Cascais, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Dinner at Mar do Inferno",
+          "description": "Enjoy dinner at Mar do Inferno, a restaurant known for its fresh seafood and stunning views of the ocean. It's the perfect place to unwind after a day of exploration.",
+          "searchQuery": "Mar do Inferno",
+          "locationEn": "Cascais, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Return to Lisbon",
+          "description": "After a delightful day in Cascais, take the train back to Lisbon. Reflect on the beautiful sights and delicious food as you head back to your accommodation.",
+          "searchQuery": "Lisbon",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Last Day in Lisbon and Departure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Pastéis de Belém",
+          "description": "Start your day with the iconic Pastéis de Belém, famous for its delicious custard tarts. Enjoy the warm, flaky pastries with a sprinkle of cinnamon and powdered sugar, a true Lisbon delight!",
+          "searchQuery": "Pastéis de Belém",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Tram 28 Ride",
+          "description": "Hop on the historic Tram 28, a charming yellow tram that winds through the narrow streets of Lisbon. Capture stunning photos as you pass by iconic landmarks and picturesque neighborhoods, including Alfama and Graça.",
+          "searchQuery": "Tram 28",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Time Out Market",
+          "description": "Head to Time Out Market for lunch, where you can sample a variety of local dishes from different vendors. Try the famous bacalhau à brás (codfish) or indulge in some fresh seafood while enjoying the vibrant atmosphere.",
+          "searchQuery": "Time Out Market",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Praça do Comércio",
+          "description": "Stroll through Praça do Comércio, one of Lisbon's most iconic squares. Admire the grand architecture and the stunning views of the Tagus River. This is a perfect spot for some memorable photos!",
+          "searchQuery": "Praça do Comércio",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore Rossio Square",
+          "description": "Make your way to Rossio Square, known for its beautiful wave-patterned cobblestones and lively atmosphere. Take a moment to relax at one of the nearby cafés and enjoy a coffee while people-watching.",
+          "searchQuery": "Rossio Square",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Fado Music Experience",
+          "description": "End your day with a Fado music experience in a traditional restaurant. Enjoy the soulful sounds of Fado while savoring a delicious dinner, immersing yourself in the rich culture of Lisbon.",
+          "searchQuery": "Fado Music Restaurant",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

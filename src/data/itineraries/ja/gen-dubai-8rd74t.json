@@ -1,0 +1,650 @@
+{
+  "id": "989017c6-7d86-436c-a353-1ab3d23b8183",
+  "destination": "ドバイ",
+  "description": "ドバイの煌びやかな都市と自然の美しさが融合した7日間の旅。砂漠の静寂、壮大な高層ビル、そして豪華なショッピングモールが織りなすこの街で、心に残る体験をお楽しみください。",
+  "heroImage": "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTUwNDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Wael Hneini",
+  "heroImagePhotographerUrl": "https://unsplash.com/@waelhneini?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からドバイへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Tokyo",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Dubai",
+          "time": "16:00"
+        },
+        "duration": "10h",
+        "memo": "直行便で快適に移動します。"
+      },
+      "activities": [
+        {
+          "time": "17:00",
+          "activity": "ドバイ国際空港到着",
+          "description": "ドバイ国際空港に到着後、入国手続きを済ませてホテルへ向かいます。空港内は広々としており、さまざまなショップやレストランが揃っています。",
+          "searchQuery": "Dubai International Airport",
+          "locationEn": "Dubai, UAE",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ホテルチェックイン",
+          "description": "ドバイの高級ホテルにチェックイン。快適な客室でリラックスし、旅の疲れを癒します。",
+          "searchQuery": "Burj Al Arab Jumeirah",
+          "locationEn": "Dubai, UAE",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "バージュ・カリファ展望台",
+          "description": "世界一高い建物、バージュ・カリファの展望台からドバイの夜景を楽しみます。特に夕暮れ時の景色は絶景で、ロマンチックなひとときを過ごせます。",
+          "searchQuery": "Burj Khalifa",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:30",
+          "activity": "アトモスフィアでディナー",
+          "description": "バージュ・カリファの122階にあるレストラン「アトモスフィア」で、絶品のディナーを堪能。美しい夜景を眺めながら、特別な時間を過ごします。",
+          "searchQuery": "At.mosphere",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ドバイのシンボルを巡る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ドバイの高級ホテルで、ビュッフェスタイルの朝食を楽しみます。中東のスパイスを効かせた料理や新鮮なフルーツが並び、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "バージュ・カリファ",
+          "description": "世界一高い建物、バージュ・カリファの展望台へ。地上124階からの壮大な景色は圧巻で、特に朝の澄んだ空気の中での眺望は最高です。事前にチケットを購入しておくとスムーズに入場できます。",
+          "searchQuery": "Burj Khalifa",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ドバイ・モールでランチ",
+          "description": "ドバイ・モール内のレストランでランチ。多国籍な料理が楽しめるフードコートで、地元の味や国際色豊かな料理を堪能できます。食事の後はショッピングも楽しみましょう。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ドバイ・モール内散策",
+          "description": "ドバイ・モールの広大なフロアを散策。アクアリウムやスケートリンク、アート作品など見どころが満載です。お土産探しやウィンドウショッピングも楽しめます。",
+          "searchQuery": "Dubai Mall",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "アトランティス・ザ・パーム訪問",
+          "description": "アトランティス・ザ・パームの美しいビーチや水族館を楽しみます。特に「アンダーウォーター・エクスペリエンス」は、海の生き物たちを間近で観察できる貴重な体験です。",
+          "searchQuery": "Atlantis The Palm",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "アトランティス・ザ・パームでディナー",
+          "description": "アトランティス内の高級レストランでディナー。新鮮なシーフードや中東料理を楽しみながら、素晴らしい海の景色を眺めることができます。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "アトランティス・ザ・パームのナイトライフ",
+          "description": "アトランティスのナイトライフを楽しむため、バーやラウンジでリラックス。美しい夜景を眺めながら、カクテルを楽しむのもおすすめです。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "砂漠の冒険",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ドバイの高級ホテルで、ビュッフェスタイルの朝食を楽しみます。中東のスパイスを効かせた料理や新鮮なフルーツが揃い、エネルギーをチャージ。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "デザートサファリ",
+          "description": "砂漠の広大な風景を楽しむデザートサファリに出発。四輪駆動車での砂丘ドライブはスリル満点で、砂漠の美しい景色を堪能できます。",
+          "searchQuery": "Desert Safari Dubai",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ベドウィンキャンプでランチ",
+          "description": "ベドウィンキャンプに到着後、伝統的なアラビア料理のランチを楽しみます。地元の文化に触れながら、リラックスしたひとときを過ごせます。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ベドウィンキャンプでのアクティビティ",
+          "description": "キャンプ内でのアクティビティを楽しみます。ラクダに乗ったり、スカーフを使ったアラビアの伝統的な衣装を試着したり、砂漠の風景をバックに写真撮影もおすすめ。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "夕日鑑賞",
+          "description": "砂漠の夕日を眺めるため、特別なスポットへ移動します。オレンジ色に染まる砂丘と空のコントラストは、まさに絶景です。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルに戻る",
+          "description": "デザートサファリを終え、ホテルに戻ります。リフレッシュした後は、夜のドバイを楽しむ準備をしましょう。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ドバイモールでディナー",
+          "description": "ドバイモール内の高級レストランでディナーを楽しみます。ショッピングの合間に、絶品の料理を堪能しましょう。",
+          "searchQuery": "Dubai Mall Restaurants",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ドバイファウンテンのショー",
+          "description": "ディナーの後は、ドバイファウンテンの美しい水のショーを観賞。音楽に合わせて踊る水の演出は、ロマンチックなひとときを演出します。",
+          "searchQuery": "Dubai Fountain",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "自然とリラックス",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ドバイの高級ホテルで、ビュッフェスタイルの朝食を楽しみます。新鮮なフルーツや中東の伝統料理を味わいながら、優雅な朝のひとときを過ごしましょう。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ドバイ・マリーナ散策",
+          "description": "美しい高層ビルが立ち並ぶドバイ・マリーナを散策。海沿いの遊歩道を歩きながら、ヨットやカフェの風景を楽しむことができます。特に朝の光の中での景色は格別です。",
+          "searchQuery": "Dubai Marina",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "マリーナでランチ",
+          "description": "ドバイ・マリーナのレストランで、地元のシーフード料理を堪能。新鮮な魚介類を使った料理は、ドバイならではの味わいです。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ジンバブエ公園訪問",
+          "description": "緑豊かなジンバブエ公園でリラックス。広々とした芝生や美しい花々に囲まれながら、静かな時間を過ごすことができます。ピクニックを楽しむのもおすすめです。",
+          "searchQuery": "Zabeel Park",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "公園内でのアクティビティ",
+          "description": "ジンバブエ公園内のアクティビティを楽しみます。自転車を借りて公園内を巡ったり、アート作品を鑑賞したりして、自然の中でのアクティブな時間を過ごしましょう。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルに戻る",
+          "description": "公園からホテルへ戻り、少し休憩。ドバイの夜景を楽しむ準備をしましょう。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ドバイ・モールでディナー",
+          "description": "ドバイ・モール内の高級レストランでディナー。ショッピングの合間に、絶品の料理を楽しむことができます。特に、アラビア料理やインターナショナルなメニューが豊富です。",
+          "searchQuery": "Dubai Mall",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ドバイ・ファウンテンのショー",
+          "description": "ディナーの後は、ドバイ・ファウンテンの美しい水のショーを観賞。音楽に合わせて水が踊る様子は、ロマンチックな夜を演出します。",
+          "searchQuery": "Dubai Fountain",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "文化とショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ドバイの高級ホテルで、ビュッフェスタイルの朝食を楽しみます。中東のスパイスを効かせた料理や新鮮なフルーツが並び、エネルギーをチャージ。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "アル・ファヒディ歴史地区散策",
+          "description": "ドバイの伝統的な文化を感じるアル・ファヒディ歴史地区を散策。美しいアラビア建築や博物館が点在し、歴史的な雰囲気を楽しめます。",
+          "searchQuery": "Al Fahidi Historical District",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "アラビア料理のランチ",
+          "description": "地元の人気レストランで、タジンやフムスなどのアラビア料理を堪能。スパイスの香りが食欲をそそります。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "スーク・マディナ・ジュメイラでショッピング",
+          "description": "美しい水辺に囲まれたスーク・マディナ・ジュメイラでショッピング。アラビアの雰囲気を楽しみながら、手工芸品やお土産を探しましょう。",
+          "searchQuery": "Souk Madinat Jumeirah",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アブラでの水上移動",
+          "description": "スークからアブラ（伝統的な水上タクシー）に乗って、ドバイの美しい景色を楽しみながら移動します。水上からの眺めは格別です。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ドバイ・マリーナ散策",
+          "description": "ドバイ・マリーナを散策し、近代的な高層ビル群と美しい海の景色を楽しみます。夕暮れ時の景色は特にロマンチック。",
+          "searchQuery": "Dubai Marina",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ドバイ・マリーナでディナー",
+          "description": "ドバイ・マリーナ沿いのレストランで、海の幸を使った豪華なディナーを楽しみます。夜景を眺めながらの食事は特別なひととき。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ドバイ・ファウンテンのショー",
+          "description": "ドバイ・ファウンテンの美しい水のショーを観賞。音楽に合わせて踊る水の演出は、ロマンチックな雰囲気を演出します。",
+          "searchQuery": "Dubai Fountain",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ドバイの絶景を楽しむ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ドバイの高級ホテルで、豪華なビュッフェスタイルの朝食を楽しみます。新鮮なフルーツや中東の伝統的な料理が揃い、エネルギーをチャージ。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ブルジュ・アル・アラブ見学",
+          "description": "世界で最も豪華なホテルの一つ、ブルジュ・アル・アラブを訪れます。外観の美しさはもちろん、内部の豪華さにも圧倒されることでしょう。",
+          "searchQuery": "Burj Al Arab",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ラグジュアリービーチでリラックス",
+          "description": "ブルジュ・アル・アラブの近くにあるプライベートビーチで、穏やかな海を眺めながらリラックス。日光浴や海水浴を楽しむのに最適な場所です。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ビーチサイドでランチ",
+          "description": "ビーチ沿いのレストランで、地元のシーフード料理を堪能します。新鮮な魚介類を使った料理が楽しめ、海の景色を眺めながらの食事は格別です。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ドバイマリーナ散策",
+          "description": "ドバイマリーナの美しい景色を楽しみながら散策。高層ビルとヨットが並ぶ景観は、まるで映画のワンシーンのよう。ショッピングやカフェも楽しめます。",
+          "searchQuery": "Dubai Marina",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ドバイモールでショッピング",
+          "description": "世界最大のショッピングモール、ドバイモールでショッピングを楽しみます。高級ブランドからお土産まで、幅広い商品が揃っています。",
+          "searchQuery": "Dubai Mall",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ドバイファウンテンのショー観賞",
+          "description": "ドバイモールの近くにあるドバイファウンテンで、幻想的な水のショーを楽しみます。音楽に合わせて踊る水の演出は、ロマンチックなひとときを演出します。",
+          "searchQuery": "Dubai Fountain",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ドバイモール内でディナー",
+          "description": "ドバイモール内のレストランで、アラビア料理や国際色豊かな料理を楽しみます。食事をしながら、夜のドバイの雰囲気を満喫。",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "ドバイから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ドバイ国際空港",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "翌日 06:00"
+        },
+        "duration": "8h",
+        "memo": "直行便で東京へ向かいます。機内での食事を楽しみながら、リラックスした時間を過ごしましょう。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ドバイの高級ホテルで、ビュッフェスタイルの朝食を楽しみます。中東の伝統的な料理や国際色豊かなメニューが揃い、エネルギーをチャージ。",
+          "searchQuery": "Burj Al Arab Jumeirah",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ドバイモールでショッピング",
+          "description": "世界最大級のショッピングモール、ドバイモールでのショッピングを楽しみます。高級ブランドからお土産まで、幅広い選択肢が魅力です。",
+          "searchQuery": "Dubai Mall",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ブルジュ・ハリファ展望台",
+          "description": "ドバイのシンボル、ブルジュ・ハリファの展望台からの絶景を堪能します。高層ビル群や砂漠の広がりを一望できる貴重な体験です。",
+          "searchQuery": "Burj Khalifa",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ドバイモール内でランチ",
+          "description": "ドバイモール内のレストランでランチを楽しみます。多国籍料理が揃っており、気軽に食べられるカジュアルな雰囲気が魅力です。",
+          "searchQuery": "Dubai Mall Restaurants",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ドバイファウンテンのショー",
+          "description": "ドバイモールの近くにあるドバイファウンテンで、壮大な噴水ショーを観賞します。音楽に合わせて水が踊る様子は、まさに圧巻です。",
+          "searchQuery": "Dubai Fountain",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ドバイ国際空港へ移動",
+          "description": "ドバイモールからドバイ国際空港へ向かいます。空港までの移動はタクシーを利用し、快適に移動しましょう。",
+          "searchQuery": "Dubai International Airport",
+          "locationEn": "Dubai, UAE",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

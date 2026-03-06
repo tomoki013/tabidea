@@ -1,0 +1,370 @@
+{
+  "id": "a818948a-f6e8-42c7-a17d-04c414e2d7d8",
+  "destination": "台北",
+  "description": "台北の魅力を満喫する4日間の旅へようこそ！この旅では、文化や歴史を感じながら、リラックスした時間を過ごし、さらに推し活も楽しむことができます。特に、ジブリの関連スポットを巡りながら、ファングッズを手に入れることができる貴重な体験が待っています。家族での思い出に残る素晴らしい旅をお楽しみください。",
+  "heroImage": "https://images.unsplash.com/photo-1644718960833-e045dd906fdc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTE4MDd8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "enot nil",
+  "heroImagePhotographerUrl": "https://unsplash.com/@enotnil?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "台北到着と文化体験",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "台北のホテルで、地元の食材を使った朝食を楽しみます。台湾の伝統的な朝食メニューを味わいながら、ゆったりとした朝を迎えましょう。",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "台北101",
+          "description": "台北のシンボル、台北101を訪れます。展望台からの眺望は圧巻で、晴れた日には遠くの山々まで見渡せます。ショッピングモール内にはおしゃれなカフェやショップもあり、ファングッズ探しにもぴったりです。",
+          "searchQuery": "Taipei 101",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "鼎泰豊でランチ",
+          "description": "世界的に有名な小籠包の名店、鼎泰豊でランチを楽しみます。熱々の小籠包を頬張りながら、台湾の味を堪能しましょう。",
+          "searchQuery": "Din Tai Fung",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "国立故宮博物院",
+          "description": "台湾の歴史と文化を深く知ることができる国立故宮博物院を訪れます。貴重な美術品や歴史的な遺物が展示されており、特に中国の古代文化に興味がある方には必見のスポットです。",
+          "searchQuery": "National Palace Museum",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "士林夜市でショッピング",
+          "description": "士林夜市で台湾のストリートフードやファングッズを楽しみながらショッピング。地元の人々に人気の屋台が並び、賑やかな雰囲気の中で買い物を楽しめます。",
+          "searchQuery": "Shilin Night Market",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "夜市で夕食",
+          "description": "士林夜市の屋台で夕食を楽しみます。台湾の名物料理を味わいながら、夜の賑わいを満喫しましょう。",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。リラックスした時間を過ごし、明日の計画を立てるのも良いでしょう。",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ジブリの世界へ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "台北のホテルで、地元の食材を使った朝食を楽しみます。台湾の朝食は多彩で、豆漿や油条などが人気です。",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ジブリの森",
+          "description": "ジブリの森で、スタジオジブリの作品に触れられる特別な空間を体験します。美しい自然の中で、映画の世界観を楽しむことができます。",
+          "searchQuery": "Ghibli Museum",
+          "locationEn": "Mitaka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ジブリショップでお買い物",
+          "description": "ジブリの森の近くにあるショップで、オリジナルグッズやファンアイテムを購入します。ここでしか手に入らない商品がたくさん！",
+          "searchQuery": "Ghibli Store",
+          "locationEn": "Mitaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ランチ：ジブリの森内のカフェ",
+          "description": "ジブリの森内にあるカフェで、映画にちなんだメニューを楽しみながら、ゆったりとした時間を過ごします。",
+          "locationEn": "Mitaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ジブリの森散策",
+          "description": "ジブリの森の美しい庭園を散策し、映画のキャラクターたちに出会えるスポットを巡ります。自然の中でリラックスしたひとときを。",
+          "locationEn": "Mitaka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "台北に戻る",
+          "description": "ジブリの森を後にし、台北へ戻ります。移動中は、今日の思い出を振り返りながらリラックス。",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "台北でディナー",
+          "description": "台北の人気レストランで、台湾料理を堪能します。地元の食材を使った料理を楽しみながら、家族との楽しい時間を過ごしましょう。",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "リラックスとグルメ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "台北のホテルで、地元の食材を使った朝食を楽しみます。台湾の伝統的な朝食メニューを味わいながら、ゆったりとした朝のひとときを過ごしましょう。",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "士林夜市散策",
+          "description": "士林夜市で台湾のストリートフードを堪能。タピオカミルクティーや臭豆腐、揚げ餃子など、地元の人々に愛される美味しい料理が揃っています。お土産やファングッズも見逃せません！",
+          "searchQuery": "Shilin Night Market",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "士林夜市でランチ",
+          "description": "士林夜市の屋台でランチを楽しみます。新鮮な食材を使った料理を選び、地元の雰囲気を感じながら食事を楽しむことができます。",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "九份へ移動",
+          "description": "士林夜市から九份へ向かいます。美しい山の景色を楽しみながら、九份の街並みを散策する準備をしましょう。",
+          "locationEn": "Jiufen, Taiwan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "九份散策",
+          "description": "九份の古い街並みを散策し、レトロな雰囲気を楽しみます。お土産屋やカフェが立ち並ぶ通りを歩きながら、ファングッズを探してみてください。",
+          "searchQuery": "Jiufen Old Street",
+          "locationEn": "Jiufen, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "九份で夕食",
+          "description": "九份の名物料理を楽しむ夕食タイム。海鮮料理や地元の特産品を使った料理を味わいながら、素敵な夜を過ごしましょう。",
+          "locationEn": "Jiufen, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "九份の夜景を楽しむ",
+          "description": "九份の美しい夜景を楽しみながら、幻想的な雰囲気に浸ります。ライトアップされた街並みが、まるで映画の中にいるような気分にさせてくれます。",
+          "locationEn": "Jiufen, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "台北へ戻る",
+          "description": "九份から台北へ戻ります。夜の街を楽しみながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "台北の思い出を持ち帰る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "台北のホテルで、地元の食材を使った朝食を楽しみます。特に、豆漿（豆乳）や油條（揚げパン）はおすすめです。",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "忠烈祠",
+          "description": "忠烈祠を訪れ、衛兵交代式を見学します。歴史的な背景を感じながら、台湾の文化に触れる貴重な体験です。",
+          "searchQuery": "National Revolutionary Martyrs' Shrine",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "台北駅周辺でランチ",
+          "description": "台北駅近くの人気の食堂で、台湾の伝統的な料理を楽しみます。特に牛肉麺や小籠包は絶品です。",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "台北駅周辺のショッピング",
+          "description": "台北駅周辺には多くのショップがあり、Ghibli関連のファングッズを探すのに最適です。特に、アニメ関連の専門店を訪れてみてください。",
+          "searchQuery": "Ghibli Store Taipei",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "台北市立美術館",
+          "description": "台北市立美術館で、現代アートを楽しみます。アートに触れながら、リラックスした時間を過ごせます。",
+          "searchQuery": "Taipei Fine Arts Museum",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルで休憩",
+          "description": "観光の後は、ホテルでゆっくりと休憩。疲れを癒しながら、次のアクティビティに備えます。",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "夜市でディナー",
+          "description": "台北の夜市で、地元のストリートフードを楽しみます。特に、臭豆腐やタピオカミルクティーは外せません。",
+          "searchQuery": "Shilin Night Market",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

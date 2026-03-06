@@ -1,0 +1,634 @@
+{
+  "id": "677a3548-9949-462a-8d9f-0606660d450b",
+  "destination": "ハバナ",
+  "description": "ハバナの魅力を存分に味わう7日間の旅へようこそ。色とりどりの建物、歴史的な街並み、そしてキューバ音楽のリズムに包まれたこの街で、あなたの心を奪う瞬間が待っています。クラシックカーに乗って、フォトジェニックなスポットを巡りながら、地元の人々との交流を楽しむことができる、特別な体験が詰まった旅です。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ハバナ到着と街の散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ハバナのホテルで、キューバの伝統的な朝食を楽しみます。フレッシュなフルーツやトースト、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "旧市街（ハバナ・ビエハ）散策",
+          "description": "ユネスコ世界遺産に登録されたハバナ・ビエハを散策。カラフルな建物や歴史的な広場が広がり、フォトジェニックなスポットが満載です。",
+          "searchQuery": "Old Havana",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "レストランでランチ",
+          "description": "地元のレストランで、キューバ料理を堪能します。特に、ローストポークやモホソースが絶品です。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "カピトリオ見学",
+          "description": "ハバナのシンボルとも言えるカピトリオを訪れ、その壮大な建築を楽しみます。内部の装飾も見逃せません。",
+          "searchQuery": "Capitolio",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "マレコン散策",
+          "description": "ハバナの海岸線を歩くマレコンで、夕方の海風を感じながらリラックス。美しい夕日をバックに写真を撮るのもおすすめです。",
+          "searchQuery": "Malecón",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "クラシックカーでの市内観光",
+          "description": "キューバの象徴、クラシックカーに乗ってハバナの街を巡ります。色とりどりの車と共に、素敵な写真を撮影しましょう。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "地元の音楽バーでディナー",
+          "description": "キューバの音楽を楽しみながら、ディナーをいただきます。生演奏を聴きながら、キューバの雰囲気を満喫しましょう。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "クラシックカーでのハバナ観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ハバナのホテルで、キューバの伝統的な朝食を楽しみます。フレッシュなフルーツやトースト、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "クラシックカーでの市内観光",
+          "description": "カラフルなクラシックカーに乗り込み、ハバナの街を巡ります。歴史的な建物や美しい風景をバックに、素敵な写真を撮影しましょう。",
+          "searchQuery": "Classic Car Tour Havana",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "プラザ・デ・アラマーダ",
+          "description": "ハバナの歴史的な広場、プラザ・デ・アラマーダを訪れます。周囲の美しい建物や彫刻を楽しみながら、ゆったりとした時間を過ごしましょう。",
+          "searchQuery": "Plaza de Armas",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "レストランでランチ",
+          "description": "地元のレストランで、キューバ料理のランチを楽しみます。モホソースで味付けされた肉料理や、アロス・コン・ポーヨ（鶏肉とご飯）がおすすめです。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "フエルサ要塞",
+          "description": "フエルサ要塞を訪れ、歴史的な背景を学びながら、壮大な景色を楽しみます。要塞の上からはハバナの美しい海岸線が一望できます。",
+          "searchQuery": "Castillo de la Fuerza",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "キューバ音楽を楽しむ",
+          "description": "地元の音楽バーで、キューバの生演奏を楽しみます。サルサやボレロのリズムに合わせて、心地よい時間を過ごしましょう。",
+          "searchQuery": "Cuban Music Bar",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルに戻る",
+          "description": "観光を終えたら、ホテルに戻り、少し休憩。夕食の準備をしましょう。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "ハバナの人気レストランで、キューバ料理のディナーを楽しみます。新鮮なシーフードや地元の特産品を味わいながら、素敵な夜を過ごしましょう。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "キューバ音楽と文化を楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ハバナのホテルで、キューバの伝統的な朝食を楽しみます。フルーツやトースト、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "クラシックカーでの市内観光",
+          "description": "カラフルなクラシックカーに乗り込み、ハバナの街を巡ります。美しい街並みをバックに、フォトジェニックな写真をたくさん撮りましょう。",
+          "searchQuery": "Classic Car Tour Havana",
+          "locationEn": "Havana, Cuba",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "La Bodeguita del Medioでランチ",
+          "description": "有名なキューバ料理のレストランで、モヒートと共にランチを楽しみます。地元の人々にも愛されるこの場所で、キューバの味を堪能。",
+          "searchQuery": "La Bodeguita del Medio",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アートギャラリー巡り",
+          "description": "ハバナのアートシーンを楽しむため、地元のアートギャラリーを訪れます。キューバのアーティストたちの作品に触れ、文化を深く理解しましょう。",
+          "searchQuery": "Art Galleries in Havana",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "音楽ストリートでのひととき",
+          "description": "ハバナの音楽ストリートで、地元のミュージシャンたちの演奏を楽しみます。生演奏に合わせて踊ったり、リズムに乗ったりして、キューバの音楽を体感。",
+          "searchQuery": "Havana Music Street",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルで休憩",
+          "description": "観光の後は、ホテルで少し休憩。ハバナの街を眺めながら、リラックスした時間を過ごします。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "サルサバーでディナー",
+          "description": "地元のサルサバーで、ディナーを楽しみながら生演奏を聴きます。ダンスを楽しむこともでき、キューバの夜を満喫。",
+          "searchQuery": "Salsa Bar Havana",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ハバナの歴史を感じる",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ハバナのホテルで、キューバの伝統的な朝食を楽しみます。フルーツやトースト、コーヒーでエネルギーをチャージして、素敵な一日のスタートです。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "革命博物館",
+          "description": "キューバ革命の歴史を学ぶために革命博物館を訪れます。歴史的な展示物や写真が並び、キューバの過去を深く理解することができます。",
+          "searchQuery": "Museum of the Revolution",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ボデギータ・デル・メディオでカクテル",
+          "description": "有名なカクテルバー、ボデギータ・デル・メディオでモヒートを楽しみましょう。地元の人々や観光客で賑わうこの場所で、キューバの雰囲気を満喫できます。",
+          "searchQuery": "Bodeguita del Medio",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ハバナ大聖堂",
+          "description": "美しいバロック様式のハバナ大聖堂を訪れます。外観だけでなく、内部の装飾も見逃せません。写真撮影にも最適なスポットです。",
+          "searchQuery": "Havana Cathedral",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "クラシックカーでの市内観光",
+          "description": "カラフルなクラシックカーに乗って、ハバナの街を巡ります。歴史的な建物や美しい風景をバックに、素敵な写真をたくさん撮りましょう。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "キューバ音楽を楽しむ",
+          "description": "地元の音楽バーでキューバの生演奏を楽しみます。サルサやボレロのリズムに合わせて、心地よい時間を過ごしましょう。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ハバナの地元のレストランで、キューバ料理を堪能します。新鮮なシーフードや伝統的な料理を楽しみながら、素敵な夜を過ごしましょう。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ビニャーレスへの日帰り旅行",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ハバナ",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ビニャーレス",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "ハバナからビニャーレスまでの美しい風景を楽しみながらのドライブです。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "ビニャーレス渓谷の観光",
+          "description": "ユネスコ世界遺産に登録されたビニャーレス渓谷を散策。壮大な石灰岩の山々と緑豊かな田園風景が広がり、フォトジェニックなスポットがたくさんあります。",
+          "searchQuery": "Viñales Valley",
+          "locationEn": "Viñales, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ビニャーレスの地元レストランで、キューバ料理を楽しみます。新鮮な食材を使った料理が自慢で、特にモホソースを使った肉料理が絶品です。",
+          "searchQuery": "Restaurant in Viñales",
+          "locationEn": "Viñales, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "タバコ農園見学",
+          "description": "ビニャーレスのタバコ農園を訪れ、タバコの栽培過程を学びます。農園のオーナーから直接話を聞きながら、タバコの葉を使ったシガー作りのデモンストレーションも楽しめます。",
+          "searchQuery": "Tobacco Farm Viñales",
+          "locationEn": "Viñales, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "クラシックカーでのドライブ",
+          "description": "ビニャーレスの美しい風景をクラシックカーで巡ります。カラフルな車体と共に、素晴らしい写真を撮るチャンスです。",
+          "searchQuery": "Classic Car Tour Viñales",
+          "locationEn": "Viñales, Cuba",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "キューバ音楽を楽しむ",
+          "description": "ビニャーレスの地元の音楽バーで、キューバの伝統音楽を楽しみます。生演奏を聴きながら、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Live Music Bar Viñales",
+          "locationEn": "Viñales, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ハバナへ戻る",
+          "description": "ビニャーレスでの素晴らしい一日を終え、ハバナへ戻ります。夕暮れ時の美しい景色を楽しみながらのドライブです。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ハバナの隠れたスポットを探る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ハバナのホテルで、キューバの伝統的な朝食を楽しみます。フレッシュなフルーツやトースト、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "コロン墓地",
+          "description": "ハバナの歴史的なコロン墓地を訪れます。美しい彫刻やモニュメントが並ぶこの場所は、静かな雰囲気の中で歴史を感じることができます。",
+          "searchQuery": "Colon Cemetery",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ハバナの地元のレストランで、キューバ料理を堪能します。特に、ローストポークやモホソースが絶品です。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "カサ・デ・ラ・ムジカ",
+          "description": "キューバの音楽を楽しむために、カサ・デ・ラ・ムジカを訪れます。生演奏を聴きながら、キューバのリズムに身を委ねてみてください。",
+          "searchQuery": "Casa de la Musica",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "クラシックカーでの市内観光",
+          "description": "ハバナの街をクラシックカーで巡ります。色とりどりの車に乗り込み、フォトジェニックなスポットで写真を撮りましょう。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ロス・フロリデスでの夕食",
+          "description": "ハバナの人気レストラン、ロス・フロリデスでディナーを楽しみます。新鮮なシーフードや地元の料理が味わえ、素敵な雰囲気の中で食事ができます。",
+          "searchQuery": "Los Floriditas",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ハバナのナイトライフを楽しむ",
+          "description": "ハバナのバーやクラブで、キューバのナイトライフを体験します。特に、サルサやボレロの音楽に合わせて踊るのが楽しいです。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "ハバナの最後の思い出",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ハバナのホテルで、キューバの伝統的な朝食を楽しみます。フレッシュなフルーツやトースト、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ハバナの市場散策",
+          "description": "地元の人々が集まる市場を訪れ、色とりどりのフルーツや手作りの工芸品を楽しみながら、キューバの生活を感じます。",
+          "searchQuery": "Mercado de San José",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ：La Guarida",
+          "description": "映画『ハバナの恋人たち』の舞台にもなったレストランで、キューバ料理を堪能。特にシーフード料理が絶品です。",
+          "searchQuery": "La Guarida",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "クラシックカーでの市内観光",
+          "description": "カラフルなクラシックカーに乗って、ハバナの街を巡ります。美しい建物や歴史的なスポットでの写真撮影を楽しんでください。",
+          "searchQuery": "Classic Car Tour",
+          "locationEn": "Havana, Cuba",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "キューバ音楽を楽しむ",
+          "description": "地元の音楽バーで、キューバの伝統音楽を楽しみながらリラックス。生演奏を聴きながら、カクテルを味わう贅沢な時間を過ごします。",
+          "searchQuery": "Casa de la Musica",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディナー：El Cocinero",
+          "description": "ハバナの人気レストランで、創作キューバ料理を楽しみます。屋上テラスからの夜景も素晴らしいです。",
+          "searchQuery": "El Cocinero",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ハバナの夜を散策",
+          "description": "ディナー後は、ハバナの街を散策しながら、夜の雰囲気を楽しみます。街灯に照らされた古い建物が幻想的です。",
+          "locationEn": "Havana, Cuba",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

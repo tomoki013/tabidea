@@ -1,0 +1,633 @@
+{
+  "id": "4038156b-a166-4197-a47c-4ed167dad407",
+  "destination": "Sydney",
+  "description": "Immerse yourself in the vibrant culture and stunning natural beauty of Sydney over a week-long adventure. From the iconic Sydney Opera House to the lush landscapes of the Blue Mountains, this itinerary is designed for families seeking a blend of history, relaxation, and shopping. Discover hidden gems and local favorites as you explore this dynamic city, ensuring a memorable experience for everyone in the family.",
+  "heroImage": "https://images.unsplash.com/photo-1648963606079-fd31a99ac7e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTQ5MTh8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Arindam Saha",
+  "heroImagePhotographerUrl": "https://unsplash.com/@hyperickz?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Sydney",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Rocks Cafe",
+          "description": "Start your day with a hearty breakfast at The Rocks Cafe, known for its delicious pancakes and fresh coffee. The cafe has a cozy atmosphere and is perfect for families.",
+          "searchQuery": "The Rocks Cafe",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Sydney Opera House Tour",
+          "description": "Explore the iconic Sydney Opera House with a guided tour. Learn about its fascinating architecture and history while enjoying stunning views of the harbor.",
+          "searchQuery": "Sydney Opera House",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Circular Quay",
+          "description": "Enjoy lunch at one of the many eateries at Circular Quay. Try some local seafood or grab a quick bite at a casual cafe while soaking in the vibrant atmosphere.",
+          "searchQuery": "Circular Quay",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through The Rocks",
+          "description": "Wander through The Rocks, a historic area filled with cobblestone streets, boutique shops, and art galleries. Don't miss the weekend markets if you're here on a Saturday or Sunday!",
+          "searchQuery": "The Rocks",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Museum of Contemporary Art",
+          "description": "Explore the Museum of Contemporary Art, showcasing Australian and international contemporary art. The museum is located in a beautiful heritage building with stunning harbor views.",
+          "searchQuery": "Museum of Contemporary Art",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Glenmore",
+          "description": "End your day with dinner at The Glenmore, a pub with a rooftop terrace offering spectacular views of the Sydney skyline. Enjoy classic Australian dishes in a relaxed setting.",
+          "searchQuery": "The Glenmore",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk at Darling Harbour",
+          "description": "Take a leisurely evening stroll at Darling Harbour. The area is beautifully lit at night, and you can enjoy the vibrant atmosphere with street performers and waterfront views.",
+          "searchQuery": "Darling Harbour",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Exploration",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Grounds of Alexandria",
+          "description": "Start your day with a hearty breakfast at The Grounds of Alexandria, known for its rustic charm and delicious farm-to-table dishes. Don't miss their famous coffee and freshly baked pastries!",
+          "searchQuery": "The Grounds of Alexandria",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Art Gallery of New South Wales",
+          "description": "Explore the Art Gallery of New South Wales, home to an impressive collection of Australian, European, and Asian art. The gallery's beautiful architecture and serene gardens make it a perfect spot for art lovers.",
+          "searchQuery": "Art Gallery of New South Wales",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at the Gallery Cafe",
+          "description": "Enjoy a light lunch at the Gallery Cafe, located within the Art Gallery. The menu features seasonal dishes made from locally sourced ingredients, perfect for recharging before more exploration.",
+          "searchQuery": "Gallery Cafe",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Hyde Park Stroll",
+          "description": "Take a leisurely stroll through Hyde Park, Sydney's oldest park. Enjoy the lush greenery, beautiful fountains, and the iconic Archibald Fountain, a great spot for photos.",
+          "searchQuery": "Hyde Park",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Royal Botanic Garden",
+          "description": "Visit the Royal Botanic Garden, a stunning oasis in the heart of Sydney. Wander through themed gardens, enjoy the views of the Sydney Opera House, and relax in the tranquil surroundings.",
+          "searchQuery": "Royal Botanic Garden",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at The Rocks",
+          "description": "Head to The Rocks for dinner, where you can find a variety of restaurants offering local and international cuisine. Enjoy the historic atmosphere and perhaps try some Australian wine.",
+          "searchQuery": "The Rocks",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Explore The Rocks Night Markets",
+          "description": "If you're visiting on a Friday, don't miss the vibrant night markets at The Rocks. Browse through local crafts, enjoy street food, and soak in the lively atmosphere.",
+          "searchQuery": "The Rocks Night Markets",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Day Trip to Blue Mountains",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Sydney",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Katoomba",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Take the scenic train ride from Sydney to Katoomba, enjoying the beautiful views along the way."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Visit the Three Sisters",
+          "description": "Start your day at the iconic Three Sisters rock formation. Take in the breathtaking views of the Jamison Valley and learn about the Aboriginal legends associated with this stunning site.",
+          "searchQuery": "Three Sisters",
+          "locationEn": "Katoomba, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Carrington Hotel",
+          "description": "Enjoy a relaxing lunch at The Carrington Hotel, a historic venue with a charming atmosphere. Try their delicious local dishes while soaking in the heritage of the building.",
+          "searchQuery": "The Carrington Hotel",
+          "locationEn": "Katoomba, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Scenic World",
+          "description": "Experience the thrill of Scenic World, where you can ride the Scenic Railway, Skyway, and Cableway for stunning views of the Blue Mountains. Don't miss the rainforest walk for a closer look at the natural beauty.",
+          "searchQuery": "Scenic World",
+          "locationEn": "Katoomba, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll through Leura Village",
+          "description": "Head to Leura Village, known for its quaint shops and beautiful gardens. Take a leisurely stroll, explore local boutiques, and perhaps grab a coffee at one of the charming cafes.",
+          "searchQuery": "Leura Village",
+          "locationEn": "Leura, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Leura Garage",
+          "description": "End your day with dinner at Leura Garage, a popular eatery known for its fresh, locally sourced ingredients. Enjoy a relaxed meal in a vibrant setting before heading back to Sydney.",
+          "searchQuery": "Leura Garage",
+          "locationEn": "Leura, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Sydney",
+          "description": "After a fulfilling day, take the train back to Sydney, reflecting on the beautiful sights and experiences of the Blue Mountains.",
+          "locationEn": "Sydney, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Relaxing Beach Day",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Bondi Wholefoods",
+          "description": "Start your day with a healthy breakfast at Bondi Wholefoods, known for its fresh, organic options and delicious smoothies. It's a great spot to fuel up before a day at the beach!",
+          "searchQuery": "Bondi Wholefoods",
+          "locationEn": "Bondi Beach, Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Bondi Beach",
+          "description": "Spend the morning soaking up the sun at Bondi Beach. Enjoy the vibrant atmosphere, take a dip in the ocean, or simply relax on the sand. Don't forget to grab a coffee from one of the nearby cafes!",
+          "searchQuery": "Bondi Beach",
+          "locationEn": "Bondi Beach, Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Icebergs Dining Room and Bar",
+          "description": "Enjoy a leisurely lunch at Icebergs, which offers stunning views of Bondi Beach. The menu features fresh seafood and modern Australian cuisine, perfect for a relaxing meal after your beach time.",
+          "searchQuery": "Icebergs Dining Room and Bar",
+          "locationEn": "Bondi Beach, Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Bondi to Coogee Coastal Walk",
+          "description": "Embark on the scenic Bondi to Coogee Coastal Walk. This 6 km trail offers breathtaking views of the coastline, with plenty of spots to stop and take photos along the way. It's a perfect blend of nature and exercise!",
+          "searchQuery": "Bondi to Coogee Coastal Walk",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Coogee Beach",
+          "description": "Arrive at Coogee Beach and unwind. This family-friendly beach is perfect for a swim or a stroll along the promenade. Grab an ice cream from a local vendor and enjoy the laid-back vibe.",
+          "searchQuery": "Coogee Beach",
+          "locationEn": "Coogee, Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Coogee Pavilion",
+          "description": "End your day with dinner at Coogee Pavilion, a lively venue with a rooftop terrace. Enjoy a variety of dishes, from pizzas to seafood, while taking in the beautiful sunset views over the ocean.",
+          "searchQuery": "Coogee Pavilion",
+          "locationEn": "Coogee, Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Shopping and Local Markets",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Grounds of Alexandria",
+          "description": "Start your day with a delicious breakfast at The Grounds of Alexandria, a vibrant café known for its fresh produce and artisanal coffee. The atmosphere is lively, and you can enjoy the beautiful garden setting.",
+          "searchQuery": "The Grounds of Alexandria",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Paddy's Market",
+          "description": "Explore Paddy's Market, a bustling market filled with local produce, souvenirs, and unique finds. It's a great place to experience the local culture and pick up some gifts.",
+          "searchQuery": "Paddy's Market",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at the Market",
+          "description": "Grab a quick and tasty lunch at one of the many food stalls in Paddy's Market. Try some local Australian dishes or international cuisine to refuel for the afternoon.",
+          "searchQuery": "Paddy's Market Food Stalls",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Queen Victoria Building",
+          "description": "Stroll through the historic Queen Victoria Building, an architectural gem filled with boutique shops and cafes. Don't forget to admire the stunning stained glass windows and the grand clock.",
+          "searchQuery": "Queen Victoria Building",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Darling Harbour",
+          "description": "Head over to Darling Harbour for a leisurely walk along the waterfront. Enjoy the views of the harbor, and if you're up for it, visit the nearby SEA LIFE Sydney Aquarium or the Australian National Maritime Museum.",
+          "searchQuery": "Darling Harbour",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Darling Harbour",
+          "description": "Enjoy dinner at one of the many restaurants in Darling Harbour, offering a variety of cuisines with beautiful views of the water. It's the perfect way to end your day of shopping and exploration.",
+          "searchQuery": "Darling Harbour Restaurants",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Historical Insights",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Rocks Cafe",
+          "description": "Start your day with a hearty breakfast at The Rocks Cafe, known for its delicious coffee and fresh pastries. Enjoy the vibrant atmosphere of this historic area as you fuel up for a day of exploration.",
+          "searchQuery": "The Rocks Cafe",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Sydney Tower Eye",
+          "description": "Visit the Sydney Tower Eye for breathtaking panoramic views of the city. The observation deck offers a unique perspective of Sydney's skyline and landmarks, making it a must-see for any visitor.",
+          "searchQuery": "Sydney Tower Eye",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "The Rocks Discovery Museum",
+          "description": "Explore the rich history of Sydney at The Rocks Discovery Museum. This interactive museum showcases the area's past through engaging exhibits and artifacts, perfect for history enthusiasts.",
+          "searchQuery": "The Rocks Discovery Museum",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Glenmore",
+          "description": "Enjoy lunch at The Glenmore, a historic pub with stunning views of the Sydney Opera House and Harbour Bridge. Try their famous fish and chips for a true taste of Australian cuisine.",
+          "searchQuery": "The Glenmore",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Museum of Contemporary Art",
+          "description": "Immerse yourself in the world of modern art at the Museum of Contemporary Art. The museum features a diverse collection of contemporary works by Australian and international artists.",
+          "searchQuery": "Museum of Contemporary Art",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll through Circular Quay",
+          "description": "Take a leisurely stroll through Circular Quay, where you can enjoy the vibrant atmosphere, street performances, and stunning views of the harbour. It's a great place to relax and soak in the sights.",
+          "searchQuery": "Circular Quay",
+          "locationEn": "Sydney, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Darling Harbour",
+          "description": "End your day with dinner at one of the many restaurants in Darling Harbour. Choose from a variety of cuisines while enjoying the beautiful waterfront views.",
+          "searchQuery": "Darling Harbour",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening walk at Barangaroo Reserve",
+          "description": "After dinner, take a peaceful evening walk at Barangaroo Reserve. This waterfront park offers stunning views of the city skyline and is a perfect spot to unwind after a busy day.",
+          "searchQuery": "Barangaroo Reserve",
+          "locationEn": "Sydney, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Sydney",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "15:00"
+        },
+        "duration": "14h",
+        "memo": "Direct flight from Sydney to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Grounds of Alexandria",
+          "description": "Start your day with a delicious breakfast at The Grounds of Alexandria, known for its vibrant atmosphere and fresh, locally sourced ingredients. Try their famous avocado toast or a hearty breakfast bowl.",
+          "searchQuery": "The Grounds of Alexandria",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Sydney Opera House",
+          "description": "Explore the iconic Sydney Opera House, a UNESCO World Heritage site. Take a guided tour to learn about its fascinating architecture and history, or simply enjoy the stunning views of the harbor.",
+          "searchQuery": "Sydney Opera House",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Stroll through the Royal Botanic Garden",
+          "description": "After visiting the Opera House, take a leisurely stroll through the Royal Botanic Garden. Enjoy the lush greenery and beautiful floral displays while soaking in the peaceful atmosphere.",
+          "searchQuery": "Royal Botanic Garden Sydney",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Mrs. Macquarie's Chair",
+          "description": "Enjoy a picnic-style lunch at Mrs. Macquarie's Chair, where you can grab some takeaway from a nearby café. The views of the harbor and the Sydney skyline are simply breathtaking.",
+          "searchQuery": "Mrs. Macquarie's Chair",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore The Rocks District",
+          "description": "Wander through The Rocks, one of Sydney's oldest neighborhoods. Discover its cobblestone streets, historic buildings, and vibrant markets. Don't forget to check out the local shops and galleries.",
+          "searchQuery": "The Rocks",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to hotel and check out",
+          "description": "Head back to your hotel to collect your luggage and check out. Make sure you have everything ready for your flight back home.",
+          "locationEn": "Sydney, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

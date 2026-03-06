@@ -1,0 +1,346 @@
+{
+  "id": "2059bb20-4306-4dee-9b93-fc62721ace6c",
+  "destination": "シルバーストーン",
+  "description": "シルバーストーンでの4日間は、F1の熱気に包まれた特別な体験が待っています。歴史的なサーキットを巡り、地元の美味しい料理を楽しみながら、あなたの推し活を満喫しましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "シルバーストーン到着とサーキット散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "シルバーストーンサーキット訪問",
+          "description": "F1ファンにはたまらないシルバーストーンサーキットを訪れ、サーキットの雰囲気を感じながら、歴史的なトロフィーや車両を見学します。",
+          "searchQuery": "Silverstone Circuit",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "サーキット内のカフェでランチ",
+          "description": "サーキット内のカフェで軽食を楽しみながら、周囲の景色を眺めるのも良いでしょう。F1の雰囲気を感じながら、サンドイッチやサラダを味わえます。",
+          "searchQuery": "Silverstone Circuit Cafe",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "F1ショップでファングッズ購入",
+          "description": "シルバーストーン内にあるF1ショップで、チームの公式グッズやお土産を購入。お気に入りのドライバーのアイテムを見つけるチャンスです！",
+          "searchQuery": "Silverstone F1 Shop",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "シルバーストーン周辺の散策",
+          "description": "サーキット周辺を散策し、地元の風景や文化を楽しみます。美しい田園風景を眺めながら、ゆったりとした時間を過ごしましょう。",
+          "searchQuery": "Silverstone",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のパブでディナー",
+          "description": "シルバーストーンの地元のパブで、イギリスの伝統的な料理を楽しみます。フィッシュ＆チップスやパイなど、地元の味を堪能しましょう。",
+          "searchQuery": "Silverstone Pub",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "宿泊先チェックイン",
+          "description": "シルバーストーン近くの宿泊施設にチェックイン。ゆっくりと疲れを癒し、明日の計画を立てる時間を持ちましょう。",
+          "searchQuery": "Silverstone Hotel",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "F1関連スポット巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "シルバーストーンで朝食",
+          "description": "地元のカフェで、イギリスの伝統的な朝食を楽しみます。ベーコンやソーセージ、トーストに紅茶を添えて、エネルギーをチャージしましょう。",
+          "searchQuery": "Silverstone Cafe",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "F1博物館訪問",
+          "description": "F1の歴史を学びながら、貴重なマシンや memorabilia を見学します。特に、過去の名車が展示されているエリアは必見です。",
+          "searchQuery": "Silverstone Interactive Museum",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "シルバーストーン近くのレストランでランチ",
+          "description": "F1ファンに人気のレストランで、軽食を楽しみます。サンドイッチやサラダなど、手軽に食べられるメニューが揃っています。",
+          "searchQuery": "The Silverstone Wing Restaurant",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "シルバーストーンサーキット見学",
+          "description": "実際のサーキットを歩きながら、F1の迫力を体感します。特に、スタート・フィニッシュラインやピットエリアは見逃せません。",
+          "searchQuery": "Silverstone Circuit",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "F1グッズショップでショッピング",
+          "description": "シルバーストーン内の公式ショップで、F1関連のグッズを購入します。お気に入りのチームのアイテムを見つけるチャンスです！",
+          "searchQuery": "Silverstone Circuit Shop",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "シルバーストーンでディナー",
+          "description": "地元のパブで、イギリスのパブ料理を楽しみます。フィッシュ＆チップスやパイなど、ボリューム満点の料理が魅力です。",
+          "searchQuery": "The White Horse Silverstone",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "シルバーストーンの夜景を楽しむ",
+          "description": "サーキット周辺を散策しながら、夜の静けさを楽しみます。星空の下でのひとときは、旅の思い出に残ることでしょう。",
+          "searchQuery": "Silverstone Night View",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "地元グルメと文化体験",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "シルバーストーンで朝食",
+          "description": "地元のカフェでイギリスの伝統的な朝食を楽しみます。ベーコン、ソーセージ、卵、トーストがセットになったボリューム満点のメニューで、エネルギーをチャージ！",
+          "searchQuery": "Silverstone Cafe",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "シルバーストーン・サーキット見学",
+          "description": "F1ファンにはたまらないシルバーストーン・サーキットを訪れます。サーキットの歴史やレースの裏側を学びながら、実際のコースを歩くことができるツアーに参加しましょう。",
+          "searchQuery": "Silverstone Circuit",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のパブでランチ",
+          "description": "シルバーストーンの地元のパブで、フィッシュ＆チップスやパイなどのイギリスの定番料理を楽しみます。地元の人々と交流しながら、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Silverstone Pub",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "F1グッズショップ訪問",
+          "description": "シルバーストーン周辺のF1関連のグッズショップを巡り、推しのチームやドライバーのファングッズを探します。レアなアイテムが見つかるかもしれません！",
+          "searchQuery": "Silverstone F1 Merchandise",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "シルバーストーン村散策",
+          "description": "シルバーストーンの静かな村を散策し、地元の風景や文化を楽しみます。小さなショップやカフェを見つけて、のんびりとした時間を過ごしましょう。",
+          "searchQuery": "Silverstone Village",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "シルバーストーンでディナー",
+          "description": "地元のレストランで、イギリスの家庭料理を楽しみます。新鮮な地元の食材を使った料理が味わえるお店を選びましょう。",
+          "searchQuery": "Silverstone Restaurant",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "シルバーストーンの夜景を楽しむ",
+          "description": "夜のシルバーストーンを散策し、静かな雰囲気の中でリラックス。美しい夜景を眺めながら、旅の思い出を振り返ります。",
+          "searchQuery": "Silverstone Night View",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "シルバーストーンから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "シルバーストーン",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "14:00"
+        },
+        "duration": "12h",
+        "memo": "シルバーストーンから東京へのフライト。空港までの移動時間を考慮して早めに出発しましょう。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "シルバーストーンサーキットの最後の散策",
+          "description": "F1ファンにはたまらないシルバーストーンサーキットを最後に散策。サーキットの周りを歩きながら、レースの興奮を感じることができます。",
+          "searchQuery": "Silverstone Circuit",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "サーキット内のカフェで朝食",
+          "description": "サーキット内のカフェで軽めの朝食を楽しみます。レースの雰囲気を感じながら、コーヒーとペストリーでエネルギーチャージ。",
+          "searchQuery": "Silverstone Circuit Cafe",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "シルバーストーンのファングッズショップ訪問",
+          "description": "シルバーストーンの公式ショップでF1関連のファングッズを購入。お気に入りのドライバーのグッズや記念品を見つけるチャンスです。",
+          "searchQuery": "Silverstone Circuit Merchandise",
+          "locationEn": "Silverstone, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "空港へ移動",
+          "description": "シルバーストーンから空港へ移動します。フライトの時間に合わせて、余裕を持って出発しましょう。",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "東京到着",
+          "description": "東京に到着。これからの旅の計画を立てる時間です。",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

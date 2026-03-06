@@ -1,0 +1,564 @@
+{
+  "id": "ed76a1ce-4103-40a3-a3f8-db5dd977d53b",
+  "destination": "サンフランシスコ",
+  "description": "サンフランシスコの魅力を存分に味わう6日間の旅へようこそ。美しい港町の風景、グルメ、そしてフォトジェニックなスポットを巡りながら、心に残る思い出を作りましょう。ケーブルカーに乗って坂道を駆け上がり、クラムチャウダーをパンの器で楽しむ贅沢な体験もお忘れなく。",
+  "days": [
+    {
+      "day": 1,
+      "title": "サンフランシスコ到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "サンフランシスコのホテルで、地元の食材を使った美味しい朝食を楽しみます。新鮮なフルーツやオムレツ、ベーカリーのパンが揃ったビュッフェスタイルが嬉しい。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "フィッシャーマンズワーフ散策",
+          "description": "サンフランシスコの名所、フィッシャーマンズワーフへ。海の香りを感じながら、観光客で賑わうこのエリアを散策し、アシカたちの姿を楽しみましょう。",
+          "searchQuery": "Fisherman's Wharf",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "クラムチャウダーをパンの器でランチ",
+          "description": "フィッシャーマンズワーフの名物、クラムチャウダーをパンの器でいただきます。クリーミーなスープと香ばしいパンの組み合わせは絶品です。",
+          "searchQuery": "Boudin Bakery",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ピア39でショッピングと観光",
+          "description": "ピア39でお土産探しや、ストリートパフォーマンスを楽しみます。観覧車からの眺めも素晴らしく、フォトジェニックなスポットがたくさんあります。",
+          "searchQuery": "Pier 39",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ケーブルカーに乗車",
+          "description": "サンフランシスコの名物、ケーブルカーに乗って市内を巡ります。坂道を上がる爽快感と、車窓からの景色を楽しんでください。",
+          "searchQuery": "Cable Car",
+          "locationEn": "San Francisco, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "ゴールデンゲートブリッジ散策",
+          "description": "サンフランシスコのシンボル、ゴールデンゲートブリッジを歩いて渡ります。壮大な景色をバックに写真を撮るのをお忘れなく。",
+          "searchQuery": "Golden Gate Bridge",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "サンフランシスコの地元のレストランで、シーフードやイタリアンなどの美味しいディナーを楽しみます。新鮮な食材を使った料理が堪能できます。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の観光を終え、ホテルに戻ります。明日の計画を立てながら、ゆっくりと休息を取りましょう。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ケーブルカーと美味しいグルメ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "サンフランシスコのホテルで、地元の食材を使った美味しい朝食を楽しみます。新鮮なフルーツやオムレツ、トーストなど、エネルギーをチャージして一日をスタート。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ケーブルカー乗車",
+          "description": "サンフランシスコの名物、ケーブルカーに乗って市内を巡ります。坂道を上がる際の心地よい風と、車窓からの美しい景色を楽しんでください。",
+          "searchQuery": "San Francisco Cable Car",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "フィッシャーマンズワーフ散策",
+          "description": "ケーブルカーを降りたら、フィッシャーマンズワーフへ。観光客で賑わうこのエリアでは、海の景色を楽しみながら、地元のアートやお土産を見て回ることができます。",
+          "searchQuery": "Fisherman's Wharf",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "クラムチャウダーをパンの器でランチ",
+          "description": "フィッシャーマンズワーフの名物、クラムチャウダーをパンの器でいただきます。クリーミーで濃厚なスープがパンと絶妙に絡み、心も体も温まります。",
+          "searchQuery": "Boudin Bakery",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ゴールデンゲートブリッジ散策",
+          "description": "サンフランシスコのシンボル、ゴールデンゲートブリッジを訪れます。橋を歩いて渡りながら、絶景の写真を撮るチャンスです。特に晴れた日には、青い海と空のコントラストが美しいです。",
+          "searchQuery": "Golden Gate Bridge",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アルカトラズ島ツアー",
+          "description": "アルカトラズ島へのフェリーに乗り、かつての刑務所を見学します。歴史的な背景を学びながら、サンフランシスコの美しい景色を楽しむことができます。",
+          "searchQuery": "Alcatraz Island",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "サンフランシスコの地元のレストランで、シーフードやイタリアンなどの美味しいディナーを楽しみます。新鮮な食材を使った料理が堪能できるお店を選びましょう。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "アートと文化の散策",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "サンフランシスコのホテルで、地元の食材を使った美味しい朝食を楽しみます。新鮮なフルーツやオムレツ、コーヒーでエネルギーをチャージ。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ゴールデンゲートパーク散策",
+          "description": "広大なゴールデンゲートパークを散策。美しい庭園や湖、アート作品が点在し、フォトジェニックなスポットがたくさんあります。特に日本庭園は静かで落ち着いた雰囲気。",
+          "searchQuery": "Golden Gate Park",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "サンフランシスコ美術館訪問",
+          "description": "サンフランシスコ美術館で、現代アートやクラシックな作品を鑑賞。特に、アメリカのアートコレクションは見応えがあります。美術館内のカフェで軽食も楽しめます。",
+          "searchQuery": "San Francisco Museum of Modern Art",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "フィッシャーマンズワーフでランチ",
+          "description": "フィッシャーマンズワーフで、名物のクラムチャウダーをパンの器でいただきます。新鮮なシーフードとともに、港町の雰囲気を満喫。",
+          "searchQuery": "Fisherman's Wharf",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ケーブルカー体験",
+          "description": "サンフランシスコ名物のケーブルカーに乗車。坂道を上がりながら、街の美しい景色を楽しむことができます。特にPowell-Hydeラインは絶景ポイントが多いです。",
+          "searchQuery": "Cable Car",
+          "locationEn": "San Francisco, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ミッション地区のストリートアート散策",
+          "description": "ミッション地区を散策し、カラフルなストリートアートを楽しみます。地元アーティストの作品が壁を彩り、フォトジェニックなスポットがたくさんあります。",
+          "searchQuery": "Mission District",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ミッション地区の人気レストランで、地元の食材を使ったディナーを楽しみます。特にタコスやブリトーが評判です。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。夜のサンフランシスコの街並みを楽しみながら、ゆったりとした時間を過ごします。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "サンフランシスコ近郊の探索",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "サンフランシスコのホテルで、地元の食材を使った美味しい朝食を楽しみます。新鮮なフルーツやオムレツ、トーストなど、エネルギーをチャージして一日をスタート。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "アルカトラズ島ツアー",
+          "description": "サンフランシスコ湾に浮かぶアルカトラズ島を訪れます。かつての刑務所の歴史を学びながら、島からの美しい景色を楽しむことができます。特にオーディオガイドが充実しており、実際の囚人の声を聞きながらのツアーは感動的です。",
+          "searchQuery": "Alcatraz Island",
+          "locationEn": "Alcatraz Island, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "{\"type\":\"blog\",\"title\":\"サンフランシスコのアルカトラズ島を訪れる\",\"url\":\"https://example.com/alcatraz\",\"confidence\":\"high\"}"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "フィッシャーマンズワーフでクラムチャウダー",
+          "description": "フィッシャーマンズワーフの名物、クラムチャウダーをパンの器でいただきます。新鮮なシーフードとクリーミーなスープが絶妙に絡み合い、心も体も温まります。",
+          "searchQuery": "Fisherman's Wharf Clam Chowder",
+          "locationEn": "Fisherman's Wharf, San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "マリンヘッドランズ散策",
+          "description": "サンフランシスコの美しい海岸線を望むマリンヘッドランズへ。ここからはゴールデンゲートブリッジの絶景が楽しめ、フォトジェニックなスポットがたくさんあります。ハイキングコースも整備されているので、自然を満喫しながらの散策が楽しめます。",
+          "searchQuery": "Marin Headlands",
+          "locationEn": "Marin Headlands, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "サウサリート散策",
+          "description": "フェリーでサウサリートへ移動し、可愛らしい街並みを散策します。アートギャラリーやカフェが立ち並び、のんびりとした雰囲気の中でショッピングや写真撮影を楽しむことができます。",
+          "searchQuery": "Sausalito",
+          "locationEn": "Sausalito, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "サウサリートでディナー",
+          "description": "サウサリートの海沿いのレストランでディナーを楽しみます。新鮮なシーフードや地元のワインを味わいながら、夕日を眺める贅沢なひとときを過ごしましょう。",
+          "locationEn": "Sausalito, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "サンフランシスコの夜景と最後の晩餐",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "サンフランシスコのホテルで、アメリカンブレックファーストを楽しみます。新鮮なフルーツやオムレツ、トーストでエネルギーをチャージ。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ツインピークス",
+          "description": "サンフランシスコの絶景スポット、ツインピークスへ。市内を一望できる展望台からの眺めは圧巻で、特に晴れた日には美しい景色が広がります。",
+          "searchQuery": "Twin Peaks",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "フィッシャーマンズワーフでランチ",
+          "description": "フィッシャーマンズワーフの名物、クラムチャウダーをパンの器でいただきます。海の香りを感じながら、観光名所を眺めるのも楽しみの一つ。",
+          "searchQuery": "Clam Chowder at Fisherman's Wharf",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ケーブルカー体験",
+          "description": "サンフランシスコ名物のケーブルカーに乗車。坂道を上がりながら、街の風景を楽しむことができます。特にPowell-Hydeラインは絶景ポイントが多いのでおすすめです。",
+          "searchQuery": "Cable Car",
+          "locationEn": "San Francisco, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ゴールデンゲートブリッジ散策",
+          "description": "ゴールデンゲートブリッジを歩いて渡ります。橋の上からの眺めは息をのむ美しさで、写真撮影にも最適です。",
+          "searchQuery": "Golden Gate Bridge",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ノースビーチ散策",
+          "description": "イタリアン文化が色濃く残るノースビーチエリアを散策。カフェやレストランが立ち並び、地元の雰囲気を楽しむことができます。",
+          "searchQuery": "North Beach",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "レストランでのディナー",
+          "description": "ノースビーチの人気イタリアンレストランでディナー。新鮮なシーフードやパスタを楽しみながら、最後の晩餐を満喫します。",
+          "searchQuery": "Italian Restaurant in North Beach",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "夜景観賞",
+          "description": "サンフランシスコの夜景を楽しむために、再びツインピークスへ。夜の街の灯りが美しく、特別な思い出を作ることができます。",
+          "searchQuery": "Twin Peaks Night View",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "帰国の準備と最後の散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "サンフランシスコのホテルで、アメリカンブレックファーストを楽しみます。新鮮なフルーツやオムレツ、トーストでエネルギーをチャージ。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ユニオンスクエア散策",
+          "description": "サンフランシスコの中心地、ユニオンスクエアを散策します。周囲には高級ブランドのショップやアートギャラリーが立ち並び、ショッピングや人々の様子を楽しむことができます。",
+          "searchQuery": "Union Square",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "クラムチャウダーをパンの器でランチ",
+          "description": "フィッシャーマンズワーフの名物、クラムチャウダーをパンの器でいただきます。濃厚なスープとパンの相性は抜群で、港町の雰囲気を感じながらのランチは格別です。",
+          "searchQuery": "Boudin Bakery",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ケーブルカー体験",
+          "description": "サンフランシスコ名物のケーブルカーに乗車し、街の美しい景色を楽しみます。特にパウエル・ハイド線は絶景ポイントが多く、フォトジェニックな瞬間を逃さないようにしましょう。",
+          "searchQuery": "Cable Car",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ゴールデンゲートブリッジ散策",
+          "description": "ゴールデンゲートブリッジを歩いて渡ります。橋の上からの眺めは圧巻で、サンフランシスコのシンボルを間近で感じることができます。",
+          "searchQuery": "Golden Gate Bridge",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "カフェでリラックス",
+          "description": "サンフランシスコのオシャレなカフェで、コーヒーやスイーツを楽しみながら、旅の思い出を振り返ります。地元の人々に混じって、ゆったりとした時間を過ごしましょう。",
+          "searchQuery": "Cafe in San Francisco",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "帰国の準備",
+          "description": "ホテルに戻り、帰国の準備をします。荷物を整理し、最後のサンフランシスコの思い出を胸に刻みましょう。",
+          "locationEn": "San Francisco, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

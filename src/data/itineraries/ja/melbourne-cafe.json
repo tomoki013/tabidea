@@ -1,0 +1,621 @@
+{
+  "id": "11e5b7c4-4c17-4c3e-ac7f-bc9e517936b7",
+  "destination": "メルボルン",
+  "description": "メルボルンの魅力を存分に味わう7日間の旅へようこそ。おしゃれなカフェ巡り、アートに溢れた街歩き、そして自然の絶景を楽しむことができるこのプランは、友人との素敵な思い出を作るための完璧なガイドです。メルボルンの独特な文化と美しい風景を感じながら、ゆったりとしたペースで過ごしましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からメルボルンへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "メルボルン",
+          "time": "18:00"
+        },
+        "duration": "9h",
+        "memo": "直行便での移動。機内食を楽しみながら、メルボルンの到着を待ちます。"
+      },
+      "activities": [
+        {
+          "time": "19:00",
+          "activity": "ホテルでチェックイン",
+          "description": "メルボルン市内のスタイリッシュなホテルにチェックイン。快適な部屋で旅の疲れを癒します。",
+          "searchQuery": "The Jazz Corner Hotel",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ディナー @ ヤラ川沿いのレストラン",
+          "description": "ヤラ川の美しい夜景を眺めながら、地元の食材を使った料理を楽しむディナー。特にシーフード料理が絶品です。",
+          "searchQuery": "Riverland Bar",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:30",
+          "activity": "フリンダースストリート駅周辺散策",
+          "description": "メルボルンのシンボル、フリンダースストリート駅を訪れ、その周辺を散策。夜のライトアップが美しい街並みを楽しみます。",
+          "searchQuery": "Flinders Street Station",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "カフェとアートの街を巡る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "メルボルンのカフェ文化を体験するため、地元の人気カフェで朝食を楽しみます。アボカドトーストやエッグベネディクトなど、ボリューム満点のメニューが揃っています。",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "フィッツロイ散策",
+          "description": "アートと個性的なショップが立ち並ぶフィッツロイエリアを散策します。ストリートアートやユニークなカフェを楽しみながら、メルボルンのクリエイティブな雰囲気を満喫しましょう。",
+          "searchQuery": "Fitzroy",
+          "locationEn": "Fitzroy, Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カフェでランチ",
+          "description": "フィッツロイの隠れ家的カフェでランチを。地元の食材を使ったサンドイッチやサラダを楽しみながら、リラックスした時間を過ごします。",
+          "locationEn": "Fitzroy, Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "メルボルン・アートセンター訪問",
+          "description": "メルボルン・アートセンターで現代アートの展示を楽しみます。地元アーティストの作品や国際的な展覧会が開催されており、アートに触れる素晴らしい機会です。",
+          "searchQuery": "Melbourne Arts Centre",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "カールトンガーデンズ散策",
+          "description": "美しいカールトンガーデンズを散策し、自然の中でリフレッシュ。広大な公園内には歴史的な建物や美しい花壇があり、散歩にぴったりです。",
+          "searchQuery": "Carlton Gardens",
+          "locationEn": "Carlton, Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "カフェでディナー",
+          "description": "カールトンエリアの人気カフェでディナーを。地元のワインと共に、季節の食材を使った料理を楽しむことができます。",
+          "locationEn": "Carlton, Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のフィッツロイ散策",
+          "description": "夜のフィッツロイを再訪し、バーやライブミュージックを楽しみます。おしゃれな雰囲気の中で、友人と共に素敵な夜を過ごしましょう。",
+          "locationEn": "Fitzroy, Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "メルボルンの自然を楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "メルボルンのカフェ文化を体験するため、地元の人気カフェで朝食を楽しみます。新鮮なアボカドトーストやラテアートが美しいコーヒーで、素敵な一日のスタートを切りましょう。",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ヤラバレーへ移動",
+          "description": "メルボルンから車で約1時間、ワイナリーが点在するヤラバレーへ向かいます。美しい自然の中でリラックスした時間を過ごしましょう。",
+          "locationEn": "Yarra Valley, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "ヤラバレーでワイナリー巡り",
+          "description": "ヤラバレーの美しいワイナリーを訪れ、地元のワインを試飲します。特にピノ・ノワールやシャルドネが有名で、ワインと共に美しい景色を楽しむことができます。",
+          "searchQuery": "Yarra Valley Winery",
+          "locationEn": "Yarra Valley, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ワイナリーでランチ",
+          "description": "ワイナリー内のレストランで、地元の食材を使ったランチを楽しみます。新鮮なサラダやグリル料理が絶品です。",
+          "locationEn": "Yarra Valley, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ダンデノン山脈へ移動",
+          "description": "ヤラバレーからダンデノン山脈へ向かいます。美しい森林の中をドライブしながら、自然の美しさを堪能しましょう。",
+          "locationEn": "Dandenong Ranges, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ダンデノン山脈でハイキング",
+          "description": "ダンデノン山脈のトレイルを散策します。特に「オールド・クレイトン・トレイル」は、豊かな自然と美しい景色が楽しめるおすすめのコースです。",
+          "searchQuery": "Dandenong Ranges National Park",
+          "locationEn": "Dandenong Ranges, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ダンデノン山脈のカフェで休憩",
+          "description": "ハイキングの後は、山脈のカフェで一息。地元のスイーツやコーヒーを楽しみながら、ゆったりとした時間を過ごします。",
+          "locationEn": "Dandenong Ranges, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "メルボルンへ戻る",
+          "description": "ダンデノン山脈からメルボルンへ戻ります。夕暮れ時の美しい景色を楽しみながら、リラックスしたドライブを。",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "メルボルンのレストランでディナー",
+          "description": "メルボルン市内の人気レストランでディナーを楽しみます。地元の食材を使った創作料理が楽しめるお店で、素敵な夜を締めくくりましょう。",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "アートと文化を深堀り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "カフェで朝食",
+          "description": "メルボルンの人気カフェ「カフェ・シティ」で、オーストラリアのブレックファーストを楽しみます。アボカドトーストやフラットホワイトが特におすすめです。",
+          "searchQuery": "Cafe City",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "メルボルン・アートセンター",
+          "description": "メルボルン・アートセンターを訪れ、現代アートの展示を楽しみます。特にオーストラリアのアーティストによる作品が多く、アートに触れる素晴らしい機会です。",
+          "searchQuery": "Melbourne Arts Centre",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ",
+          "description": "アートセンター近くの「フラワー・マーケット・カフェ」で、地元の新鮮な食材を使ったランチを楽しみます。サラダやサンドイッチが人気です。",
+          "searchQuery": "Flower Market Cafe",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "国立ビクトリア美術館",
+          "description": "国立ビクトリア美術館を訪れ、オーストラリアの歴史的なアートコレクションを堪能します。特に19世紀のオーストラリア絵画は見逃せません。",
+          "searchQuery": "National Gallery of Victoria",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "フリンダース・ストリート駅周辺散策",
+          "description": "メルボルンの象徴的なフリンダース・ストリート駅周辺を散策し、街のアートやストリートパフォーマンスを楽しみます。カラフルなグラフィティアートも見どころです。",
+          "searchQuery": "Flinders Street Station",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー",
+          "description": "「リトル・イタリー」で本格的なイタリアンディナーを楽しみます。ピザやパスタが絶品で、友人との楽しいひとときを過ごせます。",
+          "searchQuery": "Little Italy",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のメルボルン散策",
+          "description": "夜のメルボルンを散策し、ライトアップされた街並みを楽しみます。特にヤラ川沿いの景色はロマンチックで、素敵な写真スポットです。",
+          "searchQuery": "Yarra River",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "メルボルンの隠れ家カフェ巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "カフェ・クイーン・ビクトリアで朝食",
+          "description": "メルボルンの人気カフェで、地元の新鮮な食材を使った朝食を楽しみます。特にアボカドトーストや自家製ベーカリーが絶品です。",
+          "searchQuery": "Queen Victoria Market",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ホーソンのアートギャラリー巡り",
+          "description": "ホーソンエリアにある小さなアートギャラリーを訪れ、地元アーティストの作品を楽しみます。静かな雰囲気の中でアートに触れることができます。",
+          "searchQuery": "Hawthorn Art Gallery",
+          "locationEn": "Hawthorn, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "カフェ・アトリエでランチ",
+          "description": "アートに囲まれたカフェで、ヘルシーなランチを楽しみます。特にサラダやスムージーボウルが人気です。",
+          "searchQuery": "Atelier Cafe",
+          "locationEn": "Hawthorn, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "サウスヤラのストリートアート散策",
+          "description": "サウスヤラエリアを散策しながら、壁画やストリートアートを楽しみます。カラフルなアートが街を彩り、写真撮影にも最適です。",
+          "searchQuery": "South Yarra Street Art",
+          "locationEn": "South Yarra, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "カフェ・ル・トロワでお茶",
+          "description": "おしゃれなカフェで、スイーツと共にリラックスタイム。特に自家製のケーキが絶品で、コーヒーとの相性も抜群です。",
+          "searchQuery": "Le Trois Cafe",
+          "locationEn": "South Yarra, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "メルボルンの公園で自然を満喫",
+          "description": "メルボルンの美しい公園で、自然を感じながら散策します。緑に囲まれた静かな時間を過ごせます。",
+          "searchQuery": "Royal Botanic Gardens",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "カフェ・エスプレッソでディナー",
+          "description": "地元の人に人気のカフェで、カジュアルなディナーを楽しみます。特にパスタやピザが評判です。",
+          "searchQuery": "Espresso Cafe",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "メルボルンの街歩きとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "カフェで朝食",
+          "description": "メルボルンの人気カフェ「カフェ・シティ」で、エッグベネディクトやアボカドトーストを楽しみながら、ゆったりとした朝のひとときを過ごします。",
+          "searchQuery": "Cafe City",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ロイヤルアーケード散策",
+          "description": "メルボルンの歴史的なショッピングアーケード、ロイヤルアーケードを散策。美しいアーケードの天井や、個性的なショップを楽しみながら、ウィンドウショッピングをしましょう。",
+          "searchQuery": "Royal Arcade",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチタイム",
+          "description": "アーケード内の「デリカテッセン」で、サンドイッチやサラダをテイクアウトして、近くの公園でピクニックランチを楽しむのもおすすめです。",
+          "searchQuery": "Delicatessen",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ブロックアーケード訪問",
+          "description": "ブロックアーケードの美しいタイル張りの床や、アートなショップを巡りながら、メルボルンの文化を感じるひとときを過ごします。",
+          "searchQuery": "Block Arcade",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "メルボルンのストリートアート巡り",
+          "description": "メルボルンの街中に点在するストリートアートを見ながら、アートの魅力を堪能。特にフィッツロイ地区はアート好きにはたまらないスポットです。",
+          "searchQuery": "Fitzroy Street Art",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "カフェで休憩",
+          "description": "アート巡りの後は、フィッツロイの「メルボルン・コーヒー・カンパニー」で、こだわりのコーヒーを味わいながら、リラックスした時間を過ごします。",
+          "searchQuery": "Melbourne Coffee Company",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディナー",
+          "description": "メルボルンの人気レストラン「フラワー・ドラム」で、アジア料理を楽しむディナー。新鮮な食材を使った創作料理が魅力です。",
+          "searchQuery": "Flower Drum",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "メルボルンから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "メルボルン空港",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "18:00"
+        },
+        "duration": "9h",
+        "memo": "直行便で東京へ向かいます。機内ではリラックスして過ごしましょう。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "メルボルンのカフェで朝食",
+          "description": "メルボルンの人気カフェで、アボカドトーストやラテを楽しみながら、ゆったりとした朝を迎えます。地元の人々に愛されるカフェで、朝のひとときを満喫。",
+          "searchQuery": "Melbourne Cafe",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "フィッツロイ地区のアート散策",
+          "description": "フィッツロイ地区はストリートアートの宝庫。カラフルな壁画やユニークなアートショップを巡りながら、メルボルンのクリエイティブな雰囲気を感じましょう。",
+          "searchQuery": "Fitzroy Street Art",
+          "locationEn": "Fitzroy, Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチに地元のビストロ",
+          "description": "フィッツロイ地区のビストロで、地元の食材を使ったランチを楽しみます。カジュアルな雰囲気の中で、友人と楽しい会話を交わしながら食事を。",
+          "searchQuery": "Fitzroy Bistro",
+          "locationEn": "Fitzroy, Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "メルボルンの美術館訪問",
+          "description": "メルボルンのアートセンターで、現代アートや地元アーティストの作品を鑑賞します。アートに触れながら、心豊かな時間を過ごしましょう。",
+          "searchQuery": "Melbourne Art Center",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "メルボルンの公園でリラックス",
+          "description": "美術館の後は、近くの公園でのんびりと過ごします。緑に囲まれた静かな場所で、友人とおしゃべりを楽しみながら、リフレッシュ。",
+          "searchQuery": "Melbourne Park",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "メルボルン空港へ移動",
+          "description": "空港へ向かう前に、最後のメルボルンの風景を楽しみながら、ゆったりとした時間を過ごします。",
+          "searchQuery": "Melbourne Airport",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

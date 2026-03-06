@@ -1,0 +1,287 @@
+{
+  "id": "87ddda45-a7f1-420a-92be-55afe9818e28",
+  "destination": "直島・豊島",
+  "description": "Escape to the serene beauty of Naoshima and Teshima, two islands that are a haven for contemporary art lovers and photographers alike. This 3-day journey invites you to immerse yourself in a world where nature and art harmoniously coexist. From stunning installations to breathtaking coastal views, each moment is a chance to capture the essence of these artistic islands. Prepare for a leisurely exploration filled with unique experiences, delicious local cuisine, and plenty of opportunities for that perfect shot.",
+  "heroImage": "https://images.unsplash.com/photo-1738214577108-ce8760dcf9ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODY3MjB8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Finn",
+  "heroImagePhotographerUrl": "https://unsplash.com/@finn_staygold?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival at Naoshima: Art and Nature",
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Ferry to Naoshima",
+          "description": "Start your journey with a scenic ferry ride from Uno Port to Naoshima. The views of the Seto Inland Sea are breathtaking, setting the tone for your art-filled adventure.",
+          "searchQuery": "Naoshima Ferry",
+          "locationEn": "Naoshima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Check-in at Benesse House Museum",
+          "description": "Settle into the Benesse House Museum, a unique blend of art and accommodation. Enjoy the stunning architecture and the surrounding nature, perfect for some early photography.",
+          "searchQuery": "Benesse House Museum",
+          "locationEn": "Naoshima, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Benesse House Café",
+          "description": "Savor a delicious lunch at the café, which offers a menu featuring local ingredients. The café's terrace provides a lovely view of the sea, ideal for a relaxing meal.",
+          "searchQuery": "Benesse House Café",
+          "locationEn": "Naoshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Chichu Art Museum",
+          "description": "Visit the Chichu Art Museum, an architectural masterpiece designed by Tadao Ando. The museum houses works by Claude Monet, James Turrell, and Walter De Maria, all set within the natural landscape.",
+          "searchQuery": "Chichu Art Museum",
+          "locationEn": "Naoshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Explore Art House Project",
+          "description": "Wander through the Art House Project, where traditional houses have been transformed into art installations. Each house tells a unique story, making it a perfect spot for photography.",
+          "searchQuery": "Art House Project",
+          "locationEn": "Naoshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Shioya",
+          "description": "Enjoy a delightful dinner at Shioya, a local restaurant known for its fresh seafood and traditional Japanese dishes. The cozy atmosphere is perfect for unwinding after a day of exploration.",
+          "searchQuery": "Shioya Restaurant",
+          "locationEn": "Naoshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll along the beach",
+          "description": "Take a peaceful evening stroll along the beach. The sunset over the Seto Inland Sea provides a stunning backdrop for some memorable photos.",
+          "searchQuery": "Naoshima Beach",
+          "locationEn": "Naoshima, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Teshima: Art in Harmony with Nature",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Naoshima",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Teshima",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the ferry from Naoshima to Teshima, enjoying the scenic views of the Seto Inland Sea."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Teshima Art Museum",
+          "description": "Begin your day at the Teshima Art Museum, a stunning architectural marvel that blends seamlessly with the surrounding landscape. The museum features a unique installation that interacts with natural elements, making it a perfect spot for photography.",
+          "searchQuery": "Teshima Art Museum",
+          "locationEn": "Teshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Café de Chaya",
+          "description": "Enjoy a leisurely lunch at Café de Chaya, known for its delicious local dishes and serene atmosphere. The café offers a beautiful view of the surrounding nature, making it a great place to relax and recharge.",
+          "searchQuery": "Café de Chaya",
+          "locationEn": "Teshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Les Archives du Coeur",
+          "description": "Visit Les Archives du Coeur, an intriguing art installation that invites you to listen to the sounds of the heart. This unique experience is both thought-provoking and visually captivating, perfect for capturing stunning photos.",
+          "searchQuery": "Les Archives du Coeur",
+          "locationEn": "Teshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Teshima's Nature Trails",
+          "description": "Take a leisurely stroll along Teshima's nature trails, where you can enjoy the island's beautiful landscapes and perhaps spot some local wildlife. Don't forget your camera to capture the picturesque scenery!",
+          "searchQuery": "Teshima Nature Trails",
+          "locationEn": "Teshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Naoshima",
+          "description": "Head back to Naoshima via ferry, reflecting on the day's artistic experiences and the beauty of Teshima. The sunset views from the ferry can be breathtaking, so have your camera ready!",
+          "searchQuery": "Ferry from Teshima to Naoshima",
+          "locationEn": "Naoshima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Uminonakamichi",
+          "description": "End your day with dinner at Uminonakamichi, a cozy restaurant offering fresh seafood and local specialties. The warm atmosphere and delicious food will be the perfect conclusion to your day of art and exploration.",
+          "searchQuery": "Uminonakamichi",
+          "locationEn": "Naoshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Return to Naoshima and Departure",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Teshima",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Naoshima",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the ferry from Teshima to Naoshima."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Art House Project",
+          "description": "Explore the Art House Project, a unique collection of contemporary art installations set in traditional houses. Each piece is thoughtfully integrated into the architecture, creating a harmonious blend of art and environment.",
+          "searchQuery": "Art House Project",
+          "locationEn": "Naoshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Shioya",
+          "description": "Enjoy a delicious lunch at Shioya, a local eatery known for its fresh seafood and traditional Japanese dishes. The cozy atmosphere and friendly service make it a perfect spot to recharge.",
+          "searchQuery": "Shioya",
+          "locationEn": "Naoshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Miyanoura Gallery",
+          "description": "Visit the Miyanoura Gallery, showcasing contemporary art in a stunning setting. The gallery often features works by both Japanese and international artists, making it a must-see for art lovers.",
+          "searchQuery": "Miyanoura Gallery",
+          "locationEn": "Naoshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Naoshima Beach",
+          "description": "Take a leisurely stroll along Naoshima Beach, where you can capture beautiful photos of the sea and surrounding art installations. The beach is a serene spot to relax and reflect on your artistic journey.",
+          "searchQuery": "Naoshima Beach",
+          "locationEn": "Naoshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Ferry to Teshima",
+          "description": "Head back to Teshima via ferry, enjoying the scenic views of the Seto Inland Sea. This is a perfect time to reflect on your experiences and take some last-minute photos of the beautiful landscape.",
+          "searchQuery": "Teshima Ferry Terminal",
+          "locationEn": "Teshima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Local Izakaya",
+          "description": "Savor a delightful dinner at a local izakaya, where you can enjoy a variety of small dishes and drinks. It's a great way to experience the local culture and cuisine before your departure.",
+          "searchQuery": "Local Izakaya",
+          "locationEn": "Teshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

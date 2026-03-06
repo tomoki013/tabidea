@@ -1,0 +1,615 @@
+{
+  "id": "b6e8e12f-2d95-4764-98cd-4de3a22aa00f",
+  "destination": "Fiji",
+  "description": "Escape to the tropical paradise of Fiji, where azure waters meet lush greenery, and every moment is an invitation to relax and explore. This 7-day itinerary is designed for families seeking a blend of leisure and adventure, allowing you to unwind on pristine beaches while also engaging in thrilling activities. From snorkeling in vibrant coral reefs to savoring local delicacies, immerse yourself in the warmth of Fijian culture and the beauty of its islands. Get ready for a week filled with sun, sea, and unforgettable memories!",
+  "heroImage": "https://images.unsplash.com/photo-1718152220071-dc4396f654fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTQ4MTl8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Josh Withers",
+  "heroImagePhotographerUrl": "https://unsplash.com/@joshwithers?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Departure from Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Washington D.C. International Airport",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Nadi International Airport",
+          "time": "null"
+        },
+        "duration": "~10h",
+        "memo": "Direct flight to Fiji."
+      },
+      "activities": [
+        {
+          "time": "null",
+          "activity": "In-flight Meal",
+          "description": "Enjoy a selection of meals served on board during your flight. Make sure to stay hydrated and relax as you travel to paradise!",
+          "searchQuery": "null",
+          "locationEn": "In-flight",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "null",
+          "activity": "In-flight Entertainment",
+          "description": "Catch up on movies or read a book while you fly over the Pacific Ocean. It's a great time to unwind before your adventure begins!",
+          "searchQuery": "null",
+          "locationEn": "In-flight",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "null",
+          "activity": "Arrival in Fiji",
+          "description": "Upon landing at Nadi International Airport, take a moment to soak in the tropical atmosphere. The warm weather and friendly smiles will welcome you to your vacation!",
+          "searchQuery": "Nadi International Airport",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Arrival in Nadi and Relaxation",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "In-flight"
+        },
+        "arrival": {
+          "place": "Nadi International Airport",
+          "time": "10:00"
+        },
+        "duration": "~10h",
+        "memo": "Flight from Japan to Fiji."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Arrival at Nadi International Airport",
+          "description": "Welcome to Fiji! After landing, take a moment to soak in the tropical atmosphere as you step off the plane. The warm sun and friendly smiles will instantly make you feel at home.",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Transfer to Denarau Island",
+          "description": "Enjoy a scenic drive to Denarau Island, where your resort awaits. The journey takes about 30 minutes, offering glimpses of lush landscapes and local life.",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Check-in at the Resort",
+          "description": "Settle into your luxurious accommodation at the resort. Take a moment to relax and enjoy the stunning views of the ocean from your room.",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at the Resort Restaurant",
+          "description": "Indulge in a delicious lunch featuring fresh seafood and local Fijian dishes. The restaurant offers a beautiful view of the beach, perfect for a relaxing meal.",
+          "searchQuery": "Denarau Island Resort Restaurant",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relax by the Pool",
+          "description": "Spend your afternoon lounging by the pool. Enjoy the sun, sip on a tropical drink, and take a refreshing dip to cool off.",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Denarau Island",
+          "description": "Take a leisurely stroll around Denarau Island. Visit the marina, browse local shops, and enjoy the vibrant atmosphere of this beautiful resort area.",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Experience Fijian cuisine at a nearby restaurant. Try traditional dishes like kokoda (raw fish salad) and enjoy the lively ambiance.",
+          "searchQuery": "Fijian Restaurant Denarau",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk on the Beach",
+          "description": "End your day with a peaceful walk along the beach. The sound of the waves and the starry sky create a perfect setting for relaxation.",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Island Hopping Adventure",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Denarau Island",
+          "time": "08:30"
+        },
+        "arrival": {
+          "place": "Mamanuca Islands",
+          "time": "09:00"
+        },
+        "duration": "30m",
+        "memo": "Take a scenic boat ride to the beautiful Mamanuca Islands."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Snorkeling at Coral Reefs",
+          "description": "Dive into the crystal-clear waters of the Mamanuca Islands and explore vibrant coral reefs teeming with marine life. This is a perfect way to relax and enjoy the stunning underwater scenery.",
+          "searchQuery": "Mamanuca Islands",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch on the Beach",
+          "description": "Enjoy a delicious beachside lunch featuring fresh seafood and tropical fruits. The sound of the waves and the warm sun create a perfect atmosphere for a relaxing meal.",
+          "searchQuery": "Mamanuca Islands Beach Restaurant",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Island Hopping Tour",
+          "description": "Join an island hopping tour to visit some of the most picturesque islands in the Mamanuca group. Relax on pristine beaches and take in the breathtaking views.",
+          "searchQuery": "Mamanuca Islands Island Hopping Tour",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Denarau Island",
+          "description": "After a day of adventure, return to Denarau Island. Enjoy the sunset views as you cruise back, reflecting on the day's experiences.",
+          "searchQuery": "Denarau Island",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at the Resort",
+          "description": "Savor a delightful dinner at your resort, featuring a mix of Fijian and international cuisine. Enjoy the ambiance and perhaps some live music to end your day on a high note.",
+          "searchQuery": "Denarau Island Resort Restaurant",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Cultural Experience and Relaxation",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Hotel",
+          "description": "Start your day with a delightful breakfast at your hotel, featuring fresh tropical fruits, pastries, and local Fijian dishes to energize you for the day ahead.",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Nadi Market",
+          "description": "Explore the vibrant Nadi Market, where you can immerse yourself in the local culture. Browse through stalls filled with fresh produce, handmade crafts, and souvenirs. Don't forget to try some local snacks!",
+          "searchQuery": "Nadi Market",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Eatery",
+          "description": "Enjoy a casual lunch at a nearby eatery, sampling traditional Fijian dishes like kokoda (raw fish salad) or palusami (taro leaves with coconut cream).",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Cultural Experience at a Fijian Village",
+          "description": "Visit a nearby Fijian village for an authentic cultural experience. Participate in traditional ceremonies, learn about local customs, and enjoy a guided tour of the village.",
+          "searchQuery": "Fijian Village",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Denarau Island",
+          "description": "Head back to Denarau Island and take some time to relax by the beach or at your hotel pool, soaking in the beautiful surroundings.",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at a Beachfront Restaurant",
+          "description": "Savor a delicious dinner at a beachfront restaurant, where you can enjoy fresh seafood while listening to the sound of the waves. The sunset views are simply breathtaking!",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll on the Beach",
+          "description": "End your day with a leisurely stroll along the beach, feeling the soft sand beneath your feet and enjoying the tranquil atmosphere of Denarau Island.",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Snorkeling and Beach Day",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Denarau Island",
+          "time": "08:30"
+        },
+        "arrival": {
+          "place": "Malolo Island",
+          "time": "09:00"
+        },
+        "duration": "30m",
+        "memo": "Take a scenic boat ride to Malolo Island."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Arrival at Malolo Island",
+          "description": "Step onto the pristine sands of Malolo Island, where the turquoise waters invite you to explore. Take a moment to soak in the beauty of your surroundings before diving into the day's adventures.",
+          "searchQuery": "Malolo Island",
+          "locationEn": "Malolo Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Snorkeling at Turtle Beach",
+          "description": "Dive into the vibrant underwater world at Turtle Beach, known for its rich marine life and stunning coral reefs. Snorkeling gear is available for rent, making it easy to explore the colorful fish and sea turtles that call this area home.",
+          "searchQuery": "Turtle Beach",
+          "locationEn": "Malolo Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at the Beachside Café",
+          "description": "Enjoy a delicious lunch at the beachside café, featuring fresh seafood and tropical flavors. Savor your meal while listening to the gentle waves lapping at the shore.",
+          "searchQuery": "Beachside Café Malolo Island",
+          "locationEn": "Malolo Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Relax on the Beach",
+          "description": "After lunch, unwind on the soft sands of Malolo Island. Whether you choose to sunbathe, read a book, or take a leisurely stroll along the beach, this is the perfect time to relax and recharge.",
+          "searchQuery": "Malolo Island",
+          "locationEn": "Malolo Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Kayaking Adventure",
+          "description": "Grab a kayak and paddle around the island, exploring hidden coves and enjoying the stunning coastal views. This is a great way to experience the tranquility of the ocean while getting a bit of exercise.",
+          "searchQuery": "Kayaking Malolo Island",
+          "locationEn": "Malolo Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Sunset Viewing",
+          "description": "As the day winds down, find a cozy spot on the beach to watch the sunset. The vibrant colors reflecting off the water create a magical atmosphere, perfect for family bonding and capturing beautiful photos.",
+          "searchQuery": "Malolo Island",
+          "locationEn": "Malolo Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at the Resort Restaurant",
+          "description": "End your day with a delightful dinner at the resort's restaurant, where you can indulge in a variety of local and international dishes. Enjoy the ambiance and share stories from your day of adventure.",
+          "searchQuery": "Malolo Island Resort Restaurant",
+          "locationEn": "Malolo Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Leisure and Spa Day",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Malolo Island",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Denarau Island Resort",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Enjoy a scenic boat ride to Denarau Island."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Breakfast at the Resort",
+          "description": "Start your day with a delightful breakfast at the Denarau Island Resort, featuring a variety of tropical fruits, pastries, and local dishes to energize you for the day ahead.",
+          "searchQuery": "Denarau Island Resort",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Spa Treatment at the Resort",
+          "description": "Indulge in a rejuvenating spa treatment at the resort's luxurious spa. Choose from a range of massages and wellness therapies designed to relax your body and mind.",
+          "searchQuery": "Denarau Island Resort Spa",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at the Beachfront Restaurant",
+          "description": "Savor a delicious lunch at the beachfront restaurant, where you can enjoy fresh seafood and local specialties while overlooking the stunning ocean views.",
+          "searchQuery": "Denarau Island Resort Beachfront Restaurant",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Relax by the Pool or Beach",
+          "description": "Spend your afternoon lounging by the pool or on the beach. Take a dip in the crystal-clear waters or simply relax with a good book under the sun.",
+          "searchQuery": "Denarau Island Beach",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Sunset Cruise",
+          "description": "Embark on a serene sunset cruise around the islands. Enjoy breathtaking views as the sun sets over the horizon, creating a perfect end to your day.",
+          "searchQuery": "Denarau Island Sunset Cruise",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at the Resort",
+          "description": "Conclude your day with a sumptuous dinner at the resort's fine dining restaurant, featuring a menu of international and Fijian cuisine prepared with fresh local ingredients.",
+          "searchQuery": "Denarau Island Resort Fine Dining",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Nadi International Airport",
+          "time": "15:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "next day 05:00"
+        },
+        "duration": "20h",
+        "memo": "Connecting flight with a layover."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the resort",
+          "description": "Enjoy a leisurely breakfast at your resort, featuring fresh tropical fruits, pastries, and local Fijian dishes to fuel your day before departure.",
+          "searchQuery": "Denarau Island Resort",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Relax at the beach",
+          "description": "Spend your morning soaking up the sun on the beautiful beaches of Denarau Island. The soft white sands and clear blue waters are perfect for a final dip before heading home.",
+          "searchQuery": "Denarau Beach",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a beachfront restaurant",
+          "description": "Savor a delicious lunch at a beachfront restaurant, enjoying fresh seafood and local specialties while taking in the stunning ocean views.",
+          "searchQuery": "The Beach Shack",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Last-minute shopping at Port Denarau",
+          "description": "Take a stroll through Port Denarau for some last-minute shopping. Pick up souvenirs, local crafts, or Fijian delicacies to remember your trip.",
+          "searchQuery": "Port Denarau",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Check-out and transfer to Nadi International Airport",
+          "description": "Check out from your resort and enjoy a short transfer to Nadi International Airport, reflecting on the wonderful memories made during your stay in Fiji.",
+          "searchQuery": "Nadi International Airport",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

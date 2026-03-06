@@ -1,0 +1,516 @@
+{
+  "id": "30a26536-0a2c-44cd-9bd1-f9bf8cd130bc",
+  "destination": "アムステルダム",
+  "description": "アムステルダムの魅力を存分に味わう6日間の旅へようこそ。美術館や歴史的な街並みを巡り、フォトジェニックなスポットでの写真撮影を楽しみながら、友人との思い出を深める旅を計画しました。運河クルーズでのリラックスしたひとときもお楽しみください。",
+  "days": [
+    {
+      "day": 1,
+      "title": "アムステルダム到着と街の散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アムステルダムのカフェで、地元のパンやチーズを使った朝食を楽しみます。新鮮なオレンジジュースと共に、エネルギーをチャージしましょう。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ダム広場散策",
+          "description": "アムステルダムの中心、ダム広場を訪れます。壮大な王宮や国立記念碑を眺めながら、周囲のストリートパフォーマンスを楽しむことができます。",
+          "searchQuery": "Dam Square",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "De Silveren Spiegelでランチ",
+          "description": "歴史的な建物にあるレストランで、オランダの伝統料理を楽しみます。特に、地元の魚料理が絶品です。",
+          "searchQuery": "De Silveren Spiegel",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アムステルダム国立美術館",
+          "description": "オランダの名画が揃うアムステルダム国立美術館を訪れます。レンブラントやフェルメールの作品をじっくり鑑賞しましょう。",
+          "searchQuery": "Rijksmuseum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "運河クルーズ",
+          "description": "アムステルダムの美しい運河をクルーズしながら、街の歴史や文化を学びます。特に夕方の光が水面に映る景色はフォトジェニックです。",
+          "searchQuery": "Amsterdam Canal Cruise",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルチェックイン",
+          "description": "アムステルダムの中心に位置するホテルにチェックイン。荷物を置いて、少し休憩しましょう。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "De Kasでディナー",
+          "description": "新鮮な地元の食材を使った料理が楽しめるレストランで、特別なディナーを堪能します。美しい温室の中での食事は、特別な体験です。",
+          "searchQuery": "De Kas",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ゴッホ美術館と運河クルーズ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アムステルダムのカフェで、地元のパンやチーズを使った朝食を楽しみます。新鮮なオレンジジュースと共に、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ゴッホ美術館",
+          "description": "世界的に有名なゴッホの作品が集まる美術館。彼の生涯や作品を通じて、印象派の魅力を深く理解できる貴重な体験が待っています。特に「ひまわり」や「星月夜」は必見です。",
+          "searchQuery": "Van Gogh Museum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "近くのカフェでランチ",
+          "description": "美術館近くのカフェで軽食を。サンドイッチやサラダを楽しみながら、アムステルダムの街の雰囲気を味わいます。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "運河クルーズ",
+          "description": "アムステルダムの美しい運河をクルーズしながら、街の歴史や文化を学びます。水上から見る街並みは、フォトジェニックなスポットが満載です。",
+          "searchQuery": "Amsterdam Canal Cruise",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "運河沿いの散策",
+          "description": "運河クルーズの後は、運河沿いを散策。美しい建物やアートギャラリーを訪れながら、アムステルダムの魅力を再発見します。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "アムステルダムの地元料理を楽しめるレストランで、ディナーを。オランダの伝統的な料理を味わいながら、友人との楽しい時間を過ごします。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。アムステルダムの夜景を楽しみながら、明日の計画を立てるのも良いでしょう。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "アムステルダムの歴史を感じる",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アムステルダムのカフェで、地元のパンやチーズを使った朝食を楽しみます。新鮮なオレンジジュースと共に、エネルギーをチャージしましょう。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ゴッホ美術館",
+          "description": "世界最大のゴッホのコレクションを誇る美術館で、彼の生涯や作品を深く理解することができます。特に「ひまわり」や「星月夜」は必見です。",
+          "searchQuery": "Van Gogh Museum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "近くのカフェでランチ",
+          "description": "美術館近くのカフェで、アムステルダム名物のパンケーキやサンドイッチを楽しみましょう。地元の人々に人気のスポットです。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アンネ・フランクの家",
+          "description": "歴史的な場所であるアンネ・フランクの家を訪れ、彼女の物語に触れます。感動的な展示が多く、心に残る体験ができます。事前にチケットを購入しておくことをおすすめします。",
+          "searchQuery": "Anne Frank House",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ヨルダン地区を散策",
+          "description": "アムステルダムの魅力的なヨルダン地区を散策。美しい運河や個性的なショップ、カフェが並ぶエリアで、フォトジェニックなスポットがたくさんあります。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "運河クルーズ",
+          "description": "アムステルダムの美しい運河をクルーズしながら、街の景色を楽しみます。夕暮れ時のクルーズは特にロマンチックで、素晴らしい写真が撮れます。",
+          "searchQuery": "Amsterdam Canal Cruise",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "地元のレストランでディナー",
+          "description": "アムステルダムの地元料理を楽しめるレストランで、心温まるディナーを。特にシーフード料理やオランダの伝統的な料理がおすすめです。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "アムステルダムのアートと文化",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アムステルダムのカフェで、地元のパンやチーズを使った美味しい朝食を楽しみます。特に、クロワッサンやオランダのチーズは絶品です。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ゴッホ美術館",
+          "description": "世界最大のゴッホのコレクションを誇る美術館で、彼の作品をじっくりと鑑賞。特に「ひまわり」や「星月夜」は必見です。美術館周辺の公園も散策して、アートに囲まれたひとときを楽しんでください。",
+          "searchQuery": "Van Gogh Museum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "{\"type\":\"blog\",\"title\":\"アムステルダムの美術館巡り\",\"url\":\"https://example.com/amsterdam-museum-tour\",\"confidence\":\"high\"}"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のカフェでランチ",
+          "description": "アムステルダムのカフェ文化を体験。サンドイッチやスープ、地元のビールを楽しみながら、友人とゆったりとした時間を過ごします。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "運河クルーズ",
+          "description": "アムステルダムの美しい運河をクルーズしながら、街の歴史や文化を学びます。運河沿いの風景はフォトジェニックで、素敵な写真が撮れるチャンスです。",
+          "searchQuery": "Amsterdam Canal Cruise",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "{\"type\":\"blog\",\"title\":\"アムステルダムの運河クルーズ体験\",\"url\":\"https://example.com/amsterdam-canal-cruise\",\"confidence\":\"high\"}"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アムステルダム国立美術館",
+          "description": "オランダの巨匠たちの作品が揃う美術館で、レンブラントやフェルメールの名作を鑑賞。美術館の建物自体も美しく、外観を楽しむだけでも価値があります。",
+          "searchQuery": "Rijksmuseum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "{\"type\":\"blog\",\"title\":\"アムステルダム国立美術館の魅力\",\"url\":\"https://example.com/rijksmuseum-amsterdam\",\"confidence\":\"high\"}"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "アムステルダムのレストランでディナー",
+          "description": "地元の食材を使ったオランダ料理を楽しむディナー。特に、シーフード料理や伝統的なオランダの煮込み料理はおすすめです。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "アムステルダムの隠れた魅力を探る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アムステルダムのカフェで、地元のパンやチーズを使った朝食を楽しみます。新鮮なオレンジジュースと共に、エネルギーをチャージしましょう。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "デ・ニエウェ・デ・ラクト（新教会）",
+          "description": "アムステルダムの歴史的な教会、デ・ニエウェ・デ・ラクトを訪れます。美しいステンドグラスや、静かな雰囲気の中で心を落ち着けることができます。特に、教会内のアート作品は必見です。",
+          "searchQuery": "Nieuwe Kerk",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "アムステルダムのマーケットでランチ",
+          "description": "地元のマーケットで新鮮な食材やスナックを楽しみます。特に、ハーリング（生ニシン）やストロープワッフルは外せません。地元の人々と触れ合いながら、アムステルダムの食文化を体験しましょう。",
+          "searchQuery": "Albert Cuyp Market",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ゴッホ美術館",
+          "description": "世界的に有名なゴッホ美術館を訪れ、彼の作品をじっくり鑑賞します。特に「ひまわり」や「星月夜」は必見。美術館内のカフェで一息つくのもおすすめです。",
+          "searchQuery": "Van Gogh Museum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "運河クルーズ",
+          "description": "アムステルダムの美しい運河をクルーズしながら、街の景色を楽しみます。運河沿いの歴史的な建物や風景を眺めることができ、写真撮影にも最適です。",
+          "searchQuery": "Amsterdam Canal Cruise",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "アムステルダムの地元料理を楽しめるレストランで、ディナーを堪能します。特に、オランダの伝統的な料理やビールを味わうことができます。",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "アムステルダムから帰路へ",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "アムステルダム",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "アムステルダム中央駅",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "アムステルダム中央駅周辺を散策しながら、帰路の準備をします。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アムステルダムのカフェで、地元のパンやチーズを使った朝食を楽しみます。特に、オランダのトーストやスモークサーモンが絶品です。",
+          "searchQuery": "Amsterdam Cafe Breakfast",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ゴッホ美術館",
+          "description": "世界最大のゴッホのコレクションを誇る美術館で、彼の作品をじっくりと鑑賞します。特に「ひまわり」や「星月夜」は必見です。",
+          "searchQuery": "Van Gogh Museum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "アムステルダムの運河クルーズ",
+          "description": "美しい運河を巡るクルーズで、アムステルダムの街並みを水上から楽しみます。特に歴史的な建物や橋を間近で見ることができ、フォトジェニックな瞬間がたくさん！",
+          "searchQuery": "Amsterdam Canal Cruise",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アムステルダム中央駅周辺散策",
+          "description": "アムステルダム中央駅周辺を散策し、地元のショップやカフェを訪れます。お土産を探したり、街の雰囲気を楽しんだりするのに最適なエリアです。",
+          "searchQuery": "Amsterdam Central Station",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アムステルダムのカフェで軽食",
+          "description": "運河沿いのカフェで、コーヒーと共にオランダの伝統的なスイーツを楽しみます。特にアップルパイは絶品です。",
+          "searchQuery": "Amsterdam Cafe",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "アムステルダム中央駅から帰路へ",
+          "description": "アムステルダム中央駅から帰路につきます。美しい思い出を胸に、また訪れたい街として心に刻まれることでしょう。",
+          "searchQuery": "Amsterdam Central Station",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

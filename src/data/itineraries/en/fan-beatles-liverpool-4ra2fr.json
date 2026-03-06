@@ -1,0 +1,375 @@
+{
+  "id": "b9014ebd-0ce8-490b-8035-41b632bce772",
+  "destination": "Liverpool",
+  "description": "Immerse yourself in the vibrant culture and rich history of Liverpool, a city that pulsates with the rhythm of music and art. This four-day getaway is perfect for couples looking to explore the iconic Beatles landmarks, indulge in local cuisine, and unwind in the city's charming atmosphere. From the historic docks to the lively streets filled with music, Liverpool offers a unique blend of experiences that will leave you enchanted. Get ready to create unforgettable memories together as you dive into the heart of this dynamic city!",
+  "heroImage": "https://images.unsplash.com/photo-1601194285578-35b4dc7c0d95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODkwOTd8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Michal Balog",
+  "heroImagePhotographerUrl": "https://unsplash.com/@mikbutcher?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Beatles Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Brunch Club",
+          "description": "Start your day with a hearty breakfast at The Brunch Club, known for its delicious pancakes and full English breakfast. It's a cozy spot that sets the perfect tone for your Beatles adventure!",
+          "searchQuery": "The Brunch Club",
+          "locationEn": "Liverpool, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit The Beatles Story",
+          "description": "Dive into the world of The Beatles at The Beatles Story, an immersive exhibition that takes you through the band's journey from Liverpool to global stardom. Don't miss the memorabilia and interactive displays!",
+          "searchQuery": "The Beatles Story",
+          "locationEn": "Liverpool, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Cavern Club",
+          "description": "Enjoy lunch at The Cavern Club, the iconic venue where The Beatles played in their early days. Savor some classic pub fare while soaking in the rich musical history of this legendary spot.",
+          "searchQuery": "The Cavern Club",
+          "locationEn": "Liverpool, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Albert Dock",
+          "description": "Stroll around Albert Dock, a UNESCO World Heritage site. Here, you can enjoy the waterfront views, visit shops, and take in the vibrant atmosphere. It's a great place to relax and take photos!",
+          "searchQuery": "Albert Dock",
+          "locationEn": "Liverpool, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Matthew Street and The Cavern Quarter",
+          "description": "Wander through Matthew Street, home to The Cavern Club and various Beatles-themed shops. This area is perfect for picking up unique Beatles merchandise and enjoying live music performances.",
+          "searchQuery": "Matthew Street",
+          "locationEn": "Liverpool, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Philharmonic Dining Rooms",
+          "description": "End your day with dinner at The Philharmonic Dining Rooms, a beautifully ornate pub offering a range of traditional British dishes. The stunning interior is worth the visit alone!",
+          "searchQuery": "The Philharmonic Dining Rooms",
+          "locationEn": "Liverpool, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll along the waterfront",
+          "description": "Take a leisurely evening stroll along the waterfront, enjoying the views of the Mersey River and the city skyline. It's a perfect way to unwind after a day filled with Beatles exploration.",
+          "searchQuery": "Liverpool Waterfront",
+          "locationEn": "Liverpool, UK",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Immersion and Relaxation",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Brunch Club",
+          "description": "Start your day with a hearty breakfast at The Brunch Club, known for its delicious pancakes and full English breakfast. The cozy atmosphere makes it a perfect spot to fuel up for a day of exploration.",
+          "searchQuery": "The Brunch Club",
+          "locationEn": "Liverpool, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit The Beatles Story",
+          "description": "Dive into the world of The Beatles at The Beatles Story, an immersive exhibition that takes you through the band's history, showcasing memorabilia and personal stories. A must-visit for any fan!",
+          "searchQuery": "The Beatles Story",
+          "locationEn": "Liverpool, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Cavern Club",
+          "description": "Enjoy lunch at The Cavern Club, the iconic venue where The Beatles played. Relish classic British dishes while soaking in the vibrant atmosphere that celebrates the band's legacy.",
+          "searchQuery": "The Cavern Club",
+          "locationEn": "Liverpool, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Matthew Street",
+          "description": "Stroll down Matthew Street, home to numerous Beatles-themed shops and bars. Don't forget to check out the famous statue of John Lennon and pick up some unique Beatles merchandise!",
+          "searchQuery": "Matthew Street",
+          "locationEn": "Liverpool, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit the Walker Art Gallery",
+          "description": "Take a break from the Beatles and immerse yourself in art at the Walker Art Gallery. This gallery houses an impressive collection of paintings and sculptures, perfect for art lovers.",
+          "searchQuery": "Walker Art Gallery",
+          "locationEn": "Liverpool, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Sefton Park",
+          "description": "Unwind at Sefton Park, a beautiful green space perfect for a leisurely walk or a picnic. Enjoy the serene surroundings and perhaps even catch a glimpse of the stunning Palm House.",
+          "searchQuery": "Sefton Park",
+          "locationEn": "Liverpool, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Italian Club Fish",
+          "description": "End your day with a delightful dinner at The Italian Club Fish, known for its fresh seafood and Italian flair. The cozy ambiance and delicious dishes make it a perfect spot for couples.",
+          "searchQuery": "The Italian Club Fish",
+          "locationEn": "Liverpool, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Local Markets and Waterfront Strolls",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Brunch Club",
+          "description": "Start your day with a hearty breakfast at The Brunch Club, known for its delicious pancakes and full English breakfast. It's a cozy spot that captures the local vibe perfectly.",
+          "searchQuery": "The Brunch Club",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Bold Street",
+          "description": "Stroll down Bold Street, a vibrant area filled with independent shops and cafes. Don't miss the chance to pick up some unique Beatles memorabilia at the local shops.",
+          "searchQuery": "Bold Street",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Baltic Market",
+          "description": "Head to The Baltic Market for lunch, a lively food hall offering a variety of street food options. Enjoy a casual meal while soaking in the local atmosphere.",
+          "searchQuery": "The Baltic Market",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit The Beatles Story",
+          "description": "Dive into the world of The Beatles at The Beatles Story museum. This immersive experience showcases the band's history and their impact on music and culture.",
+          "searchQuery": "The Beatles Story",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Stroll along the Pier Head",
+          "description": "Take a leisurely walk along the waterfront at Pier Head. Enjoy the stunning views of the Three Graces and the iconic Liver Building, perfect for some memorable photos.",
+          "searchQuery": "Pier Head",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at The Philharmonic Dining Rooms",
+          "description": "Enjoy dinner at The Philharmonic Dining Rooms, a historic pub known for its beautiful interior and classic British dishes. A great place to unwind after a day of exploring.",
+          "searchQuery": "The Philharmonic Dining Rooms",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening at The Cavern Club",
+          "description": "End your day with live music at The Cavern Club, the birthplace of The Beatles. Experience the vibrant atmosphere and enjoy performances from local bands.",
+          "searchQuery": "The Cavern Club",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Final Day and Departure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Brunch Club",
+          "description": "Start your day with a hearty breakfast at The Brunch Club, known for its delicious pancakes and full English breakfast. It's a cozy spot that will fuel you for a day of exploration!",
+          "searchQuery": "The Brunch Club",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit The Cavern Club",
+          "description": "No trip to Liverpool is complete without a visit to The Cavern Club, the legendary venue where The Beatles played. Immerse yourself in the music history and enjoy live performances while soaking in the vibrant atmosphere.",
+          "searchQuery": "The Cavern Club",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore The Beatles Story",
+          "description": "Dive deeper into the world of The Beatles at The Beatles Story museum. This immersive experience showcases the band's journey from their early days in Liverpool to global superstardom, complete with memorabilia and interactive exhibits.",
+          "searchQuery": "The Beatles Story",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Beatles-themed Café",
+          "description": "Enjoy lunch at a café themed around The Beatles, where you can savor dishes inspired by the band. It's a fun way to continue the Beatles experience while enjoying some local flavors.",
+          "searchQuery": "The Beatles-themed Café",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "St. George's Hall Visit",
+          "description": "After lunch, head to St. George's Hall, an architectural masterpiece. Take a guided tour to learn about its history and admire the stunning interiors, including the concert hall and the law courts.",
+          "searchQuery": "St. George's Hall",
+          "locationEn": "Liverpool, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Beatles Merchandise",
+          "description": "Spend some time shopping for Beatles merchandise at local shops. From vinyl records to unique memorabilia, you'll find the perfect souvenirs to remember your trip.",
+          "searchQuery": "Beatles merchandise shop",
+          "locationEn": "Liverpool, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local Pub",
+          "description": "Wrap up your Liverpool adventure with dinner at a traditional local pub. Enjoy classic British dishes and perhaps a pint of ale while reflecting on your memorable trip.",
+          "searchQuery": "Local Pub in Liverpool",
+          "locationEn": "Liverpool, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

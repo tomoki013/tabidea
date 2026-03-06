@@ -1,0 +1,603 @@
+{
+  "id": "68f1b638-b767-4118-a261-f68ab197ed38",
+  "destination": "ヘルシンキ・ロヴァニエミ周遊",
+  "description": "冬のフィンランドで、オーロラの神秘とサンタクロースの夢を体験する旅。ヘルシンキの街並みを楽しんだ後、ロヴァニエミで幻想的な北極圏の自然を満喫します。カップルでの特別な思い出を作るための、心温まる旅のプランです。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ヘルシンキ到着",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ヘルシンキのホテルで、北欧スタイルの朝食を楽しみます。新鮮なパンやスモークサーモン、ヨーグルトなど、ヘルシンキならではの味わいを堪能。",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ヘルシンキ大聖堂",
+          "description": "ヘルシンキのシンボルとも言える大聖堂を訪れます。白亜の美しい建物と青空のコントラストが印象的で、内部の荘厳さも必見です。",
+          "searchQuery": "Helsinki Cathedral",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "エスプラナーディ公園でランチ",
+          "description": "エスプラナーディ公園の近くにあるカフェで、サンドイッチやサラダを楽しみながら、穏やかな公園の雰囲気を満喫します。",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "エスプラナーディ公園散策",
+          "description": "公園内を散策し、地元のアーティストの作品やストリートパフォーマンスを楽しみます。冬の寒さを感じながらも、温かい飲み物を片手にリラックス。",
+          "searchQuery": "Esplanadi Park",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "アテネウム美術館",
+          "description": "フィンランドの国立美術館であるアテネウムを訪れ、フィンランドのアートを堪能します。特に冬の特別展があれば、ぜひチェックしてみてください。",
+          "searchQuery": "Ateneum Art Museum",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルにチェックイン",
+          "description": "ヘルシンキのホテルにチェックインし、少し休憩。部屋からの景色を楽しみながら、旅の疲れを癒します。",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "ヘルシンキの地元料理を楽しめるレストランで、フィンランドの伝統的な料理を堪能します。特に、サーモン料理や鹿肉料理がおすすめです。",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ヘルシンキ観光",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ヘルシンキ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ロヴァニエミ",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "ヘルシンキからロヴァニエミへは約1時間のフライトです。空からの美しいフィンランドの風景を楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "ロヴァニエミのサンタクロース村",
+          "description": "サンタクロース村でサンタさんに会い、手紙を出すことができます。クリスマスの雰囲気が漂うこの場所で、思い出に残る体験をお楽しみください。",
+          "searchQuery": "Santa Claus Village",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "サンタクロース村でランチ",
+          "description": "村内のレストランで、フィンランドの伝統料理を楽しみましょう。特に、サーモンスープや地元のベリーを使ったデザートがおすすめです。",
+          "searchQuery": "Santa Claus Village Restaurant",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "オーロラ観測ツアーの予約",
+          "description": "夜のオーロラ観測ツアーを予約します。ロヴァニエミはオーロラ観測に最適な場所で、専門のガイドが案内してくれます。",
+          "searchQuery": "Aurora Borealis Tour Rovaniemi",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "アークティックサークルを越える",
+          "description": "サンタクロース村から少し歩くと、アークティックサークルの境界線があります。ここで記念撮影をして、特別な思い出を作りましょう。",
+          "searchQuery": "Arctic Circle",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ロヴァニエミ市内散策",
+          "description": "市内を散策し、地元のショップやカフェを訪れましょう。フィンランドのデザインやお土産を探すのも楽しいです。",
+          "searchQuery": "Rovaniemi City Center",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ロヴァニエミでディナー",
+          "description": "地元のレストランでフィンランド料理を堪能します。特に、トナカイ肉料理や地元の魚料理が人気です。",
+          "searchQuery": "Rovaniemi Restaurant",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "オーロラ観測ツアー参加",
+          "description": "夜のオーロラ観測ツアーに参加します。美しいオーロラを見ながら、幻想的な夜を過ごしましょう。",
+          "searchQuery": "Aurora Borealis Tour Rovaniemi",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ロヴァニエミへ移動",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "ヘルシンキ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ロヴァニエミ",
+          "time": "13:00"
+        },
+        "duration": "4h",
+        "memo": "ヘルシンキからロヴァニエミまでの快適な列車移動。車窓からの冬景色を楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "13:30",
+          "activity": "サンタクロース村",
+          "description": "ロヴァニエミに到着したら、まずはサンタクロース村へ。サンタクロースと直接会える貴重な体験が待っています。手紙を出すポストオフィスもあり、特別な思い出を作ることができます。",
+          "searchQuery": "Santa Claus Village",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "サンタクロース村内でのアクティビティ",
+          "description": "サンタクロース村内では、トナカイのそり体験や、雪の中でのアクティビティが楽しめます。冬の大自然を満喫しながら、特別な時間を過ごしましょう。",
+          "searchQuery": "Santa Claus Village Activities",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "オーロラ観賞ツアー",
+          "description": "夜はオーロラ観賞ツアーに参加。ロヴァニエミの澄んだ空気の中で、幻想的なオーロラを楽しむことができます。暖かい服装で参加することをお忘れなく。",
+          "searchQuery": "Aurora Borealis Tour Rovaniemi",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "ロヴァニエミでのディナー",
+          "description": "地元のレストランでフィンランド料理を楽しみましょう。新鮮な魚料理や、伝統的な肉料理が味わえます。",
+          "searchQuery": "Rovaniemi Restaurant",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ロヴァニエミでの体験",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ロヴァニエミのホテルで、フィンランドの伝統的な朝食を楽しみます。新鮮なパンやスモークサーモン、地元のチーズが並び、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "犬ぞり体験",
+          "description": "冬の大自然を満喫する犬ぞり体験。愛らしいハスキー犬たちが引くソリに乗り、雪原を駆け抜ける爽快感は格別です。ガイドが同行し、犬たちのことも教えてくれます。",
+          "searchQuery": "Husky Safari Rovaniemi",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "犬ぞり体験の後は、地元のレストランでランチを楽しみましょう。フィンランドの郷土料理を味わえるお店で、特にサーモンスープが人気です。",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アイスホテル見学",
+          "description": "ロヴァニエミのアイスホテルを訪れ、氷と雪で作られた美しいアートを堪能します。幻想的な氷の彫刻や、特別なスイートルームを見学することができます。",
+          "searchQuery": "Icehotel Rovaniemi",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "サンタクロース村訪問",
+          "description": "サンタクロース村で、サンタさんに会いに行きましょう。手紙を出したり、記念撮影を楽しんだり、クリスマスの雰囲気を満喫できます。",
+          "searchQuery": "Santa Claus Village",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "オーロラ観賞ツアー",
+          "description": "夜はオーロラ観賞ツアーに参加。専門のガイドがオーロラが見えるスポットへ案内してくれます。美しいオーロラの光景を楽しむために、暖かい服装で臨みましょう。",
+          "searchQuery": "Aurora Borealis Tour Rovaniemi",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ツアー後のディナー",
+          "description": "オーロラ観賞ツアーの後は、地元のレストランでディナーを楽しみます。フィンランドの冬の味覚を堪能できるメニューが揃っています。",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ロヴァニエミでの自然探訪",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ロヴァニエミ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ヘルシンキ",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "ロヴァニエミからヘルシンキへのフライトで、北極圏の自然を後にします。"
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "サンタクロース村訪問",
+          "description": "サンタクロース村でサンタさんに会い、手紙を出すことができます。クリスマスの雰囲気を楽しみながら、可愛らしいお土産も見つけられます。",
+          "searchQuery": "Santa Claus Village",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "サンタクロース村でランチ",
+          "description": "村内のレストランで、フィンランドの伝統料理を楽しみましょう。特に、サーモンスープや地元のベリーを使ったデザートがおすすめです。",
+          "searchQuery": "Santa Claus Village Restaurant",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "オーロラ観賞ツアーの準備",
+          "description": "夕方のオーロラ観賞ツアーに備えて、必要な装備を整えます。暖かい服装を忘れずに！",
+          "searchQuery": "Aurora Borealis Tour",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ロヴァニエミの自然散策",
+          "description": "ロヴァニエミ周辺の美しい自然を散策します。雪に覆われた森や川の景色を楽しみながら、冬の静けさを感じましょう。",
+          "searchQuery": "Rovaniemi Nature Walk",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "オーロラ観賞ツアー",
+          "description": "専門ガイドと共にオーロラ観賞へ出発。美しいオーロラが空を彩る瞬間を楽しみましょう。",
+          "searchQuery": "Aurora Borealis Tour",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ツアー後のディナー",
+          "description": "オーロラ観賞ツアーの後、地元のレストランでディナーを楽しみます。フィンランドの郷土料理を堪能しましょう。",
+          "searchQuery": "Rovaniemi Restaurant",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ヘルシンキへ戻る",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "ロヴァニエミ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ヘルシンキ",
+          "time": "14:00"
+        },
+        "duration": "5h",
+        "memo": "ロヴァニエミからヘルシンキへのバス移動。快適な車内でのんびりと景色を楽しみながら移動します。"
+      },
+      "activities": [
+        {
+          "time": "14:30",
+          "activity": "マーケット広場散策",
+          "description": "ヘルシンキの中心に位置するマーケット広場で、地元の新鮮な食材や手作りの工芸品を楽しみましょう。特に、フィンランドの伝統的なスモークサーモンやベリー類は絶品です。",
+          "searchQuery": "Helsinki Market Square",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ウスペンスキー大聖堂訪問",
+          "description": "美しいロシア正教の大聖堂、ウスペンスキー大聖堂を訪れます。赤い外壁と金色のドームが印象的で、内部の装飾も見応えがあります。",
+          "searchQuery": "Uspenski Cathedral",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ヘルシンキのレストランでディナー",
+          "description": "地元の食材を使ったフィンランド料理を楽しむため、ヘルシンキの人気レストランでディナーを。特に、フィンランドの伝統的な料理を提供するお店を選ぶと良いでしょう。",
+          "searchQuery": "Restaurant Savotta",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "オーロラ観賞ツアー",
+          "description": "ヘルシンキ近郊でのオーロラ観賞ツアーに参加します。冬の夜空に広がる神秘的なオーロラを楽しむため、暖かい服装で出かけましょう。",
+          "searchQuery": "Aurora Borealis Tour Helsinki",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "帰国",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ヘルシンキ",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "07:00"
+        },
+        "duration": "9h",
+        "memo": "直行便で東京へ帰国します。時差に注意！"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ヘルシンキ市内散策",
+          "description": "朝食後、ヘルシンキの街を散策します。美しい建築やカフェを楽しみながら、最後のひとときを満喫しましょう。",
+          "searchQuery": "Helsinki City Center",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "アテネウム美術館訪問",
+          "description": "フィンランドの国立美術館であるアテネウム美術館を訪れ、フィンランドのアートを堪能します。特に、グスタフ・クリムトの作品が見どころです。",
+          "searchQuery": "Ateneum Art Museum",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "カフェ・アアルトでランチ",
+          "description": "ヘルシンキの人気カフェ・アアルトで、地元の食材を使ったランチを楽しみます。シンプルで美味しい料理が魅力です。",
+          "searchQuery": "Café Aalto",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ヘルシンキ大聖堂見学",
+          "description": "ヘルシンキのシンボルとも言える大聖堂を訪れ、その美しい外観と内部を堪能します。特に、広場からの眺めは絶景です。",
+          "searchQuery": "Helsinki Cathedral",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "マーケット広場でお土産探し",
+          "description": "ヘルシンキのマーケット広場で、地元の特産品やお土産を探します。新鮮な食材や手作りの工芸品が並び、楽しいショッピングが楽しめます。",
+          "searchQuery": "Helsinki Market Square",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "空港へ移動",
+          "description": "ヘルシンキ市内から空港へ移動します。帰国の準備を整えましょう。",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,351 @@
+{
+  "id": "3e8804c2-7760-41bf-b09b-10ce1d1b22b5",
+  "destination": "Lima",
+  "description": "Immerse yourself in the vibrant culture and rich history of Lima, Peru, over four unforgettable days. This family-friendly itinerary is designed to balance art, history, and relaxation, ensuring that both adults and children will have a memorable experience. From exploring world-class museums to enjoying the coastal beauty of Miraflores, each day is packed with exciting activities that showcase the best of Lima's artistic and cultural offerings.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Coastal Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at La Lucha Sanguchería",
+          "description": "Start your day with a delicious Peruvian breakfast at La Lucha Sanguchería, known for its fresh sandwiches and juices. It's a great way to fuel up for a day of exploration!",
+          "searchQuery": "La Lucha Sanguchería",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit to Parque Kennedy",
+          "description": "Stroll through Parque Kennedy, a vibrant park in Miraflores filled with local artists, shops, and friendly cats. It's a perfect spot for family photos and to soak in the local culture.",
+          "searchQuery": "Parque Kennedy",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Pardo's Chicken",
+          "description": "Enjoy a family-friendly lunch at Pardo's Chicken, famous for its rotisserie chicken and delicious sides. It's a casual dining spot that offers great value for families.",
+          "searchQuery": "Pardo's Chicken",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Larcomar Shopping Center",
+          "description": "Head to Larcomar, a cliffside shopping center with stunning ocean views. Browse local shops, enjoy some ice cream, and take in the beautiful scenery of the Pacific Ocean.",
+          "searchQuery": "Larcomar",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the Museo de Arte de Lima (MALI)",
+          "description": "Discover Peru's rich artistic heritage at the Museo de Arte de Lima. The museum features a diverse collection of pre-Columbian, colonial, and contemporary art, making it a great cultural stop for the family.",
+          "searchQuery": "Museo de Arte de Lima",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Dinner at El Rincón de la Patineta",
+          "description": "End your day with a casual dinner at El Rincón de la Patineta, a local favorite known for its hearty Peruvian dishes and friendly atmosphere. Perfect for families looking for a relaxed dining experience.",
+          "searchQuery": "El Rincón de la Patineta",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening Walk along the Malecón",
+          "description": "Take a leisurely evening stroll along the Malecón, a scenic promenade overlooking the ocean. Enjoy the sunset and the fresh sea breeze as you wind down your first day in Lima.",
+          "searchQuery": "Malecón de Miraflores",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Art and History in the City Center",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Miraflores",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Plaza Mayor",
+          "time": "09:20"
+        },
+        "duration": "20m",
+        "memo": "A short drive to the heart of Lima."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Plaza Mayor",
+          "description": "Start your day at the historic Plaza Mayor, the birthplace of Lima. Marvel at the stunning colonial architecture, including the Government Palace and the Cathedral of Lima. This vibrant square is perfect for family photos and soaking in the local atmosphere.",
+          "searchQuery": "Plaza Mayor",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Larco Museum",
+          "description": "Next, head to the Larco Museum, renowned for its impressive collection of pre-Columbian art. The museum is family-friendly, with interactive exhibits that will engage both adults and children. Don't miss the beautiful gardens and the café for a quick snack.",
+          "searchQuery": "Larco Museum",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Café del Museo",
+          "description": "Enjoy lunch at the museum's café, which offers a delightful selection of Peruvian dishes. The outdoor seating area is perfect for families, allowing you to relax while enjoying the lush surroundings.",
+          "searchQuery": "Café del Museo",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Barranco District",
+          "description": "After lunch, take a short taxi ride to Barranco, Lima's bohemian district. Explore the colorful streets filled with street art, galleries, and charming shops. This area is perfect for a leisurely stroll and discovering local artists.",
+          "searchQuery": "Barranco District",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Bridge of Sighs",
+          "description": "While in Barranco, visit the iconic Bridge of Sighs. Legend has it that if you hold your breath while crossing, your wish will come true! It's a lovely spot for family photos and enjoying the view of the surrounding area.",
+          "searchQuery": "Bridge of Sighs",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Dinner at La 73",
+          "description": "End your day with dinner at La 73, a family-friendly restaurant known for its delicious Peruvian cuisine. The vibrant atmosphere and varied menu will cater to all tastes, making it a perfect spot to unwind after a day of exploration.",
+          "searchQuery": "La 73",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion and Relaxation",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Barranco",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Huaca Pucllana",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "A short drive to the archaeological site."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Huaca Pucllana",
+          "description": "Explore the ancient ruins of Huaca Pucllana, a pre-Columbian pyramid made of adobe. This site offers a fascinating glimpse into Lima's history and is surrounded by a beautiful park.",
+          "searchQuery": "Huaca Pucllana",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Lunch at La Huaca",
+          "description": "Enjoy a delicious meal at La Huaca, a restaurant located right next to the archaeological site. Savor traditional Peruvian dishes while overlooking the ruins.",
+          "searchQuery": "La Huaca",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Parque de las Leyendas",
+          "description": "Visit Parque de las Leyendas, a large zoo and botanical garden that showcases Peru's diverse wildlife. It's a great place for kids to learn about animals native to the region.",
+          "searchQuery": "Parque de las Leyendas",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Pueblo Libre Exploration",
+          "description": "Stroll through the charming streets of Pueblo Libre, known for its colonial architecture and vibrant atmosphere. Don't miss the local artisan shops and cafes.",
+          "searchQuery": "Pueblo Libre",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at El Rincón de la Raza",
+          "description": "End your day with a family-friendly dinner at El Rincón de la Raza, where you can enjoy hearty Peruvian meals in a cozy setting.",
+          "searchQuery": "El Rincón de la Raza",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Final Day and Departure",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Pueblo Libre",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "San Isidro",
+          "time": "null"
+        },
+        "duration": "15m",
+        "memo": "A short taxi ride to San Isidro."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at La Lucha Sangucheria",
+          "description": "Start your day with a delicious Peruvian breakfast at La Lucha Sangucheria, known for its fresh ingredients and tasty sandwiches. A great way to fuel up for the day ahead!",
+          "searchQuery": "La Lucha Sangucheria",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Museo de Arte de Lima (MALI)",
+          "description": "Explore the Museo de Arte de Lima, which showcases a rich collection of Peruvian art from pre-Columbian times to the modern era. The museum's architecture is also a sight to behold!",
+          "searchQuery": "Museo de Arte de Lima",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at El Pan de la Chola",
+          "description": "Enjoy a casual lunch at El Pan de la Chola, famous for its artisanal bread and delicious sandwiches. It's a family-friendly spot with a cozy atmosphere.",
+          "searchQuery": "El Pan de la Chola",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Shopping at Jockey Plaza",
+          "description": "Head to Jockey Plaza for some shopping. This large mall offers a variety of stores, from local brands to international chains, perfect for picking up souvenirs or gifts.",
+          "searchQuery": "Jockey Plaza",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Pueblo Libre",
+          "description": "After a day of exploration and shopping, return to Pueblo Libre to relax before your departure. Reflect on the wonderful experiences you've had in Lima!",
+          "searchQuery": "Pueblo Libre",
+          "locationEn": "Lima, Peru",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

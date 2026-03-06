@@ -1,0 +1,599 @@
+{
+  "id": "7e231cd9-c92f-4f5e-bec7-f86fa4b9a642",
+  "destination": "San Francisco",
+  "description": "Escape to the vibrant city of San Francisco, where the iconic Golden Gate Bridge meets the charming streets of Fisherman’s Wharf. This 6-day adventure is tailored for the solo traveler who craves urban exploration, delectable cuisine, and picturesque views. From savoring clam chowder in a sourdough bread bowl to riding the famous cable cars, immerse yourself in the unique culture and stunning landscapes of this coastal gem. Get ready to capture Instagram-worthy moments at every turn!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in San Francisco",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Mama's on Washington Square",
+          "description": "Start your day with a delicious breakfast at Mama's, famous for its fresh ingredients and homemade dishes. Try their French toast or crab omelet for a true taste of San Francisco.",
+          "searchQuery": "Mama's on Washington Square",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Fisherman’s Wharf",
+          "description": "Explore the bustling Fisherman’s Wharf, where you can enjoy the lively atmosphere, street performers, and stunning views of the bay. Don’t forget to snap a photo with the sea lions at Pier 39!",
+          "searchQuery": "Fisherman’s Wharf",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Boudin Bakery",
+          "description": "Indulge in a bowl of clam chowder served in a sourdough bread bowl at Boudin Bakery, a San Francisco classic. The warm, hearty soup is perfect for a chilly day by the bay.",
+          "searchQuery": "Boudin Bakery",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Ride the Cable Car",
+          "description": "Experience the iconic San Francisco cable car ride. Hop on at Powell Street and enjoy the scenic views as you ascend the steep hills of the city. It’s a must-do for any visitor!",
+          "searchQuery": "San Francisco Cable Car",
+          "locationEn": "San Francisco, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore Chinatown",
+          "description": "Wander through the vibrant streets of Chinatown, the oldest and largest in North America. Visit the Dragon Gate, browse unique shops, and perhaps stop for some dim sum at a local eatery.",
+          "searchQuery": "Chinatown San Francisco",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at R&G Lounge",
+          "description": "Savor authentic Chinese cuisine at R&G Lounge, known for its delicious salt and pepper crab. The lively atmosphere and flavorful dishes make it a great spot to end your day.",
+          "searchQuery": "R&G Lounge",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll along the Embarcadero",
+          "description": "Take a leisurely evening stroll along the Embarcadero, enjoying the views of the Bay Bridge illuminated at night. It’s a perfect way to unwind after a busy day of exploring.",
+          "searchQuery": "Embarcadero",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the Waterfront",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Mama's on Washington Square",
+          "description": "Start your day with a delicious breakfast at Mama's, known for its fresh ingredients and homemade dishes. Try their famous French toast or crab omelet for a true San Francisco experience.",
+          "searchQuery": "Mama's on Washington Square",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Ride the Cable Car",
+          "description": "Hop on one of San Francisco's iconic cable cars for a scenic ride through the hilly streets. Enjoy the views as you ascend to Nob Hill and feel the thrill of this historic mode of transport.",
+          "searchQuery": "San Francisco Cable Car",
+          "locationEn": "San Francisco, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Golden Gate Bridge",
+          "description": "Take a stroll across the Golden Gate Bridge, one of the most photographed landmarks in the world. The panoramic views of the bay and city skyline are breathtaking, especially in the morning light.",
+          "searchQuery": "Golden Gate Bridge",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Fisherman's Wharf",
+          "description": "Head to Fisherman's Wharf for a classic San Francisco lunch. Don't miss the clam chowder served in a sourdough bread bowl, a local favorite that perfectly captures the essence of the waterfront.",
+          "searchQuery": "Fisherman's Wharf",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Crissy Field",
+          "description": "After lunch, take a leisurely walk along Crissy Field. This waterfront park offers stunning views of the Golden Gate Bridge and is a great spot for photos. Enjoy the fresh air and watch the kite surfers.",
+          "searchQuery": "Crissy Field",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the Marina District",
+          "description": "Wander through the Marina District, known for its beautiful homes and views of the bay. Stop by the Palace of Fine Arts for a picturesque photo opportunity and enjoy the serene atmosphere.",
+          "searchQuery": "Palace of Fine Arts",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at The Stinking Rose",
+          "description": "Indulge in a unique dining experience at The Stinking Rose, famous for its garlic-infused dishes. Try their garlic roasted crab or the garlic ice cream for a fun twist on dessert.",
+          "searchQuery": "The Stinking Rose",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening stroll along the waterfront",
+          "description": "End your day with a relaxing stroll along the waterfront. Enjoy the views of the bay and the city lights as they reflect on the water, a perfect way to unwind after a busy day.",
+          "searchQuery": "San Francisco Waterfront",
+          "locationEn": "San Francisco, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion and Culinary Delights",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Mama's on Washington Square",
+          "description": "Start your day with a delicious breakfast at Mama's, famous for its fresh ingredients and homemade dishes. Try their French toast or crab omelet for a true taste of San Francisco.",
+          "searchQuery": "Mama's on Washington Square",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Ride the Cable Car",
+          "description": "Experience the iconic San Francisco cable car ride. Hop on at Powell Street and enjoy the scenic views as you ascend the steep hills of the city. Don't forget to take some photos of the stunning vistas!",
+          "searchQuery": "San Francisco Cable Car",
+          "locationEn": "San Francisco, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Visit Coit Tower",
+          "description": "After your cable car ride, head to Coit Tower. Climb to the top for panoramic views of the Bay Area and explore the beautiful murals inside that depict California's history.",
+          "searchQuery": "Coit Tower",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Fisherman's Wharf",
+          "description": "Indulge in a classic San Francisco dish: clam chowder served in a sourdough bread bowl. Head to one of the many stalls at Fisherman's Wharf for this iconic meal while enjoying the bustling atmosphere.",
+          "searchQuery": "Fisherman's Wharf Clam Chowder",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Chinatown",
+          "description": "Stroll through the vibrant streets of Chinatown, the oldest in North America. Visit the shops, temples, and try some dim sum at a local eatery. Don't miss the Dragon Gate at the entrance!",
+          "searchQuery": "Chinatown San Francisco",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Exploratorium",
+          "description": "Engage your curiosity at the Exploratorium, a museum of science, art, and human perception. With interactive exhibits, it's a fun place to explore and take unique photos.",
+          "searchQuery": "Exploratorium",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Stinking Rose",
+          "description": "Savor a unique dining experience at The Stinking Rose, a garlic-themed restaurant. Enjoy dishes like garlic roasted crab or garlic-infused pasta in a cozy atmosphere.",
+          "searchQuery": "The Stinking Rose",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk at North Beach",
+          "description": "End your day with a leisurely walk through North Beach, San Francisco's Little Italy. Enjoy the lively atmosphere, and perhaps stop for a gelato or coffee at one of the charming cafes.",
+          "searchQuery": "North Beach San Francisco",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Art and Nature",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Mama's on Washington Square",
+          "description": "Start your day with a delicious breakfast at Mama's, known for its fresh ingredients and homemade dishes. Try their famous French toast or crab omelette for a delightful morning treat.",
+          "searchQuery": "Mama's on Washington Square",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Golden Gate Park",
+          "description": "Explore the vast Golden Gate Park, a beautiful urban oasis. Stroll through the gardens, visit the Japanese Tea Garden, and enjoy the serene atmosphere. Don't forget your camera for some stunning photos!",
+          "searchQuery": "Golden Gate Park",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "California Academy of Sciences",
+          "description": "Dive into the wonders of nature at the California Academy of Sciences. From the aquarium to the planetarium, this museum offers a unique experience that combines education and fun. Make sure to check out the living roof!",
+          "searchQuery": "California Academy of Sciences",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Fisherman's Wharf",
+          "description": "Head to Fisherman's Wharf for a classic San Francisco experience. Enjoy a bowl of clam chowder served in a sourdough bread bowl, a must-try local delicacy. The waterfront views are an added bonus!",
+          "searchQuery": "Fisherman's Wharf",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Ride the Cable Car",
+          "description": "Experience the iconic San Francisco cable car ride. Hop on at Powell Street and enjoy the scenic views as you ascend the steep hills of the city. It's a fun and quintessential part of your San Francisco adventure!",
+          "searchQuery": "San Francisco Cable Car",
+          "locationEn": "San Francisco, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore Haight-Ashbury",
+          "description": "Wander through the vibrant Haight-Ashbury district, known for its rich history in the 1960s counterculture movement. Check out the eclectic shops, vintage boutiques, and colorful murals that make this area so unique.",
+          "searchQuery": "Haight-Ashbury",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at The Stinking Rose",
+          "description": "Indulge in a unique dining experience at The Stinking Rose, famous for its garlic-infused dishes. Try their garlic roasted crab or the garlic ice cream for a memorable meal that will leave you with a story to tell!",
+          "searchQuery": "The Stinking Rose",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening stroll along the Embarcadero",
+          "description": "End your day with a leisurely stroll along the Embarcadero. Enjoy the stunning views of the Bay Bridge illuminated at night, and take in the lively atmosphere of this waterfront area.",
+          "searchQuery": "Embarcadero",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "A Day Trip to Muir Woods",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Mama's on Washington Square",
+          "description": "Start your day with a delicious breakfast at this beloved local spot, known for its fluffy pancakes and fresh ingredients. The cozy atmosphere makes it a perfect place to fuel up before your adventure.",
+          "searchQuery": "Mama's on Washington Square",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Cable Car Ride to Fisherman's Wharf",
+          "description": "Hop on one of San Francisco's iconic cable cars for a scenic ride to Fisherman's Wharf. Enjoy the views of the bay and the charming streets as you ascend and descend the city's famous hills.",
+          "searchQuery": "San Francisco Cable Car",
+          "locationEn": "San Francisco, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Explore Fisherman's Wharf",
+          "description": "Stroll along the bustling waterfront, where you can watch sea lions at Pier 39 and browse through various shops. Don't forget to take some photos with the stunning views of Alcatraz Island in the background!",
+          "searchQuery": "Fisherman's Wharf",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Boudin Bakery",
+          "description": "Indulge in a classic San Francisco dish: clam chowder served in a sourdough bread bowl. Boudin Bakery is famous for its fresh bread and delicious seafood chowder, making it a must-try for any visitor.",
+          "searchQuery": "Boudin Bakery",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Travel to Muir Woods National Monument",
+          "description": "Take a short drive or join a guided tour to Muir Woods, where you can immerse yourself in the serene beauty of towering redwoods. The peaceful trails are perfect for a leisurely hike and photography.",
+          "searchQuery": "Muir Woods National Monument",
+          "locationEn": "Mill Valley, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Hiking in Muir Woods",
+          "description": "Explore the majestic redwood trees on well-maintained trails. The towering giants create a magical atmosphere, perfect for capturing stunning photos. Don't miss the iconic Muir Woods Cathedral Grove!",
+          "searchQuery": "Muir Woods National Monument",
+          "locationEn": "Mill Valley, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Return to San Francisco",
+          "description": "After a refreshing hike, head back to San Francisco. Enjoy the scenic views along the way, reflecting on the beauty of nature you just experienced.",
+          "locationEn": "San Francisco, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Stinking Rose",
+          "description": "Savor a unique dining experience at this garlic-themed restaurant. Indulge in dishes like garlic-infused pasta and roasted garlic bulbs, all served in a quirky, vibrant atmosphere.",
+          "searchQuery": "The Stinking Rose",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk at Pier 7",
+          "description": "End your day with a peaceful walk along Pier 7. The views of the Bay Bridge illuminated at night are breathtaking, providing a perfect backdrop for some memorable photos.",
+          "searchQuery": "Pier 7",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "San Francisco International Airport",
+          "time": "14:00"
+        },
+        "arrival": {
+          "place": "Washington D.C. (Dulles International Airport)",
+          "time": "22:00"
+        },
+        "duration": "5h",
+        "memo": "Direct flight back to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Mama's on Washington Square",
+          "description": "Start your day with a hearty breakfast at Mama's, famous for its delicious French toast and crab omelets. The cozy atmosphere and friendly service make it a perfect spot to fuel up for the day ahead.",
+          "searchQuery": "Mama's on Washington Square",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Union Square",
+          "description": "Stroll through Union Square, the heart of San Francisco's shopping district. Enjoy the vibrant atmosphere, art installations, and perhaps do a little last-minute shopping at the high-end boutiques and department stores.",
+          "searchQuery": "Union Square",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Cable Car Museum",
+          "description": "Explore the fascinating history of San Francisco's iconic cable cars at the Cable Car Museum. You'll see the inner workings of the cable car system and learn about its significance to the city.",
+          "searchQuery": "Cable Car Museum",
+          "locationEn": "San Francisco, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Fisherman's Wharf",
+          "description": "Head to Fisherman's Wharf for a classic San Francisco experience. Enjoy a bowl of clam chowder served in a sourdough bread bowl, a must-try local delicacy. The waterfront views are an added bonus!",
+          "searchQuery": "Fisherman's Wharf",
+          "locationEn": "San Francisco, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Transit to San Francisco International Airport",
+          "description": "Make your way to the airport for your flight back to Washington D.C. Allow enough time for check-in and security procedures.",
+          "locationEn": "San Francisco, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,452 @@
+{
+  "id": "63d00b9f-95ee-45f6-ae2d-ee8ea9da9851",
+  "destination": "New York City",
+  "description": "Immerse yourself in the vibrant energy of New York City, where every corner is a blend of culture, history, and excitement. This 5-day journey is designed for family bonding, with a special focus on Harry Potter fandom, allowing you to explore magical spots and indulge in themed shopping. From iconic landmarks to cozy cafes, each day promises a delightful mix of relaxation and adventure, ensuring you create unforgettable memories together.",
+  "heroImage": "https://images.unsplash.com/photo-1513653950649-94b53fd8770c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTEzOTd8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Brandon Green",
+  "heroImagePhotographerUrl": "https://unsplash.com/@brandgreen?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Departure from Washington D.C. to New York City",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Washington D.C.",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "New York City",
+          "time": "11:30"
+        },
+        "duration": "2h 30m",
+        "memo": "Enjoy the scenic views along the East Coast during your train ride."
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Meatball Shop",
+          "description": "Start your New York adventure with a delicious lunch at The Meatball Shop, known for its customizable meatballs and casual vibe. Perfect for a family meal!",
+          "searchQuery": "The Meatball Shop",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit Harry Potter New York Store",
+          "description": "Dive into the magical world of Harry Potter at the flagship store in New York. Explore themed sections, interactive displays, and a wide range of exclusive merchandise. Don't forget to take a photo at the iconic Platform 9¾!",
+          "searchQuery": "Harry Potter New York Store",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore Central Park",
+          "description": "Take a leisurely stroll through Central Park, enjoying the beautiful landscapes and perhaps a quick stop at the Bethesda Terrace. It's a great way to relax and soak in the city's atmosphere.",
+          "searchQuery": "Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Ellen's Stardust Diner",
+          "description": "Experience a unique dining experience at Ellen's Stardust Diner, where the waitstaff perform Broadway hits. It's a fun and entertaining way to enjoy a meal with the family!",
+          "searchQuery": "Ellen's Stardust Diner",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening at Times Square",
+          "description": "End your day with a visit to the vibrant Times Square. The dazzling lights and bustling atmosphere are a must-see, and you can explore shops for more Harry Potter goodies!",
+          "searchQuery": "Times Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Harry Potter's Magical New York",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Sarabeth's",
+          "description": "Start your day with a delightful breakfast at Sarabeth's, known for its delicious pancakes and fresh fruit. It's a cozy spot to fuel up before a day of magical adventures!",
+          "searchQuery": "Sarabeth's Central Park South",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "The Wizarding World of Harry Potter Store",
+          "description": "Dive into the enchanting world of Harry Potter at this immersive store. Explore a wide range of merchandise, from wands to clothing, and don't forget to grab some exclusive collectibles!",
+          "searchQuery": "The Wizarding World of Harry Potter Store",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Meatball Shop",
+          "description": "Enjoy a hearty lunch at The Meatball Shop, where you can customize your meatball dish with various sauces and sides. It's a fun and casual dining experience perfect for families!",
+          "searchQuery": "The Meatball Shop",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Bryant Park",
+          "description": "Take a leisurely stroll through Bryant Park, a beautiful green oasis in the heart of the city. You can relax on the lawn, enjoy a book from the library, or simply soak in the vibrant atmosphere.",
+          "searchQuery": "Bryant Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "New York Public Library",
+          "description": "Visit the iconic New York Public Library, where you can admire its stunning architecture and explore the vast collection of books. Don't miss the famous Rose Main Reading Room!",
+          "searchQuery": "New York Public Library",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Coffee Break at Blue Bottle Coffee",
+          "description": "Take a break and enjoy a cup of artisanal coffee at Blue Bottle Coffee. It's a great spot to recharge before continuing your magical journey!",
+          "searchQuery": "Blue Bottle Coffee Bryant Park",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Carmine's Italian Restaurant",
+          "description": "End your day with a family-style dinner at Carmine's, where you can share delicious Italian dishes in a warm and inviting atmosphere. Perfect for a cozy family meal!",
+          "searchQuery": "Carmine's Italian Restaurant",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk at Times Square",
+          "description": "Conclude your magical day with an evening walk through the dazzling lights of Times Square. It's a vibrant experience that captures the essence of New York City!",
+          "searchQuery": "Times Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion and Relaxation",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Sarabeth's",
+          "description": "Start your day with a delightful breakfast at Sarabeth's, known for its delicious pancakes and fresh fruit. The cozy atmosphere makes it a perfect spot to fuel up for a day of exploration.",
+          "searchQuery": "Sarabeth's",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Metropolitan Museum of Art",
+          "description": "Explore the vast collections at the Metropolitan Museum of Art, where you can immerse yourself in art from around the world. Don't miss the Egyptian artifacts and the stunning rooftop garden with views of Central Park.",
+          "searchQuery": "Metropolitan Museum of Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Modern",
+          "description": "Enjoy a leisurely lunch at The Modern, a Michelin-starred restaurant located at the Museum of Modern Art. The seasonal menu features contemporary American cuisine, perfect for a relaxing midday break.",
+          "searchQuery": "The Modern",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Central Park",
+          "description": "Take a stroll through Central Park, where you can relax and enjoy the natural beauty. Consider visiting the Bethesda Terrace and the Bow Bridge for some picturesque views.",
+          "searchQuery": "Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Harry Potter New York Store",
+          "description": "Dive into the magical world of Harry Potter at the official Harry Potter store in New York. Browse through a wide range of merchandise, from wands to clothing, and don't forget to take a photo at the iconic Platform 934.",
+          "searchQuery": "Harry Potter New York Store",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Smith",
+          "description": "End your day with a hearty dinner at The Smith, a lively American brasserie. Their menu features comfort food classics, and the vibrant atmosphere is perfect for families.",
+          "searchQuery": "The Smith",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Relax at the Hotel",
+          "description": "After a fulfilling day, return to your hotel to unwind. Enjoy some family time and share your favorite moments from the day.",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "More Magical Adventures",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Sarabeth's",
+          "description": "Start your day with a delightful breakfast at Sarabeth's, known for its delicious pancakes and fresh fruit. The cozy atmosphere makes it a perfect spot to fuel up for a day of adventure!",
+          "searchQuery": "Sarabeth's",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "The Harry Potter Exhibition",
+          "description": "Dive into the magical world of Harry Potter at The Harry Potter Exhibition. Explore authentic props, costumes, and interactive experiences that bring the wizarding world to life. Don't forget to take plenty of photos!",
+          "searchQuery": "The Harry Potter Exhibition",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Meatball Shop",
+          "description": "Enjoy a hearty lunch at The Meatball Shop, where you can customize your meatball dish with various sauces and sides. It's a fun and casual dining experience that the whole family will love!",
+          "searchQuery": "The Meatball Shop",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Times Square",
+          "description": "Stroll through the iconic Times Square, where the bright lights and bustling atmosphere will leave you in awe. Take some time to shop for Harry Potter merchandise at the nearby stores, including the famous M&M's World!",
+          "searchQuery": "Times Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Broadway Show",
+          "description": "Catch a matinee performance of a Broadway show. Whether it's a classic or a new hit, the energy of a live performance in the heart of the theater district is an unforgettable experience!",
+          "searchQuery": "Broadway",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Carmine's Italian Restaurant",
+          "description": "End your day with a family-style dinner at Carmine's, where you can share delicious Italian dishes in a lively atmosphere. It's a great way to relax and reflect on your magical day!",
+          "searchQuery": "Carmine's Italian Restaurant",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "New York City",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "12:00"
+        },
+        "duration": "3h",
+        "memo": "Traveling by train from New York City to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Sarabeth's",
+          "description": "Start your day with a delightful breakfast at Sarabeth's, known for its delicious pancakes and fresh pastries. It's a cozy spot to fuel up before your adventures.",
+          "searchQuery": "Sarabeth's Central Park South",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit The Wizarding World of Harry Potter Store",
+          "description": "Explore the magical world of Harry Potter at the flagship store in New York City. From wands to house robes, this store is a treasure trove for fans. Don't forget to take a photo at the iconic Hogwarts castle display!",
+          "searchQuery": "The Harry Potter New York",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Meatball Shop",
+          "description": "Enjoy a casual lunch at The Meatball Shop, where you can customize your meatball dish with various sauces and sides. It's a fun and hearty meal to keep you energized.",
+          "searchQuery": "The Meatball Shop",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Central Park",
+          "description": "Take a leisurely stroll through Central Park, enjoying the beautiful scenery and perhaps stopping by the Bethesda Terrace. It's a perfect way to relax and soak in the city's atmosphere before your journey.",
+          "searchQuery": "Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Transit to Washington D.C.",
+          "description": "Board your train to Washington D.C. and enjoy the scenic ride. This is a great time to reflect on your trip and relax before arriving at your next destination.",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Founding Farmers",
+          "description": "Once you arrive in Washington D.C., enjoy a hearty dinner at Founding Farmers, a popular farm-to-table restaurant known for its comfort food and sustainable practices.",
+          "searchQuery": "Founding Farmers",
+          "locationEn": "Washington D.C., USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

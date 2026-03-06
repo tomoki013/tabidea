@@ -1,0 +1,526 @@
+{
+  "id": "3ba91d3e-0e23-4a48-a65d-583aa35d0130",
+  "destination": "カッパドキア",
+  "description": "カッパドキアの神秘的な風景と独特の文化を体験する6日間の旅へようこそ。絶景の気球に乗り、洞窟ホテルに宿泊し、まるで異世界に迷い込んだかのような体験をお楽しみください。地元の美味しい料理や歴史的な名所も堪能しながら、カップルで特別な思い出を作りましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1604156787928-a5e83b3544f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODYzOTl8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Timur Garifov",
+  "heroImagePhotographerUrl": "https://unsplash.com/@timgarifov?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からカッパドキアへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "イスタンブール",
+          "time": "14:00"
+        },
+        "duration": "13h",
+        "memo": "直行便でイスタンブールへ。"
+      },
+      "activities": [
+        {
+          "time": "15:30",
+          "activity": "イスタンブールの街を散策",
+          "description": "イスタンブールの歴史的な街並みを散策し、スルタンアフメット地区の美しい建築を楽しみます。アヤソフィアやブルーモスクを外から眺めるのもおすすめです。",
+          "searchQuery": "Sultanahmet District",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "イスタンブールで夕食",
+          "description": "地元のトルコ料理を楽しむために、人気のレストランでディナーを。ケバブやメゼを堪能し、トルコの味を満喫しましょう。",
+          "searchQuery": "Kebapçı İskender",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "イスタンブールの夜景を楽しむ",
+          "description": "ボスポラス海峡沿いのカフェで、夜景を眺めながらリラックス。美しいライトアップされた街並みを楽しむことができます。",
+          "searchQuery": "Bosphorus Strait",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "気球体験とギョレメ国立公園",
+      "activities": [
+        {
+          "time": "05:30",
+          "activity": "気球体験",
+          "description": "カッパドキアの美しい朝焼けを背景に、気球に乗って空から絶景を楽しみます。大地の上に広がる奇岩群や美しい谷を一望できる貴重な体験です。",
+          "searchQuery": "Cappadocia Hot Air Balloon",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "朝食",
+          "description": "気球体験後、地元のカフェでトルコ式の朝食を楽しみます。新鮮なパンやオリーブ、チーズ、トマトなど、地元の味を堪能しましょう。",
+          "searchQuery": "Cappadocia Breakfast Cafe",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ギョレメ国立公園散策",
+          "description": "ユネスコ世界遺産に登録されているギョレメ国立公園を散策します。奇岩群や古代の教会が点在し、フォトジェニックなスポットが満載です。",
+          "searchQuery": "Goreme National Park",
+          "locationEn": "Goreme, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ",
+          "description": "ギョレメのレストランで、トルコ料理のランチを楽しみます。特に、ケバブやメゼの盛り合わせがおすすめです。",
+          "searchQuery": "Goreme Restaurant",
+          "locationEn": "Goreme, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "オープンエア博物館訪問",
+          "description": "ギョレメ国立公園内にあるオープンエア博物館を訪れ、古代の岩窟教会やフレスコ画を見学します。歴史を感じる貴重な体験です。",
+          "searchQuery": "Goreme Open Air Museum",
+          "locationEn": "Goreme, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ウチヒサール城訪問",
+          "description": "カッパドキアのシンボルとも言えるウチヒサール城を訪れ、頂上からの絶景を楽しみます。周囲の風景を一望できる絶好のフォトスポットです。",
+          "searchQuery": "Uchisar Castle",
+          "locationEn": "Uchisar, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "洞窟ホテルチェックイン",
+          "description": "カッパドキアの洞窟ホテルにチェックイン。ユニークな宿泊体験を楽しみながら、リラックスした時間を過ごします。",
+          "searchQuery": "Cave Hotel Cappadocia",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ディナー",
+          "description": "洞窟ホテル近くのレストランで、トルコ料理のディナーを楽しみます。地元のワインと共に、素敵な夜を過ごしましょう。",
+          "searchQuery": "Cappadocia Dinner Restaurant",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "地下都市とウチヒサール城",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "カッパドキア",
+          "time": "05:00"
+        },
+        "arrival": {
+          "place": "気球飛行場",
+          "time": "06:00"
+        },
+        "duration": "1h",
+        "memo": "早朝の気球体験のため、早めに出発します。"
+      },
+      "activities": [
+        {
+          "time": "06:00",
+          "activity": "気球に乗る",
+          "description": "カッパドキアの美しい風景を空から楽しむ気球体験。日の出と共に浮かび上がる景色は、まさに絶景です。",
+          "searchQuery": "Cappadocia Hot Air Balloon",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "気球体験後の朝食",
+          "description": "気球体験の後、地元のカフェで朝食を楽しみます。トルコの伝統的な朝食を味わいながら、素晴らしい体験を振り返りましょう。",
+          "searchQuery": "Cappadocia Breakfast Cafe",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "カイマクル地下都市",
+          "description": "カッパドキアの歴史的なカイマクル地下都市を探検。地下に広がる迷路のような構造は、古代の人々の生活を感じさせます。",
+          "searchQuery": "Kaymakli Underground City",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のレストランでランチ",
+          "description": "カイマクル地下都市近くのレストランで、トルコ料理のランチを楽しみます。新鮮な地元の食材を使った料理が魅力です。",
+          "searchQuery": "Cappadocia Local Restaurant",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ウチヒサール城",
+          "description": "ウチヒサール城を訪れ、頂上からのパノラマビューを楽しみます。周囲の美しい風景を一望できる絶好のスポットです。",
+          "searchQuery": "Uchisar Castle",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "洞窟ホテルにチェックイン",
+          "description": "カッパドキアの洞窟ホテルにチェックイン。ユニークな宿泊体験を楽しみながら、リラックスした時間を過ごします。",
+          "searchQuery": "Cappadocia Cave Hotel",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "洞窟ホテルでディナー",
+          "description": "ホテル内のレストランで、トルコ料理のディナーを楽しみます。洞窟の中での食事は、特別な体験になるでしょう。",
+          "searchQuery": "Cappadocia Cave Hotel Restaurant",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "アヴァノスの陶芸体験とパシャバー",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "カッパドキアの洞窟ホテルで、地元の食材を使った朝食を楽しみます。新鮮な野菜やチーズ、オリーブオイルを使った料理が並び、エネルギーをチャージ。",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "アヴァノスでの陶芸体験",
+          "description": "アヴァノスの陶芸工房で、地元の職人から陶芸の技術を学びます。自分だけのオリジナル作品を作ることができ、思い出に残る体験です。",
+          "searchQuery": "Avanos Pottery Workshop",
+          "locationEn": "Avanos, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "アヴァノスでランチ",
+          "description": "アヴァノスの地元のレストランで、トルコ料理のランチを楽しみます。特に、ケバブやメゼの盛り合わせが人気です。",
+          "locationEn": "Avanos, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "パシャバー（妖精の煙突）観光",
+          "description": "パシャバーの美しい風景を散策します。独特な形をした妖精の煙突が立ち並ぶこのエリアは、フォトジェニックなスポットが満載です。",
+          "searchQuery": "Pasabag Valley",
+          "locationEn": "Pasabag, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "カッパドキアの風景を楽しむ",
+          "description": "パシャバーからの帰り道に、カッパドキアの絶景を眺めながらのドライブを楽しみます。特に夕暮れ時の景色は格別です。",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルでディナー",
+          "description": "洞窟ホテル内のレストランで、トルコの伝統料理を堪能します。特に、地元のワインと共に楽しむ料理は絶品です。",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "星空観賞",
+          "description": "カッパドキアの澄んだ空気の中で、星空を眺めます。特にこの地域は光害が少なく、満天の星空が広がります。",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "カッパドキアの村巡りと帰路",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "カッパドキア",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "イスタンブール",
+          "time": "13:30"
+        },
+        "duration": "1h 30m",
+        "memo": "カッパドキアからイスタンブールへのフライト。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "洞窟ホテルでの朝食",
+          "description": "カッパドキアの洞窟ホテルで、地元の食材を使った朝食を楽しみます。新鮮な野菜やチーズ、オリーブオイルが香るトーストで、素敵な一日のスタートを切りましょう。",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "オルタヒサール城",
+          "description": "オルタヒサールの村にある城を訪れ、絶景を楽しみます。城の頂上からはカッパドキアの独特な風景が一望でき、フォトジェニックなスポットです。",
+          "searchQuery": "Ortahisar Castle",
+          "locationEn": "Ortahisar, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "カッパドキアの村散策",
+          "description": "オルタヒサールの周辺を散策し、地元の人々の生活を感じながら、伝統的な家々や小道を楽しみます。素朴な雰囲気が漂う村で、写真撮影にもぴったりです。",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "カッパドキアのレストランでランチ",
+          "description": "地元の料理を楽しめるレストランで、トルコの伝統的な料理を堪能します。特に、ケバブやメゼの盛り合わせがおすすめです。",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "イスタンブールへ移動",
+          "description": "カッパドキアからイスタンブールへのフライトで、次の目的地へ向かいます。空の旅を楽しみながら、カッパドキアの思い出を振り返りましょう。",
+          "locationEn": "Cappadocia, Turkey",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "イスタンブール観光と東京へ帰路",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "イスタンブール",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "06:00"
+        },
+        "duration": "12h",
+        "memo": "直行便での帰国。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "イスタンブールのホテルで、トルコの伝統的な朝食を楽しみます。オリーブやチーズ、トマト、そして新鮮なパンが並ぶ豪華な朝食です。",
+          "searchQuery": "Istanbul Hotel Breakfast",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "トプカプ宮殿",
+          "description": "オスマン帝国の栄華を感じるトプカプ宮殿を訪れます。美しい庭園や歴史的な建物を散策し、壮大な景色を楽しみましょう。",
+          "searchQuery": "Topkapi Palace",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "スルタンアフメット地区でランチ",
+          "description": "スルタンアフメット地区のレストランで、トルコ料理のランチを楽しみます。ケバブやメゼを味わいながら、観光の合間にリフレッシュ。",
+          "searchQuery": "Sultanahmet Restaurant",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アヤソフィア",
+          "description": "アヤソフィアを訪れ、その壮大な建築と歴史を堪能します。内部の美しいモザイクやドームは必見です。",
+          "searchQuery": "Hagia Sophia",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "グランドバザールでショッピング",
+          "description": "イスタンブールのグランドバザールでショッピングを楽しみます。色とりどりのスパイスや手工芸品を見ながら、地元の雰囲気を味わいましょう。",
+          "searchQuery": "Grand Bazaar",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "空港へ移動",
+          "description": "イスタンブールの空港へ向かいます。帰国の準備を整えましょう。",
+          "searchQuery": "Istanbul Airport",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

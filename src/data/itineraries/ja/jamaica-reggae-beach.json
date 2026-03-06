@@ -1,0 +1,560 @@
+{
+  "id": "12cd5b97-867f-45ef-a4bc-10a425b23d65",
+  "destination": "モンテゴベイ",
+  "description": "カリブ海の美しいビーチとレゲエのリズムに包まれたモンテゴベイで、友人と共に心温まる7日間の旅を楽しみましょう。青い海と白い砂浜、地元の美味しいジャークチキン、そして陽気な音楽があなたを待っています。リラックスしたペースで、モンテゴベイの魅力を存分に味わうプランをご提案します。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からモンテゴベイへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "モンテゴベイ",
+          "time": "12:00"
+        },
+        "duration": "14h",
+        "memo": "直行便でモンテゴベイへ。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "ホテルチェックイン",
+          "description": "モンテゴベイのリゾートホテルにチェックイン。美しいビーチが目の前に広がる贅沢な空間で、リラックスした時間を過ごせます。",
+          "searchQuery": "Sandals Montego Bay",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ビーチでリラックス",
+          "description": "ホテルのビーチで、青い海を眺めながらリラックス。レゲエの音楽が流れる中、ビールを片手に心地よい風を感じてください。",
+          "searchQuery": "Montego Bay Beach",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ジャークチキンを楽しむ",
+          "description": "地元の人気店でジャークチキンを味わいます。スパイシーで香ばしい味わいが特徴のこの料理は、モンテゴベイの名物です。",
+          "searchQuery": "Scotchies",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "サンセットを眺める",
+          "description": "ビーチで美しいサンセットを楽しみながら、友人とゆったりとした時間を過ごします。夕日が海に沈む瞬間は、心に残る思い出になるでしょう。",
+          "searchQuery": "Montego Bay Sunset",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "地元の音楽を楽しむ",
+          "description": "ビーチ沿いのバーで、レゲエの生演奏を楽しみながら、カクテルや地元のビールを味わいます。リズムに合わせて踊るのもおすすめです。",
+          "searchQuery": "Margueritaville Montego Bay",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ビーチでのんびりと",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "モンテゴベイのリゾートホテルで、カリブ海の新鮮なフルーツやトースト、卵料理を楽しみながら、ゆったりとした朝を迎えます。",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ドクターズケーブビーチ",
+          "description": "美しい白砂のビーチ、ドクターズケーブビーチでリラックス。青い海を眺めながら、ビーチチェアに寝転んで、心地よい風を感じる贅沢な時間を過ごします。",
+          "searchQuery": "Doctor's Cave Beach",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ジャークチキンランチ",
+          "description": "ビーチ近くの人気のジャークチキン屋台で、スパイシーなジャークチキンを味わいます。香ばしい香りとともに、ビールを片手にカリブの味を堪能。",
+          "searchQuery": "Scotchies",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ビーチでレゲエ音楽を楽しむ",
+          "description": "ドクターズケーブビーチで、地元のミュージシャンによるレゲエの生演奏を楽しみながら、ビールを片手にリラックス。心地よい音楽に身を委ねて、カリブの雰囲気を満喫します。",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ビーチサンセット",
+          "description": "夕暮れ時のビーチで、サンセットを眺めながらのんびり。オレンジ色に染まる空と海のコントラストが美しく、心に残るひとときを演出します。",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "リゾートホテル内のレストランで、カリブ料理を楽しむディナー。新鮮なシーフードや地元の食材を使った料理を堪能し、素敵な夜を締めくくります。",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ジャークチキンと地元の味",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "モンテゴベイのリゾートホテルで、カリブ海の新鮮なフルーツやトースト、卵料理を楽しみながら、ゆったりとした朝を迎えます。",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ドクターズケーブビーチ",
+          "description": "美しい白砂のビーチで、青い海を眺めながらリラックス。レゲエの音楽が流れる中、ビールを片手に日光浴を楽しむのが最高です。",
+          "searchQuery": "Doctor's Cave Beach",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ジャークチキンランチ",
+          "description": "地元の人気店で、スパイシーなジャークチキンを堪能。香ばしい香りとともに、サイドのライス＆ピーズやコールスローも一緒に楽しんで。",
+          "searchQuery": "Scotchies",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ビーチサイドのバーでリラックス",
+          "description": "ビーチのバーで、カクテルや地元のビールを味わいながら、心地よい風に吹かれてのんびり過ごします。音楽に合わせて踊るのも楽しい！",
+          "searchQuery": "Margaritaville Montego Bay",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "モンテゴベイの街を散策",
+          "description": "地元のマーケットやショップを訪れ、カリブの雰囲気を感じながらお土産を探します。アートや工芸品も豊富で、素敵な発見があるかも。",
+          "searchQuery": "Montego Bay Craft Market",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ビーチで夕食",
+          "description": "夕暮れ時のビーチで、シーフードやジャーク料理を楽しむディナー。波の音を聞きながら、素敵な夜を過ごします。",
+          "searchQuery": "The Pelican Grill",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "アクティブな一日",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "モンテゴベイのリゾートホテルで、カリブ海の新鮮なフルーツやトースト、卵料理を楽しみながら、ゆったりとした朝を迎えます。",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "シュノーケリング体験",
+          "description": "美しいカリブ海でシュノーケリングを楽しみます。色とりどりの魚たちとサンゴ礁の世界を探索し、海の生き物たちとの出会いを楽しんでください。",
+          "searchQuery": "Montego Bay snorkeling",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ジャークチキンランチ",
+          "description": "地元の人気店で、スパイシーなジャークチキンを味わいます。香ばしい香りとともに、ビールを片手にリラックスしたランチタイムを過ごしましょう。",
+          "searchQuery": "Scotchies Montego Bay",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "カヤック体験",
+          "description": "カヤックを漕ぎながら、穏やかな海を探索します。友人と一緒に楽しい時間を過ごし、海の静けさを感じながらリフレッシュしましょう。",
+          "searchQuery": "Kayaking Montego Bay",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ビーチでリラックス",
+          "description": "ビーチに戻り、レゲエの音楽を聴きながらビールを楽しみます。夕日を眺めながら、友人との会話を楽しむ贅沢なひとときを。",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ビーチサイドディナー",
+          "description": "ビーチ沿いのレストランで、新鮮なシーフードや地元料理を堪能します。波の音を聞きながら、素敵なディナーを楽しんでください。",
+          "searchQuery": "The Pelican Grill",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "レゲエライブを楽しむ",
+          "description": "地元のバーでレゲエライブを楽しみます。生演奏に合わせて踊りながら、カリブの夜を満喫しましょう。",
+          "searchQuery": "Reggae Live Montego Bay",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "リゾートでの贅沢な時間",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "モンテゴベイのリゾートホテルで、カリブ海の新鮮なフルーツやトースト、卵料理を楽しむ贅沢な朝食。海を眺めながら、ゆったりとした時間を過ごします。",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ビーチでリラックス",
+          "description": "美しいビーチで、レゲエの音楽を聴きながらビールを楽しむ至福のひととき。波の音を聞きながら、友人と共にリラックスした時間を過ごしましょう。",
+          "searchQuery": "Doctor's Cave Beach",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ジャークチキンランチ",
+          "description": "地元の人気店で、スパイシーなジャークチキンを味わいます。香ばしい香りとともに、カリブの風を感じながらのランチは格別です。",
+          "searchQuery": "Pork Pit",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "リゾートスパでのトリートメント",
+          "description": "リゾート内のスパで、マッサージやトリートメントを受けて心身ともにリフレッシュ。トロピカルな香りに包まれながら、贅沢なひとときを楽しみます。",
+          "searchQuery": "The Spa at Secrets Wild Orchid",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "プールサイドでのんびり",
+          "description": "プールサイドでカクテルを片手に、友人とおしゃべりしながらのんびり過ごします。夕日が沈む美しい景色を楽しみながら、リゾートの雰囲気を満喫。",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ビーチサイドディナー",
+          "description": "ビーチ沿いのレストランで、地元のシーフード料理を堪能。波の音を聞きながら、ロマンチックなディナーを楽しむことができます。",
+          "searchQuery": "The Pelican Grill",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "レゲエライブを楽しむ",
+          "description": "地元のバーでレゲエライブを楽しみながら、カリブの夜を満喫。音楽に合わせて踊ったり、友人と盛り上がったりする素敵な時間を過ごします。",
+          "searchQuery": "Margueritaville",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "モンテゴベイの文化を探る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "モンテゴベイのリゾートホテルで、カリブ海の新鮮なフルーツやトースト、卵料理を楽しむ贅沢な朝食。海の景色を眺めながら、ゆったりとした時間を過ごします。",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ヒルクレスト散策",
+          "description": "モンテゴベイのヒルクレストエリアを散策。美しいビーチやカラフルな家々を眺めながら、地元のアートや文化に触れることができます。特に、アートギャラリーや小さなショップが点在しているので、ユニークなお土産探しにも最適です。",
+          "searchQuery": "Hillside",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のマーケットでランチ",
+          "description": "モンテゴベイの地元マーケットで、ジャークチキンを味わいます。スパイシーで香ばしいジャークチキンは、地元の人々にも愛される一品。新鮮なフルーツや地元の特産品も楽しめるので、ぜひ立ち寄ってみてください。",
+          "searchQuery": "Montego Bay Market",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ビーチでリラックス",
+          "description": "モンテゴベイの美しいビーチで、レゲエの音楽を聴きながらビールを楽しむ贅沢なひととき。波の音を聞きながら、友人と共にリラックスした時間を過ごしましょう。",
+          "searchQuery": "Doctor's Cave Beach",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ビーチサイドのバーでカクテル",
+          "description": "ビーチサイドのバーで、カリブ海のカクテルを楽しみながら、夕日を眺める贅沢な時間。地元の音楽が流れる中、リラックスした雰囲気を満喫できます。",
+          "searchQuery": "Margaritaville Montego Bay",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "モンテゴベイの人気レストランで、カリブ料理を堪能。新鮮なシーフードや地元の特産品を使った料理が楽しめます。特に、ジャークポークやシーフードパスタはおすすめです。",
+          "searchQuery": "The Pelican Grill",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "モンテゴベイから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "モンテゴベイ空港",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "翌日 15:00"
+        },
+        "duration": "14h",
+        "memo": "モンテゴベイから東京への直行便です。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "リゾートホテルのビュッフェで、ジャマイカのフルーツやパンケーキを楽しみながら、最後の朝をゆったりと過ごします。",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ドクターズケーブビーチ",
+          "description": "美しい白砂のビーチで、青い海を眺めながらリラックス。レゲエの音楽が流れる中、ビールを片手に心地よい時間を過ごします。",
+          "searchQuery": "Doctor's Cave Beach",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ジャークチキンランチ",
+          "description": "地元の人気店で、スパイシーなジャークチキンを堪能。香ばしい香りとともに、ジャマイカの味を楽しむ絶好の機会です。",
+          "searchQuery": "Pork Pit",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "モンテゴベイ空港へ移動",
+          "description": "ビーチでの楽しい時間を終え、空港へ向かいます。タクシーで約15分の距離です。",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,435 @@
+{
+  "id": "369e5075-2251-443d-bd47-fca2ab2e07a7",
+  "destination": "アブダビ",
+  "description": "アブダビでの5日間の旅は、文化、歴史、アート、そしてF1の魅力に満ちた特別な体験です。家族で楽しむことができるアクティビティが盛りだくさんで、子供たちも大満足。アブダビの美しい風景とともに、心に残る思い出を作りましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1624317937315-0ced8736c9e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODkyMDh8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Kevin JD",
+  "heroImagePhotographerUrl": "https://unsplash.com/@kevinjd123?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "アブダビ到着と文化体験",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アブダビのホテルで、地元の食材を使った朝食を楽しみます。フレッシュなフルーツやアラビアの伝統的な料理で、エネルギーをチャージしましょう。",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "シェイク・ザイード・グランドモスク",
+          "description": "アブダビの象徴ともいえるシェイク・ザイード・グランドモスクを訪れます。壮大な建築と美しい装飾に圧倒されることでしょう。特に、モスクの中庭や大理石の床は必見です。",
+          "searchQuery": "Sheikh Zayed Grand Mosque",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のレストランでランチ",
+          "description": "アラビア料理を楽しめる地元のレストランでランチ。フムスやシャワルマなど、子供も楽しめるメニューが豊富です。",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アブダビ文化財団",
+          "description": "アブダビ文化財団を訪れ、アラブ文化やアートに触れる体験をします。子供向けのワークショップも開催されているので、家族で楽しめる時間を過ごせます。",
+          "searchQuery": "Abu Dhabi Cultural Foundation",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ファンショップでF1グッズ購入",
+          "description": "F1関連のファングッズを取り扱うショップを訪れ、家族でお気に入りのアイテムを探しましょう。子供たちも喜ぶグッズがたくさんあります。",
+          "searchQuery": "F1 Fan Shop",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルに戻り、休憩",
+          "description": "一日の観光を終えたら、ホテルに戻ってゆっくりと休憩。家族でのんびり過ごす時間を楽しみましょう。",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ホテル近くのレストランでディナー",
+          "description": "アブダビのレストランで、地元の料理を楽しむディナー。家族でシェアしながら、楽しい食事の時間を過ごしましょう。",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アートと歴史の探求",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アブダビのホテルで、地元の食材を使った朝食を楽しみます。フレッシュなフルーツや、アラビアの伝統的な料理が並び、家族みんなでエネルギーをチャージ！",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ルーヴル・アブダビ",
+          "description": "世界的に有名なルーヴル・アブダビを訪れます。美しい建築とともに、古代から現代までのアートが展示されており、子供たちも楽しめるインタラクティブな展示が充実しています。",
+          "searchQuery": "Louvre Abu Dhabi",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "近くのカフェでランチ",
+          "description": "ルーヴル・アブダビの近くにあるカフェで、軽食を楽しみます。サンドイッチやサラダなど、子供たちも食べやすいメニューが揃っています。",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ヘリテージ・ビレッジ",
+          "description": "アブダビの伝統的な文化を体験できるヘリテージ・ビレッジへ。地元の工芸品や伝統的な生活様式を学びながら、家族で楽しい時間を過ごせます。子供たちも興味津々！",
+          "searchQuery": "Heritage Village Abu Dhabi",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "ファンショップでF1グッズ購入",
+          "description": "アブダビのF1関連ショップを訪れ、ファングッズを購入します。お気に入りのドライバーのアイテムを見つけて、家族みんなで思い出を作りましょう！",
+          "searchQuery": "F1 Store Abu Dhabi",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルに戻り、夕食",
+          "description": "ホテルに戻り、家族で夕食を楽しみます。アラビア料理やインターナショナルなメニューから選べるので、みんなが満足できる食事が楽しめます。",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "F1の魅力を体感",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アブダビのホテルで、家族みんなで楽しめるビュッフェスタイルの朝食をいただきます。フレッシュなフルーツや、アラビア料理のオプションも豊富です。",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ヤス・マリーナ・サーキット見学",
+          "description": "F1の聖地、ヤス・マリーナ・サーキットを訪れます。サーキット内をガイド付きで巡り、レースの舞台裏や歴史を学びましょう。子供たちも楽しめるアクティビティが用意されています。",
+          "searchQuery": "Yas Marina Circuit",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "サーキット内のカフェでランチ",
+          "description": "ヤス・マリーナ・サーキット内のカフェで軽食を楽しみます。レース観戦の興奮を味わいながら、サンドイッチやサラダをいただきましょう。",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ファンショップでグッズ購入",
+          "description": "サーキット内のファンショップで、F1関連のグッズを購入します。お気に入りのドライバーのTシャツやキャップを見つけて、家族みんなで記念に残るアイテムを手に入れましょう。",
+          "searchQuery": "Yas Marina Circuit Fan Shop",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ヤス・アイランド散策",
+          "description": "ヤス・アイランドを散策し、アトラクションや美しい景色を楽しみます。子供たちが遊べる公園や、アート作品も点在しているので、家族でのんびり過ごせます。",
+          "searchQuery": "Yas Island",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルに戻る",
+          "description": "ヤス・マリーナ・サーキットからホテルへ戻ります。アブダビの美しい夕日を眺めながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "アブダビの地元のレストランで、アラビア料理を楽しみます。ファミリースタイルでシェアしながら、異国の味を堪能しましょう。",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "アブダビの自然とリラクゼーション",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アブダビのホテルで、地元の食材を使った朝食を楽しみます。フレッシュなフルーツやアラビアの伝統的な料理が並び、家族みんなでエネルギーをチャージ！",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "エティハドタワー展望台",
+          "description": "エティハドタワーの展望台からアブダビの美しい景色を一望。特に子供たちにとっては、街の壮大な景色を楽しむ絶好のスポットです。",
+          "searchQuery": "Etihad Towers Observation Deck",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "コーニッシュでランチ",
+          "description": "アブダビのコーニッシュ沿いにあるレストランで、地元のシーフード料理を楽しみます。海の景色を眺めながら、リラックスしたひとときを過ごしましょう。",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "コーニッシュ散策",
+          "description": "コーニッシュを散策しながら、アブダビの海岸線を楽しみます。子供たちが遊べる公園やビーチもあり、家族でのんびり過ごすのにぴったりです。",
+          "searchQuery": "Corniche Beach",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "アブダビ文化財団訪問",
+          "description": "アブダビ文化財団でアートや文化に触れる体験を。子供向けのワークショップも開催されているので、家族で楽しめるアクティビティが豊富です。",
+          "searchQuery": "Abu Dhabi Cultural Foundation",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ファンショップでF1グッズ購入",
+          "description": "F1関連のファングッズを取り扱うショップを訪れ、家族みんなでお気に入りのアイテムを見つけましょう。子供たちも喜ぶこと間違いなし！",
+          "searchQuery": "F1 Store Abu Dhabi",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "アブダビの地元のレストランで、アラビア料理を堪能します。家族でシェアしながら、異国の味を楽しむ素敵な時間を過ごしましょう。",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "アブダビの最後の思い出",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アブダビのホテルで、地元の食材を使った朝食を楽しみます。フレッシュなフルーツや、アラビアの伝統的な料理が並び、家族みんなでエネルギーをチャージ。",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "アブダビ・モールでショッピング",
+          "description": "アブダビ・モールでのショッピングを楽しみましょう。ファッションやお土産、そしてF1関連のファングッズも見つけることができます。子供たちも楽しめるアトラクションが充実しています。",
+          "searchQuery": "Abu Dhabi Mall",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "モール内でランチ",
+          "description": "アブダビ・モール内のフードコートで、様々な国の料理を楽しめます。家族でシェアしながら、気になる料理を試してみてください。",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ファンショップ訪問",
+          "description": "F1のファンショップを訪れて、公式グッズを購入しましょう。子供たちも喜ぶアイテムがたくさん揃っています。",
+          "searchQuery": "F1 Fan Shop",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ルーヴル・アブダビ訪問",
+          "description": "アブダビの文化を感じるために、ルーヴル・アブダビを訪れます。美術館内のアート作品を家族で楽しみながら、文化的なひとときを過ごしましょう。",
+          "searchQuery": "Louvre Abu Dhabi",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルに戻り、休憩",
+          "description": "アブダビのホテルに戻り、少し休憩。家族でのんびりと過ごし、旅行の思い出を振り返る時間を持ちましょう。",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ホテル近くのレストランでディナー",
+          "description": "アブダビの地元料理を楽しめるレストランで、最後の晩餐を。家族でシェアしながら、旅の締めくくりを楽しみましょう。",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

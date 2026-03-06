@@ -1,0 +1,540 @@
+{
+  "id": "2b66ad5a-0abf-4513-8877-86af67917f66",
+  "destination": "Copenhagen",
+  "description": "Immerse yourself in the enchanting streets of Copenhagen, where every corner reveals a blend of modern design and rich history. This 6-day journey is perfect for couples seeking a leisurely exploration of the city’s vibrant neighborhoods, artistic flair, and culinary delights. From the iconic Nyhavn harbor to the serene gardens of Tivoli, you’ll find the perfect backdrop for romantic strolls and unforgettable memories. Get ready to indulge in delicious open-faced sandwiches and capture the beauty of this stylish city through your lens.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Copenhagen",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Norden",
+          "description": "Start your day with a delicious open-faced sandwich (smørrebrød) at Café Norden, a cozy spot known for its fresh ingredients and vibrant atmosphere. Don't forget to try their herring and egg variations!",
+          "searchQuery": "Café Norden",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Stroll through Nyhavn",
+          "description": "Take a leisurely walk along the iconic Nyhavn canal, lined with colorful 17th-century townhouses and bustling cafes. This picturesque area is perfect for capturing stunning photos and soaking in the vibrant atmosphere.",
+          "searchQuery": "Nyhavn",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Smørrebrød at Restaurant Schønnemann",
+          "description": "Indulge in more traditional Danish open-faced sandwiches at Restaurant Schønnemann, a beloved local eatery. Their selection of toppings is extensive, and the ambiance is charmingly authentic.",
+          "searchQuery": "Restaurant Schønnemann",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the National Gallery of Denmark (Statens Museum for Kunst)",
+          "description": "Explore Denmark's national art museum, featuring an impressive collection of Danish and international art. The museum's beautiful architecture and serene gardens provide a perfect backdrop for a relaxing afternoon.",
+          "searchQuery": "National Gallery of Denmark",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Shopping at Strøget",
+          "description": "Wander along Strøget, one of Europe's longest pedestrian streets, filled with shops ranging from high-end boutiques to popular brands. It's a great place to pick up unique souvenirs and enjoy the lively street performances.",
+          "searchQuery": "Strøget",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Restaurant Noma",
+          "description": "Experience fine dining at Noma, one of the world's best restaurants, known for its innovative Nordic cuisine. Reservations are essential, so be sure to book in advance for an unforgettable culinary experience.",
+          "searchQuery": "Noma",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening walk at Tivoli Gardens",
+          "description": "End your day with a magical stroll through Tivoli Gardens, one of the oldest amusement parks in the world. The park is beautifully illuminated at night, creating a romantic atmosphere perfect for couples.",
+          "searchQuery": "Tivoli Gardens",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the Heart of Copenhagen",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Norden",
+          "description": "Start your day with a delicious open-faced sandwich (smørrebrød) at Café Norden, a cozy spot known for its fresh ingredients and vibrant atmosphere. Don't forget to try their famous salmon and avocado combination!",
+          "searchQuery": "Café Norden",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Stroll along Nyhavn",
+          "description": "Take a leisurely walk along the picturesque Nyhavn, famous for its colorful buildings and historic wooden ships. This iconic waterfront area is perfect for capturing stunning photos and soaking in the lively atmosphere.",
+          "searchQuery": "Nyhavn",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurant Noma",
+          "description": "Indulge in a culinary experience at Noma, one of the world's best restaurants. Enjoy a seasonal menu that showcases the best of Nordic cuisine, with a focus on local ingredients. Reservations are highly recommended!",
+          "searchQuery": "Noma",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Amalienborg Palace",
+          "description": "Explore the stunning Amalienborg Palace, the home of the Danish royal family. Witness the changing of the guard ceremony and take a stroll through the beautiful gardens surrounding the palace.",
+          "searchQuery": "Amalienborg Palace",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Frederik's Church",
+          "description": "Just a short walk from Amalienborg, visit Frederik's Church, known for its impressive dome and beautiful architecture. Take a moment to appreciate the serene atmosphere and the intricate details of this stunning church.",
+          "searchQuery": "Frederik's Church",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Restaurant Kadeau",
+          "description": "End your day with a delightful dinner at Kadeau, where you can savor innovative dishes inspired by the flavors of Bornholm. The intimate setting and exquisite presentation make for a memorable dining experience.",
+          "searchQuery": "Restaurant Kadeau",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening walk at The Little Mermaid",
+          "description": "Take a romantic evening stroll to see the iconic Little Mermaid statue. The area is beautifully lit at night, providing a perfect backdrop for photos and a peaceful end to your day.",
+          "searchQuery": "The Little Mermaid",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Art and Culture Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Norden",
+          "description": "Start your day with a delicious open-faced sandwich at Café Norden, known for its cozy atmosphere and fresh ingredients. Their smørrebrød is a must-try, featuring a variety of toppings that showcase Danish flavors.",
+          "searchQuery": "Café Norden",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit The National Gallery of Denmark",
+          "description": "Explore the rich collection of Danish and international art at The National Gallery of Denmark. The museum houses works from the Middle Ages to the present, including pieces by famous artists like Matisse and Picasso.",
+          "searchQuery": "The National Gallery of Denmark",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Torvehallerne",
+          "description": "Head to Torvehallerne, a vibrant food market where you can sample various local delicacies. Enjoy a leisurely lunch while trying different open-faced sandwiches and artisanal treats from the many stalls.",
+          "searchQuery": "Torvehallerne",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through Christianshavn",
+          "description": "Take a leisurely walk through the picturesque Christianshavn district, known for its charming canals and colorful houses. Don't forget to snap some photos of the iconic Church of Our Saviour with its spiral tower.",
+          "searchQuery": "Christianshavn",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore Freetown Christiania",
+          "description": "Visit the unique and alternative community of Freetown Christiania. Wander through its vibrant streets filled with street art, quirky shops, and cafes. It's a great place to experience a different side of Copenhagen.",
+          "searchQuery": "Freetown Christiania",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Coffee Break at The Coffee Collective",
+          "description": "Take a break at The Coffee Collective, a renowned café known for its high-quality coffee sourced directly from farmers. Enjoy a cup of their specialty brew while soaking in the local atmosphere.",
+          "searchQuery": "The Coffee Collective",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Restaurant Noma",
+          "description": "Indulge in a fine dining experience at Noma, one of the world's best restaurants. Experience innovative Nordic cuisine in a beautifully designed setting. Reservations are highly recommended.",
+          "searchQuery": "Noma",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Tivoli Gardens and Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Norden",
+          "description": "Start your day with a delightful breakfast at Café Norden, known for its delicious open-faced sandwiches and cozy atmosphere. Enjoy a classic Danish smørrebrød topped with fresh ingredients, perfect for fueling your day of exploration.",
+          "searchQuery": "Café Norden",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Tivoli Gardens",
+          "description": "Spend the morning at Tivoli Gardens, one of the world's oldest amusement parks. Stroll through beautifully landscaped gardens, enjoy thrilling rides, and take in the enchanting atmosphere. Don't forget to snap some photos of the stunning architecture and vibrant flowers!",
+          "searchQuery": "Tivoli Gardens",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Grøften",
+          "description": "For lunch, head to Grøften, a charming restaurant located within Tivoli. Indulge in traditional Danish dishes in a cozy setting, with options like herring and meatballs, all while enjoying views of the gardens.",
+          "searchQuery": "Grøften",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Strøget",
+          "description": "After lunch, take a leisurely stroll down Strøget, one of Europe's longest pedestrian streets. This vibrant area is lined with shops, boutiques, and cafes, making it the perfect place to shop for souvenirs or simply enjoy the lively atmosphere.",
+          "searchQuery": "Strøget",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Coffee Break at The Royal Café",
+          "description": "Take a break at The Royal Café, known for its charming decor and delicious pastries. Enjoy a cup of coffee or tea paired with a slice of Danish cake while soaking in the café's artistic ambiance.",
+          "searchQuery": "The Royal Café",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit Kongens Nytorv",
+          "description": "Conclude your day with a visit to Kongens Nytorv, a beautiful square surrounded by historic buildings and the Royal Danish Theatre. It's a great spot for photos, especially as the sun sets, casting a warm glow over the square.",
+          "searchQuery": "Kongens Nytorv",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Restaurant Nimb",
+          "description": "End your day with a memorable dinner at Restaurant Nimb, located within Tivoli Gardens. This upscale restaurant offers a fine dining experience with a focus on seasonal ingredients and exquisite flavors, perfect for a romantic evening.",
+          "searchQuery": "Restaurant Nimb",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Day Trip to Bakken",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Norden",
+          "description": "Start your day with a delicious open-faced sandwich at Café Norden, known for its cozy atmosphere and fresh ingredients. Their smørrebrød is a must-try, featuring a variety of toppings that showcase Danish flavors.",
+          "searchQuery": "Café Norden",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Bakken Amusement Park",
+          "description": "Head to Bakken, the world's oldest amusement park, located just a short train ride from Copenhagen. Enjoy the charming atmosphere, thrilling rides, and unique attractions, all set in a beautiful forested area.",
+          "searchQuery": "Bakken Amusement Park",
+          "locationEn": "Klampenborg, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Restaurant Bakken",
+          "description": "Indulge in a delightful lunch at Restaurant Bakken, where you can enjoy traditional Danish dishes in a relaxed setting. Don't miss their famous open-faced sandwiches, perfect for refueling after a morning of fun.",
+          "searchQuery": "Restaurant Bakken",
+          "locationEn": "Klampenborg, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relax at Klampenborg Beach",
+          "description": "After lunch, take a leisurely stroll to Klampenborg Beach. Enjoy the serene views of the Øresund Strait and perhaps take some beautiful photos of the picturesque surroundings.",
+          "searchQuery": "Klampenborg Beach",
+          "locationEn": "Klampenborg, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Dyrehaven Park",
+          "description": "Wander through Dyrehaven, a stunning park nearby Bakken, known for its lush greenery and free-roaming deer. It's a perfect spot for a romantic walk and capturing beautiful moments together.",
+          "searchQuery": "Dyrehaven",
+          "locationEn": "Klampenborg, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Noma",
+          "description": "End your day with an unforgettable dining experience at Noma, one of the world's best restaurants. Enjoy a creative menu that highlights Nordic cuisine, making for a perfect romantic evening.",
+          "searchQuery": "Noma",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Farewell Copenhagen",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Torvehallerne",
+          "description": "Start your day with a delicious open-faced sandwich at Torvehallerne, a vibrant food market. Choose from a variety of toppings, including fresh herring, avocado, and local cheeses, all served on rye bread. It's a perfect way to experience Danish culinary culture in a lively atmosphere.",
+          "searchQuery": "Torvehallerne",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Stroll through Nyhavn",
+          "description": "After breakfast, take a leisurely walk to Nyhavn, the iconic waterfront lined with colorful 17th-century townhouses. This picturesque area is perfect for capturing stunning photos, especially with the boats bobbing in the canal. Don't forget to stop by one of the charming cafes for a coffee.",
+          "searchQuery": "Nyhavn",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurant Noma",
+          "description": "Indulge in a memorable lunch at Noma, one of the world's best restaurants. Experience innovative Nordic cuisine with a focus on local ingredients. Reservations are essential, so be sure to book in advance for this culinary adventure.",
+          "searchQuery": "Noma",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the National Gallery of Denmark",
+          "description": "Explore the National Gallery of Denmark, home to an impressive collection of Danish and international art. From the Golden Age of Danish painting to modern masterpieces, this museum offers a deep dive into the world of art. The serene atmosphere is perfect for a relaxed afternoon.",
+          "searchQuery": "National Gallery of Denmark",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping at Strøget",
+          "description": "Head to Strøget, one of the longest pedestrian streets in Europe, for some shopping. Browse through a mix of high-end boutiques, local shops, and international brands. It's a great place to find unique souvenirs and gifts to remember your trip.",
+          "searchQuery": "Strøget",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Restaurant Geranium",
+          "description": "For your final dinner in Copenhagen, treat yourselves to a fine dining experience at Restaurant Geranium, which boasts three Michelin stars. Enjoy a beautifully crafted tasting menu that showcases the best of Danish cuisine, paired with exquisite wines.",
+          "searchQuery": "Restaurant Geranium",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Evening walk along the waterfront",
+          "description": "Conclude your day with a romantic evening stroll along the waterfront. The city lights reflecting on the water create a magical atmosphere, perfect for reminiscing about your wonderful trip to Copenhagen.",
+          "searchQuery": "Copenhagen waterfront",
+          "locationEn": "Copenhagen, Denmark",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

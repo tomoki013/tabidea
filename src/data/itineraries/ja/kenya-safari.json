@@ -1,0 +1,616 @@
+{
+  "id": "39d9aada-e2b3-4bb7-b9a9-2d1721322eed",
+  "destination": "マサイマラ国立保護区",
+  "description": "アフリカの大自然を感じる冒険の旅へ、家族での特別な思い出を作りましょう。マサイマラ国立保護区では、サファリカーに乗って本物のライオンや野生動物を間近で観察し、壮大な景色に囲まれた時間を過ごします。子供たちにとっても忘れられない体験となることでしょう。",
+  "heroImage": "https://images.unsplash.com/photo-1651321900038-df2c32a0c551?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODU4ODZ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Herbert Gerstmayr",
+  "heroImagePhotographerUrl": "https://unsplash.com/@alfonsis?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からナイロビへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ナイロビ",
+          "time": "15:00"
+        },
+        "duration": "14h",
+        "memo": "直行便でナイロビへ。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "16:00",
+          "activity": "ナイロビ国立公園",
+          "description": "ナイロビ市内からすぐの距離にあるナイロビ国立公園で、野生動物を観察します。サファリカーに乗って、ライオンやキリン、サイなどの姿を間近で見ることができます。",
+          "searchQuery": "Nairobi National Park",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "ナイロビのホテルで、アフリカン料理を楽しみます。地元の食材を使った料理が豊富で、家族みんなでシェアしながら楽しむのにぴったりです。",
+          "searchQuery": "Sarova Panafric Hotel",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "ホテルチェックイン",
+          "description": "ナイロビの快適なホテルにチェックイン。家族でリラックスし、明日のサファリに備えます。",
+          "searchQuery": "Sarova Panafric Hotel",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ナイロビからマサイマラへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ナイロビ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "マサイマラ",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "小型飛行機での快適な空の旅。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "マサイマラ国立保護区到着",
+          "description": "マサイマラ国立保護区に到着し、サファリの冒険が始まります。広大な草原に広がる美しい風景と、野生動物たちの姿に心が躍ります。",
+          "searchQuery": "Maasai Mara National Reserve",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "サファリランチ",
+          "description": "サファリカーの中で、ピクニックスタイルのランチを楽しみます。周囲の自然を感じながら、家族での特別なひとときを過ごしましょう。",
+          "searchQuery": "Maasai Mara picnic lunch",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "サファリドライブ",
+          "description": "サファリカーに乗り込み、ライオンやゾウ、キリンなどの野生動物を探しに出発します。子供たちにとって、実際のライオンを見る貴重な体験です。",
+          "searchQuery": "Maasai Mara safari",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "宿泊施設チェックイン",
+          "description": "マサイマラのロッジにチェックイン。自然に囲まれた快適な宿泊施設で、家族でリラックスしながら夕食を楽しむ準備をします。",
+          "searchQuery": "Maasai Mara lodge",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ロッジでのディナー",
+          "description": "ロッジでのディナーは、地元の食材を使った美味しい料理が楽しめます。家族での楽しい会話を交えながら、特別な夜を過ごしましょう。",
+          "searchQuery": "Maasai Mara lodge dinner",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "マサイマラでのサファリ体験",
+      "activities": [
+        {
+          "time": "06:30",
+          "activity": "サファリドライブ",
+          "description": "早朝のサファリドライブで、野生動物たちが活動する姿を観察します。特にライオンやゾウ、キリンなどの姿を間近で見るチャンスです。子供たちも大興奮間違いなし！",
+          "searchQuery": "Maasai Mara National Reserve",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "サファリの後は、ホテルでの朝食を楽しみます。新鮮なフルーツや地元の料理を味わいながら、家族での楽しい会話を楽しんでください。",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "再度サファリドライブ",
+          "description": "午前中のサファリドライブで、さらに多くの動物たちを探しに出かけます。特にライオンの家族を見つけることができれば、子供たちにとって忘れられない思い出になるでしょう。",
+          "searchQuery": "Maasai Mara National Reserve",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ピクニックランチ",
+          "description": "サファリの合間に、自然の中でピクニックランチを楽しみます。地元の食材を使ったサンドイッチやフルーツを持参し、野生動物の声を聞きながらの食事は格別です。",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "午後のサファリドライブ",
+          "description": "午後もサファリドライブを続け、動物たちの行動を観察します。特に夕方の時間帯は、動物たちが活発になるため、見逃せない瞬間がたくさんあります。",
+          "searchQuery": "Maasai Mara National Reserve",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "ホテルに戻る",
+          "description": "サファリを終えたら、ホテルに戻り、ゆったりとした時間を過ごします。子供たちと一緒に今日の冒険を振り返りながら、楽しいひとときを過ごしましょう。",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "夕食はホテル内のレストランで、アフリカン料理を楽しみます。地元の食材を使った料理を味わいながら、家族での楽しい時間を過ごしてください。",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "マサイマラでの文化体験",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "マサイマラの宿泊施設で、地元の食材を使った朝食を楽しみます。新鮮なフルーツや、アフリカの伝統的な料理が並び、家族みんなでエネルギーをチャージ。",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "マサイ族の村訪問",
+          "description": "マサイ族の村を訪れ、彼らの伝統的な生活様式や文化を学びます。子供たちも参加できるダンスや工芸体験があり、家族で楽しい思い出を作ることができます。",
+          "searchQuery": "Maasai Village",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "村でのランチ",
+          "description": "マサイ族の村で、地元の料理を楽しむランチタイム。新鮮な食材を使った料理は、家族全員にとって新しい味の発見となるでしょう。",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "伝統的なダンス体験",
+          "description": "マサイ族の伝統的なダンスを体験します。家族全員で参加できる楽しいアクティビティで、子供たちも大喜び。ダンスの後は、写真撮影タイムも！",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "サファリカーでの野生動物観察",
+          "description": "サファリカーに乗り込み、マサイマラの広大な草原を巡ります。ライオンやゾウ、キリンなど、子供たちが憧れる野生動物を間近で見ることができる貴重な体験です。",
+          "searchQuery": "Maasai Mara National Reserve",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "宿泊施設に戻り、ディナーを楽しみます。アフリカの風味豊かな料理を家族でシェアしながら、今日の思い出を語り合う素敵な時間。",
+          "locationEn": "Maasai Mara, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "マサイマラからナイロビへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "マサイマラ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ナイロビ",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "小型飛行機での快適な移動。空からのサバンナの景色を楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "ナイロビ国立公園",
+          "description": "ナイロビ国立公園でのサファリ体験。ライオンやキリン、サイなどの野生動物を間近で観察できます。子供たちも大興奮の冒険です！",
+          "searchQuery": "Nairobi National Park",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "公園内でピクニックランチ",
+          "description": "ナイロビ国立公園内でのピクニックランチ。自然の中で家族と一緒にお弁当を楽しみましょう。",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ナイロビ国立博物館",
+          "description": "ナイロビ国立博物館でケニアの文化や歴史を学びます。子供向けの展示もあり、楽しみながら学べるスポットです。",
+          "searchQuery": "Nairobi National Museum",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ナイロビのカフェでお茶",
+          "description": "ナイロビの地元のカフェでリラックス。ケニアのコーヒーやスイーツを楽しみながら、旅の思い出を語り合いましょう。",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ナイロビのホテルにチェックイン",
+          "description": "ナイロビの快適なホテルにチェックイン。家族でゆっくりと過ごせる空間です。",
+          "searchQuery": "Sarova Panafric Hotel",
+          "locationEn": "Nairobi, Kenya",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ナイロビからアビジャンへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ナイロビ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "アビジャン",
+          "time": "12:00"
+        },
+        "duration": "5h",
+        "memo": "ナイロビからアビジャンへの直行便を利用します。"
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "アビジャン市内観光",
+          "description": "アビジャンに到着後、まずは市内観光を楽しみましょう。アビジャンの美しいビーチや文化的なスポットを巡ります。",
+          "searchQuery": "Abidjan City Tour",
+          "locationEn": "Abidjan, Ivory Coast",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "地元のレストランでランチ",
+          "description": "アビジャンの地元料理を楽しむために、人気のレストランでランチを取ります。アフリカの風味豊かな料理を堪能しましょう。",
+          "searchQuery": "Le Relais de l'Entrecôte",
+          "locationEn": "Abidjan, Ivory Coast",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "アビジャンのビーチでリラックス",
+          "description": "アビジャンの美しいビーチで、家族でリラックスした時間を過ごします。子供たちも砂遊びや海水浴を楽しめます。",
+          "searchQuery": "Plage de Grand Bassam",
+          "locationEn": "Grand Bassam, Ivory Coast",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルチェックイン",
+          "description": "アビジャンの快適なホテルにチェックインします。家族でゆっくりと過ごせる空間です。",
+          "searchQuery": "Sofitel Abidjan Hôtel Ivoire",
+          "locationEn": "Abidjan, Ivory Coast",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ホテル内でディナー",
+          "description": "ホテル内のレストランで、アフリカ料理を楽しむディナーをいただきます。家族での楽しいひとときを過ごしましょう。",
+          "searchQuery": "Sofitel Abidjan Hôtel Ivoire Restaurant",
+          "locationEn": "Abidjan, Ivory Coast",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "アビジャンでのリラックス",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "アビジャンのホテルで、地元のフルーツやパンを使った朝食を楽しみます。新鮮なパイナップルやマンゴーが特におすすめです。",
+          "locationEn": "Abidjan, Ivory Coast",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "アビジャンビーチでのんびり",
+          "description": "アビジャンの美しいビーチで、家族みんなでリラックス。青い海と白い砂浜で、子供たちも楽しめるアクティビティがたくさんあります。",
+          "searchQuery": "Abidjan Beach",
+          "locationEn": "Abidjan, Ivory Coast",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "アビジャンの地元のレストランで、アフリカ料理を堪能。特に、ヤムイモや魚料理が美味しいと評判です。",
+          "locationEn": "Abidjan, Ivory Coast",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アビジャンの地元市場を散策",
+          "description": "地元の市場を訪れ、色とりどりのフルーツや手工芸品を見て回ります。子供たちも興味津々で楽しめるスポットです。",
+          "searchQuery": "Abidjan Local Market",
+          "locationEn": "Abidjan, Ivory Coast",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "サファリカーに乗って動物観察",
+          "description": "アビジャン近郊のサファリパークで、サファリカーに乗って本物のライオンや他の野生動物を観察します。子供たちにとって忘れられない体験になるでしょう。",
+          "searchQuery": "Abidjan Safari Park",
+          "locationEn": "Abidjan, Ivory Coast",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "ホテル内のレストランで、アフリカン・フュージョン料理を楽しみます。家族みんなでゆったりとした時間を過ごしましょう。",
+          "locationEn": "Abidjan, Ivory Coast",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "アビジャンから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "アビジャン",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "翌日 06:00"
+        },
+        "duration": "12h",
+        "memo": "アビジャンから東京への直行便。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "アビジャンのホテルで、地元のフルーツやパンを使った朝食を楽しみます。エネルギーをチャージして、旅の準備を整えましょう。",
+          "locationEn": "Abidjan, Ivory Coast",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "アビジャンのアビジャン大聖堂訪問",
+          "description": "アビジャンのシンボルとも言える美しい大聖堂を訪れます。独特の建築様式と、内部の美しいステンドグラスが印象的です。",
+          "searchQuery": "St. Paul's Cathedral",
+          "locationEn": "Abidjan, Ivory Coast",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "アビジャンの市場散策",
+          "description": "地元の市場を散策し、色とりどりのスパイスやフルーツ、手工芸品を楽しみます。お土産探しにもぴったりです。",
+          "searchQuery": "Abidjan Market",
+          "locationEn": "Abidjan, Ivory Coast",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "空港へ移動",
+          "description": "アビジャンの空港へ向かいます。出発の手続きを済ませ、搭乗を待ちます。",
+          "locationEn": "Abidjan, Ivory Coast",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "機内食",
+          "description": "フライト中に提供される機内食を楽しみます。アフリカの味を感じる料理が出ることも。",
+          "locationEn": "In-flight",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

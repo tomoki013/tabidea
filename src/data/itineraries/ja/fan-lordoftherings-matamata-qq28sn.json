@@ -1,0 +1,277 @@
+{
+  "id": "95904e37-790c-4214-b25d-d30a6704cc69",
+  "destination": "マタマタ",
+  "description": "ニュージーランドの美しい自然に囲まれたマタマタは、映画『ロード・オブ・ザ・リング』のファンにとって夢のような場所です。ここでは、映画の舞台となったホビット村を訪れ、壮大な風景に心を奪われることができます。また、地元の人々が愛するカフェやショップでリラックスしながら、特別な思い出を作ることができます。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ホビット村の探訪",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "マタマタのカフェで朝食",
+          "description": "地元のカフェで新鮮なコーヒーとベーカリーを楽しみながら、ホビット村の探訪に備えましょう。特に自家製のスコーンが絶品です。",
+          "searchQuery": "Matamata Cafe",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ホビット村見学",
+          "description": "映画『ロード・オブ・ザ・リング』の舞台となったホビット村を訪れ、映画のセットを見学します。美しい風景の中で、ホビットたちの生活を体感できる貴重な体験です。",
+          "searchQuery": "Hobbiton Movie Set",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ホビット村内のレストランでランチ",
+          "description": "ホビット村内のレストランで、映画にちなんだ料理を楽しみましょう。特に、ホビットのビールと一緒に味わうパイが人気です。",
+          "searchQuery": "Hobbiton Movie Set Restaurant",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ホビット村のショップでファングッズ購入",
+          "description": "ホビット村のショップで、映画関連のグッズやお土産を探しましょう。特に、ホビットのフィギュアやTシャツは人気です。",
+          "searchQuery": "Hobbiton Gift Shop",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "マタマタの自然散策",
+          "description": "ホビット村の周辺には美しい自然が広がっています。散策しながら、ニュージーランドの大自然を満喫しましょう。",
+          "searchQuery": "Matamata Nature Walk",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "マタマタのレストランでディナー",
+          "description": "地元のレストランで、ニュージーランドの新鮮な食材を使った料理を楽しみましょう。特に、ラム肉料理が絶品です。",
+          "searchQuery": "Matamata Restaurant",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "宿泊先でリラックス",
+          "description": "マタマタの宿泊先で、旅の疲れを癒しながらゆったりとした時間を過ごしましょう。",
+          "searchQuery": "Matamata Accommodation",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "自然と歴史の体験",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "マタマタのカフェで朝食",
+          "description": "地元のカフェで新鮮なコーヒーとベーカリーを楽しみながら、ゆったりとした朝を迎えます。特に、手作りのペストリーが絶品です。",
+          "searchQuery": "Matamata Cafe",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ワイオタプ熱泥公園",
+          "description": "自然の驚異、ワイオタプ熱泥公園を訪れます。色とりどりの熱泥や間欠泉が見られ、まるで異世界に迷い込んだかのような体験ができます。",
+          "searchQuery": "Wai-O-Tapu Thermal Wonderland",
+          "locationEn": "Wai-O-Tapu, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "マタマタのレストランでランチ",
+          "description": "地元の食材を使った料理を楽しめるレストランで、ニュージーランドの味を堪能します。特に、ラム肉料理が人気です。",
+          "searchQuery": "Matamata Restaurant",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ホビット村の見学",
+          "description": "映画『ロード・オブ・ザ・リング』の舞台となったホビット村を訪れ、映画の世界に浸ります。美しい風景と可愛らしいホビットの家々が広がります。",
+          "searchQuery": "Hobbiton Movie Set",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "マタマタのショップでファングッズ購入",
+          "description": "ホビット村の近くにあるショップで、映画関連のグッズを探しましょう。お土産にぴったりなアイテムが揃っています。",
+          "searchQuery": "Hobbiton Gift Shop",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "マタマタのレストランでディナー",
+          "description": "地元の食材を使ったディナーを楽しみながら、今日の思い出を語り合いましょう。特に、地元のワインと一緒に楽しむ料理が絶品です。",
+          "searchQuery": "Matamata Dinner Restaurant",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "宿泊先でリラックス",
+          "description": "今日の疲れを癒すため、宿泊先でゆったりとした時間を過ごします。温かいお茶を飲みながら、明日の計画を立てるのも良いでしょう。",
+          "searchQuery": "Matamata Accommodation",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "マタマタのリラックス",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "マタマタの宿泊先で、地元の食材を使った朝食を楽しみます。新鮮なフルーツやトースト、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ホビット村見学",
+          "description": "映画『ロード・オブ・ザ・リング』の舞台となったホビット村を訪れます。美しい風景の中、ホビットの家々を見学し、映画の世界に浸ることができます。",
+          "searchQuery": "Hobbiton Movie Set",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ホビット村内のカフェでランチ",
+          "description": "ホビット村内のカフェで、映画にちなんだ特製メニューを楽しみます。美しい景色を眺めながら、リラックスしたひとときを過ごせます。",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "マタマタの自然散策",
+          "description": "ホビット村の周辺を散策し、自然の美しさを堪能します。緑豊かな風景や小川のせせらぎを楽しみながら、心をリフレッシュ。",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "地元のマーケット訪問",
+          "description": "マタマタの地元マーケットで、手作りのファングッズやお土産を探します。地元の人々との交流も楽しめる、アットホームな雰囲気のマーケットです。",
+          "searchQuery": "Matamata Market",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルに戻り休憩",
+          "description": "一度ホテルに戻り、ゆったりとした時間を過ごします。旅の疲れを癒し、夕食に備えましょう。",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "マタマタの地元レストランで、ニュージーランドの郷土料理を楽しみます。新鮮な食材を使った料理が堪能できるお店です。",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

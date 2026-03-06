@@ -1,0 +1,529 @@
+{
+  "id": "5d02b3cf-8d46-4eaf-8210-e868a1d039aa",
+  "destination": "カトマンズ",
+  "description": "Immerse yourself in the vibrant culture and breathtaking landscapes of Kathmandu, where ancient temples stand as testaments to a rich history, and the majestic Himalayas provide a stunning backdrop. Over the course of six days, you'll explore UNESCO World Heritage Sites, wander through bustling local markets, and savor the flavors of traditional Nepali cuisine, all while soaking in the serene beauty of the mountains. This journey is designed for a leisurely pace, allowing you to fully appreciate the sights and sounds of this enchanting city.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Kathmandu",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a hearty breakfast at a local café in Thamel. Try the traditional Nepali dish, 'Dal Bhat', which is both filling and energizing for your day ahead.",
+          "searchQuery": "Thamel Café",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Thamel",
+          "description": "Stroll through the vibrant streets of Thamel, known for its colorful shops and lively atmosphere. This area is perfect for picking up souvenirs and experiencing the local culture.",
+          "searchQuery": "Thamel",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at OR2K",
+          "description": "Enjoy a delicious lunch at OR2K, a popular spot among travelers for its Middle Eastern and Mediterranean dishes. The cozy atmosphere and vegetarian options make it a great choice.",
+          "searchQuery": "OR2K",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Kathmandu Durbar Square",
+          "description": "Head to Kathmandu Durbar Square, a UNESCO World Heritage site. Marvel at the stunning architecture of the ancient temples and palaces, and soak in the rich history of the area.",
+          "searchQuery": "Kathmandu Durbar Square",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the Streets of Bhaktapur",
+          "description": "Take a short taxi ride to Bhaktapur, another UNESCO World Heritage site. Wander through the ancient streets, admire the intricate woodwork, and don't miss the famous Bhaktapur yogurt, 'king curd'.",
+          "searchQuery": "Bhaktapur Durbar Square",
+          "locationEn": "Bhaktapur, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Enjoy a traditional Nepali dinner at a local restaurant. Try 'Momo', the famous dumplings, paired with a warm cup of 'Masala Tea' to end your day on a cozy note.",
+          "searchQuery": "Local Nepali Restaurant",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Hotel",
+          "description": "Head back to your accommodation in Kathmandu to relax and prepare for the adventures ahead. Reflect on your first day in this beautiful city!",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the Heart of Kathmandu",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a hearty breakfast at a cozy café in Thamel, where you can enjoy traditional Nepali dishes like 'Aloo Paratha' or a simple omelet with fresh local bread. The vibrant atmosphere of Thamel will energize you for the day ahead.",
+          "searchQuery": "Thamel Café",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Swayambhunath (Monkey Temple)",
+          "description": "Visit the iconic Swayambhunath, also known as the Monkey Temple. This UNESCO World Heritage site offers stunning panoramic views of Kathmandu and is adorned with colorful prayer flags and ancient stupas. Be prepared to climb a few steps, but the view is worth every effort!",
+          "searchQuery": "Swayambhunath",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Enjoy a traditional Nepali lunch at a nearby restaurant. Try 'Dal Bhat', a staple meal consisting of lentil soup, rice, and various side dishes. It's a filling and authentic experience that will give you a taste of local flavors.",
+          "searchQuery": "Local Nepali Restaurant",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Patan Durbar Square",
+          "description": "Take a short taxi ride to Patan Durbar Square, another UNESCO World Heritage site. Wander through the ancient courtyards and admire the intricate architecture of the temples and palaces. Don't forget to visit the Patan Museum for a deeper understanding of the local culture.",
+          "searchQuery": "Patan Durbar Square",
+          "locationEn": "Patan, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll through Thamel",
+          "description": "Return to Thamel and spend some time exploring its narrow streets filled with shops selling handicrafts, pashmina shawls, and souvenirs. This is a great opportunity to pick up unique gifts and enjoy the lively atmosphere of the area.",
+          "searchQuery": "Thamel",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Rooftop Restaurant",
+          "description": "End your day with dinner at a rooftop restaurant in Thamel, where you can enjoy delicious Nepali cuisine while taking in the views of the city. The ambiance is perfect for reflecting on your day's adventures.",
+          "searchQuery": "Rooftop Restaurant Thamel",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Relax at Your Accommodation",
+          "description": "Return to your accommodation and unwind. Take some time to relax and prepare for another exciting day in Kathmandu. Consider journaling about your experiences or planning your next adventures.",
+          "searchQuery": "Accommodation in Kathmandu",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion in Bhaktapur",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Kathmandu",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Bhaktapur",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Take a local bus from Kathmandu to Bhaktapur for an authentic experience."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Bhaktapur Durbar Square",
+          "description": "Explore the stunning Bhaktapur Durbar Square, a UNESCO World Heritage site filled with ancient temples and beautiful architecture. Don't miss the 55-Window Palace and the Vatsala Temple, where you can soak in the rich history of this medieval city.",
+          "searchQuery": "Bhaktapur Durbar Square",
+          "locationEn": "Bhaktapur, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Cafe Nyatapola",
+          "description": "Enjoy a delicious lunch at Cafe Nyatapola, known for its local Newari cuisine. Try the 'Bara' (fried lentil patties) and 'Yomari' (sweet dumplings) for an authentic taste of Bhaktapur.",
+          "searchQuery": "Cafe Nyatapola",
+          "locationEn": "Bhaktapur, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Pottery Square",
+          "description": "Visit Pottery Square, where you can watch local artisans at work shaping clay into beautiful pottery. This is a great spot to pick up unique souvenirs and even try your hand at pottery making!",
+          "searchQuery": "Pottery Square",
+          "locationEn": "Bhaktapur, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore the Old City Streets",
+          "description": "Wander through the narrow, winding streets of Bhaktapur's old city. Admire the traditional Newari architecture and vibrant local life, stopping to chat with friendly locals along the way.",
+          "searchQuery": "Bhaktapur Old City",
+          "locationEn": "Bhaktapur, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit the Nyatapola Temple",
+          "description": "Climb the steps to the Nyatapola Temple, the tallest pagoda-style temple in Nepal. The view from the top offers a breathtaking panorama of Bhaktapur and the surrounding mountains.",
+          "searchQuery": "Nyatapola Temple",
+          "locationEn": "Bhaktapur, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Bhaktapur Kitchen",
+          "description": "End your day with dinner at The Bhaktapur Kitchen, where you can savor traditional Nepali dishes in a cozy atmosphere. The 'Dal Bhat' (lentil soup with rice) is a must-try!",
+          "searchQuery": "The Bhaktapur Kitchen",
+          "locationEn": "Bhaktapur, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "A Day in Patan",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Bhaktapur",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Patan",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Local bus from Bhaktapur to Patan."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Patan Durbar Square",
+          "description": "Explore the stunning Patan Durbar Square, a UNESCO World Heritage site, known for its intricate architecture and rich history. Don't miss the Krishna Mandir, a masterpiece of stone architecture.",
+          "searchQuery": "Patan Durbar Square",
+          "locationEn": "Patan, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Village Cafe",
+          "description": "Enjoy a delicious meal at The Village Cafe, where you can savor local Nepali dishes in a cozy atmosphere. Try the dal bhat for an authentic experience.",
+          "searchQuery": "The Village Cafe",
+          "locationEn": "Patan, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Golden Temple (Hiranya Varna Mahavihar)",
+          "description": "Visit the Golden Temple, a beautiful Buddhist monastery adorned with intricate gold-plated sculptures. The serene atmosphere and stunning architecture make it a perfect spot for reflection.",
+          "searchQuery": "Golden Temple Patan",
+          "locationEn": "Patan, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Stroll through the streets of Patan",
+          "description": "Take a leisurely walk through the charming streets of Patan, where you can admire traditional Newari architecture and perhaps pick up some unique handicrafts from local shops.",
+          "searchQuery": "Patan, Nepal",
+          "locationEn": "Patan, Nepal",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit the Patan Museum",
+          "description": "End your day at the Patan Museum, which showcases a rich collection of traditional Nepalese art and artifacts. The museum is housed in a beautifully restored palace.",
+          "searchQuery": "Patan Museum",
+          "locationEn": "Patan, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Cafe du Temple",
+          "description": "Enjoy dinner at Cafe du Temple, known for its fusion of Nepali and international cuisine. The ambiance is perfect for winding down after a day of exploration.",
+          "searchQuery": "Cafe du Temple",
+          "locationEn": "Patan, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Himalayan Views and Nature",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Patan",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Nagarkot",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Take a local bus from Patan to Nagarkot for stunning views along the way."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Nagarkot Sunrise Viewpoint",
+          "description": "Start your day with breathtaking views of the Himalayas from the Nagarkot Sunrise Viewpoint. The early morning light casts a magical glow on the peaks, making it a perfect spot for photography and reflection.",
+          "searchQuery": "Nagarkot Sunrise Viewpoint",
+          "locationEn": "Nagarkot, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Local Nepali Lunch",
+          "description": "Enjoy a traditional Nepali meal at a local eatery. Try dishes like dal bhat (lentil soup with rice) and momo (dumplings) for an authentic taste of the region.",
+          "searchQuery": "Local Nepali Restaurant Nagarkot",
+          "locationEn": "Nagarkot, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Nagarkot Hiking Trails",
+          "description": "Explore the scenic hiking trails around Nagarkot. The trails offer stunning views of the surrounding mountains and valleys, perfect for a leisurely walk in nature.",
+          "searchQuery": "Nagarkot Hiking Trails",
+          "locationEn": "Nagarkot, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit the Local Monastery",
+          "description": "Take a peaceful stroll to a nearby monastery. Experience the serene atmosphere and perhaps witness a prayer session, immersing yourself in the local culture.",
+          "searchQuery": "Nagarkot Monastery",
+          "locationEn": "Nagarkot, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner with a View",
+          "description": "Dine at a restaurant that offers panoramic views of the Himalayas. Enjoy local cuisine while watching the sunset over the mountains, a perfect end to your day.",
+          "searchQuery": "Nagarkot Restaurant",
+          "locationEn": "Nagarkot, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Kathmandu and Departure",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Nagarkot",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Kathmandu",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy the scenic drive back to Kathmandu, taking in the beautiful mountain views."
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "Boudhanath Stupa",
+          "description": "Visit the iconic Boudhanath Stupa, one of the largest stupas in Nepal and a UNESCO World Heritage site. The serene atmosphere and the sight of the prayer flags fluttering in the wind create a peaceful experience.",
+          "searchQuery": "Boudhanath Stupa",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Enjoy a traditional Nepali meal at a local restaurant near Boudhanath. Try the Dal Bhat, a staple dish that will give you a taste of authentic Nepali cuisine.",
+          "searchQuery": "Local Nepali Restaurant Boudhanath",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Thamel District",
+          "description": "Stroll through the vibrant Thamel district, known for its shops, cafes, and lively atmosphere. It's a great place to pick up souvenirs and enjoy the local culture before your departure.",
+          "searchQuery": "Thamel",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Hotel and Prepare for Departure",
+          "description": "Head back to your hotel to collect your belongings and prepare for your journey home. Take a moment to reflect on your wonderful experiences in Nepal.",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Departure from Kathmandu",
+          "description": "Make your way to Tribhuvan International Airport for your flight home, filled with memories of the stunning Himalayas and rich culture of Nepal.",
+          "locationEn": "Kathmandu, Nepal",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

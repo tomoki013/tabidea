@@ -1,0 +1,382 @@
+{
+  "id": "f07cd98d-8255-4cb8-a054-8e6b7cbd0298",
+  "destination": "メルボルン",
+  "description": "メルボルンの魅力を存分に楽しむ4日間の旅へ。美しい自然、アート、ショッピングが融合するこの都市で、心温まる体験をお届けします。カップルでのんびりとしたペースで、メルボルンの隠れた魅力を探求しましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1720430189910-3e200252bdbc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTUwOTF8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Johnny",
+  "heroImagePhotographerUrl": "https://unsplash.com/@johnny69px?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "メルボルン到着と市内散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "メルボルンのカフェ文化を体験し、地元の食材を使った美味しい朝食を楽しみます。特にアボカドトーストやエッグベネディクトが人気です。",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "フリンダース・ストリート駅",
+          "description": "メルボルンのシンボルとも言えるフリンダース・ストリート駅を訪れ、その美しい外観を写真に収めましょう。駅内部にはカフェもあり、ひと休みするのもおすすめです。",
+          "searchQuery": "Flinders Street Station",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "フェデレーションスクエア",
+          "description": "フリンダース・ストリート駅から徒歩でフェデレーションスクエアへ。アートギャラリーやカフェが集まるこのエリアで、地元のアートや文化を楽しむことができます。",
+          "searchQuery": "Federation Square",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ランチ（地元のカフェ）",
+          "description": "フェデレーションスクエア近くのカフェでランチ。新鮮なサラダやサンドイッチを楽しみながら、メルボルンの雰囲気を満喫しましょう。",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ロイヤルボタニックガーデンズ",
+          "description": "美しい自然を感じるためにロイヤルボタニックガーデンズへ。広大な敷地内を散策し、色とりどりの花々や木々に囲まれた静かな時間を過ごします。",
+          "searchQuery": "Royal Botanic Gardens",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "メルボルンのアートギャラリー訪問",
+          "description": "メルボルンのアートシーンを体験するために、国立ビクトリア美術館を訪れます。オーストラリアのアートや国際的な作品を楽しむことができます。",
+          "searchQuery": "National Gallery of Victoria",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディナー（高級レストラン）",
+          "description": "メルボルンの高級レストランでディナー。地元の食材を使った創作料理を堪能し、特別な夜を演出します。",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "夜のメルボルン散策",
+          "description": "ディナー後は、メルボルンの夜景を楽しみながら散策。特にヤラ川沿いの景色は美しく、ロマンチックな雰囲気を味わえます。",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アートと文化を楽しむ一日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "メルボルンのカフェ文化を体験し、地元の食材を使った美味しい朝食を楽しみます。特にアボカドトーストやエスプレッソはおすすめです。",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ナショナルギャラリー・オブ・ビクトリア",
+          "description": "オーストラリア最大の美術館で、国内外のアートを堪能。特に印象派の作品が充実しており、静かな空間でアートに浸ることができます。",
+          "searchQuery": "National Gallery of Victoria",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カールトン地区でランチ",
+          "description": "カールトン地区のイタリアンレストランで、パスタやピザを楽しみましょう。地元の人々に人気のあるお店で、活気ある雰囲気の中で食事ができます。",
+          "locationEn": "Carlton, Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "カールトンガーデンズ散策",
+          "description": "美しい庭園を散策しながら、自然の中でリラックス。特に春には花々が咲き誇り、写真撮影にも最適です。",
+          "searchQuery": "Carlton Gardens",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "メルボルンセントラルでショッピング",
+          "description": "メルボルンセントラルでショッピングを楽しみましょう。多彩なショップやカフェが揃い、地元のアートやデザイン商品も見つかります。",
+          "searchQuery": "Melbourne Central",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルで休憩",
+          "description": "一日の疲れを癒すために、ホテルで少し休憩。おしゃれなカフェで軽食を楽しむのも良いでしょう。",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "メルボルンの人気レストランで、オーストラリア料理を堪能。新鮮なシーフードや地元のワインを楽しむことができます。",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "自然と絶景を満喫する日",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "メルボルンの高級ホテルで、地元の新鮮な食材を使った豪華な朝食を楽しみます。特に、アボカドトーストやエッグベネディクトは絶品です。",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "グレートオーシャンロードへ出発",
+          "description": "メルボルンを出発し、グレートオーシャンロードへ向かいます。美しい海岸線をドライブしながら、壮大な自然を堪能しましょう。",
+          "locationEn": "Great Ocean Road, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "十二使徒岩",
+          "description": "グレートオーシャンロードの名所、十二使徒岩に到着。大自然が作り出した壮大な岩のフォルムを眺めながら、写真撮影を楽しんでください。特に、朝の光が岩に当たる瞬間は絶景です。",
+          "searchQuery": "Twelve Apostles",
+          "locationEn": "Twelve Apostles, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ロックアードビーチでランチ",
+          "description": "ロックアードビーチ近くのカフェで、地元のシーフードを使ったランチを楽しみます。新鮮な魚介類のタコスやサラダが特におすすめです。",
+          "locationEn": "Loch Ard Gorge, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ロックアードビーチ散策",
+          "description": "ロックアードビーチの美しいビーチを散策。透明度の高い海と白い砂浜が広がり、リラックスした時間を過ごせます。",
+          "searchQuery": "Loch Ard Gorge",
+          "locationEn": "Loch Ard Gorge, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "グレートオーシャンロードを戻る",
+          "description": "メルボルンへ戻る途中、途中の展望台で再び絶景を楽しみながら、ゆっくりと帰路につきます。",
+          "locationEn": "Great Ocean Road, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "メルボルンのレストランでディナー",
+          "description": "メルボルンに戻り、地元の人気レストランでディナー。オーストラリアのワインと共に、季節の食材を使ったコース料理を堪能します。",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "メルボルンのアートギャラリー訪問",
+          "description": "ディナー後、メルボルンのアートギャラリーを訪れ、地元アーティストの作品を楽しみます。夜の静かな雰囲気の中で、アートに浸るひとときを。",
+          "searchQuery": "National Gallery of Victoria",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ショッピングと帰国の準備",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "メルボルンのカフェで、地元の新鮮な食材を使った朝食を楽しみます。アボカドトーストやエッグベネディクトなど、オーストラリアならではのブレックファーストを味わいましょう。",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "クイーンビクトリアマーケット",
+          "description": "メルボルンの名物市場、クイーンビクトリアマーケットでショッピング。新鮮な食材や地元の特産品、アート作品などが揃い、散策しながらお土産探しを楽しめます。",
+          "searchQuery": "Queen Victoria Market",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ（市場内のフードコート）",
+          "description": "クイーンビクトリアマーケット内のフードコートで、地元のグルメを堪能。新鮮なシーフードやオーストラリアの肉料理を楽しめるお店がたくさんあります。",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ブロートンストリート散策",
+          "description": "ブロートンストリートでアートとショッピングを楽しみます。ストリートアートが彩る通りを歩きながら、個性的なショップやカフェを訪れてみてください。",
+          "searchQuery": "Bourke Street",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "メルボルンのアートギャラリー訪問",
+          "description": "メルボルンのアートギャラリーで、地元アーティストの作品や国際的なアートを鑑賞。特に、国立ビクトリア美術館は必見です。",
+          "searchQuery": "National Gallery of Victoria",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー（地元のレストラン）",
+          "description": "メルボルンの人気レストランで、オーストラリア料理を楽しむディナー。地元のワインと共に、特別な夜を演出します。",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の帰国に備えて、ゆっくりと休息を取りましょう。",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

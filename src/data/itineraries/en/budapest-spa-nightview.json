@@ -1,0 +1,552 @@
+{
+  "id": "095a8be4-b551-4042-a724-283178173ec6",
+  "destination": "Budapest",
+  "description": "Immerse yourself in the enchanting city of Budapest, where the stunning architecture, relaxing thermal baths, and breathtaking night views come together to create an unforgettable experience. Over six days, you and your friends will explore the vibrant streets, indulge in local cuisine, and unwind in the city's famous spas, all while capturing the beauty of this photogenic destination. Get ready for a journey filled with culture, relaxation, and stunning vistas that will leave you in awe.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Budapest",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Paprika",
+          "description": "Start your Budapest adventure with a hearty meal at Paprika, known for its authentic Hungarian dishes. Try the goulash soup for a true taste of local cuisine!",
+          "searchQuery": "Paprika Restaurant",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit Buda Castle",
+          "description": "Explore the historic Buda Castle, a UNESCO World Heritage site. The castle offers stunning views of the city and the Danube River, making it a perfect spot for photography enthusiasts.",
+          "searchQuery": "Buda Castle",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Stroll across the Chain Bridge",
+          "description": "Take a leisurely walk across the iconic Chain Bridge, connecting Buda and Pest. The views of the Danube and the Parliament building are breathtaking, especially in the afternoon light.",
+          "searchQuery": "Chain Bridge",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Széchenyi Thermal Bath",
+          "description": "Unwind in the famous Széchenyi Thermal Bath, one of the largest spa complexes in Europe. Enjoy the warm thermal waters and beautiful architecture, a perfect way to relax after a day of sightseeing.",
+          "searchQuery": "Széchenyi Thermal Bath",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Dinner at New York Café",
+          "description": "End your day with dinner at the stunning New York Café, often referred to as the most beautiful café in the world. Enjoy a mix of traditional and modern Hungarian dishes in a luxurious setting.",
+          "searchQuery": "New York Café",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:30",
+          "activity": "Night view of the Danube River",
+          "description": "After dinner, take a night stroll along the Danube River. The illuminated buildings, including the Parliament and Buda Castle, create a magical atmosphere that is perfect for photos.",
+          "searchQuery": "Danube River",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Buda's Historic Charm",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Gerbeaud",
+          "description": "Start your day with a delightful breakfast at Café Gerbeaud, one of Budapest's most famous coffee houses. Enjoy a selection of pastries and strong Hungarian coffee in a beautifully historic setting.",
+          "searchQuery": "Café Gerbeaud",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Fisherman's Bastion",
+          "description": "Visit the iconic Fisherman's Bastion, known for its stunning panoramic views of the Danube and the Parliament building. The fairy-tale architecture makes it a perfect spot for photos.",
+          "searchQuery": "Fisherman's Bastion",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Pest-Buda Bistro",
+          "description": "Savor traditional Hungarian dishes at Pest-Buda Bistro, located near the Buda Castle. The cozy atmosphere and authentic flavors will give you a true taste of local cuisine.",
+          "searchQuery": "Pest-Buda Bistro",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Matthias Church",
+          "description": "Explore the stunning Matthias Church, known for its colorful tiled roof and intricate interior. This Gothic masterpiece is a must-see while in Buda.",
+          "searchQuery": "Matthias Church",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Gellért Hill Hike",
+          "description": "Take a leisurely hike up Gellért Hill for breathtaking views of the city. The trek is rewarding, and you can enjoy the lush greenery along the way.",
+          "searchQuery": "Gellért Hill",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Gellért Thermal Bath",
+          "description": "Unwind at the famous Gellért Thermal Bath, known for its stunning Art Nouveau architecture and relaxing thermal waters. A perfect way to rejuvenate after a day of sightseeing.",
+          "searchQuery": "Gellért Thermal Bath",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at Kiosk Budapest",
+          "description": "Enjoy dinner at Kiosk Budapest, a trendy restaurant with a vibrant atmosphere. The menu features a mix of Hungarian and international dishes, perfect for a satisfying meal after a long day.",
+          "searchQuery": "Kiosk Budapest",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Night Walk along the Danube",
+          "description": "End your day with a magical night walk along the Danube River. The illuminated buildings, including the Parliament and Buda Castle, create a breathtaking backdrop for photos.",
+          "searchQuery": "Danube River",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Relaxation and Night Views",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Gerbeaud",
+          "description": "Start your day with a delightful breakfast at Café Gerbeaud, one of Budapest's most famous coffee houses. Enjoy a selection of pastries and a rich cup of coffee in a beautifully historic setting.",
+          "searchQuery": "Café Gerbeaud",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Széchenyi Thermal Bath",
+          "description": "Relax and rejuvenate at Széchenyi Thermal Bath, one of the largest and most famous thermal baths in Europe. Enjoy the outdoor pools and various saunas, surrounded by stunning neo-baroque architecture.",
+          "searchQuery": "Széchenyi Thermal Bath",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Paprika",
+          "description": "Savor traditional Hungarian cuisine at Paprika, known for its hearty goulash and other local dishes. The cozy atmosphere makes it a perfect spot to refuel after your thermal bath experience.",
+          "searchQuery": "Paprika",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Heroes' Square",
+          "description": "Visit Heroes' Square, a UNESCO World Heritage site, featuring iconic statues of Hungary's national leaders. Take a leisurely stroll around the square and enjoy the surrounding park.",
+          "searchQuery": "Heroes' Square",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "City Park (Városliget)",
+          "description": "Explore the beautiful City Park adjacent to Heroes' Square. Enjoy a peaceful walk, or relax by the lake, and take in the picturesque views of the Vajdahunyad Castle.",
+          "searchQuery": "City Park",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at New York Café",
+          "description": "Indulge in a luxurious dinner at the New York Café, often referred to as the most beautiful café in the world. The opulent decor and exquisite menu make for a memorable dining experience.",
+          "searchQuery": "New York Café",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Danube Promenade Night Walk",
+          "description": "End your day with a scenic walk along the Danube Promenade. Enjoy breathtaking views of the illuminated Buda Castle and the Chain Bridge, capturing the essence of Budapest's stunning night skyline.",
+          "searchQuery": "Danube Promenade",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Pest's Cultural Gems",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Gerbeaud",
+          "description": "Start your day at the iconic Café Gerbeaud, famous for its delicious pastries and rich coffee. Enjoy a slice of their famous Esterhazy torte while soaking in the elegant atmosphere.",
+          "searchQuery": "Café Gerbeaud",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "St. Stephen's Basilica",
+          "description": "Visit St. Stephen's Basilica, one of Budapest's most stunning landmarks. Climb to the dome for breathtaking panoramic views of the city, especially beautiful in the morning light.",
+          "searchQuery": "St. Stephen's Basilica",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Borkonyha Winekitchen",
+          "description": "Savor a delightful lunch at Borkonyha, a Michelin-starred restaurant known for its innovative Hungarian cuisine and extensive wine selection. The cozy ambiance makes it a perfect spot to relax.",
+          "searchQuery": "Borkonyha Winekitchen",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Hungarian State Opera",
+          "description": "Take a guided tour of the Hungarian State Opera, a masterpiece of Neo-Renaissance architecture. Learn about its history and enjoy the stunning interiors, which are a photographer's dream.",
+          "searchQuery": "Hungarian State Opera",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll along Andrássy Avenue",
+          "description": "Wander down Andrássy Avenue, a UNESCO World Heritage site lined with beautiful buildings, shops, and cafés. It's a great place for photos and to soak in the city's architectural beauty.",
+          "searchQuery": "Andrássy Avenue",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Menza",
+          "description": "Enjoy dinner at Menza, a trendy restaurant in the heart of Budapest. The menu features modern takes on traditional Hungarian dishes, and the vibrant atmosphere is perfect for a fun evening.",
+          "searchQuery": "Menza",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Night Cruise on the Danube",
+          "description": "Experience the breathtaking beauty of Budapest's skyline on a night cruise along the Danube River. The illuminated buildings, including the Parliament and Buda Castle, create a magical atmosphere.",
+          "searchQuery": "Danube River Night Cruise",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Exploring Local Life",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Gerbeaud",
+          "description": "Start your day with a delightful breakfast at Café Gerbeaud, one of Budapest's most famous coffee houses. Enjoy a slice of their famous Esterhazy torte alongside a rich coffee in a beautifully historic setting.",
+          "searchQuery": "Café Gerbeaud",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Great Market Hall",
+          "description": "Explore the Great Market Hall, a vibrant hub of local life. Here, you can sample traditional Hungarian foods, shop for souvenirs, and soak in the lively atmosphere. Don't miss trying some lángos, a deep-fried flatbread topped with sour cream and cheese!",
+          "searchQuery": "Great Market Hall",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Fakanál Restaurant",
+          "description": "Enjoy a hearty lunch at Fakanál, located within the Great Market Hall. This restaurant offers a variety of traditional Hungarian dishes, perfect for refueling after your market exploration.",
+          "searchQuery": "Fakanál Restaurant",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Jewish Quarter",
+          "description": "Wander through the historic Jewish Quarter, where you can visit the stunning Dohány Street Synagogue, the largest in Europe. The area is rich in history and culture, with many street art pieces and cozy cafes to discover.",
+          "searchQuery": "Dohány Street Synagogue",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Széchenyi Thermal Bath",
+          "description": "Unwind at Széchenyi Thermal Bath, one of the largest spa complexes in Europe. Enjoy the warm thermal waters and beautiful architecture, making it a perfect spot to relax and rejuvenate after a day of exploring.",
+          "searchQuery": "Széchenyi Thermal Bath",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Paprika",
+          "description": "Savor a traditional Hungarian dinner at Paprika, known for its authentic goulash and other local specialties. The cozy atmosphere and friendly service make it a great place to end your day.",
+          "searchQuery": "Paprika Restaurant",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Night Walk along the Danube River",
+          "description": "Take a leisurely stroll along the Danube River to witness the breathtaking night views of the city. The illuminated Parliament building and Buda Castle create a magical backdrop, perfect for memorable photos.",
+          "searchQuery": "Danube River",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Farewell Budapest",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Gerlóczy Café",
+          "description": "Start your day with a delightful breakfast at Gerlóczy Café, a charming Parisian-style café known for its delicious pastries and coffee. The ambiance is perfect for a leisurely morning before your adventures.",
+          "searchQuery": "Gerlóczy Café",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Stroll along Váci Street",
+          "description": "Take a leisurely walk down Váci Street, Budapest's famous shopping street. Enjoy the vibrant atmosphere, browse local shops, and perhaps pick up some souvenirs. Don't forget to snap some photos of the stunning architecture along the way!",
+          "searchQuery": "Váci Street",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Central Market Hall",
+          "description": "Head to the Central Market Hall for lunch, where you can sample traditional Hungarian dishes. Try some goulash or lángos while soaking in the lively market atmosphere.",
+          "searchQuery": "Central Market Hall",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Liberty Bridge",
+          "description": "After lunch, walk to the Liberty Bridge. This beautiful bridge offers stunning views of the Danube River and the city. It's a great spot for photos, especially with the backdrop of the Gellért Hill.",
+          "searchQuery": "Liberty Bridge",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Relax at Gellért Thermal Bath",
+          "description": "Indulge in a relaxing afternoon at the Gellért Thermal Bath, one of Budapest's most famous thermal baths. Enjoy the healing waters and stunning Art Nouveau architecture. It's the perfect way to unwind before your departure.",
+          "searchQuery": "Gellért Thermal Bath",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Danube River Cruise",
+          "description": "End your day with a scenic dinner cruise on the Danube River. Enjoy a delicious meal while taking in the breathtaking views of Budapest's illuminated skyline, including the Parliament and Buda Castle.",
+          "searchQuery": "Danube River Dinner Cruise",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Night Photography at Fisherman's Bastion",
+          "description": "After dinner, head to Fisherman's Bastion for some night photography. The fairy-tale-like structure offers one of the best panoramic views of the city, especially at night when it’s beautifully lit up.",
+          "searchQuery": "Fisherman's Bastion",
+          "locationEn": "Budapest, Hungary",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

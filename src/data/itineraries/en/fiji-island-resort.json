@@ -1,0 +1,529 @@
+{
+  "id": "c7e94ed9-24e3-4689-990f-af8a96d15bca",
+  "destination": "ナンディ・ママヌザ諸島",
+  "description": "Escape to the stunning Nadi and the Mamanuca Islands, where azure waters meet white sandy beaches, creating a perfect paradise for families. This 6-day itinerary is designed to immerse you in the beauty of Fiji, allowing for relaxation, adventure, and cultural experiences that will create lasting memories for you and your children. Enjoy the gentle ocean breeze, explore vibrant coral reefs, and connect with the warm-hearted locals as you unwind in this tropical haven.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Nadi",
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Arrival at Nadi International Airport",
+          "description": "Welcome to Fiji! After landing at Nadi International Airport, take a moment to soak in the tropical atmosphere. The friendly staff will guide you through customs and baggage claim, setting the tone for your relaxing vacation.",
+          "searchQuery": "Nadi International Airport",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Check-in at your hotel",
+          "description": "Settle into your family-friendly resort in Nadi, where you can enjoy spacious rooms and kid-friendly amenities. Take a moment to relax and refresh before heading out to explore.",
+          "searchQuery": "Radisson Blu Resort Fiji Denarau Island",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at the resort",
+          "description": "Enjoy a delicious lunch at the resort's restaurant, featuring a variety of local and international dishes. The kids will love the options, and you can savor the beautiful ocean views.",
+          "searchQuery": "Radisson Blu Resort Fiji Denarau Island",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relax at Denarau Beach",
+          "description": "Spend the afternoon at Denarau Beach, just a short walk from your hotel. The calm waters are perfect for children to play safely, and you can unwind on the soft sand while enjoying the stunning scenery.",
+          "searchQuery": "Denarau Beach",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Explore the local market",
+          "description": "Visit the nearby Nadi Market, where you can interact with local vendors and experience Fijian culture. It's a great place to pick up fresh fruits, souvenirs, and handmade crafts.",
+          "searchQuery": "Nadi Market",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a local restaurant",
+          "description": "Dine at a family-friendly restaurant in Nadi, where you can enjoy traditional Fijian dishes. Try the kokoda (Fijian ceviche) and enjoy the lively atmosphere as you connect with locals.",
+          "searchQuery": "The Bounty Restaurant",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Return to the hotel",
+          "description": "After a fulfilling day, head back to your resort for a good night's rest. Enjoy the sound of the waves as you drift off to sleep, ready for more adventures tomorrow!",
+          "searchQuery": "Radisson Blu Resort Fiji Denarau Island",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Denarau Island Relaxation",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring a variety of local and international dishes to fuel your family for a day of fun in the sun.",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Denarau Beach",
+          "description": "Head to Denarau Beach, known for its soft white sands and clear blue waters. It's a perfect spot for families, with shallow areas for kids to play safely. Enjoy some beach games or simply relax under the sun.",
+          "searchQuery": "Denarau Beach",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Port Denarau",
+          "description": "Enjoy a family-friendly lunch at one of the many restaurants at Port Denarau. Choose from a variety of cuisines, including fresh seafood and local Fijian dishes, while enjoying views of the marina.",
+          "locationEn": "Port Denarau, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Snorkeling Adventure",
+          "description": "Join a family-friendly snorkeling tour that takes you to nearby coral reefs. This is a great opportunity for kids to explore the underwater world and see colorful fish in their natural habitat.",
+          "searchQuery": "Snorkeling Tour Denarau",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at the Resort Pool",
+          "description": "After your snorkeling adventure, return to your resort and unwind at the pool. Let the kids splash around while you enjoy a refreshing drink and take in the beautiful surroundings.",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Experience authentic Fijian cuisine at a local restaurant. Try dishes like kokoda (raw fish salad) and enjoy the warm hospitality of the locals, making it a memorable family dining experience.",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll on the Beach",
+          "description": "End your day with a peaceful evening stroll along Denarau Beach. The sunset views are breathtaking, and it's a perfect time to reflect on the day's adventures with your family.",
+          "locationEn": "Denarau Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Mamanuca Islands Adventure",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Nadi",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Malolo Lailai Island",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take a scenic ferry ride to Malolo Lailai Island."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Beach Time at Malolo Lailai Island",
+          "description": "Enjoy the pristine beaches of Malolo Lailai Island, perfect for families. The shallow waters are safe for children to play and explore.",
+          "searchQuery": "Malolo Lailai Island",
+          "locationEn": "Malolo Lailai Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at the Resort",
+          "description": "Savor a delicious lunch at the resort's beachfront restaurant, featuring fresh seafood and local Fijian dishes that the whole family will love.",
+          "searchQuery": "Malolo Lailai Island Resort",
+          "locationEn": "Malolo Lailai Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Snorkeling Adventure",
+          "description": "Join a family-friendly snorkeling tour to explore the vibrant coral reefs nearby. Kids can learn about marine life while having fun in the water.",
+          "searchQuery": "Snorkeling Malolo Lailai",
+          "locationEn": "Malolo Lailai Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Cultural Interaction with Locals",
+          "description": "Participate in a traditional Fijian cultural experience, where your family can learn about local customs, crafts, and even try some traditional dance.",
+          "searchQuery": "Fijian Cultural Experience",
+          "locationEn": "Malolo Lailai Island, Fiji",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at the Beach",
+          "description": "Unwind on the beach as the sun sets, allowing the kids to play in the sand while you enjoy the stunning views of the ocean.",
+          "searchQuery": "Malolo Lailai Beach",
+          "locationEn": "Malolo Lailai Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at the Resort",
+          "description": "End your day with a delightful dinner at the resort, featuring a variety of dishes that cater to both adults and children, ensuring everyone leaves satisfied.",
+          "searchQuery": "Malolo Lailai Island Resort",
+          "locationEn": "Malolo Lailai Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Snorkeling and Beach Fun",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Resort",
+          "description": "Start your day with a delightful breakfast at the resort, featuring fresh tropical fruits, pancakes, and local Fijian dishes. It's a great way to fuel up for a day of adventure!",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Snorkeling at Tavarua Island",
+          "description": "Head out for an exciting snorkeling adventure at Tavarua Island. The crystal-clear waters are teeming with vibrant marine life, making it perfect for families. Don't forget to keep an eye out for colorful fish and coral reefs!",
+          "searchQuery": "Tavarua Island",
+          "locationEn": "Tavarua Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Tavarua Island",
+          "description": "Enjoy a delicious lunch at a beachside café on Tavarua Island, where you can savor fresh seafood and local specialties while soaking in the stunning ocean views.",
+          "locationEn": "Tavarua Island, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Relax on the Beach",
+          "description": "Spend the afternoon relaxing on the beautiful beaches of Tavarua Island. The soft sand and gentle waves make it an ideal spot for children to play and for families to unwind together.",
+          "locationEn": "Tavarua Island, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit Cloud 9",
+          "description": "Take a short boat ride to Cloud 9, a floating bar and restaurant surrounded by stunning turquoise waters. Enjoy a refreshing drink and take in the breathtaking views. It's a great place for the family to relax and enjoy the sun.",
+          "searchQuery": "Cloud 9 Fiji",
+          "locationEn": "Cloud 9, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at the Resort",
+          "description": "Return to your resort for a family dinner. Enjoy a variety of dishes that cater to all tastes, including local Fijian cuisine and international favorites, perfect for a relaxing evening together.",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll on the Beach",
+          "description": "End your day with a peaceful evening stroll along the beach. The sunset views are spectacular, and it's a wonderful time to reflect on the day's adventures with your family.",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Cultural Experience and Return to Nadi",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Mamanuca Islands",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Nadi",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Enjoy a scenic ferry ride back to Nadi."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Nadi Market Visit",
+          "description": "Start your day with a visit to the vibrant Nadi Market. Here, you can explore local produce, handicrafts, and souvenirs while interacting with friendly vendors. It's a great place to experience the local culture and pick up some unique gifts for your family.",
+          "searchQuery": "Nadi Market",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Taste Fiji Kitchen",
+          "description": "Enjoy a delicious lunch at Taste Fiji Kitchen, known for its fresh, local ingredients and traditional Fijian dishes. The relaxed atmosphere is perfect for families, and the kids will love the tropical flavors!",
+          "searchQuery": "Taste Fiji Kitchen",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Sri Siva Subramaniya Temple",
+          "description": "Visit the stunning Sri Siva Subramaniya Temple, the largest Hindu temple in the Southern Hemisphere. The vibrant colors and intricate carvings make it a fascinating place to explore. It's a peaceful spot where you can learn about local religious practices and architecture.",
+          "searchQuery": "Sri Siva Subramaniya Temple",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Relax at Wailoaloa Beach",
+          "description": "Spend a leisurely afternoon at Wailoaloa Beach, known for its calm waters and beautiful scenery. It's a family-friendly beach where the kids can play safely in the water while you relax under the sun. Don't forget to bring some snacks and drinks for a mini picnic!",
+          "searchQuery": "Wailoaloa Beach",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Bounty Restaurant",
+          "description": "End your day with a delightful dinner at The Bounty Restaurant, which offers a variety of local and international dishes. The beachfront setting provides a lovely atmosphere for families to unwind after a day of exploration.",
+          "searchQuery": "The Bounty Restaurant",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Departure from Nadi",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Nadi International Airport",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Tokyo, Japan",
+          "time": "15:00"
+        },
+        "duration": "10h",
+        "memo": "Direct flight back to Tokyo."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Hotel",
+          "description": "Enjoy a hearty breakfast at your hotel, featuring tropical fruits and local Fijian dishes to fuel your last day in paradise.",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Visit Nadi Market",
+          "description": "Explore the vibrant Nadi Market, where you can find fresh produce, local handicrafts, and souvenirs. It's a great place to interact with locals and experience the culture.",
+          "searchQuery": "Nadi Market",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Relax at Wailoaloa Beach",
+          "description": "Spend some time at Wailoaloa Beach, known for its calm waters and beautiful scenery. It's perfect for families, allowing kids to play safely in the shallow waters.",
+          "searchQuery": "Wailoaloa Beach",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Beachfront Restaurant",
+          "description": "Savor a delicious lunch at a beachfront restaurant, enjoying fresh seafood and local dishes while overlooking the ocean.",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Last Swim at the Beach",
+          "description": "Take one last dip in the warm waters of the Pacific Ocean. The beach is family-friendly, making it a perfect spot for kids to enjoy before departure.",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Check-out and Head to the Airport",
+          "description": "Check out from your hotel and make your way to Nadi International Airport for your flight home. Reflect on the wonderful memories made during your stay.",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

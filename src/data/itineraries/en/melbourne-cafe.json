@@ -1,0 +1,642 @@
+{
+  "id": "03262c98-d88e-4831-a5ba-de0e251a95a9",
+  "destination": "メルボルン",
+  "description": "Immerse yourself in the vibrant culture of Melbourne, where every corner reveals a new café, a stunning piece of street art, or a breathtaking view of nature. Over the course of seven days, you and your friends will explore the eclectic neighborhoods, indulge in the city's renowned coffee culture, and soak in the artistic atmosphere that makes Melbourne a top destination for travelers seeking both relaxation and inspiration. From the bustling laneways filled with murals to serene parks and gardens, this trip promises a perfect blend of urban exploration and natural beauty.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and City Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hardware Société",
+          "description": "Start your day at Hardware Société, a chic café known for its delicious French-inspired breakfast dishes. Try their famous baked eggs or the decadent French toast, paired with a perfectly brewed coffee.",
+          "searchQuery": "Hardware Société",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Flinders Street Station",
+          "description": "Visit the iconic Flinders Street Station, a beautiful example of Victorian architecture. Take some photos and soak in the bustling atmosphere of this central hub.",
+          "searchQuery": "Flinders Street Station",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Stroll through Federation Square",
+          "description": "Just a short walk from Flinders Street, Federation Square is a cultural precinct filled with galleries, restaurants, and public spaces. Enjoy the unique architecture and vibrant atmosphere.",
+          "searchQuery": "Federation Square",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Degraves Street",
+          "description": "Head to Degraves Street, famous for its laneway cafés and street art. Grab a light lunch at one of the many eateries, enjoying the lively vibe of this hidden gem.",
+          "searchQuery": "Degraves Street",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the National Gallery of Victoria",
+          "description": "Spend your afternoon at the National Gallery of Victoria, Australia's oldest and most visited art museum. Explore its impressive collection of international and Australian art.",
+          "searchQuery": "National Gallery of Victoria",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Coffee Break at The Kettle Black",
+          "description": "Take a break at The Kettle Black, a stylish café known for its beautiful interior and exceptional coffee. Enjoy a refreshing drink or a sweet treat to recharge.",
+          "searchQuery": "The Kettle Black",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Evening Walk along the Yarra River",
+          "description": "End your day with a leisurely stroll along the Yarra River. Enjoy the scenic views of the city skyline as the sun sets, creating a perfect backdrop for your first day in Melbourne.",
+          "searchQuery": "Yarra River",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Dinner at Chin Chin",
+          "description": "Savor a delicious dinner at Chin Chin, a popular restaurant offering modern Thai cuisine. Be sure to try their signature dishes and enjoy the vibrant atmosphere.",
+          "searchQuery": "Chin Chin",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Café Hopping and Street Art",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hardware Société",
+          "description": "Start your day at Hardware Société, a charming café known for its delicious French-inspired breakfast dishes. Try their famous baked eggs or fluffy pancakes, paired with a rich coffee to kickstart your morning.",
+          "searchQuery": "Hardware Société",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Hosier Lane",
+          "description": "After breakfast, take a stroll to Hosier Lane, Melbourne's iconic street art hotspot. Marvel at the vibrant murals and graffiti that adorn the walls, capturing the city's creative spirit. Don't forget your camera!",
+          "searchQuery": "Hosier Lane",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Chin Chin",
+          "description": "Enjoy a lively lunch at Chin Chin, a popular restaurant serving modern Thai cuisine. The atmosphere is buzzing, and the dishes are bursting with flavor. Be sure to try their famous green curry or the crispy pork belly.",
+          "searchQuery": "Chin Chin",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit the National Gallery of Victoria",
+          "description": "Spend your afternoon at the National Gallery of Victoria, Australia's oldest and most visited art museum. Explore its impressive collection of international and Australian art, including works by renowned artists.",
+          "searchQuery": "National Gallery of Victoria",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Coffee Break at The Kettle Black",
+          "description": "Take a break at The Kettle Black, a stylish café known for its beautiful interior and exceptional coffee. Enjoy a refreshing iced latte or a slice of their decadent cake while soaking in the ambiance.",
+          "searchQuery": "The Kettle Black",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Stroll through Fitzroy",
+          "description": "Wander through the eclectic streets of Fitzroy, known for its bohemian vibe and unique shops. Explore vintage stores, quirky boutiques, and local art galleries, making it a perfect spot for leisurely exploration.",
+          "searchQuery": "Fitzroy",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Supernormal",
+          "description": "End your day with dinner at Supernormal, a contemporary Asian eatery that offers a fusion of Japanese, Korean, and Chinese flavors. The atmosphere is vibrant, and the dishes are beautifully presented.",
+          "searchQuery": "Supernormal",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Art and Culture Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hardware Société",
+          "description": "Start your day at Hardware Société, a trendy café known for its delicious French-inspired breakfast dishes. Don't miss their signature baked eggs and freshly brewed coffee, perfect for fueling your day of exploration.",
+          "searchQuery": "Hardware Société",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the National Gallery of Victoria",
+          "description": "Explore Australia's oldest and most visited art museum, the National Gallery of Victoria. With a diverse collection of international and Australian art, you can immerse yourself in culture and creativity. Admission is free, making it a perfect stop for art lovers.",
+          "searchQuery": "National Gallery of Victoria",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Kettle Black",
+          "description": "Enjoy a leisurely lunch at The Kettle Black, a stylish café that offers a seasonal menu with a focus on fresh, local ingredients. Their unique dishes and beautiful presentation make it a must-visit for foodies.",
+          "searchQuery": "The Kettle Black",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through the Royal Botanic Gardens",
+          "description": "Take a relaxing walk through the stunning Royal Botanic Gardens, where you can enjoy the lush greenery and beautiful landscapes. It's a perfect spot to unwind and appreciate nature in the heart of the city.",
+          "searchQuery": "Royal Botanic Gardens",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Southbank Promenade",
+          "description": "Wander along the Southbank Promenade, where you can enjoy views of the Yarra River and the city skyline. This vibrant area is filled with street performers, shops, and cafés, making it a lively place to soak in the atmosphere.",
+          "searchQuery": "Southbank Promenade",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Chin Chin",
+          "description": "End your day with a delightful dinner at Chin Chin, a popular restaurant known for its modern Thai cuisine. The lively atmosphere and innovative dishes will provide a memorable dining experience.",
+          "searchQuery": "Chin Chin",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Day Trip to the Great Ocean Road",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Melbourne",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Bells Beach",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "Start your day early to make the most of the Great Ocean Road."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Bells Beach",
+          "description": "Famous for its surfing competitions, Bells Beach offers stunning coastal views and a chance to enjoy the ocean breeze. Take a leisurely walk along the beach and soak in the natural beauty.",
+          "searchQuery": "Bells Beach",
+          "locationEn": "Bells Beach, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Apollo Bay for Lunch",
+          "description": "Stop at a cozy café in Apollo Bay for a delicious lunch. Enjoy fresh seafood or a hearty burger while taking in the views of the bay.",
+          "searchQuery": "Apollo Bay Cafe",
+          "locationEn": "Apollo Bay, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Twelve Apostles",
+          "description": "Visit the iconic Twelve Apostles, towering limestone stacks rising from the Southern Ocean. Take a walk along the boardwalk for breathtaking views and photo opportunities.",
+          "searchQuery": "Twelve Apostles",
+          "locationEn": "Twelve Apostles, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Loch Ard Gorge",
+          "description": "Explore the stunning Loch Ard Gorge, known for its dramatic cliffs and rich history. A short walk will lead you to the beach where you can relax and enjoy the scenery.",
+          "searchQuery": "Loch Ard Gorge",
+          "locationEn": "Loch Ard Gorge, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Melbourne",
+          "description": "Head back to Melbourne, reflecting on the day's adventures along the Great Ocean Road. Enjoy the scenic drive back to the city.",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Melbourne Restaurant",
+          "description": "End your day with dinner at a trendy restaurant in Melbourne. Choose from a variety of cuisines, from Italian to Asian fusion, and enjoy the vibrant atmosphere of the city.",
+          "searchQuery": "Melbourne Restaurant",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Nature and Relaxation",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hardware Société",
+          "description": "Start your day with a delightful breakfast at Hardware Société, known for its French-inspired dishes and cozy atmosphere. Don't miss their famous baked eggs and freshly brewed coffee!",
+          "searchQuery": "Hardware Société",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Royal Botanic Gardens",
+          "description": "Stroll through the stunning Royal Botanic Gardens, a lush oasis in the heart of Melbourne. Enjoy the diverse plant life and serene lakes, perfect for a leisurely walk or a peaceful moment on a bench.",
+          "searchQuery": "Royal Botanic Gardens",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Kettle Black",
+          "description": "Indulge in a delicious lunch at The Kettle Black, a stylish café known for its innovative brunch menu. Try their signature dishes like the 'Green Bowl' or the 'Ricotta Hotcakes'.",
+          "searchQuery": "The Kettle Black",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Dandenong Ranges",
+          "description": "Take a scenic drive to the Dandenong Ranges, where you can enjoy breathtaking views and lush forests. Stop by the charming village of Olinda for a coffee break and some local art galleries.",
+          "searchQuery": "Dandenong Ranges",
+          "locationEn": "Dandenong Ranges, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Visit Lysterfield Park",
+          "description": "Head to Lysterfield Park for a relaxing afternoon surrounded by nature. Enjoy walking or cycling around the lake, and keep an eye out for local wildlife such as kangaroos and various bird species.",
+          "searchQuery": "Lysterfield Park",
+          "locationEn": "Lysterfield, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at The Glasshouse",
+          "description": "End your day with dinner at The Glasshouse, a modern restaurant offering a seasonal menu with fresh, local ingredients. The ambiance is perfect for unwinding after a day of exploration.",
+          "searchQuery": "The Glasshouse",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Yarra River",
+          "description": "Take a leisurely evening walk along the Yarra River, enjoying the beautiful city skyline and the vibrant atmosphere. It's a perfect way to reflect on your day and soak in the Melbourne night.",
+          "searchQuery": "Yarra River",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Shopping and Local Markets",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hardware Société",
+          "description": "Start your day with a delightful breakfast at Hardware Société, known for its French-inspired dishes and cozy atmosphere. Don't miss their famous baked eggs and freshly brewed coffee!",
+          "searchQuery": "Hardware Société",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Queen Victoria Market",
+          "description": "Explore the vibrant Queen Victoria Market, a bustling hub of fresh produce, gourmet foods, and unique souvenirs. Take your time to wander through the stalls and perhaps grab a snack from one of the food vendors.",
+          "searchQuery": "Queen Victoria Market",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Coffee Emporium",
+          "description": "Enjoy a leisurely lunch at The Coffee Emporium, where you can savor delicious sandwiches and salads paired with their specialty coffee. It's a perfect spot to recharge before more exploring.",
+          "searchQuery": "The Coffee Emporium",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Brunswick Street Exploration",
+          "description": "Stroll along Brunswick Street, known for its eclectic mix of boutiques, street art, and cafes. Take in the vibrant atmosphere and perhaps stop for a coffee at one of the many trendy cafes.",
+          "searchQuery": "Brunswick Street",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the National Gallery of Victoria",
+          "description": "Immerse yourself in art at the National Gallery of Victoria, Australia's oldest and most visited art museum. Explore its impressive collection of international and Australian art, and enjoy the beautiful gardens surrounding the gallery.",
+          "searchQuery": "National Gallery of Victoria",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Chin Chin",
+          "description": "Indulge in a vibrant dinner at Chin Chin, a popular restaurant known for its modern Thai cuisine. The lively atmosphere and delicious dishes make it a must-visit for food lovers.",
+          "searchQuery": "Chin Chin",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Yarra River",
+          "description": "End your day with a relaxing walk along the Yarra River. Enjoy the stunning views of the city skyline as the lights begin to twinkle, creating a magical atmosphere.",
+          "searchQuery": "Yarra River",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Melbourne",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "St Kilda Beach",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "A short drive to enjoy the beach before departure."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "St Kilda Beach",
+          "description": "Start your day at the beautiful St Kilda Beach, where you can take a leisurely stroll along the shore and enjoy the fresh ocean breeze. Don't forget to snap some photos of the iconic pier!",
+          "searchQuery": "St Kilda Beach",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Luna Park",
+          "description": "Visit the historic Luna Park, an amusement park with a charming vintage vibe. Take a ride on the scenic roller coaster or simply enjoy the lively atmosphere. It's a great spot for some fun and nostalgia!",
+          "searchQuery": "Luna Park Melbourne",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Kettle Black",
+          "description": "Enjoy a delicious brunch at The Kettle Black, known for its stylish decor and innovative dishes. Try their famous avocado toast or a refreshing smoothie bowl for a perfect meal before heading out.",
+          "searchQuery": "The Kettle Black",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Albert Park",
+          "description": "Take a relaxing walk around Albert Park, a beautiful green space with a picturesque lake. It's a perfect spot to unwind and enjoy nature before your departure. You might even spot some local wildlife!",
+          "searchQuery": "Albert Park",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Coffee at St Ali",
+          "description": "Stop by St Ali, one of Melbourne's iconic cafes, for a final coffee fix. Known for its exceptional brews and vibrant atmosphere, it's the perfect place to reflect on your trip with friends.",
+          "searchQuery": "St Ali",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Return to Hotel",
+          "description": "Head back to your hotel to collect your belongings and prepare for your departure. Take a moment to reminisce about the wonderful memories made during your stay in Melbourne!",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

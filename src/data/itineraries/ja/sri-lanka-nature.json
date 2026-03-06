@@ -1,0 +1,493 @@
+{
+  "id": "cdda1d14-bd45-416b-b371-ca282f3860a8",
+  "destination": "コロンボ・シギリヤ",
+  "description": "スリランカの魅力を存分に味わう6日間の旅。コロンボの活気ある街並みから始まり、シギリヤの壮大な岩山を登り、アーユルヴェーダの癒しを体験することで、心と体をリフレッシュさせる旅です。美しい自然と歴史的な遺産が織りなすこの国で、友人と共に特別な思い出を作りましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "コロンボ到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "スリランカの伝統的な朝食を楽しみます。ダルカレーやロティなど、地元の味を堪能して一日をスタートしましょう。",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ガンガラマヤ寺院",
+          "description": "コロンボの中心に位置する美しい寺院で、仏教の文化と歴史を感じることができます。特に、金色の仏像や精巧な装飾が印象的です。",
+          "searchQuery": "Gangaramaya Temple",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "スリランカのカレーやフリカデッラを楽しめる地元のレストランで、ランチを取ります。新鮮な食材を使った料理が魅力です。",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "コロンボビーチエリア散策",
+          "description": "ビーチ沿いを散策しながら、リラックスした時間を過ごします。海の風を感じながら、地元の人々の生活を観察するのも楽しいです。",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "アーユルヴェーダのマッサージ体験",
+          "description": "スリランカの伝統的なアーユルヴェーダマッサージを受けて、心身ともにリフレッシュ。リラックスしたひとときを楽しんでください。",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "夕食のためのレストランへ移動",
+          "description": "地元のシーフードレストランで新鮮な魚介料理を楽しみます。スリランカの海の幸を存分に味わいましょう。",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すために、ホテルでゆっくりと過ごします。明日のシギリヤロック登山に備えて、早めに休むのも良いでしょう。",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "コロンボからシギリヤへ移動",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "コロンボ",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "シギリヤ",
+          "time": "12:00"
+        },
+        "duration": "4h",
+        "memo": "シギリヤへ向かう途中、スリランカの美しい田園風景を楽しみながらのドライブです。"
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "シギリヤロック登山",
+          "description": "世界遺産に登録されているシギリヤロックに挑戦！頂上からの絶景は圧巻で、古代の王宮跡や美しい壁画も見逃せません。",
+          "searchQuery": "Sigiriya Rock",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "シギリヤ村散策",
+          "description": "シギリヤ村の地元の雰囲気を楽しみながら、手工芸品やスリランカの伝統的な食材を探してみましょう。地元の人々との交流も楽しめます。",
+          "searchQuery": "Sigiriya Village",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アーユルヴェーダマッサージ体験",
+          "description": "シギリヤのスパでリラックスできるアーユルヴェーダマッサージを受けましょう。心身ともにリフレッシュできる贅沢な時間です。",
+          "searchQuery": "Ayurveda Spa Sigiriya",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランで夕食",
+          "description": "シギリヤの地元レストランでスリランカ料理を楽しみましょう。カレーやフルーツ、デザートも豊富で、食文化を堪能できます。",
+          "searchQuery": "Local Restaurant Sigiriya",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "シギリヤロック登頂とアーユルヴェーダ体験",
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "ホテルで朝食",
+          "description": "シギリヤのホテルで、スリランカの伝統的な朝食を楽しみます。新鮮なフルーツやロティ、スパイシーなカレーが並び、エネルギーをチャージして登山に備えましょう。",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "シギリヤロック登頂",
+          "description": "世界遺産に登録されているシギリヤロックに挑戦します。約1時間の登山で、頂上からの壮大な景色は圧巻。古代の壁画や水槽も見逃せません。",
+          "searchQuery": "Sigiriya Rock",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "シギリヤロック周辺散策",
+          "description": "登頂後は、シギリヤロックの周辺を散策。美しい庭園や古代の遺跡を楽しみながら、歴史に思いを馳せるひとときを過ごします。",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のレストランでランチ",
+          "description": "シギリヤ近くのレストランで、スリランカのカレーやフリカデッラを楽しみます。地元の食材を使った料理は、旅の思い出にぴったりです。",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アーユルヴェーダスパ体験",
+          "description": "シギリヤのアーユルヴェーダスパでリラックス。専門のセラピストによるマッサージで、心身ともに癒される贅沢な時間を過ごします。",
+          "searchQuery": "Ayurveda Spa Sigiriya",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルに戻り、自由時間",
+          "description": "スパでリフレッシュした後は、ホテルでのんびり過ごす時間。プールサイドでリラックスしたり、周辺を散策したりして、心地よい夕方を楽しみましょう。",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "ホテル内のレストランで、スリランカ料理のディナーを楽しみます。新鮮なシーフードや地元の野菜を使った料理が揃い、旅の締めくくりにぴったりです。",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "シギリヤからダンブッラとポロンナルワ観光",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "シギリヤ",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ダンブッラ",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "シギリヤからダンブッラへ車で移動します。美しい田園風景を楽しみながらのドライブです。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ダンブッラ石窟寺院",
+          "description": "世界遺産に登録されているダンブッラ石窟寺院を訪れます。数多くの仏像や壁画が施された洞窟は圧巻で、特に黄金の仏像は必見です。",
+          "searchQuery": "Dambulla Cave Temple",
+          "locationEn": "Dambulla, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ダンブッラ近くのローカルレストランでランチ",
+          "description": "地元の食材を使ったスリランカ料理を楽しめるレストランで、カレーやナンを味わいます。新鮮なフルーツジュースもおすすめです。",
+          "searchQuery": "local restaurant near Dambulla",
+          "locationEn": "Dambulla, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ポロンナルワ遺跡",
+          "description": "ポロンナルワの遺跡群を散策します。古代スリランカの首都であり、壮大な寺院や仏像が点在しています。歴史を感じながらの散策は心が癒されます。",
+          "searchQuery": "Polonnaruwa Ancient City",
+          "locationEn": "Polonnaruwa, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アーユルヴェーダのマッサージ",
+          "description": "ポロンナルワでアーユルヴェーダのマッサージを体験します。リラックスできる空間で、心身ともに癒されるひとときを過ごします。",
+          "searchQuery": "Ayurveda massage in Polonnaruwa",
+          "locationEn": "Polonnaruwa, Sri Lanka",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "シギリヤに戻ってディナー",
+          "description": "シギリヤに戻り、地元のレストランでディナーを楽しみます。スリランカの伝統的な料理を堪能し、旅の疲れを癒します。",
+          "searchQuery": "local restaurant in Sigiriya",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "シギリヤからコロンボへ戻る",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "シギリヤ",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "コロンボ",
+          "time": "12:00"
+        },
+        "duration": "4h",
+        "memo": "シギリヤからコロンボまでのドライブ。途中の景色を楽しみながら移動します。"
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "コロンボでスリランカ料理ランチ",
+          "description": "コロンボに到着後、地元の人気レストランでスリランカ料理を堪能。カレーやサンボールなど、スパイシーで風味豊かな料理が楽しめます。",
+          "searchQuery": "Ministry of Crab",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アーユルヴェーダマッサージ体験",
+          "description": "コロンボのスパでアーユルヴェーダマッサージを受けて、旅の疲れを癒します。リラックスした空間で、心身ともにリフレッシュ。",
+          "searchQuery": "Spa Ceylon",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ガンガラマヤ寺院訪問",
+          "description": "コロンボの有名な寺院、ガンガラマヤ寺院を訪れます。美しい仏像や静かな庭園があり、心を落ち着ける場所です。",
+          "searchQuery": "Gangaramaya Temple",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "コロンボのビーチで夕日鑑賞",
+          "description": "コロンボのビーチで美しい夕日を眺めながら、リラックスした時間を過ごします。海の音を聞きながら、友人と素敵な思い出を作りましょう。",
+          "searchQuery": "Galle Face Green",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "コロンボでディナー",
+          "description": "地元のレストランでスリランカのシーフード料理を楽しみます。新鮮な魚介類を使った料理が絶品です。",
+          "searchQuery": "The Lagoon",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "コロンボ観光と帰国",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Bandaranaike International Airport",
+          "time": "15:00"
+        },
+        "arrival": {
+          "place": "Tokyo, Japan",
+          "time": "翌日 06:00"
+        },
+        "duration": "10h",
+        "memo": "コロンボから東京への直行便で帰国します。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "コロンボのホテルで、スリランカの伝統的な朝食を楽しみます。ダルカレーやロティなど、地元の味を堪能しましょう。",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "コロンボ市場散策",
+          "description": "地元の人々が集まるコロンボ市場を訪れ、新鮮な果物やスパイス、手工芸品を見て回ります。活気あふれる雰囲気の中で、スリランカの文化を感じることができます。",
+          "searchQuery": "Colombo Market",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "コロンボの人気レストランで、スリランカ料理のランチを楽しみます。カレーやシーフード料理が豊富で、地元の味を堪能できます。",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アーユルヴェーダのマッサージ体験",
+          "description": "コロンボのスパでアーユルヴェーダのマッサージを受け、心身ともにリラックス。スリランカの伝統的な技術で、疲れを癒しましょう。",
+          "searchQuery": "Ayurveda Spa Colombo",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "海岸沿いの散策",
+          "description": "コロンボの美しい海岸沿いを散策し、夕日を眺めながらリラックスした時間を過ごします。海の風を感じながら、旅の思い出を振り返りましょう。",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "空港へ移動",
+          "description": "コロンボのホテルから空港へ移動します。帰国の準備を整えましょう。",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

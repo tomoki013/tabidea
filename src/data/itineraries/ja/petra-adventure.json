@@ -1,0 +1,437 @@
+{
+  "id": "535a2b89-b7a8-4eb2-96e4-e98ce87ec954",
+  "destination": "ペトラ",
+  "description": "ペトラの壮大な遺跡を探検し、古代の文化と歴史に触れる冒険の旅へ。砂漠の中に隠されたこの世界遺産は、まるで映画の舞台のような神秘的な雰囲気を醸し出しています。友人と共に、インディ・ジョーンズのような冒険を体験し、絶景と感動を味わいましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ペトラへの旅立ち",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ペトラ近くのホテルで、地元の食材を使った朝食を楽しみます。ヨーグルトやフルーツ、フムスなど、ヘルシーで美味しい料理が揃っています。",
+          "locationEn": "Petra, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ペトラ遺跡観光",
+          "description": "世界遺産のペトラへ。壮大な岩山に囲まれたこの古代都市は、インディ・ジョーンズのロケ地としても有名です。シークを通り抜け、壮観なエル・ハズネ（宝物殿）を目の前にした瞬間の感動は格別です。",
+          "searchQuery": "Petra",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ペトラでランチ",
+          "description": "遺跡内のカフェで、地元の料理を楽しみます。シャワルマやフムス、ピタパンなど、アラビアの味を堪能しましょう。",
+          "locationEn": "Petra, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ペトラ遺跡の散策",
+          "description": "エル・ハズネの後は、ローマ劇場や王の墓など、他の見どころをゆっくりと散策します。歴史を感じながら、写真を撮るのもお忘れなく。",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ペトラの夕日観賞",
+          "description": "遺跡の高台から、夕日が岩に映える美しい景色を楽しみます。特に夕暮れ時のペトラは、幻想的な雰囲気に包まれます。",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "ペトラのホテルで、地元の料理を使ったディナーを楽しみます。新鮮な野菜やスパイスを使った料理が揃い、旅の疲れを癒してくれます。",
+          "locationEn": "Petra, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ペトラ遺跡探検",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ペトラのホテルで、地元の食材を使った朝食を楽しみます。新鮮なフルーツやヨーグルト、パンなど、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Petra, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ペトラ遺跡探検",
+          "description": "世界遺産のペトラ遺跡を探検します。シークを通り抜け、壮大なエル・ハズネにたどり着く瞬間は圧巻です。歴史の息吹を感じながら、古代の遺跡をじっくりと堪能しましょう。",
+          "searchQuery": "Petra",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "近くのレストランでランチ",
+          "description": "ペトラの近くにあるレストランで、地元の料理を楽しみます。特に、マンスフ（羊肉の料理）は絶品です。遺跡の探検で疲れた体を癒しましょう。",
+          "locationEn": "Petra, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "シークの散策",
+          "description": "ペトラのシークを散策します。両側にそびえる岩壁が印象的で、まるで映画の中にいるような気分に浸れます。",
+          "searchQuery": "Siq",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "エル・ハズネの見学",
+          "description": "ペトラの象徴とも言えるエル・ハズネを見学します。美しいファサードを間近で見ると、その迫力に圧倒されます。写真撮影もお忘れなく！",
+          "searchQuery": "Al-Khazneh",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "遺跡内のカフェで休憩",
+          "description": "遺跡内のカフェで一息つきます。冷たい飲み物やスナックを楽しみながら、周囲の景色を眺める贅沢な時間です。",
+          "locationEn": "Petra, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ペトラの夕暮れを楽しむ",
+          "description": "遺跡の夕暮れを楽しむために、少し高台に登ります。夕日が岩肌を赤く染める美しい光景は、心に残る思い出になるでしょう。",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ホテルでディナー",
+          "description": "ペトラのホテルで、地元の料理を使ったディナーを楽しみます。旅の疲れを癒しながら、友人と共に楽しいひとときを過ごしましょう。",
+          "locationEn": "Petra, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ペトラ周辺の冒険",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ペトラのホテルで、地元の食材を使った朝食を楽しみます。フレッシュなフルーツやヨーグルト、パンなど、エネルギーをチャージして冒険に備えましょう。",
+          "locationEn": "Petra, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ウム・サイフ山ハイキング",
+          "description": "ペトラの美しい風景を一望できるウム・サイフ山へハイキング。途中で出会う野生の花々や、壮大な砂漠の景色に心を奪われることでしょう。",
+          "searchQuery": "Umm Sayhun Mountain",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "近くのレストランでランチ",
+          "description": "ペトラの近くにあるレストランで、地元の料理を楽しみます。特に、マンスフ（羊肉の炊き込みご飯）は絶品です。",
+          "locationEn": "Petra, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "古代の墓見学",
+          "description": "ペトラの古代の墓を訪れ、その壮大な建築と歴史に触れます。特に、ロゼ色の岩に彫られた墓は圧巻で、写真撮影にも最適です。",
+          "searchQuery": "Royal Tombs of Petra",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "砂漠の風景を楽しむ",
+          "description": "ペトラの周辺の砂漠を散策し、独特の地形や風景を楽しみます。夕暮れ時には、砂漠がオレンジ色に染まる美しい光景が広がります。",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルに戻り休憩",
+          "description": "冒険の後は、ホテルに戻ってリラックス。温かいシャワーを浴びて、疲れを癒しましょう。",
+          "locationEn": "Petra, Jordan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ペトラのレストランでディナー",
+          "description": "ペトラのレストランで、地元の料理を楽しむディナー。特に、ハンバーグやタジン料理が人気です。",
+          "locationEn": "Petra, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ペトラからアンマンへ",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "ペトラ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "アンマン",
+          "time": "12:00"
+        },
+        "duration": "3h",
+        "memo": "ペトラからアンマンへのバス移動。景色を楽しみながらの移動です。"
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "ローマ劇場",
+          "description": "アンマンの中心部に位置するローマ劇場は、2世紀に建設された壮大な遺跡です。観光客に人気のスポットで、歴史を感じながらその美しい建築を堪能できます。",
+          "searchQuery": "Roman Theater",
+          "locationEn": "Amman, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "地元のレストランでランチ",
+          "description": "アンマンの地元のレストランで、伝統的なヨルダン料理を楽しみましょう。特にマンスフ（羊肉と米の料理）は絶品です。",
+          "searchQuery": "Al Quds Restaurant",
+          "locationEn": "Amman, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "王宮訪問",
+          "description": "アンマンの王宮を訪れ、ヨルダンの歴史と文化を学びましょう。美しい庭園や建物が広がり、写真撮影にも最適です。",
+          "searchQuery": "Royal Palace",
+          "locationEn": "Amman, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アンマンの旧市街散策",
+          "description": "アンマンの旧市街を散策し、地元の市場やお土産屋を訪れましょう。活気ある雰囲気の中で、地元の人々との交流も楽しめます。",
+          "searchQuery": "Downtown Amman",
+          "locationEn": "Amman, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のカフェでディナー",
+          "description": "アンマンのカフェで、軽食やデザートを楽しみながら、旅の思い出を語り合いましょう。特にハマスやフムスはおすすめです。",
+          "searchQuery": "Sufra Restaurant",
+          "locationEn": "Amman, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "帰路につく",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Queen Alia International Airport, Amman",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Tokyo, Japan",
+          "time": "06:00"
+        },
+        "duration": "14h",
+        "memo": "直行便で東京へ。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アンマンのホテルで、地元の味を楽しむ朝食をいただきます。フムスやピタパン、オリーブオイルを使った料理が並び、エネルギーをチャージ。",
+          "searchQuery": "Amman Hotel Breakfast",
+          "locationEn": "Amman, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ペトラ遺跡訪問",
+          "description": "世界遺産のペトラ遺跡へ。壮大な岩山に彫られた古代都市の遺構を探索し、インディ・ジョーンズのロケ地を体感します。特に「トレジャリー」は圧巻。",
+          "searchQuery": "Petra",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ペトラでランチ",
+          "description": "遺跡内のカフェで、地元の料理を楽しみます。新鮮なサラダやグリルした肉料理が人気です。遺跡を眺めながらのランチは格別。",
+          "searchQuery": "Petra Restaurant",
+          "locationEn": "Petra, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ペトラ遺跡の散策",
+          "description": "遺跡内をさらに散策し、古代の歴史に触れます。特に「シーク」と呼ばれる狭い渓谷を歩くのは冒険感満載。",
+          "searchQuery": "Petra Siq",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アンマンへ戻る",
+          "description": "ペトラからアンマンへ戻ります。車での移動中、ヨルダンの美しい風景を楽しんでください。",
+          "searchQuery": "Amman",
+          "locationEn": "Amman, Jordan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "アンマンでディナー",
+          "description": "地元のレストランで、ヨルダン料理を堪能します。マンスフ（羊肉と米の料理）や、スパイスの効いたサラダが絶品。",
+          "searchQuery": "Amman Local Restaurant",
+          "locationEn": "Amman, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

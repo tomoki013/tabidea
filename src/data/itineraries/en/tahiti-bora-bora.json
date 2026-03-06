@@ -1,0 +1,518 @@
+{
+  "id": "ad829800-aee2-46da-a5ea-728bb7b08f0b",
+  "destination": "ボラボラ島",
+  "description": "Escape to the idyllic paradise of Bora Bora, where azure waters meet lush greenery, and romance fills the air. This 7-day getaway is designed for couples seeking the ultimate luxury experience, featuring overwater bungalows, exquisite dining, and breathtaking sunsets. Immerse yourself in the tranquil beauty of this tropical haven, where every moment is a celebration of love and relaxation.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Bora Bora",
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Arrival at Bora Bora Airport",
+          "description": "Welcome to Bora Bora! Upon arrival, you'll be greeted by the stunning views of the turquoise lagoon and lush mountains. Take a moment to soak in the beauty as you prepare for your transfer to the resort.",
+          "searchQuery": "Bora Bora Airport",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Transfer to Intercontinental Bora Bora Resort",
+          "description": "Enjoy a scenic boat ride to your luxurious water bungalow at the Intercontinental Bora Bora Resort. The ride offers breathtaking views of the island and its surrounding waters, setting the tone for your romantic getaway.",
+          "searchQuery": "Intercontinental Bora Bora Resort",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Check-in at Intercontinental Bora Bora Resort",
+          "description": "Settle into your beautiful water bungalow, complete with stunning views of the lagoon. Take your time to explore the resort's amenities and relax in your private space.",
+          "searchQuery": "Intercontinental Bora Bora Resort",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at the Resort's Restaurant",
+          "description": "Indulge in a delicious lunch at the resort's restaurant, featuring fresh seafood and local Polynesian dishes. Enjoy your meal while overlooking the serene waters of the lagoon.",
+          "searchQuery": "Intercontinental Bora Bora Resort Restaurant",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Relax at the Private Beach",
+          "description": "Spend your afternoon lounging on the resort's private beach. Feel the soft sand between your toes and enjoy the gentle sound of the waves. This is the perfect time to unwind and soak up the sun.",
+          "searchQuery": "Intercontinental Bora Bora Resort Beach",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Sunset Viewing from Your Bungalow",
+          "description": "As the sun begins to set, enjoy a romantic moment from your bungalow. The vibrant colors of the sunset reflecting on the water create a magical atmosphere, perfect for couples.",
+          "searchQuery": "Bora Bora Sunset",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at the Resort's Fine Dining Restaurant",
+          "description": "Savor a gourmet dinner at the resort's fine dining restaurant. Experience exquisite dishes crafted from local ingredients, paired with a selection of fine wines, all while enjoying the stunning views of the lagoon.",
+          "searchQuery": "Intercontinental Bora Bora Resort Fine Dining",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Relaxation and Spa Day",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Overwater Bungalow",
+          "description": "Start your day with a leisurely breakfast served on your private terrace, overlooking the crystal-clear waters of Bora Bora. Enjoy fresh tropical fruits, pastries, and local delicacies while soaking in the serene surroundings.",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Spa Treatment at the Resort",
+          "description": "Indulge in a rejuvenating spa treatment at the resort's luxurious spa. Choose from a variety of treatments, including a couples' massage or a refreshing facial, all while enjoying the stunning views of the lagoon.",
+          "searchQuery": "Spa at Bora Bora",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at the Resort Restaurant",
+          "description": "Savor a delicious lunch at the resort's restaurant, featuring a menu of fresh seafood and local cuisine. Dine with your feet in the sand and the sound of waves in the background.",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relax by the Lagoon",
+          "description": "Spend your afternoon lounging by the lagoon, soaking up the sun on a comfortable beach chair. Take a refreshing dip in the water or simply enjoy the breathtaking views of Mount Otemanu.",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Sunset Viewing from the Bungalow",
+          "description": "Return to your overwater bungalow to witness a magical sunset. The sky will be painted with hues of orange and pink, creating a romantic atmosphere perfect for couples.",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner Under the Stars",
+          "description": "Enjoy a private dinner arranged on your terrace, complete with candlelight and a gourmet menu. Relish the flavors of Polynesian cuisine while listening to the gentle lapping of the waves.",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Lagoon Exploration",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Overwater Bungalow",
+          "description": "Start your day with a delightful breakfast served on your private terrace, overlooking the turquoise lagoon. Enjoy fresh tropical fruits, pastries, and local delicacies while soaking in the serene beauty of Bora Bora.",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Lagoon Tour",
+          "description": "Embark on a private lagoon tour, where you can snorkel in crystal-clear waters and explore vibrant coral gardens. Keep an eye out for colorful fish and maybe even a friendly ray! This intimate experience is perfect for couples looking to connect with nature.",
+          "searchQuery": "Bora Bora Lagoon Tour",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Bloody Mary's",
+          "description": "Indulge in a leisurely lunch at the iconic Bloody Mary's, known for its fresh seafood and laid-back atmosphere. Savor a delicious fish sandwich or a refreshing salad while enjoying the tropical breeze.",
+          "searchQuery": "Bloody Mary's",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relax at Coral Gardens",
+          "description": "Spend your afternoon at Coral Gardens, a stunning snorkeling spot. Float in the warm waters and marvel at the underwater life, or simply relax on the soft sands. This is the perfect place to unwind and enjoy each other's company.",
+          "searchQuery": "Coral Gardens Bora Bora",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Sunset at Matira Beach",
+          "description": "Head to Matira Beach for a breathtaking sunset. This beach is renowned for its soft white sands and stunning views. Bring a blanket and enjoy a romantic moment as the sun dips below the horizon, painting the sky in hues of orange and pink.",
+          "searchQuery": "Matira Beach",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at the Resort's Restaurant",
+          "description": "End your day with a romantic dinner at your resort's restaurant. Enjoy gourmet cuisine featuring local ingredients, paired with fine wine, all while listening to the gentle sounds of the waves lapping against the shore.",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Private Beach Picnic",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at the Overwater Bungalow",
+          "description": "Start your day with a delightful breakfast served on your private terrace, overlooking the turquoise lagoon. Enjoy fresh tropical fruits, pastries, and local delicacies while soaking in the serene beauty of Bora Bora.",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Private Beach Picnic on a Motu",
+          "description": "Take a short boat ride to a secluded motu (islet) for a romantic beach picnic. Relax on the soft sand, swim in the crystal-clear waters, and enjoy a gourmet picnic prepared just for you, complete with champagne and local delicacies.",
+          "searchQuery": "Private Beach Picnic Bora Bora",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Snorkeling in the Lagoon",
+          "description": "Explore the vibrant underwater world of Bora Bora with a snorkeling adventure. Swim alongside colorful fish and coral reefs in the warm lagoon waters, creating unforgettable memories together.",
+          "searchQuery": "Bora Bora Lagoon Snorkeling",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relaxing at the Overwater Bungalow",
+          "description": "Return to your luxurious overwater bungalow and unwind. Enjoy the sunset views from your private deck, perhaps with a cocktail in hand, as the sky transforms into a canvas of colors.",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at the Resort's Fine Dining Restaurant",
+          "description": "Indulge in a romantic dinner at the resort's fine dining restaurant. Savor exquisite dishes made from fresh local ingredients, paired with fine wines, all while enjoying the stunning views of the lagoon.",
+          "searchQuery": "Bora Bora Fine Dining Restaurant",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Sunset Cruise",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at the Overwater Bungalow",
+          "description": "Start your day with a leisurely breakfast served on your private deck, overlooking the stunning turquoise waters of Bora Bora. Enjoy fresh tropical fruits, pastries, and local delicacies while soaking in the serene atmosphere.",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Relax at the Lagoon",
+          "description": "Spend your morning lounging in the crystal-clear waters of the Bora Bora Lagoon. Float on a paddleboard or simply relax on the beach, enjoying the sun and the breathtaking views of Mount Otemanu.",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Bloody Mary's",
+          "description": "Indulge in a delicious lunch at the famous Bloody Mary's, known for its fresh seafood and vibrant atmosphere. The restaurant is a favorite among celebrities and offers a unique dining experience with its sand floor and Polynesian decor.",
+          "searchQuery": "Bloody Mary's",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Spa Treatment at the Resort",
+          "description": "Pamper yourselves with a couple's spa treatment at your resort. Enjoy a relaxing massage or rejuvenating facial, surrounded by the tranquil sounds of nature, ensuring you feel refreshed and revitalized.",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Sunset Cruise",
+          "description": "Embark on a romantic sunset cruise around the lagoon. Sip on champagne as you watch the sun dip below the horizon, painting the sky with vibrant hues of orange and pink. This magical experience is perfect for couples looking to create unforgettable memories.",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at the Resort's Restaurant",
+          "description": "Conclude your day with a sumptuous dinner at your resort's restaurant. Savor gourmet dishes made from fresh local ingredients while enjoying the stunning views of the lagoon under the stars.",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Cultural Experience",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Overwater Bungalow",
+          "description": "Start your day with a delightful breakfast served on your private terrace, overlooking the turquoise waters of Bora Bora. Enjoy fresh tropical fruits, pastries, and local delicacies while soaking in the serene beauty of your surroundings.",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Explore Bora Bora Village",
+          "description": "Take a leisurely stroll through Bora Bora Village, where you can immerse yourself in the local culture. Visit artisan shops, and galleries, and perhaps pick up a unique souvenir to remember your trip.",
+          "searchQuery": "Bora Bora Village",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Bloody Mary's",
+          "description": "Indulge in a delicious lunch at the iconic Bloody Mary's, known for its fresh seafood and vibrant atmosphere. This restaurant is a favorite among locals and visitors alike, offering a taste of the island's culinary delights.",
+          "searchQuery": "Bloody Mary's",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relax at Matira Beach",
+          "description": "Spend your afternoon unwinding at Matira Beach, one of the most beautiful beaches in Bora Bora. With its soft white sand and crystal-clear waters, it's the perfect spot to relax, swim, or simply enjoy the stunning views.",
+          "searchQuery": "Matira Beach",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Sunset Cruise",
+          "description": "Embark on a romantic sunset cruise around the island. Enjoy the breathtaking views as the sun sets over the horizon, painting the sky with vibrant colors. This is a perfect way to create unforgettable memories together.",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at Le Coral Restaurant",
+          "description": "Savor a gourmet dinner at Le Coral, where you can enjoy exquisite French cuisine with a Polynesian twist. The restaurant's elegant setting and attentive service make it a perfect choice for a romantic evening.",
+          "searchQuery": "Le Coral Restaurant",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure from Bora Bora",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Bora Bora",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Tahiti",
+          "time": "14:00"
+        },
+        "duration": "1h",
+        "memo": "Direct flight from Bora Bora to Tahiti."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Overwater Bungalow",
+          "description": "Enjoy a leisurely breakfast on your private terrace, overlooking the crystal-clear waters of Bora Bora. Savor fresh tropical fruits, pastries, and local delicacies while soaking in the stunning views.",
+          "searchQuery": "InterContinental Bora Bora Resort & Thalasso Spa",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Morning Swim and Relaxation",
+          "description": "Take a final dip in the warm lagoon waters right from your bungalow. Float in the turquoise sea or relax on the deck with a good book, embracing the tranquility of your surroundings.",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Check-out and Last Stroll on the Beach",
+          "description": "Before your departure, take a leisurely stroll along the soft sandy beach. Feel the gentle breeze and the warm sun on your skin as you reflect on your unforgettable stay in paradise.",
+          "searchQuery": "Matira Beach",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

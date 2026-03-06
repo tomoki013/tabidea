@@ -1,0 +1,432 @@
+{
+  "id": "633550b1-bcef-4091-b791-177da98e4d88",
+  "destination": "クアラルンプール",
+  "description": "クアラルンプールは、多文化が交錯する魅力的な都市です。モダンな高層ビルと歴史的な建物が共存し、街のあちこちにフォトジェニックなスポットが点在しています。美味しいストリートフードや地元のレストランでの食事も楽しみながら、異文化の雰囲気を存分に味わえる5日間の旅に出かけましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "クアラルンプール到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "クアラルンプールのホテルで、地元の味を楽しむ朝食をいただきます。ナシレマやロティチャナイなど、マレーシアの伝統的な料理を堪能しましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ペトロナスツインタワー",
+          "description": "クアラルンプールのシンボル、ペトロナスツインタワーを訪れます。展望台からの眺めは圧巻で、特に早朝の光の中での写真撮影がおすすめです。",
+          "searchQuery": "Petronas Twin Towers",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "KLCC公園でランチ",
+          "description": "ペトロナスツインタワーの近くにあるKLCC公園で、ピクニックランチを楽しみます。周囲の緑と水の音に癒されながら、地元の屋台で買った軽食を味わいましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "KLCCアクアリウム",
+          "description": "KLCC公園内にあるアクアリウムを訪れ、海の生き物たちを間近で観察します。特に、トンネル型の水槽はフォトジェニックなスポットです。",
+          "searchQuery": "Aquaria KLCC",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ブキッビンタン散策",
+          "description": "ショッピングやストリートフードが楽しめるブキッビンタンエリアを散策します。地元の人々と触れ合いながら、異文化の雰囲気を感じることができます。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "マレーシア料理を楽しめる地元のレストランでディナー。特に、サテやラクサなどの人気料理を味わいましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "歴史と文化を感じる一日",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "クアラルンプールのホテルで、マレーシアの伝統的な朝食を楽しみます。ナシレマ（ココナッツミルクご飯）やロティチャナイ（フラットブレッド）を味わい、エネルギーをチャージしましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "バトゥ洞窟",
+          "description": "クアラルンプールの郊外に位置するバトゥ洞窟を訪れます。巨大なヒンドゥー教の神像が迎えてくれるこの場所は、色とりどりの階段を登ると美しい洞窟寺院が広がります。写真スポットとしても人気です。",
+          "searchQuery": "Batu Caves",
+          "locationEn": "Batu Caves, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元の食堂でランチ",
+          "description": "バトゥ洞窟近くの地元の食堂で、マレーシアの家庭料理を楽しみます。特におすすめは、サテ（串焼き）やラクサ（スパイシーなヌードルスープ）です。",
+          "locationEn": "Batu Caves, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ムルデカ広場",
+          "description": "クアラルンプールの歴史的な中心地、ムルデカ広場を訪れます。マレーシアの独立を祝うために建てられたこの広場は、周囲に美しい植民地時代の建物が立ち並び、フォトジェニックなスポットが満載です。",
+          "searchQuery": "Merdeka Square",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "セントラルマーケット散策",
+          "description": "セントラルマーケットでショッピングやアートを楽しみます。地元のアーティストによる作品や手作りの工芸品が揃い、マレーシアの文化を感じることができます。",
+          "searchQuery": "Central Market Kuala Lumpur",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ペトロナスツインタワーの写真撮影",
+          "description": "クアラルンプールのシンボル、ペトロナスツインタワーを背景に写真を撮ります。夕暮れ時の美しいライトアップが特におすすめです。",
+          "searchQuery": "Petronas Twin Towers",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "クアラルンプールの人気レストランで、マレーシア料理のディナーを楽しみます。特にナシゴレン（炒めご飯）やミーゴレン（炒め麺）が絶品です。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "グルメとショッピングを楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "クアラルンプールのホテルで、地元のフルーツやトーストを使った軽やかな朝食を楽しみます。エネルギーをチャージして、今日の冒険に備えましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ジャラン・アローでストリートフード巡り",
+          "description": "クアラルンプールの人気ストリートフードエリア、ジャラン・アローへ。屋台が並ぶ賑やかな通りで、サテやナシレマなどの地元料理を味わいながら、フォトジェニックな瞬間を収めましょう。",
+          "searchQuery": "Jalan Alor",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ブキッ・ビンタンでショッピング",
+          "description": "ブキッ・ビンタンのショッピングエリアで、最新のファッションやお土産を探しながら、街の雰囲気を楽しみます。カフェで一息つくのもおすすめです。",
+          "searchQuery": "Bukit Bintang",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "パビリオンKLでランチ",
+          "description": "パビリオンKL内のレストランでランチ。多国籍な料理が楽しめるフードコートで、好きなものを選んで味わいましょう。おしゃれな雰囲気の中で、食事を楽しむことができます。",
+          "searchQuery": "Pavilion Kuala Lumpur",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ペトロナスツインタワーの写真撮影",
+          "description": "クアラルンプールのシンボル、ペトロナスツインタワーを訪れ、壮大な景色をバックに写真を撮影します。特に夕方の光が美しい時間帯がおすすめです。",
+          "searchQuery": "Petronas Twin Towers",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "KLCC公園でリラックス",
+          "description": "ペトロナスツインタワーの近くにあるKLCC公園で、緑に囲まれた静かな時間を過ごします。散策しながら、タワーの美しい姿を眺めることができます。",
+          "searchQuery": "KLCC Park",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "クアラルンプールの地元レストランで、マレー料理や中華料理を楽しみます。特に、ナシゴレンやラクサは絶品です。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "自然とアートに触れる",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "クアラルンプールのホテルで、地元のフルーツやトーストを使った軽めの朝食を楽しみます。エネルギーをチャージして、今日の冒険に備えましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "KLタワー",
+          "description": "クアラルンプールのシンボル、KLタワーへ。展望台からは市内のパノラマビューが広がり、特に朝の光の中での写真撮影が絶好のタイミングです。",
+          "searchQuery": "KL Tower",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ペトロナスツインタワー展望台",
+          "description": "世界的に有名なペトロナスツインタワーの展望台を訪れます。高層ビルの間をつなぐスカイブリッジからの眺めは圧巻で、クアラルンプールの美しい景色を堪能できます。",
+          "searchQuery": "Petronas Twin Towers",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "地元のレストランでランチ",
+          "description": "クアラルンプールの地元料理を楽しめるレストランで、ナシレマやロティチャナイなどのマレーシアの名物料理を味わいます。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "バターワース公園散策",
+          "description": "バターワース公園で自然を満喫。緑豊かな環境の中でリラックスしながら、写真を撮ったり、地元の人々と触れ合ったりします。",
+          "searchQuery": "Butterworth Park",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アートギャラリー訪問",
+          "description": "クアラルンプールのアートシーンを感じるために、地元のアートギャラリーを訪れます。新進アーティストの作品を楽しみながら、文化に触れる貴重な時間を過ごします。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ナイトマーケットで夕食",
+          "description": "地元のナイトマーケットで、ストリートフードを楽しみます。バーベキューやフルーツジュースなど、様々な料理を気軽に味わえるのが魅力です。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すために、ホテルに戻ります。明日の冒険に備えて、ゆっくりと休息を取りましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "クアラルンプールから帰路へ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "クアラルンプールのホテルで、マレーシアの伝統的な朝食を楽しみます。ナシレマやロティチャナイなど、地元の味を堪能して一日をスタートしましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ペトロナスツインタワーの写真撮影",
+          "description": "クアラルンプールのシンボル、ペトロナスツインタワーを訪れます。美しい朝の光の中で、ツインタワーをバックに素敵な写真を撮影しましょう。周辺の公園も散策して、リラックスした時間を過ごせます。",
+          "searchQuery": "Petronas Twin Towers",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ツインタワー近くの地元のレストランで、マレーシア料理のランチを楽しみます。特におすすめは、サテやラクサなどの人気メニューです。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "バトゥ洞窟観光",
+          "description": "クアラルンプールの郊外にあるバトゥ洞窟を訪れます。巨大なヒンドゥー教の神像と色とりどりの階段が印象的で、フォトジェニックなスポットです。洞窟内の寺院も見学できます。",
+          "searchQuery": "Batu Caves",
+          "locationEn": "Batu Caves, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "クアラルンプール国際空港へ移動",
+          "description": "バトゥ洞窟からクアラルンプール国際空港へ向かいます。空港までの移動はタクシーやGrabを利用すると便利です。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "クアラルンプール国際空港で出発手続き",
+          "description": "空港に到着したら、出発手続きを行います。お土産を買う時間も考慮して、余裕を持って行動しましょう。",
+          "locationEn": "Kuala Lumpur International Airport, Malaysia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

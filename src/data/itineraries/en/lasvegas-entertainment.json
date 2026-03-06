@@ -1,0 +1,541 @@
+{
+  "id": "070c1ea1-ec66-40eb-9c06-46530325d6da",
+  "destination": "ラスベガス",
+  "description": "Immerse yourself in the dazzling lights and vibrant energy of Las Vegas, where entertainment knows no bounds. From the thrill of the casinos to the breathtaking landscapes of the Grand Canyon, this trip promises an unforgettable experience for couples seeking adventure and romance. Get ready to indulge in luxurious dining, world-class shows, and stunning natural beauty as you explore the best of Sin City and beyond.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Strip Exploration",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Check-in at The Venetian Resort",
+          "description": "Experience the luxury of The Venetian, where you can enjoy spacious suites and a stunning indoor canal. This hotel offers a taste of Italy right in the heart of Las Vegas.",
+          "searchQuery": "The Venetian Resort",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Lunch at Yardbird Southern Table & Bar",
+          "description": "Savor a delicious Southern-inspired lunch at Yardbird, known for its fried chicken and comfort food. The vibrant atmosphere makes it a perfect start to your Vegas adventure.",
+          "searchQuery": "Yardbird Southern Table & Bar",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore the Las Vegas Strip",
+          "description": "Stroll along the iconic Las Vegas Strip, taking in the dazzling lights and unique architecture of the famous casinos. Don't miss the chance to snap photos in front of the Eiffel Tower at Paris Las Vegas.",
+          "searchQuery": "Las Vegas Strip",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Bellagio Fountains Show",
+          "description": "Witness the mesmerizing Bellagio Fountains show, where water dances to music and lights. This free spectacle is a must-see and happens every 30 minutes in the evenings.",
+          "searchQuery": "Bellagio Fountains",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Carbone",
+          "description": "Indulge in a fine dining experience at Carbone, an Italian-American restaurant known for its classic dishes and elegant ambiance. Reservations are recommended for this popular spot.",
+          "searchQuery": "Carbone Las Vegas",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Watch a Show at The Colosseum at Caesars Palace",
+          "description": "End your day with a spectacular show at The Colosseum, featuring world-class performances. Be sure to check the schedule in advance to book your tickets for a memorable night.",
+          "searchQuery": "The Colosseum at Caesars Palace",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Grand Canyon Adventure",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Las Vegas",
+          "time": "07:00"
+        },
+        "arrival": {
+          "place": "Grand Canyon National Park",
+          "time": "09:30"
+        },
+        "duration": "2h 30m",
+        "memo": "Enjoy the scenic drive to the Grand Canyon."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Grand Canyon National Park",
+          "description": "Explore the breathtaking views of the Grand Canyon. Walk along the rim and take in the stunning vistas that stretch for miles. Don't forget your camera for some unforgettable photos!",
+          "searchQuery": "Grand Canyon National Park",
+          "locationEn": "Grand Canyon Village, AZ, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at El Tovar Dining Room",
+          "description": "Indulge in a delightful lunch at the historic El Tovar Dining Room, offering a menu that features local ingredients and stunning canyon views. A perfect spot to relax and refuel!",
+          "searchQuery": "El Tovar Dining Room",
+          "locationEn": "Grand Canyon Village, AZ, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Skywalk Experience",
+          "description": "Walk out onto the Skywalk, a glass bridge that extends over the canyon, providing a thrilling view straight down. Feel the adrenaline rush as you look down at the Colorado River below!",
+          "searchQuery": "Grand Canyon Skywalk",
+          "locationEn": "Peach Springs, AZ, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Hualapai Ranch",
+          "description": "Visit Hualapai Ranch for a taste of the Wild West. Enjoy activities like horseback riding or simply relax and take in the beautiful surroundings. A great way to experience the local culture!",
+          "searchQuery": "Hualapai Ranch",
+          "locationEn": "Peach Springs, AZ, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Return to Las Vegas",
+          "description": "Head back to Las Vegas after a day filled with adventure and stunning sights. Reflect on the day's experiences as you travel back to the city.",
+          "locationEn": "Las Vegas, NV, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Dinner at The Strip",
+          "description": "Enjoy a lavish dinner at one of the many upscale restaurants along The Strip. Choose from a variety of cuisines and enjoy the vibrant atmosphere of Las Vegas.",
+          "searchQuery": "The Strip",
+          "locationEn": "Las Vegas, NV, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:30",
+          "activity": "Cirque du Soleil Show",
+          "description": "End your day with a spectacular Cirque du Soleil show. Experience the magic of acrobatics and stunning performances that will leave you in awe!",
+          "searchQuery": "Cirque du Soleil",
+          "locationEn": "Las Vegas, NV, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Entertainment Extravaganza",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Buffet at Wynn",
+          "description": "Start your day with a lavish breakfast at The Buffet at Wynn, featuring a wide array of gourmet dishes from around the world. The elegant setting and fresh ingredients make it a perfect spot to fuel up for an exciting day ahead.",
+          "searchQuery": "The Buffet at Wynn",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit The Strip",
+          "description": "Stroll along the iconic Las Vegas Strip, where you can marvel at the extravagant hotels and casinos. Don't miss the stunning fountains at the Bellagio and the replica Eiffel Tower at Paris Las Vegas.",
+          "searchQuery": "Las Vegas Strip",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Mon Ami Gabi",
+          "description": "Enjoy a delightful French lunch at Mon Ami Gabi, located at the Paris Las Vegas. The outdoor patio offers a fantastic view of the Strip, making it a great spot to relax and people-watch.",
+          "searchQuery": "Mon Ami Gabi",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Cirque du Soleil Show - O",
+          "description": "Experience the breathtaking Cirque du Soleil show 'O' at the Bellagio. This aquatic-themed performance combines acrobatics, synchronized swimming, and stunning visuals, making it a must-see in Las Vegas.",
+          "searchQuery": "Cirque du Soleil O",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Gordon Ramsay Hell's Kitchen",
+          "description": "Indulge in a fine dining experience at Gordon Ramsay Hell's Kitchen. The restaurant offers a modern twist on classic dishes, and the vibrant atmosphere is sure to enhance your dining experience.",
+          "searchQuery": "Gordon Ramsay Hell's Kitchen",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Fremont Street Experience",
+          "description": "Head to Fremont Street for an unforgettable evening. Enjoy the dazzling light show on the Viva Vision canopy, live music, and street performers. This vibrant area captures the essence of old Las Vegas.",
+          "searchQuery": "Fremont Street Experience",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "22:00",
+          "activity": "Nightcap at The Chandelier",
+          "description": "End your day with a nightcap at The Chandelier, a stunning three-story bar at The Cosmopolitan. Sip on creative cocktails while surrounded by sparkling crystals and a chic atmosphere.",
+          "searchQuery": "The Chandelier",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Nature and Relaxation",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Buffet at Wynn",
+          "description": "Start your day with a lavish breakfast at The Buffet at Wynn, featuring a wide array of gourmet dishes, from fresh seafood to made-to-order omelets. The elegant setting and quality of food make it a perfect spot to fuel up for the day ahead.",
+          "searchQuery": "The Buffet at Wynn",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Red Rock Canyon National Conservation Area",
+          "description": "Escape the hustle and bustle of the Strip and head to Red Rock Canyon. Enjoy a scenic drive or hike through stunning red rock formations and desert landscapes. The views are breathtaking, especially in the morning light.",
+          "searchQuery": "Red Rock Canyon National Conservation Area",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Blue Diamond Saloon",
+          "description": "After exploring Red Rock Canyon, enjoy a casual lunch at Blue Diamond Saloon, known for its hearty American fare and friendly atmosphere. It's a great place to relax and refuel before your next adventure.",
+          "searchQuery": "Blue Diamond Saloon",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Spa Day at The Spa at Encore",
+          "description": "Indulge in a luxurious spa experience at The Spa at Encore. Choose from a variety of treatments, including massages and facials, to unwind and rejuvenate after your morning hike. This is a perfect way to relax and pamper yourselves.",
+          "searchQuery": "The Spa at Encore",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Sunset at the Strip",
+          "description": "Return to the Strip to catch the stunning sunset views. Head to a rooftop bar like the Skyfall Lounge at Delano for a cocktail while enjoying panoramic views of the Las Vegas skyline as the sun sets behind the mountains.",
+          "searchQuery": "Skyfall Lounge",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at SW Steakhouse",
+          "description": "Savor a fine dining experience at SW Steakhouse, where you can enjoy prime steaks and fresh seafood with a view of the Lake of Dreams. The ambiance is perfect for a romantic evening out.",
+          "searchQuery": "SW Steakhouse",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "See a Show at The Colosseum at Caesars Palace",
+          "description": "End your day with a spectacular show at The Colosseum. Whether it's a concert or a theatrical performance, the entertainment here is world-class and a must-see while in Las Vegas.",
+          "searchQuery": "The Colosseum at Caesars Palace",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Last Day of Luxury",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Buffet at Wynn",
+          "description": "Start your day with an extravagant breakfast at The Buffet at Wynn, known for its lavish spread of gourmet dishes and fresh ingredients. Enjoy everything from made-to-order omelets to decadent pastries in a stunning setting.",
+          "searchQuery": "The Buffet at Wynn",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Shopping at The Forum Shops",
+          "description": "Indulge in some retail therapy at The Forum Shops at Caesars Palace, where luxury brands and unique boutiques await. Stroll through the beautifully designed shopping area, complete with stunning architecture and even a talking statue show.",
+          "searchQuery": "The Forum Shops at Caesars",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Spago",
+          "description": "Savor a delightful lunch at Spago, Wolfgang Puck's flagship restaurant, offering a seasonal menu with fresh ingredients and a touch of California cuisine. The ambiance is upscale yet relaxed, perfect for a leisurely meal.",
+          "searchQuery": "Spago Las Vegas",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Grand Canyon Helicopter Tour",
+          "description": "Experience the breathtaking beauty of the Grand Canyon from above on a helicopter tour. Marvel at the stunning landscapes and geological formations as you soar over one of the world's natural wonders. This unforgettable adventure will leave you in awe.",
+          "searchQuery": "Grand Canyon Helicopter Tour",
+          "locationEn": "Grand Canyon, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Joël Robuchon",
+          "description": "Enjoy a Michelin-starred dining experience at Joël Robuchon, where exquisite French cuisine meets impeccable service. The tasting menu is a culinary journey that showcases the finest ingredients and artistry in every dish.",
+          "searchQuery": "Joël Robuchon",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Nightlife at Skyfall Lounge",
+          "description": "End your luxurious day with a cocktail at Skyfall Lounge, located on the 64th floor of the Delano. Enjoy stunning panoramic views of the Las Vegas Strip as you sip on expertly crafted drinks in a chic atmosphere.",
+          "searchQuery": "Skyfall Lounge",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Las Vegas",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "16:00"
+        },
+        "duration": "4h",
+        "memo": "Direct flight from Las Vegas to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Buffet at Wynn",
+          "description": "Start your day with a lavish breakfast at The Buffet at Wynn, known for its extensive selection of gourmet dishes and fresh ingredients. Enjoy a variety of options from made-to-order omelets to decadent pastries in a stunning setting.",
+          "searchQuery": "The Buffet at Wynn",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Red Rock Canyon",
+          "description": "Take a scenic drive to Red Rock Canyon, just a short distance from the Strip. Explore the breathtaking landscapes, unique rock formations, and hiking trails. Don't forget your camera for stunning photos of the vibrant desert scenery.",
+          "searchQuery": "Red Rock Canyon National Conservation Area",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Capital Grille",
+          "description": "Indulge in a luxurious lunch at The Capital Grille, where you can savor dry-aged steaks and fresh seafood in an elegant atmosphere. This upscale dining experience is perfect for a special occasion.",
+          "searchQuery": "The Capital Grille",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Las Vegas Strip",
+          "description": "Stroll along the iconic Las Vegas Strip, taking in the sights and sounds of this vibrant city. Visit famous casinos, check out the themed hotels, and maybe try your luck at a few slot machines.",
+          "searchQuery": "Las Vegas Strip",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Le Cirque",
+          "description": "Enjoy a fine dining experience at Le Cirque, located in the Bellagio. This Michelin-starred restaurant offers exquisite French cuisine in a colorful and whimsical setting, perfect for a romantic evening.",
+          "searchQuery": "Le Cirque",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Watch Cirque du Soleil's O",
+          "description": "End your Las Vegas adventure with a spectacular performance of Cirque du Soleil's O at the Bellagio. This aquatic-themed show features breathtaking acrobatics and stunning visuals that will leave you in awe.",
+          "searchQuery": "Cirque du Soleil O",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

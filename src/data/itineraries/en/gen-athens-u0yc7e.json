@@ -1,0 +1,273 @@
+{
+  "id": "03c4e49e-dc3b-4291-82f0-5a40c396ab08",
+  "destination": "Athens",
+  "description": "Immerse yourself in the vibrant culture and rich history of Athens while enjoying the sun-soaked beauty of its stunning coastal resorts. This 3-day getaway is designed for couples seeking a perfect blend of exploration and relaxation, allowing you to indulge in both the ancient wonders and the modern pleasures of Greece. From the iconic Acropolis to the serene beaches, every moment is crafted to create unforgettable memories together.",
+  "heroImage": "https://images.unsplash.com/photo-1645682490806-7b2279a7cdfc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTU1NzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Datingjungle",
+  "heroImagePhotographerUrl": "https://unsplash.com/@datingjungle?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Exploring Ancient Athens",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Cafe Avissinia",
+          "description": "Start your day with a delightful breakfast at Cafe Avissinia, known for its cozy atmosphere and delicious Greek pastries. Enjoy a traditional Greek coffee paired with fresh bread and local honey.",
+          "searchQuery": "Cafe Avissinia",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Acropolis",
+          "description": "No trip to Athens is complete without a visit to the Acropolis. Marvel at the Parthenon and enjoy breathtaking views of the city from this ancient citadel. Early morning visits are recommended to avoid crowds.",
+          "searchQuery": "Acropolis",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Plaka District",
+          "description": "Stroll through the charming streets of Plaka and stop for lunch at a local taverna. Try traditional dishes like moussaka or souvlaki while soaking in the vibrant atmosphere of this historic neighborhood.",
+          "searchQuery": "Plaka District",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Ancient Agora",
+          "description": "After lunch, head to the Ancient Agora, the heart of ancient Athens. Walk among the ruins and visit the Temple of Hephaestus, one of the best-preserved ancient temples in Greece.",
+          "searchQuery": "Ancient Agora",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Wander through Monastiraki Flea Market",
+          "description": "Spend your afternoon exploring the Monastiraki Flea Market. Browse through unique shops and stalls selling antiques, handmade crafts, and souvenirs. It's a perfect spot to find a special memento from your trip.",
+          "searchQuery": "Monastiraki Flea Market",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Ta Karamanlidika Tou Fani",
+          "description": "Enjoy a delightful dinner at Ta Karamanlidika Tou Fani, a popular spot known for its cured meats and cheeses. Savor a variety of meze dishes in a warm and inviting atmosphere.",
+          "searchQuery": "Ta Karamanlidika Tou Fani",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll at Lycabettus Hill",
+          "description": "End your day with a leisurely stroll up Lycabettus Hill. The panoramic views of Athens at sunset are simply breathtaking, making it a romantic spot for couples.",
+          "searchQuery": "Lycabettus Hill",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Coastal Relaxation and Culture",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delightful breakfast at a charming local café in Athens. Enjoy traditional Greek pastries like spanakopita and a refreshing Greek yogurt with honey, perfect for fueling your day ahead.",
+          "searchQuery": "Local Café Athens",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Vouliagmeni Beach",
+          "description": "Head to Vouliagmeni Beach, a stunning spot known for its crystal-clear waters and beautiful surroundings. Relax on the sandy shores or take a dip in the Aegean Sea. It's a perfect place to unwind and soak up the sun.",
+          "searchQuery": "Vouliagmeni Beach",
+          "locationEn": "Vouliagmeni, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Beachside Taverna",
+          "description": "Enjoy a leisurely lunch at a beachside taverna, where you can savor fresh seafood and traditional Greek dishes while overlooking the sea. Don't miss the grilled octopus and a glass of ouzo!",
+          "searchQuery": "Beachside Taverna Vouliagmeni",
+          "locationEn": "Vouliagmeni, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Lake Vouliagmeni",
+          "description": "Visit the serene Lake Vouliagmeni, a natural thermal lake known for its healing properties. Take a relaxing swim in the warm waters or simply enjoy the picturesque scenery. It's a hidden gem that offers tranquility away from the bustling city.",
+          "searchQuery": "Lake Vouliagmeni",
+          "locationEn": "Vouliagmeni, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Cape Sounion and the Temple of Poseidon",
+          "description": "Take a scenic drive to Cape Sounion, where you can explore the ancient Temple of Poseidon. The breathtaking views of the Aegean Sea from the cliffs are absolutely stunning, especially as the sun begins to set.",
+          "searchQuery": "Temple of Poseidon",
+          "locationEn": "Sounion, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner with a View",
+          "description": "Dine at a restaurant near Cape Sounion, where you can enjoy delicious Greek cuisine while watching the sunset over the sea. The ambiance is perfect for a romantic evening, making it a memorable end to your day.",
+          "searchQuery": "Restaurant near Cape Sounion",
+          "locationEn": "Sounion, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Return to Athens",
+          "description": "After a fulfilling day, return to your hotel in Athens. Reflect on the beautiful sights and experiences of the day as you unwind and prepare for tomorrow's adventures.",
+          "searchQuery": "Hotel in Athens",
+          "locationEn": "Athens, Greece",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion and Departure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delightful breakfast at a cozy café in Athens. Enjoy traditional Greek pastries like spanakopita and a refreshing Greek yogurt with honey, perfect for fueling your day of exploration.",
+          "searchQuery": "Local Café Athens",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "National Archaeological Museum",
+          "description": "Visit the National Archaeological Museum, home to an extensive collection of ancient Greek artifacts. Marvel at the stunning sculptures and learn about Greece's rich history through its exhibits.",
+          "searchQuery": "National Archaeological Museum",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Psiri District",
+          "description": "Head to the vibrant Psiri district for lunch. This area is known for its trendy eateries and local tavernas. Try some delicious souvlaki or moussaka at a popular local spot.",
+          "searchQuery": "Psiri District Restaurant",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Psiri District",
+          "description": "After lunch, take a leisurely stroll through the Psiri district. Enjoy the street art, boutique shops, and lively atmosphere. This area is perfect for soaking in the local culture and perhaps picking up a unique souvenir.",
+          "searchQuery": "Psiri District",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Athens Central Market",
+          "description": "Visit the bustling Athens Central Market, where you can experience the local food scene. Browse through fresh produce, spices, and local delicacies. It's a great place to sample some olives or cheese.",
+          "searchQuery": "Athens Central Market",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at a Rooftop Bar",
+          "description": "End your day with a drink at a rooftop bar overlooking the Acropolis. Enjoy the stunning sunset views while sipping on a refreshing cocktail, a perfect way to unwind after a day of exploration.",
+          "searchQuery": "Rooftop Bar Athens",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

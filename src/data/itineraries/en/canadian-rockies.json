@@ -1,0 +1,656 @@
+{
+  "id": "74939200-eed0-42f6-a654-2f8d6ac68fb2",
+  "destination": "Banff & Jasper National Parks",
+  "description": "Escape to the breathtaking landscapes of Banff and Jasper, where the majestic Rocky Mountains cradle turquoise lakes and lush forests. This 7-day adventure is perfect for families, offering a blend of stunning natural beauty, exhilarating hikes, and memorable experiences that will leave everyone in awe. From the iconic Lake Louise to the serene Maligne Lake, immerse yourself in the wonders of nature and create unforgettable family memories in Canada's most stunning national parks.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Journey to Banff",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Calgary International Airport",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Banff",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "Enjoy a scenic drive through the Canadian Rockies."
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "Check-in at Fairmont Banff Springs",
+          "description": "Settle into the luxurious Fairmont Banff Springs, known as the 'Castle in the Rockies'. This historic hotel offers stunning views and is a perfect base for your adventures.",
+          "searchQuery": "Fairmont Banff Springs",
+          "locationEn": "Banff, Canada",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Vermillion Room",
+          "description": "Savor a delicious lunch at The Vermillion Room, featuring local ingredients and a beautiful view of the mountains. Try their famous bison burger for a true taste of Alberta!",
+          "searchQuery": "The Vermillion Room",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Lake Louise",
+          "description": "Take a short drive to Lake Louise, renowned for its turquoise waters and stunning mountain backdrop. Enjoy a leisurely walk along the lakeshore or rent a canoe for a unique perspective.",
+          "searchQuery": "Lake Louise",
+          "locationEn": "Lake Louise, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Hiking at Lake Agnes",
+          "description": "Embark on a family-friendly hike to Lake Agnes, where you can enjoy breathtaking views and the serene atmosphere of the surrounding wilderness. The trail is well-marked and suitable for children.",
+          "searchQuery": "Lake Agnes",
+          "locationEn": "Lake Louise, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Lakeview Lounge",
+          "description": "End your day with a delightful dinner at The Lakeview Lounge, offering a cozy atmosphere and a menu featuring local specialties. Don't miss their signature dessert, the 'Banff Chocolate Cake'.",
+          "searchQuery": "The Lakeview Lounge",
+          "locationEn": "Lake Louise, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Banff National Park",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Maple Leaf",
+          "description": "Start your day with a hearty breakfast at The Maple Leaf, known for its Canadian-inspired dishes. Enjoy a delicious plate of pancakes or eggs benedict to fuel your adventures ahead.",
+          "searchQuery": "The Maple Leaf",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Bow Falls",
+          "description": "Take a short drive to Bow Falls, a stunning waterfall located just outside of Banff. The roar of the water and the picturesque views make it a perfect spot for family photos.",
+          "searchQuery": "Bow Falls",
+          "locationEn": "Banff, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Hike to Sulphur Mountain",
+          "description": "Embark on a family-friendly hike up Sulphur Mountain. The trail offers breathtaking views of the surrounding mountains and valleys. Don't forget to bring your camera for some amazing shots!",
+          "searchQuery": "Sulphur Mountain",
+          "locationEn": "Banff, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Bison Restaurant",
+          "description": "Enjoy a farm-to-table lunch at The Bison Restaurant, where you can savor local ingredients and dishes inspired by Canadian cuisine. The cozy atmosphere is perfect for families.",
+          "searchQuery": "The Bison Restaurant",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Ride the Banff Gondola",
+          "description": "Take the Banff Gondola for a scenic ride to the top of Sulphur Mountain. The panoramic views from the summit are absolutely breathtaking and a must-see for all visitors.",
+          "searchQuery": "Banff Gondola",
+          "locationEn": "Banff, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Banff Town",
+          "description": "Stroll through the charming streets of Banff Town. Visit local shops, art galleries, and enjoy the vibrant atmosphere. It's a great way to relax after a day of hiking.",
+          "searchQuery": "Banff Town",
+          "locationEn": "Banff, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Park Distillery",
+          "description": "End your day with a delicious dinner at Park Distillery, where you can enjoy a variety of dishes made with locally sourced ingredients. The distillery atmosphere adds a unique touch to your dining experience.",
+          "searchQuery": "Park Distillery",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Relax at the Hotel",
+          "description": "Return to your hotel and unwind after a day filled with adventure. Enjoy some family time and share your favorite moments from the day.",
+          "locationEn": "Banff, Canada",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Scenic Drive to Jasper",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Banff",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Jasper",
+          "time": "11:00"
+        },
+        "duration": "3h",
+        "memo": "Enjoy the stunning views along the Icefields Parkway."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Tooloulou's",
+          "description": "Start your day with a hearty breakfast at Tooloulou's, known for its delicious Canadian-style dishes. Try their famous pancakes or the eggs benedict for a delightful morning meal.",
+          "searchQuery": "Tooloulou's",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Drive along Icefields Parkway",
+          "description": "Embark on a scenic drive along the Icefields Parkway, one of the most beautiful drives in the world. Marvel at the breathtaking mountain views and keep an eye out for wildlife along the way.",
+          "searchQuery": "Icefields Parkway",
+          "locationEn": "Banff, Canada",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Stop at Peyto Lake",
+          "description": "Make a stop at Peyto Lake, famous for its unique wolf-head shape and stunning turquoise color. A short hike will take you to the viewpoint for a perfect family photo opportunity.",
+          "searchQuery": "Peyto Lake",
+          "locationEn": "Banff, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Arrive in Jasper",
+          "description": "Arrive in Jasper and check into your hotel. Take some time to relax and prepare for an afternoon of exploration in Jasper National Park.",
+          "searchQuery": "Jasper",
+          "locationEn": "Jasper, Canada",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Jasper Brewing Company",
+          "description": "Enjoy a casual lunch at Jasper Brewing Company, where you can savor local craft beers and hearty pub fare. The atmosphere is family-friendly and perfect for a midday break.",
+          "searchQuery": "Jasper Brewing Company",
+          "locationEn": "Jasper, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Athabasca Glacier",
+          "description": "Take a guided tour to Athabasca Glacier, where you can walk on the ice and learn about the glacier's formation. This is a unique experience that the whole family will enjoy.",
+          "searchQuery": "Athabasca Glacier",
+          "locationEn": "Jasper, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Explore Jasper Townsite",
+          "description": "Stroll through the charming Jasper townsite, where you can shop for souvenirs and enjoy the local vibe. Don't forget to grab some ice cream from a local shop to cool off!",
+          "searchQuery": "Jasper Townsite",
+          "locationEn": "Jasper, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Raven Bistro",
+          "description": "End your day with a delightful dinner at The Raven Bistro, known for its fresh, locally sourced ingredients and creative dishes. A perfect way to unwind after a day of adventure.",
+          "searchQuery": "The Raven Bistro",
+          "locationEn": "Jasper, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Discovering Jasper National Park",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Inn Grill",
+          "description": "Start your day with a hearty breakfast at The Inn Grill, known for its delicious pancakes and locally sourced ingredients. It's a great way to fuel up for a day of adventure in Jasper National Park.",
+          "searchQuery": "The Inn Grill",
+          "locationEn": "Jasper, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Maligne Lake Cruise",
+          "description": "Embark on a scenic cruise on Maligne Lake, famous for its stunning turquoise waters and the iconic Spirit Island. This is a perfect opportunity to capture breathtaking photos and enjoy the serene beauty of the lake.",
+          "searchQuery": "Maligne Lake",
+          "locationEn": "Jasper, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Maligne Lake Café",
+          "description": "After the cruise, enjoy a relaxing lunch at the Maligne Lake Café, where you can savor local dishes while taking in the stunning views of the lake.",
+          "searchQuery": "Maligne Lake Café",
+          "locationEn": "Jasper, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit Medicine Lake",
+          "description": "Head to Medicine Lake, a unique body of water that changes dramatically with the seasons. Take a leisurely walk along the shore and enjoy the picturesque scenery, perfect for family photos.",
+          "searchQuery": "Medicine Lake",
+          "locationEn": "Jasper, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Jasper Town",
+          "description": "Spend some time exploring Jasper Town, where you can visit local shops, art galleries, and enjoy the charming mountain town atmosphere. Don't forget to grab some souvenirs!",
+          "searchQuery": "Jasper Town",
+          "locationEn": "Jasper, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Jasper Brewing Company",
+          "description": "End your day with a family-friendly dinner at Jasper Brewing Company, where you can enjoy craft beers and a variety of delicious dishes made from local ingredients. The atmosphere is lively and welcoming.",
+          "searchQuery": "Jasper Brewing Company",
+          "locationEn": "Jasper, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening Stroll in Jasper National Park",
+          "description": "Take a peaceful evening stroll in Jasper National Park. The park is known for its stunning sunsets, and this is a perfect way to unwind after a day of exploration.",
+          "searchQuery": "Jasper National Park",
+          "locationEn": "Jasper, Canada",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Wildlife and Adventure in Jasper",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Jasper Brewing Company",
+          "description": "Start your day with a hearty breakfast at this local favorite. Enjoy a selection of delicious breakfast options, including their famous breakfast burrito and freshly brewed coffee, all while soaking in the cozy atmosphere.",
+          "searchQuery": "The Jasper Brewing Company",
+          "locationEn": "Jasper, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Maligne Canyon",
+          "description": "Explore the stunning Maligne Canyon, one of Jasper's most breathtaking natural wonders. Walk along the trails and marvel at the deep gorges and cascading waterfalls. Keep an eye out for wildlife such as elk and deer!",
+          "searchQuery": "Maligne Canyon",
+          "locationEn": "Jasper, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Maligne Lake Café",
+          "description": "After your hike, enjoy a relaxing lunch at the Maligne Lake Café. Savor local dishes while taking in the spectacular views of the lake and surrounding mountains.",
+          "searchQuery": "Maligne Lake Café",
+          "locationEn": "Jasper, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Jasper SkyTram",
+          "description": "Take a ride on the Jasper SkyTram for breathtaking panoramic views of the Canadian Rockies. The tramway ascends to an elevation of 2,263 meters, offering stunning vistas that are perfect for family photos.",
+          "searchQuery": "Jasper SkyTram",
+          "locationEn": "Jasper, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Hiking at Whistler Mountain",
+          "description": "After descending from the SkyTram, embark on a family-friendly hike on Whistler Mountain. The trails are well-marked and offer a chance to see wildflowers and possibly some wildlife along the way.",
+          "searchQuery": "Whistler Mountain",
+          "locationEn": "Jasper, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Fiddle River Restaurant",
+          "description": "End your day with a delightful dinner at The Fiddle River Restaurant. Enjoy a menu featuring local ingredients and specialties, including fresh fish and game dishes, all in a warm and inviting setting.",
+          "searchQuery": "The Fiddle River Restaurant",
+          "locationEn": "Jasper, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Stargazing in Jasper National Park",
+          "description": "As night falls, take advantage of Jasper's dark skies for some stargazing. The park is a designated Dark Sky Preserve, making it one of the best places in the world to see the stars. Bring a blanket and enjoy the celestial show!",
+          "searchQuery": "Jasper National Park",
+          "locationEn": "Jasper, Canada",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Banff",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Jasper",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Banff",
+          "time": "12:00"
+        },
+        "duration": "3h",
+        "memo": "Enjoy the scenic drive back to Banff, with opportunities to stop for photos along the way."
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Maple Leaf",
+          "description": "Indulge in a delicious meal featuring Canadian cuisine at The Maple Leaf, known for its cozy atmosphere and locally sourced ingredients. A perfect spot to recharge after your drive!",
+          "searchQuery": "The Maple Leaf",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Johnston Canyon Hike",
+          "description": "Explore the stunning Johnston Canyon, where you can walk along the catwalks and see the beautiful waterfalls. This family-friendly hike offers breathtaking views and is suitable for all ages.",
+          "searchQuery": "Johnston Canyon",
+          "locationEn": "Banff National Park, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Lake Minnewanka Boat Cruise",
+          "description": "Take a scenic boat cruise on Lake Minnewanka, surrounded by majestic mountains and crystal-clear waters. Keep an eye out for wildlife as you glide across the lake!",
+          "searchQuery": "Lake Minnewanka",
+          "locationEn": "Banff, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Bison Restaurant",
+          "description": "Enjoy a farm-to-table dining experience at The Bison, where you can savor dishes made from local ingredients. The rustic ambiance and delicious food make it a great choice for families.",
+          "searchQuery": "The Bison Restaurant",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Evening Stroll in Banff Town",
+          "description": "Take a leisurely evening stroll through Banff's charming streets. Enjoy the vibrant atmosphere, shop for souvenirs, and soak in the stunning mountain views as the sun sets.",
+          "searchQuery": "Banff Avenue",
+          "locationEn": "Banff, Canada",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Final Day in Banff",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Maple Leaf",
+          "description": "Start your day with a hearty breakfast at The Maple Leaf, known for its Canadian-inspired dishes. Enjoy a delicious plate of pancakes or a classic eggs benedict to fuel up for your adventures ahead.",
+          "searchQuery": "The Maple Leaf",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Banff Upper Hot Springs",
+          "description": "Relax and unwind at the Banff Upper Hot Springs. Soak in the warm mineral waters while enjoying stunning views of the surrounding mountains. It's a perfect way to start your last day in Banff.",
+          "searchQuery": "Banff Upper Hot Springs",
+          "locationEn": "Banff, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Scenic Drive along Bow Valley Parkway",
+          "description": "Take a leisurely drive along the Bow Valley Parkway, one of the most scenic routes in Canada. Keep an eye out for wildlife and stop at viewpoints to capture the breathtaking landscapes.",
+          "searchQuery": "Bow Valley Parkway",
+          "locationEn": "Banff, Canada",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Bison Restaurant",
+          "description": "Enjoy a farm-to-table lunch at The Bison Restaurant, where you can savor local ingredients and dishes inspired by Canadian cuisine. The cozy atmosphere is perfect for families.",
+          "searchQuery": "The Bison Restaurant",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit Lake Louise",
+          "description": "Head to the iconic Lake Louise, famous for its stunning turquoise waters. Take a family-friendly hike around the lake or simply relax and take in the views. Don't forget your camera!",
+          "searchQuery": "Lake Louise",
+          "locationEn": "Lake Louise, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Banff and explore local shops",
+          "description": "Spend your last afternoon exploring the charming shops in Banff. Pick up some souvenirs or local crafts to remember your trip. It's a great way to soak in the local culture one last time.",
+          "searchQuery": "Banff Avenue",
+          "locationEn": "Banff, Canada",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Grizzly House",
+          "description": "End your trip with a unique dining experience at The Grizzly House, known for its fondue and exotic meats. It's a fun and interactive way to enjoy dinner with the family.",
+          "searchQuery": "The Grizzly House",
+          "locationEn": "Banff, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

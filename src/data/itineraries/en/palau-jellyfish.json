@@ -1,0 +1,415 @@
+{
+  "id": "d8fafef1-ff15-44df-8624-9a1beb36e75f",
+  "destination": "コロール",
+  "description": "Escape to the stunning islands of Palau, where crystal-clear waters and vibrant marine life await you. This 5-day adventure is designed for thrill-seekers and nature lovers, offering a perfect blend of diving, beach relaxation, and breathtaking landscapes. With friends by your side, immerse yourself in the beauty of the ocean and the unique experiences that Palau has to offer, including the famous Jellyfish Lake and rejuvenating mud packs. Get ready for an unforgettable journey!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Palau",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Coffee Shop",
+          "description": "Start your day with a hearty breakfast at The Coffee Shop, known for its delicious pancakes and fresh fruit. It's a great way to fuel up for your adventures ahead!",
+          "searchQuery": "The Coffee Shop",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Jellyfish Lake",
+          "description": "Take a boat trip to the famous Jellyfish Lake, where you can swim among thousands of harmless jellyfish. This unique experience is a must-do for any visitor to Palau!",
+          "searchQuery": "Jellyfish Lake",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Elilai Restaurant",
+          "description": "Enjoy a delicious lunch at Elilai, which offers a mix of local and international cuisine with stunning views of the ocean. Don't miss their fresh seafood dishes!",
+          "searchQuery": "Elilai Restaurant",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Mud Bath Experience",
+          "description": "Indulge in a relaxing mud bath at one of the local spas. This is not only a fun activity but also great for your skin! Capture some fun photos while you're at it.",
+          "searchQuery": "Mud Bath Spa",
+          "locationEn": "Koror, Palau",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Long Beach",
+          "description": "Spend your late afternoon unwinding at Long Beach, a beautiful stretch of sand perfect for swimming and sunbathing. The sunset views here are breathtaking!",
+          "searchQuery": "Long Beach",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Kramer's Cafe",
+          "description": "End your day with a delightful dinner at Kramer's Cafe, known for its cozy atmosphere and tasty local dishes. It's a great spot to reflect on your day with friends!",
+          "searchQuery": "Kramer's Cafe",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Diving Adventure and Jellyfish Lake",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Taj",
+          "description": "Start your day with a hearty breakfast at The Taj, known for its delicious pancakes and fresh tropical fruits. It's a great way to fuel up for an exciting day ahead!",
+          "searchQuery": "The Taj",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Jellyfish Lake",
+          "description": "Dive into the unique experience of Jellyfish Lake, where you can swim among thousands of harmless jellyfish. This surreal experience is a must-do in Palau, offering stunning views and a chance to connect with nature.",
+          "searchQuery": "Jellyfish Lake",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Elilai Restaurant",
+          "description": "Enjoy a delicious lunch at Elilai, where you can savor local dishes with a modern twist. The restaurant offers a beautiful view of the ocean, making it a perfect spot to relax after your morning adventure.",
+          "searchQuery": "Elilai Restaurant",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Diving at Blue Corner",
+          "description": "Gear up for an exhilarating dive at Blue Corner, one of the best dive sites in the world. Experience vibrant coral reefs and diverse marine life, including sharks and schools of fish. Don't forget your underwater camera!",
+          "searchQuery": "Blue Corner",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Mud Pack Experience",
+          "description": "After diving, indulge in a relaxing mud pack experience at a nearby spa. This natural treatment is not only rejuvenating but also makes for great photos with friends!",
+          "searchQuery": "Mud Pack Spa",
+          "locationEn": "Koror, Palau",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Kramer's Cafe",
+          "description": "End your day with a delightful dinner at Kramer's Cafe, known for its fresh seafood and local specialties. The laid-back atmosphere is perfect for sharing stories about your day's adventures.",
+          "searchQuery": "Kramer's Cafe",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Beach Day and Mud Pack Experience",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Taj",
+          "description": "Start your day with a hearty breakfast at The Taj, known for its delicious pancakes and fresh fruit juices. It's a great way to fuel up for a day of adventure!",
+          "searchQuery": "The Taj",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Ngardmau Waterfall",
+          "description": "Head to Ngardmau Waterfall, one of Palau's most stunning natural wonders. Enjoy a scenic hike through lush jungle trails before reaching the breathtaking waterfall, where you can take a refreshing dip.",
+          "searchQuery": "Ngardmau Waterfall",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Elilai Restaurant",
+          "description": "Enjoy a delicious lunch at Elilai, which offers a mix of local and international cuisine. The restaurant's ambiance and views of the ocean make it a perfect spot to relax after your hike.",
+          "searchQuery": "Elilai Restaurant",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Mud Pack Experience at Jellyfish Lake",
+          "description": "After lunch, embark on a trip to Jellyfish Lake. Here, you can swim among thousands of harmless jellyfish while enjoying the unique experience of a mud pack treatment. Don't forget your camera for some amazing photos!",
+          "searchQuery": "Jellyfish Lake",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Sandy Beach",
+          "description": "Spend the late afternoon unwinding at Sandy Beach. This beautiful spot is perfect for sunbathing, swimming, or simply enjoying the stunning sunset views over the ocean.",
+          "searchQuery": "Sandy Beach",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Kramer's Cafe",
+          "description": "End your day with a delightful dinner at Kramer's Cafe, known for its fresh seafood and local dishes. The relaxed atmosphere is perfect for sharing stories about your day's adventures with friends.",
+          "searchQuery": "Kramer's Cafe",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Exploring Rock Islands and Snorkeling",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Taj",
+          "description": "Start your day with a hearty breakfast at The Taj, known for its delicious pancakes and fresh fruit juices. It's a great way to fuel up for a day of adventure!",
+          "searchQuery": "The Taj",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Jellyfish Lake",
+          "description": "Embark on a boat trip to Jellyfish Lake, where you can swim among thousands of harmless jellyfish. This unique experience is a must-do in Palau, offering stunning views and a chance to connect with nature.",
+          "searchQuery": "Jellyfish Lake",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Elilai Restaurant",
+          "description": "Enjoy a delicious lunch at Elilai, which offers a mix of local and international cuisine with a beautiful view of the ocean. Don't miss their fresh seafood dishes!",
+          "searchQuery": "Elilai Restaurant",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Snorkeling at Snorkel Sites",
+          "description": "After lunch, head to some of the best snorkeling spots around the Rock Islands. Explore vibrant coral reefs and diverse marine life, making sure to capture the beauty with your underwater camera.",
+          "searchQuery": "Rock Islands Snorkeling",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Mud Bath Experience",
+          "description": "Relax and rejuvenate with a mud bath at a local spa. This unique experience not only makes for great photos but also leaves your skin feeling refreshed and revitalized!",
+          "searchQuery": "Mud Bath Spa",
+          "locationEn": "Koror, Palau",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Kramer's Cafe",
+          "description": "End your day with a delightful dinner at Kramer's Cafe, known for its cozy atmosphere and delicious local dishes. It's the perfect spot to unwind after a day of exploration.",
+          "searchQuery": "Kramer's Cafe",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Palau International Airport",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "18:00"
+        },
+        "duration": "14h",
+        "memo": "Direct flight back to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Taj",
+          "description": "Start your day with a hearty breakfast at The Taj, known for its delicious pancakes and fresh tropical fruits. It's a great way to fuel up before your adventures today!",
+          "searchQuery": "The Taj",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Jellyfish Lake",
+          "description": "Embark on a unique adventure to Jellyfish Lake, where you can swim among thousands of harmless jellyfish. This surreal experience is a must-do for nature lovers and offers stunning photo opportunities!",
+          "searchQuery": "Jellyfish Lake",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Elilai Restaurant",
+          "description": "Enjoy a delicious lunch at Elilai, which offers a fantastic view of the ocean and a menu featuring local seafood and international dishes. Perfect for recharging after your morning swim!",
+          "searchQuery": "Elilai Restaurant",
+          "locationEn": "Koror, Palau",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Mud Bath Experience",
+          "description": "Indulge in a relaxing mud bath at a local spa. This unique experience not only rejuvenates your skin but also provides a fun photo opportunity with friends!",
+          "searchQuery": "Mud Bath Spa Koror",
+          "locationEn": "Koror, Palau",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Long Beach",
+          "description": "Spend your afternoon unwinding at Long Beach, known for its soft white sands and crystal-clear waters. It's the perfect spot to soak up the sun and enjoy the beautiful scenery before your flight.",
+          "searchQuery": "Long Beach Koror",
+          "locationEn": "Koror, Palau",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Departure from Palau International Airport",
+          "description": "Head to the airport for your flight back to Washington D.C. Reflect on the amazing memories made during your trip!",
+          "searchQuery": "Palau International Airport",
+          "locationEn": "Koror, Palau",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

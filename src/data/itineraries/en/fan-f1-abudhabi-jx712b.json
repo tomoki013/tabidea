@@ -1,0 +1,421 @@
+{
+  "id": "8c7ee900-9215-418c-a5cb-6e596fe58f9b",
+  "destination": "Abu Dhabi",
+  "description": "Immerse yourself in the vibrant culture and rich history of Abu Dhabi, where modern marvels meet traditional heritage. This 5-day family adventure is designed to explore the city's artistic treasures, cultural landmarks, and the excitement of Formula 1, all while ensuring a leisurely pace for you and your children. From the stunning Sheikh Zayed Grand Mosque to the thrilling Yas Island, each day promises a blend of education and fun, with plenty of opportunities to shop for memorabilia and indulge in local cuisine.",
+  "heroImage": "https://images.unsplash.com/photo-1570206290496-dfabfa863353?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODkyMzR8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Artur Aldyrkhanov",
+  "heroImagePhotographerUrl": "https://unsplash.com/@aldyrkhanov?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Abu Dhabi",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at the Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring a mix of Middle Eastern and international dishes to fuel your adventures ahead.",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Yas Island",
+          "description": "Explore Yas Island, home to the famous Yas Marina Circuit. You can take a stroll around the area and enjoy the vibrant atmosphere, perfect for families.",
+          "searchQuery": "Yas Island",
+          "locationEn": "Yas Island, Abu Dhabi, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Yas Mall",
+          "description": "Enjoy lunch at Yas Mall, where you can find a variety of dining options. Try some local dishes or international cuisine to satisfy everyone's taste.",
+          "locationEn": "Yas Mall, Abu Dhabi, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Ferrari World Abu Dhabi",
+          "description": "Visit Ferrari World, the world's first Ferrari-branded theme park. Enjoy thrilling rides and attractions, including the fastest roller coaster in the world, perfect for the whole family.",
+          "searchQuery": "Ferrari World Abu Dhabi",
+          "locationEn": "Yas Island, Abu Dhabi, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping for F1 Merchandise",
+          "description": "Head to the Yas Marina Circuit's official store to pick up some F1 merchandise and memorabilia. It's a great way to take home a piece of the excitement!",
+          "searchQuery": "Yas Marina Circuit",
+          "locationEn": "Yas Marina Circuit, Abu Dhabi, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Enjoy a family-friendly dinner at a local restaurant, where you can try traditional Emirati dishes like Al Harees or Shawarma, offering a taste of the local culture.",
+          "locationEn": "Abu Dhabi, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Evening Stroll at Corniche Beach",
+          "description": "End your day with a relaxing evening stroll along Corniche Beach. The beautiful views of the skyline and the sea are perfect for winding down after a busy day.",
+          "searchQuery": "Corniche Beach",
+          "locationEn": "Corniche Beach, Abu Dhabi, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Al Fanar Restaurant & Cafe",
+          "description": "Start your day with a traditional Emirati breakfast at Al Fanar, where you can enjoy dishes like balaleet (sweet vermicelli) and khameer bread. The ambiance reflects the rich heritage of the UAE, making it a perfect start to your cultural exploration.",
+          "searchQuery": "Al Fanar Restaurant & Cafe",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Sheikh Zayed Grand Mosque",
+          "description": "Explore the stunning Sheikh Zayed Grand Mosque, one of the largest mosques in the world. Marvel at its intricate architecture, beautiful domes, and the world's largest hand-knotted carpet. Don't forget to take a family photo in front of the reflective pools!",
+          "searchQuery": "Sheikh Zayed Grand Mosque",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Al Ibrahimi Restaurant",
+          "description": "Enjoy a delicious lunch at Al Ibrahimi, known for its authentic Pakistani and Indian cuisine. The family-friendly atmosphere and variety of dishes will satisfy everyone's taste buds.",
+          "searchQuery": "Al Ibrahimi Restaurant",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Heritage Village",
+          "description": "Visit Heritage Village to experience traditional Emirati life. This reconstructed village showcases crafts, pottery, and local culture. Kids will love the hands-on activities and the chance to see camels up close!",
+          "searchQuery": "Heritage Village",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for F1 Merchandise at Yas Mall",
+          "description": "Head to Yas Mall, where you can find a variety of F1 merchandise. From caps to t-shirts, it's a great place to pick up souvenirs for the family. Plus, enjoy some ice cream while you shop!",
+          "searchQuery": "Yas Mall",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Cheesecake Factory",
+          "description": "End your day with a family dinner at The Cheesecake Factory in Yas Mall. With a diverse menu and delicious desserts, it's a hit with both kids and adults. Don't forget to try their famous cheesecakes!",
+          "searchQuery": "The Cheesecake Factory",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll at Corniche Beach",
+          "description": "Take a relaxing evening stroll along Corniche Beach. The beautiful views of the skyline and the gentle sea breeze make it a perfect way to wind down after a busy day. Kids can play in the sand while you enjoy the sunset.",
+          "searchQuery": "Corniche Beach",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Art and Museums Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Al Fanar Restaurant & Cafe",
+          "description": "Start your day with a traditional Emirati breakfast at Al Fanar, where you can enjoy dishes like balaleet (sweet vermicelli) and khameer bread. It's a great way to experience local flavors in a cozy setting.",
+          "searchQuery": "Al Fanar Restaurant & Cafe",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Louvre Abu Dhabi",
+          "description": "Explore the stunning Louvre Abu Dhabi, an architectural marvel housing a diverse collection of art and artifacts from around the world. Don't miss the impressive dome and the beautiful views of the waterfront.",
+          "searchQuery": "Louvre Abu Dhabi",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Café de Flore",
+          "description": "Enjoy a leisurely lunch at Café de Flore, known for its relaxed atmosphere and delicious menu featuring both local and international dishes. It's a perfect spot to recharge before more exploring.",
+          "searchQuery": "Café de Flore",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Manarat Al Saadiyat",
+          "description": "Visit Manarat Al Saadiyat, a cultural center that offers exhibitions, workshops, and events focused on art and culture. It's a great place for families to engage with art in a hands-on way.",
+          "searchQuery": "Manarat Al Saadiyat",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Shopping for F1 Merchandise at Yas Mall",
+          "description": "Head to Yas Mall, where you can find a variety of F1 merchandise and souvenirs. It's a fun place for the kids to explore while you shop for your favorite racing gear.",
+          "searchQuery": "Yas Mall",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Cheesecake Factory",
+          "description": "End your day with a family-friendly dinner at The Cheesecake Factory, offering a wide range of dishes and, of course, their famous cheesecakes. A perfect way to relax after a day of exploration.",
+          "searchQuery": "The Cheesecake Factory",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Formula 1 Excitement",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at the Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel. Enjoy a mix of international and Middle Eastern dishes to fuel up for an exciting day ahead.",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit Yas Marina Circuit",
+          "description": "Head to Yas Marina Circuit, the iconic venue for the Abu Dhabi Grand Prix. Explore the facilities and take a guided tour to learn about the history of Formula 1 in Abu Dhabi. Don't forget to check out the merchandise shop for some exclusive F1 gear!",
+          "searchQuery": "Yas Marina Circuit",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Yas Mall",
+          "description": "Enjoy lunch at Yas Mall, where you can find a variety of dining options. Choose from local favorites or international cuisine to satisfy everyone's taste.",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Ferrari World Abu Dhabi",
+          "description": "Spend the afternoon at Ferrari World, home to the world's fastest roller coaster. Experience thrilling rides and attractions that celebrate the Ferrari brand, perfect for both kids and adults. Don't miss the chance to take photos with your favorite Ferrari models!",
+          "searchQuery": "Ferrari World Abu Dhabi",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Explore Yas Island",
+          "description": "Take a leisurely stroll around Yas Island. Enjoy the beautiful views and perhaps visit some shops for more F1 memorabilia or souvenirs to take home.",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "End your day with dinner at a local restaurant. Try some traditional Emirati dishes or international cuisine, ensuring a delightful culinary experience for the whole family.",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Shopping and Departure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Al Fanar Restaurant",
+          "description": "Start your day with a traditional Emirati breakfast at Al Fanar Restaurant. Enjoy dishes like shakshuka and khameer bread, perfect for fueling up before a day of shopping.",
+          "searchQuery": "Al Fanar Restaurant",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Marina Mall",
+          "description": "Head to Marina Mall, a popular shopping destination where you can find a variety of stores, including those selling F1 merchandise. Enjoy the waterfront views while you shop.",
+          "searchQuery": "Marina Mall",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Shake Shack",
+          "description": "Take a break for lunch at Shake Shack in Marina Mall. Enjoy their famous burgers and shakes, a hit with both kids and adults alike.",
+          "searchQuery": "Shake Shack Marina Mall",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Yas Mall",
+          "description": "Make your way to Yas Mall, the largest mall in Abu Dhabi. Here, you can find more F1-related merchandise and enjoy the vibrant atmosphere. Don't forget to check out the entertainment options available.",
+          "searchQuery": "Yas Mall",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at The Cheesecake Factory",
+          "description": "Wrap up your day with a family-friendly dinner at The Cheesecake Factory in Yas Mall. With a diverse menu and delicious desserts, it's a great way to end your trip.",
+          "searchQuery": "The Cheesecake Factory Yas Mall",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Departure Preparation",
+          "description": "Head back to your accommodation to pack up and prepare for your departure. Make sure to check your travel documents and souvenirs from your trip!",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

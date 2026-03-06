@@ -1,0 +1,672 @@
+{
+  "id": "67cfb265-01a3-44d8-b5e3-d433021703b4",
+  "destination": "マルタ",
+  "description": "Escape to the enchanting island of Malta, where ancient history meets stunning coastal beauty. Over the course of seven days, immerse yourself in the rich tapestry of culture, explore the charming streets of Valletta, and unwind on the pristine beaches that line the Mediterranean. This journey is perfect for a solo traveler seeking both adventure and relaxation, with a chance to meet the friendly local cats that roam the picturesque alleys. Get ready for a week filled with world heritage sites, vibrant street life, and serene seaside moments.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Valletta",
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Breakfast at Caffe Cordina",
+          "description": "Start your day with a delightful breakfast at Caffe Cordina, a historic café known for its pastries and local delicacies. Enjoy a traditional Maltese breakfast with fresh bread and local cheese.",
+          "searchQuery": "Caffe Cordina",
+          "locationEn": "Valletta, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Visit St. John's Co-Cathedral",
+          "description": "Explore the stunning St. John's Co-Cathedral, a masterpiece of Baroque architecture. Don't miss the intricate floor tombs and Caravaggio's famous painting, 'The Beheading of Saint John the Baptist'.",
+          "searchQuery": "St. John's Co-Cathedral",
+          "locationEn": "Valletta, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Strait Street Kitchen",
+          "description": "Enjoy a leisurely lunch at The Strait Street Kitchen, where you can savor traditional Maltese dishes made with fresh, local ingredients. The cozy atmosphere makes it a perfect spot to relax.",
+          "searchQuery": "The Strait Street Kitchen",
+          "locationEn": "Valletta, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Stroll through the Upper Barracca Gardens",
+          "description": "Take a peaceful stroll through the Upper Barracca Gardens, offering breathtaking views of the Grand Harbour. This is a perfect spot to unwind and enjoy the beautiful surroundings.",
+          "searchQuery": "Upper Barracca Gardens",
+          "locationEn": "Valletta, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the streets of Valletta",
+          "description": "Wander through the charming streets of Valletta, admiring the historic buildings and vibrant atmosphere. Keep an eye out for local cats lounging in the sun, adding to the city's charm.",
+          "searchQuery": "Valletta",
+          "locationEn": "Valletta, Malta",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Nenu the Artisan Baker",
+          "description": "Indulge in a delicious dinner at Nenu the Artisan Baker, famous for its traditional Maltese ftira (flatbread). The rustic setting and hearty meals make it a must-visit.",
+          "searchQuery": "Nenu the Artisan Baker",
+          "locationEn": "Valletta, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening walk along the Valletta Waterfront",
+          "description": "End your day with a relaxing evening walk along the Valletta Waterfront. The illuminated buildings and the gentle sound of the waves create a magical atmosphere.",
+          "searchQuery": "Valletta Waterfront",
+          "locationEn": "Valletta, Malta",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Valletta and Mdina",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Valletta",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Mdina",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "A scenic bus ride to the ancient city of Mdina."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Explore Mdina",
+          "description": "Wander through the narrow, winding streets of Mdina, the ancient capital of Malta. The stunning architecture and panoramic views from the bastions are a must-see. Don't forget to visit St. Paul's Cathedral, a masterpiece of Baroque architecture.",
+          "searchQuery": "Mdina",
+          "locationEn": "Mdina, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Fontanella Tea Garden",
+          "description": "Enjoy a leisurely lunch at Fontanella Tea Garden, famous for its delicious cakes and stunning views of the surrounding countryside. Try their traditional Maltese dishes for a taste of local cuisine.",
+          "searchQuery": "Fontanella Tea Garden",
+          "locationEn": "Mdina, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit the National Museum of Archaeology",
+          "description": "Return to Valletta and visit the National Museum of Archaeology. Here, you can explore Malta's rich history through its impressive collection of artifacts, including the famous 'Venus of Malta'.",
+          "searchQuery": "National Museum of Archaeology",
+          "locationEn": "Valletta, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Stroll through Valletta's Upper Barracca Gardens",
+          "description": "Take a relaxing stroll through the Upper Barracca Gardens, where you can enjoy beautiful views of the Grand Harbour. This is a perfect spot to unwind and perhaps spot some local cats lounging in the sun.",
+          "searchQuery": "Upper Barracca Gardens",
+          "locationEn": "Valletta, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at The Harbour Club",
+          "description": "Dine at The Harbour Club, a charming restaurant with a lovely terrace overlooking the harbor. Enjoy fresh seafood and traditional Maltese dishes in a cozy atmosphere.",
+          "searchQuery": "The Harbour Club",
+          "locationEn": "Valletta, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening walk along the Valletta Waterfront",
+          "description": "End your day with a peaceful evening walk along the Valletta Waterfront. The area is beautifully lit at night, and you can enjoy the vibrant atmosphere with shops and cafes.",
+          "searchQuery": "Valletta Waterfront",
+          "locationEn": "Valletta, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Gozo Island Adventure",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Valletta",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Gozo",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "Take a ferry from Valletta to Gozo for a scenic start to the day."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Explore Victoria",
+          "description": "Start your day in the charming capital of Gozo, Victoria. Wander through the narrow streets, visit the Citadel for stunning views, and soak in the local atmosphere.",
+          "searchQuery": "Victoria, Gozo",
+          "locationEn": "Victoria, Gozo",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Ta' Rikardu",
+          "description": "Enjoy a delicious meal at Ta' Rikardu, known for its local Gozitan dishes and rustic atmosphere. Don't miss their homemade cheese and traditional pasta.",
+          "searchQuery": "Ta' Rikardu",
+          "locationEn": "Victoria, Gozo",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Azure Window at Dwejra Bay",
+          "description": "Visit the iconic Azure Window, a natural limestone arch that offers breathtaking views of the Mediterranean Sea. Perfect for photos and a relaxing stroll along the coast.",
+          "searchQuery": "Azure Window",
+          "locationEn": "Dwejra Bay, Gozo",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Snorkeling at Dwejra Bay",
+          "description": "Take a dip in the crystal-clear waters of Dwejra Bay. The underwater scenery is stunning, making it a great spot for snorkeling enthusiasts.",
+          "searchQuery": "Dwejra Bay",
+          "locationEn": "Dwejra Bay, Gozo",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit the Salt Pans",
+          "description": "Explore the ancient salt pans of Gozo, a unique landscape where sea salt is harvested. It's a great spot to relax and enjoy the sunset views.",
+          "searchQuery": "Gozo Salt Pans",
+          "locationEn": "Gozo, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Il-Kantra",
+          "description": "Savor a delightful dinner at Il-Kantra, located near the sea. Their seafood dishes are highly recommended, and the ambiance is perfect for a relaxing evening.",
+          "searchQuery": "Il-Kantra",
+          "locationEn": "Gozo, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Overnight in Victoria",
+          "description": "Check into your accommodation in Victoria, where you can unwind after a day of exploration. Enjoy the local nightlife or simply relax at your hotel.",
+          "searchQuery": "Victoria, Gozo",
+          "locationEn": "Victoria, Gozo",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Relaxing on Gozo's Beaches",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Victoria (Gozo)",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Ramla Bay",
+          "time": "08:30"
+        },
+        "duration": "30m",
+        "memo": "Take a short ferry ride to Ramla Bay for a relaxing beach day."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Duke",
+          "description": "Start your day with a hearty breakfast at The Duke, known for its fresh pastries and local dishes. Enjoy a cup of coffee while soaking in the morning atmosphere of Victoria.",
+          "searchQuery": "The Duke",
+          "locationEn": "Victoria, Gozo",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Ramla Bay Beach",
+          "description": "Spend the morning at Ramla Bay, famous for its golden sands and crystal-clear waters. It's the perfect spot to relax, swim, and soak up the sun. Don't forget to look out for the friendly local cats lounging around!",
+          "searchQuery": "Ramla Bay",
+          "locationEn": "Ramla Bay, Gozo",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Ramla Bay Restaurant",
+          "description": "Enjoy a delicious lunch at the beachfront restaurant, offering fresh seafood and local specialties. The view of the bay while you dine is simply breathtaking.",
+          "searchQuery": "Ramla Bay Restaurant",
+          "locationEn": "Ramla Bay, Gozo",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Xlendi Bay",
+          "description": "After lunch, head to Xlendi Bay, a picturesque fishing village. Stroll along the waterfront, explore the charming streets, and perhaps grab a gelato while enjoying the stunning views.",
+          "searchQuery": "Xlendi Bay",
+          "locationEn": "Xlendi, Gozo",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Cat Spotting at Xlendi",
+          "description": "Take some time to relax at Xlendi and keep an eye out for the local cats that often roam the area. They are friendly and love to bask in the sun, making for a delightful encounter.",
+          "searchQuery": "Xlendi",
+          "locationEn": "Xlendi, Gozo",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Boat House",
+          "description": "End your day with dinner at The Boat House, known for its seafood dishes and stunning views of the bay. It's a perfect way to unwind after a day of beach fun.",
+          "searchQuery": "The Boat House",
+          "locationEn": "Xlendi, Gozo",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Victoria",
+          "description": "After dinner, take a leisurely stroll back to Victoria, enjoying the evening ambiance of the town. You can stop by a local café for a nightcap or dessert if you wish.",
+          "searchQuery": "Victoria, Gozo",
+          "locationEn": "Victoria, Gozo",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Malta and Beach Day",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Victoria (Gozo)",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Mellieha Bay",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take a ferry from Gozo to Malta, enjoying the scenic views of the Mediterranean."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Mellieha Bay Beach",
+          "description": "Start your day at Mellieha Bay, known for its stunning sandy beach and crystal-clear waters. Relax on the beach, swim, or take a leisurely stroll along the shore. It's a perfect spot to soak up the sun and enjoy the beautiful scenery.",
+          "searchQuery": "Mellieha Bay",
+          "locationEn": "Mellieha, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Olive Tree",
+          "description": "Enjoy a delicious lunch at The Olive Tree, a local restaurant offering Mediterranean cuisine. Try their fresh seafood dishes or traditional Maltese pastizzi while enjoying views of the bay.",
+          "searchQuery": "The Olive Tree Mellieha",
+          "locationEn": "Mellieha, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Mellieha Village",
+          "description": "After lunch, take a stroll through Mellieha Village. Visit the charming streets lined with traditional Maltese houses and stop by the beautiful Mellieha Parish Church, which offers panoramic views of the surrounding area.",
+          "searchQuery": "Mellieha Parish Church",
+          "locationEn": "Mellieha, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Golden Bay Beach",
+          "description": "Head to Golden Bay Beach, another stunning beach known for its golden sands and vibrant atmosphere. Relax on the beach, swim, or enjoy a refreshing drink at one of the beach bars. Keep an eye out for friendly cats that often roam the area!",
+          "searchQuery": "Golden Bay",
+          "locationEn": "Mellieha, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Beach Club",
+          "description": "End your day with dinner at The Beach Club, located right by the sea. Savor a variety of dishes, from fresh fish to pasta, while enjoying the sunset over the Mediterranean. It's a perfect way to unwind after a day of exploration.",
+          "searchQuery": "The Beach Club Malta",
+          "locationEn": "Mellieha, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Cultural Exploration in Mdina and Rabat",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Mellieha",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Mdina",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the bus from Mellieha to Mdina for a scenic ride."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Explore Mdina",
+          "description": "Wander through the ancient streets of Mdina, the silent city, where medieval architecture and stunning views await. Don't miss the panoramic view from the bastions!",
+          "searchQuery": "Mdina",
+          "locationEn": "Mdina, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Fontanella Tea Garden",
+          "description": "Enjoy a delightful lunch at Fontanella Tea Garden, famous for its delicious cakes and stunning views of the surrounding countryside. A perfect spot to relax and recharge!",
+          "searchQuery": "Fontanella Tea Garden",
+          "locationEn": "Mdina, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit St. Paul's Catacombs",
+          "description": "Explore the fascinating St. Paul's Catacombs, an underground burial site that dates back to the early Christian period. It's a unique glimpse into Malta's history.",
+          "searchQuery": "St. Paul's Catacombs",
+          "locationEn": "Rabat, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Stroll through Rabat",
+          "description": "Take a leisurely stroll through the charming streets of Rabat, where you can admire the local architecture and perhaps spot some friendly cats lounging in the sun.",
+          "searchQuery": "Rabat",
+          "locationEn": "Rabat, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at The Fork and Cork",
+          "description": "Savor a delicious dinner at The Fork and Cork, known for its local Maltese dishes and warm atmosphere. A great way to end your day of exploration!",
+          "searchQuery": "The Fork and Cork",
+          "locationEn": "Rabat, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Return to Mellieha",
+          "description": "Take the bus back to Mellieha, reflecting on the beautiful sights and experiences of the day.",
+          "searchQuery": "Mellieha",
+          "locationEn": "Mellieha, Malta",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure from Malta",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Mellieha",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Valletta",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy the scenic drive from Mellieha to Valletta."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Explore Valletta",
+          "description": "Stroll through the historic streets of Valletta, a UNESCO World Heritage site. Don't miss the stunning views from the Upper Barracca Gardens and the intricate architecture of St. John's Co-Cathedral.",
+          "searchQuery": "Valletta",
+          "locationEn": "Valletta, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Caffe Cordina",
+          "description": "Indulge in a delicious Maltese lunch at Caffe Cordina, famous for its pastries and local dishes. Enjoy the vibrant atmosphere of this historic café.",
+          "searchQuery": "Caffe Cordina",
+          "locationEn": "Valletta, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the National Museum of Archaeology",
+          "description": "Discover Malta's rich history at the National Museum of Archaeology, showcasing artifacts from prehistoric times to the Phoenician period. A must-visit for history enthusiasts!",
+          "searchQuery": "National Museum of Archaeology",
+          "locationEn": "Valletta, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Ferry to Sliema",
+          "description": "Take a short ferry ride to Sliema, enjoying the beautiful views of the Grand Harbour. This is a perfect opportunity to relax and take in the coastal scenery.",
+          "searchQuery": "Sliema Ferry",
+          "locationEn": "Sliema, Malta",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Stroll along the Sliema Promenade",
+          "description": "Walk along the Sliema Promenade, lined with shops and cafes. It's a great place to unwind and enjoy the sea breeze, with plenty of spots to sit and watch the world go by.",
+          "searchQuery": "Sliema Promenade",
+          "locationEn": "Sliema, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Chophouse",
+          "description": "Enjoy a delightful dinner at The Chophouse, known for its excellent meat dishes and stunning views of the harbor. A perfect way to end your trip in Malta!",
+          "searchQuery": "The Chophouse",
+          "locationEn": "Sliema, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Mellieha",
+          "description": "Head back to Mellieha for your final night in Malta. Reflect on your wonderful experiences and perhaps enjoy a quiet evening at your accommodation.",
+          "searchQuery": "Mellieha",
+          "locationEn": "Mellieha, Malta",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}
