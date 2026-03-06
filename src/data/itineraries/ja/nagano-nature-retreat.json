@@ -1,0 +1,261 @@
+{
+  "id": "069bc638-8403-4f26-bd70-c7aaccea9aa4",
+  "destination": "長野（軽井沢・松本）",
+  "description": "自然の中でリフレッシュし、歴史的な名所を巡りながら、ショッピングも楽しむ贅沢な3日間の旅。軽井沢のアウトレットでの買い物や、松本城の美しい景観を堪能し、心身ともにリフレッシュできるプランをご提案します。",
+  "days": [
+    {
+      "day": 1,
+      "title": "軽井沢での自然とショッピング",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "軽井沢",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "新幹線で軽井沢へ。快適な移動を楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "軽井沢アウトレット",
+          "description": "軽井沢の自然に囲まれたアウトレットモールで、ショッピングを楽しみましょう。人気ブランドが揃い、特にファッションや雑貨が充実しています。",
+          "searchQuery": "Karuizawa Prince Shopping Plaza",
+          "locationEn": "Karuizawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "アウトレット内でランチ",
+          "description": "アウトレット内のカフェやレストランで軽食を。地元の食材を使った料理やスイーツを楽しむことができます。",
+          "searchQuery": "Karuizawa Prince Shopping Plaza",
+          "locationEn": "Karuizawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "軽井沢の森散策",
+          "description": "軽井沢の美しい森を散策し、自然の中でリフレッシュ。四季折々の風景が楽しめるので、カメラを持って散策するのがおすすめです。",
+          "searchQuery": "Karuizawa Forest",
+          "locationEn": "Karuizawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "軽井沢のカフェで休憩",
+          "description": "森の中にあるカフェで、地元のコーヒーやスイーツを味わいながら、ゆったりとした時間を過ごします。",
+          "searchQuery": "Karuizawa Cafe",
+          "locationEn": "Karuizawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "軽井沢の宿でディナー",
+          "description": "宿泊先の旅館やホテルで、地元の食材を使った夕食を楽しみます。特に信州の味覚を堪能できるコース料理がおすすめです。",
+          "searchQuery": "Karuizawa Hotel",
+          "locationEn": "Karuizawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "松本城と歴史散策",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "軽井沢",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "松本",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "軽井沢から松本へは、快適な電車移動で約1時間です。車窓からの美しい山々の景色を楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "松本城",
+          "description": "国宝に指定されている松本城は、黒い外観が特徴的で、周囲の自然と調和した美しい姿を見せています。城内を見学しながら、歴史を感じるひとときをお楽しみください。",
+          "searchQuery": "Matsumoto Castle",
+          "locationEn": "Matsumoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "松本市内でランチ",
+          "description": "松本市内には地元の食材を使った美味しいレストランがたくさんあります。特に信州そばは絶品です。地元の雰囲気を楽しみながら、ゆっくりとランチを楽しんでください。",
+          "searchQuery": "Matsumoto local restaurant",
+          "locationEn": "Matsumoto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "松本市街散策",
+          "description": "松本の街並みを散策しながら、古い町家やおしゃれなカフェ、ショップを訪れましょう。特に、松本の伝統工芸品や地元の特産品を扱うお店は見逃せません。",
+          "searchQuery": "Matsumoto shopping street",
+          "locationEn": "Matsumoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "松本市美術館",
+          "description": "松本市美術館では、地元のアーティストの作品や、草間彌生の作品を楽しむことができます。アートに触れながら、リフレッシュした時間を過ごしましょう。",
+          "searchQuery": "Matsumoto City Museum of Art",
+          "locationEn": "Matsumoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "松本駅近くでディナー",
+          "description": "松本駅近くには多くの飲食店があります。地元の食材を使った料理を楽しみながら、旅の思い出を語り合いましょう。",
+          "searchQuery": "Matsumoto dinner restaurant",
+          "locationEn": "Matsumoto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "松本で宿泊",
+          "description": "松本の宿泊施設は、温泉旅館やビジネスホテルなど多様です。リラックスした夜を過ごし、明日の旅に備えましょう。",
+          "searchQuery": "Matsumoto accommodation",
+          "locationEn": "Matsumoto, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "軽井沢の自然を満喫",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "松本",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "軽井沢",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "松本から軽井沢へは、特急しなのを利用すると快適です。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "軽井沢プリンスショッピングプラザ",
+          "description": "軽井沢の自然に囲まれたアウトレットモールで、ショッピングを楽しみましょう。多彩なブランドが揃い、散策しながらの買い物が魅力です。",
+          "searchQuery": "Karuizawa Prince Shopping Plaza",
+          "locationEn": "Karuizawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "軽井沢のカフェでランチ",
+          "description": "地元の食材を使った料理が楽しめるカフェで、軽井沢の風を感じながらのんびりとランチを。特に、信州そばや季節のサラダがおすすめです。",
+          "searchQuery": "Karuizawa Cafe",
+          "locationEn": "Karuizawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "軽井沢の森散策",
+          "description": "軽井沢の美しい自然を満喫するために、森の中を散策します。新緑の中でのハイキングは心身ともにリフレッシュできます。",
+          "searchQuery": "Karuizawa Forest",
+          "locationEn": "Karuizawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "松本城見学",
+          "description": "歴史的な松本城を訪れ、その美しい姿を堪能します。天守閣からの眺めは絶景で、周囲の景色も楽しめます。",
+          "searchQuery": "Matsumoto Castle",
+          "locationEn": "Matsumoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "松本でディナー",
+          "description": "松本の地元料理を楽しめるレストランで、信州牛や野菜を使った料理を堪能します。地元の酒もぜひお試しください。",
+          "searchQuery": "Matsumoto Restaurant",
+          "locationEn": "Matsumoto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

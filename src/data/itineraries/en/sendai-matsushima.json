@@ -1,0 +1,203 @@
+{
+  "id": "799a9a9b-c09c-4a5d-8a29-aa1ef9b1de25",
+  "destination": "Sendai & Matsushima",
+  "description": "Escape to the breathtaking landscapes of Miyagi Prefecture, where the stunning views of Matsushima Bay and the vibrant city of Sendai await you. This 2-day adventure is designed for couples seeking a blend of natural beauty, rich culture, and culinary delights. From savoring the famous gyutan (beef tongue) to exploring serene temples and picturesque coastlines, immerse yourself in the heart of Tohoku's charm.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Exploring Sendai's Cultural Gems",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Sendai's Local Café",
+          "description": "Start your day with a hearty breakfast at a local café, where you can enjoy fresh pastries and coffee, setting the perfect tone for your adventure in Sendai.",
+          "searchQuery": "Sendai Local Café",
+          "locationEn": "Sendai, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Sendai Castle Ruins",
+          "description": "Visit the historic Sendai Castle, also known as Aoba Castle. The panoramic views from the top are breathtaking, especially with the lush greenery surrounding the area. Don't forget to take a stroll through the castle park!",
+          "searchQuery": "Sendai Castle",
+          "locationEn": "Sendai, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Gyutan Yaki Lunch at Kameya",
+          "description": "Indulge in a delicious Gyutan Yaki (grilled beef tongue) lunch at Kameya, a well-known restaurant in Sendai. The tender beef tongue served with rice and miso soup is a must-try!",
+          "searchQuery": "Kameya Sendai",
+          "locationEn": "Sendai, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Zuihoden Mausoleum",
+          "description": "Explore the beautiful Zuihoden, the mausoleum of Date Masamune, the founder of Sendai. The intricate carvings and serene surroundings make it a peaceful spot to learn about the region's history.",
+          "searchQuery": "Zuihoden",
+          "locationEn": "Sendai, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Matsushima Bay Sightseeing",
+          "description": "Take a scenic boat tour of Matsushima Bay, famous for its stunning views of over 260 islands covered in pine trees. This is one of Japan's top three scenic views, and the experience is truly unforgettable!",
+          "searchQuery": "Matsushima Bay Boat Tour",
+          "locationEn": "Matsushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Matsushima Seafood Restaurant",
+          "description": "Enjoy a delightful dinner at a seafood restaurant in Matsushima, where you can savor fresh catches from the bay, including oysters and other local specialties.",
+          "searchQuery": "Matsushima Seafood Restaurant",
+          "locationEn": "Matsushima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Check-in at Hotel in Sendai",
+          "description": "Relax and unwind at your hotel in Sendai, where you can enjoy the comfort and amenities after a day filled with exploration.",
+          "searchQuery": "Hotel in Sendai",
+          "locationEn": "Sendai, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Discovering the Beauty of Matsushima",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Sendai",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Matsushima",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the JR Senseki Line from Sendai to Matsushima."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Godaido Temple",
+          "description": "Start your day with a visit to Godaido Temple, a picturesque temple located on an island in Matsushima Bay. The temple offers stunning views of the bay and is a perfect spot for photography.",
+          "searchQuery": "Godaido Temple",
+          "locationEn": "Matsushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Matsushima Bay Cruise",
+          "description": "Enjoy a scenic cruise around Matsushima Bay, known for its beautiful pine-covered islands. This is a great way to appreciate the natural beauty of the area from the water.",
+          "searchQuery": "Matsushima Bay Cruise",
+          "locationEn": "Matsushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Matsushima Seafood Restaurant",
+          "description": "Indulge in fresh seafood at a local restaurant. Try the Matsushima oysters, which are renowned for their flavor and quality. A true taste of the region!",
+          "searchQuery": "Matsushima Seafood Restaurant",
+          "locationEn": "Matsushima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Matsushima's Scenic Spots",
+          "description": "Take a leisurely stroll around Matsushima, visiting famous spots like Zuiganji Temple and the picturesque Fukuura Island. The views are breathtaking, especially with the backdrop of the bay.",
+          "searchQuery": "Zuiganji Temple",
+          "locationEn": "Matsushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Sendai",
+          "description": "Head back to Sendai to enjoy the evening. You can take the same train back and relax after a day filled with beautiful sights and delicious food.",
+          "locationEn": "Sendai, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Sendai's Famous Gyutan Restaurant",
+          "description": "Savor Sendai's famous gyutan (beef tongue) at a well-known restaurant. The grilled gyutan served with rice and a side of pickles is a must-try!",
+          "searchQuery": "Gyutan Restaurant Sendai",
+          "locationEn": "Sendai, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk in Sendai",
+          "description": "Take a romantic evening walk around Sendai, perhaps visiting the illuminated Aoba Castle ruins or enjoying the vibrant atmosphere of the city at night.",
+          "locationEn": "Sendai, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

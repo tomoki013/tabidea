@@ -1,0 +1,250 @@
+{
+  "id": "4375a1d4-3a0c-4924-9775-2db2ca94c271",
+  "destination": "Beppu & Yufuin",
+  "description": "Escape to the soothing hot springs of Beppu and the picturesque landscapes of Yufuin, where nature and relaxation intertwine. This 3-day journey invites you to unwind in Japan's famous onsen towns, savor local delicacies, and explore the unique hells of Beppu, all while surrounded by stunning mountain views. Perfect for families seeking a tranquil getaway, this itinerary balances leisurely soaking in hot springs with delightful culinary experiences and breathtaking scenery.",
+  "heroImage": "https://images.unsplash.com/photo-1754235133498-172998e75b6d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODEyMzh8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Manoa Angelo",
+  "heroImagePhotographerUrl": "https://unsplash.com/@manrason?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Beppu and Exploring the Hells",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Kamegawa Onsen Restaurant",
+          "description": "Start your Beppu adventure with a delicious lunch at the Kamegawa Onsen Restaurant, where you can enjoy local specialties like onsen steamed dishes. The serene atmosphere and beautiful views of the surrounding nature make it a perfect spot to relax before your explorations.",
+          "searchQuery": "Kamegawa Onsen Restaurant",
+          "locationEn": "Beppu, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit Beppu Hells (Jigoku Meguri)",
+          "description": "Dive into the unique experience of Beppu's Hells, a collection of hot springs with stunning natural features. Each hell has its own theme, from the vibrant blue waters of the Umi Jigoku to the bubbling mud of the Shiraike Jigoku. Don't forget your camera for some breathtaking photos!",
+          "searchQuery": "Beppu Hells",
+          "locationEn": "Beppu, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Kamegawa Onsen",
+          "description": "After exploring the Hells, unwind at Kamegawa Onsen. This onsen offers a tranquil setting with outdoor baths that overlook the lush landscape. It's the perfect way to soak away any travel fatigue and enjoy the healing properties of the hot springs.",
+          "searchQuery": "Kamegawa Onsen",
+          "locationEn": "Beppu, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Yufuin's Local Izakaya",
+          "description": "Head to Yufuin for dinner at a cozy izakaya, where you can savor seasonal dishes made from fresh, local ingredients. The warm ambiance and friendly service will make for a delightful dining experience.",
+          "searchQuery": "Yufuin Izakaya",
+          "locationEn": "Yufuin, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Check-in at Beppu Ryokan",
+          "description": "Settle into your ryokan in Beppu, where you can enjoy traditional Japanese hospitality. Relax in your room and perhaps take another dip in the onsen before a restful night.",
+          "searchQuery": "Beppu Ryokan",
+          "locationEn": "Beppu, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Relaxation in Yufuin",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Beppu",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Yufuin",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Enjoy the scenic train ride from Beppu to Yufuin."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Yufuin Floral Village",
+          "description": "Stroll through the charming Yufuin Floral Village, a picturesque area filled with quaint shops and beautiful flower displays. It's a perfect spot for leisurely walks and photography.",
+          "searchQuery": "Yufuin Floral Village",
+          "locationEn": "Yufuin, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Yufuin's Local Restaurant",
+          "description": "Savor a delicious lunch at a local restaurant, where you can try regional specialties like Yufuin's famous beef or fresh seafood. The cozy atmosphere adds to the experience.",
+          "searchQuery": "Yufuin Local Restaurant",
+          "locationEn": "Yufuin, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Kinrin Lake",
+          "description": "Visit the serene Kinrin Lake, known for its stunning reflections of the surrounding mountains. Take a peaceful walk around the lake and enjoy the tranquil atmosphere.",
+          "searchQuery": "Kinrin Lake",
+          "locationEn": "Yufuin, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Yufuin Onsen Experience",
+          "description": "Indulge in a relaxing soak at one of Yufuin's renowned onsens. The natural hot springs offer a rejuvenating experience, surrounded by beautiful scenery.",
+          "searchQuery": "Yufuin Onsen",
+          "locationEn": "Yufuin, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "Enjoy a delightful dinner at a local izakaya, where you can sample various Japanese dishes and local sake. The lively atmosphere makes for a memorable dining experience.",
+          "searchQuery": "Yufuin Izakaya",
+          "locationEn": "Yufuin, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll in Yufuin",
+          "description": "Take a leisurely evening stroll through Yufuin, enjoying the peaceful ambiance and perhaps stopping by a few shops for souvenirs. The town is beautifully lit at night.",
+          "searchQuery": "Yufuin",
+          "locationEn": "Yufuin, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Return to Beppu and Departure",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Yufuin",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Beppu",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Enjoy a scenic drive from Yufuin to Beppu, taking in the beautiful countryside."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Beppu Onsen Hells Tour",
+          "description": "Start your day with a visit to the famous Beppu Hells (Jigoku), a collection of unique hot springs. Each hell has its own distinct characteristics, from bubbling mud pools to vibrant blue waters. Don't forget your camera for some stunning photos!",
+          "searchQuery": "Beppu Hells",
+          "locationEn": "Beppu, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Savor a delicious lunch at a local restaurant, where you can try Beppu's specialty, 'Jigoku Mushi' (hell-steamed dishes). This unique cooking method uses the steam from the hot springs to prepare fresh seafood and vegetables.",
+          "searchQuery": "Jigoku Mushi Restaurant",
+          "locationEn": "Beppu, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Relax at Beppu Beach",
+          "description": "After lunch, head to Beppu Beach for a leisurely stroll along the shore. Enjoy the fresh sea breeze and the beautiful views of Beppu Bay. It's a perfect spot to unwind before your departure.",
+          "searchQuery": "Beppu Beach",
+          "locationEn": "Beppu, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit Beppu Local Market",
+          "description": "Explore the Beppu Local Market, where you can find fresh produce, local delicacies, and souvenirs. It's a great place to experience the local culture and pick up some unique items to take home.",
+          "searchQuery": "Beppu Local Market",
+          "locationEn": "Beppu, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Hotel and Prepare for Departure",
+          "description": "Head back to your hotel to freshen up and pack your belongings. Take a moment to reflect on your relaxing trip to Yufuin and Beppu.",
+          "locationEn": "Beppu, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

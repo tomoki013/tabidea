@@ -1,0 +1,240 @@
+{
+  "id": "bb970bf6-ac80-4659-ab4c-7d4a37c1852f",
+  "destination": "Osaka",
+  "description": "Immerse yourself in the vibrant culture and culinary delights of Osaka, a city renowned for its theme parks and mouth-watering street food. This 3-day family adventure is designed to create unforgettable memories, especially for the kids, as you explore the thrills of Universal Studios Japan and indulge in the best of Osaka's gastronomic offerings. Get ready for a journey filled with laughter, excitement, and delicious discoveries!",
+  "heroImage": "https://images.unsplash.com/photo-1739600122936-34d3f083df44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODA4Nzl8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Bagzhan Sadvakassov",
+  "heroImagePhotographerUrl": "https://unsplash.com/@smalltown_boy?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Universal Studios Japan",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring a mix of Western and Japanese dishes to fuel up for an exciting day ahead.",
+          "locationEn": "Osaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Universal Studios Japan",
+          "description": "Dive into the magical world of Universal Studios Japan! Enjoy thrilling rides, meet your favorite characters, and explore themed attractions like The Wizarding World of Harry Potter. Make sure to grab a map and plan your day to hit the must-see spots!",
+          "searchQuery": "Universal Studios Japan",
+          "locationEn": "Osaka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Mel's Drive-In",
+          "description": "Take a break at Mel's Drive-In within Universal Studios for a classic American diner experience. Enjoy burgers, fries, and milkshakes in a fun retro setting, perfect for families!",
+          "searchQuery": "Mel's Drive-In Universal Studios Japan",
+          "locationEn": "Osaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Continue Exploring Universal Studios Japan",
+          "description": "After lunch, continue your adventure at Universal Studios. Don't miss attractions like Minion Park and Jurassic Park, which are sure to delight both kids and adults alike!",
+          "locationEn": "Osaka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "City Walk Dinner",
+          "description": "After a fun-filled day at the park, head to City Walk for dinner. Choose from a variety of restaurants offering everything from sushi to Italian cuisine, ensuring there's something for everyone in the family.",
+          "searchQuery": "City Walk Osaka",
+          "locationEn": "Osaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening Stroll at City Walk",
+          "description": "Enjoy a leisurely evening stroll at City Walk, soaking in the vibrant atmosphere and perhaps indulging in some dessert or shopping before heading back to your hotel.",
+          "locationEn": "Osaka, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Osaka's Culinary Delights",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring a mix of Western and Japanese options to fuel up for a fun day ahead.",
+          "locationEn": "Osaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Universal Studios Japan (USJ)",
+          "description": "Dive into the magical world of Universal Studios Japan! Enjoy thrilling rides and attractions based on your favorite movies. Don't miss the Wizarding World of Harry Potter for an immersive experience.",
+          "searchQuery": "Universal Studios Japan",
+          "locationEn": "Osaka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Mel's Drive-In",
+          "description": "Take a break at Mel's Drive-In inside USJ for a classic American diner experience. Enjoy burgers, fries, and milkshakes that will keep the whole family happy.",
+          "searchQuery": "Mel's Drive-In",
+          "locationEn": "Osaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Continue Exploring USJ",
+          "description": "After lunch, continue your adventure at USJ. Make sure to check out the Minion Park and the thrilling rides like the Flying Dinosaur, perfect for family fun!",
+          "locationEn": "Osaka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Dotonbori",
+          "description": "Head to Dotonbori for dinner, where you can indulge in Osaka's famous street food. Try takoyaki (octopus balls) and okonomiyaki (savory pancakes) while enjoying the vibrant atmosphere.",
+          "searchQuery": "Dotonbori",
+          "locationEn": "Osaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Stroll Along Dotonbori Canal",
+          "description": "After dinner, take a leisurely stroll along the Dotonbori Canal. The neon lights and lively atmosphere make for a perfect family evening. Don't forget to snap a photo with the Glico Man sign!",
+          "locationEn": "Osaka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Exploring Osaka and Departure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring a mix of Western and Japanese options to fuel up for a fun day ahead.",
+          "locationEn": "Osaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Universal Studios Japan (USJ)",
+          "description": "Dive into the magical world of Universal Studios Japan! Enjoy thrilling rides and attractions based on your favorite movies, perfect for the whole family. Don't miss the Wizarding World of Harry Potter for an immersive experience.",
+          "searchQuery": "Universal Studios Japan",
+          "locationEn": "Osaka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Mel's Drive-In",
+          "description": "Take a break at Mel's Drive-In inside USJ for a classic American diner experience. Enjoy burgers, fries, and milkshakes that will satisfy both kids and adults alike.",
+          "searchQuery": "Mel's Drive-In",
+          "locationEn": "Osaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Continue Exploring USJ",
+          "description": "After lunch, continue your adventure at USJ. Check out attractions like Minion Park and Jurassic Park, ensuring everyone has a blast!",
+          "locationEn": "Osaka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Dotonbori",
+          "description": "After a fun-filled day, head to Dotonbori, famous for its vibrant atmosphere and street food. Try local delicacies like takoyaki and okonomiyaki while enjoying the neon lights and lively ambiance.",
+          "searchQuery": "Dotonbori",
+          "locationEn": "Osaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Stroll along the Dotonbori Canal",
+          "description": "End your day with a leisurely stroll along the Dotonbori Canal. Take in the sights and sounds of this bustling area, and snap some family photos with the iconic Glico Man sign in the background.",
+          "locationEn": "Osaka, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

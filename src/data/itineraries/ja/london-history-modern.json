@@ -1,0 +1,611 @@
+{
+  "id": "e4c694f6-2056-435b-aade-7ef385780b18",
+  "destination": "ロンドン",
+  "description": "ロンドンの魅力を存分に味わう7日間の旅へようこそ。歴史的な名所から現代的なエンターテイメント、ショッピングまで、友人と共にアクティブな日々を過ごしましょう。ハリーポッターのスタジオツアーも含め、ロンドンの多彩な文化を体感できるプランをご提案します。",
+  "heroImage": "https://images.unsplash.com/photo-1491156855053-9cdff72c7f85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODEzNjd8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Claudio Testa",
+  "heroImagePhotographerUrl": "https://unsplash.com/@claudiotesta?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "ロンドン到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロンドンのホテルでイングリッシュブレックファストを楽しみます。ベーコン、ソーセージ、卵、トーストなど、ボリューム満点の朝食でエネルギーをチャージ。",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "バッキンガム宮殿",
+          "description": "ロンドンの象徴、バッキンガム宮殿を訪れます。衛兵交代式を見学し、宮殿の美しい外観を堪能しましょう。周辺のセントジェームズパークも散策するのがおすすめです。",
+          "searchQuery": "Buckingham Palace",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "トラファルガー広場でランチ",
+          "description": "トラファルガー広場近くのカフェで軽食を楽しみます。サンドイッチやサラダを味わいながら、広場の賑わいを感じましょう。",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ナショナルギャラリー",
+          "description": "トラファルガー広場に隣接するナショナルギャラリーで、名画を鑑賞します。ゴッホやダ・ヴィンチの作品を間近で見ることができ、アートに浸るひとときを楽しめます。",
+          "searchQuery": "National Gallery",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "コヴェントガーデン散策",
+          "description": "コヴェントガーデンのマーケットやショップを散策します。ストリートパフォーマンスを楽しみながら、ユニークなお土産を探すのも楽しいです。",
+          "searchQuery": "Covent Garden",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー：ロンドンのパブで",
+          "description": "地元のパブでフィッシュ＆チップスを楽しみます。カジュアルな雰囲気の中で、ロンドンの伝統的な料理を味わいましょう。",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ウエストエンドでミュージカル鑑賞",
+          "description": "ロンドンのウエストエンドで人気のミュージカルを観賞します。事前にチケットを予約しておくと安心です。エンターテイメントの夜を楽しみましょう。",
+          "locationEn": "London, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "歴史と文化を感じる",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ロンドンのホテルで、イングリッシュブレックファストを楽しみます。ベーコンやソーセージ、トーストに卵、そして紅茶でエネルギーをチャージ。",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "大英博物館",
+          "description": "世界的に有名な大英博物館を訪れます。古代エジプトのミイラやロゼッタストーンなど、歴史的な展示物が目白押し。入場は無料ですが、寄付を忘れずに。",
+          "searchQuery": "British Museum",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "近くのカフェでランチ",
+          "description": "大英博物館近くのカフェで軽食を。サンドイッチやスープなど、手軽に楽しめるメニューが揃っています。",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ロンドン塔",
+          "description": "歴史的なロンドン塔を見学。かつての王室の宮殿や監獄、そして王冠の宝物を間近で見ることができます。",
+          "searchQuery": "Tower of London",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "タワーブリッジを散策",
+          "description": "ロンドンのシンボル、タワーブリッジを渡ります。橋の上からの眺めは絶景で、写真撮影にも最適。",
+          "searchQuery": "Tower Bridge",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ハリーポッター・スタジオツアー",
+          "description": "映画『ハリーポッター』の舞台裏を体験できるスタジオツアーに参加。魔法の世界に浸りながら、セットや小道具を見学します。",
+          "searchQuery": "Warner Bros. Studio Tour London",
+          "locationEn": "Leavesden, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ディナー",
+          "description": "ロンドンの人気レストランでディナーを楽しみます。地元の食材を使った料理や、国際色豊かなメニューが魅力。",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ハリーポッターの魔法の世界",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ロンドンのホテルで、イングリッシュブレックファーストを楽しみます。ベーコンやソーセージ、トーストにスクランブルエッグと、エネルギー満点の朝食で一日をスタート！",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ハリーポッター・スタジオツアー",
+          "description": "映画『ハリーポッター』の撮影現場を訪れ、魔法の世界を体験します。セットや小道具、衣装などを間近で見ることができ、ファンにはたまらないスポットです。",
+          "searchQuery": "Warner Bros. Studio Tour London",
+          "locationEn": "Leavesden, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "スタジオ内のカフェでランチ",
+          "description": "スタジオ内のカフェで軽食を取りながら、ハリーポッターの世界観を楽しみます。魔法の世界に浸りながら、特製のバタービールもお試しあれ！",
+          "locationEn": "Leavesden, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ハリーポッター・スタジオツアー続き",
+          "description": "スタジオツアーの後半では、特に人気のあるシーンやキャラクターに焦点を当てた展示を見学します。魔法の世界の裏側を知る貴重な体験です。",
+          "locationEn": "Leavesden, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ロンドン市内へ移動",
+          "description": "スタジオツアーを終えたら、ロンドン市内へ戻ります。公共交通機関を利用して、約1時間の移動です。",
+          "locationEn": "London, England",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "ロンドン塔見学",
+          "description": "ロンドンの歴史的な名所、ロンドン塔を訪れます。王室の宝物や歴史的な展示物を見学し、イギリスの歴史に触れることができます。",
+          "searchQuery": "Tower of London",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ロンドンのパブでディナー",
+          "description": "地元のパブで、フィッシュ＆チップスやパイなどの伝統的なイギリス料理を楽しみます。友人と共に賑やかな雰囲気の中で、楽しいひとときを過ごしましょう。",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ロンドンの夜景散策",
+          "description": "ディナーの後は、ロンドンの美しい夜景を楽しみながら散策します。タワーブリッジやロンドンアイのライトアップが幻想的です。",
+          "locationEn": "London, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ショッピングとエンターテイメント",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロンドンのホテルで、イングリッシュブレックファストを楽しみます。ベーコンやソーセージ、トーストにスクランブルエッグと、エネルギー満点の朝食で一日をスタート。",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "オックスフォードストリートでショッピング",
+          "description": "ロンドンのメインショッピングストリート、オックスフォードストリートでショッピングを楽しみましょう。大手ブランドから個性的なショップまで、幅広い選択肢があります。",
+          "searchQuery": "Oxford Street",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ（Dishoom）",
+          "description": "インド料理の名店、Dishoomでランチ。特にビリヤニやカレーが人気で、スパイシーな味わいが楽しめます。予約をしておくとスムーズです。",
+          "searchQuery": "Dishoom Covent Garden",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ハリーポッター スタジオツアー",
+          "description": "映画『ハリーポッター』の舞台裏を体験できるスタジオツアーに参加します。魔法の世界を再現したセットや小道具を見学し、ファンにはたまらない体験です。",
+          "searchQuery": "Warner Bros. Studio Tour London",
+          "locationEn": "Leavesden, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ウェストエンドでミュージカル鑑賞",
+          "description": "ロンドンのウェストエンドで人気のミュージカルを鑑賞します。事前にチケットを購入しておくと安心です。感動的なストーリーと素晴らしいパフォーマンスに心を奪われることでしょう。",
+          "searchQuery": "West End Theatre",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ディナー（The Ivy）",
+          "description": "ウェストエンド近くのThe Ivyでディナー。高級感あふれる雰囲気の中、季節の食材を使った美味しい料理を楽しめます。特にデザートは絶品です。",
+          "searchQuery": "The Ivy",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ロンドンの隠れた魅力を探る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロンドンのホテルで、イングリッシュブレックファストを楽しみます。ベーコンやソーセージ、トーストにスクランブルエッグがセットになったボリューム満点の朝食で、エネルギーをチャージしましょう。",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "シャーディッチ散策",
+          "description": "アートとカルチャーが融合するシャーディッチエリアを散策します。ストリートアートやギャラリーを巡りながら、地元のカフェで一息つくのもおすすめです。",
+          "searchQuery": "Shoreditch",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ブリックレーンでランチ",
+          "description": "ブリックレーンのインド料理店でランチを楽しみます。スパイシーなカレーやナンを味わいながら、活気ある市場の雰囲気を満喫しましょう。",
+          "searchQuery": "Brick Lane",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "スピタルフィールズマーケット訪問",
+          "description": "スピタルフィールズマーケットでショッピングや食べ歩きを楽しみます。地元のアーティストや職人の作品が並ぶブースを見て回り、ユニークなお土産を探してみてください。",
+          "searchQuery": "Spitalfields Market",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ハリーポッター・スタジオツアー",
+          "description": "映画『ハリーポッター』の舞台裏を体験できるスタジオツアーに参加します。魔法の世界を再現したセットや小道具を見学し、ファンにはたまらない体験です。",
+          "searchQuery": "Warner Bros. Studio Tour London",
+          "locationEn": "Leavesden, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ロンドンのパブでディナー",
+          "description": "地元のパブで、フィッシュ＆チップスやパイを楽しみながら、友人と一緒にリラックスした時間を過ごします。ロンドンの雰囲気を感じながら、地元のビールもぜひお試しください。",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ロンドンの夜景を楽しむ",
+          "description": "テムズ川沿いを散策しながら、ロンドンの美しい夜景を楽しみます。特にロンドンアイやタワーブリッジのライトアップは必見です。",
+          "searchQuery": "London Eye",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ロンドンの名所再訪とリラックス",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロンドンのホテルで、イングリッシュブレックファストを楽しみます。ベーコン、ソーセージ、卵、トーストが揃ったボリューム満点の朝食で、エネルギーをチャージしましょう。",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "セントポール大聖堂",
+          "description": "ロンドンの象徴的な建物、セントポール大聖堂を訪れます。壮大なドームと美しい内装を堪能し、特に天井画は必見です。大聖堂の上部に登ると、ロンドンの街並みを一望できます。",
+          "searchQuery": "St. Paul's Cathedral",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ロンドン・アイでランチ",
+          "description": "ロンドン・アイの近くにあるカフェで軽めのランチを楽しみます。テムズ川を眺めながら、サンドイッチやサラダを味わいましょう。",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ロンドン・アイ",
+          "description": "ロンドン・アイに乗って、空中からロンドンの景色を楽しみます。特に晴れた日には、遠くの名所まで見渡せる絶景が広がります。",
+          "searchQuery": "London Eye",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "テムズ川クルーズ",
+          "description": "テムズ川をクルーズしながら、ロンドンの名所を水上から楽しみます。船上からの景色はまた違った魅力があり、リラックスした時間を過ごせます。",
+          "searchQuery": "Thames River Cruise",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ハリーポッター・スタジオツアー",
+          "description": "ハリーポッターの世界を体験できるスタジオツアーに参加します。映画のセットや小道具を間近で見ることができ、ファンにはたまらない体験です。",
+          "searchQuery": "Warner Bros. Studio Tour London",
+          "locationEn": "Leavesden, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のパブでディナー",
+          "description": "ロンドンの伝統的なパブで、フィッシュ＆チップスやパイを楽しみます。地元の人々と交流しながら、リラックスした雰囲気の中で食事を楽しみましょう。",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "ロンドンから東京へ帰国",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ロンドン",
+          "time": "14:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "翌日 10:00"
+        },
+        "duration": "12h",
+        "memo": "ロンドン・ヒースロー空港から成田空港行きの直行便です。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロンドンのホテルでイングリッシュブレックファストを楽しみます。ベーコンやソーセージ、トーストにスクランブルエッグがセットになったボリューム満点の朝食です。",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ハリーポッター スタジオツアー",
+          "description": "映画『ハリーポッター』の撮影セットを見学するスタジオツアー。魔法の世界に浸りながら、映画の裏側を知ることができます。事前予約が必須なので、早めにチケットを手配しておきましょう。",
+          "searchQuery": "Warner Bros. Studio Tour London",
+          "locationEn": "Leavesden, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "スタジオ近くのカフェでランチ",
+          "description": "スタジオツアーの後、近くのカフェで軽食を楽しみます。サンドイッチやスープなど、手軽に食べられるメニューが揃っています。",
+          "locationEn": "Leavesden, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ロンドン市内観光",
+          "description": "ロンドンの名所を巡る自由行動の時間です。ビッグベンやバッキンガム宮殿、ロンドン塔など、観光スポットを訪れながらお土産を探しましょう。",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ロンドンのレストランでディナー",
+          "description": "最後の夜を締めくくるために、ロンドンの人気レストランでディナーを楽しみます。地元の食材を使った料理を堪能し、旅の思い出を語り合いましょう。",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

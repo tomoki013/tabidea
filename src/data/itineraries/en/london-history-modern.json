@@ -1,0 +1,668 @@
+{
+  "id": "c95c1589-9a82-4ce2-a253-9c142ded2844",
+  "destination": "ロンドン",
+  "description": "Immerse yourself in the vibrant culture and rich history of London over the course of seven unforgettable days. From iconic landmarks to hidden gems, this trip promises a blend of exploration, shopping, and entertainment that will leave you and your friends with cherished memories. Get ready to experience the best of London, including a magical visit to the Harry Potter Studio Tour!",
+  "heroImage": "https://images.unsplash.com/photo-1549483249-f0b359d1e289?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODEzOTl8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Alev Takil",
+  "heroImagePhotographerUrl": "https://unsplash.com/@alevtakil?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in London and Exploring the City",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Breakfast Club",
+          "description": "Start your day with a hearty English breakfast at The Breakfast Club, known for its cozy atmosphere and delicious options like full English breakfasts and pancakes.",
+          "searchQuery": "The Breakfast Club",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Westminster Abbey",
+          "description": "Explore the stunning Gothic architecture of Westminster Abbey, where many British monarchs have been crowned. Don't miss the Poets' Corner, where famous writers are commemorated.",
+          "searchQuery": "Westminster Abbey",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Red Lion",
+          "description": "Enjoy a traditional pub lunch at The Red Lion, a historic pub near Westminster. Try their fish and chips or a classic burger for a true British experience.",
+          "searchQuery": "The Red Lion",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Buckingham Palace",
+          "description": "Stroll through the beautiful gardens surrounding Buckingham Palace and catch the Changing of the Guard ceremony if you're lucky. The grandeur of the palace is a must-see.",
+          "searchQuery": "Buckingham Palace",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Walk through St. James's Park",
+          "description": "Take a leisurely walk through St. James's Park, one of London's most picturesque parks. Enjoy the views of the lake and the flowerbeds, perfect for a relaxing afternoon.",
+          "searchQuery": "St. James's Park",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping at Covent Garden",
+          "description": "Head to Covent Garden for some shopping and entertainment. Browse unique shops, enjoy street performances, and soak in the vibrant atmosphere of this iconic area.",
+          "searchQuery": "Covent Garden",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Dishoom",
+          "description": "Savor a delightful dinner at Dishoom, a popular Indian restaurant inspired by the old Irani cafés of Bombay. Their signature dishes and vibrant ambiance make for a memorable meal.",
+          "searchQuery": "Dishoom Covent Garden",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening stroll along the Thames",
+          "description": "End your day with a scenic walk along the River Thames. Enjoy the illuminated views of the London Eye and the Houses of Parliament, a perfect way to conclude your first day in London.",
+          "searchQuery": "Thames River Walk",
+          "locationEn": "London, UK",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Highlights and Shopping Spree",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Dishoom",
+          "description": "Start your day with a delicious breakfast at Dishoom, a Bombay-style café known for its vibrant atmosphere and mouthwatering dishes like the Bacon Naan Roll and Masala Chai. It's a perfect way to fuel up for a day of exploration!",
+          "searchQuery": "Dishoom",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the British Museum",
+          "description": "Explore the treasures of the British Museum, home to a vast collection of world art and artifacts, including the Rosetta Stone and the Elgin Marbles. Don't miss the stunning Great Court, a masterpiece of modern architecture.",
+          "searchQuery": "British Museum",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Great Court Restaurant",
+          "description": "Enjoy a leisurely lunch at The Great Court Restaurant, located within the British Museum. The menu features seasonal British dishes, perfect for recharging before more sightseeing.",
+          "searchQuery": "The Great Court Restaurant",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Shopping on Oxford Street",
+          "description": "Stroll down Oxford Street, one of the world's most famous shopping streets, where you can find everything from high street fashion to luxury brands. Be sure to check out iconic stores like Selfridges and Zara.",
+          "searchQuery": "Oxford Street",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Explore Soho",
+          "description": "Wander through the vibrant streets of Soho, known for its eclectic mix of shops, cafes, and entertainment. This area is perfect for people-watching and discovering unique boutiques.",
+          "searchQuery": "Soho",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Flat Iron",
+          "description": "Indulge in a delicious steak dinner at Flat Iron, a popular restaurant known for its high-quality cuts at reasonable prices. Don't forget to try their famous popcorn as a starter!",
+          "searchQuery": "Flat Iron",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening at the West End",
+          "description": "Cap off your day with a spectacular show in London's West End. Choose from a variety of musicals and plays, ensuring a memorable night filled with entertainment.",
+          "searchQuery": "West End Theatre District",
+          "locationEn": "London, UK",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Harry Potter Studio Tour",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Breakfast Club",
+          "description": "Start your day with a hearty breakfast at The Breakfast Club, known for its retro vibe and delicious full English breakfast. It's a great way to fuel up for a day of adventure!",
+          "searchQuery": "The Breakfast Club",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Harry Potter Studio Tour",
+          "description": "Dive into the magical world of Harry Potter at the Warner Bros. Studio Tour. Explore the sets, props, and behind-the-scenes secrets of the beloved film series. Don't miss the Great Hall and Diagon Alley!",
+          "searchQuery": "Warner Bros. Studio Tour London",
+          "locationEn": "Watford, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Studio Café",
+          "description": "Enjoy a themed lunch at The Studio Café, where you can savor dishes inspired by the Harry Potter films. It's the perfect way to recharge before continuing your magical journey.",
+          "searchQuery": "The Studio Café",
+          "locationEn": "Watford, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Continue Harry Potter Studio Tour",
+          "description": "After lunch, continue exploring the studio tour. Be sure to check out the Hogwarts Express and the Forbidden Forest exhibits for an immersive experience!",
+          "searchQuery": "Warner Bros. Studio Tour London",
+          "locationEn": "Watford, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Return to London",
+          "description": "After an enchanting day at the studio, head back to London. You can take a shuttle bus or train back to the city, reflecting on the magical moments you've experienced.",
+          "searchQuery": "Watford Junction",
+          "locationEn": "London, UK",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Dishoom",
+          "description": "Indulge in a delightful dinner at Dishoom, a popular Indian restaurant inspired by the old Irani cafés of Bombay. The atmosphere is vibrant, and the food is simply delicious!",
+          "searchQuery": "Dishoom",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Explore Covent Garden",
+          "description": "Stroll through Covent Garden, known for its shops, street performers, and lively atmosphere. It's a great place to unwind after a busy day and perhaps pick up some souvenirs.",
+          "searchQuery": "Covent Garden",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Historical Landmarks and River Thames Cruise",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Breakfast Club",
+          "description": "Start your day with a hearty breakfast at The Breakfast Club, known for its delicious pancakes and classic English breakfast options. The vibrant atmosphere will energize you for a day of exploration.",
+          "searchQuery": "The Breakfast Club",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Tower of London",
+          "description": "Explore the historic Tower of London, a UNESCO World Heritage Site. Discover the Crown Jewels and learn about the fascinating history of this iconic fortress. Don't forget to take a guided tour with a Beefeater for insider stories!",
+          "searchQuery": "Tower of London",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Ivy Tower Bridge",
+          "description": "Enjoy a delightful lunch at The Ivy Tower Bridge, offering a stylish setting and a menu filled with British classics. The views of the Thames and Tower Bridge are a perfect backdrop for your meal.",
+          "searchQuery": "The Ivy Tower Bridge",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Tower Bridge Experience",
+          "description": "Walk across the iconic Tower Bridge and visit the exhibition inside. The glass-floored walkway offers stunning views of the Thames below, making it a unique experience.",
+          "searchQuery": "Tower Bridge",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Thames River Cruise",
+          "description": "Take a relaxing cruise along the River Thames. Enjoy the sights of London from the water, including the Houses of Parliament and the London Eye. This is a great way to see the city from a different perspective.",
+          "searchQuery": "Thames River Cruise",
+          "locationEn": "London, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping at Borough Market",
+          "description": "Head to Borough Market for some shopping and snacking. This bustling market is filled with gourmet food stalls and artisanal products, perfect for picking up unique souvenirs or enjoying a quick bite.",
+          "searchQuery": "Borough Market",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Dishoom",
+          "description": "Savor a delicious dinner at Dishoom, a popular Indian restaurant inspired by the old Irani cafés of Bombay. The vibrant atmosphere and flavorful dishes will make for a memorable dining experience.",
+          "searchQuery": "Dishoom",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening stroll along the South Bank",
+          "description": "End your day with a leisurely stroll along the South Bank of the Thames. Enjoy the lively atmosphere, street performers, and stunning views of the city lights reflecting on the water.",
+          "searchQuery": "South Bank",
+          "locationEn": "London, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Art and Entertainment Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Breakfast Club",
+          "description": "Start your day with a hearty breakfast at The Breakfast Club, known for its delicious pancakes and classic English breakfast options. The vibrant atmosphere will energize you for the day ahead.",
+          "searchQuery": "The Breakfast Club",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Tate Modern",
+          "description": "Explore the Tate Modern, one of the world's leading contemporary art museums. Housed in a former power station, the museum features works by renowned artists like Picasso and Warhol, making it a must-visit for art lovers.",
+          "searchQuery": "Tate Modern",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Borough Market",
+          "description": "Head to Borough Market for lunch, where you can sample a variety of gourmet foods from local vendors. Try the artisanal cheeses, fresh pastries, and international street food for a delightful culinary experience.",
+          "searchQuery": "Borough Market",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Harry Potter Studio Tour",
+          "description": "Immerse yourself in the magical world of Harry Potter at the Warner Bros. Studio Tour. Explore the sets, props, and costumes from the films, and learn behind-the-scenes secrets that brought the story to life.",
+          "searchQuery": "Warner Bros. Studio Tour London",
+          "locationEn": "Leavesden, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Dishoom",
+          "description": "Enjoy a delicious dinner at Dishoom, a Bombay-style café that serves up flavorful Indian dishes in a charming setting. Don't miss their signature black daal and garlic naan for a truly satisfying meal.",
+          "searchQuery": "Dishoom",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "West End Show",
+          "description": "End your day with a spectacular performance in London's West End. Choose from a variety of shows, from musicals to dramas, and experience the vibrant theater culture that London is famous for.",
+          "searchQuery": "West End Theatre",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Day Trip to Windsor Castle",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "London",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Windsor",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the train from London Paddington to Windsor & Eton Central."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Windsor Castle",
+          "description": "Explore the magnificent Windsor Castle, the oldest and largest inhabited castle in the world. Don't miss the State Apartments and St. George's Chapel, where many royal ceremonies take place.",
+          "searchQuery": "Windsor Castle",
+          "locationEn": "Windsor, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Duchess of Cambridge",
+          "description": "Enjoy a delightful lunch at this charming pub, known for its traditional British fare and cozy atmosphere. Try the fish and chips or a hearty pie for an authentic experience.",
+          "searchQuery": "The Duchess of Cambridge",
+          "locationEn": "Windsor, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Eton College",
+          "description": "Stroll over to Eton College, one of the most prestigious schools in the world. Take a guided tour to learn about its rich history and see the beautiful architecture.",
+          "searchQuery": "Eton College",
+          "locationEn": "Eton, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Windsor Castle Gardens",
+          "description": "After visiting Eton, return to Windsor Castle and take a leisurely walk through the stunning gardens. The views of the castle from the gardens are breathtaking, especially in the afternoon light.",
+          "searchQuery": "Windsor Castle Gardens",
+          "locationEn": "Windsor, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Royal Oak",
+          "description": "End your day with dinner at The Royal Oak, a lovely pub offering a range of local ales and delicious dishes. The atmosphere is warm and inviting, perfect for relaxing after a day of exploration.",
+          "searchQuery": "The Royal Oak",
+          "locationEn": "Windsor, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Train back to London",
+          "description": "Catch the train back to London, reflecting on a wonderful day spent exploring Windsor and Eton.",
+          "locationEn": "London, England",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Final Day in London and Departure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Breakfast Club",
+          "description": "Start your day with a hearty breakfast at The Breakfast Club, known for its delicious pancakes and classic English breakfast options. The vibrant atmosphere will energize you for the day ahead.",
+          "searchQuery": "The Breakfast Club",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit St. Paul's Cathedral",
+          "description": "Explore the magnificent St. Paul's Cathedral, an iconic symbol of London. Don't miss the stunning dome and the chance to climb to the top for breathtaking views of the city.",
+          "searchQuery": "St. Paul's Cathedral",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Walk along the South Bank",
+          "description": "Stroll along the South Bank of the River Thames, where you can enjoy views of the London Eye and the Houses of Parliament. This area is perfect for taking photos and soaking in the vibrant atmosphere.",
+          "searchQuery": "South Bank",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Borough Market",
+          "description": "Head to Borough Market for lunch, where you can sample a variety of gourmet foods from local vendors. It's a food lover's paradise with options ranging from artisanal cheeses to international street food.",
+          "searchQuery": "Borough Market",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Harry Potter Studio Tour",
+          "description": "Immerse yourself in the magical world of Harry Potter at the Warner Bros. Studio Tour. Explore the sets, props, and behind-the-scenes secrets of the beloved film series. Be sure to book your tickets in advance!",
+          "searchQuery": "Warner Bros. Studio Tour London",
+          "locationEn": "Leavesden, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to London and Last-minute Shopping",
+          "description": "After the studio tour, return to London for some last-minute shopping. Head to Oxford Street or Covent Garden for a mix of high street and unique boutiques.",
+          "searchQuery": "Oxford Street",
+          "locationEn": "London, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Dishoom",
+          "description": "Enjoy your final dinner in London at Dishoom, a popular Indian restaurant inspired by the old Irani cafés of Bombay. The ambiance and flavors will leave you with a memorable taste of the city.",
+          "searchQuery": "Dishoom",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Departure from London",
+          "description": "Prepare for your departure from London. Make sure to check your travel arrangements and enjoy the last moments in this vibrant city.",
+          "locationEn": "London, England",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

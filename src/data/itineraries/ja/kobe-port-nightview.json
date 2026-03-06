@@ -1,0 +1,205 @@
+{
+  "id": "e4eec1ad-5493-4293-a5a3-b1d6e8af87d7",
+  "destination": "神戸",
+  "description": "神戸の街を舞台に、夜景とグルメを堪能する2日間の旅へ。おしゃれな街並みを散策しながら、地元の美味しい料理を楽しみ、夜には美しい夜景を眺める特別なひとときを過ごしましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1720184641182-1af91cd086cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODExMjN8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Yoshida Keita",
+  "heroImagePhotographerUrl": "https://unsplash.com/@keita_yoshida_jha?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "神戸の魅力を発見する日",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "神戸",
+          "time": "11:00"
+        },
+        "duration": "2h 0m",
+        "memo": "新幹線で神戸へ移動します。快適な車内でのんびり過ごしましょう。"
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "元町散策",
+          "description": "神戸の元町エリアを散策します。おしゃれなカフェやブティックが立ち並ぶ通りを歩きながら、地元の雰囲気を楽しんでください。特に、神戸の洋菓子店でのスイーツは必見です。",
+          "searchQuery": "Motomachi",
+          "locationEn": "Kobe, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "南京町でランチ",
+          "description": "神戸の中華街、南京町で本格的な中華料理を楽しみましょう。小籠包や焼きそばなど、地元の人気店で美味しいランチを堪能できます。",
+          "searchQuery": "Nankinmachi",
+          "locationEn": "Kobe, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "メリケンパーク散策",
+          "description": "海に面したメリケンパークでのんびりとした時間を過ごします。神戸ポートタワーや海洋博物館を眺めながら、海風を感じるのも良いでしょう。",
+          "searchQuery": "Meriken Park",
+          "locationEn": "Kobe, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルチェックイン",
+          "description": "おしゃれなホテルにチェックイン。神戸の夜景を楽しむための準備を整えましょう。",
+          "searchQuery": "Hotel La Suite Kobe Harborland",
+          "locationEn": "Kobe, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "夜景の見えるレストランでディナー",
+          "description": "神戸の美しい夜景を眺めながら、特別なディナーを楽しみます。おすすめは、ハーバーランドにあるレストランで、神戸牛を使った料理を堪能できます。",
+          "searchQuery": "Restaurant with Night View Kobe",
+          "locationEn": "Kobe, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ハーバーランド散策",
+          "description": "ディナーの後は、ハーバーランドを散策。夜のライトアップされた景色を楽しみながら、ロマンチックなひとときを過ごしましょう。",
+          "searchQuery": "Kobe Harborland",
+          "locationEn": "Kobe, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "神戸の夜景とグルメを楽しむ日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "神戸のホテルで、地元の食材を使った美味しい和洋折衷の朝食を楽しみます。新鮮な魚や季節の野菜を使った料理が並び、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Kobe, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "北野異人館街散策",
+          "description": "異国情緒あふれる北野異人館街を散策します。歴史的な洋館が立ち並び、各館の独特なデザインや庭園を楽しみながら、神戸の歴史に触れることができます。",
+          "searchQuery": "Kitano Ijinkan",
+          "locationEn": "Kobe, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：神戸牛のステーキ",
+          "description": "神戸牛の名店で、贅沢なランチを堪能。柔らかくて風味豊かな神戸牛を、シェフのおすすめの焼き加減で楽しむことができます。",
+          "searchQuery": "Kobe Beef Steak",
+          "locationEn": "Kobe, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "メリケンパーク散策",
+          "description": "海沿いのメリケンパークで、神戸港の美しい景色を楽しみながら散策。ポートタワーや神戸海洋博物館を背景に、写真撮影にもぴったりのスポットです。",
+          "searchQuery": "Meriken Park",
+          "locationEn": "Kobe, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "六甲山へ移動",
+          "description": "六甲山へ向かい、ケーブルカーで山頂へ。途中の景色も楽しみながら、神戸市街や海を一望できる絶景スポットへ向かいます。",
+          "locationEn": "Rokko Mountain, Kobe, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "六甲山からの夜景鑑賞",
+          "description": "六甲山の展望台から、神戸の美しい夜景を楽しみます。特に夕暮れ時の景色は格別で、ロマンチックなひとときを過ごせます。",
+          "searchQuery": "Rokko Mountain Night View",
+          "locationEn": "Kobe, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディナー：夜景の見えるレストラン",
+          "description": "六甲山の夜景を眺めながら、特別なディナーを楽しむために、夜景の見えるレストランへ。地元の新鮮な食材を使ったコース料理を堪能します。",
+          "searchQuery": "Rokko View Restaurant",
+          "locationEn": "Kobe, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルへ戻る",
+          "description": "ディナーの後は、ホテルへ戻り、ゆったりとした時間を過ごします。神戸の夜を楽しんだ後は、心地よい眠りにつきましょう。",
+          "locationEn": "Kobe, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

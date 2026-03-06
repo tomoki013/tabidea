@@ -1,0 +1,611 @@
+{
+  "id": "603f4969-25fc-4c4a-97c8-15ee9cc24f00",
+  "destination": "Cairo",
+  "description": "Immerse yourself in the vibrant tapestry of Cairo, where ancient history meets modern life. This 7-day adventure will take you through the bustling streets, majestic pyramids, and the rich culture of Egypt. From riding camels in the shadow of the Great Pyramid to exploring the treasures of the Egyptian Museum, every moment is designed to ignite your sense of adventure and wonder. Get ready to create unforgettable memories with your friends as you delve into the heart of this captivating city.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Cairo",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at the Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring a mix of traditional Egyptian dishes like ful medames (fava beans) and fresh bread. It's a great way to fuel up for an exciting day ahead!",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Great Pyramids of Giza",
+          "description": "No trip to Cairo is complete without witnessing the majestic Great Pyramids of Giza. Marvel at the sheer size and historical significance of these ancient wonders, and don't forget to take plenty of photos!",
+          "searchQuery": "Great Pyramid of Giza",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Felfela Restaurant",
+          "description": "Enjoy a delicious lunch at Felfela, a popular spot among locals and tourists alike. Try their famous falafel and shawarma, which are both packed with flavor and perfect for a midday meal.",
+          "searchQuery": "Felfela Restaurant",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Camel Ride around the Pyramids",
+          "description": "Experience the thrill of riding a camel as you explore the Giza Plateau. This unique perspective allows you to appreciate the pyramids from a different angle, making for unforgettable memories!",
+          "locationEn": "Giza, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Sphinx",
+          "description": "After your camel ride, head over to the Great Sphinx of Giza. This iconic statue has stood guard over the pyramids for centuries and is a must-see during your visit.",
+          "searchQuery": "Great Sphinx of Giza",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Return to Hotel and Relax",
+          "description": "After a day filled with adventure, return to your hotel to unwind. Take some time to relax and freshen up before dinner.",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at Abou El Sid",
+          "description": "Indulge in a traditional Egyptian dinner at Abou El Sid, known for its authentic cuisine and cozy atmosphere. Be sure to try their koshari, a beloved local dish!",
+          "searchQuery": "Abou El Sid",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "The Great Pyramids and Sphinx",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Felfela",
+          "description": "Start your day with a traditional Egyptian breakfast at Felfela, known for its delicious falafel and fresh bread. The vibrant atmosphere will energize you for the adventures ahead.",
+          "searchQuery": "Felfela",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Great Pyramid of Giza",
+          "description": "Explore the iconic Great Pyramid, the last of the Seven Wonders of the Ancient World still in existence. Marvel at its grandeur and learn about its fascinating history from your guide.",
+          "searchQuery": "Great Pyramid of Giza",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Camel Ride around the Pyramids",
+          "description": "Experience the thrill of riding a camel as you traverse the desert landscape surrounding the pyramids. This is a unique way to take in the stunning views and capture memorable photos.",
+          "searchQuery": "Camel Ride Giza",
+          "locationEn": "Giza, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Restaurant El Dar Darak",
+          "description": "Enjoy a hearty lunch at El Dar Darak, where you can savor traditional Egyptian dishes like koshari and grilled meats, all while enjoying views of the pyramids.",
+          "searchQuery": "Restaurant El Dar Darak",
+          "locationEn": "Giza, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit the Sphinx",
+          "description": "After lunch, head to the Sphinx, the enigmatic statue with the body of a lion and the head of a pharaoh. Take your time to appreciate its size and the mysteries that surround it.",
+          "searchQuery": "Sphinx of Giza",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the Giza Plateau",
+          "description": "Wander around the Giza Plateau, where you can see the other pyramids and enjoy the breathtaking desert scenery. This area is perfect for photography and soaking in the ancient atmosphere.",
+          "searchQuery": "Giza Plateau",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Return to Cairo and Dinner at Abou El Sid",
+          "description": "Head back to Cairo and enjoy dinner at Abou El Sid, a restaurant famous for its authentic Egyptian cuisine. Try their signature dishes in a cozy, traditional setting.",
+          "searchQuery": "Abou El Sid",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll along the Nile Corniche",
+          "description": "End your day with a relaxing stroll along the Nile Corniche. The views of the river at sunset are stunning, and it's a great way to unwind after a day of exploration.",
+          "searchQuery": "Nile Corniche",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Exploring Ancient Egypt",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Felfela",
+          "description": "Start your day with a traditional Egyptian breakfast at Felfela, known for its delicious falafel and fresh bread. The vibrant atmosphere will energize you for the adventures ahead.",
+          "searchQuery": "Felfela",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Egyptian Museum",
+          "description": "Explore the treasures of ancient Egypt at the Egyptian Museum. Don't miss the Tutankhamun exhibit and the stunning collection of mummies. Allocate at least two hours to fully appreciate the artifacts.",
+          "searchQuery": "Egyptian Museum",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Abou El Sid",
+          "description": "Enjoy a hearty lunch at Abou El Sid, a restaurant famous for its authentic Egyptian cuisine. Try the koshari, a local favorite, for a true taste of Cairo.",
+          "searchQuery": "Abou El Sid",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Camel Ride at Giza Pyramids",
+          "description": "Head to the Giza Plateau for an unforgettable camel ride around the iconic pyramids. Experience the grandeur of these ancient wonders up close and capture stunning photos against the backdrop of the desert.",
+          "searchQuery": "Giza Pyramids",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the Khan el-Khalili Bazaar",
+          "description": "Wander through the bustling Khan el-Khalili Bazaar, where you can shop for souvenirs, spices, and traditional crafts. Don't forget to haggle for the best prices and enjoy a cup of mint tea at a local café.",
+          "searchQuery": "Khan el-Khalili",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at El Fishawy",
+          "description": "End your day with dinner at El Fishawy, a historic café in the heart of the bazaar. Savor traditional Egyptian dishes while soaking in the lively atmosphere of this iconic spot.",
+          "searchQuery": "El Fishawy",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Cultural Immersion and Adventure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Felfela",
+          "description": "Start your day with a traditional Egyptian breakfast at Felfela, known for its delicious falafel and fresh bread. The vibrant atmosphere will energize you for the adventures ahead.",
+          "searchQuery": "Felfela",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Pyramids of Giza",
+          "description": "Experience the awe-inspiring Pyramids of Giza, one of the Seven Wonders of the Ancient World. Marvel at the Great Pyramid and take a camel ride around the site for a unique perspective.",
+          "searchQuery": "Pyramids of Giza",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Abu Shakra",
+          "description": "Enjoy a hearty lunch at Abu Shakra, famous for its grilled meats and traditional Egyptian dishes. The restaurant's ambiance reflects the rich culture of Egypt.",
+          "searchQuery": "Abu Shakra",
+          "locationEn": "Giza, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Egyptian Museum",
+          "description": "Dive into Egypt's rich history at the Egyptian Museum, home to an extensive collection of ancient artifacts, including treasures from Tutankhamun's tomb. Don't miss the mummies exhibit!",
+          "searchQuery": "Egyptian Museum",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Al-Azhar Park",
+          "description": "Unwind at Al-Azhar Park, a beautifully landscaped area offering stunning views of Cairo's skyline and historic mosques. It's a perfect spot to relax after a day of exploration.",
+          "searchQuery": "Al-Azhar Park",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Sequoia",
+          "description": "End your day with dinner at Sequoia, a stylish restaurant along the Nile. Enjoy a mix of Mediterranean and Egyptian cuisine while taking in the beautiful river views.",
+          "searchQuery": "Sequoia",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Day Trip to Luxor",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Cairo",
+          "time": "07:00"
+        },
+        "arrival": {
+          "place": "Luxor",
+          "time": "08:00"
+        },
+        "duration": "1h",
+        "memo": "Early morning flight to Luxor to maximize sightseeing time."
+      },
+      "activities": [
+        {
+          "time": "08:30",
+          "activity": "Valley of the Kings",
+          "description": "Explore the ancient burial site of the pharaohs, where you can visit the tombs of famous rulers like Tutankhamun. The intricate hieroglyphs and stunning frescoes will transport you back in time.",
+          "searchQuery": "Valley of the Kings",
+          "locationEn": "Luxor, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Enjoy a traditional Egyptian lunch at a local eatery. Try dishes like koshari or falafel, which are both delicious and budget-friendly.",
+          "searchQuery": "Local Egyptian Restaurant",
+          "locationEn": "Luxor, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Karnak Temple",
+          "description": "Visit the magnificent Karnak Temple, one of the largest religious complexes in the world. Marvel at the towering columns and sacred lakes as you learn about the history of ancient Egypt.",
+          "searchQuery": "Karnak Temple",
+          "locationEn": "Luxor, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Camel Ride near the Pyramids",
+          "description": "Experience the thrill of riding a camel through the desert landscape, offering a unique perspective of the ancient monuments. This is a must-do adventure for any visitor to Egypt!",
+          "searchQuery": "Camel Ride Luxor",
+          "locationEn": "Luxor, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return Flight to Cairo",
+          "description": "Catch your return flight to Cairo, reflecting on the incredible sights and experiences of the day.",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Nile-side Restaurant",
+          "description": "Enjoy dinner at a restaurant overlooking the Nile River. Savor local dishes while watching the sunset over the water, a perfect way to end your day.",
+          "searchQuery": "Nile-side Restaurant Cairo",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Nile River Experience",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring traditional Egyptian dishes like ful medames and fresh pita bread. Fuel up for an exciting day ahead!",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Pyramids of Giza",
+          "description": "Explore the iconic Pyramids of Giza, one of the Seven Wonders of the Ancient World. Marvel at the grandeur of the Great Pyramid and take a moment to appreciate the Sphinx. Don't forget to capture some stunning photos!",
+          "searchQuery": "Pyramids of Giza",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Felfela Restaurant",
+          "description": "Enjoy a delicious lunch at Felfela, a popular spot among locals and tourists alike. Try their famous falafel and koshari, a traditional Egyptian dish that will leave you satisfied.",
+          "searchQuery": "Felfela Restaurant",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Camel Ride at the Pyramids",
+          "description": "Experience the thrill of riding a camel around the Pyramids. This unique perspective allows you to appreciate the vastness of the desert and the majesty of the ancient structures.",
+          "locationEn": "Giza, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Nile River Cruise",
+          "description": "Embark on a relaxing cruise along the Nile River. Enjoy the scenic views of Cairo's skyline and the lush banks of the river while sipping on refreshing drinks.",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner on the Nile",
+          "description": "Indulge in a delightful dinner on the Nile, where you can savor traditional Egyptian cuisine while enjoying live music and stunning views of the river at sunset. A perfect way to end your day!",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Hotel",
+          "description": "After a fulfilling day of exploration, return to your hotel to relax and reflect on the incredible experiences of the day.",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure from Cairo",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Cairo",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Cairo International Airport",
+          "time": "null"
+        },
+        "duration": "30m",
+        "memo": "Travel to the airport for your departure."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at El-Fishawy",
+          "description": "Start your day with a traditional Egyptian breakfast at El-Fishawy, a historic café in Khan El Khalili. Enjoy fresh falafel, fava beans, and mint tea in a vibrant atmosphere.",
+          "searchQuery": "El-Fishawy",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Pyramids of Giza",
+          "description": "Head to the iconic Pyramids of Giza, one of the Seven Wonders of the Ancient World. Marvel at the Great Pyramid and take a camel ride around the site for a unique perspective.",
+          "searchQuery": "Pyramids of Giza",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Felfela",
+          "description": "Enjoy a delicious lunch at Felfela, known for its authentic Egyptian cuisine. Try their famous koshari or grilled meats, perfect after a morning of exploration.",
+          "searchQuery": "Felfela",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore the Egyptian Museum",
+          "description": "Visit the Egyptian Museum to see a vast collection of ancient artifacts, including treasures from Tutankhamun's tomb. A must-see for history enthusiasts!",
+          "searchQuery": "Egyptian Museum",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Hotel and Prepare for Departure",
+          "description": "Head back to your hotel to collect your belongings and prepare for your journey home. Reflect on the incredible experiences you've had in Egypt!",
+          "searchQuery": "null",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

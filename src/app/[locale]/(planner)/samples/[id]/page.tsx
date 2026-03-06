@@ -2,12 +2,13 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { getSamplePlanByIdDynamic, loadAllSamplePlans } from "@/lib/sample-plans-loader";
-import { getSampleItinerary } from "@/lib/sample-itineraries";
+import { getSampleItineraryByLanguage } from "@/lib/sample-itineraries";
 import { UserInput } from '@/types';
 import { getRequestLanguage } from "@/lib/i18n/server";
 import { resolveOpenGraphLocale, resolveRegionalLocale } from "@/lib/i18n/locales";
 import SampleDetailClient from "./SampleDetailClient";
 import SampleCollectionPromotionSection from "@/components/features/samples/SampleCollectionPromotionSection";
+import { localizeTagLabel } from "@/lib/sample-plan-localization";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -24,8 +25,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const language = await getRequestLanguage();
   const t = await getTranslations("pages.planner.sampleDetail");
   const { id } = await params;
-  const plan = await getSamplePlanByIdDynamic(id);
-  const itinerary = await getSampleItinerary(id);
+  const plan = await getSamplePlanByIdDynamic(id, language);
+  const itinerary = await getSampleItineraryByLanguage(id, language);
 
   if (!plan) {
     return {
@@ -50,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     plan.input.companions,
     plan.input.dates,
     ...keywordSeeds,
-    ...plan.tags,
+    ...plan.tags.map((tag) => localizeTagLabel(tag, language)),
   ];
 
   const enhancedDescription = t("meta.enhancedDescription", {
@@ -94,9 +95,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function SamplePlanDetailPage({ params }: Props) {
+  const language = await getRequestLanguage();
   const t = await getTranslations("pages.planner.sampleDetail");
   const { id } = await params;
-  const plan = await getSamplePlanByIdDynamic(id);
+  const plan = await getSamplePlanByIdDynamic(id, language);
 
   if (!plan) {
     notFound();
@@ -105,7 +107,7 @@ export default async function SamplePlanDetailPage({ params }: Props) {
   const { input } = plan;
 
   // 事前生成済みの旅程を取得
-  const itinerary = await getSampleItinerary(id);
+  const itinerary = await getSampleItineraryByLanguage(id, language);
 
   if (!itinerary) {
      return notFound();

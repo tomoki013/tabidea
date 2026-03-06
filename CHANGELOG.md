@@ -11,6 +11,8 @@
 
 ### 2026-03-06
 
+- `local` feat(samples,i18n,ai): サンプル旅程再生成フローを新方式（outline + chunk）に更新し、`src/scripts/generate-sample-itineraries.ts` を `ja/en` 生成対応へ刷新。サンプル専用APIキー（`SAMPLE_GOOGLE_GENERATIVE_AI_API_KEY` / `SAMPLE_OPENAI_API_KEY`）の優先利用を追加し、`/samples` ではロケール別旅程JSON（`src/data/itineraries/{locale}`）優先読込に対応。あわせてサンプルカード/フィルタのタグ・エリア表示をロケールに応じて出し分け
+- `local` feat(i18n,settings): アカウント設定の言語・地域をAI出力専用へ分離し、表示言語はヘッダー言語切替（`uiLanguage`）で独立管理するよう変更。`proxy` の言語解決は `preferredLanguage` 依存を廃止して `uiLanguage`/URL優先に移行し、言語・地域Cookieに永続期限（1年）を付与。`LanguageSwitcher` 変更時はログインユーザーの表示言語をDBへ保存し、地域・出発帰着都市（`homeBaseCity`）を含む出力設定の永続化と責務分離を強化
 - `local` fix(i18n,ui): `src` 配下のユーザー表示ハードコード文言を `t()` 参照へ追加移行。`blog` ダッシュボード見出し、`ResultView` / `StreamingResultView` / `OutlineReview` / `DayPlaceholder` / `ShioriJournalEditor` / `TransitForm` の `Day`・ラベル系固定文言、`LoginPromptModal` のパス表示文言、Landing/Samples のバッジ文言、`ItineraryPDF` / `TravelInfoPDF` のヘッダー・フッター文言を翻訳キー化し、`src/messages/{ja,en}` の `planner-and-blog.json`・`features-ui.json`・`extra-ui.json` に対応キーを追加
 - `local` fix(i18n,components): `src/components` の未翻訳文言を追加移行。`MapErrorBoundary`、`LoginPromptModal`、`LoginPrompt`、`ShareButton`、`ShioriPromotionSection`、`landing` の `About/Hero/TravelInfo/v2 Concept`、`travel-info` 各 section、`BlogEditor`、`ItineraryPDF`、`TravelPlannerLegacy`、`DayPlaceholder`、`SamplePlanCard`/`SamplePlanList` の表示文言を `t()` 参照へ統一し、`src/messages/{ja,en}/components/extra-ui.json` を新設
 - `local` fix(i18n,pdf): PDF出力のカテゴリラベル・ビザ要否・注意文・持ち物リスト見出しを翻訳キー化し、`ja/en` ロケールで同一キー運用へ統一

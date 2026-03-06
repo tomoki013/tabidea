@@ -1,0 +1,486 @@
+{
+  "id": "4aaf4458-d55b-4488-9c53-9bcd2c71811c",
+  "destination": "シドニー",
+  "description": "シドニーの美しい海岸線と活気ある都市の魅力を存分に楽しむ6日間の旅に出かけましょう。オペラハウスの荘厳な姿を眺め、オーストラリアならではの動物たちと触れ合い、自然の美しさを堪能する素晴らしい体験が待っています。",
+  "days": [
+    {
+      "day": 1,
+      "title": "シドニー到着とオペラハウス観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "シドニーのホテルで、オーストラリアの新鮮な食材を使った朝食を楽しみます。アボカドトーストやフルーツサラダで、エネルギーをチャージしましょう。",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "シドニー・オペラハウス見学",
+          "description": "世界的に有名なシドニー・オペラハウスを訪れ、その独特な建築美を堪能します。オペラハウスの内部ツアーに参加すれば、舞台裏の魅力も知ることができます。",
+          "searchQuery": "Sydney Opera House",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "オペラハウス近くでランチ",
+          "description": "オペラハウスの近くにあるカフェで、軽めのランチを楽しみます。シドニー湾を眺めながら、地元の食材を使った料理を味わいましょう。",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ロイヤルボタニックガーデン散策",
+          "description": "シドニーの中心に広がるロイヤルボタニックガーデンで、自然の美しさを満喫します。多様な植物や花々を楽しみながら、ゆったりとした時間を過ごしましょう。",
+          "searchQuery": "Royal Botanic Garden Sydney",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "シドニー水族館訪問",
+          "description": "オーストラリアならではの動物たちに会えるシドニー水族館を訪れます。特に、カンガルーやコアラなどの動物たちに触れ合える体験が楽しめます。",
+          "searchQuery": "SEA LIFE Sydney Aquarium",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ダイニングでディナー",
+          "description": "シドニー湾を望むレストランで、シーフードディナーを楽しみます。新鮮な魚介類を使った料理は、シドニーならではの味わいです。",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ビーチでのんびりと",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "シドニーのホテルで、オーストラリアらしい朝食を楽しみます。アボカドトーストやフラットホワイトでエネルギーをチャージ。",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ボンダイビーチ散策",
+          "description": "シドニーの象徴的なボンダイビーチで、青い海と白い砂浜を満喫。ビーチ沿いのカフェでリラックスしながら、サーフィンを楽しむ人々を眺めるのもおすすめです。",
+          "searchQuery": "Bondi Beach",
+          "locationEn": "Bondi Beach, Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ボンダイビーチ近くのカフェでランチ",
+          "description": "ビーチの近くにある人気のカフェで、新鮮なシーフードやサラダを楽しみます。海を眺めながらのランチは格別です。",
+          "locationEn": "Bondi Beach, Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "クージービーチへ移動",
+          "description": "ボンダイビーチからクージービーチへは、海沿いの美しい散歩道を歩いて移動します。約30分の散策で、シドニーの海の美しさを堪能できます。",
+          "locationEn": "Coogee Beach, Sydney, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "クージービーチでのんびり",
+          "description": "クージービーチでのんびりと過ごします。海水浴やビーチバレーを楽しんだり、周辺の公園でピクニックをするのも良いでしょう。",
+          "searchQuery": "Coogee Beach",
+          "locationEn": "Coogee Beach, Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "クージービーチ近くのレストランでディナー",
+          "description": "海を眺めながら、地元の食材を使ったディナーを楽しみます。新鮮な魚介類やオーストラリアのワインを堪能できるお店がおすすめです。",
+          "locationEn": "Coogee Beach, Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "オペラハウスの夜景観賞",
+          "description": "シドニーのシンボル、オペラハウスの美しい夜景を楽しみます。ライトアップされた姿は幻想的で、カップルにぴったりのロマンチックな時間です。",
+          "searchQuery": "Sydney Opera House",
+          "locationEn": "Sydney Opera House, Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "動物たちとのふれあい",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "シドニーのホテルで、オーストラリアの新鮮な食材を使った朝食を楽しみます。アボカドトーストやフルーツサラダで、エネルギーをチャージしましょう。",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "タロンガ動物園",
+          "description": "シドニーのタロンガ動物園で、オーストラリアならではの動物たちとふれあいましょう。コアラやカンガルー、珍しい鳥類を間近で観察できる貴重な体験が待っています。",
+          "searchQuery": "Taronga Zoo",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "{\"type\":\"blog\",\"title\":\"シドニーのタロンガ動物園での体験\",\"url\":\"https://example.com/taronga-zoo-experience\",\"confidence\":\"high\"}"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ハーバーブリッジと市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "シドニーのホテルで、オーストラリアらしい朝食を楽しみます。新鮮なフルーツやアボカドトースト、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ハーバーブリッジを散策",
+          "description": "シドニーのシンボル、ハーバーブリッジを歩いて渡ります。橋の上からは美しいシドニー湾の景色が広がり、特に晴れた日には絶景が楽しめます。",
+          "searchQuery": "Sydney Harbour Bridge",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "オペラハウス見学",
+          "description": "世界的に有名なシドニーオペラハウスを訪れます。外観の美しさだけでなく、内部のツアーもおすすめ。オーストラリアの文化を感じることができます。",
+          "searchQuery": "Sydney Opera House",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ダーリングハーバーでランチ",
+          "description": "ダーリングハーバーのレストランでランチを楽しみます。新鮮なシーフードやオーストラリア料理を味わいながら、港の景色を堪能。",
+          "locationEn": "Darling Harbour, Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "シドニー水族館訪問",
+          "description": "オーストラリアの海洋生物を間近で見ることができるシドニー水族館へ。特に、カンガルーやコアラなどのオーストラリア特有の動物も楽しめます。",
+          "searchQuery": "SEA LIFE Sydney Aquarium",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ビーチ散策（ボンダイビーチ）",
+          "description": "シドニーの美しいビーチ、ボンダイビーチへ。海岸沿いを散策し、リラックスした時間を過ごします。サーフィンを楽しむ人々の姿も見られます。",
+          "searchQuery": "Bondi Beach",
+          "locationEn": "Bondi Beach, Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ビーチ近くのレストランでディナー",
+          "description": "ボンダイビーチ近くのレストランで、夕日を眺めながらディナーを楽しみます。新鮮なシーフードや地元のワインを堪能。",
+          "locationEn": "Bondi Beach, Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の観光を終え、ホテルに戻ります。シドニーの夜景を楽しみながら、ゆったりとした時間を過ごします。",
+          "locationEn": "Sydney, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "自然を楽しむ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "シドニーのホテルで、オーストラリアの新鮮な食材を使った朝食を楽しみます。アボカドトーストやフルーツサラダでエネルギーをチャージ。",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ブルーマウンテンズ国立公園へ出発",
+          "description": "シドニーからブルーマウンテンズ国立公園へ向かいます。美しい自然の中でのハイキングや絶景を楽しむ準備をしましょう。",
+          "searchQuery": "Blue Mountains National Park",
+          "locationEn": "Blue Mountains, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "エコーポイント展望台",
+          "description": "ブルーマウンテンズの象徴的なエコーポイント展望台から、スリーシスターズの壮大な景色を眺めます。特に朝の光の中での景色は格別です。",
+          "searchQuery": "Echo Point",
+          "locationEn": "Katoomba, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ブルーマウンテンズでのランチ",
+          "description": "公園内のカフェで、地元の食材を使ったランチを楽しみます。サンドイッチやサラダなど、軽めの食事がオススメ。",
+          "locationEn": "Blue Mountains, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ハイキングと自然観察",
+          "description": "ブルーマウンテンズのトレイルを歩きながら、オーストラリア特有の動植物を観察します。特にカンガルーやコアラに出会えるかもしれません。",
+          "locationEn": "Blue Mountains, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "シドニーに戻る",
+          "description": "ブルーマウンテンズからシドニーへ戻ります。移動中に美しい風景を楽しんでください。",
+          "locationEn": "Sydney, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "シドニーオペラハウス見学",
+          "description": "シドニーのシンボル、オペラハウスを訪れます。外観の美しさを堪能し、内部のツアーにも参加してその歴史を学びましょう。",
+          "searchQuery": "Sydney Opera House",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "オペラハウス近くでディナー",
+          "description": "オペラハウスの近くにあるレストランで、シーフードやオーストラリア料理を楽しみます。夜景を眺めながらの食事は特別なひとときです。",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "シドニーから東京へ帰国",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "シドニー",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "17:00"
+        },
+        "duration": "9h",
+        "memo": "直行便での帰国。機内でのリラックスタイムを楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "シドニーのホテルで、オーストラリアの新鮮な食材を使った朝食を楽しみます。アボカドトーストやフルーツサラダが人気です。",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "シドニーオペラハウス見学",
+          "description": "世界的に有名なシドニーオペラハウスを訪れ、その独特な建築美を堪能します。内部のツアーもおすすめで、オペラハウスの歴史や舞台裏を知ることができます。",
+          "searchQuery": "Sydney Opera House",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ボンダイビーチ散策",
+          "description": "シドニーの象徴的なビーチ、ボンダイビーチでリラックス。美しい海を眺めながら、散歩や日光浴を楽しむことができます。",
+          "searchQuery": "Bondi Beach",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ボンダイビーチ近くのカフェでランチ",
+          "description": "ビーチ近くのカフェで、軽食やサラダを楽しみます。新鮮なシーフードや地元の食材を使った料理が魅力です。",
+          "locationEn": "Sydney, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "タロンガ動物園訪問",
+          "description": "シドニーのタロンガ動物園で、オーストラリアならではの動物たちに会いに行きます。コアラやカンガルーなど、ユニークな動物たちを間近で見ることができます。",
+          "searchQuery": "Taronga Zoo",
+          "locationEn": "Sydney, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "空港へ移動",
+          "description": "タロンガ動物園から空港へ向かいます。シドニーの美しい景色を楽しみながら、余裕を持って移動しましょう。",
+          "locationEn": "Sydney, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

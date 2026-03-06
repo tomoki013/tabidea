@@ -1,0 +1,414 @@
+{
+  "id": "097ccc61-1c58-4583-88e5-f0e2a4c2734c",
+  "destination": "石垣島・竹富島",
+  "description": "南国の楽園、石垣島と竹富島での5日間の旅へようこそ。美しいビーチと透き通った海、そして星空の下でのロマンティックなひとときをお楽しみください。カップルでのリラックスした時間を過ごしながら、地元の文化や自然の美しさを満喫することができます。",
+  "days": [
+    {
+      "day": 1,
+      "title": "石垣島到着とリラックス",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "石垣空港到着",
+          "description": "石垣空港に到着後、レンタカーを借りて石垣島の旅をスタートします。空港からは美しい海の景色が広がり、南国の雰囲気を感じられます。",
+          "searchQuery": "Ishigaki Airport",
+          "locationEn": "Ishigaki, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "川平湾でランチ",
+          "description": "川平湾の美しい景色を眺めながら、地元の新鮮な海の幸を楽しむランチ。特に海鮮丼や刺身が絶品です。",
+          "searchQuery": "Kabayama Bay",
+          "locationEn": "Kabayama Bay, Ishigaki, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "川平湾でシュノーケリング",
+          "description": "透明度の高い海でシュノーケリングを楽しみます。色とりどりの魚たちと一緒に泳ぎ、南国の海を満喫しましょう。",
+          "searchQuery": "Kabayama Bay Snorkeling",
+          "locationEn": "Kabayama Bay, Ishigaki, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "美ら海水族館訪問",
+          "description": "美ら海水族館で沖縄の海の生き物たちを観察。特にジンベエザメの大水槽は圧巻で、カップルでの思い出作りにぴったりです。",
+          "searchQuery": "Okinawa Churaumi Aquarium",
+          "locationEn": "Okinawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元の居酒屋で夕食",
+          "description": "石垣島の地元料理を楽しむため、居酒屋で夕食。八重山そばや島豆腐を味わいながら、リラックスした時間を過ごします。",
+          "searchQuery": "Ishigaki Izakaya",
+          "locationEn": "Ishigaki, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "星空観察",
+          "description": "石垣島の澄んだ空気の中で、星空観察を楽しみます。南の島ならではの美しい星空が広がり、ロマンチックなひとときを演出します。",
+          "searchQuery": "Ishigaki Stargazing",
+          "locationEn": "Ishigaki, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "石垣島のビーチとマリンアクティビティ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "石垣島のリゾートホテルで、沖縄の新鮮な食材を使った朝食を楽しみます。特に、地元のフルーツや海の幸を使った料理が絶品です。",
+          "locationEn": "Ishigaki, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "米原ビーチでリラックス",
+          "description": "美しい白砂の米原ビーチで、穏やかな波の音を聞きながらリラックス。透明度の高い海でのんびりと過ごし、南国の雰囲気を満喫しましょう。",
+          "searchQuery": "Maehama Beach",
+          "locationEn": "Ishigaki, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "シュノーケリング体験",
+          "description": "米原ビーチ近くのシュノーケリングスポットで、色とりどりの熱帯魚やサンゴ礁を観察します。初心者でも安心のガイド付きで、海の中の美しい世界を楽しめます。",
+          "searchQuery": "Ishigaki Snorkeling",
+          "locationEn": "Ishigaki, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ビーチサイドでランチ",
+          "description": "ビーチ近くのカフェで、沖縄そばやタコライスなどの地元料理を楽しみます。海を眺めながらの食事は格別です。",
+          "locationEn": "Ishigaki, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "竹富島へ渡る",
+          "description": "竹富島行きのフェリーに乗り、約10分の船旅を楽しみます。竹富島の美しい風景を眺めながら、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Taketomi Island Ferry",
+          "locationEn": "Ishigaki, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "竹富島の集落散策",
+          "description": "竹富島の伝統的な赤瓦の家々が並ぶ集落を散策。のんびりとした時間が流れる中、地元の人々との触れ合いも楽しめます。",
+          "searchQuery": "Taketomi Island",
+          "locationEn": "Taketomi, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "星空観察ツアー",
+          "description": "夜は星空観察ツアーに参加。竹富島の澄んだ空気の中で、満天の星空を楽しみながら、星座や天体について学びます。ロマンチックなひとときをお過ごしください。",
+          "searchQuery": "Taketomi Island Stargazing",
+          "locationEn": "Taketomi, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "竹富島でディナー",
+          "description": "地元の食材を使った沖縄料理を楽しめるレストランで、カジュアルなディナーを。新鮮な魚介類や野菜を使った料理が堪能できます。",
+          "locationEn": "Taketomi, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "竹富島の風情を楽しむ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "石垣島",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "竹富島",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "フェリーで竹富島へ向かいます。海の景色を楽しみながらの移動です。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "竹富島の集落散策",
+          "description": "赤瓦の家々が並ぶ竹富島の集落を散策。昔ながらの沖縄の風情を感じながら、ゆったりとした時間を過ごせます。",
+          "searchQuery": "竹富島",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "コンドイビーチでランチ",
+          "description": "コンドイビーチ近くのカフェで、地元の新鮮な海の幸を使ったランチを楽しみます。ビーチの美しい景色を眺めながら、リラックスしたひとときを。",
+          "searchQuery": "コンドイビーチ",
+          "locationEn": "Kondoi Beach, Taketomi, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "コンドイビーチでマリンアクティビティ",
+          "description": "透明度の高い海でシュノーケリングやカヤックを楽しみます。色とりどりの魚たちと一緒に泳ぎ、南国の海を満喫しましょう。",
+          "searchQuery": "コンドイビーチ",
+          "locationEn": "Kondoi Beach, Taketomi, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "竹富島の星空観察",
+          "description": "日が沈んだ後、竹富島の静かなビーチで星空観察。南の島ならではの美しい星空を眺めながら、ロマンティックな時間を過ごします。",
+          "searchQuery": "竹富島",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "竹富島の居酒屋でディナー",
+          "description": "地元の居酒屋で沖縄料理を楽しみます。新鮮な魚や豚肉を使った料理が揃い、地元の雰囲気を味わえます。",
+          "searchQuery": "竹富島 居酒屋",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "竹富島でのんびりとした一日",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "竹富島",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "石垣島",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "竹富島から石垣島へのフェリー移動。海の景色を楽しみながらの移動です。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "竹富島のビーチでリラックス",
+          "description": "竹富島の美しいビーチで、白い砂浜と青い海を楽しみながらのんびり過ごします。カップルでのんびりとした時間を満喫しましょう。",
+          "searchQuery": "竹富島 ビーチ",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "竹富島の地元食堂でランチ",
+          "description": "地元の食材を使った沖縄料理を楽しめる食堂で、アグー豚のソーキそばをぜひ味わってみてください。",
+          "searchQuery": "竹富島 食堂",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "水牛車体験",
+          "description": "竹富島の風景を水牛車で巡る体験。のんびりとしたペースで、島の自然を楽しむことができます。",
+          "searchQuery": "水牛車体験 竹富島",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "星空観察",
+          "description": "竹富島の澄んだ空気の中で、満天の星空を観察します。特に夏の夜空は美しく、ロマンチックなひとときを過ごせます。",
+          "searchQuery": "竹富島 星空",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "竹富島の居酒屋でディナー",
+          "description": "地元の居酒屋で新鮮な海の幸を楽しみながら、リラックスしたディナータイムを過ごします。",
+          "searchQuery": "竹富島 居酒屋",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "石垣島から帰路へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "竹富島",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "石垣島",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "竹富島から石垣島への短いフライトです。空港での手続きも考慮して早めに出発しましょう。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "石垣島での朝食",
+          "description": "地元のカフェで新鮮なフルーツや沖縄そばを楽しむ朝食。特に、パイナップルやマンゴーは絶品です。",
+          "searchQuery": "石垣島 カフェ",
+          "locationEn": "Ishigaki, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "お土産ショッピング",
+          "description": "石垣島の中心地で、地元の特産品やお土産を探しましょう。特に、黒糖や海ぶどうはおすすめです。",
+          "searchQuery": "Ishigaki Souvenir Shop",
+          "locationEn": "Ishigaki, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "石垣空港でのランチ",
+          "description": "空港内のレストランで、沖縄料理を楽しみながら帰路の準備をします。",
+          "searchQuery": "Ishigaki Airport Restaurant",
+          "locationEn": "Ishigaki, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "石垣島空港から帰路へ",
+          "description": "帰りのフライトに向けて、石垣島空港で搭乗手続きを行います。",
+          "searchQuery": "Ishigaki Airport",
+          "locationEn": "Ishigaki, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,479 @@
+{
+  "id": "a928aa18-24ea-4a7c-806e-cee39c38ee80",
+  "destination": "ダナン・ホイアン",
+  "description": "美しいビーチと歴史的な街並みが魅力のダナンとホイアン。友人と共に、青い海でのひと泳ぎや、幻想的なランタンの灯りに包まれた夜を楽しむ、心温まる5日間の旅に出かけましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ダナン到着とビーチでのリラックス",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ダナンのホテルで、ベトナムの伝統的な朝食を楽しみます。フォーやバインミーなど、地元の味を堪能しながら、リラックスした朝を迎えましょう。",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ダナンビーチでのんびり",
+          "description": "ダナンビーチで青い海と白い砂浜を満喫。ビーチチェアに座って、波の音を聞きながらリラックスしたり、泳いだりして過ごします。",
+          "searchQuery": "My Khe Beach",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ビーチ近くのレストランでランチ",
+          "description": "ビーチ沿いのレストランで、新鮮なシーフードランチを楽しみます。海の景色を眺めながら、地元の料理を味わう贅沢なひととき。",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ミーケビーチでアクティビティ",
+          "description": "ミーケビーチに移動し、ウォータースポーツやビーチバレーを楽しみます。友人と一緒にアクティブな時間を過ごしましょう。",
+          "searchQuery": "My Khe Beach",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "夕日を眺めながらビーチ散策",
+          "description": "夕暮れ時のビーチを散策し、幻想的な夕日を楽しみます。海に沈む夕日をバックに、素敵な写真を撮るのもおすすめです。",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ダナンの屋台でディナー",
+          "description": "地元の屋台で、バインセオやシーフードを楽しみます。活気ある雰囲気の中で、ベトナムのストリートフードを堪能しましょう。",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "ダナンの夜景を楽しむ",
+          "description": "ダナンの夜景を楽しむために、ドラゴンブリッジ周辺を散策。夜になるとライトアップされる橋の美しさに感動します。",
+          "searchQuery": "Dragon Bridge",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ダナンの観光とホイアンへの移動",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "ダナン",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "ホイアン",
+          "time": "12:30"
+        },
+        "duration": "30m",
+        "memo": "ダナンからホイアンへはバスでの移動が便利です。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ダナンビーチでの朝泳ぎ",
+          "description": "ダナンの美しいビーチで朝のひと泳ぎを楽しみましょう。透明度の高い海と白い砂浜が広がり、リフレッシュできます。",
+          "searchQuery": "My Khe Beach",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "五行山観光",
+          "description": "五行山は神秘的な山々で、洞窟や寺院が点在しています。特に、山の頂上からの眺めは絶景です。",
+          "searchQuery": "Marble Mountains",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ホイアンへ移動",
+          "description": "ダナンからホイアンへバスで移動します。約30分の快適な旅です。",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ホイアン到着、ランチ",
+          "description": "ホイアンに到着したら、地元の名物料理を楽しむためにランチへ。おすすめは、ホイアンの名物「カオラウ」です。",
+          "searchQuery": "Cao Lau",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ホイアン旧市街散策",
+          "description": "ホイアンの旧市街は世界遺産に登録されており、ランタンが灯る美しい街並みを散策できます。特に午後の光が差し込む時間帯は絶景です。",
+          "searchQuery": "Hoi An Ancient Town",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホイアンのランタン祭りを楽しむ",
+          "description": "夕方になると、ホイアンの街はランタンで彩られます。幻想的な雰囲気の中で、地元の屋台グルメを楽しむのもおすすめです。",
+          "searchQuery": "Hoi An Lantern Festival",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホイアンでディナー",
+          "description": "ホイアンの夜は、川沿いのレストランで新鮮なシーフードを楽しむのが最高です。特に、海鮮焼きがおすすめです。",
+          "searchQuery": "Seafood Restaurant Hoi An",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ホイアンのランタン祭りとグルメ体験",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ホイアンの宿泊先で、ベトナムの伝統的な朝食を楽しみます。フォーやバインミーなど、地元の味を堪能して一日をスタート。",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ホイアン旧市街散策",
+          "description": "世界遺産に登録されたホイアン旧市街を散策。カラフルな建物や古い街並みが魅力的で、写真スポットもたくさんあります。特に、ランタンが灯る前の静かな時間帯に訪れるのがおすすめです。",
+          "searchQuery": "Hoi An Ancient Town",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ホイアン名物のミークワ（米粉の麺）や、海鮮料理を楽しめるレストランでランチ。新鮮な食材を使った料理は、どれも絶品です。",
+          "searchQuery": "Mi Quang",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ホイアンのビーチでリラックス",
+          "description": "ホイアンの近くにあるアナバンビーチで、青い海と白い砂浜を満喫。泳いだり、ビーチチェアでのんびり過ごしたり、リフレッシュするのに最適な場所です。",
+          "searchQuery": "An Bang Beach",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホイアンのランタン祭りを楽しむ",
+          "description": "夕暮れ時にホイアンの街がランタンで彩られます。特に、川沿いの景色は幻想的で、思わず写真を撮りたくなる美しさです。地元の人々と一緒にランタンを灯す体験もおすすめ。",
+          "searchQuery": "Hoi An Lantern Festival",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホイアンの屋台でディナー",
+          "description": "ホイアンの屋台で、バインセオ（ベトナム風お好み焼き）や、揚げ春巻きなどのストリートフードを楽しみます。地元の雰囲気を味わいながら、リーズナブルに食事ができます。",
+          "searchQuery": "Hoi An Street Food",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ホイアンからダナンへの帰還と夜景",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "ホイアン",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ダナン",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "ホイアンからダナンへのバス移動。快適なバスでの移動を楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "ダナン大聖堂",
+          "description": "ダナンのシンボルとも言える美しいピンク色の大聖堂。外観だけでなく、内部のステンドグラスも見応えがあります。",
+          "searchQuery": "Danang Cathedral",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ダナン名物のミー・クアン（米粉の麺）を楽しめる地元のレストランで、ボリューム満点のランチをどうぞ。",
+          "searchQuery": "Mi Quang Restaurant",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ビーチでリラックス",
+          "description": "ダナンの美しいビーチでのんびりと過ごしましょう。青い海で泳いだり、砂浜でリラックスしたり、心地よい時間を楽しめます。",
+          "searchQuery": "My Khe Beach",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ハン川の夜景観賞",
+          "description": "ハン川沿いを散策しながら、夕暮れ時の美しい夜景を楽しみましょう。特に、ドラゴンブリッジのライトアップは必見です。",
+          "searchQuery": "Han River",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元の屋台で夕食",
+          "description": "ダナンの屋台で新鮮なシーフードやバインミーを楽しみましょう。地元の人々と一緒に賑やかな雰囲気を味わえます。",
+          "searchQuery": "Da Nang Street Food",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ダナンのナイトマーケット散策",
+          "description": "夜のダナンを楽しむためにナイトマーケットを訪れ、地元の特産品やお土産を探しましょう。活気ある雰囲気が魅力です。",
+          "searchQuery": "Da Nang Night Market",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ダナンでの最終日と帰国",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ダナンビーチでの朝泳ぎ",
+          "description": "ダナンビーチでの朝のひと泳ぎで、爽やかな海風を感じながらリフレッシュ。透明度の高い海でのんびりとした時間を過ごしましょう。",
+          "searchQuery": "My Khe Beach",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ビーチ沿いのカフェで朝食",
+          "description": "ビーチを眺めながら、地元のフルーツやバインミーを楽しむ朝食。新鮮な食材を使った料理で、エネルギーをチャージ。",
+          "searchQuery": "Beachfront Cafe Da Nang",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "ダナンの地元市場を散策",
+          "description": "地元の人々が集まる市場で、色とりどりの食材や手工芸品を見て回ります。お土産探しにもぴったりのスポットです。",
+          "searchQuery": "Han Market",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "市場近くのレストランでランチ",
+          "description": "新鮮なシーフード料理を楽しめるレストランで、ダナンの味を堪能。特に海鮮ヌードルはおすすめです。",
+          "searchQuery": "Seafood Restaurant Da Nang",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ホイアンへ移動",
+          "description": "ダナンからホイアンへはタクシーで約30分。美しい田園風景を楽しみながら、ホイアンの街へ向かいます。",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ホイアンの旧市街散策",
+          "description": "世界遺産に登録されたホイアンの旧市街を散策。ランタンが灯る街並みは、まるで絵画のような美しさです。",
+          "searchQuery": "Hoi An Ancient Town",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホイアンのランタン祭りを楽しむ",
+          "description": "夕暮れ時にランタンが灯るホイアンの街を散策。幻想的な雰囲気の中で、地元の屋台グルメも楽しめます。",
+          "searchQuery": "Hoi An Lantern Festival",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホイアンの屋台でディナー",
+          "description": "ホイアンの名物料理を楽しむために、屋台でディナー。バインセオやホイアンの春巻きは絶品です。",
+          "searchQuery": "Hoi An Street Food",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "22:00",
+          "activity": "ダナン空港へ移動",
+          "description": "ホイアンからダナン空港へはタクシーで約30分。帰国の準備を整えましょう。",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

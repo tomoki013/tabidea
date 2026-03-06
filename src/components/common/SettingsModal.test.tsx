@@ -21,6 +21,7 @@ vi.mock('next-themes', () => ({
 }));
 
 vi.mock('next-intl', () => ({
+  createTranslator: () => (key: string) => key,
   useTranslations: () => (key: string) => {
     const dictionary: Record<string, string> = {
       'tabs.account': 'アカウント',

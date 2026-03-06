@@ -1,0 +1,561 @@
+{
+  "id": "68f9dc95-6813-424d-983b-9a5428f3d462",
+  "destination": "ニューヨーク",
+  "description": "ニューヨークの街を一人旅で満喫する6日間。アート、エンターテイメント、グルメの宝庫であるこの都市を、活気あふれるストリートや隠れた名店を巡りながら楽しむプランです。ミュージカルやジャズの生演奏を楽しみながら、ニューヨークの魅力を存分に味わいましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1472577938094-84871b72ccac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODE0MjB8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Pedro Lastra",
+  "heroImagePhotographerUrl": "https://unsplash.com/@peterlaster?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "ニューヨーク到着とタイムズスクエア散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのカフェで、アメリカンブレックファーストを楽しみます。ふわふわのパンケーキやベーコン、卵料理でエネルギーをチャージ。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "タイムズスクエア散策",
+          "description": "世界中の観光客が集まるタイムズスクエア。巨大な広告看板やストリートパフォーマンスを楽しみながら、ニューヨークの活気を感じましょう。",
+          "searchQuery": "Times Square",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ジョン・ダリオのピザでランチ",
+          "description": "ニューヨーク名物のスライスピザを楽しむなら、地元の人にも人気のジョン・ダリオへ。サクサクの生地と新鮮なトッピングが絶品です。",
+          "searchQuery": "John's of Bleecker Street",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "メトロポリタン美術館訪問",
+          "description": "アート好きにはたまらないメトロポリタン美術館。広大なコレクションをじっくり楽しみながら、特に印象派の作品を見逃さないで。",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "セントラルパーク散策",
+          "description": "美術館の後は、セントラルパークでリラックス。緑豊かな公園内を散策し、自然の中でひと息つきましょう。",
+          "searchQuery": "Central Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ブロードウェイでミュージカル鑑賞",
+          "description": "本場のミュージカルを楽しむならブロードウェイへ。事前にチケットを予約して、感動的なパフォーマンスを堪能しましょう。",
+          "searchQuery": "Broadway",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:30",
+          "activity": "ジャズバーで夜のひととき",
+          "description": "ニューヨークのジャズバーで、ライブ演奏を楽しみながらリラックス。地元のアーティストによる生演奏に心を奪われることでしょう。",
+          "searchQuery": "Blue Note Jazz Club",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アートと文化の一日",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのカフェで、アメリカンブレックファーストを楽しみます。ふわふわのパンケーキやベーコン、卵料理でエネルギーをチャージ。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "メトロポリタン美術館",
+          "description": "世界的に有名なメトロポリタン美術館を訪れます。古代から現代までの膨大なコレクションを楽しみながら、アートに浸る贅沢な時間を過ごしましょう。",
+          "searchQuery": "Metropolitan Museum of Art",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ル・パン・コティディアンでランチ",
+          "description": "フランス風のカジュアルなカフェで、サンドイッチやサラダを楽しみます。新鮮な食材を使った料理が魅力で、特に自家製のパンが絶品です。",
+          "searchQuery": "Le Pain Quotidien",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "セントラルパーク散策",
+          "description": "広大なセントラルパークを散策し、自然の中でリフレッシュ。美しい景色を楽しみながら、アートや音楽に触れることができるスポットも点在しています。",
+          "searchQuery": "Central Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "アメリカ自然史博物館",
+          "description": "アメリカ自然史博物館で、恐竜の化石や宇宙の展示を楽しみます。特にプラネタリウムのショーは見逃せません。",
+          "searchQuery": "American Museum of Natural History",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "タイムズスクエアで夕食",
+          "description": "活気あふれるタイムズスクエアで、地元のレストランでディナーを楽しみます。多国籍な料理が揃っており、選ぶのが楽しいです。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ブロードウェイミュージカル鑑賞",
+          "description": "本場のブロードウェイでミュージカルを楽しみます。事前にチケットを予約しておくと、スムーズに入場できます。",
+          "searchQuery": "Broadway",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "22:30",
+          "activity": "ジャズクラブで夜を楽しむ",
+          "description": "ニューヨークのジャズクラブで、ライブ演奏を楽しみながらリラックス。地元のアーティストによる生演奏は、旅の思い出にぴったりです。",
+          "searchQuery": "Jazz Club",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ブルックリンの魅力を探る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのホテルで、アメリカンブレックファーストを楽しみます。ふわふわのパンケーキやベーコン、卵料理でエネルギーをチャージ。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ブルックリンブリッジを散策",
+          "description": "ニューヨークのシンボル、ブルックリンブリッジを歩いて渡ります。マンハッタンのスカイラインを眺めながら、心地よい風を感じることができます。",
+          "searchQuery": "Brooklyn Bridge",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ダンボでランチ",
+          "description": "ダンボエリアの人気カフェでランチ。地元の食材を使ったサンドイッチやサラダを楽しみながら、ブルックリンブリッジの絶景を堪能できます。",
+          "searchQuery": "DUMBO",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ダンボエリア散策",
+          "description": "ダンボのアートギャラリーやショップを巡りながら、ストリートアートやユニークな店舗を楽しみます。特に、ブルックリンブリッジパークからの眺めは絶景です。",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ブルックリン美術館訪問",
+          "description": "ブルックリン美術館でアートを堪能。多様なコレクションが揃い、特にアメリカのアートやアフリカンアートが充実しています。",
+          "searchQuery": "Brooklyn Museum",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "ジャズクラブでディナー",
+          "description": "ブルックリンのジャズクラブでディナーを楽しみながら、生演奏を堪能。地元のアーティストによるパフォーマンスが魅力です。",
+          "searchQuery": "Brooklyn Jazz Club",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ミュージカル鑑賞",
+          "description": "ブロードウェイのミュージカルを観賞。感動的なストーリーと素晴らしいパフォーマンスに心を奪われることでしょう。",
+          "searchQuery": "Broadway Musical",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ミュージカルとジャズの夜",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのダイナーでアメリカンブレックファーストを楽しみます。ふわふわのパンケーキやベーコン、卵をたっぷりと味わって、エネルギーをチャージしましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "アポロシアター見学",
+          "description": "ハーレムの象徴的なアポロシアターを訪れ、歴史的な舞台裏を見学します。音楽の聖地であるこの場所の魅力を感じながら、アフリカ系アメリカ人の文化に触れる貴重な体験です。",
+          "searchQuery": "Apollo Theater",
+          "locationEn": "Harlem, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ハーレムでランチ",
+          "description": "地元の人気レストランで、ソウルフードを堪能します。フライドチキンやコーンブレッド、グリーンビーンズなど、アメリカ南部の味を楽しんでください。",
+          "locationEn": "Harlem, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ハーレム散策",
+          "description": "ハーレムの街を歩きながら、アートギャラリーやブティックを訪れます。ストリートアートや歴史的な建物を楽しみながら、地元の雰囲気を満喫しましょう。",
+          "locationEn": "Harlem, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ミュージカルのチケット購入",
+          "description": "ブロードウェイの劇場で、観たいミュージカルのチケットを購入します。人気の作品は早めに売り切れることが多いので、事前にチェックしておくと良いでしょう。",
+          "locationEn": "Broadway, New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ブロードウェイでディナー",
+          "description": "ミュージカル鑑賞前に、ブロードウェイ近くのレストランでディナーを楽しみます。ニューヨークスタイルのピザやパスタを味わいながら、ワクワクする夜の始まりを待ちましょう。",
+          "locationEn": "Broadway, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ミュージカル鑑賞",
+          "description": "待ちに待ったミュージカルの時間です。華やかな舞台と素晴らしいパフォーマンスに心を奪われることでしょう。感動的なストーリーと音楽を楽しんでください。",
+          "locationEn": "Broadway, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "22:30",
+          "activity": "ジャズクラブで夜を締めくくる",
+          "description": "ハーレムのジャズクラブで、ライブ演奏を楽しみながらリラックスした時間を過ごします。地元のアーティストによる素晴らしい演奏に酔いしれましょう。",
+          "searchQuery": "Harlem Jazz Club",
+          "locationEn": "Harlem, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "グルメとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークの人気カフェで、アメリカンブレックファーストを楽しみます。ふわふわのパンケーキやベーコン、卵料理が揃い、エネルギー満点で一日をスタート。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "チェルシーマーケット散策",
+          "description": "ニューヨークの食の宝庫、チェルシーマーケットで地元のグルメを堪能。新鮮なシーフードやアートなスイーツ、ユニークなショップが並び、食べ歩きが楽しめます。",
+          "searchQuery": "Chelsea Market",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：Los Tacos No.1",
+          "description": "本場のタコスを楽しむなら、チェルシーマーケット内のLos Tacos No.1がおすすめ。新鮮な具材を使ったタコスは、ボリューム満点で満足感も抜群です。",
+          "searchQuery": "Los Tacos No.1",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ソーホーでショッピング",
+          "description": "アートギャラリーやブティックが立ち並ぶソーホーエリアでショッピング。ユニークなアイテムやアート作品を見つける楽しみがあります。",
+          "searchQuery": "SoHo",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アートギャラリー巡り",
+          "description": "ソーホー周辺のアートギャラリーを巡り、現代アートや地元アーティストの作品を鑑賞。新しい発見があるかもしれません。",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー：Balthazar",
+          "description": "フランス料理の名店Balthazarでディナー。おしゃれな雰囲気の中、シーフードやビストロ料理を楽しむことができます。",
+          "searchQuery": "Balthazar",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ブロードウェイミュージカル鑑賞",
+          "description": "本場のブロードウェイでミュージカルを楽しむ時間。事前にチケットを予約しておくと、スムーズに入場できます。感動的なパフォーマンスに心を奪われることでしょう。",
+          "locationEn": "New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ニューヨーク出発",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのカフェで、アメリカンブレックファーストを楽しみます。ふわふわのパンケーキやベーコン、卵料理が揃い、エネルギー満点で一日をスタート。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "自由の女神観光",
+          "description": "フェリーに乗って、自由の女神像を間近で見ることができます。像の周りを散策しながら、ニューヨークの象徴的な景色を楽しんでください。",
+          "searchQuery": "Statue of Liberty",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ウォール街散策",
+          "description": "金融の中心地、ウォール街を歩きながら、歴史的な建物やニューヨーク証券取引所を見学。街の活気を感じながら、写真撮影にも最適なスポットです。",
+          "searchQuery": "Wall Street",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "地元のレストランでランチ",
+          "description": "ウォール街近くのレストランで、ニューヨークスタイルのピザやサンドイッチを楽しみます。地元の人々に人気のあるお店で、カジュアルな雰囲気の中で食事を。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "アートギャラリー巡り",
+          "description": "ニューヨークのアートシーンを体験するため、チェルシー地区のアートギャラリーを巡ります。現代アートの展示を楽しみながら、アーティストたちの作品に触れてみてください。",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ブロードウェイでミュージカル鑑賞",
+          "description": "本場のブロードウェイで、人気のミュージカルを観劇します。事前にチケットを予約しておくと、スムーズに楽しめます。",
+          "searchQuery": "Broadway",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:30",
+          "activity": "ジャズクラブで夜のひととき",
+          "description": "ニューヨークのジャズクラブで、ライブ演奏を楽しみながら、リラックスした夜を過ごします。地元のアーティストによる素晴らしい演奏に酔いしれてください。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

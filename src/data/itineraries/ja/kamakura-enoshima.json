@@ -1,0 +1,221 @@
+{
+  "id": "4b3c7494-5b4d-4f09-8c4a-2eed595a8810",
+  "destination": "鎌倉・江ノ島",
+  "description": "鎌倉と江ノ島の魅力を存分に味わう2日間の旅。歴史ある神社仏閣を巡り、海の風景を楽しみながら、地元のグルメも堪能する、心温まるひとときをお届けします。友人と共に、忘れられない思い出を作りましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1657464779658-58dfdb6dc996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODExNzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Tunafish",
+  "heroImagePhotographerUrl": "https://unsplash.com/@ultratunafish?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "鎌倉の寺社巡りとグルメ",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "鎌倉",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "江ノ電で海を見ながら鎌倉へ向かいます。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "鶴岡八幡宮",
+          "description": "鎌倉のシンボルとも言える鶴岡八幡宮を訪れます。美しい境内を散策し、歴史を感じながら神社の雰囲気を楽しんでください。",
+          "searchQuery": "Tsurugaoka Hachimangu Shrine",
+          "locationEn": "Kamakura, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "鎌倉の和食ランチ",
+          "description": "地元の食材を使った和食ランチを楽しみます。特に、鎌倉名物のしらす丼は絶品です。",
+          "searchQuery": "Shirasudon Kamakura",
+          "locationEn": "Kamakura, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "鎌倉大仏",
+          "description": "鎌倉大仏を見学します。高さ約13メートルの大仏は圧巻で、周囲の自然と調和した美しい景観を楽しめます。",
+          "searchQuery": "Great Buddha of Kamakura",
+          "locationEn": "Kamakura, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "小町通り散策",
+          "description": "小町通りでショッピングやスイーツを楽しみます。地元の特産品やお土産を探しながら、カフェでひと休みするのもおすすめです。",
+          "searchQuery": "Komachi Street",
+          "locationEn": "Kamakura, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "江ノ島へ移動",
+          "description": "江ノ電に乗って江ノ島へ向かいます。海の景色を楽しみながら、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Enoshima",
+          "locationEn": "Enoshima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "江ノ島の夕日を眺める",
+          "description": "江ノ島の展望台から美しい夕日を眺めます。海に沈む夕日は心に残る素敵な思い出になるでしょう。",
+          "searchQuery": "Enoshima Sunset View",
+          "locationEn": "Enoshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "江ノ島で海鮮ディナー",
+          "description": "新鮮な海の幸を使った海鮮料理を楽しむディナー。特に、江ノ島の海鮮丼は絶品です。",
+          "searchQuery": "Enoshima Seafood Restaurant",
+          "locationEn": "Enoshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "江ノ島の海と絶品グルメ",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "鎌倉",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "江ノ島",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "江ノ電に乗って、海を見ながら江ノ島へ向かいます。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "江ノ島神社",
+          "description": "江ノ島のシンボル、江ノ島神社を訪れます。美しい海を背景にした神社の景観は、心を癒してくれます。境内を散策しながら、神社の歴史を感じてみてください。",
+          "searchQuery": "Enoshima Shrine",
+          "locationEn": "Enoshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "新江ノ島水族館",
+          "description": "新江ノ島水族館で、海の生き物たちの魅力を楽しみましょう。特に、イルカショーやクラゲの展示は必見です。海の生態系について学ぶこともできます。",
+          "searchQuery": "Enoshima Aquarium",
+          "locationEn": "Enoshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "江ノ島でランチ",
+          "description": "江ノ島名物のしらす丼を楽しむランチタイム。新鮮なしらすがたっぷり乗った丼は、海の幸を堪能できる一品です。",
+          "searchQuery": "Shirasudon Enoshima",
+          "locationEn": "Enoshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "江ノ島散策",
+          "description": "江ノ島の美しい海岸線を散策します。潮風を感じながら、海の景色を楽しむのは格別です。途中、展望台に登って絶景を眺めるのもおすすめ。",
+          "searchQuery": "Enoshima",
+          "locationEn": "Enoshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "江ノ島から鎌倉へ移動",
+          "description": "江ノ電に乗って、鎌倉へ戻ります。海を見ながらの移動は、旅の思い出をさらに深めてくれます。",
+          "searchQuery": "Enoden",
+          "locationEn": "Kamakura, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "鎌倉大仏",
+          "description": "鎌倉のシンボル、鎌倉大仏を訪れます。大仏の迫力に圧倒されながら、周囲の公園でのんびりとした時間を過ごしましょう。",
+          "searchQuery": "Great Buddha of Kamakura",
+          "locationEn": "Kamakura, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "鎌倉でディナー",
+          "description": "鎌倉の地元の居酒屋で、海鮮料理を楽しみます。新鮮な魚介類を使った料理は、友人との楽しいひとときを演出してくれます。",
+          "searchQuery": "Kamakura Izakaya",
+          "locationEn": "Kamakura, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

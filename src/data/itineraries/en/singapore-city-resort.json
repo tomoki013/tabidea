@@ -1,0 +1,501 @@
+{
+  "id": "ad1cc6b7-d9fe-43dc-8c50-2b7a9a0be679",
+  "destination": "シンガポール",
+  "description": "Escape to the vibrant city-state of Singapore, where modernity meets tradition in a dazzling display of culture, cuisine, and adventure. This 5-day family trip is designed to immerse you in the best that Singapore has to offer, from iconic landmarks to thrilling theme parks, all while savoring the delightful flavors of local cuisine. Get ready for an unforgettable journey filled with laughter, exploration, and breathtaking views!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Marina Bay Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Coffee Bean & Tea Leaf",
+          "description": "Start your day with a delicious breakfast at The Coffee Bean & Tea Leaf, where you can enjoy a variety of pastries and freshly brewed coffee. It's a great spot to fuel up before a day of exploration!",
+          "searchQuery": "The Coffee Bean & Tea Leaf Marina Bay",
+          "locationEn": "Marina Bay, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit Marina Bay Sands SkyPark",
+          "description": "Head to the iconic Marina Bay Sands SkyPark for breathtaking views of the city skyline. The observation deck offers a panoramic perspective that is perfect for family photos!",
+          "searchQuery": "Marina Bay Sands SkyPark",
+          "locationEn": "Marina Bay, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Satay by the Bay",
+          "description": "Enjoy a casual lunch at Satay by the Bay, where you can savor local delights like satay skewers and other hawker fare in a beautiful garden setting. It's a family-friendly spot with plenty of options for everyone.",
+          "searchQuery": "Satay by the Bay",
+          "locationEn": "Gardens by the Bay, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Gardens by the Bay",
+          "description": "Spend the afternoon wandering through the stunning Gardens by the Bay. Don't miss the Cloud Forest and Flower Dome, where kids can marvel at the diverse plant life and the impressive indoor waterfall.",
+          "searchQuery": "Gardens by the Bay",
+          "locationEn": "Gardens by the Bay, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Merlion Park",
+          "description": "Take a short walk to Merlion Park to see the famous Merlion statue. It's a great spot for family photos with the iconic symbol of Singapore and the Marina Bay Sands in the background.",
+          "searchQuery": "Merlion Park",
+          "locationEn": "Merlion Park, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Jumbo Seafood",
+          "description": "Indulge in a seafood feast at Jumbo Seafood, known for its chili crab and other local specialties. The restaurant offers a family-friendly atmosphere and is a perfect way to end your day.",
+          "searchQuery": "Jumbo Seafood",
+          "locationEn": "Riverside, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll at Marina Bay",
+          "description": "After dinner, take a leisurely stroll along the Marina Bay waterfront. Enjoy the stunning night views of the skyline and the light show at Marina Bay Sands, which is a magical experience for the whole family.",
+          "searchQuery": "Marina Bay Light Show",
+          "locationEn": "Marina Bay, Singapore",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Universal Studios Singapore Fun",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Marina Bay Sands",
+          "description": "Start your day with a lavish breakfast at the Marina Bay Sands. Enjoy a variety of international and local dishes while taking in stunning views of the city skyline.",
+          "searchQuery": "Marina Bay Sands",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Merlion Park",
+          "description": "Head to Merlion Park to see the iconic Merlion statue. This half-lion, half-fish creature is a symbol of Singapore and offers a great photo opportunity with the Marina Bay Sands in the background.",
+          "searchQuery": "Merlion Park",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Travel to Sentosa Island",
+          "description": "Take a short ride to Sentosa Island, where the fun begins! You can either take the cable car for a scenic view or the Sentosa Express monorail.",
+          "searchQuery": "Sentosa Island",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Universal Studios Singapore",
+          "description": "Spend the day at Universal Studios Singapore, where you can enjoy thrilling rides and attractions suitable for the whole family. Don't miss the Transformers ride and the Jurassic Park water adventure!",
+          "searchQuery": "Universal Studios Singapore",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Mel's Drive-In",
+          "description": "Take a break for lunch at Mel's Drive-In, a classic American diner inside Universal Studios. Enjoy burgers, fries, and milkshakes in a fun retro setting.",
+          "searchQuery": "Mel's Drive-In",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Continue exploring Universal Studios",
+          "description": "After lunch, dive back into the excitement of Universal Studios. Check out the shows and character meet-and-greets for a memorable experience with your kids!",
+          "searchQuery": "Universal Studios Singapore",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Malaysian Food Street",
+          "description": "After a fun-filled day, head to The Malaysian Food Street for dinner. Enjoy a variety of Malaysian dishes in a vibrant atmosphere, perfect for families.",
+          "searchQuery": "The Malaysian Food Street",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Wings of Time Show",
+          "description": "End your day with the spectacular 'Wings of Time' show, a mesmerizing night show featuring water, laser, and fire effects set against the backdrop of the sea.",
+          "searchQuery": "Wings of Time",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Return to Hotel",
+          "description": "After an exciting day, return to your hotel on Sentosa Island to relax and recharge for another day of adventure.",
+          "searchQuery": "Sentosa Island",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Wildlife Adventures at the Zoo",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Sentosa Island",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Singapore Zoo",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "A short taxi ride to kick off the day with wildlife adventures."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Singapore Zoo",
+          "description": "Start your day at the renowned Singapore Zoo, famous for its open concept and immersive animal exhibits. Don't miss the chance to see the adorable orangutans and the majestic white tigers!",
+          "searchQuery": "Singapore Zoo",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Ah Meng Restaurant",
+          "description": "Enjoy a delightful lunch at Ah Meng Restaurant, located within the zoo. Savor local dishes like Hainanese chicken rice and refreshing fruit juices, perfect for recharging after your animal adventures.",
+          "searchQuery": "Ah Meng Restaurant",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore the Rainforest Kidzworld",
+          "description": "Let the kids have a blast at Rainforest Kidzworld, where they can enjoy water play, animal encounters, and fun rides. It's a perfect spot for family bonding and laughter!",
+          "searchQuery": "Rainforest Kidzworld",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Travel to Night Safari",
+          "description": "After a fun-filled day at the zoo, take a short taxi ride to the Night Safari, the world's first nocturnal zoo. Prepare for an exciting evening of wildlife spotting in a unique night setting!",
+          "searchQuery": "Night Safari",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Night Safari",
+          "description": "Experience the magic of the Night Safari, where you can see animals like leopards and elephants in their natural nighttime habitats. Don't forget to take the tram ride for a guided tour!",
+          "searchQuery": "Night Safari",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at Ulu Ulu Safari Restaurant",
+          "description": "End your day with a delicious dinner at Ulu Ulu Safari Restaurant, where you can enjoy a buffet of local and international dishes while surrounded by the sounds of the jungle.",
+          "searchQuery": "Ulu Ulu Safari Restaurant",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Botanical Gardens and Local Flavors",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Orchard Road",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Singapore Botanic Gardens",
+          "time": "09:15"
+        },
+        "duration": "15m",
+        "memo": "A short taxi ride to start the day."
+      },
+      "activities": [
+        {
+          "time": "09:15",
+          "activity": "Singapore Botanic Gardens",
+          "description": "Explore the lush greenery and diverse plant species at the UNESCO World Heritage-listed Singapore Botanic Gardens. Don't miss the stunning National Orchid Garden, home to thousands of orchid species, perfect for a family stroll.",
+          "searchQuery": "Singapore Botanic Gardens",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Lunch at The Halia",
+          "description": "Enjoy a delightful lunch at The Halia, located within the Botanic Gardens. The restaurant offers a kid-friendly menu and a beautiful view of the gardens, making it a perfect spot to relax after your morning exploration.",
+          "searchQuery": "The Halia",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Orchard Road Shopping",
+          "description": "Head to Orchard Road, Singapore's famous shopping street. Explore the various malls and boutiques, where you can find everything from luxury brands to local souvenirs. It's a great place for the kids to enjoy some shopping too!",
+          "searchQuery": "Orchard Road",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit to Singapore Zoo",
+          "description": "Take a taxi to the Singapore Zoo, renowned for its open concept and naturalistic habitats. Kids will love the interactive exhibits and the chance to see animals up close, including the famous orangutans!",
+          "searchQuery": "Singapore Zoo",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Wildseed Cafe",
+          "description": "After a fun day at the zoo, enjoy dinner at The Wildseed Cafe, known for its family-friendly atmosphere and delicious menu featuring local and international dishes. The outdoor seating is perfect for a relaxed evening.",
+          "searchQuery": "The Wildseed Cafe",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Marina Bay Sands SkyPark",
+          "description": "End your day with a visit to the Marina Bay Sands SkyPark. The panoramic views of the city skyline and the iconic Marina Bay Sands light show are breathtaking, making it a memorable experience for the whole family.",
+          "searchQuery": "Marina Bay Sands SkyPark",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Cultural Insights and Departure",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Orchard Road",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Chinatown",
+          "time": "null"
+        },
+        "duration": "15m",
+        "memo": "A short taxi ride to Chinatown."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Wild Honey",
+          "description": "Start your day with a delightful breakfast at Wild Honey, known for its diverse menu featuring breakfast dishes from around the world. The cozy atmosphere is perfect for families, and the pancakes are a must-try!",
+          "searchQuery": "Wild Honey",
+          "locationEn": "Orchard Road, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Chinatown",
+          "description": "Stroll through the vibrant streets of Chinatown, where you can visit the Buddha Tooth Relic Temple and shop for souvenirs at the bustling Chinatown Street Market. Don't forget to try some local snacks from the street vendors!",
+          "searchQuery": "Chinatown Singapore",
+          "locationEn": "Chinatown, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Chinatown Food Street",
+          "description": "Enjoy a variety of local dishes at Chinatown Food Street, where you can sample favorites like Hainanese chicken rice and char kway teow. It's a great way to experience Singapore's culinary diversity in a lively setting.",
+          "searchQuery": "Chinatown Food Street",
+          "locationEn": "Chinatown, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Singapore Botanic Gardens",
+          "description": "Head to the UNESCO World Heritage-listed Singapore Botanic Gardens. Explore the lush greenery and let the kids enjoy the Jacob Ballas Children's Garden, a fun and educational space designed for children.",
+          "searchQuery": "Singapore Botanic Gardens",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Return to Orchard Road",
+          "description": "Take a leisurely stroll back to Orchard Road, enjoying the sights and sounds of the city. You can stop for some last-minute shopping or simply relax at a café.",
+          "searchQuery": "Orchard Road",
+          "locationEn": "Orchard Road, Singapore",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Din Tai Fung",
+          "description": "Savor a delicious dinner at Din Tai Fung, famous for its xiao long bao (soup dumplings). The restaurant is family-friendly and offers a variety of dishes that everyone will enjoy.",
+          "searchQuery": "Din Tai Fung Orchard",
+          "locationEn": "Orchard Road, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Marina Bay Sands SkyPark",
+          "description": "End your day with a breathtaking view of the city skyline from the Marina Bay Sands SkyPark. The evening lights create a magical atmosphere, perfect for family photos and memories.",
+          "searchQuery": "Marina Bay Sands SkyPark",
+          "locationEn": "Marina Bay, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

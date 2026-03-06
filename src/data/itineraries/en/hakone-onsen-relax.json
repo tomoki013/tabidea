@@ -1,0 +1,178 @@
+{
+  "id": "ca8961e3-5f6d-42ff-a167-bf204a11423c",
+  "destination": "箱根",
+  "description": "Escape to the serene beauty of Hakone, where the soothing sounds of nature and the warmth of hot springs create the perfect backdrop for a romantic getaway. Nestled in the mountains, this enchanting destination offers breathtaking views of Mount Fuji, lush landscapes, and luxurious ryokans with private open-air baths. Immerse yourselves in the tranquility of the region as you explore its stunning natural beauty and indulge in rejuvenating onsen experiences. This 2-day itinerary is designed for couples seeking relaxation and a deeper connection with each other amidst the serene ambiance of Hakone.",
+  "heroImage": "https://images.unsplash.com/photo-1676269743448-08629413a17f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODA3MzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Kazuo ota",
+  "heroImagePhotographerUrl": "https://unsplash.com/@kazuo513?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Relaxation in Hakone",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Check-in at a Ryokan with Private Open-Air Bath",
+          "description": "Arrive at your luxurious ryokan, where you can unwind in a room featuring a private open-air bath. Enjoy the serene atmosphere and stunning views of the surrounding nature as you settle in and prepare for a relaxing stay.",
+          "searchQuery": "Hakone Ginyu",
+          "locationEn": "Hakone, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Lunch at a Local Kaiseki Restaurant",
+          "description": "Savor a traditional kaiseki lunch made with seasonal ingredients at a nearby restaurant. This multi-course meal is a delightful introduction to the flavors of Hakone, showcasing the region's culinary artistry.",
+          "searchQuery": "Kaiseki Restaurant Hakone",
+          "locationEn": "Hakone, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit Hakone Open-Air Museum",
+          "description": "Explore the Hakone Open-Air Museum, where art and nature beautifully intertwine. Stroll through the outdoor galleries featuring sculptures by renowned artists, and don't miss the Picasso Pavilion for a unique artistic experience.",
+          "searchQuery": "Hakone Open-Air Museum",
+          "locationEn": "Hakone, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Gora Park",
+          "description": "Take a leisurely walk in Gora Park, a picturesque landscape garden with seasonal flowers and a charming pond. It's the perfect spot to unwind and enjoy the tranquility of nature before dinner.",
+          "searchQuery": "Gora Park",
+          "locationEn": "Hakone, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at the Ryokan",
+          "description": "Indulge in a sumptuous dinner at your ryokan, featuring a selection of local delicacies and fresh ingredients. Enjoy the intimate dining experience while soaking in the peaceful ambiance of the ryokan.",
+          "searchQuery": "Hakone Ginyu",
+          "locationEn": "Hakone, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Soak in the Private Open-Air Bath",
+          "description": "End your day by soaking in your private open-air bath, surrounded by the sounds of nature. This is the perfect way to relax and rejuvenate after a day of exploration in Hakone.",
+          "searchQuery": "Hakone Ginyu",
+          "locationEn": "Hakone, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Nature and Onsen Experience",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Ryokan",
+          "description": "Start your day with a traditional Japanese breakfast at your ryokan, featuring seasonal ingredients and local specialties. It's a delightful way to fuel up for a day of relaxation and exploration.",
+          "locationEn": "Hakone, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Lake Ashi Sightseeing Cruise",
+          "description": "Take a scenic boat cruise on Lake Ashi, surrounded by stunning views of Mount Fuji. The tranquil waters and fresh mountain air create a perfect atmosphere for a romantic morning.",
+          "searchQuery": "Lake Ashi",
+          "locationEn": "Hakone, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Lakeside Restaurant",
+          "description": "Enjoy a leisurely lunch at a lakeside restaurant, where you can savor local dishes while taking in the beautiful views of the lake and mountains.",
+          "locationEn": "Hakone, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Owakudani Valley Exploration",
+          "description": "Visit Owakudani, a volcanic valley with active sulfur vents and hot springs. Take a walk along the trails and enjoy the unique landscape, and don't forget to try the famous black eggs boiled in the hot springs!",
+          "searchQuery": "Owakudani",
+          "locationEn": "Hakone, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Relax at an Onsen",
+          "description": "Return to your ryokan and unwind in the onsen. Enjoy the soothing hot springs, especially the outdoor baths that offer a serene view of the surrounding nature. It's the perfect way to relax and rejuvenate.",
+          "locationEn": "Hakone, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Kaiseki Dinner at Ryokan",
+          "description": "Indulge in a kaiseki dinner at your ryokan, a multi-course meal that showcases the best of seasonal ingredients. Each dish is beautifully presented, making for a memorable dining experience.",
+          "locationEn": "Hakone, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll in the Ryokan Garden",
+          "description": "Take a romantic evening stroll in the ryokan's garden. The peaceful ambiance and the sound of nature create a perfect setting for a quiet moment together under the stars.",
+          "locationEn": "Hakone, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

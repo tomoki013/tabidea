@@ -30,6 +30,7 @@ import { routing } from "@/i18n/routing";
 
 const PASSTHROUGH_PATHS = ['/api', '/auth/callback', '/auth/logout', '/_next', '/favicon.ico'];
 const PUBLIC_FILE_REGEX = /\.(?:svg|png|jpg|jpeg|gif|webp|ico|txt|xml|json)$/i;
+const I18N_COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 const handleI18nRouting = createMiddleware(routing);
 
 function shouldBypassI18n(pathname: string): boolean {
@@ -99,17 +100,17 @@ export async function proxy(request: NextRequest) {
   const { response: responseWithSession, preferences } =
     await resolveUserI18nPreferences(request, {
       existingResponse: i18nResponse,
+      requestedLanguage: languageFromPath,
       detectedLanguage,
-      detectedRegion,
     });
 
-  const preferredLanguage = preferences.language ?? detectedLanguage;
+  const persistedUiLanguage = preferences.uiLanguage ?? detectedLanguage;
   const resolvedLanguage = resolveRoutingLanguageForProxy({
     languageFromPath,
-    preferredLanguage,
+    persistedLanguage: persistedUiLanguage,
     detectedLanguage,
   });
-  const resolvedRegion = preferences.region ?? detectedRegion;
+  const resolvedRegion = detectedRegion;
   const localizedPath = localizePath(pathname, resolvedLanguage);
 
   const response =
@@ -120,10 +121,12 @@ export async function proxy(request: NextRequest) {
   response.cookies.set(LANGUAGE_COOKIE, resolvedLanguage, {
     path: '/',
     sameSite: 'lax',
+    maxAge: I18N_COOKIE_MAX_AGE,
   });
   response.cookies.set(REGION_COOKIE, resolvedRegion, {
     path: '/',
     sameSite: 'lax',
+    maxAge: I18N_COOKIE_MAX_AGE,
   });
   response.headers.set(LANGUAGE_HEADER, resolvedLanguage);
   response.headers.set(REGION_HEADER, resolvedRegion);

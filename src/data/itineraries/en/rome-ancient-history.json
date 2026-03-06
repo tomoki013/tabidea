@@ -1,0 +1,644 @@
+{
+  "id": "c304fde3-3ffd-4951-a99a-6feba66b05a3",
+  "destination": "Rome",
+  "description": "Immerse yourself in the timeless beauty and rich history of Rome, where every corner tells a story and every meal is a celebration of Italian culture. Over the course of seven days, you and your partner will wander through ancient ruins, indulge in authentic Roman cuisine, and experience the vibrant atmosphere of this iconic city. From the majestic Colosseum to the serene Vatican Gardens, this journey will be a perfect blend of exploration and relaxation, making it an unforgettable getaway for couples.",
+  "heroImage": "https://images.unsplash.com/photo-1677016019546-ae2e97798ca1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODE0OTV8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Mia Mackenzie",
+  "heroImagePhotographerUrl": "https://unsplash.com/@mia_mackenzie?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Rome and Evening Stroll",
+      "activities": [
+        {
+          "time": "15:00",
+          "activity": "Arrival at Fiumicino Airport",
+          "description": "Welcome to Rome! After landing at Fiumicino Airport, take a moment to soak in the excitement of your Italian adventure. Make your way to the city center, which is about a 30-minute drive away.",
+          "locationEn": "Rome, Italy",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Check-in at Hotel",
+          "description": "Settle into your hotel in the heart of Rome. A cozy spot like Hotel Artemide offers a perfect blend of comfort and convenience, making it an ideal base for your explorations.",
+          "searchQuery": "Hotel Artemide",
+          "locationEn": "Rome, Italy",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Evening Stroll in Trastevere",
+          "description": "Head to the charming neighborhood of Trastevere. Wander through its narrow cobblestone streets, admire the vibrant buildings, and soak in the lively atmosphere as the sun sets.",
+          "locationEn": "Trastevere, Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Da Enzo al 29",
+          "description": "Indulge in authentic Roman cuisine at Da Enzo al 29, a beloved trattoria known for its delicious pasta dishes like Cacio e Pepe and Carbonara. Be sure to arrive early as it can get busy!",
+          "searchQuery": "Da Enzo al 29",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Gelato at Gelateria dei Gracchi",
+          "description": "End your evening with a delightful gelato from Gelateria dei Gracchi. Their rich flavors and creamy texture are the perfect treat after a day of travel and exploration.",
+          "searchQuery": "Gelateria dei Gracchi",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Ancient Rome",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Pasticceria Regoli",
+          "description": "Start your day with a delicious Italian breakfast at Pasticceria Regoli, famous for its pastries and coffee. Try their maritozzo, a sweet bun filled with whipped cream, for a true Roman treat.",
+          "searchQuery": "Pasticceria Regoli",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Colosseum",
+          "description": "Explore the iconic Colosseum, the largest ancient amphitheater ever built. Imagine the gladiatorial battles that took place here as you walk through its grand arches and learn about its history.",
+          "searchQuery": "Colosseum",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Roman Forum Tour",
+          "description": "Stroll through the Roman Forum, the heart of ancient Rome, where you can see the ruins of important government buildings and temples. It's a fascinating glimpse into the daily life of ancient Romans.",
+          "searchQuery": "Roman Forum",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Trattoria Da Enzo al 29",
+          "description": "Enjoy a hearty lunch at Trattoria Da Enzo al 29, a local favorite known for its authentic Roman dishes. Don't miss their cacio e pepe, a simple yet flavorful pasta dish.",
+          "searchQuery": "Trattoria Da Enzo al 29",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Palatine Hill",
+          "description": "After lunch, head to Palatine Hill, one of the seven hills of Rome. It's a beautiful area filled with ancient ruins and offers stunning views of the city and the Forum below.",
+          "searchQuery": "Palatine Hill",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Gelato at Giolitti",
+          "description": "Cool off with a gelato from Giolitti, one of the oldest gelaterias in Rome. With a wide variety of flavors, it's the perfect way to refresh after a day of exploring.",
+          "searchQuery": "Giolitti",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Evening Walk in Trastevere",
+          "description": "Take a leisurely evening stroll through the charming streets of Trastevere. This neighborhood is known for its vibrant atmosphere, beautiful piazzas, and local shops.",
+          "searchQuery": "Trastevere",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Dinner at Osteria der Boccione",
+          "description": "End your day with a delightful dinner at Osteria der Boccione, where you can savor traditional Roman dishes in a cozy setting. Be sure to try their artichokes and homemade pasta.",
+          "searchQuery": "Osteria der Boccione",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Vatican City Wonders",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Pasticceria Regoli",
+          "description": "Start your day with a delightful Italian breakfast at Pasticceria Regoli, famous for its delicious pastries and coffee. Try the maritozzo, a sweet bun filled with whipped cream, for a true Roman treat.",
+          "searchQuery": "Pasticceria Regoli",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "St. Peter's Basilica",
+          "description": "Visit the iconic St. Peter's Basilica, one of the largest churches in the world. Marvel at Michelangelo's dome and the stunning interior, including the famous Pietà. Don't forget to climb to the dome for breathtaking views of the Vatican City.",
+          "searchQuery": "St. Peter's Basilica",
+          "locationEn": "Vatican City, Vatican",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Vatican Museums",
+          "description": "Explore the Vatican Museums, home to an extensive collection of art and historical artifacts. Be sure to see the Raphael Rooms and the Gallery of Maps before heading to the Sistine Chapel.",
+          "searchQuery": "Vatican Museums",
+          "locationEn": "Vatican City, Vatican",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Trattoria Da Enzo al 29",
+          "description": "Enjoy a traditional Roman lunch at Trattoria Da Enzo al 29, known for its authentic Roman dishes like cacio e pepe and amatriciana. The cozy atmosphere and friendly service make it a favorite among locals.",
+          "searchQuery": "Trattoria Da Enzo al 29",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Sistine Chapel",
+          "description": "Visit the Sistine Chapel, renowned for Michelangelo's stunning frescoes, including 'The Last Judgment' and the iconic ceiling. Take your time to appreciate the artistry and history of this remarkable space.",
+          "searchQuery": "Sistine Chapel",
+          "locationEn": "Vatican City, Vatican",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll through Vatican Gardens",
+          "description": "Take a leisurely stroll through the Vatican Gardens, a peaceful oasis filled with beautiful landscaping and historical monuments. This is a perfect way to unwind after a day of sightseeing.",
+          "searchQuery": "Vatican Gardens",
+          "locationEn": "Vatican City, Vatican",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Ristorante Pizzeria Il Pomodorino",
+          "description": "End your day with a delicious dinner at Ristorante Pizzeria Il Pomodorino, where you can savor authentic Roman pizza and pasta dishes. The casual atmosphere and friendly staff make it a great spot to relax after a busy day.",
+          "searchQuery": "Ristorante Pizzeria Il Pomodorino",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Art and Culture in the Heart of Rome",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Pasticceria Regoli",
+          "description": "Start your day with a delicious Italian breakfast at Pasticceria Regoli, famous for its delectable pastries and rich coffee. Try their maritozzo, a sweet bun filled with whipped cream, for a true Roman treat.",
+          "searchQuery": "Pasticceria Regoli",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Piazza Navona",
+          "description": "Stroll through the stunning Piazza Navona, known for its beautiful fountains and vibrant atmosphere. Take in the Baroque architecture and perhaps enjoy a gelato from one of the nearby vendors.",
+          "searchQuery": "Piazza Navona",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore the Pantheon",
+          "description": "Visit the Pantheon, one of the best-preserved ancient buildings in Rome. Marvel at its impressive dome and oculus, and learn about its fascinating history as a temple dedicated to the gods.",
+          "searchQuery": "Pantheon",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Osteria da Fortunata",
+          "description": "Enjoy a hearty lunch at Osteria da Fortunata, known for its homemade pasta. Try the cacio e pepe, a classic Roman dish that is simple yet incredibly flavorful.",
+          "searchQuery": "Osteria da Fortunata",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Wander through Campo de' Fiori",
+          "description": "After lunch, take a leisurely walk to Campo de' Fiori, a lively market square. Browse the stalls filled with fresh produce, flowers, and local delicacies, and soak in the vibrant atmosphere.",
+          "searchQuery": "Campo de' Fiori",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Church of Santa Maria in Trastevere",
+          "description": "Cross the Tiber River to Trastevere and visit the beautiful Church of Santa Maria in Trastevere. Admire its stunning mosaics and enjoy the peaceful ambiance of this charming neighborhood.",
+          "searchQuery": "Santa Maria in Trastevere",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Trattoria Da Enzo al 29",
+          "description": "End your day with a delightful dinner at Trattoria Da Enzo al 29, a beloved local spot. Savor traditional Roman dishes like amatriciana and finish with a classic tiramisu.",
+          "searchQuery": "Trattoria Da Enzo al 29",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll along the Tiber River",
+          "description": "Take a romantic evening stroll along the Tiber River. Enjoy the beautiful views of the city illuminated at night, and perhaps stop for a drink at one of the riverside bars.",
+          "searchQuery": "Tiber River",
+          "locationEn": "Rome, Italy",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Day Trip to Tivoli",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Rome",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Tivoli",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the train from Roma Tiburtina to Tivoli for a scenic ride."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Villa d'Este",
+          "description": "Explore the stunning Villa d'Este, a UNESCO World Heritage site famous for its magnificent gardens and fountains. Don't miss the impressive water features that create a magical atmosphere.",
+          "searchQuery": "Villa d'Este",
+          "locationEn": "Tivoli, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Ristorante Sibilla",
+          "description": "Enjoy a delightful lunch at Ristorante Sibilla, which offers traditional Italian dishes with a view of the ancient ruins of Hadrian's Villa. The pasta here is a must-try!",
+          "searchQuery": "Ristorante Sibilla",
+          "locationEn": "Tivoli, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Hadrian's Villa",
+          "description": "Visit Hadrian's Villa, another UNESCO World Heritage site, where you can wander through the vast ruins of Emperor Hadrian's retreat. The architecture and history are truly captivating.",
+          "searchQuery": "Hadrian's Villa",
+          "locationEn": "Tivoli, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Gelato at Gelateria D'Angelo",
+          "description": "Treat yourself to some authentic Italian gelato at Gelateria D'Angelo before heading back to Rome. Their pistachio flavor is particularly popular!",
+          "searchQuery": "Gelateria D'Angelo",
+          "locationEn": "Tivoli, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Return to Rome",
+          "description": "Take the train back to Rome, reflecting on a day filled with beautiful sights and delicious food.",
+          "locationEn": "Rome, Italy",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Culinary Delights and Local Markets",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Pasticceria Regoli",
+          "description": "Start your day with a delightful Italian breakfast at Pasticceria Regoli, famous for its delicious pastries and coffee. Try their maritozzo, a sweet bun filled with whipped cream, for a true Roman treat!",
+          "searchQuery": "Pasticceria Regoli",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Testaccio Market",
+          "description": "Explore the vibrant Testaccio Market, where you can find fresh produce, local delicacies, and artisanal products. It's a great place to sample authentic Roman street food and soak in the local atmosphere.",
+          "searchQuery": "Testaccio Market",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Da Felice a Testaccio",
+          "description": "Enjoy a hearty lunch at Da Felice a Testaccio, a beloved local trattoria known for its classic Roman dishes like cacio e pepe and amatriciana. The cozy atmosphere and friendly service make it a must-visit.",
+          "searchQuery": "Da Felice a Testaccio",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through Trastevere",
+          "description": "After lunch, take a leisurely stroll through the charming streets of Trastevere. This picturesque neighborhood is filled with colorful buildings, quaint shops, and lively piazzas, perfect for a romantic afternoon.",
+          "searchQuery": "Trastevere",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Santa Maria in Trastevere",
+          "description": "Stop by the stunning Basilica of Santa Maria in Trastevere, one of the oldest churches in Rome. Admire its beautiful mosaics and tranquil atmosphere, a perfect spot for a moment of reflection.",
+          "searchQuery": "Santa Maria in Trastevere",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Trattoria Da Enzo al 29",
+          "description": "Indulge in a delicious dinner at Trattoria Da Enzo al 29, renowned for its authentic Roman cuisine. Be sure to try their signature dishes and enjoy the lively ambiance of this popular eatery.",
+          "searchQuery": "Trattoria Da Enzo al 29",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Tiber River",
+          "description": "End your day with a romantic walk along the Tiber River. The views of the illuminated city and the gentle sound of the water create a magical atmosphere, perfect for couples.",
+          "searchQuery": "Tiber River",
+          "locationEn": "Rome, Italy",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure from Rome",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Rome",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Fiumicino Airport",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Check-in for your flight at Fiumicino Airport."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Pasticceria Regoli",
+          "description": "Start your day with a delightful breakfast at Pasticceria Regoli, famous for its traditional Italian pastries and coffee. Don't miss their maritozzo, a sweet bun filled with whipped cream!",
+          "searchQuery": "Pasticceria Regoli",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Colosseum",
+          "description": "Explore the iconic Colosseum, a symbol of ancient Rome. Take a guided tour to learn about its fascinating history and imagine the gladiatorial battles that once took place here.",
+          "searchQuery": "Colosseum",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Trattoria Da Enzo al 29",
+          "description": "Enjoy a hearty Roman lunch at Trattoria Da Enzo al 29, known for its authentic Roman dishes like cacio e pepe and amatriciana. The cozy atmosphere adds to the experience!",
+          "searchQuery": "Trattoria Da Enzo al 29",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Stroll through the Roman Forum",
+          "description": "After lunch, take a leisurely stroll through the Roman Forum, the heart of ancient Rome. Marvel at the ruins and imagine the bustling life that once filled this area.",
+          "searchQuery": "Roman Forum",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the Pantheon",
+          "description": "Head to the Pantheon, one of the best-preserved ancient buildings in Rome. Its magnificent dome and oculus are truly awe-inspiring. Take a moment to appreciate its architectural brilliance.",
+          "searchQuery": "Pantheon",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Gelato at Giolitti",
+          "description": "No visit to Rome is complete without gelato! Stop by Giolitti, one of the oldest gelaterias in the city, and indulge in a scoop (or two) of their delicious flavors.",
+          "searchQuery": "Giolitti",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Head to Fiumicino Airport",
+          "description": "Make your way to Fiumicino Airport for your departure. Ensure you arrive with enough time to check in and relax before your flight.",
+          "searchQuery": "Fiumicino Airport",
+          "locationEn": "Rome, Italy",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

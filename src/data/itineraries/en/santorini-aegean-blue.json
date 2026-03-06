@@ -1,0 +1,580 @@
+{
+  "id": "239f654b-0c4f-4614-9947-bc16a1740972",
+  "destination": "サントリーニ島",
+  "description": "Escape to the enchanting island of Santorini, where the iconic whitewashed buildings cascade down the cliffs, overlooking the azure Aegean Sea. This 7-day romantic getaway is designed for couples seeking breathtaking views, luxurious relaxation, and unforgettable sunsets. Immerse yourselves in the island's unique charm, savor exquisite local cuisine, and capture stunning photographs of the dramatic landscapes that make Santorini a dream destination.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Santorini",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Check-in at your hotel",
+          "description": "Settle into your luxurious hotel in Fira, where you can enjoy stunning views of the caldera right from your balcony. Take a moment to relax and soak in the beautiful surroundings before heading out to explore.",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Lunch at Naoussa Restaurant",
+          "description": "Indulge in a delightful lunch at Naoussa, known for its fresh seafood and traditional Greek dishes. The terrace offers breathtaking views of the caldera, making it the perfect spot to start your Santorini adventure.",
+          "searchQuery": "Naoussa Restaurant",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Fira",
+          "description": "Stroll through the charming streets of Fira, where you can admire the iconic whitewashed buildings and vibrant bougainvillea. Don't forget to stop by local shops for unique souvenirs and enjoy the stunning views of the Aegean Sea.",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit the Caldera Viewpoint",
+          "description": "Head to one of the famous caldera viewpoints for a breathtaking panorama of the sea and surrounding islands. This is a perfect spot for capturing those iconic Santorini photos with the blue domes in the background.",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Ambrosia Restaurant",
+          "description": "Enjoy a romantic dinner at Ambrosia, renowned for its exquisite Mediterranean cuisine. As the sun sets, savor your meal while witnessing one of the most beautiful sunsets in the world, painting the sky in hues of orange and pink.",
+          "searchQuery": "Ambrosia Restaurant",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Oia",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Fira",
+          "description": "Start your day with a delightful breakfast at a local café in Fira, enjoying fresh pastries and Greek yogurt with honey. The view of the caldera from the terrace is a perfect way to begin your day.",
+          "searchQuery": "Fira Cafe",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Oia Village",
+          "description": "Take a leisurely stroll through the charming streets of Oia, famous for its whitewashed buildings and stunning blue domes. Don’t forget your camera, as every corner offers a picturesque view!",
+          "searchQuery": "Oia",
+          "locationEn": "Oia, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Ammoudi Bay",
+          "description": "Head down to Ammoudi Bay for a seafood lunch at one of the waterfront tavernas. Enjoy fresh grilled fish while taking in the breathtaking views of the sea and cliffs.",
+          "searchQuery": "Ammoudi Bay Tavernas",
+          "locationEn": "Ammoudi Bay, Oia, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Maritime Museum",
+          "description": "Visit the Oia Maritime Museum to learn about the island's rich maritime history. The museum is housed in a beautiful traditional building and offers fascinating exhibits.",
+          "searchQuery": "Oia Maritime Museum",
+          "locationEn": "Oia, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at a Café with a View",
+          "description": "Find a cozy café with a terrace overlooking the caldera. Sip on a refreshing drink and enjoy the serene atmosphere as you prepare for the evening.",
+          "searchQuery": "Café with Caldera View",
+          "locationEn": "Oia, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner with Sunset Views",
+          "description": "Enjoy a romantic dinner at a restaurant in Oia known for its sunset views. Savor delicious Mediterranean dishes while watching the sun dip below the horizon, painting the sky in vibrant colors.",
+          "searchQuery": "Oia Sunset Restaurant",
+          "locationEn": "Oia, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll in Oia",
+          "description": "After dinner, take a leisurely stroll through Oia as the village lights up. The ambiance is magical, and it’s a perfect way to end your day in this beautiful setting.",
+          "searchQuery": "Oia Night Walk",
+          "locationEn": "Oia, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Beach Day at Perissa",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Fira",
+          "description": "Start your day with a delightful breakfast at a local café in Fira, enjoying fresh pastries and Greek yogurt with honey. The view of the caldera from the terrace is a perfect way to begin your beach day.",
+          "searchQuery": "Fira Cafe",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Travel to Perissa Beach",
+          "description": "Take a leisurely drive or a local bus to Perissa Beach, known for its stunning black sand and crystal-clear waters. The journey offers beautiful views of the island's landscape.",
+          "searchQuery": "Perissa Beach",
+          "locationEn": "Perissa, Santorini, Greece",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Relax at Perissa Beach",
+          "description": "Spend your morning lounging on the unique black sands of Perissa Beach. You can rent a sunbed and umbrella, or simply enjoy the sun and surf. The beach is perfect for swimming and soaking up the sun.",
+          "searchQuery": "Perissa Beach",
+          "locationEn": "Perissa, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at a Beachside Taverna",
+          "description": "Savor a delicious lunch at a beachside taverna, where you can try local specialties like grilled octopus and fresh seafood, all while enjoying the sea breeze and stunning views.",
+          "searchQuery": "Perissa Beach Taverna",
+          "locationEn": "Perissa, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore the Black Sand Beach",
+          "description": "Take a stroll along the beach, exploring the unique black sand and perhaps stopping for a refreshing drink at one of the beach bars. Capture beautiful photos of the contrasting colors of the sea and sand.",
+          "searchQuery": "Perissa Beach",
+          "locationEn": "Perissa, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Sunset Dinner at a Cliffside Restaurant",
+          "description": "Head back to Fira for a romantic dinner at a cliffside restaurant. Enjoy a meal with breathtaking views of the sunset over the caldera, making for an unforgettable dining experience.",
+          "searchQuery": "Fira Cliffside Restaurant",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll in Fira",
+          "description": "After dinner, take a leisurely stroll through the charming streets of Fira. The illuminated buildings and the sound of the waves create a magical atmosphere perfect for couples.",
+          "searchQuery": "Fira",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Wine Tasting and Akrotiri Ruins",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Avocado",
+          "description": "Start your day with a delicious breakfast at Avocado, known for its fresh ingredients and healthy options. Enjoy a variety of dishes, from smoothie bowls to traditional Greek breakfast items, all while soaking in the beautiful views of Fira.",
+          "searchQuery": "Avocado Restaurant",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Akrotiri Archaeological Site",
+          "description": "Explore the ancient ruins of Akrotiri, a Minoan Bronze Age settlement preserved in volcanic ash. This site offers a fascinating glimpse into the past, with well-preserved frescoes and structures that showcase the advanced civilization that once thrived here.",
+          "searchQuery": "Akrotiri Archaeological Site",
+          "locationEn": "Akrotiri, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Good Heart",
+          "description": "Enjoy a leisurely lunch at The Good Heart, a charming restaurant that serves traditional Greek dishes made from locally sourced ingredients. The warm atmosphere and friendly service make it a perfect spot to relax after your morning of exploration.",
+          "searchQuery": "The Good Heart",
+          "locationEn": "Akrotiri, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Wine Tasting at Santo Wines",
+          "description": "Indulge in a wine tasting experience at Santo Wines, where you can sample a variety of local wines while enjoying breathtaking views of the caldera. Learn about the unique winemaking process in Santorini and discover your new favorite wine.",
+          "searchQuery": "Santo Wines",
+          "locationEn": "Pyrgos, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Red Beach",
+          "description": "After your wine tasting, head to the stunning Red Beach for some relaxation. The unique red cliffs and crystal-clear waters create a picturesque setting, perfect for unwinding and taking in the natural beauty of Santorini.",
+          "searchQuery": "Red Beach",
+          "locationEn": "Akrotiri, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner with Sunset View at Ambrosia Restaurant",
+          "description": "End your day with a romantic dinner at Ambrosia, where you can enjoy exquisite Mediterranean cuisine while watching the sunset over the caldera. The ambiance is perfect for couples looking to create unforgettable memories together.",
+          "searchQuery": "Ambrosia Restaurant",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Sailing Adventure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Avocado",
+          "description": "Start your day with a delicious breakfast at Avocado, known for its fresh ingredients and healthy options. Enjoy a smoothie bowl or a classic omelet while soaking in the views of the caldera.",
+          "searchQuery": "Avocado",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Sailing Tour to Volcano and Hot Springs",
+          "description": "Embark on a sailing adventure to the volcanic islands of Nea Kameni and Palea Kameni. Explore the rugged landscape, hike to the crater, and take a dip in the warm, mineral-rich waters of the hot springs.",
+          "searchQuery": "Santorini Volcano Tour",
+          "locationEn": "Santorini, Greece",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch on Board",
+          "description": "Enjoy a light lunch on board the sailing boat, featuring local delicacies and fresh seafood. Relish the flavors while surrounded by stunning views of the Aegean Sea.",
+          "searchQuery": "Santorini Sailing Lunch",
+          "locationEn": "Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Return to Fira",
+          "description": "After a day of exploration, sail back to Fira, taking in the breathtaking views of the sunset over the caldera as you approach the island.",
+          "searchQuery": "Fira",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Your Hotel",
+          "description": "Take some time to unwind at your hotel. Enjoy the amenities, perhaps a dip in the pool, or simply relax on your balcony with a view of the sea.",
+          "searchQuery": "Fira Hotel",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Sunset Taverna",
+          "description": "Dine at Sunset Taverna, where you can savor traditional Greek dishes while watching the sun dip below the horizon. The ambiance is perfect for a romantic evening.",
+          "searchQuery": "Sunset Taverna",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Relaxation Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Avocado",
+          "description": "Start your day with a healthy breakfast at Avocado, known for its delicious smoothie bowls and fresh ingredients. Enjoy the cozy atmosphere while overlooking the stunning caldera views.",
+          "searchQuery": "Avocado",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Spa Day at Aether Spa",
+          "description": "Indulge in a luxurious spa treatment at Aether Spa, where you can choose from a variety of massages and beauty treatments. This is the perfect way to unwind and rejuvenate while enjoying the serene ambiance.",
+          "searchQuery": "Aether Spa",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Naoussa Restaurant",
+          "description": "Savor a delightful lunch at Naoussa, a local favorite known for its fresh seafood and traditional Greek dishes. The terrace offers breathtaking views of the Aegean Sea, making it a perfect spot for a romantic meal.",
+          "searchQuery": "Naoussa Restaurant",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Fira's Charming Streets",
+          "description": "Take a leisurely stroll through the picturesque streets of Fira, where you can admire the iconic whitewashed buildings and vibrant bougainvillea. Don't forget to capture some stunning photos of the breathtaking views along the way!",
+          "searchQuery": "Fira",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Sunset Dinner at Argo Restaurant",
+          "description": "Enjoy a romantic dinner at Argo Restaurant, renowned for its sunset views and exquisite Mediterranean cuisine. Make sure to reserve a table on the terrace to witness the magical sunset over the caldera while you dine.",
+          "searchQuery": "Argo Restaurant",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk Along the Caldera",
+          "description": "After dinner, take a peaceful evening walk along the caldera's edge. The soft glow of the sunset will linger in the sky, creating a romantic atmosphere as you stroll hand in hand, soaking in the beauty of Santorini.",
+          "searchQuery": "Caldera Walk",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure from Santorini",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Fira",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Santorini Airport",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Prepare for departure and enjoy the last moments on the island."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Avocado",
+          "description": "Start your day with a delightful breakfast at Avocado, known for its fresh ingredients and stunning views of the caldera. Try their famous smoothie bowls and omelets for a refreshing meal.",
+          "searchQuery": "Avocado",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Last Minute Shopping in Fira",
+          "description": "Stroll through the charming streets of Fira, where you can find unique souvenirs, handmade jewelry, and local art. Don't forget to capture the iconic white buildings against the blue sea in your photos!",
+          "searchQuery": "Fira",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Naoussa Restaurant",
+          "description": "Enjoy a leisurely lunch at Naoussa, a local favorite offering delicious seafood and traditional Greek dishes. The terrace provides a perfect view of the caldera, making it an ideal spot to relax before your departure.",
+          "searchQuery": "Naoussa Restaurant",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Caldera Views at Oia",
+          "description": "Take a short trip to Oia for breathtaking views of the caldera. This picturesque village is famous for its stunning sunsets, but the views during the day are equally mesmerizing. Capture the iconic blue-domed churches and the charming streets.",
+          "searchQuery": "Oia",
+          "locationEn": "Oia, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Fira and Prepare for Departure",
+          "description": "Head back to Fira to collect your belongings and prepare for your journey home. Take a moment to reflect on the beautiful memories created during your stay in Santorini.",
+          "searchQuery": "Fira",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Transit to Santorini Airport",
+          "description": "Make your way to Santorini Airport for your departure flight. Enjoy the scenic views one last time as you leave this beautiful island behind.",
+          "searchQuery": "Santorini Airport",
+          "locationEn": "Santorini, Greece",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

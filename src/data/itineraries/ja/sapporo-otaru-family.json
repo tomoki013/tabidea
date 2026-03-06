@@ -1,0 +1,270 @@
+{
+  "id": "74bc77bb-4053-4d94-ba05-4ff08691c897",
+  "destination": "札幌・小樽",
+  "description": "北海道の自然とグルメを満喫する家族旅行。札幌の美味しい食べ物と小樽の歴史的な街並みを楽しみながら、子供たちも大満足のアクティビティを盛り込んだプランです。",
+  "days": [
+    {
+      "day": 1,
+      "title": "札幌の美味しい朝食と観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "札幌のホテルで、地元の食材を使った和朝食を楽しみます。新鮮な魚や野菜を使った料理で、北海道の味覚を堪能しましょう。",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "大通公園散策",
+          "description": "札幌の中心に位置する大通公園を散策します。四季折々の花々が楽しめる公園で、子供たちも遊べる広場があります。特に夏にはビアガーデンも開かれ、賑やかな雰囲気を楽しめます。",
+          "searchQuery": "Odori Park",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "スープカレーのランチ",
+          "description": "札幌名物のスープカレーを楽しむため、地元の人気店へ。スパイシーでコクのあるスープに、野菜やお肉がたっぷり入った一皿は、家族みんなでシェアするのもおすすめです。",
+          "searchQuery": "Sapporo Soup Curry",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "札幌時計台見学",
+          "description": "札幌のシンボル、時計台を訪れます。歴史的な建物の中には、展示室もあり、札幌の歴史を学ぶことができます。子供たちも興味を持って楽しめるスポットです。",
+          "searchQuery": "Sapporo Clock Tower",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "すすきの散策",
+          "description": "札幌の繁華街、すすきのを散策します。お土産屋さんやスイーツ店が立ち並び、子供たちも楽しめるお菓子やアイスクリームを見つけることができます。",
+          "searchQuery": "Susukino",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "夕食はジンギスカン",
+          "description": "札幌名物のジンギスカンを楽しむため、家族で焼肉店へ。羊肉を使ったジンギスカンは、子供たちにも人気のメニューです。",
+          "searchQuery": "Sapporo Genghis Khan",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の観光を終え、ホテルに戻ります。子供たちも疲れた様子なので、ゆっくり休んで明日の小樽観光に備えましょう。",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "小樽の運河とグルメ探訪",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "札幌",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "小樽",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "JRで小樽へ向かいます。車窓からの風景も楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "小樽運河散策",
+          "description": "小樽運河沿いを散策し、歴史的な倉庫や美しい景色を楽しみます。運河の周りにはカフェやショップもあり、家族でのんびり過ごせます。",
+          "searchQuery": "Otaru Canal",
+          "locationEn": "Otaru, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "北一硝子でランチ",
+          "description": "北一硝子内のカフェで、ガラス細工を眺めながらランチを楽しみます。地元の新鮮な食材を使ったメニューが魅力です。",
+          "searchQuery": "Kitaichi Glass",
+          "locationEn": "Otaru, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "小樽オルゴール堂",
+          "description": "小樽オルゴール堂で、様々なオルゴールの音色を楽しみながら、子供たちも楽しめる体験ができます。オルゴール作りのワークショップもおすすめです。",
+          "searchQuery": "Otaru Music Box Museum",
+          "locationEn": "Otaru, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "小樽運河沿いのショップ巡り",
+          "description": "運河沿いのショップでお土産探し。地元の特産品や手作りの工芸品が揃っており、家族みんなで楽しめます。",
+          "searchQuery": "Otaru Canal Shops",
+          "locationEn": "Otaru, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "小樽の海鮮料理でディナー",
+          "description": "新鮮な海の幸を使った海鮮料理を楽しむため、小樽の人気店で夕食を。子供も喜ぶメニューが豊富です。",
+          "searchQuery": "Otaru Seafood Restaurant",
+          "locationEn": "Otaru, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "小樽の夜景を楽しむ",
+          "description": "小樽運河の夜景を楽しみながら、家族でのんびりとした時間を過ごします。運河のライトアップが美しいです。",
+          "searchQuery": "Otaru Night View",
+          "locationEn": "Otaru, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "札幌での最後の楽しみ",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "小樽",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "札幌",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "小樽から札幌へはバスでの移動がおすすめ。景色を楽しみながらの移動です。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "白い恋人パーク",
+          "description": "北海道の名物お菓子「白い恋人」のテーマパーク。工場見学やお菓子作り体験ができ、子供たちも楽しめるアトラクションが盛りだくさんです。",
+          "searchQuery": "Shiroi Koibito Park",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "白い恋人パーク内のカフェでランチ",
+          "description": "白い恋人パーク内のカフェで、スイーツや軽食を楽しみながら、家族でのんびり過ごせます。特に、白い恋人を使ったデザートは必見！",
+          "searchQuery": "Shiroi Koibito Park Cafe",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "円山動物園",
+          "description": "札幌市内にある円山動物園で、さまざまな動物たちと触れ合えます。特に子供たちに人気のパンダや、北海道の動物たちを間近で見ることができます。",
+          "searchQuery": "Maruyama Zoo",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "札幌市内で夕食",
+          "description": "札幌の名物、ジンギスカンや海鮮料理を楽しめるお店で、家族みんなで美味しい夕食を堪能しましょう。",
+          "searchQuery": "Sapporo Genghis Khan",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "札幌駅周辺でショッピング",
+          "description": "札幌駅周辺には多くのショッピングスポットがあり、北海道の特産品やお土産を探すのにぴったりです。子供向けのおもちゃ屋さんもあります。",
+          "searchQuery": "Sapporo Station Shopping",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

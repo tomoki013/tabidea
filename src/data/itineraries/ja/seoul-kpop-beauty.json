@@ -1,0 +1,290 @@
+{
+  "id": "0db79a38-0474-485f-a69c-72316a5de20f",
+  "destination": "ソウル",
+  "description": "ソウルでの2泊3日、友人と一緒にグルメ、ショッピング、美容、トレンドを満喫するアクティブな旅へ出かけましょう。韓国の魅力が詰まった街を歩きながら、最新のトレンドを感じ、美味しい料理を楽しみ、ショッピングで心を満たす素敵な時間を過ごします。",
+  "heroImage": "https://images.unsplash.com/photo-1622967889059-b5e08a6bfb29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODE2MTF8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Soyoung HAN",
+  "heroImagePhotographerUrl": "https://unsplash.com/@soflightsto?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "ソウルのトレンドを感じる一日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ソウルのカフェで、韓国式の朝食を楽しみます。特に、トーストやスムージーが人気で、エネルギーをチャージするのにぴったりです。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "明洞ショッピング",
+          "description": "明洞の賑やかな通りを散策しながら、コスメショップやファッションストアを巡ります。特に韓国の人気コスメブランドの店舗が多く、最新のトレンドをチェックするのに最適です。",
+          "searchQuery": "Myeongdong Shopping Street",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "南大門市場でランチ",
+          "description": "南大門市場で、韓国のストリートフードを楽しみましょう。特に、ビビンバやトッポッキが人気で、地元の人々と一緒に食べるのが楽しいです。",
+          "searchQuery": "Namdaemun Market",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "南大門市場でショッピング",
+          "description": "市場内をさらに探索し、韓国の伝統的な商品やお土産を探します。特に、手作りのアクセサリーや衣類が見つかるかもしれません。",
+          "searchQuery": "Namdaemun Market",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "弘大エリアのカフェ巡り",
+          "description": "弘大エリアに移動し、おしゃれなカフェで一息つきます。特に、インスタ映えするスイーツやドリンクが楽しめるカフェが多いので、写真を撮るのも忘れずに。",
+          "searchQuery": "Hongdae Cafe",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "弘大でのショッピング",
+          "description": "弘大のストリートで、若者向けのファッションやアクセサリーを探します。ユニークなデザインのアイテムが多く、友人へのお土産にもぴったりです。",
+          "searchQuery": "Hongdae Shopping Street",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "弘大エリアでディナー",
+          "description": "弘大の人気レストランで、韓国料理のディナーを楽しみます。特に、焼肉やチキンが人気で、友人とシェアしながら楽しむのがおすすめです。",
+          "searchQuery": "Hongdae Restaurant",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "美味しい韓国料理とショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ソウルのホテルで、韓国の伝統的な朝食を楽しみます。キムチやご飯、スープなど、朝からエネルギーをチャージ！",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "カロスキル散策",
+          "description": "おしゃれなショップやカフェが立ち並ぶカロスキルを散策。トレンドのファッションやコスメを見つけるのにぴったりのエリアです。",
+          "searchQuery": "Garosu-gil",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ：トッポッキ専門店",
+          "description": "カロスキル近くのトッポッキ専門店で、甘辛いトッポッキを楽しみましょう。友人とシェアしながら、韓国のストリートフードを堪能！",
+          "searchQuery": "Tteokbokki Restaurant",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "新沙洞のコスメショップ巡り",
+          "description": "新沙洞エリアで、韓国の人気コスメブランドを巡ります。お土産や自分用に、最新のビューティーアイテムをゲットしましょう！",
+          "searchQuery": "Beauty Shops in Sinsa-dong",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "カフェで休憩",
+          "description": "新沙洞の隠れ家カフェで、スイーツと共に一息。おしゃれなインテリアの中で、友人との楽しい時間を過ごしましょう。",
+          "searchQuery": "Sinsa-dong Cafe",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "江南エリアでショッピング",
+          "description": "江南エリアに移動し、最新のファッションをチェック。大型ショッピングモールやセレクトショップで、トレンドを先取り！",
+          "searchQuery": "Gangnam Shopping District",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディナー：韓国焼肉",
+          "description": "江南で本格的な韓国焼肉を楽しみます。新鮮なお肉を自分で焼きながら、ビールやマッコリで乾杯！",
+          "searchQuery": "Korean BBQ Restaurant",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の計画を立てながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ソウルの文化と帰路",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ソウルのカフェで、韓国式の朝食を楽しみます。トーストやサラダ、フレッシュジュースが揃ったメニューで、元気に一日をスタート。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "北村韓屋村散策",
+          "description": "伝統的な韓国の家屋が立ち並ぶ北村韓屋村を散策。美しい街並みを背景に、友人と一緒に写真を撮ったり、地元のアートショップを訪れたりして、文化を感じるひとときを過ごします。",
+          "searchQuery": "Bukchon Hanok Village",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "仁寺洞でランチ",
+          "description": "仁寺洞の伝統的な韓国料理店でランチ。ビビンバや冷麺など、韓国の味を堪能しながら、周囲のアートギャラリーやお土産屋を楽しむことができます。",
+          "searchQuery": "Insadong",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "仁寺洞のショッピング",
+          "description": "仁寺洞の通りには、伝統工芸品や韓国コスメのお店が立ち並んでいます。友人と一緒にお気に入りのアイテムを見つけたり、コスメを試したりして、ショッピングを楽しみましょう。",
+          "searchQuery": "Insadong Shopping",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "カフェで休憩",
+          "description": "おしゃれなカフェで、韓国のスイーツやコーヒーを楽しみながら、友人との会話を楽しむ時間。特に、インスタ映えするデザートが豊富なお店を選ぶのがおすすめです。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ソウル駅へ移動",
+          "description": "ソウル駅に向かい、帰路の準備をします。駅周辺にはショッピングモールもあり、最後の買い物を楽しむこともできます。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "帰路",
+          "description": "ソウル駅からの帰路につきます。楽しい思い出を胸に、また次の旅行を楽しみにしましょう。",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

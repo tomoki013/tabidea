@@ -1,0 +1,525 @@
+{
+  "id": "4cc53eb0-7cd4-4fe1-8775-fecff79bf427",
+  "destination": "ロサンゼルス",
+  "description": "ロサンゼルスの魅力を存分に楽しむ6日間の旅へようこそ！テーマパークの興奮、ビーチのリラックス、ショッピングの楽しさが詰まったアクティブなプランをお届けします。友人と共に、ハリウッドの名所やディズニーランド、ユニバーサルスタジオを巡りながら、ロサンゼルスの多彩な魅力を体感しましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ロサンゼルス到着とハリウッド散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロサンゼルスのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ハリウッドサイン観賞",
+          "description": "ハリウッドの象徴、ハリウッドサインを見に行きます。グリフィス天文台からの眺めが特におすすめで、サインを背景に記念撮影も楽しめます。",
+          "searchQuery": "Hollywood Sign",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "グローマンズ・チャイニーズ・シアター見学",
+          "description": "映画ファンにはたまらない、グローマンズ・チャイニーズ・シアターを訪れます。ハリウッドのスターたちの手形や足形を見ながら、映画の歴史に浸ることができます。",
+          "searchQuery": "TCL Chinese Theatre",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ハリウッド・ウォーク・オブ・フェーム散策",
+          "description": "ハリウッド・ウォーク・オブ・フェームを歩きながら、名だたるスターたちの星を探します。自分のお気に入りのスターを見つけて、記念撮影をするのも楽しいです。",
+          "searchQuery": "Hollywood Walk of Fame",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ランチ：In-N-Out Burger",
+          "description": "ロサンゼルス名物のハンバーガーショップ、In-N-Out Burgerでランチ。新鮮な食材を使ったシンプルで美味しいハンバーガーを楽しみましょう。",
+          "searchQuery": "In-N-Out Burger",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "ハリウッドボウルでの音楽体験",
+          "description": "ハリウッドボウルでのコンサートやイベントを楽しむ時間。事前にスケジュールを確認して、素晴らしい音楽体験を味わいましょう。",
+          "searchQuery": "Hollywood Bowl",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディナー：The Bazaar by José Andrés",
+          "description": "高級レストランでのディナー。スペイン料理をベースにした創作料理を楽しみながら、友人との楽しい時間を過ごします。",
+          "searchQuery": "The Bazaar by José Andrés",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の冒険に備えて、しっかり休息を取りましょう。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ディズニーランドで夢の世界へ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ロサンゼルスのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ！",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ディズニーランドへ出発",
+          "description": "夢の国、ディズニーランドへ向かいます。ホテルからは車で約30分の距離です。道中、ディズニーの音楽を聴きながらワクワク感を高めましょう！",
+          "locationEn": "Anaheim, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ディズニーランドで遊ぶ",
+          "description": "ディズニーランドに到着！人気アトラクションやキャラクターとの写真撮影を楽しみながら、夢の世界に浸ります。特に「スプラッシュ・マウンテン」や「イッツ・ア・スモール・ワールド」は外せません。",
+          "searchQuery": "Disneyland Park",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ディズニーランド内でランチ",
+          "description": "パーク内のレストランでランチを楽しみます。おすすめは「カリフォルニア・グリル」で、ハンバーガーやサラダを味わいながら、ディズニーの雰囲気を満喫。",
+          "searchQuery": "Disneyland Park",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アトラクション巡り",
+          "description": "午後も引き続きアトラクションを楽しみます。特に「スター・ツアーズ」や「スペース・マウンテン」はスリル満点でおすすめです。",
+          "searchQuery": "Disneyland Park",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "パレード観賞",
+          "description": "夕方にはディズニーのパレードを観賞。キャラクターたちが華やかに登場し、夢のような時間を過ごせます。",
+          "searchQuery": "Disneyland Park",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディズニーランドでディナー",
+          "description": "パーク内の「ビッグサンダー・ランチ」でディナーを楽しみます。アメリカンスタイルの料理を味わいながら、楽しい一日の締めくくりを。",
+          "searchQuery": "Disneyland Park",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "花火鑑賞",
+          "description": "ディズニーランドの夜空を彩る花火を鑑賞。幻想的なショーに心を奪われ、素晴らしい思い出を作りましょう。",
+          "searchQuery": "Disneyland Park",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ユニバーサルスタジオで映画の魔法を体験",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ロサンゼルスのホテルで、アメリカンブレックファーストを楽しみます。ふわふわのパンケーキやベーコン、卵料理でエネルギーをチャージして、楽しい一日をスタート！",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ユニバーサルスタジオ・ハリウッド",
+          "description": "映画の世界に飛び込むユニバーサルスタジオ・ハリウッドで、アトラクションやショーを楽しみましょう。特に「ハリー・ポッター」エリアは必見です！",
+          "searchQuery": "Universal Studios Hollywood",
+          "locationEn": "Universal City, Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ユニバーサルスタジオ内でランチ",
+          "description": "ユニバーサルスタジオ内のレストランで、映画をテーマにしたユニークな料理を楽しみます。友人と一緒に映画の話をしながら、楽しいランチタイムを過ごしましょう。",
+          "locationEn": "Universal City, Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アトラクション巡り",
+          "description": "午後はアトラクションを巡りながら、映画の魔法を体験。スリル満点のライドや、キャラクターとの写真撮影を楽しんで、思い出をたくさん作りましょう！",
+          "locationEn": "Universal City, Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ハリウッドサインを見に行く",
+          "description": "ユニバーサルスタジオを後にして、ハリウッドサインを見に行きます。絶好のフォトスポットで、友人と一緒に記念撮影をしましょう。夕暮れ時の景色は特に美しいです。",
+          "searchQuery": "Hollywood Sign",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "近くのレストランでディナー",
+          "description": "ハリウッド近くのレストランで、アメリカンスタイルのディナーを楽しみます。地元の人にも人気のあるお店で、ボリューム満点の料理を堪能しましょう。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すために、ホテルに戻ります。明日の計画を立てながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ビーチでリラックスとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロサンゼルスのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、フレッシュジュースでエネルギーをチャージ。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "サンタモニカビーチ",
+          "description": "美しい海と白い砂浜が広がるサンタモニカビーチでリラックス。ビーチ沿いの遊歩道を散策したり、ビーチバレーを楽しむこともできます。",
+          "searchQuery": "Santa Monica Beach",
+          "locationEn": "Santa Monica, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "サンタモニカピアでランチ",
+          "description": "サンタモニカピアのレストランで新鮮なシーフードランチを楽しみます。海を眺めながらの食事は格別です。",
+          "searchQuery": "Santa Monica Pier",
+          "locationEn": "Santa Monica, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "メルローズアベニューでショッピング",
+          "description": "トレンディなショップやカフェが立ち並ぶメルローズアベニューでショッピング。ユニークなアイテムやお土産を見つけるチャンスです。",
+          "searchQuery": "Melrose Avenue",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ハリウッドサイン観賞",
+          "description": "ハリウッドのシンボル、ハリウッドサインを見に行きます。特に夕方の光の中での眺めは美しく、写真撮影にも最適です。",
+          "searchQuery": "Hollywood Sign",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディズニーランドでディナー",
+          "description": "ディズニーランド内のレストランでディナーを楽しみます。テーマパークの雰囲気を味わいながら、特別な夜を過ごしましょう。",
+          "searchQuery": "Disneyland",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ロサンゼルス観光とショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロサンゼルスのホテルで、アメリカンブレックファーストを楽しみます。ボリューム満点のパンケーキやオムレツで、元気に一日をスタートしましょう。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ロサンゼルス美術館",
+          "description": "アート好きにはたまらないロサンゼルス美術館（LACMA）を訪れます。多様なコレクションと美しい建築を楽しみながら、アートの世界に浸りましょう。特に、屋外の「レッド・カーペット」エリアはインスタ映えスポットです。",
+          "searchQuery": "Los Angeles County Museum of Art",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ランチ（The Grove）",
+          "description": "ショッピングモール「The Grove」でランチを楽しみます。多彩なレストランが揃っており、特に人気のあるイタリアンレストランで新鮮なパスタを味わいましょう。食後は周辺のショップを散策するのもおすすめです。",
+          "searchQuery": "The Grove",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ロデオドライブでショッピング",
+          "description": "高級ブランドが立ち並ぶロデオドライブでショッピングを楽しみます。ウィンドウショッピングをしながら、セレブ気分を味わいましょう。おしゃれなカフェで一休みするのも良いですね。",
+          "searchQuery": "Rodeo Drive",
+          "locationEn": "Beverly Hills, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "ハリウッドサイン観賞",
+          "description": "ハリウッドサインを見に行きます。グリフィス天文台からの眺めが特におすすめで、夕暮れ時には美しい景色が広がります。写真撮影を忘れずに！",
+          "searchQuery": "Griffith Observatory",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ディナー（地元のレストラン）",
+          "description": "ロサンゼルスの地元のレストランでディナーを楽しみます。メキシカンやアメリカンなど、バラエティ豊かな料理を堪能しましょう。友人と一緒に楽しい時間を過ごせます。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "帰国の準備と東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ロサンゼルス国際空港",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "17:00"
+        },
+        "duration": "11h",
+        "memo": "直行便で東京へ帰国します。機内での食事や映画を楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ロサンゼルスのホテルでアメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ハリウッドサイン観光",
+          "description": "ハリウッドのシンボル、ハリウッドサインを見に行きます。グリフィス天文台からの眺めが特におすすめで、サインをバックに記念撮影も楽しめます。",
+          "searchQuery": "Hollywood Sign",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ロサンゼルス国際空港へ移動",
+          "description": "ハリウッドサイン観光後、空港へ向かいます。タクシーやライドシェアを利用して、スムーズに移動しましょう。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ロサンゼルス国際空港で搭乗手続き",
+          "description": "空港に到着したら、搭乗手続きを済ませて、出発を待ちます。お土産ショップやレストランで最後の買い物を楽しむのも良いでしょう。",
+          "locationEn": "Los Angeles International Airport, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "東京到着",
+          "description": "東京に到着。長旅を終え、無事に帰国しました。",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

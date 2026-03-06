@@ -1,0 +1,550 @@
+{
+  "id": "65e97419-87eb-428d-abb5-f84022f2fc1b",
+  "destination": "バルセロナ",
+  "description": "バルセロナの街は、アートと建築の宝庫。ガウディの独創的な作品に囲まれながら、友人と共に美味しいタパスを楽しむ旅に出かけましょう。街歩きの合間には、地元の人々が愛するバルでのひとときが待っています。",
+  "heroImage": "https://images.unsplash.com/photo-1578912996078-305d92249aa6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODE1MTd8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Ken Cheung",
+  "heroImagePhotographerUrl": "https://unsplash.com/@kencheungphoto?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "バルセロナ到着と街歩き",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "地元のカフェでスペイン風の朝食を楽しみます。トーストにトマトとオリーブオイルをかけた「パン・コン・トマテ」や、甘いペストリーがオススメです。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "カサ・ミラ（ミラハウス）",
+          "description": "ガウディの代表作の一つ、カサ・ミラを訪れます。波のような外観と独特の屋上テラスからの眺めは圧巻です。内部の展示も見逃せません。",
+          "searchQuery": "Casa Milà",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カサ・バトリョ",
+          "description": "カサ・バトリョは、ガウディの色彩豊かなデザインが特徴的な建物です。内部の装飾や家具もガウディの独創性が光ります。",
+          "searchQuery": "Casa Batlló",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ランチ：地元のタパスバー",
+          "description": "バルセロナのタパスバーで、地元の人々に人気のタパスを楽しみます。生ハムやパタタス・ブラバスなど、バラエティ豊かな料理をシェアして味わいましょう。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "グラシア通り散策",
+          "description": "バルセロナのトレンディなエリア、グラシア通りを散策します。おしゃれなショップやカフェが立ち並び、アートな雰囲気を楽しめます。",
+          "searchQuery": "Gràcia",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "バルセロナのバルでタパスとお酒",
+          "description": "夜はバルで美味しいタパスとお酒を楽しみます。地元のワインやカクテルを片手に、友人と楽しいひとときを過ごしましょう。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ホテルチェックイン",
+          "description": "本日の宿泊先にチェックインします。リラックスして、明日の冒険に備えましょう。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ガウディの傑作を巡る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "バルセロナのカフェで、スペインのトースト「トルティージャ」や新鮮なフルーツを楽しみながら、エネルギーをチャージします。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "サグラダ・ファミリア",
+          "description": "ガウディの代表作であるサグラダ・ファミリアを訪れます。壮大な建築と美しいステンドグラスに圧倒されること間違いなし。事前にチケットを購入しておくとスムーズです。",
+          "searchQuery": "Sagrada Familia",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "近くのレストランでランチ",
+          "description": "サグラダ・ファミリア近くのレストランで、地元の料理を楽しみます。特に「パエリア」は絶品です。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "パーク・グエル",
+          "description": "ガウディが手がけた色とりどりのモザイクが美しいパーク・グエルへ。散策しながら、バルセロナの街を一望できるスポットも楽しめます。",
+          "searchQuery": "Park Güell",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "グエル公園散策",
+          "description": "公園内をゆったりと散策し、ガウディの独特なデザインを堪能します。特に「ドラゴンの階段」は必見です。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "バルでタパスを楽しむ",
+          "description": "バルセロナの地元のバルで、タパスとワインを楽しみます。友人と一緒にシェアしながら、様々な味を楽しむのがポイントです。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "バルセロナの夜景を楽しむ",
+          "description": "夕食後は、バルセロナの美しい夜景を楽しむために、モンジュイックの丘へ向かいます。夜の街の雰囲気を満喫しましょう。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "バルセロナのアートと文化",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "地元のカフェで新鮮なクロワッサンとカフェ・コン・レーチェを楽しみながら、バルセロナの朝を迎えます。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ピカソ美術館",
+          "description": "ピカソの初期作品を中心に展示されている美術館で、彼の芸術の進化を感じることができます。特に、彼のバルセロナ時代の作品は必見です。",
+          "searchQuery": "Picasso Museum",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "バルセロナ大聖堂",
+          "description": "ゴシック様式の美しい大聖堂で、内部の荘厳さと外観の細部にわたる装飾に圧倒されます。屋上からの眺めも素晴らしいです。",
+          "searchQuery": "Barcelona Cathedral",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "地元のレストランでランチ",
+          "description": "バルセロナの伝統的なカタルーニャ料理を楽しめるレストランで、パエリアやタパスを堪能します。地元の人々に人気のあるお店です。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ゴシック地区散策",
+          "description": "バルセロナの歴史的な中心地を歩きながら、狭い路地や美しい広場を探索します。小さなショップやカフェも点在しており、散策が楽しいエリアです。",
+          "searchQuery": "Gothic Quarter",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "サグラダ・ファミリア",
+          "description": "ガウディの代表作であるこの壮大な教会は、未完成ながらもその美しさに圧倒されます。内部の光の演出も素晴らしいです。",
+          "searchQuery": "Sagrada Familia",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "バルでタパスディナー",
+          "description": "地元のバルで新鮮なタパスと共に、スペインのワインやカクテルを楽しみます。友人と一緒に賑やかな雰囲気の中で食事を楽しむのが最高です。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "バルでのタパスと夜の散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "バルセロナのカフェで、スペインのトースト「トルティージャ」や新鮮なフルーツを楽しみながら、ゆったりとした朝を迎えます。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "サグラダ・ファミリア",
+          "description": "ガウディの代表作であるサグラダ・ファミリアを訪れます。壮大な教会の内部は、色とりどりのステンドグラスが美しく、訪れる人々を魅了します。事前にチケットを購入しておくとスムーズです。",
+          "searchQuery": "Sagrada Familia",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：カサ・バトリョ近くのタパスバー",
+          "description": "カサ・バトリョの近くにあるタパスバーで、地元の人々に人気のタパスを楽しみます。特に「パタタス・ブラバス」は絶品です。",
+          "searchQuery": "Tapas Bar near Casa Batlló",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "カサ・ミラ（ラ・ペドレラ）",
+          "description": "ガウディが手がけたもう一つの名作、カサ・ミラを見学。波のような外観と独特な屋上が印象的で、バルセロナの街を一望できます。",
+          "searchQuery": "Casa Milà",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "グエル公園散策",
+          "description": "ガウディの色彩豊かな作品が散りばめられたグエル公園を散策。美しい景色を楽しみながら、アートと自然の融合を体感できます。",
+          "searchQuery": "Park Güell",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "バルセロナのバルでタパスを楽しむ",
+          "description": "夜はバルセロナのバルで、地元の人々と一緒にタパスとワインを楽しみます。賑やかな雰囲気の中で、様々なタパスをシェアしながら、友人との楽しい時間を過ごしましょう。",
+          "searchQuery": "Tapas Bar in Barcelona",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "エルボルン地区の散策",
+          "description": "エルボルン地区を散策し、アートギャラリーや小さなショップを訪れます。夜の街並みは特に美しく、写真を撮るのにも最適です。",
+          "searchQuery": "El Born",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "22:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。バルセロナの夜を楽しんだ後は、ゆっくりと休息を取りましょう。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "バルセロナの市場とビーチ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "バルセロナのカフェで、クロワッサンやトースト、フレッシュジュースを楽しみながら、ゆったりとした朝を迎えます。地元の人々に混じって、朝のひとときを過ごしましょう。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ボケリア市場散策",
+          "description": "バルセロナの名物市場、ボケリア市場を訪れます。色とりどりの新鮮な食材や地元の特産品が並ぶ中、試食を楽しみながら、活気ある雰囲気を味わいましょう。",
+          "searchQuery": "La Boqueria",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "海辺のレストランでランチ",
+          "description": "バルセロネータビーチ近くのレストランで、新鮮なシーフードを堪能します。特にパエリアは絶品で、海の景色を眺めながらの食事は格別です。",
+          "searchQuery": "Restaurant near Barceloneta Beach",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "バルセロネータビーチでリラックス",
+          "description": "バルセロネータビーチで、日光浴や海水浴を楽しみます。ビーチの雰囲気を満喫しながら、友人と楽しい時間を過ごしましょう。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ガウディの建築巡り",
+          "description": "バルセロナの街を歩きながら、ガウディの代表作であるサグラダ・ファミリアやカサ・ミラを見学します。彼の独特なデザインに触れ、アートと建築の融合を体感しましょう。",
+          "searchQuery": "Sagrada Familia",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "バルでタパスを楽しむ",
+          "description": "地元のバルで、様々なタパスと共にスペインのワインを楽しみます。友人とシェアしながら、バルセロナの夜を満喫しましょう。",
+          "searchQuery": "Tapas Bar in Barcelona",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "夜のバルセロナ散策",
+          "description": "食後は、バルセロナの街を散策し、夜の雰囲気を楽しみます。ライトアップされた建物や賑やかな通りを歩きながら、素敵な思い出を作りましょう。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "バルセロナから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "バルセロナ",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "06:00"
+        },
+        "duration": "13h",
+        "memo": "直行便での移動。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "バルセロナのホテルで、地元のパンやハム、チーズを使った朝食を楽しみます。エネルギーをチャージして、素敵な一日をスタート！",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "カサ・ミラ（ミラの家）",
+          "description": "ガウディの代表作の一つ、カサ・ミラを訪れます。波のような外観と独特のデザインが魅力で、屋上からの眺めも素晴らしいです。",
+          "searchQuery": "Casa Milà",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ：タパスを楽しむ",
+          "description": "バルセロナの人気タパスバーで、地元の人々に愛されるタパスを堪能します。新鮮なシーフードやハム、チーズの盛り合わせが絶品です。",
+          "searchQuery": "Cervecería Catalana",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "サグラダ・ファミリア",
+          "description": "ガウディの未完の傑作、サグラダ・ファミリアを見学します。壮大な建築と美しいステンドグラスに圧倒されること間違いなし。",
+          "searchQuery": "Sagrada Família",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "グエル公園",
+          "description": "ガウディが手掛けた色とりどりのモザイクが美しいグエル公園を散策。バルセロナの街を一望できるスポットもあり、写真撮影にも最適です。",
+          "searchQuery": "Park Güell",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "バルでのディナー",
+          "description": "バルセロナの賑やかなバルで、タパスと共にスペインのワインを楽しみます。友人と共に楽しいひとときを過ごしましょう。",
+          "searchQuery": "El Xampanyet",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,679 @@
+{
+  "id": "7064e2fc-4009-41c7-b12e-8377888a06a0",
+  "destination": "ローマ",
+  "description": "ローマの街を歩きながら、古代の遺跡や美味しいイタリア料理を存分に楽しむ7日間の旅。歴史の息吹を感じる街並みの中で、カップルでの特別なひとときを過ごしましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1529154036614-a60975f5c760?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODE0Njl8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Chris Czermak",
+  "heroImagePhotographerUrl": "https://unsplash.com/@chris_czermak?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "ローマ到着と街の散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ローマのカフェで、エスプレッソと共に新鮮なペストリーを楽しむ朝食。地元の人々に混じって、ゆったりとした時間を過ごします。",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "テルミニ駅周辺散策",
+          "description": "ローマの玄関口、テルミニ駅周辺を散策。駅の美しい建築を眺めながら、周辺のショップやカフェを楽しむことができます。",
+          "searchQuery": "Termini Station",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "トレヴィの泉",
+          "description": "ローマの象徴的なスポット、トレヴィの泉を訪れます。コインを投げ入れて願い事をするのをお忘れなく！周囲の美しいバロック建築も見逃せません。",
+          "searchQuery": "Trevi Fountain",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "トラットリアでランチ",
+          "description": "地元のトラットリアで、手作りのパスタやピザを堪能。新鮮な素材を使った料理が楽しめる、アットホームな雰囲気のお店です。",
+          "searchQuery": "Trattoria",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "スペイン広場散策",
+          "description": "スペイン広場でのんびりと過ごし、階段に座って人々を眺めたり、周囲のショップを覗いたりします。特に春には美しい花が咲き誇ります。",
+          "searchQuery": "Spanish Steps",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ローマの街歩き",
+          "description": "ローマの街並みを散策しながら、歴史的な建物や小道を楽しみます。地元の人々の生活を感じながら、隠れた名所を見つけるのも楽しいです。",
+          "locationEn": "Rome, Italy",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ローマのレストランでディナー",
+          "description": "ローマの伝統的なレストランで、リッチなイタリアンディナーを楽しみます。地元のワインと共に、デザートまでしっかり堪能しましょう。",
+          "searchQuery": "Italian Restaurant",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "古代ローマの遺跡巡り",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ローマのカフェで、クロワッサンやエスプレッソを楽しむ朝食。地元の人々に混じって、ゆったりとした朝のひとときを過ごします。",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "コロッセオ",
+          "description": "古代ローマの象徴、コロッセオを訪れます。壮大な建築と歴史を感じながら、ガイドツアーでその魅力を深く知ることができます。",
+          "searchQuery": "Colosseum",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "フォロ・ロマーノ",
+          "description": "コロッセオから徒歩でフォロ・ロマーノへ。古代ローマの政治と商業の中心地を散策し、遺跡の中に息づく歴史を感じましょう。",
+          "searchQuery": "Roman Forum",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "地元のトラットリアでランチ",
+          "description": "フォロ・ロマーノ近くのトラットリアで、パスタやピザなど本場のイタリア料理を堪能。新鮮な素材を使った料理が楽しめます。",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "パラティーノの丘",
+          "description": "フォロ・ロマーノの隣に位置するパラティーノの丘へ。ローマの起源を感じる場所で、美しい景色を楽しみながら散策します。",
+          "searchQuery": "Palatine Hill",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "トラステヴェレ地区散策",
+          "description": "ローマの隠れた魅力、トラステヴェレ地区を散策。狭い路地やカラフルな建物が並ぶこのエリアで、地元の雰囲気を楽しみましょう。",
+          "locationEn": "Rome, Italy",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "トラットリアでディナー",
+          "description": "トラステヴェレの人気トラットリアで、ローマ風の料理を楽しむディナー。地元のワインと共に、素敵な夜を過ごします。",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ナヴォーナ広場での夜景散策",
+          "description": "ナヴォーナ広場の美しい噴水を眺めながら、ロマンチックな夜の散策を楽しみます。夜の雰囲気に包まれたローマの街を満喫。",
+          "searchQuery": "Piazza Navona",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "バチカン市国の探訪",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ローマのカフェで、エスプレッソと共に新鮮なペストリーを楽しみます。イタリアの朝食はシンプルですが、地元の味を堪能できる絶好のスタートです。",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "サン・ピエトロ大聖堂",
+          "description": "バチカン市国の象徴、サン・ピエトロ大聖堂を訪れます。壮大なドームの内部を見上げると、その美しさに圧倒されることでしょう。特に朝の光が差し込む時間帯はおすすめです。",
+          "searchQuery": "St. Peter's Basilica",
+          "locationEn": "Vatican City",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "バチカン美術館",
+          "description": "世界的に有名なバチカン美術館で、ミケランジェロの作品や古代の彫刻を鑑賞します。特にシスティーナ礼拝堂の天井画は必見です。事前にチケットを購入しておくと、長い列を避けられます。",
+          "searchQuery": "Vatican Museums",
+          "locationEn": "Vatican City",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "トラットリア・ダ・エンツォでランチ",
+          "description": "地元の人々に愛されるトラットリアで、ローマ名物のカルボナーラを堪能します。アットホームな雰囲気の中で、心温まるイタリアンを楽しんでください。",
+          "searchQuery": "Trattoria Da Enzo",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "システィーナ礼拝堂",
+          "description": "バチカン美術館の中にあるシスティーナ礼拝堂で、ミケランジェロの「最後の審判」を鑑賞します。静かな空間で、芸術の神秘に浸るひとときをお楽しみください。",
+          "searchQuery": "Sistine Chapel",
+          "locationEn": "Vatican City",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "バチカン市国の散策",
+          "description": "バチカン市国内を散策し、サン・ピエトロ広場の美しい景色を楽しみます。広場の中心に立つオベリスクや、周囲のバロック様式の建物を眺めながら、歴史を感じる時間を過ごします。",
+          "locationEn": "Vatican City",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ローマのカフェで休憩",
+          "description": "散策の後は、カフェでジェラートを楽しみながら一息つきます。イタリアの甘いひとときを味わい、ローマの雰囲気を満喫しましょう。",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ローマのレストランでディナー",
+          "description": "地元の人気レストランで、リゾットやピザを楽しみます。新鮮な食材を使った料理は、イタリアの味を存分に堪能できることでしょう。",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ローマの美味しいグルメを堪能",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ローマのカフェで、クロワッサンやエスプレッソを楽しむ朝食。地元の人々に混じって、ゆったりとした朝のひとときを過ごします。",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "トラステヴェレ散策",
+          "description": "ローマの隠れた魅力、トラステヴェレ地区を散策。狭い路地やカラフルな建物が並ぶこのエリアでは、地元のアートや文化を感じることができます。",
+          "searchQuery": "Trastevere",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "トラステヴェレのレストランでランチ",
+          "description": "地元の人気レストランで、ローマ名物のカチョエペペを堪能。シンプルながらも深い味わいのパスタを楽しみましょう。",
+          "searchQuery": "Da Enzo al 29",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ナヴォーナ広場訪問",
+          "description": "美しいバロック様式のナヴォーナ広場を訪れ、周囲のカフェでアイスクリームを楽しみながら、ストリートパフォーマンスを観賞します。",
+          "searchQuery": "Piazza Navona",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "パンテオン見学",
+          "description": "古代ローマの神殿、パンテオンを訪れ、その壮大なドームと歴史に圧倒されます。内部の美しさをじっくりと堪能しましょう。",
+          "searchQuery": "Pantheon",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "トラットリアでディナー",
+          "description": "ローマの伝統的なトラットリアで、ローマ風のピザやリゾットを楽しむディナー。地元のワインと共に、心温まるひとときを過ごします。",
+          "searchQuery": "Trattoria Da Teo",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "夜のトラステヴェレ散策",
+          "description": "夕暮れ時のトラステヴェレを散策し、ライトアップされた街並みを楽しみながら、ロマンティックな雰囲気に浸ります。",
+          "locationEn": "Rome, Italy",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ローマのアートと文化を楽しむ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ローマのカフェで、クロワッサンやエスプレッソを楽しむ朝食。地元の人々に混じって、ゆったりとした朝のひとときを過ごします。",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ボルゲーゼ公園散策",
+          "description": "美しいボルゲーゼ公園で、緑に囲まれた散策を楽しみましょう。公園内には彫刻や池が点在し、ローマの喧騒を忘れさせてくれます。",
+          "searchQuery": "Borghese Gardens",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ボルゲーゼ美術館見学",
+          "description": "ボルゲーゼ美術館では、カラヴァッジョやベルニーニの名作を鑑賞。美術館の美しい内装も見逃せません。事前予約をおすすめします。",
+          "searchQuery": "Borghese Gallery",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "トラットリアでランチ",
+          "description": "地元のトラットリアで、手作りのパスタやピザを堪能。新鮮な食材を使った料理が楽しめるお店を選びましょう。",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "カラカラ浴場見学",
+          "description": "古代ローマの遺跡、カラカラ浴場を訪れます。壮大な建築と歴史を感じながら、ローマの文化に浸りましょう。",
+          "searchQuery": "Baths of Caracalla",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ローマの街歩き",
+          "description": "カラカラ浴場周辺を散策しながら、地元のショップやカフェを楽しみます。お土産探しや、街の雰囲気を味わう絶好の機会です。",
+          "locationEn": "Rome, Italy",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ローマのレストランでディナー",
+          "description": "ローマの人気レストランで、地元の料理を楽しむディナー。ワインと共に、イタリアの味を堪能しましょう。",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のローマ散策",
+          "description": "ディナー後は、ライトアップされたローマの街を散策。特にトレビの泉やスペイン階段は、夜の雰囲気が格別です。",
+          "locationEn": "Rome, Italy",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ローマの隠れた魅力を発見",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ローマのカフェで、クロワッサンとエスプレッソの朝食を楽しみます。地元の人々に混じって、ゆったりとした朝のひとときを過ごしましょう。",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "アッピア街道散策",
+          "description": "古代ローマの道、アッピア街道を歩きながら、歴史的な遺跡や美しい風景を楽しみます。周囲の自然と古代の雰囲気に浸りながら、ローマの歴史を感じることができます。",
+          "searchQuery": "Appian Way",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のトラットリアでランチ",
+          "description": "アッピア街道近くのトラットリアで、手作りのパスタやピザを堪能します。新鮮な食材を使った本格的なイタリア料理を楽しむ絶好のチャンスです。",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "カタコンベ訪問",
+          "description": "ローマのカタコンベを訪れ、地下の神秘的な世界を探検します。初期キリスト教徒の埋葬地として知られるこの場所は、歴史的な価値が高いです。",
+          "searchQuery": "Catacombs of Rome",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "サンタ・マリア・イン・トラステヴェレ訪問",
+          "description": "美しい教会、サンタ・マリア・イン・トラステヴェレを訪れ、その素晴らしいモザイクや静かな雰囲気を楽しみます。周辺の街並みも散策してみましょう。",
+          "searchQuery": "Santa Maria in Trastevere",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "トラステヴェレ地区散策",
+          "description": "トラステヴェレの魅力的な街並みを散策し、地元のショップやカフェを訪れます。ローマの雰囲気を感じながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Rome, Italy",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "トラステヴェレでディナー",
+          "description": "トラステヴェレのレストランで、ローマの伝統料理を楽しむディナー。地元のワインと共に、心温まる料理を堪能しましょう。",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "ローマの最後のひとときと帰国",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ローマのカフェで、イタリアンブレックファーストを楽しみます。クロワッサンやカプチーノで、最後の朝を優雅にスタート。",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "トレビの泉",
+          "description": "ローマのシンボル、トレビの泉を訪れます。コインを投げ入れて願い事をするのをお忘れなく。朝の光の中での泉の美しさは格別です。",
+          "searchQuery": "Trevi Fountain",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "スペイン階段散策",
+          "description": "トレビの泉から徒歩でスペイン階段へ。階段に座って、周囲の風景を楽しみながら、ローマの雰囲気に浸ります。",
+          "searchQuery": "Spanish Steps",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ローマのカフェでランチ",
+          "description": "地元のカフェで、パスタやピザなどのイタリア料理を堪能します。新鮮な素材を使った料理は、ローマの味を感じさせてくれます。",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "パンテオン",
+          "description": "古代ローマの神殿、パンテオンを訪れます。壮大なドームと美しい内装に圧倒されることでしょう。",
+          "searchQuery": "Pantheon",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ナヴォーナ広場散策",
+          "description": "ナヴォーナ広場で、バロック様式の噴水やカフェを楽しみながら、ゆったりとした時間を過ごします。",
+          "searchQuery": "Piazza Navona",
+          "locationEn": "Rome, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ショッピングエリアでお土産探し",
+          "description": "ローマのショッピングエリアで、最後のお土産を探します。地元の特産品やファッションアイテムを見つけるチャンスです。",
+          "locationEn": "Rome, Italy",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ローマのレストランでディナー",
+          "description": "最後の晩餐は、ローマの伝統的なレストランで。リッチなトマトソースのパスタや、デザートのティラミスを楽しみましょう。",
+          "locationEn": "Rome, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻り、帰国準備",
+          "description": "ホテルに戻り、帰国の準備をします。ローマでの素晴らしい思い出を振り返りながら、最後の夜を過ごします。",
+          "locationEn": "Rome, Italy",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

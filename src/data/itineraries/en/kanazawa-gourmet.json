@@ -1,0 +1,273 @@
+{
+  "id": "0e7b3caa-6cb4-40b8-bacc-5df28e06cf0a",
+  "destination": "Kanazawa",
+  "description": "Escape to Kanazawa, a hidden gem on Japan's west coast, where the rich tapestry of culture, history, and culinary delights awaits. This 3-day adventure is perfect for couples looking to indulge in exquisite local cuisine, explore traditional crafts, and immerse themselves in the serene beauty of this historic city. From the stunning Kenrokuen Garden to the vibrant streets of the Higashi Chaya District, Kanazawa offers a unique blend of experiences that will leave you enchanted and inspired.",
+  "heroImage": "https://images.unsplash.com/photo-1733173378346-dc00ede45b27?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODA2OTV8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Ivanna Vinnicsuk",
+  "heroImagePhotographerUrl": "https://unsplash.com/@ivannavinni?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Culinary Delights and Cultural Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Omicho Market",
+          "description": "Start your day with a delightful breakfast at Omicho Market, where you can sample fresh seafood and local delicacies. Try the grilled fish or a rice bowl topped with sashimi for an authentic Kanazawa experience.",
+          "searchQuery": "Omicho Market",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Kenrokuen Garden",
+          "description": "Visit Kenrokuen, one of Japan's most beautiful gardens. Stroll through its picturesque landscapes, admire the seasonal flowers, and enjoy the serene atmosphere. Don't forget to take a photo by the iconic Kotoji-toro lantern.",
+          "searchQuery": "Kenrokuen Garden",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Kuroyuri",
+          "description": "Savor Kanazawa's famous seafood at Kuroyuri, known for its delicious sushi and sashimi. The restaurant's cozy atmosphere and fresh ingredients make it a perfect spot for lunch.",
+          "searchQuery": "Kuroyuri",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Kanazawa Castle",
+          "description": "Explore the historic Kanazawa Castle, a symbol of the city's rich history. Walk through the castle grounds and enjoy the beautiful architecture, including the impressive stone walls and the reconstructed structures.",
+          "searchQuery": "Kanazawa Castle",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Higashi Chaya District",
+          "description": "Wander through the charming Higashi Chaya District, famous for its traditional teahouses. You can stop by a teahouse for a cup of matcha and enjoy the atmosphere of old Kanazawa.",
+          "searchQuery": "Higashi Chaya District",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Fuwari",
+          "description": "Indulge in a kaiseki dinner at Fuwari, where you can experience the art of Japanese cuisine. Each dish is beautifully presented, showcasing seasonal ingredients and local flavors.",
+          "searchQuery": "Fuwari",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Stay at Hotel Nikko Kanazawa",
+          "description": "Relax and unwind at Hotel Nikko Kanazawa, a comfortable hotel with modern amenities. Enjoy the hospitality and convenience of being close to major attractions.",
+          "searchQuery": "Hotel Nikko Kanazawa",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Art and Traditional Craft Experiences",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Omicho Market",
+          "description": "Start your day with a delicious breakfast at Omicho Market, where you can sample fresh seafood and local delicacies. Try the grilled fish or a rice bowl topped with sashimi for an authentic Kanazawa experience.",
+          "searchQuery": "Omicho Market",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit 21st Century Museum of Contemporary Art",
+          "description": "Explore the innovative exhibits at the 21st Century Museum of Contemporary Art, known for its unique architecture and diverse collection of contemporary art. Don't miss the famous 'Swimming Pool' installation by Leandro Erlich.",
+          "searchQuery": "21st Century Museum of Contemporary Art Kanazawa",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Kuroyuri",
+          "description": "Enjoy a delightful lunch at Kuroyuri, a cozy restaurant specializing in Kanazawa's traditional cuisine. Savor dishes like Jibuni (duck stew) and seasonal vegetables, all prepared with local ingredients.",
+          "searchQuery": "Kuroyuri",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Nagamachi Samurai District",
+          "description": "Stroll through the historic Nagamachi Samurai District, where you can admire the well-preserved samurai houses and learn about the lives of the samurai families who once lived here. The atmosphere is serene and steeped in history.",
+          "searchQuery": "Nagamachi Samurai District",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Gold Leaf Workshop Experience",
+          "description": "Participate in a hands-on gold leaf workshop, where you can learn the traditional craft of applying gold leaf to various items. It's a unique opportunity to create your own piece of art to take home as a souvenir.",
+          "searchQuery": "Gold Leaf Workshop Kanazawa",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Fuwari",
+          "description": "Indulge in a romantic dinner at Fuwari, a restaurant known for its exquisite kaiseki cuisine. Enjoy a multi-course meal that showcases the best of Kanazawa's seasonal ingredients, all beautifully presented.",
+          "searchQuery": "Fuwari",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Asano River",
+          "description": "End your day with a peaceful evening walk along the Asano River. The illuminated streets and gentle sounds of the water create a perfect romantic atmosphere to reflect on your day in Kanazawa.",
+          "searchQuery": "Asano River",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Final Tastes and Departure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Omicho Market",
+          "description": "Start your day with a delightful breakfast at Omicho Market, where you can sample fresh seafood and local delicacies. Try the grilled fish or a bowl of chirashi sushi for a true Kanazawa experience.",
+          "searchQuery": "Omicho Market",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Myoryuji Temple (Ninja Temple)",
+          "description": "Explore the fascinating Myoryuji Temple, known as the Ninja Temple for its hidden rooms and secret passages. This unique temple offers a glimpse into the historical intrigue of Kanazawa.",
+          "searchQuery": "Myoryuji Temple",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Izakaya",
+          "description": "Enjoy a leisurely lunch at a local izakaya, where you can savor Kanazawa's famous seafood and seasonal dishes. Don't miss the grilled squid and local sake for a perfect pairing.",
+          "searchQuery": "Kanazawa Izakaya",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Traditional Craft Experience",
+          "description": "Participate in a hands-on experience of Kanazawa's traditional crafts, such as gold leaf application or Kutani pottery. This is a wonderful opportunity to create your own souvenir while learning about local artistry.",
+          "searchQuery": "Kanazawa Traditional Craft Experience",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll through Kenrokuen Garden",
+          "description": "Take a peaceful stroll through Kenrokuen Garden, one of Japan's most beautiful landscape gardens. Enjoy the seasonal flowers and serene ponds as you reflect on your trip.",
+          "searchQuery": "Kenrokuen Garden",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Sushi Restaurant",
+          "description": "Indulge in a final dinner at a renowned sushi restaurant, where you can enjoy the freshest catches from the Sea of Japan. The omakase menu is highly recommended for a memorable culinary experience.",
+          "searchQuery": "Kanazawa Sushi Restaurant",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

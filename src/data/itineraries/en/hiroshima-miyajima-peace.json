@@ -1,0 +1,434 @@
+{
+  "id": "1f68bd9e-e1ca-42fa-aad1-19ce32d6c8b5",
+  "destination": "Hiroshima & Miyajima",
+  "description": "Immerse yourself in the rich tapestry of history and culture as you explore Hiroshima and the enchanting island of Miyajima. This 4-day journey invites you to discover the poignant stories of resilience, savor delectable local cuisine, and encounter the friendly deer that roam freely on Miyajima. Each day unfolds a new chapter of your adventure, blending the solemnity of history with the joy of culinary delights and natural beauty.",
+  "heroImage": "https://images.unsplash.com/photo-1588421024312-36aafe8a94fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODA3ODR8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Joan Tran",
+  "heroImagePhotographerUrl": "https://unsplash.com/@joanofarts?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Hiroshima and Historical Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a hearty breakfast at a local café, enjoying traditional Japanese breakfast items like grilled fish, miso soup, and rice. It's a great way to fuel up for a day of exploration!",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Hiroshima Peace Memorial Park",
+          "description": "Visit the Hiroshima Peace Memorial Park, a poignant tribute to the victims of the atomic bomb. Stroll through the park, reflecting on the significance of peace and the resilience of the city.",
+          "searchQuery": "Hiroshima Peace Memorial Park",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Hiroshima Peace Memorial Museum",
+          "description": "Explore the Hiroshima Peace Memorial Museum, which provides a detailed account of the events surrounding the atomic bombing and its aftermath. The exhibits are both educational and moving, making it a must-visit.",
+          "searchQuery": "Hiroshima Peace Memorial Museum",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Okonomimura",
+          "description": "Head to Okonomimura, a famous food hall where you can savor Hiroshima-style okonomiyaki, a savory pancake filled with layers of ingredients. It's a local favorite and a delicious way to experience Hiroshima's culinary culture.",
+          "searchQuery": "Okonomimura",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Shukkeien Garden",
+          "description": "Take a leisurely stroll through Shukkeien Garden, a beautiful traditional Japanese garden that offers a serene escape from the city. Enjoy the picturesque landscapes and perhaps spot some koi fish in the ponds.",
+          "searchQuery": "Shukkeien Garden",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Hiroshima Castle",
+          "description": "Explore Hiroshima Castle, also known as Carp Castle. The reconstructed main keep offers insights into the history of the region and provides a lovely view of the surrounding area from the top.",
+          "searchQuery": "Hiroshima Castle",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "Enjoy dinner at a local izakaya, where you can try various Japanese dishes and local sake. The lively atmosphere and delicious food will make for a memorable dining experience.",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk Along the Motoyasu River",
+          "description": "End your day with a peaceful evening walk along the Motoyasu River, where you can enjoy the illuminated views of the Peace Memorial Park and reflect on the day's experiences.",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Miyajima Day Trip",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Hiroshima",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Miyajima",
+          "time": "08:30"
+        },
+        "duration": "30m",
+        "memo": "Take the ferry from Hiroshima to Miyajima for a scenic ride."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Itsukushima Shrine",
+          "description": "Start your day at the iconic Itsukushima Shrine, famous for its floating torii gate. The shrine is a UNESCO World Heritage site and offers stunning views, especially during high tide.",
+          "searchQuery": "Itsukushima Shrine",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Miyajima Deer Park",
+          "description": "Stroll through the Miyajima Deer Park where you can interact with friendly deer roaming freely. It's a delightful experience for the whole family, perfect for some memorable photos.",
+          "searchQuery": "Miyajima Deer Park",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Kakiya",
+          "description": "Enjoy a delicious lunch at Kakiya, known for its fresh oysters and local seafood dishes. Savor the flavors of Miyajima while enjoying views of the sea.",
+          "searchQuery": "Kakiya",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Mount Misen Hike",
+          "description": "After lunch, embark on a hike to Mount Misen. The trail offers beautiful views of the Seto Inland Sea and the surrounding islands. It's a moderate hike that takes about 1-2 hours.",
+          "searchQuery": "Mount Misen",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Return to Hiroshima",
+          "description": "After enjoying the views from Mount Misen, make your way back down and take the ferry back to Hiroshima. Relax and reflect on your day as you travel across the water.",
+          "searchQuery": "Hiroshima",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Okonomimura",
+          "description": "End your day with dinner at Okonomimura, a famous okonomiyaki (savory pancake) village in Hiroshima. Choose from various stalls and enjoy this local specialty in a lively atmosphere.",
+          "searchQuery": "Okonomimura",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion and Local Cuisine",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a hearty breakfast at a local café, where you can enjoy a traditional Japanese breakfast set featuring grilled fish, miso soup, and rice. It's a great way to fuel up for a day of exploration!",
+          "searchQuery": "Hiroshima Local Café",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Shukkeien Garden",
+          "description": "Visit the beautiful Shukkeien Garden, a historic landscape garden that dates back to the Edo period. Stroll through its serene paths, admire the picturesque ponds, and enjoy the seasonal flowers. It's a peaceful oasis in the heart of Hiroshima.",
+          "searchQuery": "Shukkeien Garden",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Hiroshima Castle",
+          "description": "Explore Hiroshima Castle, also known as Carp Castle, which offers a glimpse into the city's feudal past. The reconstructed main keep houses a museum showcasing artifacts and exhibits related to Hiroshima's history.",
+          "searchQuery": "Hiroshima Castle",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Okonomimura",
+          "description": "Head to Okonomimura, a famous food theme park dedicated to Hiroshima-style okonomiyaki. Choose from various stalls and enjoy this savory pancake layered with noodles, cabbage, and your choice of toppings. A must-try local dish!",
+          "searchQuery": "Okonomimura",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Ferry to Miyajima Island",
+          "description": "Take a scenic ferry ride to Miyajima Island, known for its iconic floating torii gate. The journey offers stunning views of the Seto Inland Sea and the surrounding islands.",
+          "searchQuery": "Miyajima Ferry",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit Itsukushima Shrine",
+          "description": "Upon arrival, visit the UNESCO World Heritage Site, Itsukushima Shrine. Marvel at the stunning architecture and the famous torii gate that appears to float on water during high tide. Don't forget to take plenty of photos!",
+          "searchQuery": "Itsukushima Shrine",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Interact with the Deer",
+          "description": "Take some time to interact with the friendly deer that roam freely around Miyajima. These gentle creatures are a symbol of the island, and you can feed them special deer crackers available for purchase.",
+          "searchQuery": "Miyajima Deer",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Dinner at a Local Seafood Restaurant",
+          "description": "Enjoy a delightful dinner at a local seafood restaurant on Miyajima, where you can savor fresh oysters and other seafood delicacies. The island is known for its high-quality seafood, making it a perfect end to your day.",
+          "searchQuery": "Miyajima Seafood Restaurant",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Return Ferry to Hiroshima",
+          "description": "After dinner, take the ferry back to Hiroshima. Reflect on the day's experiences as you enjoy the evening views of the city from the water.",
+          "searchQuery": "Miyajima Ferry",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Hiroshima",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "15:00"
+        },
+        "duration": "14h",
+        "memo": "Flight from Hiroshima to Washington D.C. with a layover."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Okonomi-mura",
+          "description": "Start your day with a delicious Hiroshima-style okonomiyaki at Okonomi-mura, a famous food market dedicated to this savory pancake. Enjoy the lively atmosphere as you watch chefs prepare your meal right in front of you.",
+          "searchQuery": "Okonomi-mura",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Hiroshima Peace Memorial Park",
+          "description": "Explore the Hiroshima Peace Memorial Park, a UNESCO World Heritage site dedicated to the victims of the atomic bomb. The park features the iconic Atomic Bomb Dome and several memorials that convey the message of peace and hope.",
+          "searchQuery": "Hiroshima Peace Memorial Park",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Hiroshima Castle",
+          "description": "Visit Hiroshima Castle, also known as Carp Castle, which offers a glimpse into the city's feudal past. The reconstructed main keep houses a museum with historical artifacts and provides a lovely view of the surrounding gardens.",
+          "searchQuery": "Hiroshima Castle",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Nagataya",
+          "description": "Savor a hearty lunch at Nagataya, known for its delicious Hiroshima-style okonomiyaki. This restaurant is a local favorite and offers a cozy atmosphere to enjoy your meal.",
+          "searchQuery": "Nagataya",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Travel to Miyajima Island",
+          "description": "Take a ferry from Hiroshima to Miyajima Island, famous for its floating torii gate and friendly deer. The ferry ride offers beautiful views of the Seto Inland Sea.",
+          "searchQuery": "Miyajima Ferry",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Itsukushima Shrine",
+          "description": "Visit the stunning Itsukushima Shrine, a UNESCO World Heritage site known for its iconic torii gate that appears to float on water during high tide. Take your time to appreciate the shrine's unique architecture and serene surroundings.",
+          "searchQuery": "Itsukushima Shrine",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Interact with Deer at Miyajima",
+          "description": "Enjoy some time interacting with the friendly deer that roam freely around Miyajima. These gentle creatures are a symbol of the island and love to be fed with special deer crackers available for purchase.",
+          "searchQuery": "Miyajima Deer",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Kakiya",
+          "description": "End your day with a delightful dinner at Kakiya, known for its fresh oysters and local seafood dishes. Enjoy the flavors of the region while taking in the beautiful views of the sunset over the sea.",
+          "searchQuery": "Kakiya",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

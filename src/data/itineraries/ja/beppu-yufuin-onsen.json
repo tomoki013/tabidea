@@ -1,0 +1,256 @@
+{
+  "id": "289bccbf-37a8-42f5-8f9f-fa01382ecf9c",
+  "destination": "大分（別府・湯布院）",
+  "description": "温泉の宝庫、大分で心と体を癒す旅へ。別府の地獄めぐりで温泉の神秘を体感し、湯布院の美しい自然に囲まれた温泉宿で贅沢なひとときを過ごします。家族でのんびりとした時間を楽しみながら、地元のグルメも堪能しましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "別府の地獄めぐりと温泉体験",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "別府の宿で、地元の食材を使った和朝食を楽しみます。新鮮な魚や野菜を使った料理で、元気に一日をスタート！",
+          "locationEn": "Beppu, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "別府地獄巡り",
+          "description": "別府の名物、地獄めぐりを楽しみます。特に「海地獄」の青い温泉や「血の池地獄」の赤い色は圧巻です。各地獄の特徴を楽しみながら、写真撮影もお忘れなく！",
+          "searchQuery": "Beppu Hells",
+          "locationEn": "Beppu, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地獄めぐりの近くでランチ",
+          "description": "地獄めぐりの後は、近くの食堂で名物の地獄蒸し料理を堪能。新鮮な海鮮や野菜を蒸した料理は、素材の味が引き立ちます。",
+          "locationEn": "Beppu, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "別府温泉でリラックス",
+          "description": "午後は、別府の温泉に浸かりながらゆったりとした時間を過ごします。特に「明礬温泉」は、白い湯の花が浮かぶ独特の温泉で、心身ともにリフレッシュできます。",
+          "searchQuery": "Myoban Onsen",
+          "locationEn": "Beppu, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "宿に戻り、温泉でくつろぐ",
+          "description": "宿に戻ったら、再度温泉に浸かり、疲れを癒します。夕食前に温泉を楽しむのが、別府の醍醐味です。",
+          "locationEn": "Beppu, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "宿で夕食",
+          "description": "宿の夕食は、地元の旬の食材を使った懐石料理。美しい盛り付けとともに、心温まる料理を楽しみます。",
+          "locationEn": "Beppu, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "湯布院の自然と温泉",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "別府",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "湯布院",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "別府から湯布院へはバスでの移動が便利です。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "金鱗湖散策",
+          "description": "美しい自然に囲まれた金鱗湖を散策します。湖面に映る山々の景色は、四季折々の表情を見せてくれます。特に朝の静けさの中での散策は心が洗われるようです。",
+          "searchQuery": "Kinrin Lake",
+          "locationEn": "Yufuin, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "湯布院の地元食材を使ったランチ",
+          "description": "湯布院の地元食材をふんだんに使ったランチを楽しみます。特に、地元の野菜やお米を使った料理は絶品です。",
+          "searchQuery": "Yufuin local cuisine",
+          "locationEn": "Yufuin, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "湯布院温泉でリラックス",
+          "description": "湯布院の温泉でゆったりとした時間を過ごします。露天風呂からの眺めは格別で、心身ともにリフレッシュできます。",
+          "searchQuery": "Yufuin Onsen",
+          "locationEn": "Yufuin, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "地獄めぐり",
+          "description": "別府の地獄めぐりを楽しみます。色とりどりの温泉地獄を巡り、それぞれの特徴を楽しむことができます。特に、血の池地獄や海地獄は見逃せません。",
+          "searchQuery": "Beppu Hells",
+          "locationEn": "Beppu, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "湯布院での夕食",
+          "description": "湯布院の名物料理を楽しむ夕食。地元の新鮮な食材を使った料理が堪能できるお店を選びましょう。",
+          "searchQuery": "Yufuin dinner",
+          "locationEn": "Yufuin, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "宿でのんびり",
+          "description": "宿に戻り、温泉に浸かりながらのんびりとした時間を過ごします。家族での会話を楽しみながら、心地よい疲れを癒しましょう。",
+          "searchQuery": "Yufuin Ryokan",
+          "locationEn": "Yufuin, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "湯布院から東京へ帰る",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "湯布院",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "12:00"
+        },
+        "duration": "3h",
+        "memo": "特急列車で快適に移動します。途中の景色も楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "湯布院の街散策",
+          "description": "湯布院の美しい街並みを散策します。温泉街ならではの風情ある建物や、地元のアートショップを訪れながら、ゆったりとした時間を過ごしましょう。",
+          "searchQuery": "Yufuin",
+          "locationEn": "Yufuin, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "地元のカフェでランチ",
+          "description": "湯布院のカフェで、地元の食材を使ったランチを楽しみます。特におすすめは、地元の野菜を使ったサラダや、手作りのスイーツです。",
+          "searchQuery": "Yufuin Cafe",
+          "locationEn": "Yufuin, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "地獄めぐり",
+          "description": "湯布院の名物、地獄めぐりを体験します。色とりどりの温泉が湧き出る様子を見学し、温泉の効能について学びましょう。",
+          "searchQuery": "Yufuin Hell Tour",
+          "locationEn": "Yufuin, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "温泉でリラックス",
+          "description": "最後は、湯布院の温泉に浸かり、旅の疲れを癒します。露天風呂からの景色を楽しみながら、心身ともにリフレッシュしましょう。",
+          "searchQuery": "Yufuin Onsen",
+          "locationEn": "Yufuin, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "東京へ移動",
+          "description": "温泉でリフレッシュした後、東京へ向けて出発します。",
+          "searchQuery": "Tokyo Station",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

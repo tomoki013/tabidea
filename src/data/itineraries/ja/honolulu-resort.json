@@ -1,0 +1,590 @@
+{
+  "id": "2264ddb1-c5d5-4a35-b42c-4a5f017755bc",
+  "destination": "ホノルル",
+  "description": "ハワイの美しい海を眺めながら、リゾート気分を満喫する7日間の旅へようこそ。ホノルルのビーチでのんびり過ごしながら、ショッピングやグルメも楽しむ贅沢な時間をお過ごしください。青い海と白い砂浜、そして心温まる地元の人々との出会いが、あなたの心を豊かにしてくれることでしょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からホノルルへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ホノルル",
+          "time": "11:30"
+        },
+        "duration": "8h 30m",
+        "memo": "直行便での移動。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "ワイキキビーチでリラックス",
+          "description": "ホノルルに到着したら、まずはワイキキビーチでのんびりとした時間を過ごしましょう。青い海と白い砂浜が広がるビーチで、リラックスしたり、軽く泳いだりするのがおすすめです。",
+          "searchQuery": "Waikiki Beach",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アラモアナセンターでショッピング",
+          "description": "ハワイ最大のショッピングモール、アラモアナセンターでショッピングを楽しみましょう。高級ブランドから地元のショップまで多彩な店舗が揃っています。",
+          "searchQuery": "Ala Moana Center",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アラモアナビーチパークで夕日鑑賞",
+          "description": "アラモアナセンターから徒歩で行けるアラモアナビーチパークで、夕日を眺めながらのんびりと過ごします。美しい夕焼けが見られるスポットです。",
+          "searchQuery": "Ala Moana Beach Park",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ロイヤルハワイアンホテルでディナー",
+          "description": "ワイキキビーチ沿いのロイヤルハワイアンホテルで、ハワイの新鮮な食材を使ったディナーを楽しみましょう。特にシーフード料理が絶品です。",
+          "searchQuery": "Royal Hawaiian Hotel",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ワイキキビーチでのんびり",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ホノルルのホテルで、トロピカルフルーツやパンケーキを楽しむ朝食。ハワイの新鮮な食材を使った料理で、リゾート気分を満喫します。",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ワイキキビーチでリラックス",
+          "description": "美しい青い海と白い砂浜が広がるワイキキビーチで、のんびりとした時間を過ごします。ビーチチェアに座って、波の音を聞きながらリラックス。",
+          "searchQuery": "Waikiki Beach",
+          "locationEn": "Waikiki Beach, Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "アラモアナセンターでランチ",
+          "description": "アラモアナセンター内のフードコートで、ハワイのローカルフードを楽しみます。ポケボウルやガーリックシュリンプなど、地元の味を堪能。",
+          "searchQuery": "Ala Moana Center",
+          "locationEn": "Ala Moana Center, Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アラモアナセンターでショッピング",
+          "description": "アラモアナセンターでショッピングを楽しみます。ハワイの特産品やブランド品が揃っており、素敵なお土産を見つけるチャンスです。",
+          "locationEn": "Ala Moana Center, Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ワイキキビーチでサンセット",
+          "description": "夕暮れ時のワイキキビーチで、サンセットを眺めながらロマンチックなひとときを過ごします。美しいオレンジ色の空と海のコントラストが心に残ります。",
+          "locationEn": "Waikiki Beach, Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ワイキキのレストランでディナー",
+          "description": "ワイキキの海を眺めながら、シーフードやハワイアン料理を楽しむディナー。特に新鮮な魚介類は絶品です。",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "自然と絶景を楽しむ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ホノルルのホテルで、トロピカルフルーツやパンケーキを楽しむ朝食。ハワイの新鮮な食材を使った料理で、リゾート気分を満喫します。",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ダイヤモンドヘッド登山",
+          "description": "ホノルルのシンボル、ダイヤモンドヘッドに挑戦。頂上からの絶景は息をのむ美しさで、特に朝の光の中での景色は格別です。",
+          "searchQuery": "Diamond Head",
+          "locationEn": "Diamond Head, Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ：アロハテーブル",
+          "description": "ダイヤモンドヘッドの近くにあるアロハテーブルで、ハワイアン料理を楽しみます。新鮮なシーフードやロコモコが人気です。",
+          "searchQuery": "Aloha Table",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ハナウマ湾でシュノーケリング",
+          "description": "ハナウマ湾で美しい海を満喫。色とりどりの魚たちと一緒に泳ぎながら、ハワイの自然の美しさを体感します。",
+          "searchQuery": "Hanauma Bay",
+          "locationEn": "Hanauma Bay, Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ハナウマ湾からホノルルへ戻る",
+          "description": "ハナウマ湾での楽しい時間を終え、ホノルルへ戻ります。美しい海を眺めながらのドライブは心地よいひととき。",
+          "locationEn": "Honolulu, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ディナー：ロイヤルハワイアンホテルのルアウ",
+          "description": "ロイヤルハワイアンホテルでのルアウディナー。ハワイの伝統的な料理と共に、フラダンスやポリネシアの文化を楽しむことができます。",
+          "searchQuery": "Royal Hawaiian Luau",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "ワイキキビーチでのんびり",
+          "description": "ディナーの後は、ワイキキビーチでのんびりとした時間を過ごします。波の音を聞きながら、ロマンチックなひとときを楽しんでください。",
+          "locationEn": "Waikiki Beach, Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ショッピングとグルメ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ホノルルのホテルで、トロピカルフルーツやパンケーキを楽しむ朝食。ハワイの新鮮な食材を使った料理で、リゾート気分を満喫します。",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "アラモアナセンターでショッピング",
+          "description": "ハワイ最大のショッピングモール、アラモアナセンターでのんびりショッピング。高級ブランドから地元のショップまで多彩な店舗が揃い、ウィンドウショッピングも楽しめます。",
+          "searchQuery": "Ala Moana Center",
+          "locationEn": "Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "アラモアナセンター内のレストランでランチ",
+          "description": "アラモアナセンター内の人気レストランで、ハワイアン料理や新鮮なシーフードを堪能。特にロコモコやポケボウルはおすすめです。",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ワイキキビーチでリラックス",
+          "description": "美しいワイキキビーチでのんびりと過ごします。青い海を眺めながら、ビーチチェアに座ってリラックスしたり、軽く泳いだりして、ハワイの自然を満喫しましょう。",
+          "searchQuery": "Waikiki Beach",
+          "locationEn": "Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ダウンタウンホノルル散策",
+          "description": "ダウンタウンホノルルの歴史的なエリアを散策。アートギャラリーやカフェが点在し、地元の雰囲気を感じながらのんびりとした時間を過ごせます。",
+          "searchQuery": "Downtown Honolulu",
+          "locationEn": "Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ダウンタウンホノルルのレストランでディナー",
+          "description": "地元の食材を使った創作料理を楽しめるレストランで、特別なディナーを。ハワイの夜景を眺めながら、ロマンティックなひとときを過ごします。",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ビーチでのアクティビティ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ホノルルのホテルで、トロピカルフルーツやパンケーキを楽しむ朝食。ハワイの新鮮な食材を使った料理で、リゾート気分を満喫します。",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ワイキキビーチでのんびり",
+          "description": "ワイキキビーチでのんびりと過ごします。青い海と白い砂浜を眺めながら、ビーチチェアに寝転んでリラックス。日焼け止めを忘れずに！",
+          "searchQuery": "Waikiki Beach",
+          "locationEn": "Waikiki Beach, Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "アランチーノでランチ",
+          "description": "ワイキキビーチ近くのイタリアンレストラン、アランチーノでランチ。新鮮なシーフードを使ったパスタやピザが絶品です。海を眺めながらの食事は格別。",
+          "searchQuery": "Arancino di Mare",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "カイムキ地区散策",
+          "description": "カイムキ地区を散策し、地元のショップやカフェを訪れます。ユニークな雑貨やアートが並ぶお店を見て回りながら、ショッピングを楽しみましょう。",
+          "searchQuery": "Kaimuki",
+          "locationEn": "Kaimuki, Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ビーチでスノーケリング",
+          "description": "ワイキキビーチでスノーケリングを楽しみます。色とりどりの魚たちと一緒に泳ぎ、ハワイの海の美しさを体感しましょう。",
+          "locationEn": "Waikiki Beach, Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ビーチでサンセット鑑賞",
+          "description": "夕暮れ時のワイキキビーチで、サンセットを楽しみます。オレンジ色に染まる空と海のコントラストは、ロマンチックなひとときを演出します。",
+          "locationEn": "Waikiki Beach, Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ロイヤルハワイアンセンターでディナー",
+          "description": "ロイヤルハワイアンセンター内のレストランでディナー。ハワイの伝統料理を楽しみながら、ショッピングも楽しめる便利な場所です。",
+          "searchQuery": "Royal Hawaiian Center",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ハワイの文化を体験",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ホノルルのホテルで、トロピカルフルーツやパンケーキを楽しむ贅沢な朝食。ハワイの新鮮な食材を使った料理で、素敵な一日のスタートを切りましょう。",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ポリネシア文化センター",
+          "description": "ハワイの文化を深く知ることができるポリネシア文化センターへ。各島の伝統的なパフォーマンスや工芸品を楽しみながら、ハワイの歴史に触れることができます。",
+          "searchQuery": "Polynesian Cultural Center",
+          "locationEn": "Laie, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ポリネシア文化センター内でランチ",
+          "description": "センター内のレストランで、ポリネシア料理を楽しみます。地元の食材を使った料理が揃っており、文化体験をしながらの食事は格別です。",
+          "locationEn": "Laie, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ノースショアのビーチ散策",
+          "description": "ノースショアの美しいビーチを散策。サーフィンのメッカとして知られるこのエリアでは、波の音を聞きながらリラックスした時間を過ごせます。",
+          "searchQuery": "North Shore",
+          "locationEn": "North Shore, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ノースショアの地元カフェでスイーツ",
+          "description": "ノースショアの人気カフェで、アサイーボウルやハワイアンコーヒーを楽しみましょう。地元の人々に愛されるお店で、ほっと一息つける時間です。",
+          "locationEn": "North Shore, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホノルルに戻る",
+          "description": "ノースショアからホノルルへ戻ります。美しい夕日を眺めながらのドライブは、心に残る思い出になるでしょう。",
+          "locationEn": "Honolulu, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "アラモアナセンターでショッピング",
+          "description": "ハワイ最大のショッピングモール、アラモアナセンターでショッピングを楽しみます。ブランドショップや地元の特産品が揃い、買い物好きにはたまらないスポットです。",
+          "searchQuery": "Ala Moana Center",
+          "locationEn": "Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "アラモアナセンター内でディナー",
+          "description": "ショッピングの後は、アラモアナセンター内のレストランでディナー。新鮮なシーフードやハワイアン料理を堪能し、素敵な夜を締めくくりましょう。",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "ホノルルから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ホノルル国際空港",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "18:00"
+        },
+        "duration": "9h",
+        "memo": "直行便での移動。機内食を楽しみながらリラックス。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ビーチを眺めながら、ハワイのフルーツやパンケーキを楽しむ贅沢な朝食。",
+          "searchQuery": "The Modern Honolulu",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ワイキキビーチでのんびり",
+          "description": "青い海と白い砂浜が広がるワイキキビーチで、日光浴や海水浴を楽しみます。カップルでのんびりとした時間を過ごすのにぴったり。",
+          "searchQuery": "Waikiki Beach",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ホノルル国際空港へ移動",
+          "description": "ビーチでの楽しい時間を終え、空港へ向かいます。タクシーやシャトルバスを利用して、スムーズに移動。",
+          "searchQuery": "Honolulu International Airport",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "空港でのショッピング",
+          "description": "出発前に空港内の免税店でお土産やハワイの特産品を購入。おしゃれなアイテムやスイーツが揃っています。",
+          "searchQuery": "Honolulu International Airport",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "搭乗手続き",
+          "description": "フライトの搭乗手続きを行い、出発を待ちます。空港内のラウンジでリラックスするのもおすすめ。",
+          "searchQuery": "Honolulu International Airport",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "東京到着",
+          "description": "東京に到着。ハワイの思い出を胸に、次の冒険が待っています。",
+          "searchQuery": "Tokyo",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -97,17 +97,18 @@ async function withRetry<T>(
 function normalizeTransitInfo(transit: TransitInfoInput): TransitInfoParsed {
   if (!transit) return transit as unknown as TransitInfoParsed;
 
-  const normalizeLocation = (loc: string | { place: string; time?: string }) => {
-    if (typeof loc === 'string') {
-      return { place: loc };
-    }
-    return loc;
-  };
-
   return {
-    ...transit,
-    departure: normalizeLocation(transit.departure),
-    arrival: normalizeLocation(transit.arrival),
+    type: transit.type,
+    departure: {
+      place: transit.departure.place,
+      ...(transit.departure.time ? { time: transit.departure.time } : {}),
+    },
+    arrival: {
+      place: transit.arrival.place,
+      ...(transit.arrival.time ? { time: transit.arrival.time } : {}),
+    },
+    ...(transit.duration ? { duration: transit.duration } : {}),
+    ...(transit.memo ? { memo: transit.memo } : {}),
   };
 }
 
@@ -129,8 +130,22 @@ function categoryToActivityType(category: string): ActivityType {
  * Normalize Activity: convert flexible source, add default source & activityType
  */
 function normalizeActivitySource(activity: ActivityInput): ActivityParsed {
-  // Base activity object with strict type cast (omit source/searchQuery since they differ between Input and Parsed)
-  const baseActivity = { ...activity } as Omit<ActivityInput, 'source' | 'searchQuery'> & { searchQuery?: string };
+  // Build strict activity shape while dropping nullable-only fields.
+  const baseActivity: Omit<ActivityParsed, 'source'> = {
+    time: activity.time,
+    activity: activity.activity,
+    description: activity.description,
+  };
+
+  if (activity.searchQuery) {
+    baseActivity.searchQuery = activity.searchQuery;
+  }
+  if (activity.locationEn) {
+    baseActivity.locationEn = activity.locationEn;
+  }
+  if (activity.activityType) {
+    baseActivity.activityType = activity.activityType;
+  }
 
   // Derive activityType via classifier if not set by AI
   if (!baseActivity.activityType) {
@@ -148,8 +163,6 @@ function normalizeActivitySource(activity: ActivityInput): ActivityParsed {
     } else {
       resolvedSource = { type: 'ai_knowledge' as const, confidence: 'medium' as const, title: activity.source };
     }
-  } else {
-    resolvedSource = activity.source;
   }
 
   return {
@@ -172,7 +185,8 @@ function normalizeDayPlan(day: DayPlanInput): DayPlan {
   const normalizedActivities = day.activities.map(normalizeActivitySource);
 
   return {
-    ...day,
+    day: day.day,
+    title: day.title,
     transit: normalizedTransit,
     activities: normalizedActivities,
     // timelineItems is constructed by buildTimeline() from transit + activities

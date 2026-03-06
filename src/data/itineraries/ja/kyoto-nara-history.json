@@ -1,0 +1,384 @@
+{
+  "id": "40744f20-49f4-4cfe-b6da-8aabc2319e85",
+  "destination": "京都・奈良",
+  "description": "友人と共に、古都の魅力が詰まった京都と奈良を巡る4日間の旅に出かけましょう。歴史的な寺社仏閣を訪れ、地元の人々が愛するグルメを堪能し、心温まる体験を通じて日本の文化に触れる素晴らしい時間を過ごします。",
+  "heroImage": "https://images.unsplash.com/photo-1701779411106-25c10657cd39?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODA0NTR8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Tuan P.",
+  "heroImagePhotographerUrl": "https://unsplash.com/@tuan_p?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "京都の歴史とグルメを満喫",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "大阪",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "京都",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "大阪から京都へはJRでのアクセスが便利です。朝の時間帯は混雑することがあるので、余裕を持って出発しましょう。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "清水寺",
+          "description": "世界遺産の清水寺を訪れ、清水の舞台からの絶景を楽しみましょう。朝の澄んだ空気の中での参拝は特におすすめです。",
+          "searchQuery": "Kiyomizu-dera",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "祇園 にしむら（ランチ）",
+          "description": "祇園エリアにある京懐石の名店で、旬の食材を使った繊細な料理を堪能します。清水寺から徒歩約15分の距離です。",
+          "searchQuery": "Gion Nishimura",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "花見小路通り散策",
+          "description": "祇園のメインストリート、花見小路通りを散策し、茶屋や料亭の風情を楽しみながら、運が良ければ舞妓さんに出会えるかもしれません。",
+          "searchQuery": "Hanamikoji Street",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "八坂神社",
+          "description": "八坂神社に参拝し、境内の美しい景色を楽しみましょう。夕暮れ時の神社は特に神秘的な雰囲気が漂います。",
+          "searchQuery": "Yasaka Shrine",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "先斗町でディナー",
+          "description": "鴨川沿いの先斗町で京料理のディナーを楽しみます。夏なら川床での食事が特におすすめです。",
+          "searchQuery": "Pontocho",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "京都の隠れた名所を巡る",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "京都",
+          "time": "08:30"
+        },
+        "arrival": {
+          "place": "嵐山",
+          "time": "09:00"
+        },
+        "duration": "30m",
+        "memo": "嵐山へはJR嵯峨野線での移動がおすすめです。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "嵐山竹林の小径散策",
+          "description": "美しい竹林の中を歩きながら、自然の静けさを感じることができます。朝の光が竹の間から差し込み、幻想的な雰囲気を楽しめます。",
+          "searchQuery": "Arashiyama Bamboo Grove",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "天龍寺",
+          "description": "世界遺産にも登録されている天龍寺を訪れ、庭園や建物の美しさに感動。特に、庭園からの眺めは絶景です。",
+          "searchQuery": "Tenryu-ji Temple",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "嵐山でのランチ（嵐山よしむら）",
+          "description": "地元の人にも人気の蕎麦屋で、手打ち蕎麦を楽しみます。風情ある店内で、嵐山の景色を眺めながらの食事は格別です。",
+          "searchQuery": "Arashiyama Yoshimura",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "渡月橋散策",
+          "description": "嵐山のシンボル、渡月橋を渡りながら、周囲の自然を楽しみます。特に秋の紅葉シーズンは美しい景色が広がります。",
+          "searchQuery": "Togetsukyo Bridge",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "嵐山モンキーパークいわたやま",
+          "description": "山を登ると、野生の猿たちと触れ合えるモンキーパーク。頂上からの眺めも素晴らしく、京都市内を一望できます。",
+          "searchQuery": "Iwatayama Monkey Park",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "京都駅へ移動",
+          "description": "嵐山から京都駅へ戻ります。移動中に、今日の思い出を語り合いましょう。",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "京都駅近くでディナー（鳥貴族）",
+          "description": "リーズナブルな価格で焼き鳥を楽しめる居酒屋。友人と一緒に楽しい時間を過ごせます。",
+          "searchQuery": "Torikizoku Kyoto",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルチェックイン",
+          "description": "本日の宿泊先にチェックイン。ゆっくりと疲れを癒しましょう。",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "奈良の古都を探訪",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "京都",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "奈良",
+          "time": "09:40"
+        },
+        "duration": "40m",
+        "memo": "近鉄奈良線を利用して、快適に奈良へ移動します。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "東大寺",
+          "description": "奈良のシンボルとも言える東大寺で、巨大な大仏を拝観。荘厳な雰囲気の中で、歴史を感じるひとときを過ごしましょう。",
+          "searchQuery": "Todai-ji Temple",
+          "locationEn": "Nara, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "奈良公園でピクニックランチ",
+          "description": "奈良公園内で、地元の食材を使ったお弁当を楽しみながら、自由に歩き回る鹿たちと触れ合いましょう。",
+          "searchQuery": "Nara Park",
+          "locationEn": "Nara, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "春日大社",
+          "description": "春日大社を訪れ、神秘的な雰囲気の中で歴史的な建築を堪能。境内の美しい自然も楽しめます。",
+          "searchQuery": "Kasuga-taisha Shrine",
+          "locationEn": "Nara, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "奈良町散策",
+          "description": "奈良町の古い町並みを散策し、地元の人々が通うお店やカフェを訪れましょう。手作りの工芸品やお土産も見つかるかも。",
+          "searchQuery": "Naramachi",
+          "locationEn": "Nara, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元の居酒屋で夕食",
+          "description": "奈良の地元料理を楽しめる居酒屋で、友人と一緒に楽しい夕食を。新鮮な食材を使った料理が揃っています。",
+          "searchQuery": "Nara Izakaya",
+          "locationEn": "Nara, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "奈良の宿で宿泊",
+          "description": "奈良の伝統的な宿に宿泊し、ゆったりとした時間を過ごします。温かいおもてなしが待っています。",
+          "searchQuery": "Nara Ryokan",
+          "locationEn": "Nara, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "奈良の魅力を再発見し、東京へ帰る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "奈良の地元の食材を使った和朝食を楽しみ、エネルギーをチャージします。特に、奈良の名物である柿の葉寿司をぜひ味わってみてください。",
+          "locationEn": "Nara, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "奈良町散策",
+          "description": "歴史的な街並みが残る奈良町を散策します。古い町家やおしゃれなカフェが点在し、地元の人々の生活を感じながら、ゆったりとした時間を過ごせます。",
+          "searchQuery": "Naramachi",
+          "locationEn": "Nara, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "薬師寺での参拝",
+          "description": "薬師寺は奈良時代に創建された歴史的な寺院で、美しい建築と静かな雰囲気が魅力です。特に、薬師如来像は必見です。",
+          "searchQuery": "Yakushiji Temple",
+          "locationEn": "Nara, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "地元の食堂でランチ",
+          "description": "奈良町近くの地元の食堂で、奈良の郷土料理を楽しみます。特に、奈良漬けや大和野菜を使った料理がおすすめです。",
+          "locationEn": "Nara, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "奈良公園でのんびり",
+          "description": "奈良公園を散策し、自由に歩き回る鹿たちと触れ合いながら、自然の中でリラックスした時間を過ごします。",
+          "searchQuery": "Nara Park",
+          "locationEn": "Nara, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "東京行きの移動",
+          "description": "奈良から東京へ向かうため、近鉄奈良駅から電車に乗ります。約1時間半の旅を楽しみながら、奈良の思い出を振り返ります。",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "東京到着後、夕食",
+          "description": "東京に到着後、友人と一緒に地元の居酒屋で夕食を楽しみます。新鮮な刺身や焼き鳥を味わいながら、旅の思い出を語り合いましょう。",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

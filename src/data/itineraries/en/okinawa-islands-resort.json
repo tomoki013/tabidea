@@ -1,0 +1,424 @@
+{
+  "id": "84c4df22-cf23-4374-93da-9df832feea91",
+  "destination": "石垣島・竹富島",
+  "description": "Escape to the tropical paradise of Ishigaki and Taketomi Islands, where the azure waters meet pristine beaches and lush landscapes. This 5-day getaway is designed for couples seeking relaxation and adventure, with a perfect blend of marine activities and stargazing under the clear night sky. Immerse yourselves in the natural beauty and vibrant culture of these enchanting islands, creating unforgettable memories together.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Ishigaki Island",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Ishigaki Beef Steak House",
+          "description": "Indulge in a delicious lunch featuring Ishigaki beef, known for its rich flavor and tenderness. This local delicacy is a must-try for meat lovers!",
+          "searchQuery": "Ishigaki Beef Steak House",
+          "locationEn": "Ishigaki, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relax at Yonehara Beach",
+          "description": "Spend a leisurely afternoon at Yonehara Beach, famous for its crystal-clear waters and soft white sand. Perfect for swimming or simply soaking up the sun.",
+          "searchQuery": "Yonehara Beach",
+          "locationEn": "Ishigaki, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Explore Ishigaki Port",
+          "description": "Stroll around Ishigaki Port, where you can enjoy the vibrant atmosphere and watch the boats come and go. It's a great spot for photos and to feel the island vibe.",
+          "searchQuery": "Ishigaki Port",
+          "locationEn": "Ishigaki, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "Experience the local dining scene at an izakaya, where you can enjoy a variety of Okinawan dishes and fresh seafood in a cozy atmosphere.",
+          "searchQuery": "Izakaya Ishigaki",
+          "locationEn": "Ishigaki, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Stargazing at the Beach",
+          "description": "End your day with a romantic stargazing session on the beach. The clear skies of Ishigaki Island offer a breathtaking view of the stars, perfect for couples.",
+          "searchQuery": "Yonehara Beach",
+          "locationEn": "Ishigaki, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Beach Day and Marine Activities",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a delightful breakfast at your hotel, featuring fresh tropical fruits and local delicacies to energize you for a day of adventure.",
+          "locationEn": "Ishigaki Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Snorkeling at Yonehara Beach",
+          "description": "Dive into the crystal-clear waters of Yonehara Beach, known for its vibrant coral reefs and diverse marine life. This spot is perfect for both beginners and experienced snorkelers, offering a chance to see colorful fish and maybe even a sea turtle!",
+          "searchQuery": "Yonehara Beach",
+          "locationEn": "Ishigaki Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Beachside Café",
+          "description": "Enjoy a leisurely lunch at a charming beachside café, where you can savor fresh seafood and local specialties while taking in the stunning ocean views.",
+          "locationEn": "Ishigaki Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relax at Kabira Bay",
+          "description": "Spend your afternoon unwinding at Kabira Bay, famous for its breathtaking scenery and turquoise waters. Take a stroll along the beach or simply relax under a palm tree, soaking in the serene atmosphere.",
+          "searchQuery": "Kabira Bay",
+          "locationEn": "Ishigaki Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Kayaking in Kabira Bay",
+          "description": "Experience the beauty of Kabira Bay from a different perspective by kayaking. Paddle through the calm waters and explore the hidden coves and mangroves, a perfect way to connect with nature.",
+          "locationEn": "Ishigaki Island, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "Indulge in a delicious dinner at a local izakaya, where you can try various Okinawan dishes and enjoy the lively atmosphere. Don't miss out on the local awamori (Okinawan sake)!",
+          "locationEn": "Ishigaki Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Stargazing at the Beach",
+          "description": "End your day with a magical stargazing experience on the beach. Ishigaki Island is known for its clear skies, making it an ideal spot to marvel at the stars and constellations.",
+          "locationEn": "Ishigaki Island, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Explore Taketomi Island",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Ishigaki Island",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Taketomi Island",
+          "time": "09:15"
+        },
+        "duration": "15m",
+        "memo": "Take a short ferry ride to enjoy the beautiful Taketomi Island."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious breakfast at a local café, enjoying fresh tropical fruits and traditional Okinawan dishes. The laid-back atmosphere is perfect for a relaxing morning.",
+          "searchQuery": "Taketomi Island Café",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Taketomi Island by Bicycle",
+          "description": "Rent bicycles and explore the charming streets of Taketomi Island. The island is known for its traditional Ryukyu houses and beautiful white sand beaches, making it a perfect spot for leisurely exploration.",
+          "searchQuery": "Taketomi Island",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Hoshizuna no Hama Beach",
+          "description": "Enjoy a picnic lunch at Hoshizuna no Hama Beach, famous for its star-shaped sand. Relax on the beach and take in the stunning views of the turquoise waters.",
+          "searchQuery": "Hoshizuna no Hama Beach",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Snorkeling at the Coral Reefs",
+          "description": "Join a guided snorkeling tour to explore the vibrant coral reefs surrounding Taketomi Island. Swim alongside colorful fish and discover the underwater beauty of the Okinawan seas.",
+          "searchQuery": "Taketomi Island Snorkeling",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at the Beach",
+          "description": "Spend the late afternoon relaxing at one of the island's serene beaches. Enjoy the gentle breeze and the sound of the waves as you unwind together.",
+          "searchQuery": "Taketomi Island Beach",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "Savor a delightful dinner at a local izakaya, where you can enjoy fresh seafood and traditional Okinawan dishes in a cozy setting. A perfect way to end your day on the island.",
+          "searchQuery": "Taketomi Island Izakaya",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Starry Night Viewing",
+          "description": "End your day with a magical starry night viewing. Taketomi Island is known for its clear skies, making it an ideal spot for stargazing. Bring a blanket and enjoy the beauty of the night sky together.",
+          "searchQuery": "Taketomi Island Stargazing",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Relax and Discover Local Culture",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Taketomi Island",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Ishigaki Island",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take a ferry from Taketomi Island to Ishigaki Island for a day of exploration."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious breakfast at a local café on Taketomi Island. Enjoy fresh tropical fruits and Okinawan specialties like goya champuru (bitter melon stir-fry).",
+          "searchQuery": "Taketomi Island Café",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore Taketomi Village",
+          "description": "Stroll through the charming streets of Taketomi Village, known for its traditional Ryukyu-style houses and beautiful white sand paths. Don't miss the iconic star-shaped sand at the beach!",
+          "searchQuery": "Taketomi Village",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Hoshizuna Restaurant",
+          "description": "Enjoy a leisurely lunch at Hoshizuna Restaurant, where you can savor local dishes made with fresh ingredients. The view of the ocean adds to the experience.",
+          "searchQuery": "Hoshizuna Restaurant",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Snorkeling at Kondoi Beach",
+          "description": "Head to Kondoi Beach for an afternoon of snorkeling. The crystal-clear waters and vibrant coral reefs make it a perfect spot for marine life observation.",
+          "searchQuery": "Kondoi Beach",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Ishigaki Island",
+          "description": "Take the ferry back to Ishigaki Island and enjoy the scenic views of the ocean during the ride.",
+          "searchQuery": "Ferry from Taketomi to Ishigaki",
+          "locationEn": "Ishigaki Island, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Ishigaki Beef Restaurant",
+          "description": "Indulge in a sumptuous dinner featuring Ishigaki beef, renowned for its rich flavor and tenderness. A must-try for meat lovers!",
+          "searchQuery": "Ishigaki Beef Restaurant",
+          "locationEn": "Ishigaki Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Stargazing at Kabira Bay",
+          "description": "End your day with a romantic stargazing experience at Kabira Bay. The clear skies and tranquil surroundings make it an unforgettable moment.",
+          "searchQuery": "Kabira Bay",
+          "locationEn": "Ishigaki Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Ishigaki Airport",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "15:00"
+        },
+        "duration": "13h",
+        "memo": "Direct flight from Ishigaki to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a leisurely breakfast at a charming café on Taketomi Island. Enjoy fresh tropical fruits and traditional Okinawan dishes to fuel your day before departure.",
+          "searchQuery": "Taketomi Island Café",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Explore Taketomi Island",
+          "description": "Take a relaxing stroll around Taketomi Island, known for its beautiful traditional Ryukyu houses and stunning beaches. Don't miss the iconic star sand beach, perfect for a morning walk.",
+          "searchQuery": "Taketomi Island",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Last Swim at the Beach",
+          "description": "Enjoy a final dip in the crystal-clear waters of Taketomi Island. The serene atmosphere and soft sands make it a perfect spot to unwind before your journey home.",
+          "searchQuery": "Taketomi Island Beach",
+          "locationEn": "Taketomi Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

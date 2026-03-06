@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function SamplesPage() {
   const language = await getRequestLanguage();
   const t = await getTranslations("pages.planner.samples");
-  const plans = await loadAllSamplePlans();
+  const plans = await loadAllSamplePlans(language);
 
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9]">

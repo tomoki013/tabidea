@@ -1,0 +1,377 @@
+{
+  "id": "40e39eca-1e5e-4549-9a5d-b1750716898c",
+  "destination": "Kyoto & Nara",
+  "description": "Immerse yourself in the rich tapestry of culture and history that Kyoto and Nara have to offer. This 4-day journey is designed for you and your friends to explore ancient temples, savor local delicacies, and discover hidden gems that showcase the heart and soul of Japan. From the serene gardens of Kyoto to the sacred deer of Nara, each moment will be filled with wonder and delight.",
+  "heroImage": "https://images.unsplash.com/photo-1667788000333-4e36f948de9a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODA0ODV8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "zenigame photo",
+  "heroImagePhotographerUrl": "https://unsplash.com/@zenigame?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Exploring the Heart of Kyoto",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a traditional Kyoto-style breakfast at a cozy café. Enjoy grilled fish, miso soup, and pickled vegetables, all served with a warm cup of green tea.",
+          "searchQuery": "Kyoto breakfast café",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Kinkaku-ji Temple",
+          "description": "Visit the iconic Kinkaku-ji, or the Golden Pavilion, a stunning Zen temple covered in gold leaf. Stroll through the beautiful gardens and take in the serene atmosphere.",
+          "searchQuery": "Kinkaku-ji Temple",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Nishiki Market",
+          "description": "Head to Nishiki Market, known as 'Kyoto's Kitchen', where you can sample local delicacies like yudofu (tofu hot pot) and matcha sweets. It's a great place to experience Kyoto's culinary culture.",
+          "searchQuery": "Nishiki Market",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Nijo Castle",
+          "description": "Explore Nijo Castle, a UNESCO World Heritage site. Admire the beautiful architecture and the famous nightingale floors that chirp when you walk on them, designed to thwart intruders.",
+          "searchQuery": "Nijo Castle",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Arashiyama Bamboo Grove",
+          "description": "Take a scenic walk through the enchanting Arashiyama Bamboo Grove. The towering bamboo stalks create a magical atmosphere, perfect for a leisurely stroll and some great photos.",
+          "searchQuery": "Arashiyama Bamboo Grove",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "Enjoy dinner at a local izakaya, where you can try various small dishes like yakitori (grilled chicken skewers) and seasonal vegetables. Experience the lively atmosphere of a Japanese pub.",
+          "searchQuery": "Kyoto izakaya",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll along the Kamo River",
+          "description": "End your day with a peaceful evening stroll along the Kamo River. The gentle sound of the water and the city lights create a relaxing ambiance to reflect on your day.",
+          "searchQuery": "Kamo River",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Immersion in Kyoto",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious breakfast at a cozy local café. Enjoy a traditional Japanese breakfast set featuring grilled fish, miso soup, and pickled vegetables, giving you a taste of Kyoto's culinary heritage.",
+          "searchQuery": "Kyoto local café",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Fushimi Inari Taisha",
+          "description": "Visit the iconic Fushimi Inari Taisha, famous for its thousands of vermillion torii gates. Take a leisurely hike up the mountain trails, where you can enjoy stunning views of the city and the serene atmosphere of this sacred site.",
+          "searchQuery": "Fushimi Inari Taisha",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Inari Sushi Koji",
+          "description": "Savor a unique lunch at Inari Sushi Koji, known for its delicious inari-zushi (sushi rice wrapped in sweetened tofu pouches). This hidden gem is popular among locals and offers a delightful taste of Kyoto.",
+          "searchQuery": "Inari Sushi Koji",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Gion District",
+          "description": "Stroll through the historic Gion District, where traditional wooden machiya houses line the streets. Keep an eye out for geisha and enjoy the charming atmosphere of this cultural hub, perfect for capturing beautiful photos.",
+          "searchQuery": "Gion District",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Nanzen-ji Temple",
+          "description": "Visit the serene Nanzen-ji Temple, a significant Zen temple complex. Explore its beautiful gardens and impressive Sanmon gate, and take a moment to reflect in the tranquil surroundings.",
+          "searchQuery": "Nanzen-ji Temple",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Nishiki Market",
+          "description": "Head to Nishiki Market for dinner, where you can sample a variety of local delicacies. From fresh sushi to sweet mochi, this bustling market is a food lover's paradise and a great place to experience Kyoto's vibrant food culture.",
+          "searchQuery": "Nishiki Market",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening Walk along the Kamo River",
+          "description": "End your day with a relaxing walk along the Kamo River. Enjoy the peaceful ambiance as the sun sets, and take in the beautiful views of the city. It's a perfect way to unwind after a day of exploration.",
+          "searchQuery": "Kamo River",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "A Day in Nara",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Kyoto",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Nara",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Direct train from Kyoto to Nara."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Todai-ji Temple",
+          "description": "Visit the iconic Todai-ji Temple, home to the Great Buddha statue. The impressive wooden structure and serene atmosphere make it a must-see in Nara.",
+          "searchQuery": "Todai-ji Temple",
+          "locationEn": "Nara, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Maguro Koya",
+          "description": "Enjoy a delicious lunch at Maguro Koya, a local favorite known for its fresh tuna dishes. The casual atmosphere and authentic flavors will give you a taste of Nara's culinary scene.",
+          "searchQuery": "Maguro Koya",
+          "locationEn": "Nara, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Nara Park",
+          "description": "Stroll through Nara Park, where you can see the famous free-roaming deer. The park's beautiful scenery and peaceful ambiance make it perfect for a leisurely walk.",
+          "searchQuery": "Nara Park",
+          "locationEn": "Nara, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Kasuga-taisha Shrine",
+          "description": "Explore the stunning Kasuga-taisha Shrine, known for its hundreds of bronze lanterns. The lush forest surrounding the shrine adds to its mystical charm.",
+          "searchQuery": "Kasuga-taisha Shrine",
+          "locationEn": "Nara, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Kikusuiro",
+          "description": "Savor a traditional kaiseki dinner at Kikusuiro, where seasonal ingredients are beautifully presented. This dining experience will be a highlight of your trip.",
+          "searchQuery": "Kikusuiro",
+          "locationEn": "Nara, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Check-in at Nara Hotel",
+          "description": "Settle into the historic Nara Hotel, known for its elegant architecture and rich history. Enjoy the comfort and charm of this classic accommodation.",
+          "searchQuery": "Nara Hotel",
+          "locationEn": "Nara, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Final Day in Kyoto",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Nara",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Kyoto",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the JR Nara Line to Kyoto Station."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Philosopher's Path",
+          "description": "Stroll along the serene Philosopher's Path, lined with cherry blossom trees and quaint cafes. This picturesque canal-side walk is perfect for reflecting on the beauty of Kyoto's nature and culture.",
+          "searchQuery": "Philosopher's Path",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Okonomiyaki Katsu",
+          "description": "Enjoy a delicious okonomiyaki lunch at this local favorite. Watch as your savory pancake is cooked right in front of you, and customize it with your choice of ingredients for a truly authentic experience.",
+          "searchQuery": "Okonomiyaki Katsu",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Heian Shrine",
+          "description": "Visit the stunning Heian Shrine, known for its beautiful gardens and traditional architecture. The vibrant colors of the shrine and the tranquility of the gardens make it a perfect spot for photos and relaxation.",
+          "searchQuery": "Heian Shrine",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore the Kyoto Imperial Palace",
+          "description": "Take a leisurely walk around the Kyoto Imperial Palace grounds. The expansive gardens and historical buildings offer a glimpse into Japan's imperial past, and it's a peaceful escape from the city's hustle.",
+          "searchQuery": "Kyoto Imperial Palace",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Nishiki Market",
+          "description": "Savor a variety of local delicacies at Nishiki Market, known as 'Kyoto's Kitchen.' Sample everything from fresh sushi to sweet mochi, and immerse yourself in the vibrant atmosphere of this bustling market.",
+          "searchQuery": "Nishiki Market",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Return to Kyoto Station",
+          "description": "Wrap up your day by heading back to Kyoto Station. Take a moment to enjoy the modern architecture of the station and perhaps do some last-minute shopping before your departure.",
+          "searchQuery": "Kyoto Station",
+          "locationEn": "Kyoto, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

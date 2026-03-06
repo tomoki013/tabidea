@@ -1,0 +1,364 @@
+{
+  "id": "c4a68caf-7bdb-40e2-b053-6d8f9cba3322",
+  "destination": "Shikoku (Kagawa, Ehime, Kochi)",
+  "description": "Escape to the enchanting island of Shikoku, where culinary delights, soothing hot springs, and breathtaking natural landscapes await. This 4-day adventure will take you through the heart of Kagawa, the charm of Ehime, and the rugged beauty of Kochi, all while indulging in the region's famous udon noodles and rejuvenating onsen experiences. Perfect for friends seeking a blend of relaxation and exploration, this trip promises to create lasting memories amidst the serene beauty of Japan's least traveled island.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Kagawa's Udon and Coastal Beauty",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Takamatsu",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Matsuyama",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Take the train from Takamatsu to Matsuyama for a scenic ride."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Udon Restaurant",
+          "description": "Start your day with a hearty breakfast at a local udon shop. Enjoy the chewy texture of freshly made Sanuki udon, served with a rich soy sauce broth and topped with green onions and tempura.",
+          "searchQuery": "Sanuki Udon",
+          "locationEn": "Takamatsu, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Ritsurin Garden",
+          "description": "Explore the stunning Ritsurin Garden, a masterpiece of Japanese landscape design. Stroll through its meticulously maintained paths, admire the seasonal flowers, and enjoy the serene ponds and tea houses.",
+          "searchQuery": "Ritsurin Garden",
+          "locationEn": "Takamatsu, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Udon Restaurant",
+          "description": "Indulge in another bowl of udon at a different local eatery. Try the cold udon served with a dipping sauce, perfect for the warm weather.",
+          "searchQuery": "Udon Restaurant",
+          "locationEn": "Takamatsu, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Shikoku Mura",
+          "description": "Visit Shikoku Mura, an open-air museum showcasing traditional rural architecture from the Shikoku region. Wander through the historic buildings and learn about the local culture and crafts.",
+          "searchQuery": "Shikoku Mura",
+          "locationEn": "Takamatsu, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Local Izakaya",
+          "description": "Enjoy dinner at a cozy izakaya where you can sample local dishes and fresh seafood. Pair your meal with a glass of local sake for a true taste of Kagawa.",
+          "searchQuery": "Izakaya",
+          "locationEn": "Takamatsu, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Check-in at Hotel",
+          "description": "Settle into your hotel in Takamatsu, where you can relax and prepare for the adventures ahead. Consider a hotel with an onsen for a soothing soak after a day of exploration.",
+          "searchQuery": "Hotel with Onsen",
+          "locationEn": "Takamatsu, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Matsuyama's Historical Charm and Onsen Relaxation",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Takamatsu",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Matsuyama",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "Enjoy the scenic train ride from Takamatsu to Matsuyama."
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "Dogo Onsen",
+          "description": "Start your day with a relaxing soak at Dogo Onsen, one of Japan's oldest hot springs. The beautiful wooden architecture and soothing waters will rejuvenate you after your journey.",
+          "searchQuery": "Dogo Onsen",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Udon Restaurant",
+          "description": "Savor a delicious bowl of Sanuki udon at a local restaurant. The chewy texture and rich broth are a must-try in this region known for its noodles.",
+          "searchQuery": "Sanuki Udon",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Matsuyama Castle",
+          "description": "Explore the historic Matsuyama Castle, perched on a hilltop with stunning views of the city. The castle's well-preserved structure and surrounding gardens make for a delightful visit.",
+          "searchQuery": "Matsuyama Castle",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Botchan Train Ride",
+          "description": "Take a charming ride on the Botchan Train, a replica of the steam locomotive from Natsume Sōseki's novel. Enjoy the scenic views as you travel through Matsuyama's picturesque streets.",
+          "searchQuery": "Botchan Train",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Local Izakaya",
+          "description": "Indulge in a delightful dinner at a local izakaya, where you can enjoy various Japanese dishes and local sake. It's a great way to experience the local dining culture.",
+          "searchQuery": "Izakaya Matsuyama",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll in Dogo Area",
+          "description": "Take a leisurely evening stroll around the Dogo area, soaking in the atmosphere and perhaps stopping by a local shop for souvenirs. The area is beautifully lit at night.",
+          "searchQuery": "Dogo Area",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Kochi's Nature and Culinary Treasures",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Matsuyama",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Kochi",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "Enjoy the scenic train ride from Matsuyama to Kochi."
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "Kochi Castle",
+          "description": "Explore the historic Kochi Castle, one of the few remaining castles in Japan. The castle offers stunning views of the city and a glimpse into Japan's feudal past.",
+          "searchQuery": "Kochi Castle",
+          "locationEn": "Kochi, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Hirome Market for Lunch",
+          "description": "Dive into the vibrant atmosphere of Hirome Market, where you can sample a variety of local delicacies, including fresh seafood and the famous Kochi-style bonito sashimi.",
+          "searchQuery": "Hirome Market",
+          "locationEn": "Kochi, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Katsurahama Beach",
+          "description": "Relax at Katsurahama Beach, known for its beautiful coastline and the statue of Sakamoto Ryoma. It's a perfect spot for a leisurely stroll or to enjoy the sea breeze.",
+          "searchQuery": "Katsurahama Beach",
+          "locationEn": "Kochi, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit a Local Udon Shop",
+          "description": "Savor the unique flavors of Kochi's udon at a local shop. Don't miss the chance to try the refreshing cold udon, a specialty of the region.",
+          "searchQuery": "Kochi Udon",
+          "locationEn": "Kochi, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Check-in at Hotel",
+          "description": "Settle into your accommodation for the night. Enjoy the comfort and amenities that will prepare you for a relaxing evening.",
+          "searchQuery": "Hotel in Kochi",
+          "locationEn": "Kochi, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "Experience the lively atmosphere of a local izakaya, where you can enjoy a variety of dishes paired with local sake. A great way to end your day in Kochi!",
+          "searchQuery": "Kochi Izakaya",
+          "locationEn": "Kochi, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Final Delights in Kagawa",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Kochi",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Takamatsu",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Take the limited express train from Kochi to Takamatsu for a scenic ride."
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "Kagawa Udon Experience",
+          "description": "Start your day with a visit to one of Kagawa's famous udon shops. Enjoy the chewy texture and rich flavor of freshly made Sanuki udon, a local specialty. Don't forget to try it with a dipping sauce or in a hot broth!",
+          "searchQuery": "Sanuki Udon",
+          "locationEn": "Takamatsu, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Shodoshima Olive Park",
+          "description": "After lunch, head to Shodoshima Olive Park, where you can stroll through beautiful olive groves and enjoy stunning views of the Seto Inland Sea. The park also features a museum dedicated to olive oil production, making it a perfect spot for nature lovers and foodies alike.",
+          "searchQuery": "Shodoshima Olive Park",
+          "locationEn": "Shodoshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit Another Udon Shop",
+          "description": "No trip to Kagawa is complete without another round of udon! Visit a different udon shop to compare flavors and styles. Each shop has its own unique twist on this beloved dish, so be sure to sample a variety!",
+          "searchQuery": "Kagawa Udon",
+          "locationEn": "Takamatsu, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Dogo Onsen",
+          "description": "End your day with a visit to Dogo Onsen, one of Japan's oldest hot springs. Soak in the soothing waters and enjoy the historic atmosphere of this beautiful onsen. It's the perfect way to unwind after a day of exploring!",
+          "searchQuery": "Dogo Onsen",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "For dinner, enjoy a meal at a local izakaya where you can savor a variety of Japanese dishes, including fresh seafood and seasonal vegetables. This is a great way to experience the local dining culture and try some regional specialties.",
+          "searchQuery": "Local Izakaya",
+          "locationEn": "Takamatsu, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

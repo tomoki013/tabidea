@@ -1,0 +1,376 @@
+{
+  "id": "9de90ae7-cbe4-4a6f-b381-b22f402c4431",
+  "destination": "四国（香川・愛媛・高知）",
+  "description": "四国の美しい自然と豊かな食文化を堪能する旅へ、友人と共に出かけましょう。美味しいうどんを巡り、道後温泉で心身を癒し、絶景を楽しむアクティブな4日間のプランです。",
+  "days": [
+    {
+      "day": 1,
+      "title": "香川のうどん巡り",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "高松駅",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "高松駅",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "高松市内のうどん屋巡りのための移動。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "うどんの名店「山越うどん」",
+          "description": "香川の名物、讃岐うどんを楽しむならここ！コシのあるうどんと、あっさりした出汁が絶品です。特に「釜揚げうどん」が人気。",
+          "searchQuery": "Yamakoshi Udon",
+          "locationEn": "Takamatsu, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "栗林公園散策",
+          "description": "日本庭園の美しさを堪能できる栗林公園。四季折々の風景が楽しめ、散策しながらリラックスできます。",
+          "searchQuery": "Ritsurin Garden",
+          "locationEn": "Takamatsu, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "「うどんバカ一代」でランチ",
+          "description": "地元の人に愛されるうどん店。特に「カレーうどん」が絶品で、スパイシーな味わいがクセになります。",
+          "searchQuery": "Udon Baka Ichidai",
+          "locationEn": "Takamatsu, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "「讃岐うどんの里」訪問",
+          "description": "讃岐うどんの歴史や製法を学べる施設。実際にうどん作りを体験することもでき、楽しい思い出になります。",
+          "searchQuery": "Sanuki Udon no Sato",
+          "locationEn": "Takamatsu, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "「道後温泉」へ移動",
+          "description": "香川から愛媛の道後温泉へ。歴史ある温泉街で、ゆったりとした時間を過ごしましょう。",
+          "searchQuery": "Dogo Onsen",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "道後温泉でリラックス",
+          "description": "道後温泉の名湯で、旅の疲れを癒しましょう。温泉の後は、周辺の散策も楽しめます。",
+          "searchQuery": "Dogo Onsen",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "「道後温泉本館」で夕食",
+          "description": "温泉街の雰囲気を楽しみながら、地元の食材を使った料理を堪能。特に「鯛めし」がおすすめです。",
+          "searchQuery": "Dogo Onsen Honkan",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "愛媛の道後温泉と自然",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "高松市",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "松山市",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "高松駅から松山駅までの直通電車で快適な移動。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "松山城",
+          "description": "松山のシンボル、松山城を訪れます。天守閣からの眺望は素晴らしく、特に晴れた日には遠くの海まで見渡せます。",
+          "searchQuery": "Matsuyama Castle",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "道後温泉本館で昼食と温泉",
+          "description": "道後温泉本館で、名物の温泉卵を使った料理を楽しみながら、温泉に浸かります。歴史ある温泉の雰囲気を味わいながら、リラックスした時間を過ごせます。",
+          "searchQuery": "Dogo Onsen Honkan",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "石手寺",
+          "description": "四国八十八箇所の一つ、石手寺を訪れます。美しい庭園と静かな雰囲気の中で、心を落ち着けるひとときを過ごしましょう。",
+          "searchQuery": "Ishite-ji Temple",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "道後温泉街散策",
+          "description": "道後温泉街を散策し、地元の土産物店やカフェを楽しみます。特に、うどん屋さんが多いので、いくつか立ち寄ってみるのもおすすめです。",
+          "searchQuery": "Dogo Onsen Shopping Street",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "うどん屋で夕食",
+          "description": "地元の人気うどん屋で、コシのある讃岐うどんを堪能します。特に、温かいかけうどんや冷たいざるうどんが絶品です。",
+          "searchQuery": "Udon Restaurant Matsuyama",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "松山市内の宿泊先チェックイン",
+          "description": "松山市内の宿にチェックイン。温泉の後は、ゆっくりとくつろぎましょう。",
+          "searchQuery": "Hotel Matsuyama",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "高知の絶景とグルメ",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "松山市",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "高知市",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "松山市から高知市へは電車での移動。美しい景色を楽しみながらの旅です。"
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "桂浜",
+          "description": "高知市の名所、桂浜へ。太平洋を望む絶景と坂本龍馬像が出迎えてくれます。浜辺を散策しながら、自然の美しさを堪能しましょう。",
+          "searchQuery": "Katsurahama",
+          "locationEn": "Kochi, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ひろめ市場でランチ",
+          "description": "地元の食材を使った料理が楽しめるひろめ市場で、名物のカツオのたたきやうどんを味わいます。活気ある市場の雰囲気を楽しみながら、食事を楽しんでください。",
+          "searchQuery": "Hirome Market",
+          "locationEn": "Kochi, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "高知城",
+          "description": "高知市のシンボル、高知城を訪れます。天守閣からの眺望は素晴らしく、歴史を感じることができます。周囲の公園も散策してみてください。",
+          "searchQuery": "Kochi Castle",
+          "locationEn": "Kochi, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "道後温泉でリラックス",
+          "description": "松山市からの移動後、道後温泉でゆったりとした時間を過ごします。温泉に浸かりながら、旅の疲れを癒しましょう。",
+          "searchQuery": "Dogo Onsen",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "高知の居酒屋でディナー",
+          "description": "高知の地元居酒屋で、旬の食材を使った料理を楽しみます。特に新鮮な魚介類や地酒はおすすめです。",
+          "searchQuery": "Kochi Izakaya",
+          "locationEn": "Kochi, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "高知市内散策",
+          "description": "ディナー後は高知市内を散策。夜の街の雰囲気を楽しみながら、地元の人々と触れ合うチャンスです。",
+          "searchQuery": "Kochi City",
+          "locationEn": "Kochi, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "四国の自然を満喫",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "高知市",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "四万十川",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "高知市から四万十川へ車で移動します。美しい自然を楽しみながらのドライブです。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "四万十川でカヌー体験",
+          "description": "四万十川の清流をカヌーで楽しむアクティビティ。自然の中でリフレッシュしながら、川の美しい風景を堪能できます。",
+          "searchQuery": "Shimanto River Canoeing",
+          "locationEn": "Shimanto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のうどん屋でランチ",
+          "description": "四万十川近くのうどん屋で、コシのある讃岐うどんを味わいます。地元の食材を使った一杯は絶品です。",
+          "searchQuery": "Udon Restaurant Shimanto",
+          "locationEn": "Shimanto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "仁淀川での自然散策",
+          "description": "仁淀川の美しい景色を楽しみながら、散策を楽しみます。透明度の高い水と緑に囲まれた癒しの時間です。",
+          "searchQuery": "Niyodo River",
+          "locationEn": "Niyodo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "道後温泉でリラックス",
+          "description": "道後温泉にて、歴史ある温泉に浸かりながら疲れを癒します。温泉街の雰囲気も楽しめるスポットです。",
+          "searchQuery": "Dogo Onsen",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "道後温泉周辺で夕食",
+          "description": "道後温泉近くの居酒屋で、地元の新鮮な海の幸を楽しむディナー。四国の味覚を堪能できます。",
+          "searchQuery": "Dogo Onsen Izakaya",
+          "locationEn": "Matsuyama, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

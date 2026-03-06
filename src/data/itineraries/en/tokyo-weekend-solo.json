@@ -1,0 +1,204 @@
+{
+  "id": "804d851a-2479-459d-bf45-459a12a26e72",
+  "destination": "Tokyo (Roppongi, Shibuya, Omotesando)",
+  "description": "Immerse yourself in the vibrant art scene and chic café culture of Tokyo, where each corner offers a new discovery. This 2-day solo journey will lead you through the artistic heart of Roppongi, the bustling streets of Shibuya, and the stylish avenues of Omotesando. Enjoy a leisurely pace as you explore hidden gems and indulge in delightful culinary experiences, all while avoiding the crowds. Perfect for those seeking tranquility amidst the urban buzz, this trip promises a blend of creativity, relaxation, and shopping bliss.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Art and Café Exploration in Roppongi",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de l'ambre",
+          "description": "Start your day with a rich cup of coffee at Café de l'ambre, known for its vintage ambiance and carefully selected beans. This café is a hidden gem where you can enjoy a quiet moment before diving into the art scene.",
+          "searchQuery": "Café de l'ambre",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Mori Art Museum",
+          "description": "Visit the Mori Art Museum, located in Roppongi Hills. This museum focuses on contemporary art and offers stunning views of Tokyo from its observation deck. Take your time to explore the exhibitions and enjoy the serene atmosphere.",
+          "searchQuery": "Mori Art Museum",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The National Art Center Café",
+          "description": "Enjoy a light lunch at the café inside The National Art Center, which features seasonal dishes made with fresh ingredients. The café's design complements the art center's unique architecture, providing a peaceful dining experience.",
+          "searchQuery": "The National Art Center Café",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "The National Art Center, Tokyo",
+          "description": "Explore The National Art Center, Tokyo, which is dedicated to showcasing rotating exhibitions of contemporary art. The building itself is an architectural marvel, and you can wander through the galleries at your own pace.",
+          "searchQuery": "The National Art Center, Tokyo",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Shopping at Tokyo Midtown",
+          "description": "Stroll through Tokyo Midtown, a stylish complex with shops, galleries, and green spaces. This area is less crowded than other shopping districts, making it perfect for a leisurely afternoon of browsing and enjoying the art installations scattered throughout.",
+          "searchQuery": "Tokyo Midtown",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a local izakaya",
+          "description": "End your day with dinner at a cozy izakaya nearby, where you can savor traditional Japanese dishes in a relaxed setting. This is a great opportunity to unwind and reflect on your day of art and exploration.",
+          "searchQuery": "Izakaya near Roppongi",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Shopping and Culture in Shibuya and Omotesando",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Roppongi",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Shibuya",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the Tokyo Metro Hibiya Line from Roppongi to Shibuya."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Shibuya Scramble Crossing",
+          "description": "Experience the iconic Shibuya Scramble Crossing, where hundreds of pedestrians cross from all directions. It's a vibrant spot to soak in the energy of Tokyo and capture some great photos.",
+          "searchQuery": "Shibuya Scramble Crossing",
+          "locationEn": "Shibuya, Tokyo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Shibuya 109",
+          "description": "Explore Shibuya 109, a fashion hub for young people. This multi-story shopping complex is filled with trendy boutiques and unique shops, perfect for finding that special outfit or accessory.",
+          "searchQuery": "Shibuya 109",
+          "locationEn": "Shibuya, Tokyo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Uobei Shibuya Dogenzaka",
+          "description": "Enjoy a fun and fast sushi experience at Uobei, where you can order sushi via a touchscreen and have it delivered to you on a conveyor belt. It's a unique way to enjoy fresh sushi without breaking the bank.",
+          "searchQuery": "Uobei Shibuya Dogenzaka",
+          "locationEn": "Shibuya, Tokyo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Omotesando Hills",
+          "description": "Stroll through Omotesando Hills, a stylish shopping complex that blends modern architecture with high-end brands. The tree-lined avenue is perfect for a leisurely walk and window shopping.",
+          "searchQuery": "Omotesando Hills",
+          "locationEn": "Omotesando, Tokyo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Aoyama Flower Market Tea House",
+          "description": "Take a break at the Aoyama Flower Market Tea House, a serene café surrounded by beautiful flowers. Enjoy a cup of tea and a light snack in this tranquil setting, perfect for unwinding after shopping.",
+          "searchQuery": "Aoyama Flower Market Tea House",
+          "locationEn": "Minato, Tokyo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Visit the Nezu Museum",
+          "description": "Discover the Nezu Museum, which houses a stunning collection of pre-modern Japanese and East Asian art. The museum's beautiful garden is also a peaceful retreat from the bustling city.",
+          "searchQuery": "Nezu Museum",
+          "locationEn": "Minato, Tokyo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Aoyama Katsuya",
+          "description": "End your day with a delicious katsu dinner at Aoyama Katsuya, known for its crispy pork cutlets and flavorful sauces. It's a cozy spot to enjoy a satisfying meal after a day of exploration.",
+          "searchQuery": "Aoyama Katsuya",
+          "locationEn": "Minato, Tokyo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Hotel in Shibuya",
+          "description": "Head back to your hotel in Shibuya to relax and reflect on your day filled with art, shopping, and delightful cafés.",
+          "locationEn": "Shibuya, Tokyo, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

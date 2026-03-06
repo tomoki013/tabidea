@@ -1,0 +1,298 @@
+{
+  "id": "d573eb5b-238b-4a28-b1e6-9f8f727c9d10",
+  "destination": "Sapporo & Otaru",
+  "description": "Immerse yourself in the enchanting beauty of Hokkaido, where the vibrant city of Sapporo meets the charming coastal town of Otaru. This 3-day family adventure is designed to delight both young and old, offering a perfect blend of nature, local cuisine, and shopping experiences that will create lasting memories. From savoring fresh seafood to exploring picturesque canals, every moment is crafted to ensure a leisurely pace that allows your family to soak in the sights and flavors of this stunning region.",
+  "heroImage": "https://images.unsplash.com/photo-1739536111468-26ac8c2abf4c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODA0MjR8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Minku Kang",
+  "heroImagePhotographerUrl": "https://unsplash.com/@minkus?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Exploring Sapporo's Culinary Delights",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Sapporo Beer Garden",
+          "description": "Start your day with a hearty breakfast at the Sapporo Beer Garden, where you can enjoy a delicious Genghis Khan (grilled lamb) meal. It's a fun experience for the whole family, and the atmosphere is lively!",
+          "searchQuery": "Sapporo Beer Garden",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Sapporo Clock Tower",
+          "description": "Visit the iconic Sapporo Clock Tower, a symbol of the city. The beautiful architecture and the surrounding park make it a great spot for family photos and a short stroll.",
+          "searchQuery": "Sapporo Clock Tower",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Odori Park",
+          "description": "Take a leisurely walk through Odori Park, which stretches over 1.5 kilometers. The park is perfect for kids to run around, and you can enjoy seasonal flowers and fountains along the way.",
+          "searchQuery": "Odori Park",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Ramen Yokocho",
+          "description": "Head to Ramen Yokocho for lunch, where you can sample various types of Sapporo ramen. The rich miso broth is a must-try, and kids will love slurping up the noodles!",
+          "searchQuery": "Ramen Yokocho",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Sapporo TV Tower",
+          "description": "Visit the Sapporo TV Tower for a panoramic view of the city. The observation deck is family-friendly, and you can spot landmarks like the Clock Tower and Odori Park from above.",
+          "searchQuery": "Sapporo TV Tower",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Susukino District Exploration",
+          "description": "Explore the vibrant Susukino district, known for its entertainment and shopping. Kids will enjoy the colorful neon lights, and you can stop by local shops for souvenirs.",
+          "searchQuery": "Susukino",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Soup Curry GARAKU",
+          "description": "Enjoy a family-friendly dinner at Soup Curry GARAKU, famous for its flavorful soup curry. The restaurant offers a variety of spice levels, so everyone can find their perfect dish.",
+          "searchQuery": "Soup Curry GARAKU",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Return to Hotel",
+          "description": "After a fulfilling day of exploring and eating, head back to your hotel to relax and prepare for another exciting day ahead!",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Charming Otaru and Its Canals",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Sapporo",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Otaru",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Enjoy a scenic train ride along the coastline."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Otaru Canal",
+          "description": "Start your day with a leisurely stroll along the picturesque Otaru Canal. The historic warehouses and charming views make it a perfect spot for family photos and a relaxing walk.",
+          "searchQuery": "Otaru Canal",
+          "locationEn": "Otaru, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Otaru Music Box Museum",
+          "description": "Visit the Otaru Music Box Museum, where kids can enjoy the enchanting sounds of music boxes and even create their own. It's a delightful experience for the whole family!",
+          "searchQuery": "Otaru Music Box Museum",
+          "locationEn": "Otaru, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Otaru Sakaimachi Street",
+          "description": "Savor local delicacies at one of the many eateries along Sakaimachi Street. Try fresh seafood or the famous Otaru sushi, perfect for a family meal.",
+          "searchQuery": "Otaru Sakaimachi Street",
+          "locationEn": "Otaru, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Sakaimachi Street Shopping",
+          "description": "Explore the charming shops along Sakaimachi Street, where you can find unique souvenirs, local crafts, and delicious sweets. Don't miss the glassworks and handmade items!",
+          "searchQuery": "Sakaimachi Street",
+          "locationEn": "Otaru, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Otaru Aquarium",
+          "description": "Head to the Otaru Aquarium, where kids can marvel at marine life, including seals and penguins. The interactive exhibits make it a fun and educational experience.",
+          "searchQuery": "Otaru Aquarium",
+          "locationEn": "Otaru, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "Enjoy a family-friendly dinner at a local izakaya, where you can try various Japanese dishes in a casual atmosphere. It's a great way to end your day in Otaru.",
+          "searchQuery": "Otaru Izakaya",
+          "locationEn": "Otaru, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Nature and Relaxation in Sapporo",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Otaru",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Sapporo",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the JR train from Otaru to Sapporo for a scenic ride."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Moerenuma Park",
+          "description": "Start your day at Moerenuma Park, a stunning landscape designed by Isamu Noguchi. The park features unique sculptures, playgrounds, and beautiful walking paths, perfect for kids to explore and enjoy nature.",
+          "searchQuery": "Moerenuma Park",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Sapporo Beer Garden",
+          "description": "Enjoy a delicious lunch at the Sapporo Beer Garden, where you can savor the famous Genghis Khan (grilled lamb) while the kids can enjoy a variety of local dishes. The lively atmosphere makes it a fun spot for families.",
+          "searchQuery": "Sapporo Beer Garden",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Sapporo Beer Museum",
+          "description": "After lunch, visit the Sapporo Beer Museum to learn about the history of beer in Japan. The museum offers interactive exhibits that are engaging for children, and you can even sample some local brews (for adults!).",
+          "searchQuery": "Sapporo Beer Museum",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Odori Park",
+          "description": "Stroll through Odori Park, a beautiful green space in the heart of Sapporo. The park is perfect for a leisurely walk, and there are often fun events or festivals happening, making it a great place for families to relax and enjoy the outdoors.",
+          "searchQuery": "Odori Park",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping at Sapporo Station",
+          "description": "Head to Sapporo Station for some shopping. The station has a variety of shops and boutiques, perfect for picking up souvenirs or local snacks. Don't miss the food court for some last-minute Hokkaido delicacies!",
+          "searchQuery": "Sapporo Station",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Ramen Yokocho",
+          "description": "End your day with a family-friendly dinner at Ramen Yokocho, a famous alley filled with ramen shops. Each shop offers different styles of ramen, so everyone can find something they love. It's a great way to experience Hokkaido's culinary culture!",
+          "searchQuery": "Ramen Yokocho",
+          "locationEn": "Sapporo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

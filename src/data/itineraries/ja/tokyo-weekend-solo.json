@@ -1,0 +1,190 @@
+{
+  "id": "8b5044af-70a8-4b74-87a6-5a730bdc4aab",
+  "destination": "東京（六本木・渋谷・表参道）",
+  "description": "東京のアートとカフェ文化を満喫する2日間の旅。静かな場所で心を落ち着けながら、アートに触れ、素敵なカフェでリラックスするひとときを過ごします。",
+  "days": [
+    {
+      "day": 1,
+      "title": "六本木のアート巡りとカフェタイム",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "六本木のビジネスホテルで、和洋折衷の朝食を楽しみます。新鮮なサラダや焼き魚、パンなど、バランスの取れたメニューで一日をスタート。",
+          "locationEn": "Roppongi, Tokyo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "森美術館",
+          "description": "六本木ヒルズ内にある森美術館で、現代アートの展覧会を楽しみます。特に、静かな空間でアートに浸ることができるので、ゆっくりとした時間を過ごせます。",
+          "searchQuery": "Mori Art Museum",
+          "locationEn": "Roppongi, Tokyo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カフェ・ド・ランブルでランチ",
+          "description": "アート鑑賞の後は、カフェ・ド・ランブルで軽食を。こだわりのコーヒーと共に、サンドイッチやスイーツを楽しむことができます。落ち着いた雰囲気の中で、ゆったりとした時間を過ごせます。",
+          "searchQuery": "Cafe de L'ambre",
+          "locationEn": "Roppongi, Tokyo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アークヒルズ散策",
+          "description": "アークヒルズの緑豊かなエリアを散策。静かな公園やアート作品が点在しており、都会の喧騒を忘れてリラックスできます。",
+          "searchQuery": "Ark Hills",
+          "locationEn": "Roppongi, Tokyo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "六本木ヒルズ展望台",
+          "description": "六本木ヒルズの展望台から東京の景色を一望。特に夕方の時間帯は、夕焼けに染まる街並みが美しく、心が癒されます。",
+          "searchQuery": "Tokyo City View",
+          "locationEn": "Roppongi, Tokyo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "六本木でディナー",
+          "description": "地元の居酒屋やレストランで、和食を楽しみます。新鮮な魚介類や季節の野菜を使った料理が堪能できるお店を選びましょう。",
+          "locationEn": "Roppongi, Tokyo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。静かな環境で、明日の計画を立てながらリラックスした時間を過ごしましょう。",
+          "locationEn": "Roppongi, Tokyo, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "表参道と渋谷でのショッピングとアート",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "六本木",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "表参道",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "六本木から表参道まで徒歩で移動します。静かな朝の街を楽しみながらの散歩です。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "カフェ・ド・ランブル",
+          "description": "表参道の静かなカフェで、こだわりのコーヒーを楽しみながら、ゆったりとした朝のひとときを過ごします。店内は落ち着いた雰囲気で、アートな空間が広がっています。",
+          "searchQuery": "Cafe de L'ambre",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "根津美術館",
+          "description": "美しい庭園に囲まれた根津美術館で、静かなアート鑑賞を楽しみます。日本の古美術や現代アートが展示されており、心が落ち着く空間です。",
+          "searchQuery": "Nezu Museum",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "アフタヌーンティー at ザ・リッツ・カールトン東京",
+          "description": "高級感あふれるザ・リッツ・カールトン東京でアフタヌーンティーを楽しみます。美しい景色を眺めながら、贅沢なひとときを過ごせます。",
+          "searchQuery": "The Ritz-Carlton Tokyo",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "代官山散策",
+          "description": "代官山のオシャレな街並みを散策しながら、個性的なショップやギャラリーを訪れます。静かな雰囲気の中で、アートやデザインに触れることができます。",
+          "searchQuery": "Daikanyama",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "渋谷でショッピング",
+          "description": "渋谷の中心地でショッピングを楽しみます。人混みを避けるため、少し離れた静かなショップを探してみましょう。",
+          "searchQuery": "Shibuya",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "夕食 at 代官山のレストラン",
+          "description": "代官山の落ち着いたレストランで、地元の食材を使った美味しいディナーを楽しみます。静かな雰囲気の中で、心地よい時間を過ごせます。",
+          "searchQuery": "Daikanyama Restaurant",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

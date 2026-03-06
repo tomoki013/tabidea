@@ -1,0 +1,630 @@
+{
+  "id": "4d4b9b6a-0d79-4b26-82f5-8b1688e317ec",
+  "destination": "Istanbul",
+  "description": "Immerse yourself in the enchanting blend of East and West as you explore Istanbul, a city steeped in history and vibrant culture. From the stunning architecture of its mosques to the bustling atmosphere of its bazaars, every corner of this city tells a story waiting to be discovered. Over the course of seven days, you will wander through ancient streets, savor delectable Turkish cuisine, and experience the rich tapestry of life in this magnificent metropolis.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Istanbul",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Van Kahvaltı Evi",
+          "description": "Start your day with a traditional Turkish breakfast at Van Kahvaltı Evi, where you can enjoy a variety of cheeses, olives, fresh bread, and menemen (scrambled eggs with tomatoes and peppers).",
+          "searchQuery": "Van Kahvaltı Evi",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Hagia Sophia",
+          "description": "Visit the iconic Hagia Sophia, a masterpiece of Byzantine architecture. Marvel at its massive dome and stunning mosaics that tell stories of its rich history as a church and mosque.",
+          "searchQuery": "Hagia Sophia",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Sultanahmet Köftecisi",
+          "description": "Enjoy a delicious lunch at Sultanahmet Köftecisi, famous for its flavorful meatballs (köfte) served with rice and salad. A perfect spot to refuel after sightseeing.",
+          "searchQuery": "Sultanahmet Köftecisi",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Blue Mosque (Sultan Ahmed Mosque)",
+          "description": "Explore the stunning Blue Mosque, known for its beautiful blue tiles and impressive architecture. Don't forget to dress modestly and enjoy the serene atmosphere inside.",
+          "searchQuery": "Blue Mosque",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore the Grand Bazaar",
+          "description": "Wander through the vibrant Grand Bazaar, one of the largest and oldest covered markets in the world. Browse through countless shops selling everything from spices to jewelry and textiles.",
+          "searchQuery": "Grand Bazaar",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Hamdi Restaurant",
+          "description": "Savor a delightful dinner at Hamdi Restaurant, known for its kebabs and stunning views of the Golden Horn. A great way to end your first day in Istanbul.",
+          "searchQuery": "Hamdi Restaurant",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll along the Galata Bridge",
+          "description": "Take a leisurely evening stroll along the Galata Bridge, where you can enjoy the beautiful views of the city skyline and the Bosphorus. A perfect way to unwind after a busy day.",
+          "searchQuery": "Galata Bridge",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Sultanahmet",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Cafe Privato",
+          "description": "Start your day with a delicious Turkish breakfast at Cafe Privato, known for its fresh bread, olives, and local cheeses. The cozy atmosphere is perfect for enjoying a leisurely meal before a day of exploration.",
+          "searchQuery": "Cafe Privato",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Topkapi Palace",
+          "description": "Visit the magnificent Topkapi Palace, the former residence of Ottoman sultans. Explore its stunning courtyards, intricate tile work, and the impressive Harem section. Don't miss the breathtaking views of the Bosphorus from the palace grounds.",
+          "searchQuery": "Topkapi Palace",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Pandeli Restaurant",
+          "description": "Enjoy a traditional Turkish lunch at Pandeli, located within the Spice Bazaar. This historic restaurant offers a variety of authentic dishes, including kebabs and mezes, all served in a charming setting.",
+          "searchQuery": "Pandeli Restaurant",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Basilica Cistern",
+          "description": "Explore the Basilica Cistern, an ancient underground water reservoir. Marvel at the impressive columns and the serene atmosphere, where you can even spot the famous Medusa heads.",
+          "searchQuery": "Basilica Cistern",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Hippodrome of Constantinople",
+          "description": "Stroll through the Hippodrome, the ancient center of Byzantine public life. Here, you can see the impressive Obelisk of Theodosius and the Serpent Column, remnants of the city's rich history.",
+          "searchQuery": "Hippodrome of Constantinople",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Grand Bazaar Shopping",
+          "description": "Dive into the vibrant atmosphere of the Grand Bazaar, one of the largest and oldest covered markets in the world. Browse through countless shops selling everything from spices to jewelry, and don't forget to haggle for the best prices!",
+          "searchQuery": "Grand Bazaar",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Hamdi Restaurant",
+          "description": "End your day with a delightful dinner at Hamdi Restaurant, famous for its kebabs and stunning views of the Golden Horn. Enjoy the flavors of traditional Turkish cuisine in a welcoming atmosphere.",
+          "searchQuery": "Hamdi Restaurant",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Culinary Delights and Grand Bazaar",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Van Kahvaltı Evi",
+          "description": "Start your day with a traditional Turkish breakfast at Van Kahvaltı Evi, known for its rich selection of cheeses, olives, and fresh bread. This cozy spot offers a delightful introduction to Turkish cuisine.",
+          "searchQuery": "Van Kahvaltı Evi",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Süleymaniye Mosque",
+          "description": "Explore the stunning Süleymaniye Mosque, an architectural masterpiece designed by the famous Ottoman architect Mimar Sinan. The mosque's grand dome and intricate tile work are a must-see, and the serene atmosphere invites reflection.",
+          "searchQuery": "Süleymaniye Mosque",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Stroll through the Grand Bazaar",
+          "description": "Wander through the vibrant Grand Bazaar, one of the largest and oldest covered markets in the world. Here, you can find everything from spices to jewelry, and don't forget to haggle for the best prices!",
+          "searchQuery": "Grand Bazaar",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Pandeli Restaurant",
+          "description": "Enjoy lunch at Pandeli, a historic restaurant located within the Spice Bazaar. Savor traditional Turkish dishes like lamb stew and stuffed grape leaves while soaking in the lively atmosphere.",
+          "searchQuery": "Pandeli Restaurant",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore the Spice Bazaar",
+          "description": "After lunch, head to the nearby Spice Bazaar, where the air is filled with the fragrant aromas of spices, dried fruits, and sweets. It's a perfect place to pick up unique souvenirs and sample local delicacies.",
+          "searchQuery": "Spice Bazaar",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Rustem Pasha Mosque",
+          "description": "Just a short walk from the Spice Bazaar, visit the Rustem Pasha Mosque, famous for its exquisite Iznik tiles. This hidden gem offers a quieter experience compared to larger mosques and is a photographer's paradise.",
+          "searchQuery": "Rustem Pasha Mosque",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Hamdi Restaurant",
+          "description": "End your day with dinner at Hamdi Restaurant, renowned for its kebabs and stunning views of the Golden Horn. Enjoy a delicious meal while watching the sunset over the city.",
+          "searchQuery": "Hamdi Restaurant",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Bosphorus Adventure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Van Kahvaltı Evi",
+          "description": "Start your day with a traditional Turkish breakfast at Van Kahvaltı Evi, known for its rich selection of cheeses, olives, and fresh bread. It's a delightful way to fuel up for a day of exploration!",
+          "searchQuery": "Van Kahvaltı Evi",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Bosphorus Cruise",
+          "description": "Embark on a scenic Bosphorus cruise that offers stunning views of Istanbul's skyline and historic landmarks. This is a perfect opportunity to see the city from a different perspective, with the majestic palaces and fortresses lining the shores.",
+          "searchQuery": "Bosphorus Cruise",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Ortaköy Kumpir",
+          "description": "Enjoy a delicious kumpir (stuffed baked potato) at Ortaköy, a vibrant neighborhood by the Bosphorus. Choose from a variety of toppings and savor this local favorite while enjoying the lively atmosphere.",
+          "searchQuery": "Ortaköy Kumpir",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Ortaköy Mosque",
+          "description": "Visit the stunning Ortaköy Mosque, known for its beautiful baroque architecture and picturesque location by the water. Take some time to admire the intricate details and capture some memorable photos.",
+          "searchQuery": "Ortaköy Mosque",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Dolmabahçe Palace Tour",
+          "description": "Discover the opulence of Dolmabahçe Palace, the last residence of the Ottoman sultans. The palace is famous for its stunning architecture and lavish interiors, including the grand chandelier in the Ceremonial Hall.",
+          "searchQuery": "Dolmabahçe Palace",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Meze by Lemon Tree",
+          "description": "Indulge in a delightful dinner at Meze by Lemon Tree, where you can enjoy a variety of traditional Turkish mezes and fresh seafood. The cozy atmosphere and friendly service make it a perfect end to your day.",
+          "searchQuery": "Meze by Lemon Tree",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Stroll along the Bosphorus Promenade",
+          "description": "After dinner, take a leisurely stroll along the Bosphorus promenade. The evening views of the illuminated bridges and the city skyline are breathtaking, providing a perfect backdrop for reflection on your day.",
+          "searchQuery": "Bosphorus Promenade",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Asian Side Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Çakmak Kahvaltı Salonu",
+          "description": "Start your day with a traditional Turkish breakfast at Çakmak Kahvaltı Salonu, known for its rich selection of cheeses, olives, and fresh bread. It's a local favorite that will give you a hearty start to your day.",
+          "searchQuery": "Çakmak Kahvaltı Salonu",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit to Çamlıca Hill",
+          "description": "Head to Çamlıca Hill for breathtaking panoramic views of Istanbul. This serene spot is perfect for a leisurely stroll and offers a great perspective of the Bosphorus and the city skyline.",
+          "searchQuery": "Çamlıca Hill",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Çiya Sofrası",
+          "description": "Enjoy a delicious lunch at Çiya Sofrası, a restaurant famous for its diverse selection of traditional Turkish dishes. Don't miss their unique mezes and regional specialties that reflect the rich culinary heritage of Turkey.",
+          "searchQuery": "Çiya Sofrası",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Kadıköy Market",
+          "description": "Wander through the vibrant Kadıköy Market, where you can find everything from fresh produce to unique local crafts. It's a great place to pick up some souvenirs and experience the local culture.",
+          "searchQuery": "Kadıköy Market",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit to the Süreyya Opera House",
+          "description": "Take a moment to appreciate the stunning architecture of the Süreyya Opera House, a cultural gem in Kadıköy. If you're lucky, you might catch a performance or simply enjoy the beautiful exterior.",
+          "searchQuery": "Süreyya Opera House",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Kafes Restaurant",
+          "description": "End your day with dinner at Kafes Restaurant, known for its cozy atmosphere and delicious Turkish cuisine. Try their grilled meats and fresh salads for a satisfying meal.",
+          "searchQuery": "Kafes Restaurant",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll in Moda",
+          "description": "Take a leisurely evening stroll in the charming neighborhood of Moda. Enjoy the seaside views and perhaps grab a dessert at one of the local cafes as you soak in the relaxed atmosphere.",
+          "searchQuery": "Moda",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Cultural Immersion and Relaxation",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Van Kahvaltı Evi",
+          "description": "Start your day with a traditional Turkish breakfast at Van Kahvaltı Evi, known for its rich selection of cheeses, olives, and fresh bread. It's a delightful way to fuel up for a day of exploration!",
+          "searchQuery": "Van Kahvaltı Evi",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Galata Tower",
+          "description": "Head to the iconic Galata Tower, where you can enjoy panoramic views of Istanbul from the top. The medieval stone tower is a perfect spot for photography and soaking in the city's skyline.",
+          "searchQuery": "Galata Tower",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Dürümzade",
+          "description": "Savor a delicious dürüm (wrap) at Dürümzade, a local favorite known for its flavorful kebabs. This casual eatery is perfect for a quick yet satisfying meal before continuing your adventure.",
+          "searchQuery": "Dürümzade",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Stroll along Istiklal Street",
+          "description": "Take a leisurely walk down Istiklal Street, a bustling pedestrian avenue filled with shops, cafes, and street performers. Don't forget to stop by the historic tram for a classic Istanbul experience!",
+          "searchQuery": "Istiklal Street",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Taksim Square",
+          "description": "Visit Taksim Square, the heart of modern Istanbul. Here, you can relax in the park, enjoy the vibrant atmosphere, and observe the local life. It's a great place to people-watch and take in the city's energy.",
+          "searchQuery": "Taksim Square",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit the Spice Bazaar",
+          "description": "Dive into the colorful world of the Spice Bazaar, where you can find a variety of spices, sweets, and local delicacies. It's a sensory delight and a perfect place to pick up unique souvenirs.",
+          "searchQuery": "Spice Bazaar",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Hamdi Restaurant",
+          "description": "End your day with a delicious dinner at Hamdi Restaurant, famous for its kebabs and stunning views of the Golden Horn. Enjoy traditional Turkish dishes in a warm and inviting atmosphere.",
+          "searchQuery": "Hamdi Restaurant",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure from Istanbul",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Van Kahvaltı Evi",
+          "description": "Start your day with a traditional Turkish breakfast at Van Kahvaltı Evi, known for its rich selection of cheeses, olives, and fresh bread. It's a delightful way to fuel up before your last day of exploration.",
+          "searchQuery": "Van Kahvaltı Evi",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Blue Mosque",
+          "description": "Marvel at the stunning architecture of the Blue Mosque, one of Istanbul's most iconic landmarks. The intricate tile work and grand domes create a serene atmosphere, perfect for reflection before your departure.",
+          "searchQuery": "Sultan Ahmed Mosque",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Sultanahmet Köftecisi",
+          "description": "Enjoy a delicious lunch at Sultanahmet Köftecisi, famous for its mouthwatering meatballs and traditional Turkish dishes. It's a local favorite and a great spot to savor authentic flavors.",
+          "searchQuery": "Sultanahmet Köftecisi",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore the Grand Bazaar",
+          "description": "Wander through the vibrant Grand Bazaar, one of the largest and oldest covered markets in the world. Here, you can hunt for unique souvenirs, spices, and textiles while soaking in the lively atmosphere.",
+          "searchQuery": "Grand Bazaar",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Coffee at Pierre Loti Café",
+          "description": "Take a break at Pierre Loti Café, perched on a hill with stunning views of the Golden Horn. Enjoy a cup of Turkish coffee while reflecting on your trip and soaking in the beautiful scenery.",
+          "searchQuery": "Pierre Loti Café",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Last-minute shopping at Spice Bazaar",
+          "description": "Before heading to the airport, visit the Spice Bazaar for some last-minute shopping. Pick up spices, sweets, and other local delicacies to take home as a taste of Istanbul.",
+          "searchQuery": "Spice Bazaar",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

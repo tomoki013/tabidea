@@ -3,9 +3,10 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { FaCalendarAlt, FaUsers, FaMapMarkerAlt } from "react-icons/fa";
 import { SamplePlan, regionTags } from "@/lib/sample-plans";
+import { localizeTagLabel } from "@/lib/sample-plan-localization";
 
 interface SamplePlanCardProps {
   plan: SamplePlan;
@@ -54,6 +55,7 @@ const defaultTagStyle = {
 
 const SamplePlanCard = memo(function SamplePlanCard({ plan, index }: SamplePlanCardProps) {
   const t = useTranslations("components.extraUi.samplePlanCard");
+  const locale = useLocale();
 
   // 地域タグとその他のタグを分離して表示順序を整理
   const regionTag = plan.tags.find(tag => regionTags.includes(tag));
@@ -112,7 +114,7 @@ const SamplePlanCard = memo(function SamplePlanCard({ plan, index }: SamplePlanC
                     className={`inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-lg border ${decoration.bg} ${decoration.text} ${decoration.border}`}
                   >
                     <span className="text-sm">{decoration.icon}</span>
-                    <span>{tag}</span>
+                    <span>{localizeTagLabel(tag, locale)}</span>
                   </span>
                 );
               })}

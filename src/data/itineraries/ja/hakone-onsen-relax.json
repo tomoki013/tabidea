@@ -1,0 +1,192 @@
+{
+  "id": "24a3299c-2aee-4d5d-86de-3629484b3743",
+  "destination": "箱根",
+  "description": "箱根の自然に囲まれた温泉地で、心身ともにリラックスする2日間の旅へ。美しい山々や湖の景色を楽しみながら、贅沢な温泉体験を満喫しましょう。特に露天風呂付きの部屋で、プライベートな空間でのんびりと過ごすことができます。",
+  "heroImage": "https://images.unsplash.com/photo-1578053943194-be80c589a336?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODA3MTR8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "soyoung park",
+  "heroImagePhotographerUrl": "https://unsplash.com/@soyoppp?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "自然と温泉で癒される初日",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "新宿駅",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "箱根湯本駅",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "新宿から箱根湯本までの直通電車で、快適な旅を楽しみましょう。"
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "箱根湯本温泉街散策",
+          "description": "箱根湯本の温泉街を散策し、地元の雰囲気を楽しみながらお土産を探しましょう。温泉饅頭や地元の特産品が並ぶお店がたくさんあります。",
+          "searchQuery": "Hakone Yumoto",
+          "locationEn": "Hakone, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "湯本の食堂でランチ",
+          "description": "地元の食材を使った定食を楽しめる食堂で、心温まるランチをどうぞ。特に、箱根の名物である山菜料理がおすすめです。",
+          "searchQuery": "Hakone Yumoto Restaurant",
+          "locationEn": "Hakone, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "強羅公園散策",
+          "description": "強羅公園で自然を満喫。四季折々の花々が楽しめる美しい公園で、散策しながらリラックスした時間を過ごせます。",
+          "searchQuery": "Gora Park",
+          "locationEn": "Hakone, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "露天風呂付きの宿にチェックイン",
+          "description": "露天風呂付きの部屋で、プライベートな空間で温泉を楽しみましょう。美しい自然を眺めながら、心身ともにリフレッシュできます。",
+          "searchQuery": "Ryokan with Open-Air Bath",
+          "locationEn": "Hakone, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "宿での夕食",
+          "description": "宿の夕食は、地元の新鮮な食材を使った懐石料理。目でも楽しめる美しい盛り付けで、特別なひとときを演出します。",
+          "searchQuery": "Ryokan Dinner",
+          "locationEn": "Hakone, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "宿の露天風呂でリラックス",
+          "description": "夜空の下、露天風呂でゆったりとした時間を過ごしましょう。星空を眺めながら、温泉の癒しを存分に楽しんでください。",
+          "searchQuery": "Open-Air Bath",
+          "locationEn": "Hakone, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "箱根の絶景を楽しむ最終日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "箱根の温泉旅館で、地元の食材を使った和朝食を楽しみます。新鮮な魚や季節の野菜を使った料理が並び、心も体も満たされるひとときです。",
+          "locationEn": "Hakone, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "大涌谷",
+          "description": "箱根の名所、大涌谷へ。活火山の迫力を感じながら、名物の黒たまごを味わいましょう。温泉の湯気が立ち上る中、絶景を楽しむことができます。",
+          "searchQuery": "Owakudani",
+          "locationEn": "Hakone, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "彫刻の森美術館でランチ",
+          "description": "彫刻の森美術館内のカフェで、アートに囲まれながらのランチを楽しみます。美術館の美しい庭園を眺めながら、リラックスした時間を過ごせます。",
+          "locationEn": "Hakone, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "彫刻の森美術館",
+          "description": "自然とアートが融合した彫刻の森美術館を散策。屋外に展示された彫刻や、室内のアート作品を楽しみながら、ゆったりとした時間を過ごします。",
+          "searchQuery": "Hakone Open-Air Museum",
+          "locationEn": "Hakone, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "箱根神社",
+          "description": "箱根の自然に囲まれた箱根神社を訪れます。美しい鳥居と湖の景色が印象的で、静かな雰囲気の中で心を落ち着けることができます。",
+          "searchQuery": "Hakone Shrine",
+          "locationEn": "Hakone, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "旅館での夕食",
+          "description": "宿泊先の旅館で、地元の旬の食材を使った懐石料理を堪能します。美しい盛り付けとともに、心温まるおもてなしを受けながら、特別な夜を過ごしましょう。",
+          "locationEn": "Hakone, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "露天風呂でリラックス",
+          "description": "旅館の露天風呂で、星空を眺めながらゆったりとした時間を楽しみます。温泉の温もりに包まれ、日々の疲れを癒す最高のひとときです。",
+          "locationEn": "Hakone, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

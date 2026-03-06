@@ -1,0 +1,569 @@
+{
+  "id": "776e0e02-ae93-486d-9f1c-7c7f4e914703",
+  "destination": "New York City",
+  "description": "Immerse yourself in the vibrant energy of New York City, where every street corner tells a story and every meal is a culinary adventure. Over the course of six days, you'll explore iconic landmarks, indulge in world-class dining, and soak in the rich tapestry of art and entertainment that defines this metropolis. From the dazzling lights of Broadway to the serene paths of Central Park, this journey promises to be an unforgettable solo escapade filled with excitement and discovery.",
+  "heroImage": "https://images.unsplash.com/photo-1447261322818-13e561de6fd3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODE0NDd8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Patrick Tomasso",
+  "heroImagePhotographerUrl": "https://unsplash.com/@impatrickt?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Departure from Washington D.C. to New York City",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Washington D.C.",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "New York City",
+          "time": "10:30"
+        },
+        "duration": "2h 30m",
+        "memo": "Enjoy the scenic ride along the East Coast."
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "Brunch at Jack's Wife Freda",
+          "description": "Start your New York adventure with a delightful brunch at Jack's Wife Freda, known for its Mediterranean-inspired dishes and cozy atmosphere. Don't miss their famous green shakshuka!",
+          "searchQuery": "Jack's Wife Freda",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Explore Times Square",
+          "description": "Dive into the vibrant energy of Times Square, where the bright lights and bustling crowds create an unforgettable atmosphere. Take some time to snap photos and soak in the iconic sights.",
+          "searchQuery": "Times Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Museum of Modern Art (MoMA)",
+          "description": "Immerse yourself in the world of contemporary art at MoMA. With masterpieces from Van Gogh to Warhol, this museum is a must-visit for art lovers. Plan to spend a few hours exploring the exhibits.",
+          "searchQuery": "Museum of Modern Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at The Modern",
+          "description": "Enjoy a fine dining experience at The Modern, located within MoMA. This Michelin-starred restaurant offers a seasonal menu with stunning views of the sculpture garden.",
+          "searchQuery": "The Modern",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Catch a Broadway Show",
+          "description": "End your day with an unforgettable Broadway show. Choose from a variety of performances, from classic musicals to contemporary plays. Be sure to book your tickets in advance!",
+          "searchQuery": "Broadway Shows",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "22:30",
+          "activity": "Jazz at the Village Vanguard",
+          "description": "Experience the vibrant jazz scene at the Village Vanguard, one of the most iconic jazz clubs in the world. Enjoy live performances in an intimate setting to cap off your first day in NYC.",
+          "searchQuery": "Village Vanguard",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Art and Culture in Manhattan",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Sarabeth's",
+          "description": "Start your day with a delightful breakfast at Sarabeth's, known for its delicious pancakes and fresh fruit. The cozy atmosphere makes it a perfect spot to fuel up for a day of exploration.",
+          "searchQuery": "Sarabeth's",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "The Metropolitan Museum of Art",
+          "description": "Immerse yourself in art at The Met, one of the largest and most prestigious art museums in the world. Don't miss the Egyptian artifacts and the stunning rooftop garden with views of Central Park.",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Modern",
+          "description": "Enjoy a refined lunch at The Modern, a Michelin-starred restaurant located at the Museum of Modern Art. The seasonal menu features contemporary American cuisine with a view of the sculpture garden.",
+          "searchQuery": "The Modern",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Central Park Stroll",
+          "description": "Take a leisurely stroll through Central Park, where you can enjoy the beautiful landscapes, iconic bridges, and perhaps even a quick visit to the Bethesda Terrace. It's a perfect way to relax amidst the city hustle.",
+          "searchQuery": "Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "The Guggenheim Museum",
+          "description": "Visit the Guggenheim Museum, famous for its unique architecture and impressive collection of modern art. The spiral ramp is a must-see, allowing you to enjoy the exhibits in a stunning setting.",
+          "searchQuery": "The Guggenheim Museum",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Keens Steakhouse",
+          "description": "Indulge in a classic New York steak dinner at Keens Steakhouse, renowned for its dry-aged steaks and historic ambiance. Be sure to try their signature mutton chop, a local favorite.",
+          "searchQuery": "Keens Steakhouse",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Broadway Show",
+          "description": "End your day with a spectacular Broadway show. Choose from a variety of performances, from musicals to dramas, and experience the vibrant theater scene that New York is famous for.",
+          "searchQuery": "Broadway",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Exploring Lower Manhattan",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Balthazar",
+          "description": "Start your day with a delightful breakfast at Balthazar, a classic French bistro in SoHo. Enjoy freshly baked pastries and a rich coffee to fuel your day of exploration.",
+          "searchQuery": "Balthazar",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Statue of Liberty Tour",
+          "description": "Take a ferry from Battery Park to Liberty Island and marvel at the iconic Statue of Liberty. Don't forget to explore the museum to learn about its history and significance.",
+          "searchQuery": "Statue of Liberty",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Fraunces Tavern",
+          "description": "Enjoy a hearty lunch at Fraunces Tavern, a historic pub that dates back to the American Revolution. Savor classic American dishes in a charming setting.",
+          "searchQuery": "Fraunces Tavern",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit the 9/11 Memorial",
+          "description": "Pay your respects at the 9/11 Memorial, a poignant tribute to the lives lost in the tragic events of September 11, 2001. The reflecting pools are a serene place for reflection.",
+          "searchQuery": "9/11 Memorial",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Wall Street",
+          "description": "Stroll through the financial district and take in the sights of Wall Street, including the famous Charging Bull statue. It's a great area for photography and people-watching.",
+          "searchQuery": "Wall Street",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at The Capital Grille",
+          "description": "Indulge in a luxurious dinner at The Capital Grille, known for its dry-aged steaks and extensive wine list. A perfect way to unwind after a day of sightseeing.",
+          "searchQuery": "The Capital Grille",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Broadway Show",
+          "description": "End your day with a spectacular Broadway show. Choose from a variety of musicals and plays that showcase the best of New York's entertainment scene.",
+          "searchQuery": "Broadway Shows",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "A Day of Jazz and Culinary Delights",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Amy Ruth's",
+          "description": "Start your day with a hearty Southern breakfast at Amy Ruth's, famous for its delicious chicken and waffles. The warm, welcoming atmosphere sets the perfect tone for your day in Harlem.",
+          "searchQuery": "Amy Ruth's",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit The Apollo Theater",
+          "description": "Explore the iconic Apollo Theater, a historic venue that has hosted legendary performers. Take a guided tour to learn about its rich history and significance in the world of music and entertainment.",
+          "searchQuery": "Apollo Theater",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Sylvia's Restaurant",
+          "description": "Enjoy a classic soul food lunch at Sylvia's, known as the 'Queen of Soul Food.' Savor dishes like fried chicken and collard greens in a vibrant setting filled with music and culture.",
+          "searchQuery": "Sylvia's Restaurant",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Stroll through Harlem",
+          "description": "Take a leisurely walk through the historic streets of Harlem. Admire the beautiful brownstones and vibrant street art, and soak in the rich cultural heritage of this iconic neighborhood.",
+          "searchQuery": "Harlem",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Jazz at Minton's Playhouse",
+          "description": "Experience live jazz at Minton's Playhouse, a legendary jazz club where the bebop movement began. Enjoy an afternoon performance while sipping on a cocktail and immersing yourself in the music.",
+          "searchQuery": "Minton's Playhouse",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Dinner at Red Rooster",
+          "description": "Indulge in a delightful dinner at Red Rooster, a restaurant that celebrates the flavors of Harlem. Enjoy dishes inspired by the African diaspora, all in a lively atmosphere with live music.",
+          "searchQuery": "Red Rooster",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Broadway Show",
+          "description": "End your day with a spectacular Broadway show. Choose from a variety of musicals and plays that showcase the best of New York's theater scene. Be sure to book your tickets in advance!",
+          "searchQuery": "Broadway Shows",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Brooklyn and Beyond",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Bakeri",
+          "description": "Start your day with a delightful breakfast at Bakeri, a cozy Norwegian bakery in Williamsburg. Enjoy freshly baked pastries and a cup of coffee to fuel your adventures ahead.",
+          "searchQuery": "Bakeri",
+          "locationEn": "Williamsburg, Brooklyn, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Walk across the Brooklyn Bridge",
+          "description": "Take a leisurely stroll across the iconic Brooklyn Bridge. The views of the Manhattan skyline are breathtaking, especially in the morning light. Don't forget your camera!",
+          "searchQuery": "Brooklyn Bridge",
+          "locationEn": "Brooklyn Bridge, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Explore DUMBO",
+          "description": "Once you reach DUMBO, explore its charming streets and waterfront parks. Visit the famous Jane's Carousel and enjoy the stunning views of the Manhattan skyline from Pebble Beach.",
+          "searchQuery": "DUMBO",
+          "locationEn": "DUMBO, Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Time Out Market",
+          "description": "Head to Time Out Market for lunch, where you can sample a variety of local dishes from some of Brooklyn's best chefs. It's a great way to taste the local flavors all in one place.",
+          "searchQuery": "Time Out Market",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit the Brooklyn Museum",
+          "description": "Spend your afternoon at the Brooklyn Museum, known for its impressive collection of art and exhibitions. Don't miss the Elizabeth A. Sackler Center for Feminist Art.",
+          "searchQuery": "Brooklyn Museum",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Explore Williamsburg",
+          "description": "Wander through Williamsburg, known for its vibrant street art, unique shops, and hip cafes. This area is perfect for soaking in the local culture and perhaps picking up a souvenir.",
+          "searchQuery": "Williamsburg",
+          "locationEn": "Williamsburg, Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Peter Luger Steak House",
+          "description": "Indulge in a classic New York steak dinner at Peter Luger Steak House, a legendary establishment known for its top-quality meat and no-frills atmosphere. Reservations are recommended!",
+          "searchQuery": "Peter Luger Steak House",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Catch a Jazz Show at Blue Note",
+          "description": "End your day with a live jazz performance at the famous Blue Note Jazz Club in Greenwich Village. Immerse yourself in the vibrant music scene and enjoy a drink while you listen.",
+          "searchQuery": "Blue Note Jazz Club",
+          "locationEn": "Greenwich Village, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "New York City",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "11:30"
+        },
+        "duration": "2h 30m",
+        "memo": "Amtrak train from Penn Station to Union Station."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Balthazar",
+          "description": "Start your day with a delightful breakfast at Balthazar, a classic French bistro in SoHo. Enjoy freshly baked pastries and a rich coffee to fuel your day.",
+          "searchQuery": "Balthazar",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Visit the Metropolitan Museum of Art",
+          "description": "Explore the vast collections at the Met, one of the largest and most prestigious art museums in the world. Don't miss the rooftop garden for stunning views of Central Park.",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Lunch at Katz's Delicatessen",
+          "description": "Savor a classic pastrami sandwich at Katz's, an iconic deli known for its delicious sandwiches and vibrant atmosphere. A must-visit for any foodie in NYC!",
+          "searchQuery": "Katz's Delicatessen",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Stroll through Central Park",
+          "description": "Take a leisurely walk through Central Park, enjoying the beautiful landscapes and perhaps stopping by the Bethesda Terrace for a photo op. It's a perfect way to unwind before your journey.",
+          "searchQuery": "Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Modern",
+          "description": "Indulge in a fine dining experience at The Modern, located at the Museum of Modern Art. Enjoy contemporary American cuisine with a view of the sculpture garden.",
+          "searchQuery": "The Modern",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Catch a Broadway Show",
+          "description": "End your New York adventure with a spectacular Broadway show. Choose from a variety of musicals and plays that showcase the best of New York's entertainment scene.",
+          "searchQuery": "Broadway",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

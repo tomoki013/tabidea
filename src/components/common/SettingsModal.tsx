@@ -25,7 +25,6 @@ import { resolveHomeBaseCityForRegion } from "@/lib/i18n/home-base-cities";
 import {
   localizeHref,
   resolveLanguageFromPathname,
-  switchLanguagePath,
 } from "@/lib/i18n/navigation";
 import type { BillingAccessInfo } from "@/types";
 import {
@@ -241,10 +240,6 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         homeBaseCity,
       });
       if (result.success) {
-        if (preferredLanguage !== currentLanguage) {
-          const nextPath = switchLanguagePath(pathname, preferredLanguage);
-          router.push(nextPath);
-        }
         onClose();
       } else {
         setSettingsError(mapSettingsError(result.error, "saveFailed"));

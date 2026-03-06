@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { FaGlobe, FaChevronDown, FaCheck } from "react-icons/fa";
+import { updateDisplayLanguage } from "@/app/actions/user-settings";
 import {
   SUPPORTED_LANGUAGES,
   type LanguageCode,
@@ -12,6 +13,7 @@ import {
   resolveLanguageFromPathname,
   switchLanguagePath,
 } from "@/lib/i18n/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 interface LanguageSwitcherProps {
   className?: string;
@@ -23,6 +25,7 @@ export default function LanguageSwitcher({ className = "" }: LanguageSwitcherPro
   const searchParams = useSearchParams();
   const t = useTranslations("languageSwitcher");
   const currentLanguage = resolveLanguageFromPathname(pathname);
+  const { isAuthenticated } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [menuOffsetX, setMenuOffsetX] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -90,11 +93,19 @@ export default function LanguageSwitcher({ className = "" }: LanguageSwitcherPro
     };
   }, [isOpen]);
 
-  const handleLanguageChange = (language: LanguageCode) => {
+  const handleLanguageChange = async (language: LanguageCode) => {
     if (language === currentLanguage) {
       setIsOpen(false);
       setMenuOffsetX(0);
       return;
+    }
+
+    if (isAuthenticated) {
+      try {
+        await updateDisplayLanguage(language);
+      } catch (error) {
+        console.error("Failed to persist display language:", error);
+      }
     }
 
     const nextPath = switchLanguagePath(pathname, language);

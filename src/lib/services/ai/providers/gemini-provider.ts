@@ -37,7 +37,7 @@ export class GeminiProvider implements AIServiceProvider {
   private instance: ReturnType<typeof createGoogleGenerativeAI> | null = null;
 
   isAvailable(): boolean {
-    return !!process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+    return !!this.resolveApiKey();
   }
 
   getModel(phase: AIPhase, userType: UserType): ResolvedProviderModel {
@@ -60,7 +60,7 @@ export class GeminiProvider implements AIServiceProvider {
   private getProviderInstance(): ReturnType<typeof createGoogleGenerativeAI> {
     if (this.instance) return this.instance;
 
-    const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+    const apiKey = this.resolveApiKey();
     if (!apiKey) {
       throw new Error("GOOGLE_GENERATIVE_AI_API_KEY is required for Gemini provider");
     }
@@ -106,5 +106,15 @@ export class GeminiProvider implements AIServiceProvider {
   /** テスト用: シングルトンリセット */
   reset(): void {
     this.instance = null;
+  }
+
+  private resolveApiKey(): string | undefined {
+    if (process.env.USE_SAMPLE_AI_KEYS === "true") {
+      return (
+        process.env.SAMPLE_GOOGLE_GENERATIVE_AI_API_KEY ||
+        process.env.GOOGLE_GENERATIVE_AI_API_KEY
+      );
+    }
+    return process.env.GOOGLE_GENERATIVE_AI_API_KEY;
   }
 }

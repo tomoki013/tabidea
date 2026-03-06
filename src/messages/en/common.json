@@ -101,9 +101,9 @@
       "dark": "Dark",
       "system": "System"
     },
-    "languageAndRegion": "Language & region",
-    "languageDescription": "When you switch language, the recommended region for that language is set as default.",
-    "displayLanguage": "Display language",
+    "languageAndRegion": "Output language & region",
+    "languageDescription": "Language and region here are for AI output only. Use the header language switcher for app display language.",
+    "displayLanguage": "Output language",
     "region": "Region",
     "regionSearchPlaceholder": "Search region by name or code",
     "regionSearchNoResults": "No matching regions found",
@@ -116,8 +116,8 @@
     "homeBaseCityRequestPrefix": "If your city is not listed,",
     "homeBaseCityRequestLink": "contact us",
     "homeBaseCityRequestSuffix": "to request an addition.",
-    "languageAndRouteUsage": "AI outputs plans in your selected language and uses the selected region/city as both departure and return points.",
-    "aiOutputAndRoutePolicy": "AI plan generation prioritizes your selected output language and builds round-trip itineraries from your home city.",
+    "languageAndRouteUsage": "AI generates plans in your selected output language and uses the selected region/city as both departure and return points.",
+    "aiOutputAndRoutePolicy": "Display language is controlled in the header, while AI output follows these settings.",
     "dangerZone": {
       "title": "Danger zone",
       "openDeleteButton": "Delete account",

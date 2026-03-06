@@ -1,0 +1,467 @@
+{
+  "id": "67ca6fe1-59e0-4551-852f-c86d7bc473c3",
+  "destination": "バンコク",
+  "description": "バンコクの魅力を存分に味わう5日間の旅へようこそ。グルメ、文化、ショッピング、リラックスをテーマに、友人と共にタイのエネルギッシュな街を巡ります。安くて美味しいタイ料理を楽しみ、毎日マッサージで疲れを癒しながら、バンコクの隠れた魅力を発見しましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1578167635775-7e8132c1954c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODE1NjZ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Worachat Sodsri",
+  "heroImagePhotographerUrl": "https://unsplash.com/@worachatsodsri?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "バンコク到着と屋台グルメ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテル近くの屋台で朝食",
+          "description": "バンコクの朝は屋台グルメからスタート！カオマンガイ（チキンライス）を楽しみながら、地元の雰囲気を味わいましょう。屋台の朝食はリーズナブルで、40バーツ（約160円）程度で本格的な味が楽しめます。",
+          "searchQuery": "Khao Man Gai",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ワット・プラケオ（エメラルド寺院）& 王宮",
+          "description": "タイで最も格式高い寺院、ワット・プラケオへ。エメラルド仏と豪華絢爛な王宮の装飾に圧倒されます。午前中の早い時間が比較的空いていて、ゆっくりと見学できます。肌の露出が多い服装はNGなので、長ズボン・肩を覆う服装で訪問しましょう。",
+          "searchQuery": "Wat Phra Kaew",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ター・マハラートのフードコートでランチ",
+          "description": "ワット・プラケオ近くのター・マハラートで昼食。パッタイやソムタムなど、定番のタイ料理をリーズナブルに楽しめます。川沿いの席でチャオプラヤー川を眺めながら、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Tha Maharaj Food Court",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ワット・ポー（涅槃仏寺院）",
+          "description": "全長46mの巨大な涅槃仏で有名なワット・ポーへ。寺院内のタイ古式マッサージ（約300バーツ）は旅の疲れを癒すのにぴったりです。ワット・プラケオから徒歩約10分でアクセスも良好。",
+          "searchQuery": "Wat Pho",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "渡し船でワット・アルン（暁の寺）へ",
+          "description": "ワット・ポー近くの船着場から渡し船でチャオプラヤー川を渡り、ワット・アルンへ。大仏塔に登ると、バンコクの街並みと川の絶景が広がります。夕方の光が美しい時間帯に訪れるのがおすすめです。",
+          "searchQuery": "Wat Arun",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "カオサン通り散策",
+          "description": "バックパッカーの聖地・カオサン通りへ。世界中の旅行者が集まる活気あふれる通りで、お土産探しやストリートフードを楽しみます。屋台での食べ歩きもお忘れなく！",
+          "searchQuery": "Khao San Road",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ヤワラート（チャイナタウン）で夕食",
+          "description": "バンコクのチャイナタウン・ヤワラートへ。夜になると通り沿いに屋台がずらりと並び、フカヒレスープやマンゴースティッキーライスなど絶品グルメの宝庫です。一人だからこそ気軽にはしごできます。",
+          "searchQuery": "Yaowarat",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "寺院巡りとリラックス",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテル近くの屋台で朝食",
+          "description": "バンコクの朝は屋台グルメからスタート！カオマンガイ（チキンライス）を楽しみながら、地元の雰囲気を味わいましょう。屋台の朝食はリーズナブルで、40バーツ（約160円）程度で本格的な味が楽しめます。",
+          "searchQuery": "Khao Man Gai",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ワット・プラケオ（エメラルド寺院）& 王宮",
+          "description": "タイで最も格式高い寺院、ワット・プラケオへ。エメラルド仏と豪華絢爛な王宮の装飾に圧倒されます。午前中の早い時間が比較的空いていて、ゆっくりと見学できます。",
+          "searchQuery": "Wat Phra Kaew",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ター・マハラートのフードコートでランチ",
+          "description": "ワット・プラケオ近くのフードコートで、パッタイやソムタムなどの定番タイ料理をリーズナブルに楽しめます。川沿いの席でチャオプラヤー川を眺めながら、リラックスしたランチタイムを過ごしましょう。",
+          "searchQuery": "Tha Maharaj Food Court",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ワット・ポー（涅槃仏寺院）",
+          "description": "全長46mの巨大な涅槃仏で有名なワット・ポーへ。寺院内のタイ古式マッサージ（約300バーツ）は旅の疲れを癒すのにぴったりです。ワット・プラケオから徒歩約10分。",
+          "searchQuery": "Wat Pho",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "渡し船でワット・アルン（暁の寺）へ",
+          "description": "ワット・ポー近くの船着場から渡し船でチャオプラヤー川を渡り、ワット・アルンへ。大仏塔に登ると、バンコクの街並みと川の絶景が広がります。",
+          "searchQuery": "Wat Arun",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "カオサン通り散策",
+          "description": "バックパッカーの聖地・カオサン通りへ。世界中の旅行者が集まる活気あふれる通りで、お土産探しやストリートフードを楽しみます。",
+          "searchQuery": "Khao San Road",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ヤワラート（チャイナタウン）で夕食",
+          "description": "バンコクのチャイナタウン・ヤワラートへ。夜になると通り沿いに屋台がずらりと並び、フカヒレスープやマンゴースティッキーライスなど絶品グルメの宝庫です。",
+          "searchQuery": "Yaowarat",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ショッピングとストリートフード",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "バンコクのホテルで、タイの伝統的な朝食を楽しみます。カオマンガイやパッタイなど、地元の味を堪能してエネルギーをチャージしましょう。",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "チャトゥチャック市場",
+          "description": "週末限定の巨大市場、チャトゥチャック市場へ。地元の人々が集まるこの市場では、衣類や雑貨、食べ物など多彩な商品が揃っています。お土産探しやストリートフードを楽しむのに最適な場所です。",
+          "searchQuery": "Chatuchak Weekend Market",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "市場内でランチ",
+          "description": "チャトゥチャック市場内の屋台で、タイのストリートフードを堪能。特におすすめは、トムヤムクンやソムタム（青パパイヤサラダ）です。地元の人々と同じように、気軽に食べ歩きしましょう。",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "サイアムエリア散策",
+          "description": "サイアムエリアに移動し、ショッピングモールやカフェを巡ります。特にサイアム・パラゴンやMBKセンターは、観光客にも人気のスポットです。おしゃれなカフェで一息つくのも良いでしょう。",
+          "searchQuery": "Siam Paragon",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "マッサージでリラックス",
+          "description": "サイアムエリアのスパで、タイ式マッサージを体験。観光の疲れを癒し、リフレッシュしましょう。",
+          "searchQuery": "Health Land Spa & Massage",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "屋台で夕食",
+          "description": "サイアムエリア近くの屋台で夕食。バンコクの夜は屋台グルメが盛りだくさん。カオソーイやパッタイを楽しみながら、地元の雰囲気を満喫しましょう。",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ナイトマーケット散策",
+          "description": "バンコクのナイトマーケットを訪れ、ショッピングやストリートフードを楽しみます。特にアジアティーク・ザ・リバーフロントは、観光客にも人気のスポットです。",
+          "searchQuery": "Asiatique The Riverfront",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ナイトマーケットとディナー",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "バンコクのホテルで、タイ風の朝食を楽しみます。カオマンガイやパッタイなど、地元の味を堪能して一日をスタート。",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "アジアティーク・ザ・リバーフロント",
+          "description": "バンコクの人気スポット、アジアティークでショッピングを楽しみましょう。おしゃれなショップやレストランが並び、川沿いの景色も素晴らしいです。",
+          "searchQuery": "Asiatique The Riverfront",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "アジアティークでランチ",
+          "description": "アジアティーク内の屋台やレストランで、タイ料理のランチを楽しみます。特に、トムヤムクンやソムタムは絶品です！",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "マッサージでリラックス",
+          "description": "アジアティーク近くのマッサージ店で、タイ式マッサージを受けてリフレッシュ。旅の疲れを癒しましょう。",
+          "searchQuery": "Thai Massage",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ヤワラート（チャイナタウン）散策",
+          "description": "バンコクのチャイナタウン、ヤワラートを散策。活気あふれる通りで、ストリートフードやお土産を楽しむことができます。",
+          "searchQuery": "Yaowarat",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ヤワラートで夕食",
+          "description": "ヤワラートの屋台で、フカヒレスープや焼き小龍包などの絶品グルメを堪能。夜の雰囲気を楽しみながら、食べ歩きを満喫しましょう。",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ナイトマーケットでショッピング",
+          "description": "ヤワラート近くのナイトマーケットで、地元の人々と一緒にショッピング。ユニークなお土産やファッションアイテムを見つけるチャンスです。",
+          "searchQuery": "Night Market",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "22:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の計画を立てながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "バンコクの最後の朝と帰国",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "バンコクのホテルで、タイの伝統的な朝食を楽しみます。カオマンガイやパッタイなど、地元の味を堪能してエネルギーをチャージしましょう。",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ワット・ポー（涅槃仏寺院）",
+          "description": "全長46mの巨大な涅槃仏が安置されているワット・ポーを訪れます。寺院内のタイ古式マッサージもおすすめで、旅の疲れを癒すのにぴったりです。",
+          "searchQuery": "Wat Pho",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ター・マハラートのフードコートでランチ",
+          "description": "ワット・プラケオ近くのフードコートで、パッタイやソムタムなどのタイ料理をリーズナブルに楽しみます。川沿いの席で、チャオプラヤー川を眺めながらの食事は格別です。",
+          "searchQuery": "Tha Maharaj Food Court",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "カオサン通り散策",
+          "description": "バックパッカーの聖地・カオサン通りを散策します。お土産探しやストリートフードを楽しみながら、活気あふれる雰囲気を満喫しましょう。",
+          "searchQuery": "Khao San Road",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "タイ古式マッサージ",
+          "description": "カオサン通り近くのマッサージ店で、リラックスしたひとときを過ごします。タイ古式マッサージは、体の疲れを癒すのに最適です。",
+          "searchQuery": "Thai Massage Khao San",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルに戻りチェックアウト",
+          "description": "ホテルに戻り、チェックアウトの準備をします。最後のバンコクの思い出を振り返りながら、ゆっくりと過ごしましょう。",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "空港へ移動",
+          "description": "空港へ向かうため、タクシーまたは公共交通機関を利用します。バンコクの最後の景色を楽しみながら、帰国の準備を整えましょう。",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

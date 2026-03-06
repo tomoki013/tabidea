@@ -37,7 +37,7 @@ export class OpenAIProvider implements AIServiceProvider {
   private instance: ReturnType<typeof createOpenAI> | null = null;
 
   isAvailable(): boolean {
-    return !!process.env.OPENAI_API_KEY;
+    return !!this.resolveApiKey();
   }
 
   getModel(phase: AIPhase, userType: UserType): ResolvedProviderModel {
@@ -60,7 +60,7 @@ export class OpenAIProvider implements AIServiceProvider {
   private getProviderInstance(): ReturnType<typeof createOpenAI> {
     if (this.instance) return this.instance;
 
-    const apiKey = process.env.OPENAI_API_KEY;
+    const apiKey = this.resolveApiKey();
     if (!apiKey) {
       throw new Error("OPENAI_API_KEY is required for OpenAI provider");
     }
@@ -105,5 +105,12 @@ export class OpenAIProvider implements AIServiceProvider {
   /** テスト用: シングルトンリセット */
   reset(): void {
     this.instance = null;
+  }
+
+  private resolveApiKey(): string | undefined {
+    if (process.env.USE_SAMPLE_AI_KEYS === "true") {
+      return process.env.SAMPLE_OPENAI_API_KEY || process.env.OPENAI_API_KEY;
+    }
+    return process.env.OPENAI_API_KEY;
   }
 }
