@@ -14,7 +14,11 @@
         "benefitMultiDevice": "Access from multiple devices",
         "restoreNotice": "Your current input will be restored after login",
         "loginCta": "Login / Sign up free",
-        "laterCta": "Maybe later"
+        "laterCta": "Maybe later",
+        "travelPass": "Travel Pass",
+        "accessGrantedLine1": "Access",
+        "accessGrantedLine2": "Granted",
+        "ticketCode": "TABIDEA-2025"
       },
       "travelInfoShareButton": {
         "trigger": "Share",
@@ -49,8 +53,16 @@
         "profileTitle": "Blog Profile",
         "postEditorTitle": "Post Editor",
         "shioriEmbedGuide": "Shiori embed:",
+        "orLabel": "or",
+        "usernamePlaceholder": "username (a-z0-9_)",
+        "displayNamePlaceholder": "display name",
+        "bioPlaceholder": "bio",
+        "titlePlaceholder": "title",
+        "slugPlaceholder": "slug",
+        "excerptPlaceholder": "excerpt",
         "contentPlaceholder": "HTML content",
         "coverImageLabel": "Cover image",
+        "storagePathLabel": "storage path",
         "saveDraft": "Save draft",
         "publish": "Publish",
         "embedPreviewTitle": "Embed Preview"
@@ -257,7 +269,9 @@
           "aiDisclaimer": "This information is AI-generated and may be inaccurate. Always verify official sources before traveling.",
           "packingList": "Packing List",
           "packingSubtitle": "Items needed for your trip to {destination}",
-          "itemsCount": "{count} items"
+          "itemsCount": "{count} items",
+          "brandTitle": "Travel Plan",
+          "poweredBy": "Powered by {brand}"
         },
         "values": {
           "required": "Required",

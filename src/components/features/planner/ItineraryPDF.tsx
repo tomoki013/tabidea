@@ -582,7 +582,7 @@ const ItineraryPDF: React.FC<ItineraryPDFProps> = ({
         {/* Header */}
         <View style={styles.header}>
           <View style={styles.headerLeft}>
-            <Text style={styles.brandTitle}>TRAVEL PLAN</Text>
+            <Text style={styles.brandTitle}>{t("components.extraUi.itineraryPdf.labels.brandTitle")}</Text>
             <Text style={styles.destinationTitle}>{itinerary.destination}</Text>
           </View>
           <View style={styles.headerRight}>
@@ -647,7 +647,9 @@ const ItineraryPDF: React.FC<ItineraryPDFProps> = ({
           <Text style={styles.footerText} render={({ pageNumber, totalPages }) =>
             `${pageNumber} / ${totalPages}`
           } />
-          <Text style={[styles.footerText, { color: theme.primary, fontWeight: 'bold' }]}>Powered by Tabidea</Text>
+          <Text style={[styles.footerText, { color: theme.primary, fontWeight: 'bold' }]}>
+            {t("components.extraUi.itineraryPdf.labels.poweredBy", { brand: "Tabidea" })}
+          </Text>
         </View>
       </Page>
 
@@ -689,7 +691,9 @@ const ItineraryPDF: React.FC<ItineraryPDFProps> = ({
             <Text style={styles.footerText} render={({ pageNumber, totalPages }) =>
               `${pageNumber} / ${totalPages}`
             } />
-            <Text style={[styles.footerText, { color: theme.primary, fontWeight: 'bold' }]}>Powered by Tabidea</Text>
+            <Text style={[styles.footerText, { color: theme.primary, fontWeight: 'bold' }]}>
+              {t("components.extraUi.itineraryPdf.labels.poweredBy", { brand: "Tabidea" })}
+            </Text>
           </View>
         </Page>
       )}
@@ -759,7 +763,9 @@ const ItineraryPDF: React.FC<ItineraryPDFProps> = ({
             <Text style={styles.footerText} render={({ pageNumber, totalPages }) =>
               `${pageNumber} / ${totalPages}`
             } />
-            <Text style={[styles.footerText, { color: theme.primary, fontWeight: 'bold' }]}>Powered by Tabidea</Text>
+            <Text style={[styles.footerText, { color: theme.primary, fontWeight: 'bold' }]}>
+              {t("components.extraUi.itineraryPdf.labels.poweredBy", { brand: "Tabidea" })}
+            </Text>
           </View>
         </Page>
       )}

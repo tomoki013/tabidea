@@ -14,7 +14,11 @@
         "benefitMultiDevice": "複数デバイスからアクセス",
         "restoreNotice": "※ 入力中のデータはログイン後に復元されます",
         "loginCta": "ログイン / 無料登録",
-        "laterCta": "あとで登録する"
+        "laterCta": "あとで登録する",
+        "travelPass": "トラベルパス",
+        "accessGrantedLine1": "アクセス",
+        "accessGrantedLine2": "許可",
+        "ticketCode": "TABIDEA-2025"
       },
       "travelInfoShareButton": {
         "trigger": "共有",
@@ -49,8 +53,16 @@
         "profileTitle": "Blog Profile",
         "postEditorTitle": "Post Editor",
         "shioriEmbedGuide": "旅のしおり埋め込み:",
+        "orLabel": "または",
+        "usernamePlaceholder": "username (a-z0-9_)",
+        "displayNamePlaceholder": "display name",
+        "bioPlaceholder": "bio",
+        "titlePlaceholder": "title",
+        "slugPlaceholder": "slug",
+        "excerptPlaceholder": "excerpt",
         "contentPlaceholder": "HTMLベース本文",
         "coverImageLabel": "Cover image",
+        "storagePathLabel": "storage path",
         "saveDraft": "下書き保存",
         "publish": "公開",
         "embedPreviewTitle": "Embed Preview"
@@ -257,7 +269,9 @@
           "aiDisclaimer": "※ この情報はAIによって生成されたものであり、正確性を保証するものではありません。渡航前には必ず外務省海外安全ホームページ等の公式情報をご確認ください。",
           "packingList": "持ち物リスト",
           "packingSubtitle": "{destination} への旅行に必要なもの",
-          "itemsCount": "{count}アイテム"
+          "itemsCount": "{count}アイテム",
+          "brandTitle": "旅行プラン",
+          "poweredBy": "Powered by {brand}"
         },
         "values": {
           "required": "必要",

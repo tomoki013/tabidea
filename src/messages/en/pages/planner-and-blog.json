@@ -11,7 +11,9 @@
         "profileMissing": "Set your profile username before publishing (available in new post screen).",
         "createPost": "Create new post",
         "edit": "Edit",
-        "empty": "No posts yet."
+        "empty": "No posts yet.",
+        "title": "Blog Studio",
+        "postsHeading": "Your posts"
       }
     },
     "publicView": {

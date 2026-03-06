@@ -23,7 +23,7 @@ export default function SampleCollectionPromotionSection() {
           </div>
 
           <div className="space-y-2">
-            <p className="text-xs font-bold tracking-widest text-stone-400 uppercase">EXPLORE MORE PLANS</p>
+            <p className="text-xs font-bold tracking-widest text-stone-400 uppercase">{t("badge")}</p>
             <HandwrittenText tag="h2" className="text-2xl md:text-3xl font-bold text-stone-800">
               {t("title")}
             </HandwrittenText>

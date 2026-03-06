@@ -27,7 +27,7 @@ export default async function BlogDashboardPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-28 space-y-6">
       <div className="rounded-xl border border-stone-200 bg-white p-6 space-y-2">
-        <h1 className="text-2xl font-bold text-stone-900">Blog Studio</h1>
+        <h1 className="text-2xl font-bold text-stone-900">{t("title")}</h1>
         <p className="text-sm text-stone-600">
           {t("description")}
         </p>
@@ -44,7 +44,7 @@ export default async function BlogDashboardPage() {
       </div>
 
       <section className="rounded-xl border border-stone-200 bg-white p-6">
-        <h2 className="font-semibold mb-3">Your posts</h2>
+        <h2 className="font-semibold mb-3">{t("postsHeading")}</h2>
         <div className="space-y-2">
           {posts.map((post) => (
             <div key={post.id} className="border border-stone-100 rounded p-3 flex items-center justify-between gap-3">

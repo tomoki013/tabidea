@@ -147,6 +147,7 @@ export default function BlogPromotionSection() {
 }
 
 function BlogHighlight({ title, category, date, isNew }: { title: string, category: string, date: string, isNew?: boolean }) {
+   const t = useTranslations('components.features.landing.blogPromotionSection');
    return (
       <Link href="/blog" className="block group">
          <div className="flex items-center gap-4 p-4 rounded-xl bg-white border border-stone-100 hover:border-primary/30 hover:shadow-md transition-all duration-300 transform hover:-translate-x-1">
@@ -156,7 +157,7 @@ function BlogHighlight({ title, category, date, isNew }: { title: string, catego
             <div className="flex-1 min-w-0">
                <div className="flex items-center gap-2 mb-1">
                   {isNew && (
-                     <span className="px-1.5 py-0.5 rounded bg-red-100 text-red-600 text-[10px] font-bold uppercase tracking-wider">New</span>
+                     <span className="px-1.5 py-0.5 rounded bg-red-100 text-red-600 text-[10px] font-bold uppercase tracking-wider">{t("newBadge")}</span>
                   )}
                   <span className="text-xs text-stone-400 font-mono">{date}</span>
                </div>

@@ -11,7 +11,9 @@
         "profileMissing": "公開前にプロフィールの username 設定が必要です（新規記事画面で設定可）。",
         "createPost": "新規記事を作成",
         "edit": "編集",
-        "empty": "まだ記事がありません。"
+        "empty": "まだ記事がありません。",
+        "title": "ブログスタジオ",
+        "postsHeading": "投稿一覧"
       }
     },
     "publicView": {

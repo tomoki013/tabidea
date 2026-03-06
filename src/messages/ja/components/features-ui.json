@@ -117,7 +117,8 @@
           "mock": {
             "tipLabel": "Tips",
             "tipTitle": "How to Plan Your Next Trip with AI"
-          }
+          },
+          "newBadge": "新着"
         },
         "exampleSection": {
           "title": "みんなの旅の記録",
@@ -659,7 +660,8 @@
           "title": "公開中の旅のしおりを見てみる",
           "leadLine1": "ほかのユーザーが作った旅のしおりには",
           "leadLine2": "次の旅のヒントが詰まっています。",
-          "cta": "旅のしおりを探す"
+          "cta": "旅のしおりを探す",
+          "badge": "もっとプランを見る"
         }
       },
       "travelInfo": {
@@ -856,7 +858,9 @@
           "rideshare": {
             "available": "利用可 ({services})",
             "unavailable": "利用不可"
-          }
+          },
+          "brandTitle": "渡航サポートガイド",
+          "poweredBy": "Powered by {brand}"
         },
         "sections": {
           "basicInfoSection": {
@@ -966,15 +970,42 @@
             "next": "次へ進む →",
             "skipAndCreate": "任意項目をスキップしてプランを作成",
             "options": {
-              "solo": { "label": "一人旅", "desc": "気ままに" },
-              "couple": { "label": "カップル・夫婦", "desc": "ロマンチックに" },
-              "family": { "label": "家族", "desc": "みんなで楽しく" },
-              "friends": { "label": "友人", "desc": "ワイワイと" },
-              "male_trip": { "label": "男旅", "desc": "とことん" },
-              "female_trip": { "label": "女旅", "desc": "華やかに" },
-              "backpacker": { "label": "バックパッカー", "desc": "冒険を" },
-              "business": { "label": "ビジネス", "desc": "効率的に" },
-              "pet": { "label": "ペットと", "desc": "一緒に" }
+              "solo": {
+                "label": "一人旅",
+                "desc": "気ままに"
+              },
+              "couple": {
+                "label": "カップル・夫婦",
+                "desc": "ロマンチックに"
+              },
+              "family": {
+                "label": "家族",
+                "desc": "みんなで楽しく"
+              },
+              "friends": {
+                "label": "友人",
+                "desc": "ワイワイと"
+              },
+              "male_trip": {
+                "label": "男旅",
+                "desc": "とことん"
+              },
+              "female_trip": {
+                "label": "女旅",
+                "desc": "華やかに"
+              },
+              "backpacker": {
+                "label": "バックパッカー",
+                "desc": "冒険を"
+              },
+              "business": {
+                "label": "ビジネス",
+                "desc": "効率的に"
+              },
+              "pet": {
+                "label": "ペットと",
+                "desc": "一緒に"
+              }
             }
           },
           "stepPace": {
@@ -983,10 +1014,22 @@
             "next": "次へ進む →",
             "skipAndCreate": "任意項目をスキップしてプランを作成",
             "options": {
-              "relaxed": { "label": "ゆったり", "desc": "1日1-2箇所、のんびりと" },
-              "balanced": { "label": "バランスよく", "desc": "観光と休息を程よく" },
-              "active": { "label": "アクティブ", "desc": "主要スポットを網羅" },
-              "packed": { "label": "詰め込み", "desc": "朝から晩まで全力で" }
+              "relaxed": {
+                "label": "ゆったり",
+                "desc": "1日1-2箇所、のんびりと"
+              },
+              "balanced": {
+                "label": "バランスよく",
+                "desc": "観光と休息を程よく"
+              },
+              "active": {
+                "label": "アクティブ",
+                "desc": "主要スポットを網羅"
+              },
+              "packed": {
+                "label": "詰め込み",
+                "desc": "朝から晩まで全力で"
+              }
             }
           },
           "stepBudget": {
@@ -1004,10 +1047,22 @@
               "lead": "スライダーで予算範囲を設定"
             },
             "options": {
-              "saving": { "label": "なるべく安く", "desc": "お財布に優しく、賢く旅する" },
-              "standard": { "label": "普通", "desc": "一般的な予算で楽しむ" },
-              "high": { "label": "少し贅沢に", "desc": "良いホテルや食事をプラス" },
-              "luxury": { "label": "リッチに", "desc": "最高級の体験を味わう" }
+              "saving": {
+                "label": "なるべく安く",
+                "desc": "お財布に優しく、賢く旅する"
+              },
+              "standard": {
+                "label": "普通",
+                "desc": "一般的な予算で楽しむ"
+              },
+              "high": {
+                "label": "少し贅沢に",
+                "desc": "良いホテルや食事をプラス"
+              },
+              "luxury": {
+                "label": "リッチに",
+                "desc": "最高級の体験を味わう"
+              }
             }
           },
           "stepRegion": {
@@ -1018,9 +1073,18 @@
             "next": "次へ進む →",
             "skipAndCreate": "任意項目をスキップしてプランを作成",
             "regions": {
-              "domestic": { "label": "国内", "sub": "Domestic" },
-              "overseas": { "label": "海外", "sub": "Overseas" },
-              "anywhere": { "label": "指定なし", "sub": "Anywhere" }
+              "domestic": {
+                "label": "国内",
+                "sub": "Domestic"
+              },
+              "overseas": {
+                "label": "海外",
+                "sub": "Overseas"
+              },
+              "anywhere": {
+                "label": "指定なし",
+                "sub": "Anywhere"
+              }
             }
           },
           "stepFreeText": {
@@ -1175,11 +1239,13 @@
             },
             "departure": {
               "label": "出発",
-              "placeholder": "出発地 (例: 東京駅)"
+              "placeholder": "出発地 (例: 東京駅)",
+              "fromTag": "出発元"
             },
             "arrival": {
               "label": "到着",
-              "placeholder": "到着地 (例: 大阪駅)"
+              "placeholder": "到着地 (例: 大阪駅)",
+              "toTag": "到着先"
             },
             "memo": {
               "label": "メモ",
@@ -1188,7 +1254,8 @@
             "actions": {
               "cancel": "キャンセル",
               "save": "保存する"
-            }
+            },
+            "dayLabel": "{day}日目"
           }
         },
         "requestSummary": {
@@ -1227,12 +1294,13 @@
           "close": "閉じる"
         },
         "dayPlaceholder": {
-          "dayLabel": "Day",
+          "dayLabel": "日目",
           "pendingDetails": "詳細を待機中...",
           "generating": "生成中...",
           "errorTitle": "詳細の生成に失敗しました",
           "errorMessage": "もう一度お試しください",
-          "retry": "再試行"
+          "retry": "再試行",
+          "dayTitle": "{day}日目"
         },
         "costEstimate": {
           "title": "旅費の概算",
@@ -1364,7 +1432,8 @@
           "overnightPlaceholder": "例：京都市内、大阪・梅田周辺...",
           "overnightHint": "※この場所を基準に翌日の行程が生成されます",
           "generating": "詳細プランを作成中...",
-          "confirm": "旅のしおりを作成する"
+          "confirm": "旅のしおりを作成する",
+          "dayBadge": "{day}日目"
         },
         "mapRoute": {
           "headerTitle": "全日程マップ",
@@ -1472,7 +1541,9 @@
           "errors": {
             "emptyContent": "本文を入力してください。",
             "saveFailed": "保存に失敗しました。"
-          }
+          },
+          "dayLabelWithNumber": "{day}日目",
+          "photoUrlPlaceholder": "https://..."
         },
         "resultView": {
           "durationString": "{nights}泊{days}日",
@@ -1509,6 +1580,13 @@
           "disclaimer": {
             "line1": "※このプランはAIによって生成されています。情報の正確性は保証されません。",
             "line2": "※このページには広告・アフィリエイトリンクが含まれる場合があります。"
+          },
+          "dayLabel": "日目",
+          "hero": {
+            "photoBy": "撮影",
+            "destinationStampLine1": "目的",
+            "destinationStampLine2": "地",
+            "travelToLabel": "旅先"
           }
         },
         "travelPlannerSimplified": {
@@ -1533,7 +1611,7 @@
         },
         "streamingResultView": {
           "durationString": "{nights}泊{days}日",
-          "dayLabel": "Day",
+          "dayLabel": "日目",
           "shareDisabled": "シェア・PDF出力は生成完了後に利用可能です",
           "transition": {
             "title": "詳細ページへ自動移動します",
@@ -1557,7 +1635,8 @@
             "title": "AI生成プランに関する重要なお知らせ",
             "body": "このプランはAIによって自動生成されています。施設の営業時間、料金、住所などの情報は必ず公式サイトで最新情報をご確認ください。"
           },
-          "accommodationDescription": "{day}日目の宿泊エリア"
+          "accommodationDescription": "{day}日目の宿泊エリア",
+          "dayLabelWithNumber": "{day}日目"
         },
         "citationBadge": {
           "labels": {

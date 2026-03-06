@@ -83,10 +83,10 @@ export function LoginPromptModal({
            <div className="bg-primary/10 border-b-2 border-stone-300 border-dashed p-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
                  <FaPlane className="text-primary text-xl" />
-                 <HandwrittenText className="font-bold text-stone-700">TRAVEL PASS</HandwrittenText>
+                 <HandwrittenText className="font-bold text-stone-700">{t("travelPass")}</HandwrittenText>
               </div>
               <Stamp color="blue" size="sm" className="w-12 h-12 text-[0.6rem] border-2 rotate-12 opacity-80">
-                 ACCESS<br/>GRANTED
+                 {t("accessGrantedLine1")}<br/>{t("accessGrantedLine2")}
               </Stamp>
            </div>
 
@@ -145,7 +145,7 @@ export function LoginPromptModal({
            {/* Perforated edge bottom */}
            <div className="h-4 w-full bg-stone-100 border-t-2 border-dashed border-stone-300 relative">
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10px] text-stone-400 font-mono tracking-widest">
-                 TABIDEA-2025
+                 {t("ticketCode")}
               </div>
            </div>
         </JournalSheet>
