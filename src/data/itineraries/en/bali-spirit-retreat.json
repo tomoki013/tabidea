@@ -1,0 +1,465 @@
+{
+  "id": "69ac147f-101c-4aa6-8cd1-2f02f3a8f855",
+  "destination": "バリ島",
+  "description": "Escape to the enchanting island of Bali, where vibrant culture meets serene landscapes. This 5-day journey is designed for relaxation and rejuvenation, allowing you to immerse yourself in the island's natural beauty and rich traditions. Picture yourself practicing yoga on a tranquil beach, indulging in soothing spa treatments, and exploring lush rice terraces. Each day unfolds like a gentle breeze, inviting you to savor every moment and discover the hidden gems of this tropical paradise.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Bali and Relaxation",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Arrival at Ngurah Rai International Airport",
+          "description": "Welcome to Bali! After clearing customs, take a moment to soak in the tropical atmosphere as you step into the vibrant island. Your adventure begins here!",
+          "searchQuery": "Ngurah Rai International Airport",
+          "locationEn": "Bali, Indonesia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Check-in at The Haven Suites Bali Berawa",
+          "description": "Settle into your luxurious suite at The Haven Suites, located just a short walk from the beach. Enjoy the serene ambiance and prepare for a relaxing stay.",
+          "searchQuery": "The Haven Suites Bali Berawa",
+          "locationEn": "Bali, Indonesia",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Lunch at La Baracca",
+          "description": "Indulge in a delicious Italian meal at La Baracca, known for its cozy atmosphere and homemade pasta. A perfect way to recharge after your journey!",
+          "searchQuery": "La Baracca",
+          "locationEn": "Bali, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Relax at Seminyak Beach",
+          "description": "Take a leisurely stroll along Seminyak Beach, where you can feel the soft sand beneath your feet and listen to the gentle waves. This is the ideal spot to unwind and soak up the sun.",
+          "searchQuery": "Seminyak Beach",
+          "locationEn": "Bali, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Yoga Session at The Yoga Barn",
+          "description": "Join a calming yoga session at The Yoga Barn, a renowned wellness center. This is a great way to relax your mind and body while embracing the Balinese spirit.",
+          "searchQuery": "The Yoga Barn",
+          "locationEn": "Bali, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Bambu Restaurant",
+          "description": "Savor traditional Indonesian cuisine at Bambu, where the ambiance is as delightful as the food. Enjoy dishes made from fresh, local ingredients in a beautiful setting.",
+          "searchQuery": "Bambu Restaurant",
+          "locationEn": "Bali, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Relaxation at Hotel Spa",
+          "description": "End your day with a soothing massage at the hotel spa. Choose from a variety of treatments designed to rejuvenate your body and mind after a long day of travel.",
+          "searchQuery": "The Haven Suites Bali Berawa Spa",
+          "locationEn": "Bali, Indonesia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Exploration and Spa Day",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Seminyak",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Ubud",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Private car transfer to Ubud."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Ubud Monkey Forest",
+          "description": "Start your day with a visit to the enchanting Ubud Monkey Forest. Wander through the lush greenery and observe playful monkeys in their natural habitat. The ancient temples within the forest add a mystical touch to your experience.",
+          "searchQuery": "Ubud Monkey Forest",
+          "locationEn": "Ubud, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Warung Babi Guling Ibu Oka",
+          "description": "Savor a traditional Balinese dish at Warung Babi Guling Ibu Oka, famous for its succulent roast pig. Enjoy the vibrant atmosphere and indulge in the rich flavors of Balinese cuisine.",
+          "searchQuery": "Warung Babi Guling Ibu Oka",
+          "locationEn": "Ubud, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Tegallalang Rice Terraces",
+          "description": "After lunch, head to the stunning Tegallalang Rice Terraces. Take a leisurely stroll through the terraces, marveling at the breathtaking views and the intricate irrigation system that has been used for centuries.",
+          "searchQuery": "Tegallalang Rice Terraces",
+          "locationEn": "Tegallalang, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Spa Treatment at Karsa Spa",
+          "description": "Unwind with a rejuvenating spa treatment at Karsa Spa. Choose from a variety of massages and wellness therapies designed to relax your body and mind, surrounded by the serene beauty of nature.",
+          "searchQuery": "Karsa Spa",
+          "locationEn": "Ubud, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Locavore",
+          "description": "End your day with a delightful dinner at Locavore, a renowned restaurant that focuses on locally sourced ingredients. Experience a unique tasting menu that showcases the best of Indonesian flavors in a cozy setting.",
+          "searchQuery": "Locavore",
+          "locationEn": "Ubud, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Hotel",
+          "description": "After a fulfilling day, return to your hotel in Ubud to relax and reflect on the day's adventures. Enjoy the tranquil ambiance of Ubud as you prepare for another day of exploration.",
+          "locationEn": "Ubud, Indonesia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Yoga Retreat and Local Cuisine",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Ubud",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Tirta Empul Temple",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Private car transfer to the temple."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Tirta Empul Temple",
+          "description": "Visit the sacred Tirta Empul Temple, known for its holy spring water where locals and tourists alike participate in purification rituals. The serene atmosphere and beautiful surroundings make it a perfect spot for reflection and relaxation.",
+          "searchQuery": "Tirta Empul Temple",
+          "locationEn": "Ubud, Bali, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Yoga Session at The Yoga Barn",
+          "description": "Join a rejuvenating yoga session at The Yoga Barn, a renowned wellness center in Ubud. Enjoy the tranquil environment and skilled instructors as you stretch and unwind, perfect for solo travelers seeking relaxation.",
+          "searchQuery": "The Yoga Barn",
+          "locationEn": "Ubud, Bali, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Clear Cafe",
+          "description": "Savor a healthy lunch at Clear Cafe, known for its fresh, organic dishes and vibrant atmosphere. Try their smoothie bowls or nourishing salads, ideal for a light yet satisfying meal after yoga.",
+          "searchQuery": "Clear Cafe",
+          "locationEn": "Ubud, Bali, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Spa Treatment at Karsa Spa",
+          "description": "Indulge in a luxurious spa treatment at Karsa Spa, where you can choose from a variety of massages and wellness therapies. The peaceful setting surrounded by rice fields enhances the relaxation experience.",
+          "searchQuery": "Karsa Spa",
+          "locationEn": "Ubud, Bali, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Explore Ubud Market",
+          "description": "Stroll through the vibrant Ubud Market, where you can find local crafts, textiles, and souvenirs. Take your time to browse and perhaps pick up a few unique items to remember your trip.",
+          "searchQuery": "Ubud Market",
+          "locationEn": "Ubud, Bali, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Locavore",
+          "description": "Enjoy a delightful dinner at Locavore, a highly acclaimed restaurant that focuses on local ingredients and innovative dishes. Experience a culinary journey that showcases the flavors of Bali in a cozy setting.",
+          "searchQuery": "Locavore",
+          "locationEn": "Ubud, Bali, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Beach Day and Sunset Views",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Ubud",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Jimbaran Bay",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy a scenic drive from Ubud to Jimbaran Bay."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Relax at Jimbaran Beach",
+          "description": "Start your day by soaking up the sun at Jimbaran Beach. The soft sands and gentle waves create a perfect atmosphere for relaxation. You can also enjoy a refreshing coconut drink while listening to the sound of the waves.",
+          "searchQuery": "Jimbaran Beach",
+          "locationEn": "Jimbaran, Bali, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Jimbaran Seafood",
+          "description": "Indulge in a delicious seafood lunch at one of the beachside restaurants. Freshly grilled fish and prawns served with local sambal will tantalize your taste buds while you enjoy the ocean view.",
+          "searchQuery": "Jimbaran Seafood",
+          "locationEn": "Jimbaran, Bali, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Spa Treatment at a Beachfront Spa",
+          "description": "Pamper yourself with a rejuvenating spa treatment at a beachfront spa. Choose from a variety of massages and treatments that will help you unwind and relax in this tropical paradise.",
+          "searchQuery": "Beachfront Spa Jimbaran",
+          "locationEn": "Jimbaran, Bali, Indonesia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Uluwatu Temple",
+          "description": "Take a short drive to Uluwatu Temple, perched on a cliff overlooking the Indian Ocean. Explore the temple grounds and enjoy breathtaking views of the coastline. Don't forget to watch out for the playful monkeys!",
+          "searchQuery": "Uluwatu Temple",
+          "locationEn": "Uluwatu, Bali, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Kecak Fire Dance Performance",
+          "description": "Experience the traditional Kecak Fire Dance at Uluwatu Temple during sunset. The performance, set against the backdrop of the setting sun, is a mesmerizing cultural experience that you won't want to miss.",
+          "searchQuery": "Kecak Fire Dance Uluwatu",
+          "locationEn": "Uluwatu, Bali, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Dinner at Jimbaran Bay Seafood Restaurants",
+          "description": "End your day with a delightful dinner at one of the famous seafood restaurants along Jimbaran Bay. Enjoy fresh seafood while dining on the beach under the stars, creating a magical atmosphere.",
+          "searchQuery": "Jimbaran Bay Seafood Restaurants",
+          "locationEn": "Jimbaran, Bali, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Final Relaxation and Departure",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Jimbaran",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Ngurah Rai International Airport",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Enjoy a leisurely morning before heading to the airport."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Jimbaran Beach",
+          "description": "Start your day with a delightful breakfast at one of the beachfront cafes in Jimbaran. Enjoy fresh tropical fruits and a traditional Indonesian breakfast while listening to the gentle waves.",
+          "searchQuery": "Jimbaran Beach Cafe",
+          "locationEn": "Jimbaran, Bali, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Yoga Session on the Beach",
+          "description": "Join a morning yoga class right on the beach. The sound of the ocean and the soft sand beneath you create a perfect atmosphere for relaxation and mindfulness.",
+          "searchQuery": "Yoga on Jimbaran Beach",
+          "locationEn": "Jimbaran, Bali, Indonesia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Spa Treatment at a Local Spa",
+          "description": "Indulge in a rejuvenating spa treatment at a nearby spa. Choose from a variety of massages and treatments that incorporate local Balinese techniques and natural ingredients.",
+          "searchQuery": "Jimbaran Spa",
+          "locationEn": "Jimbaran, Bali, Indonesia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at a Seafood Restaurant",
+          "description": "Savor a delicious seafood lunch at one of Jimbaran's famous seafood restaurants. Enjoy freshly grilled fish and prawns while overlooking the beach.",
+          "searchQuery": "Jimbaran Seafood Restaurant",
+          "locationEn": "Jimbaran, Bali, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Relax at the Beach",
+          "description": "Spend your last few hours in Bali relaxing on the beach. Take a swim, sunbathe, or simply enjoy the beautiful scenery before your departure.",
+          "searchQuery": "Jimbaran Beach",
+          "locationEn": "Jimbaran, Bali, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Departure to Ngurah Rai International Airport",
+          "description": "After a relaxing day, it's time to head to the airport for your departure. Make sure to leave with plenty of time to spare for your flight.",
+          "searchQuery": "Ngurah Rai International Airport",
+          "locationEn": "Ngurah Rai International Airport, Bali, Indonesia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

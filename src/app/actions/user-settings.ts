@@ -16,9 +16,12 @@ import {
 export interface UserSettings {
   customInstructions?: string;
   travelStyle?: string;
+  // Output language for AI-generated content.
   preferredLanguage?: LanguageCode;
+  // Output region used by AI constraints.
   preferredRegion?: RegionCode;
   preferredLocale?: RegionalLocale;
+  // Round-trip departure/return city used by AI constraints.
   homeBaseCity?: string;
 }
 
@@ -161,6 +164,68 @@ export async function updateUserSettings(settings: UserSettings): Promise<{ succ
     return { success: true };
   } catch (error) {
     console.error("Failed to update user settings:", error);
+    return { success: false, error: "settings_update_failed" };
+  }
+}
+
+/**
+ * Update display language used by app UI routing.
+ * This is intentionally separated from output language preferences.
+ */
+export async function updateDisplayLanguage(
+  uiLanguage: LanguageCode
+): Promise<{ success: boolean; error?: string }> {
+  try {
+    if (!isLanguageCode(uiLanguage)) {
+      return { success: false, error: "settings_update_failed" };
+    }
+
+    const user = await getUser();
+
+    if (!user) {
+      return { success: false, error: "authentication_required" };
+    }
+
+    const supabase = await createClient();
+
+    const { data: currentData, error: fetchError } = await supabase
+      .from("users")
+      .select("metadata")
+      .eq("id", user.id)
+      .single();
+
+    if (fetchError) {
+      console.error("Failed to fetch current metadata for display language update:", fetchError);
+      return { success: false, error: "settings_update_failed" };
+    }
+
+    const currentMetadata = currentData?.metadata || {};
+    const currentUiLanguage = isLanguageCode(String(currentMetadata.uiLanguage))
+      ? (currentMetadata.uiLanguage as LanguageCode)
+      : null;
+
+    if (currentUiLanguage === uiLanguage) {
+      return { success: true };
+    }
+
+    const { error: updateError } = await supabase
+      .from("users")
+      .update({
+        metadata: {
+          ...currentMetadata,
+          uiLanguage,
+        },
+      })
+      .eq("id", user.id);
+
+    if (updateError) {
+      console.error("Failed to update display language:", updateError);
+      return { success: false, error: "settings_update_failed" };
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to update display language:", error);
     return { success: false, error: "settings_update_failed" };
   }
 }

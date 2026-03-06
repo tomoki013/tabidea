@@ -1,0 +1,579 @@
+{
+  "id": "52b824b1-3d50-41a4-a2c1-d5afac756b86",
+  "destination": "ホノルル",
+  "description": "Escape to the tropical paradise of Honolulu, where sun-kissed beaches meet vibrant culture and stunning natural beauty. Over the course of seven days, immerse yourself in the soothing rhythms of island life, indulge in delicious local cuisine, and explore breathtaking landscapes that will leave you in awe. From lounging on pristine shores to shopping in charming local boutiques, this getaway promises a perfect blend of relaxation and adventure for couples seeking a romantic escape.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Honolulu",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Check-in at The Royal Hawaiian, a Luxury Collection Resort",
+          "description": "Settle into your luxurious room at the iconic Royal Hawaiian, known for its stunning beachfront and pink facade. Enjoy a welcome drink as you take in the breathtaking views of Waikiki Beach.",
+          "searchQuery": "The Royal Hawaiian, a Luxury Collection Resort",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Lunch at Duke's Waikiki",
+          "description": "Savor a delicious lunch at Duke's, a beachfront restaurant famous for its fresh seafood and tropical cocktails. Don't miss their signature Hula Pie for dessert!",
+          "searchQuery": "Duke's Waikiki",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Relax at Waikiki Beach",
+          "description": "Spend a leisurely afternoon soaking up the sun on the golden sands of Waikiki Beach. You can swim, sunbathe, or even rent a paddleboard to explore the calm waters.",
+          "searchQuery": "Waikiki Beach",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Stroll through the International Market Place",
+          "description": "Explore the vibrant International Market Place, filled with shops and boutiques. It's a great place to pick up unique souvenirs and enjoy the lively atmosphere.",
+          "searchQuery": "International Market Place",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Yard House",
+          "description": "Enjoy a casual dinner at Yard House, known for its extensive menu of American cuisine and a vast selection of draft beers. The lively ambiance makes it a perfect spot to unwind after a day of travel.",
+          "searchQuery": "Yard House",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening walk along Waikiki Beach",
+          "description": "End your day with a romantic stroll along the beach, where you can enjoy the sound of the waves and the beautiful night sky. It's a perfect way to relax and reflect on your first day in paradise.",
+          "searchQuery": "Waikiki Beach",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Beach Day and Sunset Cruise",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hula Grill",
+          "description": "Start your day with a delicious breakfast at Hula Grill, where you can enjoy a Hawaiian-style meal with a view of Waikiki Beach. Try their famous macadamia nut pancakes for a sweet treat!",
+          "searchQuery": "Hula Grill Waikiki",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Diamond Head State Monument",
+          "description": "Hike up to the summit of Diamond Head for breathtaking panoramic views of Honolulu and the Pacific Ocean. The trail is well-maintained and takes about 1-2 hours round trip, making it a perfect morning adventure.",
+          "searchQuery": "Diamond Head State Monument",
+          "locationEn": "Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Duke's Waikiki",
+          "description": "Enjoy a casual lunch at Duke's Waikiki, famous for its beachfront location and laid-back atmosphere. Savor fresh seafood and tropical cocktails while soaking in the sun.",
+          "searchQuery": "Duke's Waikiki",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Relax at Waikiki Beach",
+          "description": "Spend your afternoon lounging on the iconic Waikiki Beach. Rent a beach chair and umbrella, or take a dip in the warm waters. This is the perfect spot to unwind and enjoy the Hawaiian sun.",
+          "searchQuery": "Waikiki Beach",
+          "locationEn": "Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Sunset Cruise",
+          "description": "Embark on a romantic sunset cruise along the coast of Oahu. Enjoy stunning views of the sunset over the ocean while sipping on cocktails and enjoying light snacks. This is a perfect way to end your day in paradise.",
+          "searchQuery": "Sunset Cruise Oahu",
+          "locationEn": "Honolulu, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Dinner at Roy's Waikiki",
+          "description": "Indulge in a fine dining experience at Roy's Waikiki, where Hawaiian fusion cuisine takes center stage. Enjoy dishes made with fresh, local ingredients in a beautiful setting.",
+          "searchQuery": "Roy's Waikiki",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Exploring Nature and Local Culture",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hula Grill",
+          "description": "Start your day with a delicious breakfast at Hula Grill, where you can enjoy a stunning ocean view while savoring local Hawaiian dishes like Loco Moco or fresh fruit pancakes.",
+          "searchQuery": "Hula Grill Waikiki",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Hanauma Bay Snorkeling",
+          "description": "Dive into the crystal-clear waters of Hanauma Bay, a nature preserve known for its vibrant coral reefs and diverse marine life. Spend the morning snorkeling and exploring the underwater paradise.",
+          "searchQuery": "Hanauma Bay",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Ono Seafood",
+          "description": "After your snorkeling adventure, head to Ono Seafood for a casual lunch. Try their famous poke bowls, made with the freshest fish and local ingredients, perfect for refueling after a morning in the water.",
+          "searchQuery": "Ono Seafood",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Hike Koko Head Crater",
+          "description": "In the afternoon, embark on a hike up Koko Head Crater. The trail consists of old railway ties, leading you to a breathtaking panoramic view of the coastline and the surrounding area. Bring plenty of water and enjoy the challenge!",
+          "searchQuery": "Koko Head Crater",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Sandy Beach",
+          "description": "After your hike, unwind at Sandy Beach, known for its golden sands and beautiful surf. It's a great spot to relax, take in the sunset, and enjoy the sound of the waves.",
+          "searchQuery": "Sandy Beach",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Roy's Waikiki",
+          "description": "End your day with a fine dining experience at Roy's Waikiki. Enjoy a fusion of Hawaiian and Asian cuisine, with dishes crafted from the freshest local ingredients, all while overlooking the ocean.",
+          "searchQuery": "Roy's Waikiki",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Shopping and Relaxation",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hula Grill",
+          "description": "Start your day with a delicious breakfast at Hula Grill, where you can enjoy a stunning ocean view while savoring local Hawaiian dishes like Loco Moco or fresh fruit pancakes.",
+          "searchQuery": "Hula Grill Waikiki",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Ala Moana Center",
+          "description": "Head to Ala Moana Center, the largest open-air shopping mall in the world. Explore a variety of high-end shops and local boutiques, perfect for finding unique souvenirs and gifts.",
+          "searchQuery": "Ala Moana Center",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Shokudo Japanese Restaurant",
+          "description": "Enjoy a delightful lunch at Shokudo, known for its delicious Japanese comfort food. Try their famous garlic shrimp or the delectable sushi rolls.",
+          "searchQuery": "Shokudo Japanese Restaurant",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Kaka'ako Street Art",
+          "description": "Take a stroll through Kaka'ako, an area filled with vibrant street art and murals. This colorful neighborhood is perfect for taking photos and enjoying the local art scene.",
+          "searchQuery": "Kaka'ako Street Art",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Waikiki Beach",
+          "description": "Spend a leisurely afternoon at Waikiki Beach. Soak up the sun, take a dip in the ocean, or simply relax on the sand while enjoying the beautiful views of Diamond Head.",
+          "searchQuery": "Waikiki Beach",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Duke's Waikiki",
+          "description": "End your day with a delightful dinner at Duke's Waikiki, where you can enjoy fresh seafood and classic Hawaiian dishes right by the beach, accompanied by live music.",
+          "searchQuery": "Duke's Waikiki",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Adventure Day at the North Shore",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hula Grill",
+          "description": "Start your day with a delicious breakfast at Hula Grill, where you can enjoy a stunning ocean view while savoring local Hawaiian dishes like Loco Moco or fresh fruit pancakes.",
+          "searchQuery": "Hula Grill Waikiki",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Drive to Waimea Bay",
+          "description": "Take a scenic drive to Waimea Bay, known for its beautiful beach and crystal-clear waters. It's a perfect spot for swimming and sunbathing, especially in the morning when the crowds are smaller.",
+          "searchQuery": "Waimea Bay",
+          "locationEn": "Waimea Bay, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Waimea Bay Food Trucks",
+          "description": "Grab a bite from one of the popular food trucks near Waimea Bay. Try the garlic shrimp or poke bowls for a taste of local flavors while enjoying the beach atmosphere.",
+          "searchQuery": "Waimea Bay Food Trucks",
+          "locationEn": "Waimea Bay, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Snorkeling at Shark's Cove",
+          "description": "Head over to Shark's Cove for some snorkeling. This spot is famous for its vibrant marine life and clear waters, making it a great place to explore underwater.",
+          "searchQuery": "Shark's Cove",
+          "locationEn": "Shark's Cove, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Shark's Cove Beach",
+          "description": "After snorkeling, unwind on the beach at Shark's Cove. The stunning views and tranquil atmosphere are perfect for a leisurely afternoon.",
+          "searchQuery": "Shark's Cove Beach",
+          "locationEn": "Shark's Cove, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Haleiwa Joe's",
+          "description": "Enjoy a delightful dinner at Haleiwa Joe's, known for its fresh seafood and beautiful sunset views. Don't miss their famous prime rib or the catch of the day.",
+          "searchQuery": "Haleiwa Joe's",
+          "locationEn": "Haleiwa, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Stroll through Haleiwa Town",
+          "description": "After dinner, take a leisurely stroll through Haleiwa Town. Explore the charming shops and galleries, and perhaps grab a dessert from a local ice cream shop.",
+          "searchQuery": "Haleiwa Town",
+          "locationEn": "Haleiwa, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Cultural Immersion and Luau Night",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hula Grill Waikiki",
+          "description": "Start your day with a delicious breakfast at Hula Grill, where you can enjoy local Hawaiian dishes with a stunning view of Waikiki Beach. Don't miss their famous macadamia nut pancakes!",
+          "searchQuery": "Hula Grill Waikiki",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Polynesian Cultural Center",
+          "description": "Immerse yourself in the rich cultures of Polynesia at the Polynesian Cultural Center. Explore various villages, watch traditional performances, and learn about the history and customs of the islands. It's a fantastic way to experience Hawaiian culture up close!",
+          "searchQuery": "Polynesian Cultural Center",
+          "locationEn": "Laie, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at the Polynesian Cultural Center",
+          "description": "Enjoy a buffet lunch featuring a variety of Polynesian dishes at the center. It's a great opportunity to refuel before diving into more cultural experiences.",
+          "searchQuery": "Polynesian Cultural Center",
+          "locationEn": "Laie, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Cultural Activities at the Center",
+          "description": "Participate in hands-on activities such as hula dancing, lei making, and coconut husking. These interactive experiences are perfect for couples looking to bond while learning something new!",
+          "searchQuery": "Polynesian Cultural Center",
+          "locationEn": "Laie, Hawaii",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Luau Dinner Show",
+          "description": "Experience a traditional Hawaiian luau with a buffet dinner and an exciting show featuring hula dancing and fire performances. It's a perfect way to end your day with a taste of Hawaiian hospitality and culture!",
+          "searchQuery": "Polynesian Cultural Center Luau",
+          "locationEn": "Laie, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Honolulu",
+          "description": "After an unforgettable evening at the luau, relax on your way back to Honolulu, reminiscing about the day's cultural adventures.",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Leisurely Morning and Departure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hula Grill",
+          "description": "Start your day with a delicious breakfast at Hula Grill, where you can enjoy a stunning ocean view while savoring local Hawaiian dishes like Loco Moco or fresh fruit pancakes.",
+          "searchQuery": "Hula Grill Waikiki",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Lanikai Beach",
+          "description": "After breakfast, head to Lanikai Beach, known for its powdery white sand and crystal-clear waters. Spend a relaxing morning swimming or simply soaking up the sun in this tropical paradise.",
+          "searchQuery": "Lanikai Beach",
+          "locationEn": "Kailua, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Buzz's Lanikai",
+          "description": "Enjoy a casual lunch at Buzz's Lanikai, a local favorite known for its fresh seafood and laid-back atmosphere. Try their famous fish tacos or a refreshing poke bowl.",
+          "searchQuery": "Buzz's Lanikai",
+          "locationEn": "Kailua, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Kailua Town Shopping",
+          "description": "Take a stroll through Kailua Town, where you can explore charming boutiques and local shops. Don't forget to pick up some unique souvenirs or Hawaiian-made products to remember your trip.",
+          "searchQuery": "Kailua Town",
+          "locationEn": "Kailua, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Return to Honolulu",
+          "description": "Head back to Honolulu to prepare for your departure. Enjoy the scenic drive along the coast, taking in the beautiful views one last time.",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at the Hotel",
+          "description": "Spend your last few hours relaxing at your hotel. Take a dip in the pool or enjoy a final walk along Waikiki Beach before checking out.",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Duke's Waikiki",
+          "description": "Before heading to the airport, enjoy a farewell dinner at Duke's Waikiki. Savor their famous Hula Pie while enjoying live music and the sunset over the ocean.",
+          "searchQuery": "Duke's Waikiki",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

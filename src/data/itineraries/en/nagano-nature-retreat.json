@@ -1,0 +1,282 @@
+{
+  "id": "374aa1e0-1e3d-4dd8-bda8-70c83f2520cd",
+  "destination": "軽井沢・松本",
+  "description": "Escape to the serene landscapes of Nagano, where the lush greenery and majestic mountains create a perfect backdrop for a romantic getaway. This 3-day itinerary is designed for couples seeking a blend of nature, history, and shopping, with leisurely days that allow you to savor every moment together. From the charming streets of Karuizawa to the historic Matsumoto Castle, immerse yourselves in the beauty and culture of this enchanting region.",
+  "heroImage": "https://images.unsplash.com/photo-1765448856896-8a9cf5663692?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODExMDR8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Flavio Mori",
+  "heroImagePhotographerUrl": "https://unsplash.com/@flvision_?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Karuizawa: Nature and Shopping Delight",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a delightful breakfast at your hotel, featuring local ingredients and a variety of Japanese and Western options to energize you for the day ahead.",
+          "locationEn": "Karuizawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Karuizawa Prince Shopping Plaza",
+          "description": "Explore the expansive Karuizawa Prince Shopping Plaza, where you can find a mix of high-end brands and local boutiques. Enjoy the beautiful outdoor setting as you shop for unique souvenirs and fashion.",
+          "searchQuery": "Karuizawa Prince Shopping Plaza",
+          "locationEn": "Karuizawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Local Café",
+          "description": "Take a break at a charming café within the shopping plaza, where you can enjoy a light lunch featuring fresh salads and delicious pastries, perfect for recharging before more shopping.",
+          "locationEn": "Karuizawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Karuizawa Lake Garden",
+          "description": "Stroll through the serene Karuizawa Lake Garden, a hidden gem surrounded by nature. The tranquil atmosphere and beautiful flower arrangements make it a perfect spot for relaxation and photography.",
+          "searchQuery": "Karuizawa Lake Garden",
+          "locationEn": "Karuizawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit a Local Onsen",
+          "description": "Unwind at a nearby onsen (hot spring) to soak in the natural mineral waters. This is a great way to relax your muscles after a day of shopping and exploring.",
+          "locationEn": "Karuizawa, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "Enjoy a cozy dinner at a local izakaya, where you can savor traditional Japanese dishes and local sake in a warm, inviting atmosphere.",
+          "locationEn": "Karuizawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll in Karuizawa",
+          "description": "End your day with a leisurely evening stroll through the charming streets of Karuizawa, taking in the peaceful ambiance and perhaps stopping for a dessert at a local shop.",
+          "locationEn": "Karuizawa, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Matsumoto: History and Culture",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Karuizawa",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Matsumoto",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Enjoy a scenic train ride through the beautiful Nagano countryside."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Matsumoto Castle",
+          "description": "Start your day at the iconic Matsumoto Castle, one of Japan's most beautiful and well-preserved castles. Explore its impressive architecture and enjoy the surrounding park, especially stunning in spring with cherry blossoms.",
+          "searchQuery": "Matsumoto Castle",
+          "locationEn": "Matsumoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Soba Noodles Restaurant",
+          "description": "Indulge in a delicious lunch at a local soba restaurant, where you can savor handmade buckwheat noodles served with a variety of toppings. A perfect way to experience local flavors!",
+          "searchQuery": "Soba Noodles Restaurant Matsumoto",
+          "locationEn": "Matsumoto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Nakamachi Street",
+          "description": "Stroll along Nakamachi Street, a charming area lined with traditional wooden buildings and shops. Browse through local crafts, souvenirs, and enjoy the quaint atmosphere of this historic district.",
+          "searchQuery": "Nakamachi Street",
+          "locationEn": "Matsumoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Matsumoto City Museum of Art",
+          "description": "Visit the Matsumoto City Museum of Art, showcasing works by local artists, including the famous Yayoi Kusama. The museum's modern architecture contrasts beautifully with the historic surroundings.",
+          "searchQuery": "Matsumoto City Museum of Art",
+          "locationEn": "Matsumoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Matsumoto's Parks",
+          "description": "Take a leisurely walk in one of Matsumoto's parks, such as Agata no Mori Park, where you can unwind amidst nature and enjoy the serene environment. A great way to refresh after a day of exploration.",
+          "searchQuery": "Agata no Mori Park",
+          "locationEn": "Matsumoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Local Izakaya",
+          "description": "End your day with a cozy dinner at a local izakaya, where you can enjoy a variety of small dishes and drinks in a relaxed atmosphere. Perfect for experiencing Japanese dining culture.",
+          "searchQuery": "Local Izakaya Matsumoto",
+          "locationEn": "Matsumoto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Nature Retreat and Return to D.C.",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Matsumoto",
+          "time": "08:30"
+        },
+        "arrival": {
+          "place": "Kamikochi",
+          "time": "09:30"
+        },
+        "duration": "1h",
+        "memo": "Enjoy the scenic bus ride through the beautiful Japanese Alps."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Kamikochi National Park",
+          "description": "Start your day surrounded by the breathtaking beauty of Kamikochi. Take a leisurely stroll along the Azusa River, with stunning views of the surrounding mountains and lush greenery. Don't forget your camera for the iconic Kappa Bridge!",
+          "searchQuery": "Kamikochi National Park",
+          "locationEn": "Kamikochi, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Kamikochi Restaurant",
+          "description": "Enjoy a delicious lunch at one of the local restaurants in Kamikochi, offering traditional Japanese dishes made with fresh, local ingredients. The serene atmosphere and mountain views make for a perfect dining experience.",
+          "searchQuery": "Kamikochi Restaurant",
+          "locationEn": "Kamikochi, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore the Hiking Trails",
+          "description": "After lunch, take some time to explore the various hiking trails in Kamikochi. Whether you choose a short walk or a longer hike, the natural beauty and tranquility of the area will rejuvenate your spirit.",
+          "searchQuery": "Kamikochi Hiking Trails",
+          "locationEn": "Kamikochi, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Matsumoto",
+          "description": "Head back to Matsumoto via bus, reflecting on the beautiful nature you've experienced. The return trip offers another chance to enjoy the stunning alpine scenery.",
+          "searchQuery": "Matsumoto",
+          "locationEn": "Matsumoto, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Matsumoto Castle",
+          "description": "Visit the iconic Matsumoto Castle, one of Japan's most beautiful castles. Explore the grounds and take in the historical architecture, especially stunning against the backdrop of the Japanese Alps.",
+          "searchQuery": "Matsumoto Castle",
+          "locationEn": "Matsumoto, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Soba Noodles Restaurant",
+          "description": "End your day with a delightful dinner at a local soba restaurant. Savor the flavors of freshly made soba noodles, a specialty of the region, in a cozy atmosphere.",
+          "searchQuery": "Matsumoto Soba Restaurant",
+          "locationEn": "Matsumoto, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,481 @@
+{
+  "id": "126faefb-0f03-4f01-a240-3879c296046f",
+  "destination": "Dubai",
+  "description": "Immerse yourself in the dazzling world of Dubai, where luxury meets tradition. Over five unforgettable days, you and your partner will explore the city's iconic skyline, indulge in world-class shopping, and experience the breathtaking beauty of the desert. From the towering Burj Khalifa to the serene sands of the Arabian Desert, this trip promises a perfect blend of adventure and romance. Get ready to create memories that will last a lifetime in this vibrant oasis of modernity and culture.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Dubai and City Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Sum of Us",
+          "description": "Start your day with a delicious breakfast at The Sum of Us, known for its artisanal coffee and freshly baked pastries. The cozy atmosphere is perfect for couples looking to relax before a day of exploration.",
+          "searchQuery": "The Sum of Us",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Burj Khalifa",
+          "description": "Head to the iconic Burj Khalifa, the tallest building in the world. Take the elevator to the observation deck on the 148th floor for breathtaking views of the city and beyond. Be sure to book your tickets in advance to avoid long lines!",
+          "searchQuery": "Burj Khalifa",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Dubai Mall Food Court",
+          "description": "Enjoy a variety of international cuisines at the Dubai Mall Food Court. From sushi to shawarma, there's something for every palate. Plus, you can take a moment to shop around after your meal!",
+          "searchQuery": "Dubai Mall Food Court",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Dubai Mall",
+          "description": "After lunch, spend some time exploring the vast Dubai Mall. Don't miss the Dubai Aquarium and Underwater Zoo, where you can see a variety of marine life up close. It's a perfect spot for some memorable photos!",
+          "searchQuery": "Dubai Mall",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Watch the Dubai Fountain Show",
+          "description": "Make your way to the waterfront to catch the mesmerizing Dubai Fountain show. The fountains dance to music and light, creating a magical atmosphere. It's a must-see experience that showcases the city's charm.",
+          "searchQuery": "Dubai Fountain",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at At.mosphere",
+          "description": "Indulge in a luxurious dining experience at At.mosphere, located on the 122nd floor of Burj Khalifa. Enjoy gourmet cuisine while taking in stunning views of the city skyline as the sun sets.",
+          "searchQuery": "At.mosphere",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll at Dubai Marina",
+          "description": "End your day with a romantic stroll along Dubai Marina. The vibrant atmosphere, lined with cafes and shops, is perfect for a leisurely walk. You can also consider a boat ride for a different perspective of the skyline.",
+          "searchQuery": "Dubai Marina",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Desert Adventure and Luxury Dining",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Hotel",
+          "description": "Start your day with a lavish breakfast buffet featuring a variety of international and Middle Eastern dishes. Enjoy fresh fruits, pastries, and traditional Arabic coffee to fuel your adventure ahead.",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Dubai Desert Safari",
+          "description": "Embark on an exhilarating desert safari. Experience the thrill of dune bashing in a 4x4 vehicle, and feel the adrenaline rush as you navigate the golden sands of the Arabian Desert.",
+          "searchQuery": "Dubai Desert Safari",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Camel Ride in the Desert",
+          "description": "Take a leisurely camel ride through the stunning desert landscape. This traditional mode of transport offers a unique perspective of the vast dunes and is a must-do experience in Dubai.",
+          "searchQuery": "Camel Ride Dubai",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at a Desert Camp",
+          "description": "Enjoy a delicious lunch at a desert camp, featuring a selection of Middle Eastern dishes. Savor the flavors while surrounded by the serene beauty of the desert.",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Sandboarding Experience",
+          "description": "Try your hand at sandboarding down the dunes for an exciting twist to your desert adventure. It's a fun way to enjoy the sandy slopes and capture some memorable photos.",
+          "searchQuery": "Sandboarding Dubai",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Sunset Views in the Desert",
+          "description": "As the sun begins to set, find a perfect spot to witness the breathtaking views of the desert bathed in golden light. This is a magical moment that you won't want to miss.",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner Under the Stars",
+          "description": "Indulge in a luxurious dinner under the stars at the desert camp. Enjoy a buffet of traditional Arabic cuisine, complete with live entertainment such as belly dancing and Tanoura shows.",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Return to Dubai City",
+          "description": "After a memorable evening in the desert, return to your hotel in Dubai. Reflect on the day's adventures and relax in the comfort of your luxurious accommodation.",
+          "locationEn": "Dubai, UAE",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion and Shopping Spree",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Sum of Us",
+          "description": "Start your day with a delightful breakfast at The Sum of Us, known for its artisanal coffee and freshly baked pastries. The cozy atmosphere makes it a perfect spot to fuel up for the day ahead.",
+          "searchQuery": "The Sum of Us",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Dubai Marina",
+          "description": "Stroll along the stunning Dubai Marina, where you can admire the luxurious yachts and skyscrapers. The waterfront promenade is perfect for a leisurely walk, and you can stop for photos with the iconic skyline in the background.",
+          "searchQuery": "Dubai Marina",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Relax at Jumeirah Beach",
+          "description": "Head to Jumeirah Beach for some sun and sand. This public beach offers beautiful views of the Burj Al Arab and is a great spot to unwind or take a dip in the warm waters of the Arabian Gulf.",
+          "searchQuery": "Jumeirah Beach",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Pierchic",
+          "description": "Enjoy a luxurious seafood lunch at Pierchic, located on a pier overlooking the water. This award-winning restaurant is known for its fresh catch and stunning views, making it a perfect romantic dining experience.",
+          "searchQuery": "Pierchic",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Souk Madinat Jumeirah",
+          "description": "Wander through the charming Souk Madinat Jumeirah, a traditional Arabian market with a modern twist. Here, you can shop for unique souvenirs, enjoy the picturesque canals, and even grab a refreshing drink at one of the cafes.",
+          "searchQuery": "Souk Madinat Jumeirah",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Desert Safari Adventure",
+          "description": "Embark on an exhilarating desert safari. Experience dune bashing in a 4x4, ride a camel, and enjoy a traditional Bedouin dinner under the stars. This adventure is a must for a taste of the Arabian desert.",
+          "searchQuery": "Desert Safari Dubai",
+          "locationEn": "Dubai, UAE",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Dinner at Al Hadheerah",
+          "description": "Savor a traditional Arabian feast at Al Hadheerah, located in the desert. Enjoy live entertainment, including belly dancing and traditional music, while indulging in a buffet of Middle Eastern delicacies.",
+          "searchQuery": "Al Hadheerah",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Day Trip to Abu Dhabi",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Dubai",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Abu Dhabi",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy a scenic drive to Abu Dhabi, taking in the desert landscapes along the way."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Sheikh Zayed Grand Mosque",
+          "description": "Start your day at the stunning Sheikh Zayed Grand Mosque, one of the largest mosques in the world. Marvel at its intricate architecture and serene atmosphere, perfect for capturing beautiful photos.",
+          "searchQuery": "Sheikh Zayed Grand Mosque",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Lunch at Al Fanar Restaurant & Cafe",
+          "description": "Savor traditional Emirati cuisine at Al Fanar, where you can enjoy dishes like Al Harees and Shawarma in a charming setting that reflects the culture of the UAE.",
+          "searchQuery": "Al Fanar Restaurant & Cafe",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Louvre Abu Dhabi",
+          "description": "Explore the Louvre Abu Dhabi, a masterpiece of modern architecture housing a vast collection of art and artifacts from around the world. Don't miss the stunning dome that creates a 'rain of light' effect.",
+          "searchQuery": "Louvre Abu Dhabi",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Yas Island - Ferrari World",
+          "description": "Head to Yas Island for an adrenaline rush at Ferrari World, home to the world's fastest roller coaster. Experience thrilling rides and attractions that celebrate the Ferrari brand.",
+          "searchQuery": "Ferrari World Abu Dhabi",
+          "locationEn": "Yas Island, Abu Dhabi, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Camel Ride in the Desert",
+          "description": "Experience the magic of the desert with a camel ride at sunset. Enjoy the serene beauty of the dunes and capture unforgettable moments as the sun sets over the horizon.",
+          "searchQuery": "Camel Ride Abu Dhabi",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at Emirates Palace",
+          "description": "Indulge in a luxurious dining experience at Emirates Palace, where you can enjoy exquisite dishes while overlooking the stunning Arabian Gulf. A perfect way to end your day in style.",
+          "searchQuery": "Emirates Palace",
+          "locationEn": "Abu Dhabi, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Return to Dubai",
+          "description": "After a day filled with adventure and luxury, head back to Dubai, reflecting on the incredible sights and experiences of Abu Dhabi.",
+          "locationEn": "Dubai, UAE",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Relaxation and Departure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Lounge",
+          "description": "Start your day with a luxurious breakfast at The Lounge in Atlantis, The Palm. Enjoy a lavish spread featuring international cuisine and fresh pastries while overlooking the stunning views of the Palm Jumeirah.",
+          "searchQuery": "The Lounge Atlantis",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Atlantis Aquaventure Waterpark",
+          "description": "Dive into a day of fun at Atlantis Aquaventure Waterpark, where you can enjoy thrilling water slides, a lazy river, and a private beach. Don't miss the chance to swim with dolphins or explore the underwater aquarium.",
+          "searchQuery": "Atlantis Aquaventure Waterpark",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Kaleidoscope",
+          "description": "Savor a delightful lunch at Kaleidoscope, known for its diverse buffet featuring flavors from around the world. This is a perfect spot to refuel after a morning of excitement at the waterpark.",
+          "searchQuery": "Kaleidoscope Atlantis",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relax at the Beach",
+          "description": "Spend a leisurely afternoon at the private beach of Atlantis, soaking up the sun and enjoying the serene atmosphere. Take a dip in the warm waters of the Arabian Gulf or simply relax on a sunbed.",
+          "searchQuery": "Atlantis Beach",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Desert Safari Adventure",
+          "description": "Embark on an unforgettable desert safari. Experience the thrill of dune bashing in a 4x4, followed by a camel ride through the golden sands. Enjoy traditional Bedouin-style dinner under the stars with live entertainment.",
+          "searchQuery": "Desert Safari Dubai",
+          "locationEn": "Dubai, UAE",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Dinner in the Desert",
+          "description": "Indulge in a sumptuous dinner in the desert, featuring a variety of Middle Eastern dishes. Enjoy the ambiance of the desert night while watching traditional dance performances.",
+          "searchQuery": "Desert Dinner Dubai",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "22:00",
+          "activity": "Return to Hotel",
+          "description": "After a magical evening in the desert, return to your hotel to unwind and reflect on your incredible trip to Dubai.",
+          "searchQuery": "Atlantis The Palm",
+          "locationEn": "Dubai, UAE",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

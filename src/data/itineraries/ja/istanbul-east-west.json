@@ -1,0 +1,628 @@
+{
+  "id": "71a5f2a7-d209-482c-af07-7d10bee850fe",
+  "destination": "イスタンブール",
+  "description": "イスタンブールの街を一人旅で巡り、歴史と文化、そして美味しいグルメを堪能する7日間の旅。モスクの美しい建築を見上げ、バザールでの雑貨探しに心躍らせる、そんな魅力的な体験が待っています。",
+  "days": [
+    {
+      "day": 1,
+      "title": "イスタンブール到着と旧市街散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "トルコの伝統的な朝食を楽しみます。オリーブ、チーズ、トマト、そして新鮮なパンが並ぶテーブルで、エネルギーをチャージしましょう。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "アヤソフィア",
+          "description": "世界遺産にも登録されているアヤソフィアを訪れます。壮大なドームと美しいモザイク画に圧倒されることでしょう。特に朝の光が差し込む時間帯は、神秘的な雰囲気を楽しめます。",
+          "searchQuery": "Hagia Sophia",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ブルーモスク",
+          "description": "アヤソフィアから徒歩でブルーモスクへ。青いタイルで装飾された内部は、まるで別世界にいるかのような美しさです。静かな時間を過ごしながら、建築の素晴らしさを堪能しましょう。",
+          "searchQuery": "Sultan Ahmed Mosque",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "地元のレストランでランチ",
+          "description": "トルコ料理を楽しむために、地元のレストランでランチを取ります。ケバブやメゼを味わいながら、トルコの食文化に触れてみてください。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "グランドバザール散策",
+          "description": "イスタンブールの名物、グランドバザールでショッピングを楽しみます。色とりどりのスカーフや陶器、スパイスなど、魅力的な商品が揃っています。交渉を楽しむのもこのバザールの醍醐味です。",
+          "searchQuery": "Grand Bazaar",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルにチェックイン",
+          "description": "旧市街の近くにあるホテルにチェックインします。旅の疲れを癒し、明日の冒険に備えましょう。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "イスタンブールの夜を楽しむために、地元のレストランでディナーを取ります。新鮮な魚料理やトルコのデザートを堪能し、旅の初日を締めくくりましょう。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "歴史的名所巡り",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "イスタンブールの伝統的な朝食を楽しみます。オリーブ、チーズ、トマト、そして新鮮なパンが並ぶテーブルで、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "トプカプ宮殿",
+          "description": "オスマン帝国の栄華を感じるトプカプ宮殿を訪れます。美しい庭園や壮大な建築、そして貴重な宝物を見学しながら、歴史の息吹を感じることができます。",
+          "searchQuery": "Topkapi Palace",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "スパイスバザールでランチ",
+          "description": "スパイスバザール内の屋台で、トルコのストリートフードを楽しみます。ケバブやサンドイッチ、甘いデザートを味わいながら、賑やかな雰囲気を満喫。",
+          "searchQuery": "Spice Bazaar",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "地下宮殿",
+          "description": "神秘的な地下宮殿を探検します。美しい柱と静かな水面が広がる空間で、古代ローマの技術を感じることができる貴重な体験です。",
+          "searchQuery": "Basilica Cistern",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "スパイスバザール散策",
+          "description": "スパイスバザールを再訪し、雑貨やスパイスを探します。色とりどりのスパイスや手作りの工芸品が並ぶ店を見て回り、素敵なお土産を見つけましょう。",
+          "searchQuery": "Spice Bazaar",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ガラタ塔からの眺望",
+          "description": "ガラタ塔に登り、イスタンブールの美しい景色を一望します。夕暮れ時の街並みは特に美しく、写真撮影にも最適です。",
+          "searchQuery": "Galata Tower",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "イスタンブールの地元料理を楽しむため、人気のレストランでディナーを。新鮮な魚料理やトルコの伝統的な料理を堪能し、旅の締めくくりにふさわしい一品を味わいます。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ボスフォラス海峡クルーズとアジア側探索",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "イスタンブールのホテルでトルコ式の朝食を楽しみます。オリーブやチーズ、トマト、そして新鮮なパンが並ぶ豪華な朝食で、エネルギーをチャージしましょう。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ボスフォラス海峡クルーズ",
+          "description": "ボスフォラス海峡をクルーズしながら、イスタンブールの美しい景色を堪能します。アジアとヨーロッパを結ぶこの海峡では、歴史的な建物や美しい邸宅を眺めることができます。",
+          "searchQuery": "Bosphorus Cruise",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "カドゥキョイでランチ",
+          "description": "アジア側のカドゥキョイで地元の食材を使ったトルコ料理を楽しみます。新鮮な魚料理や、人気のストリートフードを味わえるお店がたくさんあります。",
+          "locationEn": "Kadıköy, Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "カドゥキョイ散策",
+          "description": "カドゥキョイの活気ある市場やおしゃれなカフェを散策します。地元の人々が集まる場所で、トルコの文化を感じながらお土産探しを楽しんでください。",
+          "searchQuery": "Kadıköy Market",
+          "locationEn": "Kadıköy, Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "オルタキョイの美しいモスク訪問",
+          "description": "オルタキョイにある美しいモスクを訪れ、その独特な建築を堪能します。ボスフォラス海峡を背景にしたこのモスクは、写真撮影にも最適です。",
+          "searchQuery": "Ortaköy Mosque",
+          "locationEn": "Ortaköy, Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "オルタキョイでのカフェタイム",
+          "description": "オルタキョイのカフェで、トルコの伝統的なスイーツやコーヒーを楽しみながら、ゆったりとした時間を過ごします。海を眺めながらのひとときは格別です。",
+          "locationEn": "Ortaköy, Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "イスタンブールに戻りディナー",
+          "description": "イスタンブールに戻り、地元のレストランでディナーを楽しみます。新鮮なシーフードや、トルコの伝統料理を堪能できるお店を選びましょう。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "イスタンブールの美術館とカフェ巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "イスタンブールの伝統的な朝食を楽しみます。オリーブ、チーズ、トマト、そして新鮮なパンが並ぶテーブルで、エネルギーをチャージしましょう。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "イスタンブール現代美術館",
+          "description": "現代アートの魅力を感じるイスタンブール現代美術館を訪れます。多様な展示があり、アートに触れながらゆったりとした時間を過ごせます。",
+          "searchQuery": "Istanbul Modern Art Museum",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カフェでランチ",
+          "description": "美術館近くのカフェで軽食を楽しみます。地元の人々に人気のあるカフェで、サンドイッチやサラダを味わいながら、リラックスしたひとときを過ごしましょう。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "タクシム広場散策",
+          "description": "タクシム広場を散策し、周辺のショップやストリートパフォーマンスを楽しみます。活気あふれる雰囲気の中で、地元の文化を感じることができます。",
+          "searchQuery": "Taksim Square",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "グランドバザールでショッピング",
+          "description": "イスタンブールの名物、グランドバザールで雑貨やお土産を探します。色とりどりのスカーフや陶器、スパイスなど、魅力的な商品が揃っています。",
+          "searchQuery": "Grand Bazaar",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "バザール近くのレストランで夕食",
+          "description": "グランドバザール近くのレストランでトルコ料理を堪能します。ケバブやメゼを楽しみながら、旅の思い出を語り合いましょう。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の計画を立てながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "地元の人々と触れ合う",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "イスタンブールの伝統的な朝食を楽しむ時間です。オリーブ、チーズ、トマト、そして新鮮なパンが並ぶテーブルで、地元の味を堪能しましょう。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "スルタンアフメット地区散策",
+          "description": "イスタンブールの歴史的な中心地、スルタンアフメット地区を散策します。美しいモスクや歴史的な建物が立ち並ぶこのエリアでは、アヤソフィアやブルーモスクの外観を楽しむことができます。",
+          "searchQuery": "Hagia Sophia",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "スルタンアフメット地区の地元のレストランで、トルコ料理のランチを楽しみます。ケバブやメゼを味わいながら、地元の人々と交流するチャンスです。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "グランドバザールでショッピング",
+          "description": "世界的に有名なグランドバザールで、雑貨やスカーフ、スパイスを探します。色とりどりの店が並ぶ中で、交渉を楽しみながらお気に入りの品を見つけましょう。",
+          "searchQuery": "Grand Bazaar",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "エミノニュ地区散策",
+          "description": "エミノニュ地区へ移動し、地元の人々が集まる市場やカフェを訪れます。新鮮な魚やスナックを楽しみながら、イスタンブールの活気を感じることができます。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のカフェで夕食",
+          "description": "エミノニュのカフェで、トルコの伝統的な料理を楽しみます。特に、シシケバブやピデ（トルコ風ピザ）が人気です。食後には、トルコのデザートもお忘れなく。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ボスポラス海峡の夜景を楽しむ",
+          "description": "ボスポラス海峡沿いを散策し、夜景を楽しみます。ライトアップされたモスクや橋の美しさに感動することでしょう。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "イスタンブールの隠れたスポットを探る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "イスタンブールの伝統的な朝食を楽しみます。オリーブ、チーズ、トマト、そして新鮮なパンが並ぶテーブルで、エネルギーをチャージしましょう。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "サルチャン・アラトゥ訪問",
+          "description": "イスタンブールの隠れた宝石、サルチャン・アラトゥで美しいモスクの建築を堪能します。静かな環境で、歴史的な雰囲気に浸りながら、心を落ち着ける時間を過ごせます。",
+          "searchQuery": "Sultan Ahmet Mosque",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のカフェでランチ",
+          "description": "サルチャン・アラトゥ近くのカフェで、トルコのサンドイッチやサラダを楽しみます。地元の人々に混じって、リラックスした雰囲気の中で食事をしましょう。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "バルク・パザール散策",
+          "description": "バルク・パザールで色とりどりのスパイスやハーブ、雑貨を探しながら、イスタンブールの活気を感じます。お土産探しにもぴったりの場所です。",
+          "searchQuery": "Spice Bazaar",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "エジプシャンバザールでの買い物",
+          "description": "エジプシャンバザールで、トルコの伝統的なスイーツやお茶を試食しながら、買い物を楽しみます。お土産にぴったりなアイテムがたくさんあります。",
+          "searchQuery": "Egyptian Bazaar",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ボスフォラス海峡沿いの散策",
+          "description": "ボスフォラス海峡沿いを散策しながら、夕暮れ時の美しい景色を楽しみます。海の風を感じながら、心地よい時間を過ごしましょう。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "イスタンブールの地元料理を楽しめるレストランで、ケバブやメゼを堪能します。トルコの食文化を存分に味わえる素敵なディナータイムです。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "イスタンブールから帰路へ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "イスタンブールの伝統的な朝食を楽しみます。オリーブ、チーズ、トマト、そして新鮮なパンが並ぶテーブルで、エネルギーをチャージしましょう。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "スルタンアフメット地区散策",
+          "description": "イスタンブールの歴史的中心地、スルタンアフメット地区を散策します。美しいモスクや歴史的な建物が立ち並ぶこのエリアは、文化と歴史を感じるのに最適です。",
+          "searchQuery": "Sultanahmet",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "ブルーモスク見学",
+          "description": "青いタイルで装飾されたブルーモスクは、イスタンブールの象徴的な建築物です。内部の美しさに圧倒されることでしょう。訪問時は静かに過ごすことを心がけてください。",
+          "searchQuery": "Sultan Ahmed Mosque",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "エミノニュの魚サンドイッチを楽しむ",
+          "description": "エミノニュの名物、魚サンドイッチを味わいます。新鮮な魚と野菜が挟まれたサンドイッチは、手軽で美味しいランチにぴったりです。",
+          "searchQuery": "Eminönü Fish Sandwich",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "グランドバザールでショッピング",
+          "description": "世界最大級のバザール、グランドバザールでショッピングを楽しみます。手工芸品やスパイス、ジュエリーなど、魅力的な商品が揃っています。交渉を楽しんでください！",
+          "searchQuery": "Grand Bazaar",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "スパイスバザール散策",
+          "description": "スパイスバザールでは、色とりどりのスパイスやお菓子が並ぶ中を散策します。香り高いスパイスを手に入れたり、地元の人々と触れ合ったりする素敵な体験です。",
+          "searchQuery": "Spice Bazaar",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "空港へ移動",
+          "description": "イスタンブールの空港へ向かいます。帰路の準備を整え、旅の思い出を振り返りながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "イスタンブールから帰国のフライト",
+          "description": "イスタンブールからの帰国便に搭乗します。素晴らしい旅の締めくくりです。",
+          "locationEn": "Istanbul, Turkey",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

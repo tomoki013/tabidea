@@ -2,71 +2,86 @@ import * as fs from "fs";
 import * as path from "path";
 import { Itinerary, UserInput } from "@/types";
 import { SamplePlan, samplePlans } from "@/lib/sample-plans";
+import { DEFAULT_LANGUAGE, type LanguageCode } from "@/lib/i18n/locales";
+import { localizeSamplePlan } from "@/lib/sample-plan-localization";
+
+function getCandidateDataDirs(language: LanguageCode): string[] {
+  const localeDir = path.join(process.cwd(), "src/data/itineraries", language);
+  const legacyDir = path.join(process.cwd(), "src/data/itineraries");
+  return [localeDir, legacyDir];
+}
+
+function buildDynamicSamplePlan(
+  id: string,
+  itinerary: Itinerary,
+  language: LanguageCode
+): SamplePlan {
+  const dates = `${Math.max(0, itinerary.days.length - 1)}泊${itinerary.days.length}日`;
+  const input: UserInput = {
+    destinations: [itinerary.destination],
+    dates,
+    companions: "その他",
+    theme: [],
+    budget: "",
+    pace: "",
+    freeText: "",
+    isDestinationDecided: true,
+    region: inferRegion(itinerary.destination),
+  };
+
+  const plan: SamplePlan = {
+    id,
+    title: language === "en" ? `${itinerary.destination} trip` : `${itinerary.destination}の旅`,
+    description: itinerary.description,
+    input,
+    createdAt: "2025-01-01",
+    tags: ["AI生成", "自動追加"],
+    itinerary,
+  };
+
+  if (id.startsWith("fan-")) {
+    plan.tags.push("推し活");
+  }
+
+  return localizeSamplePlan(plan, language);
+}
 
 /**
  * すべてのサンプルプランを読み込む（静的定義 + JSONファイルからの動的読み込み）
  */
-export async function loadAllSamplePlans(): Promise<SamplePlan[]> {
-  const staticPlans = [...samplePlans];
+export async function loadAllSamplePlans(
+  language: LanguageCode = DEFAULT_LANGUAGE
+): Promise<SamplePlan[]> {
+  const staticPlans = samplePlans.map((plan) => localizeSamplePlan(plan, language));
   const staticIds = new Set(staticPlans.map((p) => p.id));
   const dynamicPlans: SamplePlan[] = [];
+  const loadedIds = new Set<string>();
 
-  const dataDir = path.join(process.cwd(), "src/data/itineraries");
+  for (const dataDir of getCandidateDataDirs(language)) {
+    if (!fs.existsSync(dataDir)) continue;
 
-  if (!fs.existsSync(dataDir)) {
-    return staticPlans;
-  }
+    try {
+      const files = await fs.promises.readdir(dataDir);
 
-  try {
-    const files = await fs.promises.readdir(dataDir);
+      for (const file of files) {
+        if (!file.endsWith(".json")) continue;
 
-    for (const file of files) {
-      if (!file.endsWith(".json")) continue;
+        const id = file.replace(".json", "");
+        if (staticIds.has(id) || loadedIds.has(id)) continue;
 
-      const id = file.replace(".json", "");
-      if (staticIds.has(id)) continue;
-
-      try {
-        const filePath = path.join(dataDir, file);
-        const content = await fs.promises.readFile(filePath, "utf-8");
-        const itinerary = JSON.parse(content) as Itinerary;
-
-        // UserInputを推論
-        const dates = `${Math.max(0, itinerary.days.length - 1)}泊${itinerary.days.length}日`;
-        const input: UserInput = {
-          destinations: [itinerary.destination],
-          dates: dates,
-          companions: "その他", // 推論できないため
-          theme: [], // 推論できないため
-          budget: "",
-          pace: "",
-          freeText: "",
-          isDestinationDecided: true,
-          region: inferRegion(itinerary.destination), // 簡易的な推論
-        };
-
-        const plan: SamplePlan = {
-          id,
-          title: itinerary.destination + "の旅", // タイトルがない場合は地名を使用
-          description: itinerary.description,
-          input,
-          createdAt: "2025-01-01", // ダミー日付
-          tags: ["AI生成", "自動追加"], // 自動追加タグ
-          itinerary,
-        };
-
-        // ファイル名からタグを推論（例: fan-xxx -> 推し活）
-        if (id.startsWith("fan-")) {
-            plan.tags.push("推し活");
+        try {
+          const filePath = path.join(dataDir, file);
+          const content = await fs.promises.readFile(filePath, "utf-8");
+          const itinerary = JSON.parse(content) as Itinerary;
+          dynamicPlans.push(buildDynamicSamplePlan(id, itinerary, language));
+          loadedIds.add(id);
+        } catch (error) {
+          console.error(`Failed to load dynamic plan: ${file}`, error);
         }
-
-        dynamicPlans.push(plan);
-      } catch (e) {
-        console.error(`Failed to load dynamic plan: ${file}`, e);
       }
+    } catch (error) {
+      console.error("Failed to read itineraries directory", error);
     }
-  } catch (e) {
-    console.error("Failed to read itineraries directory", e);
   }
 
   return [...staticPlans, ...dynamicPlans];
@@ -76,53 +91,30 @@ export async function loadAllSamplePlans(): Promise<SamplePlan[]> {
  * IDでサンプルプランを取得（動的読み込み対応）
  */
 export async function getSamplePlanByIdDynamic(
-  id: string
+  id: string,
+  language: LanguageCode = DEFAULT_LANGUAGE
 ): Promise<SamplePlan | undefined> {
   // まず静的リストから検索
   const staticPlan = samplePlans.find((p) => p.id === id);
-  if (staticPlan) return staticPlan;
+  if (staticPlan) return localizeSamplePlan(staticPlan, language);
 
-  // なければファイルシステムから検索
-  try {
-    const filePath = path.join(process.cwd(), "src/data/itineraries", `${id}.json`);
+  // なければロケール別ディレクトリ -> 旧ディレクトリで検索
+  for (const dataDir of getCandidateDataDirs(language)) {
+    try {
+      const filePath = path.join(dataDir, `${id}.json`);
 
-    if (!fs.existsSync(filePath)) return undefined;
+      if (!fs.existsSync(filePath)) continue;
 
-    const content = await fs.promises.readFile(filePath, "utf-8");
-    const itinerary = JSON.parse(content) as Itinerary;
-
-    const dates = `${Math.max(0, itinerary.days.length - 1)}泊${itinerary.days.length}日`;
-    const input: UserInput = {
-      destinations: [itinerary.destination],
-      dates: dates,
-      companions: "その他",
-      theme: [],
-      budget: "",
-      pace: "",
-      freeText: "",
-      isDestinationDecided: true,
-      region: inferRegion(itinerary.destination),
-    };
-
-    const plan: SamplePlan = {
-      id,
-      title: itinerary.destination + "の旅",
-      description: itinerary.description,
-      input,
-      createdAt: "2025-01-01",
-      tags: ["AI生成", "自動追加"],
-      itinerary,
-    };
-
-    if (id.startsWith("fan-")) {
-        plan.tags.push("推し活");
+      const content = await fs.promises.readFile(filePath, "utf-8");
+      const itinerary = JSON.parse(content) as Itinerary;
+      return buildDynamicSamplePlan(id, itinerary, language);
+    } catch (error) {
+      console.error(`Failed to load dynamic plan: ${id}`, error);
+      return undefined;
     }
-
-    return plan;
-  } catch (e) {
-    console.error(`Failed to load dynamic plan: ${id}`, e);
-    return undefined;
   }
+
+  return undefined;
 }
 
 function inferRegion(destination: string): "domestic" | "overseas" {

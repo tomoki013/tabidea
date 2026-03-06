@@ -1,0 +1,493 @@
+{
+  "id": "49550125-a269-49bd-809c-62fac10f5841",
+  "destination": "Los Angeles",
+  "description": "Escape to the sun-soaked paradise of Los Angeles, where the glitz of Hollywood meets the laid-back vibe of California beaches. Over six thrilling days, immerse yourself in the magic of theme parks, the allure of shopping, and the beauty of coastal views. Whether you’re riding roller coasters at Disneyland or strolling along Santa Monica Pier, this trip promises unforgettable memories with friends. Get ready for an active adventure filled with laughter, excitement, and the iconic sights of LA!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Los Angeles",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Griddle Cafe",
+          "description": "Start your day with a hearty breakfast at The Griddle Cafe, famous for its oversized pancakes and delicious omelets. It's a local favorite, so be prepared for a bit of a wait!",
+          "searchQuery": "The Griddle Cafe",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Visit the Hollywood Sign",
+          "description": "Take a short hike to the iconic Hollywood Sign for breathtaking views of the city. The hike is about 1.5 miles round trip and offers fantastic photo opportunities!",
+          "searchQuery": "Hollywood Sign",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Musso & Frank Grill",
+          "description": "Enjoy a classic Hollywood dining experience at Musso & Frank Grill, known for its timeless atmosphere and delicious steaks. A perfect spot to soak in some history!",
+          "searchQuery": "Musso & Frank Grill",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Griffith Observatory",
+          "description": "Head to Griffith Observatory for stunning views of the city and the stars. You can explore the exhibits and even catch a planetarium show if time allows!",
+          "searchQuery": "Griffith Observatory",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Dinner at The Bazaar by José Andrés",
+          "description": "Indulge in a unique dining experience at The Bazaar, where traditional Spanish cuisine meets modern flair. The tapas are a must-try!",
+          "searchQuery": "The Bazaar by José Andrés",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Stroll along Santa Monica Pier",
+          "description": "End your day with a relaxing stroll along Santa Monica Pier. Enjoy the ocean breeze, the vibrant atmosphere, and maybe even a ride on the Ferris wheel!",
+          "searchQuery": "Santa Monica Pier",
+          "locationEn": "Santa Monica, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Disneyland Adventure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Griddle Cafe",
+          "description": "Start your day with a hearty breakfast at The Griddle Cafe, famous for its oversized pancakes and delicious breakfast burritos. It's a local favorite, so be prepared for a bit of a wait!",
+          "searchQuery": "The Griddle Cafe",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Hollywood Sign",
+          "description": "Take a scenic drive or hike to Griffith Park for stunning views of the iconic Hollywood Sign. The hike is moderate and offers great photo opportunities along the way.",
+          "searchQuery": "Hollywood Sign",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at In-N-Out Burger",
+          "description": "No trip to California is complete without a stop at In-N-Out Burger. Enjoy their famous burgers and fries, a true Californian experience!",
+          "searchQuery": "In-N-Out Burger",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Disneyland Park",
+          "description": "Head to Disneyland Park for an afternoon filled with magic and adventure. Explore iconic rides, meet beloved characters, and enjoy the enchanting atmosphere of the happiest place on Earth!",
+          "searchQuery": "Disneyland Park",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Plaza Inn",
+          "description": "After a fun-filled day at Disneyland, enjoy a delicious dinner at Plaza Inn, known for its famous fried chicken and cozy atmosphere. Perfect for refueling after a day of excitement!",
+          "searchQuery": "Plaza Inn",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Disneyland Nighttime Spectacular",
+          "description": "End your day with the breathtaking nighttime spectacular at Disneyland. Watch as fireworks light up the sky and beloved Disney characters come to life in a magical show.",
+          "searchQuery": "Disneyland Nighttime Spectacular",
+          "locationEn": "Anaheim, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Universal Studios Hollywood",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Griddle Cafe",
+          "description": "Start your day with a hearty breakfast at The Griddle Cafe, famous for its oversized pancakes and delicious omelets. The vibrant atmosphere and generous portions will fuel you for an exciting day ahead!",
+          "searchQuery": "The Griddle Cafe",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Universal Studios Hollywood",
+          "description": "Dive into the thrilling world of Universal Studios Hollywood! Experience exhilarating rides, shows, and attractions based on your favorite movies. Don't miss the Wizarding World of Harry Potter and the Studio Tour for a behind-the-scenes look at film production.",
+          "searchQuery": "Universal Studios Hollywood",
+          "locationEn": "Universal City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at CityWalk",
+          "description": "Take a break and enjoy lunch at CityWalk, where you can choose from a variety of restaurants. Whether you're in the mood for sushi, burgers, or Italian, there's something for everyone in this lively dining area.",
+          "searchQuery": "CityWalk",
+          "locationEn": "Universal City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Continue exploring Universal Studios",
+          "description": "After lunch, head back into the park to catch any attractions you missed earlier. Be sure to check out the thrilling rides like Jurassic World and Transformers, and enjoy the live shows that showcase incredible stunts and special effects.",
+          "searchQuery": "Universal Studios Hollywood",
+          "locationEn": "Universal City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit the Hollywood Sign",
+          "description": "Wrap up your day with a visit to the iconic Hollywood Sign. Take a short hike to one of the viewing points for a stunning photo opportunity with the sign in the background. The sunset views from here are absolutely breathtaking!",
+          "searchQuery": "Hollywood Sign",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Musso & Frank Grill",
+          "description": "End your day with a classic dining experience at Musso & Frank Grill, a Hollywood institution known for its timeless ambiance and delicious steaks. Enjoy a meal in a setting that has hosted countless celebrities over the years.",
+          "searchQuery": "Musso & Frank Grill",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Beach Day at Santa Monica",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Butcher, The Baker, The Cappuccino Maker",
+          "description": "Start your day with a delicious breakfast at this trendy spot known for its artisanal coffee and fresh ingredients. Try their signature avocado toast or fluffy pancakes for a perfect morning boost.",
+          "searchQuery": "The Butcher, The Baker, The Cappuccino Maker",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Santa Monica Pier",
+          "description": "Head to the iconic Santa Monica Pier, where you can enjoy the vibrant atmosphere, take a ride on the Ferris wheel, or simply stroll along the beach. Don't forget to snap a photo at the famous 'End of the Route 66' sign!",
+          "searchQuery": "Santa Monica Pier",
+          "locationEn": "Santa Monica, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Albright",
+          "description": "Enjoy a seafood lunch at The Albright, located right on the pier. Their clam chowder and fish tacos are local favorites, perfect for refueling after a morning of fun.",
+          "searchQuery": "The Albright",
+          "locationEn": "Santa Monica, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Venice Beach Boardwalk",
+          "description": "Take a short walk or bike ride to Venice Beach, where you can soak in the sun, watch street performers, and explore the unique shops along the boardwalk. It's a great place to experience the local culture and vibe.",
+          "searchQuery": "Venice Beach Boardwalk",
+          "locationEn": "Venice, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Abbot Kinney Boulevard",
+          "description": "Stroll down Abbot Kinney Boulevard, known for its chic boutiques, art galleries, and trendy cafes. It's the perfect spot for some shopping and people-watching.",
+          "searchQuery": "Abbot Kinney Boulevard",
+          "locationEn": "Venice, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Guelaguetza",
+          "description": "End your day with a delightful dinner at Guelaguetza, famous for its Oaxacan cuisine. Be sure to try their mole and tlayudas for an authentic taste of Mexico.",
+          "searchQuery": "Guelaguetza",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Hollywood Sign Viewpoint",
+          "description": "Wrap up your day with a visit to a viewpoint for a stunning view of the Hollywood Sign. Griffith Park offers several trails that lead to great vantage points, perfect for capturing that iconic shot.",
+          "searchQuery": "Griffith Park",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Shopping and Exploring",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Griddle Cafe",
+          "description": "Start your day with a hearty breakfast at The Griddle Cafe, famous for its oversized pancakes and delicious brunch options. It's a local favorite, so be prepared for a bit of a wait!",
+          "searchQuery": "The Griddle Cafe",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Hollywood Sign",
+          "description": "Take a short drive to Griffith Park for a hike to the iconic Hollywood Sign. The views of the city and the sign itself are breathtaking, especially in the morning light. Don't forget your camera!",
+          "searchQuery": "Hollywood Sign",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at In-N-Out Burger",
+          "description": "No trip to California is complete without a stop at In-N-Out Burger. Enjoy a classic burger and fries at this beloved fast-food chain, known for its fresh ingredients and secret menu.",
+          "searchQuery": "In-N-Out Burger",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Shopping at The Grove",
+          "description": "Head to The Grove, an outdoor shopping and entertainment complex. Browse through high-end shops, enjoy the beautiful atmosphere, and maybe catch a live performance at the park.",
+          "searchQuery": "The Grove",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Maggiano's Little Italy",
+          "description": "Indulge in a delicious Italian dinner at Maggiano's, where you can enjoy classic dishes in a warm, inviting atmosphere. Perfect for sharing with friends!",
+          "searchQuery": "Maggiano's Little Italy",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening stroll at Santa Monica Pier",
+          "description": "End your day with a relaxing stroll at Santa Monica Pier. Enjoy the ocean breeze, take in the sunset, and maybe even ride the Ferris wheel for stunning views of the coastline.",
+          "searchQuery": "Santa Monica Pier",
+          "locationEn": "Santa Monica, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Los Angeles International Airport (LAX)",
+          "time": "15:00"
+        },
+        "arrival": {
+          "place": "Washington D.C. (DCA)",
+          "time": "23:00"
+        },
+        "duration": "5h",
+        "memo": "Direct flight from LAX to DCA."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Griddle Cafe",
+          "description": "Start your day with a hearty breakfast at The Griddle Cafe, famous for its oversized pancakes and delicious brunch options. It's a local favorite, so be prepared for a bit of a wait!",
+          "searchQuery": "The Griddle Cafe",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Visit Griffith Observatory",
+          "description": "Head to Griffith Observatory for stunning views of the city and the iconic Hollywood Sign. Explore the exhibits and enjoy a short hike in Griffith Park for some fresh air and beautiful scenery.",
+          "searchQuery": "Griffith Observatory",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at In-N-Out Burger",
+          "description": "No trip to California is complete without a stop at In-N-Out Burger. Enjoy a classic burger and fries at this beloved fast-food chain, known for its fresh ingredients and secret menu.",
+          "searchQuery": "In-N-Out Burger",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Hollywood Walk of Fame",
+          "description": "Stroll along the Hollywood Walk of Fame and take pictures with your favorite stars' names embedded in the sidewalk. It's a fun way to soak in the Hollywood atmosphere before your flight.",
+          "searchQuery": "Hollywood Walk of Fame",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Head to LAX for Departure",
+          "description": "Make your way to Los Angeles International Airport (LAX) to catch your flight back to Washington D.C. Make sure to arrive at least 2 hours before your flight for a smooth check-in process.",
+          "searchQuery": "Los Angeles International Airport",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

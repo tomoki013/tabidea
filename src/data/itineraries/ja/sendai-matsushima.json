@@ -1,0 +1,213 @@
+{
+  "id": "21b2d651-e221-4435-9f12-e6bda4b3af3f",
+  "destination": "宮城（仙台・松島）",
+  "description": "自然の美しさと歴史的な魅力が交錯する宮城県。仙台の街を拠点に、松島の絶景を堪能しながら、名物の牛タンを味わう贅沢な2日間の旅へ出かけましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "仙台の魅力を満喫",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "仙台のホテルで、地元の食材を使った和朝食を楽しみます。新鮮な魚や味噌汁で、元気に一日をスタートしましょう。",
+          "locationEn": "Sendai, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "大崎八幡宮",
+          "description": "歴史ある大崎八幡宮を訪れ、荘厳な雰囲気の中で静かなひとときを過ごします。美しい神社の境内は、四季折々の自然が楽しめるスポットです。",
+          "searchQuery": "Osaki Hachiman Shrine",
+          "locationEn": "Sendai, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "牛タン通りでランチ",
+          "description": "仙台名物の牛タンを堪能できる牛タン通りで、ランチを楽しみます。香ばしい焼き加減の牛タンと共に、麦飯やテールスープもぜひ味わってください。",
+          "searchQuery": "Gyutan Street",
+          "locationEn": "Sendai, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "仙台城跡",
+          "description": "仙台城跡を訪れ、歴史を感じながら美しい仙台市街の景色を楽しみます。城跡からの眺望は絶景で、特に夕方の光景は格別です。",
+          "searchQuery": "Sendai Castle Ruins",
+          "locationEn": "Sendai, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "松島へ移動",
+          "description": "松島へ向かい、海の美しい景色を楽しみます。松島の名所を巡りながら、自然の美しさに癒される時間を過ごしましょう。",
+          "locationEn": "Matsushima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "松島の観光",
+          "description": "松島の美しい島々を巡る遊覧船に乗り、絶景を楽しみます。海上から見る松島の風景は、まさに絶品です。",
+          "searchQuery": "Matsushima Bay Cruise",
+          "locationEn": "Matsushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "松島で夕食",
+          "description": "松島の海鮮料理店で、新鮮な魚介類を使った夕食を楽しみます。地元の味を堪能しながら、素敵な夜を過ごしましょう。",
+          "locationEn": "Matsushima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "松島の宿泊",
+          "description": "松島の宿にチェックインし、ゆったりとした時間を過ごします。温泉に浸かりながら、旅の疲れを癒してください。",
+          "locationEn": "Matsushima, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "松島の絶景と歴史を堪能",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "仙台",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "松島",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "仙台から松島へは、JR仙石線を利用します。海の景色を楽しみながらの移動です。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "松島の絶景を楽しむ",
+          "description": "松島の美しい景色を堪能します。特に、遊覧船に乗ると、松島の島々を間近で見ることができ、絶景が広がります。",
+          "searchQuery": "Matsushima Bay",
+          "locationEn": "Matsushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "五大堂を訪れる",
+          "description": "松島のシンボルとも言える五大堂を訪れます。堂内からの眺めは素晴らしく、松島の美しい景色を一望できます。",
+          "searchQuery": "Godai-do",
+          "locationEn": "Matsushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "松島で牛タンランチ",
+          "description": "松島名物の牛タンを楽しめるお店でランチ。柔らかくてジューシーな牛タンをぜひ味わってください。",
+          "searchQuery": "Gyutan Matsushima",
+          "locationEn": "Matsushima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "瑞巌寺を見学",
+          "description": "松島の歴史を感じる瑞巌寺を訪れます。美しい庭園と歴史的な建物が魅力的で、静かな時間を過ごせます。",
+          "searchQuery": "Zuigan-ji Temple",
+          "locationEn": "Matsushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "松島の海岸を散策",
+          "description": "松島の海岸沿いを散策し、自然の美しさを感じながらリラックスした時間を過ごします。",
+          "searchQuery": "Matsushima Coast",
+          "locationEn": "Matsushima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "仙台へ戻る",
+          "description": "松島から仙台へ戻ります。夕方の海の景色を楽しみながら、ゆったりとした時間を過ごしましょう。",
+          "searchQuery": "Sendai",
+          "locationEn": "Sendai, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "仙台で夕食（牛タン）",
+          "description": "仙台名物の牛タンを楽しめるお店でディナー。焼きたての牛タンを堪能し、旅の締めくくりにぴったりです。",
+          "searchQuery": "Gyutan Sendai",
+          "locationEn": "Sendai, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -6,19 +6,14 @@
 import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 import {
-  getDefaultRegionForLanguage,
   isLanguageCode,
-  isRegionCode,
-  resolveRegionalLocale,
   type LanguageCode,
-  type RegionCode,
 } from '@/lib/i18n/locales';
 
 type UserMetadata = Record<string, unknown>;
 
 type ProxyI18nPreferences = {
-  language?: LanguageCode;
-  region?: RegionCode;
+  uiLanguage?: LanguageCode;
 };
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
@@ -88,8 +83,8 @@ export async function resolveUserI18nPreferences(
   request: NextRequest,
   options: {
     existingResponse?: NextResponse;
+    requestedLanguage?: LanguageCode | null;
     detectedLanguage: LanguageCode;
-    detectedRegion: RegionCode;
   }
 ): Promise<{ response: NextResponse; preferences: ProxyI18nPreferences }> {
   const { supabase, supabaseResponse } = getSupabaseProxyClient(
@@ -101,8 +96,7 @@ export async function resolveUserI18nPreferences(
     return {
       response: supabaseResponse,
       preferences: {
-        language: options.detectedLanguage,
-        region: options.detectedRegion,
+        uiLanguage: options.detectedLanguage,
       },
     };
   }
@@ -116,8 +110,7 @@ export async function resolveUserI18nPreferences(
     return {
       response: supabaseResponse,
       preferences: {
-        language: options.detectedLanguage,
-        region: options.detectedRegion,
+        uiLanguage: options.detectedLanguage,
       },
     };
   }
@@ -130,31 +123,26 @@ export async function resolveUserI18nPreferences(
 
   const metadata = (isPlainObject(data?.metadata) ? data.metadata : {}) as UserMetadata;
 
-  const storedLanguage = isLanguageCode(String(metadata.preferredLanguage))
+  const storedUiLanguage = isLanguageCode(String(metadata.uiLanguage))
+    ? (metadata.uiLanguage as LanguageCode)
+    : undefined;
+  const legacyPreferredLanguage = isLanguageCode(String(metadata.preferredLanguage))
     ? (metadata.preferredLanguage as LanguageCode)
     : undefined;
-  const storedRegion = isRegionCode(String(metadata.preferredRegion))
-    ? (metadata.preferredRegion as RegionCode)
-    : undefined;
+  const resolvedUiLanguage =
+    options.requestedLanguage ??
+    storedUiLanguage ??
+    legacyPreferredLanguage ??
+    options.detectedLanguage;
+  const shouldPersistUiLanguage =
+    !storedUiLanguage ||
+    (options.requestedLanguage !== null &&
+      options.requestedLanguage !== undefined &&
+      options.requestedLanguage !== storedUiLanguage);
 
-  const resolvedLanguage = storedLanguage ?? options.detectedLanguage;
-  const resolvedRegion =
-    storedRegion ??
-    options.detectedRegion ??
-    getDefaultRegionForLanguage(resolvedLanguage);
-
-  if (!storedLanguage || !storedRegion) {
+  if (shouldPersistUiLanguage) {
     const nextMetadata: UserMetadata = { ...metadata };
-    if (!storedLanguage) {
-      nextMetadata.preferredLanguage = resolvedLanguage;
-    }
-    if (!storedRegion) {
-      nextMetadata.preferredRegion = resolvedRegion;
-    }
-    nextMetadata.preferredLocale = resolveRegionalLocale(
-      resolvedLanguage,
-      resolvedRegion
-    );
+    nextMetadata.uiLanguage = resolvedUiLanguage;
 
     await supabase
       .from('users')
@@ -165,8 +153,7 @@ export async function resolveUserI18nPreferences(
   return {
     response: supabaseResponse,
     preferences: {
-      language: resolvedLanguage,
-      region: resolvedRegion,
+      uiLanguage: resolvedUiLanguage,
     },
   };
 }

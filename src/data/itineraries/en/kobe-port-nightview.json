@@ -1,0 +1,204 @@
+{
+  "id": "e0defda4-8624-4930-acaa-faa512b06fdb",
+  "destination": "Kobe",
+  "description": "Immerse yourself in the charming streets of Kobe, where the blend of modernity and tradition creates a unique atmosphere. This two-day getaway is perfect for couples looking to indulge in exquisite dining experiences and breathtaking night views. Stroll through the stylish neighborhoods, savor the renowned Kobe beef, and enjoy the stunning vistas from the city's iconic spots. Get ready for a romantic escape that tantalizes the senses and creates unforgettable memories.",
+  "heroImage": "https://images.unsplash.com/photo-1750669426427-0219065d876f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODExNTB8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Planet Kuo",
+  "heroImagePhotographerUrl": "https://unsplash.com/@rollingplanet?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Exploring the Stylish Streets of Kobe",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de l'ambre",
+          "description": "Start your day with a delightful breakfast at this charming café known for its rich coffee and freshly baked pastries. The cozy atmosphere is perfect for couples looking to enjoy a leisurely morning.",
+          "searchQuery": "Café de l'ambre",
+          "locationEn": "Kobe, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Stroll through Meriken Park",
+          "description": "Take a romantic walk through Meriken Park, where you can enjoy stunning views of the harbor and the iconic Kobe Port Tower. The park is beautifully landscaped, making it a perfect spot for photos together.",
+          "searchQuery": "Meriken Park",
+          "locationEn": "Kobe, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Nankinmachi (Chinatown)",
+          "description": "Indulge in a delicious lunch at one of the many eateries in Nankinmachi, Kobe's vibrant Chinatown. Try the famous pork buns or some dim sum while soaking in the lively atmosphere.",
+          "searchQuery": "Nankinmachi",
+          "locationEn": "Kobe, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Kobe Harborland",
+          "description": "Explore the shopping and entertainment district of Kobe Harborland. Enjoy the waterfront views, browse through unique shops, and perhaps grab a sweet treat at one of the local dessert shops.",
+          "searchQuery": "Kobe Harborland",
+          "locationEn": "Kobe, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at the Hotel",
+          "description": "Return to your hotel to freshen up and relax before dinner. Take this time to enjoy the amenities or simply unwind together in your room.",
+          "locationEn": "Kobe, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner with a View at Sky Lounge",
+          "description": "Dine at a rooftop restaurant offering breathtaking views of the Kobe skyline. Enjoy a gourmet meal while watching the sunset over the city, creating a romantic atmosphere for your evening.",
+          "searchQuery": "Sky Lounge",
+          "locationEn": "Kobe, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Night Walk along the Harbor",
+          "description": "After dinner, take a leisurely stroll along the harbor. The city lights reflecting on the water create a magical ambiance, perfect for a romantic evening together.",
+          "locationEn": "Kobe, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "A Night of Culinary Delights and Stunning Views",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de l’Ambre",
+          "description": "Start your day with a delightful breakfast at Café de l’Ambre, known for its rich coffee and freshly baked pastries. The cozy atmosphere makes it a perfect spot to relax before exploring the city.",
+          "searchQuery": "Café de l’Ambre",
+          "locationEn": "Kobe, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Stroll through Meriken Park",
+          "description": "Take a leisurely walk through Meriken Park, where you can enjoy the beautiful waterfront views and iconic landmarks like the Kobe Port Tower. The park is a great place for photos and to soak in the maritime atmosphere.",
+          "searchQuery": "Meriken Park",
+          "locationEn": "Kobe, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Kobe Beef Steak Restaurant",
+          "description": "Indulge in a sumptuous lunch featuring the world-famous Kobe beef. This restaurant offers a unique dining experience where you can watch the chefs prepare your meal right in front of you, ensuring a memorable culinary experience.",
+          "searchQuery": "Kobe Beef Steak Restaurant",
+          "locationEn": "Kobe, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Kobe Maritime Museum",
+          "description": "Explore the Kobe Maritime Museum to learn about the city's rich maritime history. The museum features interactive exhibits and stunning displays that highlight Kobe's connection to the sea.",
+          "searchQuery": "Kobe Maritime Museum",
+          "locationEn": "Kobe, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Take the Ropeway to Mount Rokko",
+          "description": "Experience breathtaking views of Kobe and the surrounding area by taking the ropeway up to Mount Rokko. The ride itself is scenic, and once at the top, you can enjoy panoramic views of the city and the bay.",
+          "searchQuery": "Mount Rokko Ropeway",
+          "locationEn": "Kobe, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Dinner at a Restaurant with Night Views",
+          "description": "Savor a romantic dinner at a restaurant that offers stunning views of the Kobe skyline. Enjoy a carefully curated menu featuring local ingredients while watching the sunset over the city.",
+          "searchQuery": "Restaurant with Night Views in Kobe",
+          "locationEn": "Kobe, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Evening Walk at Kobe Harborland",
+          "description": "After dinner, take a stroll through Kobe Harborland. The area is beautifully lit at night, and you can enjoy the vibrant atmosphere, with shops and cafes lining the waterfront.",
+          "searchQuery": "Kobe Harborland",
+          "locationEn": "Kobe, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Return to Hotel",
+          "description": "End your day by returning to your hotel, reflecting on the wonderful experiences and delicious meals you enjoyed throughout the day.",
+          "locationEn": "Kobe, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

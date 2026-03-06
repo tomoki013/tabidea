@@ -1,0 +1,268 @@
+{
+  "id": "7af1bac4-cce9-47e2-9601-7658078b4ac9",
+  "destination": "金沢",
+  "description": "金沢の美しい街並みと豊かな文化を体験しながら、地元の美味しい料理を堪能する旅に出かけましょう。歴史的な街並みやアート、そして伝統工芸の魅力を感じることができる、カップルにぴったりのプランです。",
+  "heroImage": "https://images.unsplash.com/photo-1687355472896-04b42e532833?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODA2NjV8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Tunafish",
+  "heroImagePhotographerUrl": "https://unsplash.com/@ultratunafish?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "金沢の歴史と美食を楽しむ一日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "金沢の地元食材を使った和朝食を楽しみます。新鮮な魚や野菜を使った料理で、金沢の朝をスタートしましょう。",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ひがし茶屋街散策",
+          "description": "金沢の伝統的な茶屋街、ひがし茶屋街を散策します。美しい町並みを歩きながら、茶屋で抹茶を楽しむこともできます。",
+          "searchQuery": "Higashi Chaya District",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "金沢の海鮮丼を堪能",
+          "description": "地元の市場で新鮮な海の幸を使った海鮮丼をいただきます。色とりどりのネタが乗った丼は、見た目も味も楽しめる一品です。",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "金沢21世紀美術館",
+          "description": "現代アートの宝庫、金沢21世紀美術館を訪れます。特に、草間彌生の作品は必見です。美術館内のカフェで一息つくのもおすすめ。",
+          "searchQuery": "21st Century Museum of Contemporary Art Kanazawa",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "伝統工芸体験（加賀友禅）",
+          "description": "金沢の伝統工芸、加賀友禅の体験教室に参加します。自分だけのオリジナルのハンカチを作ることができ、思い出に残る体験です。",
+          "searchQuery": "Kaga Yuzen Experience",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "兼六園散策",
+          "description": "日本三名園の一つ、兼六園を散策します。四季折々の美しい景色を楽しみながら、静かな時間を過ごしましょう。",
+          "searchQuery": "Kenrokuen Garden",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "金沢の居酒屋でディナー",
+          "description": "地元の居酒屋で、金沢の旬の食材を使った料理を楽しみます。新鮮な魚介類や地酒を堪能し、金沢の夜を満喫しましょう。",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "伝統工芸体験と地元の味を満喫",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "金沢の地元食材を使った和朝食を楽しみます。新鮮な魚や野菜を使った料理で、エネルギーをチャージして一日をスタートしましょう。",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "金沢箔工芸体験",
+          "description": "金沢の伝統工芸である金箔を使ったアート体験。自分だけの金箔アートを作成し、思い出に残る作品を持ち帰ることができます。",
+          "searchQuery": "Kanazawa Gold Leaf Workshop",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "近江町市場でランチ",
+          "description": "新鮮な海の幸や地元の特産品が揃う近江町市場で、海鮮丼や寿司を楽しみましょう。市場の活気を感じながら、地元の味を堪能できます。",
+          "searchQuery": "Omicho Market",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "長町武家屋敷跡散策",
+          "description": "歴史的な武家屋敷が残る長町エリアを散策。美しい街並みや伝統的な建物を見ながら、金沢の歴史に触れることができます。",
+          "searchQuery": "Nagamachi Samurai District",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "金沢21世紀美術館",
+          "description": "現代アートを楽しむことができる金沢21世紀美術館。ユニークな展示やアート作品に触れ、アートの世界に浸りましょう。",
+          "searchQuery": "21st Century Museum of Contemporary Art Kanazawa",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "金沢の居酒屋でディナー",
+          "description": "地元の居酒屋で新鮮な魚介や地酒を楽しみながら、金沢の夜を満喫。アットホームな雰囲気の中で、地元の人々と交流するのもおすすめです。",
+          "searchQuery": "Kanazawa Izakaya",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "金沢の魅力を再発見し東京へ帰る",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "金沢",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "12:00"
+        },
+        "duration": "3h",
+        "memo": "新幹線で東京へ直行。快適な移動を楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "金沢の地元食材を使った和朝食を楽しみます。新鮮な魚や野菜を使った料理で、エネルギーをチャージしましょう。",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "金沢城公園",
+          "description": "金沢の歴史を感じる金沢城公園を散策。美しい庭園や城の跡を見ながら、ゆったりとした時間を過ごせます。特に春には桜が美しいです。",
+          "searchQuery": "Kanazawa Castle Park",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "尾山神社",
+          "description": "金沢のシンボルとも言える尾山神社を訪れます。独特な建築様式と美しい境内は、訪れる価値があります。神社の静けさに癒されるひとときを。",
+          "searchQuery": "Oyama Shrine",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "金沢駅周辺でランチ",
+          "description": "金沢駅近くの飲食店で、地元の海鮮丼や加賀野菜を使った料理を楽しみます。新鮮な食材を使った料理は、金沢の魅力を感じることができます。",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "伝統工芸体験",
+          "description": "金沢の伝統工芸である金箔貼りや九谷焼の体験ができる工房を訪れます。自分だけの作品を作る楽しさを味わいましょう。",
+          "searchQuery": "Kanazawa Traditional Crafts Experience",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "金沢駅でお土産購入",
+          "description": "金沢駅の土産物店で、地元の特産品やお菓子を購入します。金沢の味をお土産に持ち帰りましょう。",
+          "searchQuery": "Kanazawa Station",
+          "locationEn": "Kanazawa, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

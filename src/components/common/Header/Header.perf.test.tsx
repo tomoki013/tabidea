@@ -42,6 +42,10 @@ vi.mock("@/app/actions/travel-planner", () => ({
   getUserPlansList: () => Promise.resolve({ success: true, plans: [] }),
 }));
 
+vi.mock("@/app/actions/user-settings", () => ({
+  updateDisplayLanguage: () => Promise.resolve({ success: true }),
+}));
+
 // Mock FlagsContext
 vi.mock("@/context/FlagsContext", () => ({
   useFlags: () => ({ isFlagged: () => false, toggleFlag: vi.fn() }),

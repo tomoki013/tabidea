@@ -29,17 +29,17 @@ describe("proxy language resolution", () => {
     expect(
       resolveRoutingLanguageForProxy({
         languageFromPath: "en",
-        preferredLanguage: "ja",
+        persistedLanguage: "ja",
         detectedLanguage: "ja",
       })
     ).toBe("en");
   });
 
-  it("falls back to preferred language when URL prefix is missing", () => {
+  it("falls back to persisted display language when URL prefix is missing", () => {
     expect(
       resolveRoutingLanguageForProxy({
         languageFromPath: null,
-        preferredLanguage: "ja",
+        persistedLanguage: "ja",
         detectedLanguage: "en",
       })
     ).toBe("ja");

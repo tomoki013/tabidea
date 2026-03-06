@@ -1,0 +1,221 @@
+{
+  "id": "5586a819-45de-457c-b228-0155040e7138",
+  "destination": "Kamakura & Enoshima",
+  "description": "Escape to the enchanting coastal town of Kamakura, where ancient temples meet the shimmering sea. This 2-day adventure is perfect for you and your friends, blending the spiritual serenity of historic shrines with the vibrant flavors of local cuisine. Picture yourself strolling through lush gardens, marveling at the Great Buddha, and savoring fresh seafood by the beach. With the charming Enoden train whisking you along the coast, every moment promises to be filled with discovery and delight.",
+  "heroImage": "https://images.unsplash.com/photo-1736870856705-ea82f83f20f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODExOTV8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Oh Taeyeon",
+  "heroImagePhotographerUrl": "https://unsplash.com/@ohtaeyeon?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Exploring Kamakura's Temples and Local Delights",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Kamakura Station",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Hase Station",
+          "time": "09:10"
+        },
+        "duration": "10m",
+        "memo": "Take the Enoden train to Hase Station for easy access to Hase-dera Temple."
+      },
+      "activities": [
+        {
+          "time": "09:15",
+          "activity": "Hase-dera Temple",
+          "description": "Start your day at Hase-dera Temple, known for its beautiful gardens and the impressive statue of Kannon, the Goddess of Mercy. The temple offers stunning views of the coastline, making it a perfect spot for some morning tranquility.",
+          "searchQuery": "Hase-dera Temple",
+          "locationEn": "Kamakura, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Great Buddha of Kamakura",
+          "description": "Next, visit the iconic Great Buddha, a symbol of Kamakura. Standing at 13.35 meters tall, this bronze statue is a must-see. You can even go inside for a unique perspective!",
+          "searchQuery": "Great Buddha of Kamakura",
+          "locationEn": "Kamakura, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Komachi Street",
+          "description": "Head to Komachi Street for lunch, where you can enjoy a variety of local delicacies. Try the famous shirasu-don (whitebait rice bowl) or some delicious matcha sweets at one of the many charming cafes.",
+          "searchQuery": "Komachi Street",
+          "locationEn": "Kamakura, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through Komachi Street",
+          "description": "After lunch, take some time to explore Komachi Street. This vibrant street is lined with shops selling traditional crafts, snacks, and souvenirs. Don’t forget to sample some freshly made mochi!",
+          "searchQuery": "Komachi Street",
+          "locationEn": "Kamakura, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Enoden Train to Enoshima",
+          "description": "Catch the Enoden train from Kamakura to Enoshima. This scenic ride along the coast offers beautiful views of the ocean and is a delightful experience in itself.",
+          "searchQuery": "Enoden Train",
+          "locationEn": "Kamakura, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Enoshima Island",
+          "description": "Once you arrive at Enoshima, take some time to explore the island. Visit the Enoshima Shrine and enjoy the stunning views from the top of the island. The coastal scenery is breathtaking, especially at sunset.",
+          "searchQuery": "Enoshima Island",
+          "locationEn": "Enoshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Enoshima",
+          "description": "Enjoy dinner at one of the seaside restaurants on Enoshima. Fresh seafood is a highlight here, so be sure to try the local specialties like grilled fish or sashimi while enjoying the ocean view.",
+          "searchQuery": "Enoshima Seafood Restaurant",
+          "locationEn": "Enoshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Check-in at Hotel",
+          "description": "After a day of exploration, check in to your hotel in Enoshima. Relax and unwind, or take a stroll along the beach to enjoy the evening breeze.",
+          "searchQuery": "Enoshima Hotel",
+          "locationEn": "Enoshima, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "A Day at Enoshima Island",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Kamakura Station",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Enoshima Station",
+          "time": "09:20"
+        },
+        "duration": "20m",
+        "memo": "Take the Enoden train for a scenic ride along the coast."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Enoshima Shrine",
+          "description": "Start your day with a visit to the beautiful Enoshima Shrine, nestled among lush greenery. The shrine is dedicated to Benten, the goddess of music and entertainment, and offers stunning views of the surrounding area.",
+          "searchQuery": "Enoshima Shrine",
+          "locationEn": "Enoshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Enoshima Sea Candle",
+          "description": "Climb up to the Enoshima Sea Candle for breathtaking panoramic views of the coastline and Mount Fuji on clear days. The lighthouse offers a unique perspective of the area and is a perfect photo opportunity.",
+          "searchQuery": "Enoshima Sea Candle",
+          "locationEn": "Enoshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Enoshima Island",
+          "description": "Enjoy a delicious seafood lunch at one of the local restaurants on Enoshima Island. Try the famous shirasu-don (whitebait rice bowl) for a true taste of the region.",
+          "searchQuery": "Enoshima Seafood Restaurant",
+          "locationEn": "Enoshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Shonan Beach",
+          "description": "After lunch, head to Shonan Beach for some relaxation. Take a stroll along the sandy shores, enjoy the ocean breeze, and if you're feeling adventurous, rent a paddleboard or try surfing.",
+          "searchQuery": "Shonan Beach",
+          "locationEn": "Kamakura, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Hase-dera Temple",
+          "description": "Return to Kamakura and visit Hase-dera Temple, known for its beautiful gardens and the impressive statue of Kannon, the goddess of mercy. The temple offers a peaceful atmosphere and stunning views of the city.",
+          "searchQuery": "Hase-dera Temple",
+          "locationEn": "Kamakura, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Kamakura",
+          "description": "End your day with dinner at a cozy izakaya in Kamakura. Enjoy local dishes and perhaps some sake to unwind after a day of exploration.",
+          "searchQuery": "Kamakura Izakaya",
+          "locationEn": "Kamakura, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

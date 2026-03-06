@@ -1,0 +1,271 @@
+{
+  "id": "96b60026-8e4f-4264-8233-213b5646991f",
+  "destination": "名古屋・長久手",
+  "description": "愛知県の名古屋と長久手で、家族みんなが楽しめる3日間の旅に出かけましょう。ジブリパークの魔法のような世界に浸り、名古屋の美味しいグルメを堪能しながら、子供たちと一緒に楽しい思い出を作ることができます。",
+  "days": [
+    {
+      "day": 1,
+      "title": "名古屋の魅力を探る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "名古屋名物のモーニングセットを楽しむ朝食。トーストやゆで卵、サラダが付いて、元気に一日をスタート！",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "名古屋城",
+          "description": "名古屋のシンボル、名古屋城を訪れます。美しい天守閣と広大な庭園を散策し、歴史を感じるひとときをお楽しみください。",
+          "searchQuery": "Nagoya Castle",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "名古屋名物ひつまぶしランチ",
+          "description": "名古屋名物のひつまぶしを楽しむランチ。香ばしい鰻を贅沢に使った料理で、食べ方を変えながら楽しむのがポイントです。",
+          "searchQuery": "Hitsumabushi",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "大須観音",
+          "description": "大須観音を訪れ、歴史ある寺院の雰囲気を感じながら、周辺の商店街でお土産探しも楽しめます。子供向けの遊び場も近くにあります。",
+          "searchQuery": "Osu Kannon Temple",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "大須商店街散策",
+          "description": "大須商店街を散策し、地元のグルメやユニークなお店を楽しみます。子供向けのゲームセンターやお菓子屋さんもあり、家族で楽しめるスポットです。",
+          "searchQuery": "Osu Shopping District",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "名古屋の夜景を楽しむ",
+          "description": "名古屋の夜景を楽しむために、名古屋テレビ塔へ。展望台からの美しい夜景は、家族の思い出に残ることでしょう。",
+          "searchQuery": "Nagoya TV Tower",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "名古屋名物味噌カツディナー",
+          "description": "名古屋名物の味噌カツを楽しむディナー。ジューシーな豚カツに特製の味噌だれがかかっていて、子供たちも大満足！",
+          "searchQuery": "Miso Katsu",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ジブリパークで夢の世界へ",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "名古屋",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "長久手",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "名古屋駅からリニモで長久手へ向かいます。子供たちも楽しめる電車の旅です。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "ジブリパーク",
+          "description": "夢の世界が広がるジブリパークで、子供たちと一緒にアニメの世界を体験しましょう。各エリアには、ジブリ作品のキャラクターや風景が再現されており、思い出に残る時間を過ごせます。",
+          "searchQuery": "Ghibli Park",
+          "locationEn": "Nagakute, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ジブリパーク内のレストランでランチ",
+          "description": "ジブリパーク内のレストランで、ジブリの世界観を楽しみながらランチをいただきます。子供向けのメニューも充実しているので、家族みんなで楽しめます。",
+          "searchQuery": "Ghibli Park Restaurant",
+          "locationEn": "Nagakute, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "長久手の自然散策",
+          "description": "ジブリパーク周辺の自然を散策し、子供たちと一緒に自然の中で遊びましょう。美しい景色を楽しみながら、リフレッシュできます。",
+          "searchQuery": "Nagakute Nature",
+          "locationEn": "Nagakute, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "長久手温泉でリラックス",
+          "description": "長久手の温泉で、旅の疲れを癒しましょう。家族で楽しめる温泉施設があり、子供たちも安心して遊べます。",
+          "searchQuery": "Nagakute Onsen",
+          "locationEn": "Nagakute, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "長久手の居酒屋で夕食",
+          "description": "地元の食材を使った料理が楽しめる居酒屋で、家族みんなで夕食を楽しみます。子供向けのメニューもあるので安心です。",
+          "searchQuery": "Nagakute Izakaya",
+          "locationEn": "Nagakute, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "名古屋の最後の楽しみ",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "長久手",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "名古屋市科学館",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "長久手から名古屋市科学館までの移動です。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "名古屋市科学館",
+          "description": "子供たちが楽しめる科学の不思議が詰まった名古屋市科学館。プラネタリウムや様々な体験型展示があり、家族で一日中楽しめます。",
+          "searchQuery": "Nagoya City Science Museum",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "名古屋名物ひつまぶしランチ",
+          "description": "名古屋名物のひつまぶしを楽しむランチ。香ばしい鰻をたっぷり使った料理で、子供たちも喜ぶ味わいです。",
+          "searchQuery": "Hitsumabushi",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "栄エリア散策",
+          "description": "名古屋の中心地、栄エリアを散策。ショッピングやカフェ巡りを楽しみながら、名古屋の雰囲気を満喫しましょう。",
+          "searchQuery": "Sakae",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "名古屋城",
+          "description": "名古屋のシンボル、名古屋城を訪れます。美しい天守閣や庭園を散策し、歴史を感じるひとときを過ごしましょう。",
+          "searchQuery": "Nagoya Castle",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "名古屋駅で夕食",
+          "description": "名古屋駅周辺で夕食を楽しみます。名古屋のグルメを堪能できるお店がたくさんありますので、家族でシェアしながら楽しんでください。",
+          "searchQuery": "Nagoya Station Restaurants",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "東京へ移動",
+          "description": "名古屋から東京へ移動します。楽しい思い出を胸に、次の旅へ向かいましょう。",
+          "searchQuery": "Tokyo",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

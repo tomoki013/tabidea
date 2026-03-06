@@ -1,0 +1,633 @@
+{
+  "id": "6008adda-e9b9-4585-a52b-51050e4c2f35",
+  "destination": "Paris",
+  "description": "Immerse yourself in the romantic allure of Paris, where every corner whispers tales of art, history, and culinary delights. This 7-day journey is designed for couples seeking to explore the city's iconic museums, charming streets, and delectable pastries. From the grandeur of the Louvre to the quaint cafes of Montmartre, each day unfolds like a beautifully crafted painting, inviting you to savor every moment together in the City of Light.",
+  "heroImage": "https://images.unsplash.com/photo-1598354605846-a51c52a4000a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODEzMzl8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Aurélien Lemasson-Théobald",
+  "heroImagePhotographerUrl": "https://unsplash.com/@aurel__lens?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Paris",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de Flore",
+          "description": "Start your day with a classic Parisian breakfast at the iconic Café de Flore. Enjoy fresh croissants, café au lait, and the vibrant atmosphere of this historic café.",
+          "searchQuery": "Café de Flore",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Louvre Museum",
+          "description": "Explore the world-renowned Louvre Museum, home to thousands of works of art including the Mona Lisa and the Venus de Milo. Take your time to wander through the stunning galleries and soak in the rich history.",
+          "searchQuery": "Louvre Museum",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Le Fumoir",
+          "description": "Indulge in a delightful lunch at Le Fumoir, a stylish restaurant near the Louvre. Savor seasonal French dishes in a chic setting, perfect for a romantic meal.",
+          "searchQuery": "Le Fumoir",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Stroll along the Seine River",
+          "description": "Take a leisurely stroll along the Seine River, enjoying the picturesque views of Paris. Stop by the charming bookstalls and perhaps pick up a unique souvenir.",
+          "searchQuery": "Seine River",
+          "locationEn": "Paris, France",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Visit the Musée d'Orsay",
+          "description": "Discover the stunning collection of Impressionist and Post-Impressionist masterpieces at the Musée d'Orsay. The museum itself, housed in a former railway station, is a work of art.",
+          "searchQuery": "Musée d'Orsay",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Le Procope",
+          "description": "Enjoy a romantic dinner at Le Procope, the oldest café in Paris. Relish traditional French cuisine in an elegant setting filled with history.",
+          "searchQuery": "Le Procope",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening walk to the Arc de Triomphe",
+          "description": "End your day with a romantic evening walk to the Arc de Triomphe. The monument is beautifully illuminated at night, providing a perfect backdrop for photos.",
+          "searchQuery": "Arc de Triomphe",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Art and Culture at the Louvre",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café Marly",
+          "description": "Start your day with a delightful breakfast at Café Marly, located right next to the Louvre. Enjoy fresh pastries and a stunning view of the museum's glass pyramid.",
+          "searchQuery": "Café Marly",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Louvre Museum",
+          "description": "Explore the world-renowned Louvre Museum, home to thousands of works of art, including the Mona Lisa and the Venus de Milo. Allocate at least 3 hours to fully appreciate its vast collections.",
+          "searchQuery": "Louvre Museum",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Le Fumoir",
+          "description": "Indulge in a leisurely lunch at Le Fumoir, a chic restaurant just a short walk from the Louvre. Savor classic French dishes in a stylish setting, perfect for a romantic meal.",
+          "searchQuery": "Le Fumoir",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Tuileries Garden",
+          "description": "Stroll through the beautiful Tuileries Garden, located right next to the Louvre. Enjoy the serene atmosphere, beautiful sculptures, and perhaps grab a coffee from a nearby kiosk.",
+          "searchQuery": "Tuileries Garden",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Seine River Cruise",
+          "description": "Take a relaxing Seine River cruise to see Paris from a different perspective. Glide past iconic landmarks like Notre-Dame and the Eiffel Tower while enjoying the gentle breeze.",
+          "searchQuery": "Seine River Cruise",
+          "locationEn": "Paris, France",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Le Train Bleu",
+          "description": "End your day with a sumptuous dinner at Le Train Bleu, a historic restaurant located in the Gare de Lyon. The opulent decor and exquisite French cuisine make for a memorable dining experience.",
+          "searchQuery": "Le Train Bleu",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Montmartre and Sacré-Cœur",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Le Consulat",
+          "description": "Start your day with a delightful breakfast at Le Consulat, a charming café in Montmartre. Enjoy fresh croissants and rich coffee while soaking in the artistic atmosphere of this historic district.",
+          "searchQuery": "Le Consulat",
+          "locationEn": "Montmartre, Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit Sacré-Cœur Basilica",
+          "description": "After breakfast, head to the stunning Sacré-Cœur Basilica. Climb the steps to the dome for breathtaking views of Paris, and explore the beautiful interior adorned with mosaics and serene chapels.",
+          "searchQuery": "Sacré-Cœur Basilica",
+          "locationEn": "Montmartre, Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Le Refuge des Fondus",
+          "description": "For lunch, enjoy a unique dining experience at Le Refuge des Fondus, known for its fondue and quirky wine served in baby bottles. It's a fun spot that captures the spirit of Montmartre.",
+          "searchQuery": "Le Refuge des Fondus",
+          "locationEn": "Montmartre, Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Place du Tertre",
+          "description": "Stroll through Place du Tertre, where local artists display their work. You can even get your portrait drawn! This lively square is perfect for soaking up the artistic vibe of Montmartre.",
+          "searchQuery": "Place du Tertre",
+          "locationEn": "Montmartre, Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the Espace Dalí",
+          "description": "Dive into the surreal world of Salvador Dalí at the Espace Dalí. This museum showcases a fantastic collection of his works, providing insight into his creative genius.",
+          "searchQuery": "Espace Dalí",
+          "locationEn": "Montmartre, Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Coffee at Café des Deux Moulins",
+          "description": "Take a break at the iconic Café des Deux Moulins, made famous by the film 'Amélie'. Enjoy a cup of coffee and a slice of tart while reminiscing about your day in Montmartre.",
+          "searchQuery": "Café des Deux Moulins",
+          "locationEn": "Montmartre, Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Le Moulin de la Galette",
+          "description": "End your day with a romantic dinner at Le Moulin de la Galette, a historic restaurant known for its beautiful terrace and exquisite French cuisine. Enjoy a meal surrounded by the charm of Montmartre.",
+          "searchQuery": "Le Moulin de la Galette",
+          "locationEn": "Montmartre, Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "A Day of Impressionism",
+      "activities": [
+        {
+          "time": "08:30",
+          "activity": "Breakfast at Café de Flore",
+          "description": "Start your day at the iconic Café de Flore, a historic café known for its rich literary and artistic history. Enjoy a classic French breakfast with fresh croissants and café au lait, soaking in the Parisian atmosphere.",
+          "searchQuery": "Café de Flore",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit Musée d'Orsay",
+          "description": "Explore the stunning Musée d'Orsay, home to an extensive collection of Impressionist masterpieces. Don't miss works by Monet, Van Gogh, and Degas, all housed in a beautifully converted railway station.",
+          "searchQuery": "Musée d'Orsay",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Les Deux Magots",
+          "description": "Enjoy lunch at Les Deux Magots, another historic café frequented by famous artists and writers. Savor traditional French dishes while enjoying the vibrant street life of Saint-Germain-des-Prés.",
+          "searchQuery": "Les Deux Magots",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through Saint-Germain-des-Prés",
+          "description": "Take a leisurely walk through the charming streets of Saint-Germain-des-Prés. Discover boutique shops, art galleries, and the beautiful architecture that defines this artistic neighborhood.",
+          "searchQuery": "Saint-Germain-des-Prés",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Relax at Luxembourg Gardens",
+          "description": "Unwind at the picturesque Luxembourg Gardens, a perfect spot for a romantic stroll. Enjoy the beautifully manicured lawns, fountains, and the iconic Medici Fountain.",
+          "searchQuery": "Luxembourg Gardens",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit the Panthéon",
+          "description": "Explore the Panthéon, a mausoleum that honors France's great figures. The stunning architecture and the view from the dome are worth the visit.",
+          "searchQuery": "Panthéon",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Le Procope",
+          "description": "End your day with dinner at Le Procope, the oldest café in Paris. Indulge in classic French cuisine in a setting filled with history and charm.",
+          "searchQuery": "Le Procope",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Château de Versailles Excursion",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Paris",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Versailles",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the RER C train from Paris to Versailles for a scenic ride."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Visit the Palace of Versailles",
+          "description": "Explore the opulent rooms of the Palace of Versailles, including the Hall of Mirrors and the King's Apartments. The grandeur of this UNESCO World Heritage site is truly breathtaking, making it a must-see for any visitor to Paris.",
+          "searchQuery": "Palace of Versailles",
+          "locationEn": "Versailles, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at La Petite Venise",
+          "description": "Enjoy a delightful lunch at La Petite Venise, located within the gardens of Versailles. This charming restaurant offers a selection of French dishes in a picturesque setting, perfect for a romantic meal.",
+          "searchQuery": "La Petite Venise",
+          "locationEn": "Versailles, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through the Gardens of Versailles",
+          "description": "Take a leisurely walk through the stunning Gardens of Versailles, designed by André Le Nôtre. Marvel at the perfectly manicured lawns, fountains, and sculptures that create a serene atmosphere.",
+          "searchQuery": "Gardens of Versailles",
+          "locationEn": "Versailles, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit the Grand Trianon",
+          "description": "Explore the Grand Trianon, a beautiful palace built for Louis XIV. This elegant retreat is surrounded by lush gardens and offers a glimpse into the royal lifestyle of the French monarchy.",
+          "searchQuery": "Grand Trianon",
+          "locationEn": "Versailles, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Paris",
+          "description": "Head back to Paris via the RER C train, reflecting on a day filled with history and beauty at Versailles.",
+          "locationEn": "Paris, France",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Café de Flore",
+          "description": "End your day with a romantic dinner at the iconic Café de Flore. Known for its rich history and classic French cuisine, this café is the perfect spot to unwind and enjoy the Parisian atmosphere.",
+          "searchQuery": "Café de Flore",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Culinary Delights and Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de Flore",
+          "description": "Start your day at the iconic Café de Flore, a favorite among artists and intellectuals. Enjoy a classic French breakfast of croissants and café au lait while soaking in the Parisian atmosphere.",
+          "searchQuery": "Café de Flore",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Le Marais District",
+          "description": "Stroll through the charming streets of Le Marais, known for its historic architecture and trendy boutiques. Don't miss the Place des Vosges, one of the oldest squares in Paris, perfect for a romantic walk.",
+          "searchQuery": "Le Marais",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at L'As du Fallafel",
+          "description": "Indulge in some of the best falafel in Paris at L'As du Fallafel, located on Rue des Rosiers. This bustling eatery is famous for its delicious, crispy falafel wraps and vibrant atmosphere.",
+          "searchQuery": "L'As du Fallafel",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Picasso Museum",
+          "description": "Immerse yourself in the world of Pablo Picasso at the Picasso Museum, which houses an extensive collection of his works. The museum is set in a beautiful hotel particulier, adding to the artistic experience.",
+          "searchQuery": "Picasso Museum",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll along the Seine River",
+          "description": "Take a leisurely walk along the Seine River, enjoying the picturesque views of the bridges and historic buildings. This is a perfect opportunity for some romantic photos together.",
+          "searchQuery": "Seine River",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Le Train Bleu",
+          "description": "Dine at the stunning Le Train Bleu, a historic restaurant located in the Gare de Lyon. The opulent decor and exquisite French cuisine make for a memorable dining experience.",
+          "searchQuery": "Le Train Bleu",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening at Montmartre",
+          "description": "End your day with a visit to Montmartre, where you can enjoy the vibrant atmosphere and perhaps catch a street performance. The view from the Sacré-Cœur Basilica at sunset is simply breathtaking.",
+          "searchQuery": "Montmartre",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Farewell Paris",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café de Flore",
+          "description": "Start your day with a classic Parisian breakfast at the iconic Café de Flore. Enjoy fresh croissants, rich coffee, and the vibrant atmosphere that has attracted artists and intellectuals for decades.",
+          "searchQuery": "Café de Flore",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Notre-Dame Cathedral",
+          "description": "Explore the stunning Notre-Dame Cathedral, a masterpiece of French Gothic architecture. Marvel at its intricate facade and, if time permits, climb to the towers for a breathtaking view of the Seine.",
+          "searchQuery": "Notre-Dame Cathedral",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Stroll around Île de la Cité",
+          "description": "Take a leisurely walk around Île de la Cité, soaking in the historic charm of this island. Don't miss the beautiful Sainte-Chapelle with its stunning stained glass windows.",
+          "searchQuery": "Sainte-Chapelle",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Le Procope",
+          "description": "Indulge in a delightful lunch at Le Procope, the oldest café in Paris. Savor traditional French dishes in a setting filled with history and elegance.",
+          "searchQuery": "Le Procope",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Latin Quarter",
+          "description": "Wander through the charming streets of the Latin Quarter, known for its bohemian vibe and vibrant atmosphere. Discover quaint bookstores, artisan shops, and perhaps stop for a gelato.",
+          "searchQuery": "Latin Quarter",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Musée d'Orsay",
+          "description": "Immerse yourself in the world of Impressionist art at the Musée d'Orsay. Housed in a former railway station, this museum boasts an impressive collection of masterpieces by Monet, Van Gogh, and more.",
+          "searchQuery": "Musée d'Orsay",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Le Train Bleu",
+          "description": "End your Parisian adventure with a romantic dinner at Le Train Bleu, a stunning restaurant located in the Gare de Lyon. Enjoy exquisite French cuisine in a beautifully decorated setting.",
+          "searchQuery": "Le Train Bleu",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useDebounce } from "@/lib/hooks";
 import {
   FaFilter,
@@ -28,6 +28,7 @@ import {
   getDays,
   getAreaFromRegion,
 } from "@/lib/sample-plans";
+import { localizeAreaLabel, localizeTagLabel } from "@/lib/sample-plan-localization";
 
 interface SamplePlanListProps {
   plans: SamplePlan[];
@@ -511,6 +512,7 @@ const regionIconMap: Record<string, string> = {
 
 export default function SamplePlanList({ plans }: SamplePlanListProps) {
   const t = useTranslations("components.extraUi.samplePlanList");
+  const locale = useLocale();
   const [selectedTab, setSelectedTab] = useState<"all" | "domestic" | "overseas">("all");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
@@ -566,6 +568,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
           plan.description,
           ...plan.input.destinations,
           ...plan.tags,
+          ...plan.tags.map((tag) => localizeTagLabel(tag, locale)),
         ].join(" ").toLowerCase();
 
         if (!searchTargets.includes(query)) return false;
@@ -592,7 +595,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
 
       return tagMatch && regionMatch && daysMatch;
     });
-  }, [plans, selectedTags, selectedRegions, selectedDays, selectedTab, debouncedSearchQuery]);
+  }, [plans, selectedTags, selectedRegions, selectedDays, selectedTab, debouncedSearchQuery, locale]);
 
   // フィルタリング条件が変わったら表示件数をリセット
   useEffect(() => {
@@ -737,7 +740,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
         `}
       >
         {info && <span className="text-base">{info.icon}</span>}
-        <span className="font-medium">{tag}</span>
+        <span className="font-medium">{localizeTagLabel(tag, locale)}</span>
       </motion.button>
     );
   };
@@ -761,7 +764,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
         `}
       >
         <span className="text-base">{icon}</span>
-        <span className="font-medium">{region}</span>
+        <span className="font-medium">{localizeTagLabel(region, locale)}</span>
       </motion.button>
     );
   };
@@ -985,7 +988,9 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
                     {Object.entries(groupedRegions).map(([area, regions]) => (
                       regions.length > 0 && (
                         <div key={area} className="space-y-2">
-                          <h5 className="text-xs font-bold text-stone-400 uppercase tracking-wider pl-1">{area}</h5>
+                          <h5 className="text-xs font-bold text-stone-400 uppercase tracking-wider pl-1">
+                            {localizeAreaLabel(area, locale)}
+                          </h5>
                           <div className="flex flex-wrap gap-2">
                             {regions.map(region => renderRegionButton(region, selectedRegions.includes(region)))}
                           </div>
@@ -1028,7 +1033,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
               whileHover={{ scale: 1.05 }}
               className="inline-flex items-center gap-1 px-3 py-1 text-xs font-bold rounded-full bg-[#e67e22] text-white shadow-sm hover:bg-[#d35400]"
             >
-              {regionIconMap[region] || "📍"} {region}
+              {regionIconMap[region] || "📍"} {localizeTagLabel(region, locale)}
               <FaTimes className="ml-1 opacity-80" />
             </motion.button>
           ))}
@@ -1051,7 +1056,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
                 whileHover={{ scale: 1.05 }}
                 className="inline-flex items-center gap-1 px-3 py-1 text-xs font-bold rounded-full bg-stone-700 text-white shadow-sm hover:bg-stone-900"
               >
-                {info?.icon} {tag}
+                {info?.icon} {localizeTagLabel(tag, locale)}
                 <FaTimes className="ml-1 opacity-80" />
               </motion.button>
             );

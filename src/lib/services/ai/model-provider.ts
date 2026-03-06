@@ -68,8 +68,24 @@ const TASK_MODEL_ENV_MAP_OPENAI: Record<AITaskName, string> = {
 let googleInstance: ReturnType<typeof createGoogleGenerativeAI> | null = null;
 let openaiInstance: ReturnType<typeof createOpenAI> | null = null;
 
+function resolveGoogleApiKey(apiKey?: string): string | undefined {
+  if (apiKey) return apiKey;
+  if (process.env.USE_SAMPLE_AI_KEYS === 'true') {
+    return process.env.SAMPLE_GOOGLE_GENERATIVE_AI_API_KEY || process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+  }
+  return process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+}
+
+function resolveOpenAIApiKey(apiKey?: string): string | undefined {
+  if (apiKey) return apiKey;
+  if (process.env.USE_SAMPLE_AI_KEYS === 'true') {
+    return process.env.SAMPLE_OPENAI_API_KEY || process.env.OPENAI_API_KEY;
+  }
+  return process.env.OPENAI_API_KEY;
+}
+
 function getGoogleProvider(apiKey?: string): ReturnType<typeof createGoogleGenerativeAI> {
-  const key = apiKey || process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+  const key = resolveGoogleApiKey(apiKey);
   if (!key) throw new Error('GOOGLE_GENERATIVE_AI_API_KEY is required for Gemini provider');
   if (!googleInstance || apiKey) {
     const instance = createGoogleGenerativeAI({ apiKey: key });
@@ -80,7 +96,7 @@ function getGoogleProvider(apiKey?: string): ReturnType<typeof createGoogleGener
 }
 
 function getOpenAIProvider(apiKey?: string): ReturnType<typeof createOpenAI> {
-  const key = apiKey || process.env.OPENAI_API_KEY;
+  const key = resolveOpenAIApiKey(apiKey);
   if (!key) throw new Error('OPENAI_API_KEY is required for OpenAI provider');
   if (!openaiInstance || apiKey) {
     const instance = createOpenAI({ apiKey: key });
@@ -185,7 +201,7 @@ export function resolveModel(
  * Check if both providers are available (both API keys set).
  */
 export function isBothProvidersAvailable(): boolean {
-  return !!(process.env.GOOGLE_GENERATIVE_AI_API_KEY && process.env.OPENAI_API_KEY);
+  return !!(resolveGoogleApiKey() && resolveOpenAIApiKey());
 }
 
 /**

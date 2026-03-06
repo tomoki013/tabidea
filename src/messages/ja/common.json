@@ -101,9 +101,9 @@
       "dark": "ダーク",
       "system": "システム"
     },
-    "languageAndRegion": "言語と地域",
-    "languageDescription": "言語を切り替えると、その言語の推奨地域が初期値として設定されます。",
-    "displayLanguage": "表示言語",
+    "languageAndRegion": "出力言語と地域",
+    "languageDescription": "ここで設定した言語・地域はAI出力専用です。アプリの表示言語はヘッダーの言語切り替えで変更してください。",
+    "displayLanguage": "出力言語",
     "region": "地域",
     "regionSearchPlaceholder": "地域を検索（国名・コード）",
     "regionSearchNoResults": "一致する地域が見つかりません",
@@ -116,8 +116,8 @@
     "homeBaseCityRequestPrefix": "候補にない都市は",
     "homeBaseCityRequestLink": "お問い合わせフォーム",
     "homeBaseCityRequestSuffix": "から追加リクエストしてください。",
-    "languageAndRouteUsage": "AIは指定言語でプランを出力し、指定した地域・都市を出発地と帰着地として利用します。",
-    "aiOutputAndRoutePolicy": "AIプラン生成では、設定した言語で出力し、ホーム都市を起点に往復する旅程になるよう優先して生成します。",
+    "languageAndRouteUsage": "AIは指定した出力言語でプランを生成し、指定した地域・都市を出発地と帰着地として利用します。",
+    "aiOutputAndRoutePolicy": "表示言語はヘッダーで切り替え、AI出力はこの設定に従って生成されます。",
     "dangerZone": {
       "title": "危険なエリア",
       "openDeleteButton": "アカウントを削除する",

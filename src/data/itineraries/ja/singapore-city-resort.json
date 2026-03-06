@@ -1,0 +1,471 @@
+{
+  "id": "c9751b1d-778e-48e9-b401-72d8109bd182",
+  "destination": "シンガポール",
+  "description": "シンガポールの魅力を家族で満喫する5日間の旅へようこそ。都市観光、テーマパーク、グルメ、夜景を存分に楽しむプランをお届けします。マーライオンを見たり、動物園や植物園で子供たちと楽しいひとときを過ごすことができます。シンガポールの多様な文化と美味しい料理を体験しながら、家族の絆を深める素敵な旅をお楽しみください。",
+  "heroImage": "https://images.unsplash.com/photo-1600664356348-10686526af4f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODE2OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Jisun Han",
+  "heroImagePhotographerUrl": "https://unsplash.com/@hanzlog?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "シンガポール到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "シンガポールのホテルで、地元のフルーツやパンを楽しむ朝食をいただきます。エネルギーをチャージして、楽しい一日をスタートしましょう。",
+          "locationEn": "Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "マーライオン公園",
+          "description": "シンガポールのシンボル、マーライオンを見に行きましょう。公園内を散策しながら、シンガポール川の美しい景色を楽しむことができます。子供たちも大喜びのスポットです。",
+          "searchQuery": "Merlion Park",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ローカルフードでランチ",
+          "description": "近くのホーカーセンターで、シンガポール名物のチキンライスやラクサを楽しみましょう。地元の人々に混じって、本場の味を堪能できます。",
+          "locationEn": "Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "シンガポール動物園",
+          "description": "世界的に有名なシンガポール動物園へ。子供たちが楽しめるアクティビティがたくさんあり、動物たちの自然な姿を間近で見ることができます。",
+          "searchQuery": "Singapore Zoo",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ガーデンズ・バイ・ザ・ベイ",
+          "description": "美しい植物園で、スーパーツリーやフラワードームを見学。夕方のライトアップも素晴らしく、家族での思い出作りにぴったりです。",
+          "searchQuery": "Gardens by the Bay",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "マリーナベイサンズでディナー",
+          "description": "マリーナベイサンズ内のレストランで、シンガポールの夜景を眺めながらディナーを楽しみます。特別なひとときを家族で過ごしましょう。",
+          "locationEn": "Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "マリーナベイサンズのライトショー",
+          "description": "マリーナベイサンズの前で行われる美しいライトショーを観賞。夜空に広がる光の演出は、子供たちにも大人気です。",
+          "searchQuery": "Marina Bay Sands Light Show",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "動物園とナイトサファリ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "シンガポールのホテルで、豊富なビュッフェスタイルの朝食を楽しみます。地元の料理や国際色豊かなメニューが揃っており、家族みんなで満足できる内容です。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "シンガポール動物園",
+          "description": "世界的に有名なシンガポール動物園で、動物たちの自然な生息環境を体験しましょう。特に子供たちには、動物とのふれあいコーナーやショーが大人気です。",
+          "searchQuery": "Singapore Zoo",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "動物園内でランチ",
+          "description": "動物園内のカフェで、軽食やサンドイッチを楽しみます。子供向けのメニューも充実しているので、家族での食事にぴったりです。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "シンガポール植物園",
+          "description": "ユネスコ世界遺産に登録されたシンガポール植物園を訪れ、色とりどりの花々や広大な緑地を散策します。特に子供たちには、遊び場や水遊びスポットがあり、楽しめる場所です。",
+          "searchQuery": "Singapore Botanic Gardens",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ナイトサファリの準備",
+          "description": "ナイトサファリに向けて、動物園からの移動を行います。夕食を軽く済ませて、ナイトサファリの開園時間に合わせて準備を整えましょう。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ナイトサファリ",
+          "description": "シンガポールのナイトサファリで、夜行性の動物たちを観察します。トラムに乗って、暗闇の中での動物たちの姿を楽しむことができます。子供たちにとっても、特別な体験になるでしょう。",
+          "searchQuery": "Night Safari",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ナイトサファリ内でディナー",
+          "description": "ナイトサファリ内のレストランで、アジア料理を楽しみます。夜の動物たちを眺めながらの食事は、家族の思い出に残ることでしょう。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ユニバーサル・スタジオ・シンガポール",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "シンガポールのホテルで、アジアの朝食を楽しみます。フルーツや点心、米粥など、バラエティ豊かなメニューでエネルギーをチャージ。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ユニバーサル・スタジオ・シンガポール",
+          "description": "家族全員が楽しめるテーマパーク、ユニバーサル・スタジオ・シンガポールへ。映画の世界を体験できるアトラクションやショーが盛りだくさんで、特に子供たちに人気のキャラクターたちと写真を撮るのも忘れずに！",
+          "searchQuery": "Universal Studios Singapore",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "パーク内でランチ",
+          "description": "ユニバーサル・スタジオ内のレストランでランチを楽しみます。多国籍料理が揃っているので、家族みんなが好きなものを選べます。",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アトラクション巡り",
+          "description": "午後はアトラクションを巡りましょう。スリル満点のライドや、子供向けの優しいアトラクションもあり、家族で楽しむことができます。",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ユニバーサル・スタジオのショー観賞",
+          "description": "夕方には、ユニバーサル・スタジオの人気ショーを観賞。迫力あるパフォーマンスに子供たちも大興奮！",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "シンガポールの夜景を楽しむディナー",
+          "description": "シンガポールの美しい夜景を眺めながら、近くのレストランでディナーを楽しみます。シーフードや地元の料理を堪能し、素敵な一日の締めくくりに。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "マーライオン公園散策",
+          "description": "ディナーの後は、マーライオン公園へ。夜のライトアップされたマーライオンを見ながら、家族で記念撮影を楽しみましょう。",
+          "searchQuery": "Merlion Park",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "セントーサ島とビーチでのリラックス",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "シンガポールのホテルで、アジアの朝食を楽しみます。フルーツや点心、米粥など、バラエティ豊かなメニューでエネルギーをチャージ。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "マーライオン公園訪問",
+          "description": "シンガポールのシンボル、マーライオンを見に行きます。朝の光の中での写真撮影は特におすすめ。公園内を散策しながら、シンガポールの美しい景色を楽しんでください。",
+          "searchQuery": "Merlion Park",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "セントーサ島へ移動",
+          "description": "セントーサ島へは、モノレールやケーブルカーでの移動が楽しめます。特にケーブルカーからの眺めは絶景です。",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "セントーサ島でのアクティビティ",
+          "description": "セントーサ島では、ユニバーサル・スタジオ・シンガポールやアドベンチャーコーブ・ウォーターパークなど、家族で楽しめるアトラクションが盛りだくさん。子供たちと一緒に思い出に残る体験をしましょう。",
+          "searchQuery": "Universal Studios Singapore",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "セントーサ島でランチ",
+          "description": "セントーサ島内のレストランで、シーフードやアジア料理を楽しみます。特に、海の幸を使った料理は新鮮でおすすめです。",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "シロソビーチでリラックス",
+          "description": "シロソビーチでのんびりと過ごします。子供たちは砂遊びや海水浴を楽しみ、大人はビーチチェアでリラックス。美しい海を眺めながら、穏やかな時間を過ごしましょう。",
+          "searchQuery": "Siloso Beach",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "セントーサ島からシンガポール市内へ戻る",
+          "description": "セントーサ島からモノレールやバスでシンガポール市内へ戻ります。移動中に、今日の楽しい思い出を振り返りましょう。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "シンガポールのナイトマーケットで夕食",
+          "description": "シンガポールのナイトマーケットで、地元のストリートフードを楽しみます。チキンライスやラクサなど、シンガポールならではの味を堪能してください。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "マリーナベイサンズの夜景観賞",
+          "description": "マリーナベイサンズの展望台から、シンガポールの美しい夜景を楽しみます。特に、ライトアップされたマーライオンやガーデンズ・バイ・ザ・ベイの景色は圧巻です。",
+          "searchQuery": "Marina Bay Sands SkyPark",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "シンガポールのグルメと帰国",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "シンガポールのホテルで、アジアの朝食を楽しみます。特に、チキンライスやカヤトーストはおすすめです。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "シンガポール動物園",
+          "description": "子供たちと一緒にシンガポール動物園を訪れます。広大な敷地に多様な動物が自然に近い環境で展示されており、特にオランウータンのショーは必見です。",
+          "searchQuery": "Singapore Zoo",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ホーカーセンターでランチ",
+          "description": "地元のホーカーセンターで、シンガポール名物のチキンライスやラクサを楽しみましょう。手頃な価格で本格的な味が楽しめます。",
+          "searchQuery": "Maxwell Food Centre",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "シンガポール植物園",
+          "description": "次に、シンガポール植物園へ。ユネスコ世界遺産にも登録されているこの場所では、色とりどりの花々や広大な緑地を散策できます。特に子供たちが楽しめる遊び場もあります。",
+          "searchQuery": "Singapore Botanic Gardens",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "チャイナタウン散策",
+          "description": "シンガポールのチャイナタウンを散策し、地元の文化やお土産を楽しみます。お茶やスイーツを試食するのも良いでしょう。",
+          "searchQuery": "Chinatown Singapore",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "マーライオン公園で夕日鑑賞",
+          "description": "シンガポールのシンボル、マーライオンを見に行きます。夕暮れ時の美しい景色をバックに家族で記念撮影を楽しみましょう。",
+          "searchQuery": "Merlion Park",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "クラーク・キーでディナー",
+          "description": "クラーク・キーのレストランでディナーを楽しみます。川沿いの美しい夜景を眺めながら、シーフードや地元料理を堪能できます。",
+          "searchQuery": "Jumbo Seafood",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

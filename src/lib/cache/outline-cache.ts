@@ -40,6 +40,7 @@ interface OutlineCacheParams {
   isDestinationDecided?: boolean;
   region?: string;
   travelVibe?: string;
+  outputLanguage?: string;
 }
 
 // ============================================
@@ -61,6 +62,7 @@ async function generateHash(params: OutlineCacheParams): Promise<string> {
     isDestinationDecided: params.isDestinationDecided ?? true,
     region: params.region?.trim().toLowerCase() ?? '',
     travelVibe: params.travelVibe?.trim().toLowerCase() ?? '',
+    outputLanguage: params.outputLanguage?.trim().toLowerCase() ?? '',
   };
 
   const str = JSON.stringify(normalized);

@@ -47,6 +47,14 @@ export type OutlineActionState = {
   remaining?: number;
 };
 
+export type ExecuteOutlineGenerationOptions = {
+  isRetry?: boolean;
+  skipUsageCheck?: boolean;
+  skipCache?: boolean;
+  skipHeroImage?: boolean;
+  preferredLanguage?: LanguageCode;
+};
+
 type PlanGenerationTranslator = (
   key: string,
   values?: Record<string, unknown>
@@ -152,86 +160,98 @@ export async function getUserConstraintPrompt(): Promise<string> {
  */
 export async function executeOutlineGeneration(
   input: UserInput,
-  options?: { isRetry?: boolean },
+  options?: ExecuteOutlineGenerationOptions,
   onProgress?: ProgressCallback
 ): Promise<OutlineActionState> {
   const { settings } = await getUserSettings();
-  const preferredLanguage = getResolvedLanguage(settings?.preferredLanguage);
+  const preferredLanguage =
+    options?.preferredLanguage && isLanguageCode(options.preferredLanguage)
+      ? options.preferredLanguage
+      : getResolvedLanguage(settings?.preferredLanguage);
   const t = createPlanGenerationTranslator(preferredLanguage);
 
   const timer = createOutlineTimer();
   console.log(`[action] generatePlanOutline started`);
 
   // 利用制限チェック
-  onProgress?.("usage_check", t("progress.steps.usage_check"));
-  const limitResult = await timer.measure("usage_check", () =>
-    checkAndRecordUsage(
-      "plan_generation",
-      {
-        destination: input.destinations.join(", ") || input.region,
-        isDestinationDecided: input.isDestinationDecided,
-      },
-      { skipConsume: options?.isRetry === true }
-    )
-  );
+  if (!options?.skipUsageCheck) {
+    onProgress?.("usage_check", t("progress.steps.usage_check"));
+    const limitResult = await timer.measure("usage_check", () =>
+      checkAndRecordUsage(
+        "plan_generation",
+        {
+          destination: input.destinations.join(", ") || input.region,
+          isDestinationDecided: input.isDestinationDecided,
+        },
+        { skipConsume: options?.isRetry === true }
+      )
+    );
 
-  if (!limitResult.allowed) {
-    return {
-      success: false,
-      limitExceeded: true,
-      userType: limitResult.userType,
-      resetAt: limitResult.resetAt?.toISOString() ?? null,
-      remaining: limitResult.remaining,
-      message: t("server.errors.limitExceeded"),
-    };
+    if (!limitResult.allowed) {
+      return {
+        success: false,
+        limitExceeded: true,
+        userType: limitResult.userType,
+        resetAt: limitResult.resetAt?.toISOString() ?? null,
+        remaining: limitResult.remaining,
+        message: t("server.errors.limitExceeded"),
+      };
+    }
   }
 
   const hasAIKey =
-    process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.OPENAI_API_KEY;
+    process.env.GOOGLE_GENERATIVE_AI_API_KEY ||
+    process.env.OPENAI_API_KEY ||
+    (process.env.USE_SAMPLE_AI_KEYS === "true" &&
+      (process.env.SAMPLE_GOOGLE_GENERATIVE_AI_API_KEY ||
+        process.env.SAMPLE_OPENAI_API_KEY));
   if (!hasAIKey) {
     return { success: false, message: t("server.errors.apiKeyMissing") };
   }
 
   // キャッシュチェック
-  onProgress?.("cache_check", t("progress.steps.cache_check"));
-  try {
-    const cacheParams = {
-      destinations: input.destinations,
-      days: input.dates,
-      companions: input.companions,
-      theme: input.theme,
-      budget: input.budget,
-      pace: input.pace,
-      isDestinationDecided: input.isDestinationDecided,
-      region: input.region,
-      travelVibe: input.travelVibe,
-    };
-
-    const cached = await timer.measure("cache_check", () =>
-      getOutlineCache(cacheParams)
-    );
-    if (cached) {
-      timer.log();
-      console.log(`[action] Outline served from cache`);
-
-      const updatedInput = { ...input };
-      if (!updatedInput.isDestinationDecided) {
-        updatedInput.destinations = [cached.outline.destination];
-        updatedInput.isDestinationDecided = true;
-      }
-
-      return {
-        success: true,
-        data: {
-          outline: cached.outline,
-          context: cached.context,
-          input: updatedInput,
-          heroImage: cached.heroImage,
-        },
+  if (!options?.skipCache) {
+    onProgress?.("cache_check", t("progress.steps.cache_check"));
+    try {
+      const cacheParams = {
+        destinations: input.destinations,
+        days: input.dates,
+        companions: input.companions,
+        theme: input.theme,
+        budget: input.budget,
+        pace: input.pace,
+        isDestinationDecided: input.isDestinationDecided,
+        region: input.region,
+        travelVibe: input.travelVibe,
+        outputLanguage: preferredLanguage,
       };
+
+      const cached = await timer.measure("cache_check", () =>
+        getOutlineCache(cacheParams)
+      );
+      if (cached) {
+        timer.log();
+        console.log(`[action] Outline served from cache`);
+
+        const updatedInput = { ...input };
+        if (!updatedInput.isDestinationDecided) {
+          updatedInput.destinations = [cached.outline.destination];
+          updatedInput.isDestinationDecided = true;
+        }
+
+        return {
+          success: true,
+          data: {
+            outline: cached.outline,
+            context: cached.context,
+            input: updatedInput,
+            heroImage: cached.heroImage,
+          },
+        };
+      }
+    } catch (cacheError) {
+      console.warn("[action] Cache check failed:", cacheError);
     }
-  } catch (cacheError) {
-    console.warn("[action] Cache check failed:", cacheError);
   }
 
   try {
@@ -403,36 +423,41 @@ export async function executeOutlineGeneration(
     }
 
     // 5. ヒーロー画像取得
-    onProgress?.("hero_image", t("progress.steps.hero_image"));
-    const heroImageData = await timer.measure("hero_image", () =>
-      getUnsplashImage(outline.destination)
-    );
+    const heroImageData = options?.skipHeroImage
+      ? null
+      : await (async () => {
+          onProgress?.("hero_image", t("progress.steps.hero_image"));
+          return timer.measure("hero_image", () => getUnsplashImage(outline.destination));
+        })();
 
     // 6. キャッシュ保存（非同期）
-    timer.start("cache_save");
-    setOutlineCache(
-      {
-        destinations: input.destinations,
-        days: input.dates,
-        companions: input.companions,
-        theme: input.theme,
-        budget: input.budget,
-        pace: input.pace,
-        isDestinationDecided: input.isDestinationDecided,
-        region: input.region,
-        travelVibe: input.travelVibe,
-      },
-      {
-        outline,
-        context: contextArticles,
-        heroImage: heroImageData,
-      }
-    )
-      .then(() => timer.end("cache_save"))
-      .catch((e) => {
-        timer.end("cache_save");
-        console.warn("[action] Cache save failed:", e);
-      });
+    if (!options?.skipCache) {
+      timer.start("cache_save");
+      setOutlineCache(
+        {
+          destinations: input.destinations,
+          days: input.dates,
+          companions: input.companions,
+          theme: input.theme,
+          budget: input.budget,
+          pace: input.pace,
+          isDestinationDecided: input.isDestinationDecided,
+          region: input.region,
+          travelVibe: input.travelVibe,
+          outputLanguage: preferredLanguage,
+        },
+        {
+          outline,
+          context: contextArticles,
+          heroImage: heroImageData,
+        }
+      )
+        .then(() => timer.end("cache_save"))
+        .catch((e) => {
+          timer.end("cache_save");
+          console.warn("[action] Cache save failed:", e);
+        });
+    }
 
     timer.log();
 

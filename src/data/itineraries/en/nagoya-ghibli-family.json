@@ -1,0 +1,294 @@
+{
+  "id": "3ddae9d8-a922-4e24-9858-1efe4e605f1f",
+  "destination": "Nagoya & Nagakute",
+  "description": "Immerse yourself in the vibrant culture and thrilling attractions of Nagoya and Nagakute, perfect for families seeking adventure and delicious cuisine. With a focus on Ghibli Park and local delights, this trip promises unforgettable memories for both kids and adults alike. Get ready for a journey filled with fun, laughter, and mouthwatering dishes!",
+  "heroImage": "https://images.unsplash.com/photo-1704269528819-360faab84b78?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODA5Mjd8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Tim D",
+  "heroImagePhotographerUrl": "https://unsplash.com/@timdep?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Exploring Nagoya's Highlights",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious breakfast at a local café, where you can enjoy a variety of Japanese-style breakfast options, including grilled fish and miso soup, perfect for fueling up before a day of adventure.",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Nagoya Castle",
+          "description": "Visit the iconic Nagoya Castle, known for its stunning architecture and beautiful gardens. Explore the castle's museum to learn about its rich history and enjoy panoramic views from the top.",
+          "searchQuery": "Nagoya Castle",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Hitsumabushi Bincho",
+          "description": "Savor a delicious hitsumabushi (grilled eel) lunch at Hitsumabushi Bincho, a popular restaurant known for its flavorful dishes. This meal is a must-try for a true taste of Nagoya.",
+          "searchQuery": "Hitsumabushi Bincho",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Osu Shopping District",
+          "description": "Stroll through the vibrant Osu Shopping District, where you can find unique shops, street food, and local crafts. It's a great place for families to explore and pick up souvenirs.",
+          "searchQuery": "Osu Shopping District",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Nagoya City Science Museum",
+          "description": "Take the kids to the Nagoya City Science Museum, home to the world's largest planetarium. The interactive exhibits will keep the little ones entertained while they learn about science and technology.",
+          "searchQuery": "Nagoya City Science Museum",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Dinner at Yabaton",
+          "description": "Enjoy a family-friendly dinner at Yabaton, famous for its Nagoya-style miso katsu. The crispy pork cutlet served with rich miso sauce is sure to please both kids and adults alike.",
+          "searchQuery": "Yabaton",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Check-in at Hotel",
+          "description": "Settle into your hotel for a restful night. Choose a family-friendly hotel that offers comfortable accommodations and amenities for children.",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "A Magical Day at Ghibli Park",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Nagoya",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Aichi Expo Memorial Park",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the train from Nagoya Station to Aichi Expo Memorial Park Station, a short and convenient ride."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Ghibli Park",
+          "description": "Immerse yourself in the enchanting world of Studio Ghibli at Ghibli Park. Explore the beautifully designed areas inspired by beloved films like 'My Neighbor Totoro' and 'Spirited Away'. Don't forget to take plenty of photos with the iconic characters!",
+          "searchQuery": "Ghibli Park",
+          "locationEn": "Nagakute, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Ghibli's Grand Warehouse",
+          "description": "Enjoy a delightful lunch at the Ghibli's Grand Warehouse café, where you can savor dishes inspired by the films. The atmosphere is whimsical, making it a perfect spot for families to relax and refuel.",
+          "searchQuery": "Ghibli's Grand Warehouse",
+          "locationEn": "Nagakute, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Continue Exploring Ghibli Park",
+          "description": "After lunch, continue your adventure in Ghibli Park. Visit the various themed areas, including the 'Dondoko Forest' and 'Mononoke Village', where kids can play and explore freely.",
+          "searchQuery": "Ghibli Park",
+          "locationEn": "Nagakute, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Aichi Expo Memorial Park",
+          "description": "Stroll through the beautiful Aichi Expo Memorial Park, where you can enjoy the lush greenery and various sculptures. It's a great place for kids to run around and for families to relax together.",
+          "searchQuery": "Aichi Expo Memorial Park",
+          "locationEn": "Nagakute, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "Experience a family-friendly izakaya nearby for dinner. Enjoy a variety of Japanese dishes, including yakitori and tempura, in a casual and welcoming atmosphere. It's a great way to end the day with delicious food.",
+          "searchQuery": "Local Izakaya Nagakute",
+          "locationEn": "Nagakute, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Hotel",
+          "description": "After a fun-filled day, head back to your hotel in Nagakute to relax and unwind. Reflect on the magical experiences of the day with your family.",
+          "locationEn": "Nagakute, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Culinary Delights and Return to Nagoya",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Nagakute",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Ghibli Park",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "A short drive to the enchanting Ghibli Park, perfect for families."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Ghibli Park",
+          "description": "Explore the magical world of Studio Ghibli at this enchanting theme park. Kids will love the whimsical attractions inspired by beloved films like 'My Neighbor Totoro' and 'Spirited Away'. Don't forget to take plenty of photos!",
+          "searchQuery": "Ghibli Park",
+          "locationEn": "Nagakute, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Ghibli's Grand Warehouse Café",
+          "description": "Enjoy a delightful lunch at the café inside Ghibli Park, featuring themed dishes inspired by the films. It's a great way to refuel before more adventures!",
+          "searchQuery": "Ghibli Park Grand Warehouse Café",
+          "locationEn": "Nagakute, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Continue Exploring Ghibli Park",
+          "description": "After lunch, dive back into the park to visit more attractions and exhibitions. The Totoro's House and the Cat Bus are must-sees for the little ones!",
+          "searchQuery": "Ghibli Park",
+          "locationEn": "Nagakute, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Transit to Sakae District",
+          "description": "Head to Sakae District for an afternoon of shopping and exploration. The drive will take about 30 minutes, so sit back and enjoy the scenery!",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping and Sightseeing in Sakae",
+          "description": "Explore the vibrant Sakae District, known for its shopping and entertainment. Visit the Oasis 21 complex and enjoy the futuristic architecture. Kids will love the nearby parks and fountains!",
+          "searchQuery": "Sakae District",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Yabaton",
+          "description": "Savor Nagoya's famous miso katsu at Yabaton, a local favorite. The rich flavor of the miso sauce over crispy pork cutlet is a must-try for the whole family!",
+          "searchQuery": "Yabaton Sakae",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Return to Hotel",
+          "description": "After a fun-filled day, head back to your hotel to relax and reflect on the wonderful memories made today.",
+          "locationEn": "Nagoya, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

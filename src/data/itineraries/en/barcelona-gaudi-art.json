@@ -1,0 +1,556 @@
+{
+  "id": "42995448-4d04-44d7-87cc-e2107c157140",
+  "destination": "バルセロナ",
+  "description": "Immerse yourself in the vibrant culture and stunning architecture of Barcelona over six unforgettable days. From the whimsical designs of Gaudí to the tantalizing flavors of local tapas, this trip is a feast for the senses. Explore the city's artistic heart, indulge in culinary delights, and stroll through picturesque streets that echo with history and creativity. Each day promises new adventures, whether you're admiring the intricate details of Sagrada Familia or savoring a glass of wine at a cozy bar. Get ready for an experience that blends art, architecture, and gastronomy in one of Europe’s most captivating cities.",
+  "heroImage": "https://images.unsplash.com/photo-1630219694734-fe47ab76b15e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODE1NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Dorian D1",
+  "heroImagePhotographerUrl": "https://unsplash.com/@doriandussartd?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Barcelona",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Granja Viader",
+          "description": "Start your day with a traditional Catalan breakfast at Granja Viader, famous for its rich hot chocolate and churros. This charming café has been serving locals since 1870, making it a perfect spot to soak in the local atmosphere.",
+          "searchQuery": "Granja Viader",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore La Rambla",
+          "description": "Stroll down La Rambla, Barcelona's vibrant main street. Enjoy the lively atmosphere, street performers, and local shops. Don't miss the iconic La Boqueria market, where you can sample fresh produce and local delicacies.",
+          "searchQuery": "La Rambla",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at El Quim de la Boqueria",
+          "description": "Indulge in a delicious lunch at El Quim de la Boqueria, located inside the market. Try their famous fried eggs with baby squid, a local favorite that perfectly captures the essence of Catalan cuisine.",
+          "searchQuery": "El Quim de la Boqueria",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Gothic Quarter",
+          "description": "Wander through the narrow, winding streets of the Gothic Quarter, where you can admire medieval architecture and discover hidden gems like the Barcelona Cathedral and Plaça del Rei. This area is rich in history and perfect for leisurely exploration.",
+          "searchQuery": "Gothic Quarter",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Casa Batlló",
+          "description": "Visit Casa Batlló, one of Gaudí's masterpieces. The building's unique façade and interior design are a testament to Gaudí's genius. Be sure to book your tickets in advance to avoid long lines.",
+          "searchQuery": "Casa Batlló",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Cervecería Catalana",
+          "description": "Enjoy a delightful dinner at Cervecería Catalana, known for its extensive tapas menu. Sample a variety of dishes, from patatas bravas to seafood, paired with a refreshing glass of local wine or beer.",
+          "searchQuery": "Cervecería Catalana",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Tapas and Drinks at El Xampanyet",
+          "description": "End your day at El Xampanyet, a cozy bar famous for its cava and delicious tapas. The lively atmosphere and friendly staff make it a perfect spot to unwind and enjoy the local nightlife.",
+          "searchQuery": "El Xampanyet",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Gaudí's Masterpieces",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Granja Viader",
+          "description": "Start your day with a traditional Catalan breakfast at Granja Viader, famous for its rich hot chocolate and churros. This charming café has been serving locals since 1870, making it a perfect spot to soak in the local atmosphere.",
+          "searchQuery": "Granja Viader",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Sagrada Familia",
+          "description": "Visit the iconic Sagrada Familia, Gaudí's unfinished masterpiece. Marvel at its intricate facades and stunning interior, filled with colorful stained glass that creates a magical atmosphere. Be sure to book your tickets in advance to avoid long lines!",
+          "searchQuery": "Sagrada Familia",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Cervecería Catalana",
+          "description": "Enjoy a delicious lunch at Cervecería Catalana, known for its tapas and vibrant atmosphere. Try their patatas bravas and seafood tapas for a true taste of Barcelona.",
+          "searchQuery": "Cervecería Catalana",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Park Güell",
+          "description": "Stroll through Park Güell, another of Gaudí's masterpieces. The colorful mosaics and whimsical structures make it a perfect place for a leisurely walk and stunning photos. Don't forget to explore the gardens and enjoy the views of the city!",
+          "searchQuery": "Park Güell",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Casa Batlló",
+          "description": "Visit Casa Batlló, a stunning example of Gaudí's architectural genius. The building's organic shapes and vibrant colors are a feast for the eyes. Consider taking an audio guide to fully appreciate the details and history behind this unique structure.",
+          "searchQuery": "Casa Batlló",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Tapas Dinner at El Xampanyet",
+          "description": "End your day with a delightful tapas dinner at El Xampanyet, a local favorite. Enjoy a variety of small plates paired with a glass of Cava, and soak in the lively atmosphere of this bustling bar.",
+          "searchQuery": "El Xampanyet",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Stroll in El Born",
+          "description": "Take a leisurely evening stroll through the charming streets of El Born. This vibrant neighborhood is filled with boutiques, bars, and art galleries, making it a perfect place to unwind after a day of sightseeing.",
+          "searchQuery": "El Born",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Art and Culture",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Granja Viader",
+          "description": "Start your day with a traditional Catalan breakfast at Granja Viader, famous for its rich hot chocolate and churros. This charming café has been serving locals since 1870, making it a perfect spot to soak in the local atmosphere.",
+          "searchQuery": "Granja Viader",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Picasso Museum",
+          "description": "Explore the Picasso Museum, which houses one of the most extensive collections of artworks by the 20th-century Spanish artist Pablo Picasso. The museum is located in the heart of the Gothic Quarter, making it a great place to appreciate both art and architecture.",
+          "searchQuery": "Picasso Museum",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at El Xampanyet",
+          "description": "Enjoy a delightful lunch at El Xampanyet, a local tapas bar known for its sparkling wine and traditional tapas. The vibrant atmosphere and delicious small plates make it a favorite among locals and visitors alike.",
+          "searchQuery": "El Xampanyet",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through El Born District",
+          "description": "Take a leisurely walk through the El Born district, known for its narrow streets, boutique shops, and artistic vibe. Don't miss the stunning Santa Maria del Mar church, a beautiful example of Catalan Gothic architecture.",
+          "searchQuery": "Santa Maria del Mar",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit La Sagrada Familia",
+          "description": "No trip to Barcelona is complete without visiting La Sagrada Familia, Gaudí's iconic basilica. Marvel at its intricate facades and towering spires, and if time allows, consider going inside to see the breathtaking stained glass windows.",
+          "searchQuery": "La Sagrada Familia",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Cervecería Catalana",
+          "description": "Savor a variety of tapas at Cervecería Catalana, a popular spot among locals. The lively atmosphere and extensive menu make it a great place to experience the best of Catalan cuisine.",
+          "searchQuery": "Cervecería Catalana",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Tapas and Drinks at El Nacional",
+          "description": "End your day at El Nacional, a unique dining venue that offers a variety of tapas bars and restaurants under one roof. Enjoy a glass of wine or a cocktail while sampling different dishes in a beautifully designed space.",
+          "searchQuery": "El Nacional",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Culinary Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Granja Viader",
+          "description": "Start your day with a traditional Catalan breakfast at Granja Viader, famous for its rich hot chocolate and churros. This charming café has been serving locals since 1870, making it a perfect spot to soak in the local atmosphere.",
+          "searchQuery": "Granja Viader",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit La Boqueria Market",
+          "description": "Dive into the vibrant colors and aromas of La Boqueria Market, one of the most famous markets in Europe. Sample fresh fruits, cured meats, and local cheeses as you wander through the stalls. Don't forget to grab a refreshing juice from one of the many vendors!",
+          "searchQuery": "La Boqueria Market",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at El Quim de la Boqueria",
+          "description": "Enjoy a delicious lunch at El Quim de la Boqueria, located within the market. Their fried eggs with baby squid are a must-try, showcasing the best of local seafood in a casual setting.",
+          "searchQuery": "El Quim de la Boqueria",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Gothic Quarter",
+          "description": "Stroll through the enchanting Gothic Quarter, where narrow medieval streets open up to stunning squares. Visit the Barcelona Cathedral and enjoy the unique architecture that tells the story of the city’s rich history.",
+          "searchQuery": "Gothic Quarter",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Casa Batlló",
+          "description": "Marvel at Gaudí's masterpiece, Casa Batlló, known for its organic shapes and vibrant colors. Take a guided tour to learn about the innovative design and the stories behind this iconic building.",
+          "searchQuery": "Casa Batlló",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Cervecería Catalana",
+          "description": "Indulge in a variety of tapas at Cervecería Catalana, a popular spot among locals. From patatas bravas to jamón ibérico, this bustling restaurant offers a true taste of Catalan cuisine.",
+          "searchQuery": "Cervecería Catalana",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Tapas and Drinks at El Xampanyet",
+          "description": "End your day at El Xampanyet, a lively bar known for its cava and delicious tapas. Enjoy the vibrant atmosphere as you sip on sparkling wine and savor the local flavors, making it a perfect spot to unwind with friends.",
+          "searchQuery": "El Xampanyet",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Beach Day and Relaxation",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Brunch & Cake",
+          "description": "Start your day with a delicious breakfast at Brunch & Cake, known for its vibrant dishes and cozy atmosphere. Try their famous pancakes or avocado toast to fuel up for a day at the beach.",
+          "searchQuery": "Brunch & Cake",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Barceloneta Beach",
+          "description": "Head to Barceloneta Beach, one of the most popular beaches in Barcelona. Enjoy the sun, sand, and sea, and take a leisurely stroll along the promenade. Don't forget to grab a refreshing drink from one of the beach bars!",
+          "searchQuery": "Barceloneta Beach",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at La Barceloneta",
+          "description": "Enjoy a seafood lunch at La Barceloneta, a local favorite known for its fresh paella and tapas. Savor the flavors of the Mediterranean while overlooking the beach.",
+          "searchQuery": "La Barceloneta",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "W Barcelona Hotel Visit",
+          "description": "Take a short walk to the iconic W Barcelona Hotel, known for its sail-like structure. You can relax at the beach club or enjoy a drink at the rooftop bar with stunning views of the city and the sea.",
+          "searchQuery": "W Barcelona",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Explore the Gothic Quarter",
+          "description": "After a relaxing afternoon, head to the Gothic Quarter for a leisurely walk. Discover the narrow streets, charming squares, and beautiful architecture that make this area so enchanting.",
+          "searchQuery": "Gothic Quarter",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Tapas Dinner at El Xampanyet",
+          "description": "End your day with a delightful tapas dinner at El Xampanyet, a bustling bar known for its cava and traditional Spanish tapas. Enjoy the lively atmosphere and indulge in a variety of small dishes with your friends.",
+          "searchQuery": "El Xampanyet",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Barcelona",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "15:00"
+        },
+        "duration": "10h",
+        "memo": "Direct flight from Barcelona to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Granja Viader",
+          "description": "Start your day with a traditional Catalan breakfast at Granja Viader, famous for its rich hot chocolate and churros. This charming café is a local favorite and offers a cozy atmosphere to enjoy your meal.",
+          "searchQuery": "Granja Viader",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Casa Batlló",
+          "description": "Explore the stunning Casa Batlló, one of Gaudí's masterpieces. The building's colorful façade and organic shapes are a testament to Gaudí's unique architectural style. Don't forget to check out the rooftop for a fantastic view of the city!",
+          "searchQuery": "Casa Batlló",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Stroll through Passeig de Gràcia",
+          "description": "Take a leisurely walk along Passeig de Gràcia, where you can admire more of Gaudí's works, including Casa Milà (La Pedrera). The street is also lined with high-end shops and beautiful architecture, making it perfect for window shopping.",
+          "searchQuery": "Passeig de Gràcia",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Cervecería Catalana",
+          "description": "Enjoy a delicious lunch at Cervecería Catalana, known for its tapas and vibrant atmosphere. Try their patatas bravas and a selection of local cheeses for a true taste of Catalonia.",
+          "searchQuery": "Cervecería Catalana",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit Sagrada Família",
+          "description": "No trip to Barcelona is complete without visiting the iconic Sagrada Família. Marvel at Gaudí's unfinished basilica, with its intricate facades and towering spires. Make sure to book your tickets in advance to avoid long lines!",
+          "searchQuery": "Sagrada Família",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Park Güell",
+          "description": "Spend your late afternoon at Park Güell, another of Gaudí's creations. Wander through the colorful mosaics and whimsical structures while enjoying panoramic views of the city. It's a perfect spot to unwind before your flight.",
+          "searchQuery": "Park Güell",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Tapas Dinner at El Xampanyet",
+          "description": "Before heading to the airport, indulge in a final dinner at El Xampanyet, a beloved tapas bar. Savor a variety of small plates paired with local cava, and soak in the lively atmosphere one last time.",
+          "searchQuery": "El Xampanyet",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

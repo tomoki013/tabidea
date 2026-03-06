@@ -1,0 +1,441 @@
+{
+  "id": "056d76dc-dc6a-4951-ad72-e6c3e5b55db9",
+  "destination": "Bangkok",
+  "description": "Immerse yourself in the vibrant streets of Bangkok, where the aroma of street food wafts through the air and the rich tapestry of culture and history unfolds at every corner. This 5-day adventure is designed for food lovers and culture enthusiasts alike, offering a delightful blend of culinary experiences, historical explorations, and opportunities to unwind with soothing massages. From bustling markets to serene temples, get ready to discover the heart of Thailand with your friends, all while keeping your budget in check.",
+  "heroImage": "https://images.unsplash.com/photo-1596188431179-a748d00df396?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODE1OTB8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Markus Winkler",
+  "heroImagePhotographerUrl": "https://unsplash.com/@markuswinkler?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Street Food Adventure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at a Local Street Stall",
+          "description": "Start your day with a delicious bowl of Khao Tom (rice soup) from a nearby street stall. It's a popular breakfast choice among locals and will give you the energy you need for a day of exploration!",
+          "searchQuery": "Khao Tom",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Wat Phra Kaew and the Grand Palace",
+          "description": "Explore the stunning Wat Phra Kaew, home to the Emerald Buddha, and the opulent Grand Palace. The intricate architecture and rich history make this a must-see. Remember to dress modestly!",
+          "searchQuery": "Wat Phra Kaew",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Thip Samai",
+          "description": "Indulge in some of the best Pad Thai in Bangkok at Thip Samai, a local favorite. The vibrant atmosphere and delicious food will surely satisfy your cravings!",
+          "searchQuery": "Thip Samai",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Relaxing Thai Massage at Health Land Spa",
+          "description": "Unwind with a traditional Thai massage at Health Land Spa. It's the perfect way to relax after a morning of sightseeing, and their prices are quite reasonable!",
+          "searchQuery": "Health Land Spa",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Khao San Road",
+          "description": "Stroll through the bustling Khao San Road, famous for its vibrant atmosphere, street food, and shops. Don't forget to try some mango sticky rice from a street vendor!",
+          "searchQuery": "Khao San Road",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Raan Jay Fai",
+          "description": "Enjoy dinner at Raan Jay Fai, known for its Michelin-starred street food. Try the crab omelette, a signature dish that is both delicious and filling!",
+          "searchQuery": "Raan Jay Fai",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll Along the Riverside",
+          "description": "Take a leisurely walk along the Chao Phraya River. The views of the illuminated temples and the river breeze create a perfect end to your first day in Bangkok.",
+          "searchQuery": "Chao Phraya River",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Gems and Relaxation",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at a Local Street Stall",
+          "description": "Start your day with a delicious bowl of Khao Man Gai (chicken rice) from a nearby street stall. It's a popular breakfast choice among locals and will give you the energy you need for a day of exploration!",
+          "searchQuery": "Khao Man Gai",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Wat Phra Kaew (Temple of the Emerald Buddha)",
+          "description": "Visit the stunning Wat Phra Kaew, home to the revered Emerald Buddha. The intricate architecture and vibrant colors are breathtaking, making it a must-see in Bangkok. Remember to dress modestly!",
+          "searchQuery": "Wat Phra Kaew",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Tha Maharaj Food Court",
+          "description": "Enjoy a variety of Thai dishes at the Tha Maharaj food court, located by the river. Try some Pad Thai or Som Tum while soaking in the riverside atmosphere.",
+          "searchQuery": "Tha Maharaj",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Wat Pho (Temple of the Reclining Buddha)",
+          "description": "After lunch, head to Wat Pho to see the impressive Reclining Buddha statue. This temple is also famous for its traditional Thai massage school, so consider booking a massage to relax!",
+          "searchQuery": "Wat Pho",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Traditional Thai Massage at Wat Pho",
+          "description": "Indulge in a rejuvenating traditional Thai massage at Wat Pho. It's a perfect way to unwind after a day of sightseeing and experience authentic Thai wellness.",
+          "searchQuery": "Wat Pho Massage",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Chao Phraya River Cruise",
+          "description": "Take a scenic boat cruise along the Chao Phraya River. Enjoy the views of the city as the sun sets, and see famous landmarks from the water.",
+          "searchQuery": "Chao Phraya River Cruise",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at Yaowarat (Chinatown)",
+          "description": "End your day with a culinary adventure in Yaowarat, Bangkok's Chinatown. Sample street food delights like grilled seafood and mango sticky rice from the bustling stalls.",
+          "searchQuery": "Yaowarat",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Shopping and Local Delights",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious Thai breakfast at a local café. Try the classic 'Jok' (rice porridge) or 'Khao Tom' (rice soup) for a warm and hearty meal.",
+          "searchQuery": "Thai breakfast",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Chatuchak Weekend Market",
+          "description": "Dive into the vibrant atmosphere of Chatuchak Weekend Market, one of the largest markets in the world. Explore thousands of stalls selling everything from clothing to local handicrafts, and don’t forget to sample some street food along the way!",
+          "searchQuery": "Chatuchak Weekend Market",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Chatuchak Market",
+          "description": "Enjoy lunch at one of the many food stalls in Chatuchak. Try the famous 'Pad Thai' or 'Som Tum' (papaya salad) for an authentic taste of Thai cuisine.",
+          "searchQuery": "Pad Thai",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Siam Square Shopping",
+          "description": "Head over to Siam Square, a trendy shopping district filled with boutiques and malls. It's a great place to shop for both local and international brands, and to soak in the youthful energy of Bangkok.",
+          "searchQuery": "Siam Square",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Relaxing Thai Massage",
+          "description": "After a day of shopping, treat yourself to a traditional Thai massage at a nearby spa. It's the perfect way to unwind and rejuvenate after exploring the city.",
+          "searchQuery": "Thai massage",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Eatery",
+          "description": "End your day with dinner at a local eatery. Try 'Khao Soi' (curry noodle soup) or 'Moo Pad Krapow' (stir-fried basil pork) for a satisfying meal.",
+          "searchQuery": "Khao Soi",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "More Temples and Spa Day",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at a Local Street Stall",
+          "description": "Start your day with a delicious bowl of Jok (Thai rice porridge) topped with minced pork and a sprinkle of green onions. It's a popular breakfast choice among locals and will give you the energy you need for a busy day ahead!",
+          "searchQuery": "Jok",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Wat Arun (Temple of Dawn)",
+          "description": "Explore the stunning Wat Arun, known for its iconic spires and intricate porcelain decorations. Climb to the top for breathtaking views of the Chao Phraya River and the city skyline. Morning visits are less crowded, allowing you to soak in the serene atmosphere.",
+          "searchQuery": "Wat Arun",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Tha Tien Market",
+          "description": "Head to Tha Tien Market for a variety of affordable Thai street food options. Try the famous Pad Thai or some fresh spring rolls while enjoying the bustling market atmosphere.",
+          "searchQuery": "Tha Tien Market",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Spa Treatment at Health Land Spa",
+          "description": "Indulge in a relaxing Thai massage at Health Land Spa, known for its affordable yet high-quality treatments. Choose from a traditional Thai massage or a soothing aromatherapy session to rejuvenate your body and mind.",
+          "searchQuery": "Health Land Spa",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore the Flower Market (Pak Khlong Talat)",
+          "description": "Stroll through the vibrant Flower Market, where you can admire a stunning array of flowers and plants. It's a great place to take photos and experience the local culture. Don't forget to grab a refreshing coconut water to cool off!",
+          "searchQuery": "Pak Khlong Talat",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Raan Jay Fai",
+          "description": "Enjoy dinner at Raan Jay Fai, a famous street food stall known for its crab omelette and other seafood dishes. This Michelin-starred eatery offers a unique dining experience that won't break the bank. Be prepared for a bit of a wait, but it's worth it!",
+          "searchQuery": "Raan Jay Fai",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Evening Walk Along the Chao Phraya River",
+          "description": "End your day with a leisurely walk along the Chao Phraya River. The riverside is beautifully lit at night, and you can enjoy the cool breeze while taking in the sights of the city. It's a perfect way to unwind after a busy day of exploring!",
+          "searchQuery": "Chao Phraya River",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Final Day Exploration and Departure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Cafe",
+          "description": "Start your day with a delicious breakfast at a local cafe, enjoying traditional Thai dishes like Jok (rice porridge) or Patongo (Thai donuts) with a cup of aromatic Thai coffee. It's a great way to fuel up for your last day in Bangkok!",
+          "searchQuery": "Local Cafe Bangkok",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Jim Thompson House",
+          "description": "Explore the Jim Thompson House, a beautiful museum showcasing traditional Thai architecture and art. Learn about the fascinating life of Jim Thompson, an American businessman who helped revive the Thai silk industry. The lush gardens and serene atmosphere make it a perfect spot to unwind.",
+          "searchQuery": "Jim Thompson House",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Local Thai Restaurant",
+          "description": "Savor authentic Thai flavors at a nearby restaurant. Try dishes like Pad Thai or Green Curry, made with fresh ingredients and bursting with flavor. Don't forget to ask for recommendations from the staff for the best local specialties!",
+          "searchQuery": "Local Thai Restaurant Bangkok",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relaxing Thai Massage",
+          "description": "Indulge in a traditional Thai massage at a reputable spa. This rejuvenating experience will help you unwind and relieve any travel fatigue. Opt for a foot massage or a full-body treatment to leave you feeling refreshed before your departure.",
+          "searchQuery": "Thai Massage Spa Bangkok",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Last-Minute Shopping at Chatuchak Weekend Market",
+          "description": "If your schedule allows, head to Chatuchak Weekend Market for some last-minute shopping. This sprawling market offers everything from clothing to handicrafts and delicious street food. It's a great place to pick up souvenirs and enjoy the vibrant atmosphere.",
+          "searchQuery": "Chatuchak Weekend Market",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Street Food Stall",
+          "description": "End your trip with a delightful dinner at a street food stall. Sample local favorites like Som Tum (papaya salad) or Moo Pad Krapow (stir-fried basil pork) while soaking in the lively street atmosphere. It's the perfect way to say goodbye to Bangkok!",
+          "searchQuery": "Street Food Stall Bangkok",
+          "locationEn": "Bangkok, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

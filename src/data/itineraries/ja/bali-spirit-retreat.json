@@ -1,0 +1,428 @@
+{
+  "id": "b95391d9-5654-428b-9b0e-ee9d5444fd4a",
+  "destination": "バリ島",
+  "description": "バリ島の美しいビーチと豊かな文化に浸り、心身ともにリフレッシュする5日間の旅へようこそ。リゾート地として名高いこの島では、ゆったりとした時間が流れ、自然の絶景やスパでの癒しのひとときを楽しむことができます。特に、ヨガやスパマッサージを通じて、心の平穏を取り戻すことができるでしょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "バリ島到着とリラックス",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "デンパサール空港到着",
+          "description": "バリ島のデンパサール空港に到着。空港からウブドへはタクシーを利用して、約1時間のドライブです。",
+          "searchQuery": "Ngurah Rai International Airport",
+          "locationEn": "Denpasar, Indonesia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ウブドのホテルにチェックイン",
+          "description": "ウブドの静かな環境にあるホテルにチェックイン。リゾートの雰囲気を楽しみながら、ゆったりとした時間を過ごします。",
+          "searchQuery": "Alaya Resort Ubud",
+          "locationEn": "Ubud, Indonesia",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ホテルでランチ",
+          "description": "ホテル内のレストランで、バリの新鮮な食材を使ったランチを楽しみます。地元の料理を味わいながら、リラックスしたひとときを。",
+          "searchQuery": "Alaya Resort Ubud Restaurant",
+          "locationEn": "Ubud, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ウブドの市場散策",
+          "description": "ウブドのアートマーケットを散策。地元のアーティストによる手作りの工芸品やお土産を見つける楽しみがあります。",
+          "searchQuery": "Ubud Art Market",
+          "locationEn": "Ubud, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ヨガクラス参加",
+          "description": "ウブドの人気ヨガスタジオでリラックスしたヨガクラスに参加。心と体を整える時間を過ごします。",
+          "searchQuery": "Yoga Barn Ubud",
+          "locationEn": "Ubud, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "スパでマッサージ",
+          "description": "ウブドのスパで、バリニーズマッサージを受けて心身ともにリフレッシュ。贅沢なひとときを楽しみます。",
+          "searchQuery": "Karsa Spa Ubud",
+          "locationEn": "Ubud, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルでディナー",
+          "description": "ホテルのレストランで、バリの伝統料理を楽しむディナー。美しい夜景を眺めながら、リラックスした時間を過ごします。",
+          "searchQuery": "Alaya Resort Ubud Restaurant",
+          "locationEn": "Ubud, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ウブドでの文化体験とスパ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ウブドのホテルで、バリの伝統的な朝食を楽しみます。新鮮なフルーツやナシゴレン（炒めご飯）で、エネルギーをチャージしましょう。",
+          "locationEn": "Ubud, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ウブド市場散策",
+          "description": "地元の人々が集まるウブド市場で、手作りの工芸品や新鮮な食材を見て回ります。色とりどりのバリの文化を感じながら、素敵なお土産を見つけるチャンスです。",
+          "searchQuery": "Ubud Market",
+          "locationEn": "Ubud, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ヨガクラス参加",
+          "description": "ウブドの静かなスタジオで、リラックスした雰囲気の中でヨガを楽しみます。心身ともにリフレッシュできる時間です。",
+          "searchQuery": "Yoga Class Ubud",
+          "locationEn": "Ubud, Indonesia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ウブドの人気レストランで、バリ料理を堪能します。特に、サテ（串焼き）やバリ風ナシチャンプルが絶品です。",
+          "searchQuery": "Bali Restaurant Ubud",
+          "locationEn": "Ubud, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "スパでマッサージ",
+          "description": "ウブドのスパで、バリニーズマッサージを受けて心身ともにリラックス。自然に囲まれた環境で、贅沢なひとときを過ごします。",
+          "searchQuery": "Spa Ubud",
+          "locationEn": "Ubud, Indonesia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "タナロット寺院訪問",
+          "description": "美しい夕日を背景に、タナロット寺院を訪れます。海に浮かぶ寺院の姿は、まさに絶景です。心が洗われる瞬間をお楽しみください。",
+          "searchQuery": "Tanah Lot Temple",
+          "locationEn": "Tanah Lot, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ウブドでディナー",
+          "description": "ウブドの落ち着いた雰囲気のレストランで、バリ料理のディナーを楽しみます。地元の食材を使った料理が堪能できるお店を選びましょう。",
+          "searchQuery": "Dinner Restaurant Ubud",
+          "locationEn": "Ubud, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ビーチでのんびりと過ごす",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ウブド",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "クタビーチ",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "ウブドからクタビーチへ車での移動。美しい景色を楽しみながらリラックスした気分で向かいます。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "クタビーチでのんびり",
+          "description": "クタビーチに到着したら、まずはビーチでのんびりと過ごしましょう。白い砂浜と青い海を眺めながら、心地よい風に吹かれてリラックス。",
+          "searchQuery": "Kuta Beach",
+          "locationEn": "Kuta, Bali, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ビーチ沿いのカフェでランチ",
+          "description": "ビーチ沿いのカフェで新鮮なシーフードやインドネシア料理を楽しみましょう。海を眺めながらの食事は格別です。",
+          "searchQuery": "Beachfront Cafe Kuta",
+          "locationEn": "Kuta, Bali, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ヨガクラス参加",
+          "description": "クタビーチ近くのスタジオでヨガクラスに参加。リラックスした雰囲気の中で心と体を整えましょう。",
+          "searchQuery": "Yoga Studio Kuta",
+          "locationEn": "Kuta, Bali, Indonesia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "スパでマッサージ",
+          "description": "ビーチ近くのスパで贅沢なマッサージを受けて、旅の疲れを癒しましょう。アロマオイルを使ったトリートメントが特におすすめです。",
+          "searchQuery": "Spa Kuta",
+          "locationEn": "Kuta, Bali, Indonesia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "レギャンビーチでサンセット",
+          "description": "夕方にはレギャンビーチへ移動し、美しいサンセットを楽しみましょう。夕日が海に沈む瞬間は、心に残る素晴らしい体験です。",
+          "searchQuery": "Legian Beach",
+          "locationEn": "Legian, Bali, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ビーチサイドのレストランでディナー",
+          "description": "レギャンビーチのビーチサイドにあるレストランで、地元の料理や新鮮なシーフードを楽しみながら、リラックスした夜を過ごします。",
+          "searchQuery": "Beachside Restaurant Legian",
+          "locationEn": "Legian, Bali, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "自然と絶景を楽しむ",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "クタ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ウルワツ寺院",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "クタからウルワツ寺院までのドライブは、バリの美しい海岸線を楽しめます。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "ウルワツ寺院",
+          "description": "海に面した崖の上に建つウルワツ寺院は、バリの中でも特に美しいスポット。朝の静けさの中で、壮大な海の景色を堪能できます。",
+          "searchQuery": "Uluwatu Temple",
+          "locationEn": "Uluwatu, Bali, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ケチャックダンス鑑賞",
+          "description": "ウルワツ寺院で行われるケチャックダンスは、バリの伝統的な舞踊で、夕日を背景にしたパフォーマンスが特に人気です。",
+          "searchQuery": "Kecak Dance Uluwatu",
+          "locationEn": "Uluwatu, Bali, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ジンバランビーチでランチ",
+          "description": "ジンバランビーチの海の見えるレストランで、新鮮なシーフードを楽しむランチ。波の音を聞きながら、リラックスした時間を過ごせます。",
+          "searchQuery": "Jimbaran Seafood",
+          "locationEn": "Jimbaran, Bali, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ビーチでリラックス",
+          "description": "ジンバランビーチでのんびりと過ごし、海に足を浸けたり、日光浴を楽しんだりします。心地よい風を感じながら、リラックスした時間を満喫。",
+          "searchQuery": "Jimbaran Beach",
+          "locationEn": "Jimbaran, Bali, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "スパでマッサージ",
+          "description": "ジンバランエリアのスパで、バリニーズマッサージを受けて心身ともにリフレッシュ。リラックスしたひとときを過ごせます。",
+          "searchQuery": "Jimbaran Spa",
+          "locationEn": "Jimbaran, Bali, Indonesia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ジンバランビーチで夕食",
+          "description": "夕暮れ時のジンバランビーチで、ロマンチックなディナー。海の幸を使った料理を楽しみながら、素晴らしいサンセットを眺めることができます。",
+          "searchQuery": "Jimbaran Beach Dinner",
+          "locationEn": "Jimbaran, Bali, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "バリ島から東京へ帰る",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Ngurah Rai International Airport",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Narita International Airport",
+          "time": "20:00"
+        },
+        "duration": "7h",
+        "memo": "バリ島から東京への直行便です。出発の2時間前には空港に到着しておきましょう。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ジンバランビーチで朝ヨガ",
+          "description": "美しい海を眺めながら、心地よい風を感じる中での朝ヨガで一日をスタート。リラックスした気持ちで、バリの自然を満喫できます。",
+          "searchQuery": "Jimbaran Beach Yoga",
+          "locationEn": "Jimbaran, Bali, Indonesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ジンバランのシーフードレストランで朝食",
+          "description": "新鮮なシーフードを使った朝食を楽しめるレストランで、バリの朝を味わいます。特に、グリルした魚や海老が絶品です。",
+          "searchQuery": "Jimbaran Seafood Restaurant",
+          "locationEn": "Jimbaran, Bali, Indonesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "スパでリラックスマッサージ",
+          "description": "バリの伝統的なマッサージを受けて、心身ともにリフレッシュ。リゾート気分を味わいながら、贅沢なひとときを過ごします。",
+          "searchQuery": "Bali Spa",
+          "locationEn": "Jimbaran, Bali, Indonesia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

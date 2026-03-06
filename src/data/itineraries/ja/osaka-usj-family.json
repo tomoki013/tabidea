@@ -1,0 +1,270 @@
+{
+  "id": "672ef7a1-71d8-49ff-9711-cc86449054fc",
+  "destination": "大阪",
+  "description": "大阪の魅力を存分に楽しむ3日間の家族旅行へようこそ！子供たちと一緒にユニバーサル・スタジオ・ジャパン（USJ）で夢のような体験をし、地元の美味しいグルメを堪能する旅をお届けします。家族全員が笑顔になれる、思い出に残る旅を計画しました。",
+  "heroImage": "https://images.unsplash.com/photo-1731602389054-b0099d61f207?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODA4NTZ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Jiachen Lin",
+  "heroImagePhotographerUrl": "https://unsplash.com/@jiachenlin?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "ユニバーサル・スタジオ・ジャパンでの冒険",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "大阪らしい和朝食を楽しみ、エネルギーをチャージ。地元の食材を使った料理で、家族みんなが満足できる内容です。",
+          "locationEn": "Osaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ユニバーサル・スタジオ・ジャパン",
+          "description": "家族全員が楽しめるテーマパーク、ユニバーサル・スタジオ・ジャパンで一日中遊びましょう。人気のアトラクションやショーを楽しみながら、思い出に残る体験を！",
+          "searchQuery": "Universal Studios Japan",
+          "locationEn": "Osaka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "パーク内でランチ",
+          "description": "ユニバーサル・スタジオ内のレストランで、ハリウッド映画をテーマにした美味しいランチを楽しみます。子供たちも喜ぶメニューが揃っています。",
+          "locationEn": "Osaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アトラクション巡り",
+          "description": "午後はアトラクションを巡りながら、家族で楽しむ時間を過ごします。特に「ハリー・ポッター」エリアは必見です！",
+          "locationEn": "Osaka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "パーク内で軽食",
+          "description": "夕方には、パーク内の屋台で軽食を楽しみましょう。たこ焼きやクレープなど、大阪名物を味わうチャンスです。",
+          "locationEn": "Osaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ユニバーサル・スタジオ・ジャパンの夜景",
+          "description": "パークの閉園時間まで楽しんだ後、夜景を楽しみながら帰路につきます。特に夜のアトラクションは幻想的です。",
+          "locationEn": "Osaka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルにチェックイン",
+          "description": "一日の疲れを癒すために、ホテルに戻りましょう。家族でゆっくりと過ごせる時間を大切に。",
+          "locationEn": "Osaka, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "大阪のグルメと観光",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "大阪のホテルで、和洋折衷の朝食を楽しみます。特に、地元の食材を使った料理が並ぶビュッフェスタイルが魅力です。",
+          "locationEn": "Osaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ユニバーサル・スタジオ・ジャパン",
+          "description": "家族で楽しむテーマパーク、ユニバーサル・スタジオ・ジャパンへ。人気のアトラクションやキャラクターたちとの出会いが待っています。特に、子供向けのエリアも充実しているので、安心して楽しめます。",
+          "searchQuery": "Universal Studios Japan",
+          "locationEn": "Osaka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ユニバーサル・スタジオ・ジャパン内でランチ",
+          "description": "パーク内のレストランで、ハリウッド映画をテーマにした料理を楽しみます。子供たちも喜ぶメニューが豊富です。",
+          "locationEn": "Osaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ユニバーサル・スタジオ・ジャパン",
+          "description": "午後も引き続き、アトラクションやショーを楽しみます。特に、人気の「ハリー・ポッター」エリアは必見です。",
+          "locationEn": "Osaka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "道頓堀で夕食",
+          "description": "ユニバーサル・スタジオ・ジャパンから道頓堀へ移動し、大阪名物のたこ焼きやお好み焼きを楽しみます。賑やかな雰囲気の中で、家族での食事を満喫しましょう。",
+          "searchQuery": "Dotonbori",
+          "locationEn": "Osaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "道頓堀散策",
+          "description": "夕食後は道頓堀を散策。ネオンが輝く街並みを楽しみながら、観光名所のグリコの看板やかに道楽の巨大なカニを見に行きましょう。",
+          "locationEn": "Osaka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。子供たちも楽しい思い出をたくさん作ったことでしょう。",
+          "locationEn": "Osaka, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "大阪の思い出を胸に帰路へ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "大阪らしい和朝食を楽しみ、元気に一日をスタート。地元の食材を使った料理が並び、特に焼き魚や味噌汁が絶品です。",
+          "locationEn": "Osaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ユニバーサル・スタジオ・ジャパン",
+          "description": "家族で楽しむテーマパーク、ユニバーサル・スタジオ・ジャパンへ。人気のアトラクションやショーを満喫し、特に子供たちが大好きなハリー・ポッターエリアは必見です。",
+          "searchQuery": "Universal Studios Japan",
+          "locationEn": "Osaka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ユニバーサル・シティウォークでランチ",
+          "description": "ユニバーサル・シティウォーク内のレストランでランチ。多彩な飲食店が揃い、家族みんなが楽しめるメニューが豊富です。特に、ハンバーガーやピザが人気。",
+          "searchQuery": "Universal CityWalk Osaka",
+          "locationEn": "Osaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ユニバーサル・スタジオ・ジャパン再訪",
+          "description": "午後も引き続きユニバーサル・スタジオ・ジャパンで遊びます。子供たちが楽しめるアトラクションを中心に、思い出に残る体験をたくさん作りましょう。",
+          "locationEn": "Osaka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "天保山マーケットプレース",
+          "description": "ユニバーサル・スタジオ・ジャパンを後にし、天保山マーケットプレースへ。ここでは、ショッピングや地元のグルメを楽しむことができます。特に海鮮料理やスイーツが人気です。",
+          "searchQuery": "Tempozan Marketplace",
+          "locationEn": "Osaka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "天保山で夕食",
+          "description": "天保山マーケットプレース内のレストランで夕食。新鮮な海の幸を使った料理や、大阪名物のたこ焼きも楽しめます。家族での楽しい食事の締めくくりにぴったり。",
+          "locationEn": "Osaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "ホテルへ戻る",
+          "description": "楽しい一日を終え、ホテルへ戻ります。子供たちと一緒に今日の思い出を振り返りながら、ゆっくりと過ごしましょう。",
+          "locationEn": "Osaka, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

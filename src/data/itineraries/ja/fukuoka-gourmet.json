@@ -1,0 +1,201 @@
+{
+  "id": "f784ab91-1fa7-47f5-82c3-88e502585921",
+  "destination": "福岡（博多・天神・太宰府）",
+  "description": "福岡の魅力を存分に味わう2日間の旅へ、友人と共に出かけましょう。グルメ、文化、歴史、ショッピングが詰まったこのプランでは、博多の美味しい屋台料理を楽しみながら、太宰府の歴史的な名所も訪れます。",
+  "days": [
+    {
+      "day": 1,
+      "title": "博多の美味を堪能する日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "博多のホテルで、地元の食材を使った和朝食を楽しみます。特に明太子やご飯、味噌汁が絶品です。",
+          "locationEn": "Hakata, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "太宰府天満宮",
+          "description": "学問の神様、菅原道真を祀る太宰府天満宮を訪れます。美しい境内を散策し、梅ヶ枝餅を味わうのもお忘れなく。",
+          "searchQuery": "Dazaifu Tenmangu Shrine",
+          "locationEn": "Dazaifu, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "太宰府でランチ",
+          "description": "太宰府の名物、うどんやそばを楽しめるお店でランチ。地元の人に人気のあるお店を選ぶと良いでしょう。",
+          "locationEn": "Dazaifu, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "天神エリアでショッピング",
+          "description": "天神の繁華街を散策しながら、ショッピングを楽しみます。最新のファッションやお土産を探してみてください。",
+          "searchQuery": "Tenjin, Fukuoka",
+          "locationEn": "Fukuoka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "博多駅周辺でカフェ休憩",
+          "description": "博多駅近くのカフェで一息。地元のスイーツやコーヒーを楽しみながら、旅の疲れを癒します。",
+          "locationEn": "Hakata, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "中洲屋台で夕食",
+          "description": "中洲の屋台街で、博多ラーメンや焼き鳥、もつ鍋などを楽しみます。地元の雰囲気を味わいながら、友人と楽しいひとときを過ごしましょう。",
+          "searchQuery": "Nakasu Yatai",
+          "locationEn": "Fukuoka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "中洲の夜景散策",
+          "description": "中洲の川沿いを散策しながら、夜景を楽しみます。博多の美しい夜景をバックに、素敵な思い出を作りましょう。",
+          "locationEn": "Fukuoka, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "太宰府と天神で文化とショッピング",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "博多",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "太宰府",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "西鉄電車で太宰府へ向かいます。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "太宰府天満宮",
+          "description": "学問の神様、菅原道真公を祀る太宰府天満宮を訪れます。美しい境内を散策しながら、歴史を感じるひとときを楽しんでください。",
+          "searchQuery": "Dazaifu Tenmangu",
+          "locationEn": "Dazaifu, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "梅ヶ枝餅を味わう",
+          "description": "太宰府名物の梅ヶ枝餅をぜひ味わってみてください。温かい餅の中に甘さ控えめのこしあんが詰まっていて、散策のお供にぴったりです。",
+          "searchQuery": "Umegae Mochi",
+          "locationEn": "Dazaifu, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ：太宰府の和食店",
+          "description": "地元の食材を使った和食ランチを楽しみましょう。新鮮な魚や野菜を使った定食が人気のお店です。",
+          "searchQuery": "Dazaifu Japanese Restaurant",
+          "locationEn": "Dazaifu, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "天神地下街でショッピング",
+          "description": "太宰府から天神へ移動し、天神地下街でショッピングを楽しみます。多彩なショップが揃い、友人と一緒にお気に入りのアイテムを見つけるのも楽しいです。",
+          "searchQuery": "Tenjin Underground Shopping Mall",
+          "locationEn": "Fukuoka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "カフェでひと休み",
+          "description": "ショッピングの合間に、天神のカフェで一息つきましょう。地元のスイーツやコーヒーを楽しむのも良いですね。",
+          "searchQuery": "Tenjin Cafe",
+          "locationEn": "Fukuoka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "屋台で夕食",
+          "description": "夜は天神近くの屋台で夕食を楽しみます。ラーメンや焼き鳥、明太子など、福岡の名物を気軽に味わえる絶好のチャンスです。",
+          "searchQuery": "Fukuoka Yatai",
+          "locationEn": "Fukuoka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "博多の夜景を楽しむ",
+          "description": "博多の夜景を楽しむために、近くの展望台や川沿いを散策します。美しい夜景を眺めながら、友人との楽しい時間を過ごしましょう。",
+          "searchQuery": "Fukuoka Night View",
+          "locationEn": "Fukuoka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

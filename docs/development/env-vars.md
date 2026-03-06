@@ -1,6 +1,6 @@
 # Environment Variables
 
-更新日: 2026-03-03
+更新日: 2026-03-06
 
 このドキュメントは、コード上で参照されている環境変数のカタログです。  
 This list is based on current `process.env.*` references in the repository.
@@ -14,6 +14,8 @@ This list is based on current `process.env.*` references in the repository.
 | `SUPABASE_SERVICE_ROLE_KEY` | Server | Supabase admin operations |
 | `GOOGLE_GENERATIVE_AI_API_KEY` | Server | Gemini API access |
 | `OPENAI_API_KEY` | Server | OpenAI API access (optional alternative to Gemini) |
+| `SAMPLE_GOOGLE_GENERATIVE_AI_API_KEY` | Server (scripts) | Sample itinerary generation dedicated Gemini key (optional, falls back to `GOOGLE_GENERATIVE_AI_API_KEY`) |
+| `SAMPLE_OPENAI_API_KEY` | Server (scripts) | Sample itinerary generation dedicated OpenAI key (optional, falls back to `OPENAI_API_KEY`) |
 
 ## 2. AI/Model Selection
 

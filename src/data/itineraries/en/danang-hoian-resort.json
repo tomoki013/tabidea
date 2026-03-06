@@ -1,0 +1,417 @@
+{
+  "id": "e0a92276-7e91-467b-8322-934c3ba6ac16",
+  "destination": "ダナン・ホイアン",
+  "description": "Escape to the enchanting coastal towns of Da Nang and Hoi An, where golden beaches meet rich history and vibrant culture. This 5-day adventure will take you from the stunning shores of Da Nang to the lantern-lit streets of Hoi An, immersing you in the local flavors and breathtaking sights. Perfect for friends seeking a blend of relaxation and exploration, this trip promises unforgettable memories and a taste of Vietnam's charm.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Da Nang",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Banh Xeo Ba Duong",
+          "description": "Start your culinary adventure with a delicious plate of Banh Xeo, a Vietnamese pancake filled with shrimp and bean sprouts, at this local favorite. The vibrant atmosphere and authentic flavors will set the tone for your trip!",
+          "searchQuery": "Banh Xeo Ba Duong",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "My Khe Beach",
+          "description": "Spend a relaxing afternoon at My Khe Beach, known for its soft white sand and clear blue waters. It's the perfect spot to swim, sunbathe, or simply enjoy the stunning coastal views. Don't forget your sunscreen!",
+          "searchQuery": "My Khe Beach",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Da Nang Night Market",
+          "description": "As the sun sets, head to the Da Nang Night Market. Explore the vibrant stalls filled with local crafts, souvenirs, and delicious street food. It's a great place to immerse yourself in the local culture and try some tasty snacks!",
+          "searchQuery": "Da Nang Night Market",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at Quan Com Hue Ngon",
+          "description": "Enjoy a hearty dinner at this popular restaurant known for its Hue-style dishes. Try the Bun Bo Hue, a spicy beef noodle soup that will tantalize your taste buds. The casual setting makes it a great place to unwind after a day of exploring.",
+          "searchQuery": "Quan Com Hue Ngon",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening stroll along the Han River",
+          "description": "End your day with a leisurely walk along the Han River. The illuminated bridges and city skyline create a magical atmosphere, perfect for taking photos and enjoying the cool evening breeze.",
+          "searchQuery": "Han River",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Da Nang's Wonders",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Da Nang",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Marble Mountains",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "Take a local bus to the Marble Mountains, a must-see natural wonder."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Marble Mountains",
+          "description": "Explore the stunning Marble Mountains, a cluster of five marble and limestone hills. Climb to the top for breathtaking views and visit the hidden caves and pagodas nestled within the mountains.",
+          "searchQuery": "Marble Mountains",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Mi Quang 1A",
+          "description": "Savor a bowl of Mi Quang, a local specialty noodle dish, at Mi Quang 1A. This restaurant is known for its authentic flavors and generous portions, perfect for refueling after your morning adventure.",
+          "searchQuery": "Mi Quang 1A",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "My Khe Beach",
+          "description": "Spend a relaxing afternoon at My Khe Beach, known for its soft white sand and clear blue waters. Enjoy swimming, sunbathing, or simply taking in the beautiful coastal scenery.",
+          "searchQuery": "My Khe Beach",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Waterfront Danang Restaurant & Bar",
+          "description": "Dine at Waterfront Danang, where you can enjoy delicious seafood and Vietnamese dishes while overlooking the Han River. The ambiance is perfect for unwinding after a day of exploration.",
+          "searchQuery": "Waterfront Danang Restaurant & Bar",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Han River Night Cruise",
+          "description": "Experience the beauty of Da Nang at night with a scenic cruise on the Han River. Enjoy the illuminated skyline and the famous Dragon Bridge, which breathes fire and water on weekends.",
+          "searchQuery": "Han River Night Cruise",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Discovering Hoi An's Charm",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Da Nang",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Hoi An",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "A scenic drive along the coast to Hoi An."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Hoi An Ancient Town",
+          "description": "Explore the enchanting streets of Hoi An Ancient Town, a UNESCO World Heritage site. The well-preserved architecture and vibrant colors of the buildings create a picturesque setting, perfect for leisurely strolls and photography.",
+          "searchQuery": "Hoi An Ancient Town",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Morning Glory",
+          "description": "Savor traditional Vietnamese dishes at Morning Glory, a popular restaurant known for its local specialties like Cao Lau and fresh spring rolls. The cozy atmosphere adds to the dining experience.",
+          "searchQuery": "Morning Glory Restaurant",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Japanese Covered Bridge",
+          "description": "Visit the iconic Japanese Covered Bridge, a symbol of Hoi An. This charming structure, adorned with intricate carvings, offers a glimpse into the town's rich cultural history.",
+          "searchQuery": "Japanese Covered Bridge",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Relax at An Bang Beach",
+          "description": "Head to An Bang Beach for some sun and sea. Enjoy swimming in the clear waters and relaxing on the sandy beach, a perfect way to unwind after exploring the town.",
+          "searchQuery": "An Bang Beach",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Fisherman",
+          "description": "Dine at The Fisherman, a beachfront restaurant known for its fresh seafood and stunning sunset views. Enjoy a delicious meal while listening to the sound of the waves.",
+          "searchQuery": "The Fisherman Restaurant",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Hoi An Lantern Festival",
+          "description": "Experience the magical Hoi An Lantern Festival, where the streets are illuminated with colorful lanterns. Stroll along the riverside and enjoy the festive atmosphere, a perfect end to your day.",
+          "searchQuery": "Hoi An Lantern Festival",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Hoi An Lantern Festival",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Morning Glory",
+          "description": "Start your day with a delicious breakfast at Morning Glory, known for its traditional Vietnamese dishes. Try the Cao Lau, a local specialty that combines noodles, pork, and fresh herbs for a perfect morning boost.",
+          "searchQuery": "Morning Glory Hoi An",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "An Bang Beach",
+          "description": "Spend a relaxing morning at An Bang Beach, where you can swim in the clear blue waters and soak up the sun. The beach is lined with charming cafes and beach bars, perfect for a refreshing drink.",
+          "searchQuery": "An Bang Beach",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Fisherman",
+          "description": "Enjoy a seafood lunch at The Fisherman, a local favorite known for its fresh catches and stunning views of the ocean. Don't miss their grilled fish and shrimp dishes, which are both flavorful and affordable.",
+          "searchQuery": "The Fisherman Hoi An",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Hoi An Ancient Town",
+          "description": "Wander through the UNESCO World Heritage-listed Hoi An Ancient Town. Admire the well-preserved architecture, vibrant shops, and the iconic Japanese Covered Bridge. This area is perfect for photography and soaking in the local culture.",
+          "searchQuery": "Hoi An Ancient Town",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Cargo Club",
+          "description": "Savor a delightful dinner at Cargo Club, where you can enjoy a mix of Vietnamese and international cuisine. The riverside setting offers a beautiful view, especially as the lanterns begin to light up the town.",
+          "searchQuery": "Cargo Club Hoi An",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Hoi An Lantern Festival",
+          "description": "Experience the magical Hoi An Lantern Festival, where the streets are illuminated with colorful lanterns. Join the locals in releasing lanterns on the river for good luck and enjoy the festive atmosphere with live music and performances.",
+          "searchQuery": "Hoi An Lantern Festival",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Da Nang and Departure",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Hoi An",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Da Nang International Airport",
+          "time": "null"
+        },
+        "duration": "1h",
+        "memo": "A scenic drive along the coast, enjoy the views of the beach."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Morning Glory",
+          "description": "Start your day with a delicious breakfast at Morning Glory, known for its traditional Vietnamese dishes. Try the Cao Lau, a local specialty that combines noodles, pork, and fresh herbs.",
+          "searchQuery": "Morning Glory Hoi An",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Relax at An Bang Beach",
+          "description": "Spend a leisurely morning at An Bang Beach, where you can swim in the clear waters and soak up the sun. The beach is lined with charming cafes where you can grab a refreshing drink.",
+          "searchQuery": "An Bang Beach",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Fisherman",
+          "description": "Enjoy a seafood lunch at The Fisherman, a local favorite known for its fresh catches and stunning views of the ocean. Don't miss their grilled fish and shrimp dishes.",
+          "searchQuery": "The Fisherman Hoi An",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit Hoi An Ancient Town",
+          "description": "Take a stroll through the UNESCO World Heritage site of Hoi An Ancient Town. Admire the well-preserved architecture and vibrant lanterns that fill the streets, especially beautiful during the day.",
+          "searchQuery": "Hoi An Ancient Town",
+          "locationEn": "Hoi An, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Da Nang",
+          "description": "Head back to Da Nang, taking in the coastal scenery along the way. This is a great time to reflect on your trip and enjoy the last moments of your vacation.",
+          "searchQuery": "Da Nang",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Departure from Da Nang International Airport",
+          "description": "Arrive at Da Nang International Airport for your departure. Make sure to arrive early to check in and enjoy any last-minute shopping at the airport.",
+          "searchQuery": "Da Nang International Airport",
+          "locationEn": "Da Nang, Vietnam",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

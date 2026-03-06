@@ -1,0 +1,544 @@
+{
+  "id": "44eb8cf4-38bc-4c25-ae95-1579d3e257f9",
+  "destination": "バンクーバー",
+  "description": "バンクーバーの自然と美食を満喫する6日間の旅へようこそ。壮大な山々と海に囲まれたこの街は、アクティブな体験と美味しいシーフードが待っています。友人と共に、街歩きやアクティビティを通じて、バンクーバーの魅力を存分に味わいましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からバンクーバーへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "バンクーバー",
+          "time": "11:00"
+        },
+        "duration": "10h",
+        "memo": "直行便での移動。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "バンクーバー国際空港到着後、ダウンタウンへ移動",
+          "description": "空港からスカイトレインでダウンタウンへ。美しい景色を楽しみながら、バンクーバーの街に足を踏み入れます。",
+          "searchQuery": "Vancouver Downtown",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ダウンタウンでランチ",
+          "description": "地元の人気シーフードレストランで新鮮なシーフードを堪能。特に、ロブスターやクラムチャウダーがおすすめです。",
+          "searchQuery": "Blue Water Cafe",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "スタンレーパーク散策",
+          "description": "バンクーバーの自然を満喫できるスタンレーパークで、散策や自転車レンタルを楽しみましょう。美しい海岸線や森林の中を歩くのは心地よい体験です。",
+          "searchQuery": "Stanley Park",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "グランビルアイランド訪問",
+          "description": "アートやグルメが楽しめるグランビルアイランドへ。地元のマーケットで新鮮な食材やお土産を探しながら、アートギャラリーも楽しめます。",
+          "searchQuery": "Granville Island",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ダウンタウンでディナー",
+          "description": "ダウンタウンのシーフードレストランで、バンクーバー名物のシーフードディナーを楽しみます。特に、地元の魚介を使った料理は絶品です。",
+          "searchQuery": "The Fish House in Stanley Park",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルチェックイン",
+          "description": "ダウンタウンのホテルにチェックイン。快適な部屋で旅の疲れを癒しましょう。",
+          "searchQuery": "The Sutton Place Hotel Vancouver",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "スタンレーパークとグルメ探訪",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "バンクーバーの地元のカフェで、フレッシュなベーカリーやコーヒーを楽しみながら、1日のスタートを切ります。特に、ベーカリーの自家製ペストリーは絶品です。",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "スタンレーパーク散策",
+          "description": "広大なスタンレーパークを散策し、自然の美しさを満喫します。特に、トレイル沿いの海の景色や、ビーチの近くでのんびりするのがおすすめです。",
+          "searchQuery": "Stanley Park",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "イングリッシュベイでランチ",
+          "description": "イングリッシュベイのビーチ沿いにあるシーフードレストランで、新鮮なシーフードを楽しみます。特に、地元の魚を使ったフィッシュ＆チップスは絶品です。",
+          "searchQuery": "English Bay Seafood Restaurant",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "イングリッシュベイビーチでアクティビティ",
+          "description": "ビーチでカヤックやスタンドアップパドルボードを楽しむことができます。自然の中で体を動かしながら、バンクーバーの美しい景色を堪能しましょう。",
+          "searchQuery": "English Bay Beach",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "グランビルアイランド散策",
+          "description": "グランビルアイランドのマーケットを訪れ、地元の食材やアートを楽しみます。特に、フードマーケットでは新鮮なシーフードや地元の特産品が揃っています。",
+          "searchQuery": "Granville Island Public Market",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "グランビルアイランドでディナー",
+          "description": "グランビルアイランドのレストランで、シーフードディナーを楽しみます。新鮮な魚介類を使った料理が豊富で、特にロブスターやオイスターはおすすめです。",
+          "searchQuery": "Granville Island Seafood Restaurant",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "バンクーバーの夜景を楽しむ",
+          "description": "夜のバンクーバーを散策し、ライトアップされた街並みを楽しみます。特に、カナダプレース周辺の景色は美しく、写真撮影にも最適です。",
+          "searchQuery": "Canada Place",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "自然を満喫する一日",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "バンクーバーのホテルで、地元の食材を使った美味しい朝食を楽しみます。新鮮なフルーツやオムレツが人気です。",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "グラウスマウンテン",
+          "description": "バンクーバーのシンボル、グラウスマウンテンへ。ゴンドラで山頂まで上がり、絶景を楽しみながらハイキングコースを散策します。特に、山頂からのバンクーバー市街の眺めは圧巻です。",
+          "searchQuery": "Grouse Mountain",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "山頂でランチ",
+          "description": "グラウスマウンテンの山頂にあるレストランで、地元のシーフードを使った料理を楽しみます。特に新鮮なサーモン料理がおすすめです。",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "キャピラノ吊り橋公園",
+          "description": "キャピラノ吊り橋公園へ移動し、壮大な吊り橋を渡ります。周囲の自然と美しい景色を楽しみながら、スリル満点の体験ができます。",
+          "searchQuery": "Capilano Suspension Bridge Park",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "公園内のトレッキング",
+          "description": "吊り橋を渡った後は、公園内のトレッキングコースを散策。豊かな自然の中でリフレッシュしながら、野生動物にも出会えるかもしれません。",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ダウンタウンでディナー",
+          "description": "バンクーバーのダウンタウンに戻り、シーフードレストランでディナー。新鮮なロブスターやカニを楽しむことができます。",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "スタンレーパーク散策",
+          "description": "ディナーの後は、スタンレーパークを散策。夜の静けさの中で、海辺の美しい景色を楽しみながらリラックスした時間を過ごします。",
+          "searchQuery": "Stanley Park",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "バンクーバーの文化と歴史",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "バンクーバーの地元のカフェで、フレッシュなベーカリーやコーヒーを楽しみながら、ゆったりとした朝を迎えます。",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "バンクーバー美術館",
+          "description": "バンクーバー美術館を訪れ、カナダのアートや文化に触れます。特に、地元アーティストの作品や先住民のアートが見どころです。",
+          "searchQuery": "Vancouver Art Gallery",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Granville Islandでランチ",
+          "description": "Granville Islandのマーケットで新鮮なシーフードを楽しみましょう。地元のシェフが手がける料理や、海の幸を使ったタパスが絶品です。",
+          "searchQuery": "Granville Island Public Market",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ガスタウン散策",
+          "description": "歴史的なガスタウン地区を散策し、ストリートパフォーマンスやユニークなショップを楽しみます。蒸気時計も見逃せません。",
+          "searchQuery": "Gastown",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "スタンレーパークでのアクティビティ",
+          "description": "スタンレーパークで自転車をレンタルし、美しい海岸線を走りながら自然を満喫します。公園内のトーテムポールも必見です。",
+          "searchQuery": "Stanley Park",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "シーフードディナー",
+          "description": "バンクーバーの人気シーフードレストランで、地元の新鮮な魚介類を使ったディナーを楽しみます。特に、ロブスターやサーモンがおすすめです。",
+          "searchQuery": "Blue Water Cafe",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のバンクーバー散策",
+          "description": "ディナー後は、バンクーバーの夜景を楽しみながら、ウォーターフロントを散策します。美しいライトアップが心を癒してくれます。",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ビクトリア日帰り旅行",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "バンクーバー",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ビクトリア",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "バンクーバーからビクトリアへのフライトで、朝早く出発します。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "ブッチャートガーデン",
+          "description": "ビクトリアの名所、ブッチャートガーデンで色とりどりの花々を楽しみましょう。広大な庭園内を散策し、四季折々の美しい景色に癒されます。",
+          "searchQuery": "Butchart Gardens",
+          "locationEn": "Brentwood Bay, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ガーデン内のカフェでランチ",
+          "description": "ブッチャートガーデン内のカフェで、新鮮な地元食材を使ったランチを楽しみます。特にシーフードサンドイッチがおすすめです。",
+          "searchQuery": "Butchart Gardens Cafe",
+          "locationEn": "Brentwood Bay, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ビクトリアのダウンタウン散策",
+          "description": "ビクトリアのダウンタウンを散策し、歴史的な建物やおしゃれなショップを楽しみます。特に、フェアモント・エンプレスホテルの外観は必見です。",
+          "searchQuery": "Downtown Victoria",
+          "locationEn": "Victoria, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "シーフードマーケット訪問",
+          "description": "ビクトリアのシーフードマーケットで新鮮な海の幸を堪能。地元の人々に人気のあるお店で、シーフードタコスやクラムチャウダーを試してみましょう。",
+          "searchQuery": "Victoria Public Market",
+          "locationEn": "Victoria, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "クレイグダロック城見学",
+          "description": "ビクトリアの名所、クレイグダロック城を訪れ、歴史的な建物と美しい庭園を楽しみます。城内の豪華なインテリアも見逃せません。",
+          "searchQuery": "Craigdarroch Castle",
+          "locationEn": "Victoria, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ビクトリアからバンクーバーへ帰還",
+          "description": "ビクトリアでの素晴らしい一日を締めくくり、バンクーバーへ戻ります。",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "バンクーバーでディナー",
+          "description": "バンクーバーに戻ったら、シーフードレストランで新鮮な海の幸を楽しみましょう。特に、地元の牡蠣やサーモンが絶品です。",
+          "searchQuery": "Blue Water Cafe",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "バンクーバーから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "バンクーバー国際空港",
+          "time": "14:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "18:00"
+        },
+        "duration": "10h",
+        "memo": "直行便で東京へ向かいます。機内では映画を楽しんだり、軽食を取ったりしてリラックスしましょう。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ダウンタウンで朝食",
+          "description": "バンクーバーのダウンタウンにある人気のカフェで、地元の新鮮な食材を使った朝食を楽しみます。特に、アボカドトーストやエッグベネディクトが絶品です。",
+          "searchQuery": "Cafe Artigiano",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "スタンレーパーク散策",
+          "description": "バンクーバーの自然を満喫できるスタンレーパークで、散策やサイクリングを楽しみましょう。美しい海岸線やトーテムポールを見ながら、リフレッシュできます。",
+          "searchQuery": "Stanley Park",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "シーフードランチ",
+          "description": "バンクーバー名物のシーフードを楽しむため、ダウンタウンのシーフードレストランでランチを取ります。新鮮なロブスターやクラムチャウダーがおすすめです。",
+          "searchQuery": "Blue Water Cafe",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "バンクーバー国際空港へ移動",
+          "description": "ランチ後、空港へ向かいます。タクシーや公共交通機関を利用して、スムーズに移動しましょう。",
+          "locationEn": "Vancouver International Airport",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "東京到着",
+          "description": "東京に到着後、ホテルへ向かいます。長旅の疲れを癒すため、ゆっくりと休息を取りましょう。",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

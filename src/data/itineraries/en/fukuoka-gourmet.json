@@ -1,0 +1,204 @@
+{
+  "id": "0bee50cb-b9ac-420e-805d-0b5fb9c261b7",
+  "destination": "Fukuoka (Hakata, Tenjin, Dazaifu)",
+  "description": "Immerse yourself in the vibrant culture and delectable cuisine of Fukuoka, where each corner offers a taste of history and a hint of modernity. From the bustling streets of Hakata to the serene temples of Dazaifu, this 2-day adventure is a feast for the senses, perfect for friends eager to explore local flavors and traditions. Get ready to indulge in mouthwatering ramen, discover unique shopping spots, and experience the lively atmosphere of the famous yatai (street food stalls) at night.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Exploring Hakata and Tenjin",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hakata Station",
+          "description": "Start your day with a delicious breakfast at a local bakery in Hakata Station. Try the famous 'Hakata Mentai Tamago Sandwich' for a unique twist on a classic breakfast.",
+          "searchQuery": "Hakata Station Bakery",
+          "locationEn": "Fukuoka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit Tocho-ji Temple",
+          "description": "Explore Tocho-ji Temple, known for its impressive wooden Buddha statue. The serene atmosphere and beautiful architecture make it a perfect spot to soak in some culture.",
+          "searchQuery": "Tocho-ji Temple",
+          "locationEn": "Fukuoka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Ichiran Ramen",
+          "description": "Savor a bowl of the famous tonkotsu ramen at Ichiran, where you can customize your order to your liking. It's a must-try for any foodie visiting Fukuoka!",
+          "searchQuery": "Ichiran Ramen Hakata",
+          "locationEn": "Fukuoka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Shopping at Tenjin",
+          "description": "Head to Tenjin, Fukuoka's bustling shopping district. Explore the underground shopping mall and various boutiques for unique souvenirs and local fashion.",
+          "searchQuery": "Tenjin Shopping District",
+          "locationEn": "Fukuoka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Ohori Park",
+          "description": "Take a leisurely stroll in Ohori Park, a beautiful oasis in the city. Enjoy the scenic views of the pond and the surrounding gardens, perfect for a relaxing afternoon.",
+          "searchQuery": "Ohori Park",
+          "locationEn": "Fukuoka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Yatai Street",
+          "description": "Experience Fukuoka's famous street food at Yatai Street. Try local delicacies like yakitori, oden, and more while enjoying the vibrant atmosphere of the food stalls.",
+          "searchQuery": "Yatai Street",
+          "locationEn": "Fukuoka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Explore Nakasu District",
+          "description": "After dinner, take a walk through the lively Nakasu district, known for its nightlife. Enjoy the neon lights and perhaps grab a drink at a local izakaya.",
+          "searchQuery": "Nakasu District",
+          "locationEn": "Fukuoka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Day in Dazaifu",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Hakata",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Dazaifu",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the Nishitetsu train from Hakata Station to Dazaifu Station."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Dazaifu Tenmangu Shrine",
+          "description": "Start your day at the iconic Dazaifu Tenmangu Shrine, dedicated to the deity of learning, Sugawara no Michizane. The serene atmosphere and beautiful plum blossoms (in season) make it a perfect spot for reflection and exploration.",
+          "searchQuery": "Dazaifu Tenmangu Shrine",
+          "locationEn": "Dazaifu, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Umegae Mochi Shop",
+          "description": "Indulge in the famous Umegae Mochi, a sweet rice cake filled with red bean paste, grilled to perfection. This local delicacy is a must-try while visiting Dazaifu, and the shop is conveniently located near the shrine.",
+          "searchQuery": "Umegae Mochi",
+          "locationEn": "Dazaifu, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Kyushu National Museum",
+          "description": "Explore the Kyushu National Museum, which showcases the rich history and culture of the Kyushu region. The modern architecture of the museum itself is a sight to behold, and the exhibits provide fascinating insights into Japan's past.",
+          "searchQuery": "Kyushu National Museum",
+          "locationEn": "Dazaifu, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Komyozenji Temple",
+          "description": "Visit Komyozenji Temple, known for its beautiful Zen gardens and tranquil atmosphere. Take a moment to relax and enjoy the peaceful surroundings, perfect for a quiet afternoon.",
+          "searchQuery": "Komyozenji Temple",
+          "locationEn": "Dazaifu, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Hakata",
+          "description": "Head back to Hakata by train, reflecting on the day's cultural experiences. The journey takes about 30 minutes, giving you time to relax before dinner.",
+          "locationEn": "Hakata, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Yatai Stalls",
+          "description": "Experience the vibrant atmosphere of Hakata's yatai stalls for dinner. Sample local favorites like Hakata ramen, gyoza, and various skewers while enjoying the lively street food scene.",
+          "searchQuery": "Hakata Yatai",
+          "locationEn": "Hakata, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Explore Tenjin Shopping District",
+          "description": "After dinner, stroll through the bustling Tenjin shopping district. Discover unique shops, boutiques, and perhaps pick up some souvenirs to remember your trip.",
+          "searchQuery": "Tenjin Shopping District",
+          "locationEn": "Fukuoka, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

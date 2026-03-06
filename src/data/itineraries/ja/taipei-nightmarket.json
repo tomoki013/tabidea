@@ -1,0 +1,299 @@
+{
+  "id": "6574b8ba-87f2-4a94-bef3-c25c2cd7ec25",
+  "destination": "台北",
+  "description": "台北の魅力を存分に味わう3日間の旅へようこそ。美味しい小籠包やかき氷、歴史的な街並み、そして九份の幻想的な夜景を家族で楽しむことができるプランを用意しました。ゆったりとしたペースで、台北の文化とグルメを堪能しながら、心温まる思い出を作りましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1744990580358-bf65653929a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODE2NTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Da-shika",
+  "heroImagePhotographerUrl": "https://unsplash.com/@da_shika_photo?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "台北のグルメと文化を楽しむ日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "台北のホテルで、台湾式の朝食を楽しみます。豆漿（豆乳）や油條（揚げパン）など、地元の味を堪能して一日をスタート。",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "国立故宮博物院",
+          "description": "台湾の歴史と文化を深く知ることができる国立故宮博物院を訪れます。美しい展示品や歴史的なアートを楽しみながら、家族で学びの時間を過ごしましょう。",
+          "searchQuery": "National Palace Museum",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "鼎泰豊で小籠包ランチ",
+          "description": "世界的に有名な小籠包の名店、鼎泰豊でランチ。熱々の小籠包を頬張りながら、家族で楽しい食事のひとときを過ごします。",
+          "searchQuery": "Din Tai Fung",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "士林夜市散策",
+          "description": "午後は士林夜市へ。地元の人々に人気の屋台グルメを楽しみながら、賑やかな雰囲気を味わいます。子供たちも楽しめるゲームやお土産探しもお忘れなく！",
+          "searchQuery": "Shilin Night Market",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "九份へ移動",
+          "description": "夕方、九份へ向かいます。美しい山の景色を楽しみながら、提灯が灯る街並みを散策します。",
+          "locationEn": "Jiufen, Taiwan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "九份の夕暮れ散策",
+          "description": "九份の街を散策し、提灯の明かりに照らされた風情ある景色を楽しみます。夕暮れ時の九份は特にロマンチックで、家族での思い出作りにぴったりです。",
+          "locationEn": "Jiufen, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "九份でかき氷を楽しむ",
+          "description": "九份の名物、かき氷を味わいます。フルーツや甘いシロップがたっぷりかかったかき氷は、暑い日には最高のデザートです。",
+          "locationEn": "Jiufen, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "台北に戻る",
+          "description": "九份から台北へ戻ります。夜の台北の街を楽しみながら、ホテルへ帰ります。",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "九份の幻想的な夜景を楽しむ日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "台北のホテルで、台湾の伝統的な朝食を楽しみます。豆漿（豆乳）や油條（揚げパン）を味わいながら、ゆったりとした朝のひとときを過ごしましょう。",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "台北市内観光",
+          "description": "台北の街を散策しながら、地元の文化や歴史を感じることができます。特に、国立故宮博物院では貴重な中国の美術品を見学できます。",
+          "searchQuery": "National Palace Museum",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "鼎泰豊で小籠包ランチ",
+          "description": "世界的に有名な小籠包の名店、鼎泰豊でランチ。熱々の小籠包を頬張りながら、家族で楽しい食事の時間を過ごしましょう。",
+          "searchQuery": "Din Tai Fung",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "九份へ移動",
+          "description": "台北から九份へバスで移動します。美しい山道を通りながら、九份の風景を楽しむことができます。",
+          "locationEn": "Jiufen, Taiwan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "九份散策",
+          "description": "九份の古い街並みを散策し、地元のスイーツやお土産を楽しみましょう。特に、かき氷やお茶を味わうのがおすすめです。",
+          "searchQuery": "Jiufen Old Street",
+          "locationEn": "Jiufen, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "九份の夜景を楽しむ",
+          "description": "夕暮れ時の九份は、提灯の明かりが幻想的な雰囲気を醸し出します。美しい夜景を眺めながら、家族で特別な時間を過ごしましょう。",
+          "locationEn": "Jiufen, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "基隆夜市で夕食",
+          "description": "九份から基隆へ移動し、基隆夜市で地元の屋台グルメを楽しみます。新鮮なシーフードやスナックを味わいながら、賑やかな雰囲気を満喫しましょう。",
+          "searchQuery": "Keelung Night Market",
+          "locationEn": "Keelung, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "台北へ戻る",
+          "description": "基隆から台北へバスで戻ります。今日の思い出を振り返りながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "台北の街歩きと帰路",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "台北のホテルで、地元の食材を使った朝食を楽しみます。台湾の伝統的な朝ごはん、例えば豆漿（豆乳）や油條（揚げパン）を味わい、エネルギーをチャージしましょう。",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "迪化街散策",
+          "description": "歴史的な雰囲気が漂う迪化街を散策します。古い商家やおしゃれなカフェが並び、台湾の伝統的な工芸品やお土産を探すのにぴったりです。特に、乾物やお茶の専門店が多いので、試飲を楽しむのもおすすめです。",
+          "searchQuery": "Dihua Street",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "小籠包ランチ",
+          "description": "迪化街近くの人気店で、ジューシーな小籠包を堪能します。皮が薄く、スープがたっぷり詰まった小籠包は、家族みんなでシェアして楽しむのが良いでしょう。",
+          "searchQuery": "Din Tai Fung",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "龍山寺訪問",
+          "description": "台北の有名な寺院、龍山寺を訪れます。美しい彫刻や色鮮やかな装飾が施された寺院内で、台湾の宗教文化に触れることができます。子供たちも興味を持つかもしれません。",
+          "searchQuery": "Longshan Temple",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "かき氷を楽しむ",
+          "description": "台北名物のかき氷を食べに行きます。特に、マンゴーかき氷は絶品で、暑い日にはぴったりのデザートです。家族みんなでシェアして、楽しいひとときを過ごしましょう。",
+          "searchQuery": "Ice Monster",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "九份へ移動",
+          "description": "夕暮れ時の九份へ向かいます。美しい提灯の灯りが幻想的な雰囲気を醸し出し、家族での思い出に残る素敵な時間を過ごせます。",
+          "searchQuery": "Jiufen",
+          "locationEn": "New Taipei City, Taiwan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "九份の夜景を楽しむ",
+          "description": "九份の街並みを散策しながら、夜景を楽しみます。提灯の明かりが灯る中、地元の屋台で軽食をつまむのも良いでしょう。特に、九份名物の芋圓（タロイモ団子）はおすすめです。",
+          "searchQuery": "Jiufen Old Street",
+          "locationEn": "New Taipei City, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,613 @@
+{
+  "id": "a8648bd7-abb8-436b-96da-2176456ee0c5",
+  "destination": "パリ",
+  "description": "憧れのパリで、アートと美食の旅を満喫する7日間。美術館巡りや街歩き、ロマンチックなディナーを通じて、パリの魅力を存分に味わいましょう。美しい街並みを散策しながら、地元のパンやスイーツを楽しむ贅沢なひとときをお届けします。",
+  "heroImage": "https://images.unsplash.com/photo-1618991265313-07e1778ce960?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODEzMDh8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Lisa Kitano",
+  "heroImagePhotographerUrl": "https://unsplash.com/@kitano_lisa_0001?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "パリ到着とセーヌ川散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "パリのカフェでクロワッサンとカフェオレを楽しみながら、優雅な朝を迎えます。地元の人々に混じって、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "セーヌ川クルーズ",
+          "description": "セーヌ川をクルーズしながら、パリの美しい景色を楽しみます。エッフェル塔やルーヴル美術館など、名所を水上から眺める贅沢な体験です。",
+          "searchQuery": "Seine River Cruise",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ル・マルシェ・デ・アンファン（ランチ）",
+          "description": "セーヌ川沿いの市場で新鮮な食材を使ったランチを楽しみます。地元のチーズやバゲット、フルーツを味わいながら、パリの食文化に触れましょう。",
+          "searchQuery": "Le Marché des Enfants Rouges",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ノートルダム大聖堂",
+          "description": "美しいゴシック建築のノートルダム大聖堂を訪れます。内部のステンドグラスや彫刻をじっくりと鑑賞し、歴史の深さを感じてください。",
+          "searchQuery": "Notre-Dame Cathedral",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "サン・ルイ島散策",
+          "description": "サン・ルイ島を散策し、静かな雰囲気の中でアートギャラリーや小さなショップを訪れます。特にアイスクリームショップは必見です！",
+          "searchQuery": "Île Saint-Louis",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "カフェでディナー",
+          "description": "サン・ルイ島近くのカフェで、フランス料理を楽しみます。地元のワインと共に、ロマンチックなディナーを満喫しましょう。",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "セーヌ川の夜景散策",
+          "description": "夜のセーヌ川沿いを散策し、ライトアップされたエッフェル塔や橋の美しさを堪能します。ロマンチックな雰囲気の中で、素敵な思い出を作りましょう。",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ルーヴル美術館とモンマルトル散策",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "パリのカフェでクロワッサンやカフェオレを楽しみながら、優雅な朝を迎えます。地元の人々に混じって、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ルーヴル美術館",
+          "description": "世界的に有名なルーヴル美術館を訪れます。モナリザやミロのヴィーナスなど、名作の数々を間近で鑑賞し、アートの深い世界に浸りましょう。事前にチケットを購入しておくと、スムーズに入館できます。",
+          "searchQuery": "Louvre Museum",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ルーヴル近くのカフェでランチ",
+          "description": "ルーヴル美術館の近くにあるカフェで、フランスの伝統的なランチを楽しみます。サンドイッチやキッシュ、サラダなど、軽めの食事を選んで、午後の活動に備えましょう。",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "モンマルトル散策",
+          "description": "アートの香り漂うモンマルトル地区を散策します。美しい街並みやアーティストたちの作品を楽しみながら、サクレ・クール寺院へ向かいましょう。",
+          "locationEn": "Montmartre, Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "サクレ・クール寺院",
+          "description": "モンマルトルの丘にそびえるサクレ・クール寺院を訪れます。白亜の美しい建物と、パリ市内を一望できる絶景が待っています。特に夕方の光の中での訪問がおすすめです。",
+          "searchQuery": "Sacré-Cœur Basilica",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "モンマルトルのカフェでスイーツ",
+          "description": "モンマルトルのカフェで、フランスのスイーツを楽しみましょう。マカロンやタルト、クレームブリュレなど、甘いひとときを過ごせます。",
+          "locationEn": "Montmartre, Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "モンマルトルのレストランでディナー",
+          "description": "モンマルトルの雰囲気あるレストランで、フランス料理のディナーを楽しみます。地元のワインと共に、特別な夜を演出しましょう。",
+          "locationEn": "Montmartre, Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "オルセー美術館とサンジェルマン・デ・プレ",
+      "activities": [
+        {
+          "time": "08:30",
+          "activity": "ホテルで朝食",
+          "description": "パリのカフェでクロワッサンとカフェオレを楽しみながら、優雅な朝を迎えます。地元の人々に混じって、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "オルセー美術館",
+          "description": "印象派の名作が揃うオルセー美術館を訪れます。モネやルノワールの作品を間近で鑑賞し、アートの世界に浸る贅沢なひとときをお楽しみください。",
+          "searchQuery": "Musée d'Orsay",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ル・ドゥ・マゴでランチ",
+          "description": "サンジェルマン・デ・プレの名店、ル・ドゥ・マゴでランチ。クラシックなフレンチ料理を楽しみながら、歴史的な雰囲気に浸ります。",
+          "searchQuery": "Le Deux Magots",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "サンジェルマン・デ・プレ散策",
+          "description": "サンジェルマン・デ・プレの街並みを散策。おしゃれなブティックやアートギャラリーを巡りながら、パリの文化を感じる時間を過ごします。",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "サン・シュルピス教会",
+          "description": "美しいバロック様式のサン・シュルピス教会を訪れ、その壮大な内部を見学します。特に、教会内の絵画や彫刻に注目してみてください。",
+          "searchQuery": "Église Saint-Sulpice",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "カフェ・ド・フロールでスイーツ",
+          "description": "カフェ・ド・フロールで、パリのスイーツを楽しむひととき。特製のマカロンやタルトを味わいながら、ロマンチックな夕暮れを満喫します。",
+          "searchQuery": "Café de Flore",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。夜のパリの街を散策しながら、素敵な思い出を振り返りましょう。",
+          "locationEn": "Paris, France",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "美術館巡りとシャンゼリゼ通り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "パリのカフェでクロワッサンとカフェオレを楽しみながら、優雅な朝を迎えます。地元の人々に混じって、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ポンピドゥー・センター",
+          "description": "現代アートの殿堂、ポンピドゥー・センターを訪れます。独特な建築と共に、世界中のアート作品を楽しむことができます。特に、屋上からのパリの景色は絶景です。",
+          "searchQuery": "Pompidou Center",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "近くのビストロでランチ",
+          "description": "ポンピドゥー・センター近くのビストロで、フランスの伝統的な料理を味わいます。季節の食材を使った料理が楽しめるお店です。",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "シャンゼリゼ通り散策",
+          "description": "シャンゼリゼ通りを散策しながら、ショッピングやカフェでのひとときを楽しみます。美しい街並みを眺めながら、ロマンチックな雰囲気に浸りましょう。",
+          "searchQuery": "Champs-Élysées",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "凱旋門",
+          "description": "シャンゼリゼ通りの終点に位置する凱旋門を訪れます。歴史的な背景を学びながら、展望台からの眺めを楽しむことができます。",
+          "searchQuery": "Arc de Triomphe",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "セーヌ川沿いで夕食",
+          "description": "セーヌ川沿いのレストランで、ロマンチックなディナーを楽しみます。美しい夜景を眺めながら、フランス料理を堪能しましょう。",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のパリ散策",
+          "description": "ディナーの後は、ライトアップされたエッフェル塔を見に行きましょう。夜のパリの雰囲気を楽しみながら、素敵な時間を過ごします。",
+          "locationEn": "Paris, France",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ヴェルサイユ宮殿と庭園",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "パリのカフェでクロワッサンとカフェオレを楽しみながら、優雅な朝を迎えます。地元の人々に混じって、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ヴェルサイユ宮殿",
+          "description": "世界遺産に登録されているヴェルサイユ宮殿を訪れます。豪華な内装や歴史的な背景を感じながら、特に鏡の間は必見です。",
+          "searchQuery": "Palace of Versailles",
+          "locationEn": "Versailles, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ヴェルサイユ宮殿内のカフェでランチ",
+          "description": "宮殿内のカフェで軽食を楽しみます。サンドイッチやサラダを味わいながら、庭園の美しい景色を眺めることができます。",
+          "locationEn": "Versailles, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ヴェルサイユ庭園散策",
+          "description": "広大な庭園を散策し、整備された花壇や噴水を楽しみます。特に、季節ごとの花々が美しいので、カメラを持って散策するのがおすすめです。",
+          "searchQuery": "Gardens of Versailles",
+          "locationEn": "Versailles, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "パリへ戻る",
+          "description": "ヴェルサイユからパリ市内へ戻ります。電車での移動が便利で、約30分ほどでパリに到着します。",
+          "locationEn": "Paris, France",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "セーヌ川沿いを散策",
+          "description": "パリの美しいセーヌ川沿いを散策しながら、夕暮れ時のロマンチックな雰囲気を楽しみます。橋の上からの眺めも素晴らしいです。",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "レストランでディナー",
+          "description": "セーヌ川近くのレストランで、フランス料理のディナーを楽しみます。地元のワインと共に、特別な夜を演出しましょう。",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "パリの隠れ家カフェとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "カフェ・ド・フロールで朝食",
+          "description": "パリの歴史あるカフェ・ド・フロールで、クロワッサンやカフェオレを楽しみながら、優雅な朝のひとときを過ごします。ここは多くの著名人が訪れた場所でもあり、雰囲気を味わうには最適です。",
+          "searchQuery": "Café de Flore",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ルーヴル美術館見学",
+          "description": "世界的に有名なルーヴル美術館を訪れ、モナリザやミロのヴィーナスなどの名作を鑑賞します。広大な美術館内をゆっくりと散策し、アートに浸る贅沢な時間を楽しんでください。",
+          "searchQuery": "Louvre Museum",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "マレ地区でランチ",
+          "description": "マレ地区の隠れ家レストランで、地元の食材を使ったフランス料理を堪能します。おしゃれな雰囲気の中で、旬の料理を楽しむことができます。",
+          "searchQuery": "Le Mary Celeste",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "マレ地区散策",
+          "description": "マレ地区の魅力的な通りを散策し、アートギャラリーやブティックを訪れます。特に、独特なデザインのショップやカフェが点在しており、ショッピングや写真撮影にぴったりです。",
+          "searchQuery": "Le Marais",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ピカソ美術館訪問",
+          "description": "ピカソ美術館で、彼の作品を通じてその独特な世界観を体験します。美術館は静かで落ち着いた雰囲気が漂い、アートをじっくり楽しむことができます。",
+          "searchQuery": "Musée Picasso",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "セーヌ川沿いの散策",
+          "description": "セーヌ川沿いを散策しながら、夕暮れ時の美しい風景を楽しみます。ロマンチックな雰囲気の中で、パリの街並みを堪能してください。",
+          "searchQuery": "Seine River",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "レストランでディナー",
+          "description": "パリの隠れ家レストランで、フランス料理のコースディナーを楽しみます。地元のワインと共に、特別な夜を演出します。",
+          "searchQuery": "Le Train Bleu",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "パリの思い出と帰国",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ラデュレで朝食",
+          "description": "パリの名店ラデュレで、優雅な朝食を楽しみましょう。サクサクのクロワッサンや、色とりどりのマカロンが並ぶ美しい店内で、特別なひとときを過ごせます。",
+          "searchQuery": "Ladurée",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "オペラ座見学",
+          "description": "美しいバロック様式のオペラ座を訪れ、その豪華な内装を堪能します。特にシャンデリアや階段の装飾は圧巻で、写真撮影にもぴったりのスポットです。",
+          "searchQuery": "Palais Garnier",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "近くのカフェでランチ",
+          "description": "オペラ座近くのカフェで、軽めのランチを楽しみましょう。フランスの伝統的なサンドイッチやサラダを味わいながら、パリの街並みを眺めるのも良いでしょう。",
+          "searchQuery": "Café de la Paix",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ルーヴル美術館訪問",
+          "description": "世界的に有名なルーヴル美術館で、モナリザやミロのヴィーナスなどの名作を鑑賞します。広大な美術館内をゆっくりと散策し、アートに浸る贅沢な時間を楽しんでください。",
+          "searchQuery": "Louvre Museum",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "セーヌ川沿いを散策",
+          "description": "美術館を後にして、セーヌ川沿いを散策します。夕暮れ時の川の景色はロマンチックで、カップルにぴったりの時間です。",
+          "searchQuery": "Seine River",
+          "locationEn": "Paris, France",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "パリの地元のレストランで、フランス料理のディナーを楽しみましょう。新鮮な食材を使った料理や、ワインのペアリングを堪能できます。",
+          "searchQuery": "Le Procope",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

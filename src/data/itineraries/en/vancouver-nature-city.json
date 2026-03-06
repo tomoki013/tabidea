@@ -1,0 +1,528 @@
+{
+  "id": "3389f262-4813-4aa2-814a-a7b35b6916d2",
+  "destination": "Vancouver",
+  "description": "Escape to the vibrant city of Vancouver, where the stunning natural landscape meets urban sophistication. Over the next six days, immerse yourself in the breathtaking beauty of the Pacific Northwest, indulge in fresh seafood, and explore the city's diverse neighborhoods. From the majestic mountains to the bustling waterfront, this trip promises a perfect blend of adventure, relaxation, and culinary delights with your friends.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Vancouver",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Jam Cafe",
+          "description": "Start your day with a hearty breakfast at Jam Cafe, known for its delicious brunch options like the famous 'French Toast' and 'Benny's'. The cozy atmosphere makes it a perfect spot to fuel up for the day ahead.",
+          "searchQuery": "Jam Cafe",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Gastown",
+          "description": "Stroll through the historic Gastown district, famous for its cobblestone streets and the iconic Gastown Steam Clock. Enjoy the unique shops and art galleries that line the streets, and don't forget to snap a photo with the clock!",
+          "searchQuery": "Gastown",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Fish Shack",
+          "description": "Indulge in fresh seafood at The Fish Shack, where you can savor dishes like fish tacos and clam chowder. The casual vibe and waterfront views make it a great place to relax and enjoy a meal.",
+          "searchQuery": "The Fish Shack",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Canada Place",
+          "description": "Head over to Canada Place, a stunning waterfront complex. Take a leisurely walk along the promenade, enjoy the views of the North Shore Mountains, and explore the nearby shops and attractions.",
+          "searchQuery": "Canada Place",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Granville Island Market",
+          "description": "Make your way to Granville Island, a vibrant hub of food, art, and culture. Explore the public market filled with fresh produce, artisanal goods, and local crafts. It's a great place to pick up some snacks or souvenirs!",
+          "searchQuery": "Granville Island Public Market",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Sandbar Seafood Restaurant",
+          "description": "Enjoy a delightful dinner at The Sandbar, known for its fresh seafood and stunning views of the waterfront. Try their signature dishes like the seafood platter or grilled salmon for a true taste of the Pacific Northwest.",
+          "searchQuery": "The Sandbar Seafood Restaurant",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Seawall",
+          "description": "End your day with a relaxing walk along the Seawall, the world's longest uninterrupted waterfront path. Enjoy the beautiful sunset views over the ocean and mountains, a perfect way to unwind after a busy day.",
+          "searchQuery": "Seawall",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Nature and City Life",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café Artigiano",
+          "description": "Start your day with a delicious breakfast at Café Artigiano, known for its rich coffee and freshly baked pastries. Try their signature breakfast sandwich for a hearty meal.",
+          "searchQuery": "Café Artigiano",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Stanley Park Seawall Walk",
+          "description": "Take a leisurely stroll along the Stanley Park Seawall, the world's longest uninterrupted waterfront path. Enjoy stunning views of the ocean and mountains while soaking in the fresh air.",
+          "searchQuery": "Stanley Park Seawall",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Visit to Vancouver Aquarium",
+          "description": "Explore the Vancouver Aquarium, home to thousands of marine species. Don't miss the interactive exhibits and the chance to see sea otters and dolphins up close!",
+          "searchQuery": "Vancouver Aquarium",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Fish Shack",
+          "description": "Savor fresh seafood at The Fish Shack, where you can enjoy dishes like fish tacos and clam chowder in a casual setting. Perfect for seafood lovers!",
+          "searchQuery": "The Fish Shack",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Granville Island",
+          "description": "Head to Granville Island, a vibrant area filled with artisan shops, galleries, and the famous Granville Island Public Market. Sample local delicacies and shop for unique souvenirs.",
+          "searchQuery": "Granville Island",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Blue Water Cafe",
+          "description": "Indulge in a fine dining experience at Blue Water Cafe, renowned for its sustainable seafood and exquisite dishes. A perfect way to end your day with a taste of the ocean.",
+          "searchQuery": "Blue Water Cafe",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Evening Walk at English Bay",
+          "description": "Take a relaxing evening walk along English Bay Beach. Enjoy the sunset views and the lively atmosphere as locals and tourists gather to unwind.",
+          "searchQuery": "English Bay",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Adventure in the Outdoors",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Jam Cafe",
+          "description": "Start your day with a hearty breakfast at Jam Cafe, known for its delicious brunch options like the famous 'French Toast' and 'Benny's'. The cozy atmosphere makes it a perfect spot to fuel up for the day ahead.",
+          "searchQuery": "Jam Cafe",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Grouse Mountain",
+          "description": "Head to Grouse Mountain for a day of outdoor adventure. You can take the Skyride gondola to the top, where stunning views of Vancouver await. In the winter, enjoy skiing or snowboarding; in the summer, hike the Grouse Grind for a challenging workout.",
+          "searchQuery": "Grouse Mountain",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Observatory",
+          "description": "Enjoy a scenic lunch at The Observatory, located at the top of Grouse Mountain. The restaurant offers a menu featuring fresh, local ingredients and stunning views of the city and mountains.",
+          "searchQuery": "The Observatory",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Lynn Canyon Park",
+          "description": "After lunch, make your way to Lynn Canyon Park. Explore the beautiful trails, and don't miss the iconic Lynn Canyon Suspension Bridge for breathtaking views of the surrounding forest and river.",
+          "searchQuery": "Lynn Canyon Park",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Fishworks",
+          "description": "Savor a delicious seafood dinner at Fishworks, a local favorite known for its fresh catch and sustainable practices. Try their signature dishes like the seafood chowder or grilled salmon.",
+          "searchQuery": "Fishworks",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening Stroll at the Seawall",
+          "description": "End your day with a relaxing stroll along the Seawall. Enjoy the sunset views over the water and the city skyline, a perfect way to unwind after an adventurous day.",
+          "searchQuery": "Seawall",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Culinary Delights and Culture",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Granville Island Public Market",
+          "description": "Start your day with a delicious breakfast at Granville Island Public Market. Enjoy fresh pastries, artisanal coffee, and local specialties while soaking in the vibrant atmosphere of this bustling market.",
+          "searchQuery": "Granville Island Public Market",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Granville Island",
+          "description": "After breakfast, take some time to wander around Granville Island. Visit local shops, art galleries, and enjoy the scenic views of the waterfront. Don't forget to check out the public art installations scattered throughout the area.",
+          "searchQuery": "Granville Island",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Fish Counter",
+          "description": "Indulge in some of the freshest seafood at The Fish Counter, known for its sustainable practices and delicious fish tacos. It's a local favorite and a must-try for seafood lovers!",
+          "searchQuery": "The Fish Counter",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Chinatown",
+          "description": "Head over to Vancouver's historic Chinatown, one of the largest in North America. Explore the vibrant streets, visit the beautiful Dr. Sun Yat-sen Classical Chinese Garden, and soak in the rich cultural heritage.",
+          "searchQuery": "Dr. Sun Yat-sen Classical Chinese Garden",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Tea at a local tea house",
+          "description": "Take a break and enjoy a traditional tea experience at one of Chinatown's local tea houses. Sample a variety of teas and learn about their cultural significance.",
+          "searchQuery": "Chinatown Tea House",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Richmond Night Market",
+          "description": "End your day at the Richmond Night Market, where you can feast on a variety of street food, including seafood skewers, bubble tea, and unique Asian snacks. The lively atmosphere and diverse food options make it a perfect spot to unwind.",
+          "searchQuery": "Richmond Night Market",
+          "locationEn": "Richmond, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Stroll through the Night Market",
+          "description": "After dinner, take a leisurely stroll through the night market. Enjoy the vibrant lights, live performances, and the bustling crowd as you soak in the local culture.",
+          "searchQuery": "Richmond Night Market",
+          "locationEn": "Richmond, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Day Trip to Whistler",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Vancouver",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Whistler",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Enjoy the scenic drive along the Sea-to-Sky Highway."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Whistler Village Exploration",
+          "description": "Start your day by wandering through the charming Whistler Village. Enjoy the vibrant atmosphere, unique shops, and stunning mountain views. Don't forget to grab a coffee at one of the local cafes!",
+          "searchQuery": "Whistler Village",
+          "locationEn": "Whistler, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Old Spaghetti Factory",
+          "description": "Savor a delicious Italian meal at The Old Spaghetti Factory, known for its hearty portions and cozy ambiance. Try their famous spaghetti with clam sauce for a taste of local flavors.",
+          "searchQuery": "The Old Spaghetti Factory Whistler",
+          "locationEn": "Whistler, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Peak 2 Peak Gondola Ride",
+          "description": "Experience the breathtaking views from the Peak 2 Peak Gondola, which connects Whistler and Blackcomb mountains. This is a must-do for stunning panoramic vistas and a unique perspective of the area.",
+          "searchQuery": "Peak 2 Peak Gondola",
+          "locationEn": "Whistler, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Hiking at Lost Lake",
+          "description": "Take a refreshing hike around Lost Lake, where you can enjoy the serene natural beauty and perhaps spot some local wildlife. The trails are well-marked and suitable for all levels.",
+          "searchQuery": "Lost Lake",
+          "locationEn": "Whistler, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Rim Rock Cafe",
+          "description": "Indulge in a seafood feast at Rim Rock Cafe, renowned for its fresh catches and exquisite dishes. Be sure to try their grilled salmon or seafood chowder for a true taste of the coast.",
+          "searchQuery": "Rim Rock Cafe",
+          "locationEn": "Whistler, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Return to Vancouver",
+          "description": "After a fulfilling day in Whistler, head back to Vancouver. Reflect on the stunning sights and delicious meals as you enjoy the scenic drive back.",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Departure from Vancouver",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Vancouver",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Capilano Suspension Bridge",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "Take a taxi or rideshare to the Capilano Suspension Bridge."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Capilano Suspension Bridge Park",
+          "description": "Start your day with a visit to the iconic Capilano Suspension Bridge. Walk across the swaying bridge and enjoy breathtaking views of the lush rainforest and the Capilano River below. Don't miss the treetop walkways for a unique perspective of the forest canopy!",
+          "searchQuery": "Capilano Suspension Bridge Park",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Salmon House on the Hill",
+          "description": "Enjoy a delicious seafood lunch at The Salmon House, known for its stunning views of the city and the ocean. Savor fresh Pacific salmon and other local seafood dishes while taking in the beautiful scenery.",
+          "searchQuery": "The Salmon House on the Hill",
+          "locationEn": "West Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Kitsilano Beach",
+          "description": "After lunch, head to Kitsilano Beach for some relaxation and fun in the sun. You can take a stroll along the sandy beach, play beach volleyball, or simply enjoy the vibrant atmosphere. It's a great spot to unwind and soak up the natural beauty of Vancouver.",
+          "searchQuery": "Kitsilano Beach",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Go Fish",
+          "description": "Wrap up your day with a casual dinner at Go Fish, a popular seafood shack located near Granville Island. Try their famous fish tacos or the daily catch, all served fresh and delicious. It's the perfect way to end your Vancouver adventure with a taste of the ocean.",
+          "searchQuery": "Go Fish",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Return to Hotel",
+          "description": "After dinner, take a leisurely stroll back to your hotel or enjoy a scenic walk along the waterfront. Reflect on your wonderful trip to Vancouver and the beautiful memories you've created with your friends.",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

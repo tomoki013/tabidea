@@ -1,0 +1,596 @@
+{
+  "id": "30a7258f-9499-49b0-83a4-e833fe1acfdd",
+  "destination": "カイロ",
+  "description": "エジプトの魅力が詰まったカイロで、古代の遺産と現代の活気が交錯する旅に出かけましょう。ピラミッドを目の前にし、歴史の息吹を感じながら、友人と共に冒険の旅を楽しむことができます。ラクダに乗って砂漠を駆け抜け、エジプトの文化に浸る素晴らしい7日間をお届けします。",
+  "days": [
+    {
+      "day": 1,
+      "title": "カイロ到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "カイロ国際空港到着",
+          "description": "カイロ国際空港に到着し、入国手続きを済ませます。エジプトの冒険が始まります！",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "エジプト考古学博物館",
+          "description": "世界的に有名なエジプト考古学博物館を訪れ、ツタンカーメンの財宝や古代エジプトの遺物を見学します。歴史の深さに圧倒されることでしょう。",
+          "searchQuery": "Egyptian Museum",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "{\"type\":\"blog\",\"title\":\"カイロのエジプト考古学博物館を訪れて\",\"url\":\"https://example.com/egyptian-museum\",\"confidence\":\"high\"}"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ギザのピラミッドとスフィンクス",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "カイロのホテルで、エジプトの伝統的な朝食を楽しみます。フール（豆のペースト）やフラットブレッド、甘いデーツが並び、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ギザのピラミッド見学",
+          "description": "世界の七不思議の一つ、ギザのピラミッドを訪れます。巨大なピラミッドの前に立つと、その壮大さに圧倒されること間違いなし。特に朝の光の中での見学は格別です。",
+          "searchQuery": "Giza Pyramids",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "スフィンクス見学",
+          "description": "ギザのピラミッドの近くに位置するスフィンクスを見学します。神秘的な表情を持つこの巨大な石像は、古代エジプトの歴史を感じさせます。",
+          "searchQuery": "Great Sphinx of Giza",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ラクダ乗り体験",
+          "description": "ピラミッドの周辺でラクダに乗る体験を楽しみます。古代エジプトの風景をラクダの背から眺めるのは、まさに冒険の一環。",
+          "locationEn": "Giza, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ギザ近くの地元のレストランで、エジプト料理を堪能します。タジンやケバブなど、スパイシーで風味豊かな料理が楽しめます。",
+          "locationEn": "Giza, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "カイロ博物館見学",
+          "description": "カイロ博物館で、古代エジプトの貴重な遺物やミイラを見学します。特にツタンカーメンの宝物は必見です。",
+          "searchQuery": "Egyptian Museum",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ナイル川沿いの散策",
+          "description": "夕暮れ時のナイル川沿いを散策し、カイロの美しい夕日を楽しみます。川の流れを感じながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "カイロの人気レストランで、エジプトの伝統料理を楽しみます。特に、フムスやファラフェルはおすすめです。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "古代エジプトの遺跡巡り",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "カイロのホテルでエジプト風の朝食を楽しみます。フラットブレッドやフムス、オリーブオイルを使った新鮮なサラダが並び、エネルギーをチャージ。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "サッカラの階段ピラミッド",
+          "description": "古代エジプトの歴史を感じるサッカラへ。ここでは、世界最古のピラミッドである階段ピラミッドを見学します。壮大な建築物に圧倒されること間違いなし！",
+          "searchQuery": "Step Pyramid of Djoser",
+          "locationEn": "Saqqara, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "サッカラ近くのレストランでランチ",
+          "description": "サッカラの近くにある地元のレストランで、エジプト料理のランチを楽しみます。タジンやコシャリなど、エジプトの伝統的な味を堪能しましょう。",
+          "locationEn": "Saqqara, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ダハシュールの赤いピラミッド",
+          "description": "ダハシュールに移動し、赤いピラミッドを見学します。このピラミッドは、形状が独特で、エジプトの建築技術の進化を感じることができます。",
+          "searchQuery": "Red Pyramid of Dahshur",
+          "locationEn": "Dahshur, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ラクダに乗ってピラミッド周辺を散策",
+          "description": "ダハシュールのピラミッド周辺でラクダに乗り、古代の風景を楽しみながら散策します。ラクダの背中から見る景色は格別です！",
+          "locationEn": "Dahshur, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "カイロに戻る",
+          "description": "ダハシュールからカイロへ戻ります。移動中にエジプトの風景を楽しみながら、今日の冒険を振り返りましょう。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "カイロのレストランでディナー",
+          "description": "カイロの人気レストランで、エジプト料理のディナーを楽しみます。地元の人々に愛される料理を味わいながら、旅の思い出を語り合いましょう。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "カイロの文化と市場探索",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "カイロのホテルでエジプトの伝統的な朝食を楽しみます。フール（豆のペースト）やフラットブレッド、甘いデーツが並ぶ朝食は、エネルギーをチャージするのにぴったりです。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ギザのピラミッド観光",
+          "description": "世界遺産のギザのピラミッドを訪れます。大ピラミッドの壮大さに圧倒され、歴史の重みを感じることができます。ラクダに乗ってピラミッド周辺を散策するのもおすすめです。",
+          "searchQuery": "Giza Pyramids",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ギザ近くの地元のレストランで、エジプト料理のランチを楽しみます。タジンやコシャリなど、エジプトの味を堪能しましょう。",
+          "locationEn": "Giza, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ハーン・ハリーリ市場散策",
+          "description": "カイロのハーン・ハリーリ市場でショッピングを楽しみます。色とりどりのスパイスや手工芸品が並ぶ市場は、エジプトの文化を感じる絶好の場所です。",
+          "searchQuery": "Khan el-Khalili",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "イスラム地区の歴史的建物見学",
+          "description": "イスラム地区を散策し、歴史的なモスクや建物を見学します。特に、モハメド・アリ・モスクはその美しい建築で訪れる価値があります。",
+          "searchQuery": "Mohamed Ali Mosque",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のカフェで休憩",
+          "description": "イスラム地区のカフェで、エジプトのミントティーやコーヒーを楽しみながら、旅の疲れを癒します。地元の人々と交流するチャンスもあります。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ホテルに戻る",
+          "description": "一日の観光を終え、ホテルに戻ります。夜はカイロの街の雰囲気を楽しみながら、ゆっくりと過ごしましょう。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "アレクサンドリア日帰り旅行",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "カイロ",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "アレクサンドリア",
+          "time": "10:00"
+        },
+        "duration": "2h",
+        "memo": "カイロからアレクサンドリアまでの快適なドライブ。途中の景色を楽しみながら向かいます。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "アレクサンドリア図書館",
+          "description": "古代の知識の宝庫、アレクサンドリア図書館を訪れます。現代の図書館はその壮大さと美しさで圧倒されることでしょう。特に、内部の展示やアートが見どころです。",
+          "searchQuery": "Bibliotheca Alexandrina",
+          "locationEn": "Alexandria, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のレストランでランチ",
+          "description": "アレクサンドリアの地元料理を楽しむために、海の幸を使った新鮮な料理を提供するレストランでランチを取ります。特にシーフードが絶品です。",
+          "searchQuery": "Seafood Restaurant Alexandria",
+          "locationEn": "Alexandria, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "カイトベイ城",
+          "description": "アレクサンドリアのシンボル、カイトベイ城を訪れます。海に面したこの城からの眺めは素晴らしく、歴史を感じながら散策できます。",
+          "searchQuery": "Qaitbay Citadel",
+          "locationEn": "Alexandria, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ラクダに乗る体験",
+          "description": "アレクサンドリアのビーチ近くでラクダに乗る体験を楽しみます。海風を感じながらのラクダの背中は、まさに冒険のひとときです。",
+          "searchQuery": "Camel Ride Alexandria",
+          "locationEn": "Alexandria, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "アレクサンドリアのビーチで夕日鑑賞",
+          "description": "美しい夕日をアレクサンドリアのビーチで楽しみます。友人と共に、心に残るひとときを過ごしましょう。",
+          "searchQuery": "Alexandria Beach",
+          "locationEn": "Alexandria, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "カイロへ戻る",
+          "description": "アレクサンドリアでの素晴らしい一日を終え、カイロへ戻ります。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ナイル川クルーズと夜のカイロ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "カイロのホテルで、エジプトの伝統的な朝食を楽しみます。フール（豆のペースト）やフラットブレッド、甘いデーツが並び、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ギザの大ピラミッド見学",
+          "description": "世界の七不思議の一つ、ギザの大ピラミッドを訪れます。壮大なスフィンクスと共に、古代エジプトの神秘に触れる貴重な体験が待っています。",
+          "searchQuery": "Great Pyramid of Giza",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "ラクダに乗ってピラミッド周辺を散策",
+          "description": "ラクダに乗って、ピラミッドの周りをゆったりと散策します。砂漠の風を感じながら、古代の遺跡を新たな視点で楽しむことができます。",
+          "searchQuery": "Camel Ride Giza",
+          "locationEn": "Giza, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ギザ近くの地元のレストランで、エジプト料理のランチを楽しみます。タジンやケバブなど、スパイシーで風味豊かな料理が堪能できます。",
+          "locationEn": "Giza, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ナイル川クルーズ",
+          "description": "ナイル川をクルーズしながら、カイロの美しい景色を楽しみます。川の流れに身を任せ、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Nile River Cruise",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "カイロタワーからの夕景鑑賞",
+          "description": "カイロタワーに登り、夕暮れ時のカイロの美しい景色を一望します。特にナイル川の夕焼けは絶景です。",
+          "searchQuery": "Cairo Tower",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ナイル川沿いのレストランでディナー",
+          "description": "ナイル川の眺めを楽しみながら、エジプト料理のディナーを堪能します。地元の食材を使った料理が楽しめるお店を選びましょう。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の冒険を振り返りながら、ホテルに戻ります。明日の計画を立てるのも楽しみの一つです。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "カイロから東京へ帰国",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "カイロ国際空港",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "翌日 06:00"
+        },
+        "duration": "約12h",
+        "memo": "カイロ国際空港から東京への直行便です。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "カイロのホテルでエジプトの伝統的な朝食を楽しみます。フール（豆のペースト）やフラットブレッド、甘いデーツが並ぶ朝食は、エジプトの文化を感じるスタートにぴったりです。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ギザのピラミッド観光",
+          "description": "世界の七不思議の一つ、ギザのピラミッドを訪れます。巨大なスフィンクスと共に、古代エジプトの神秘に触れる貴重な体験が待っています。",
+          "searchQuery": "Giza Pyramids",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ラクダに乗ってピラミッド周辺を散策",
+          "description": "ラクダに乗って、ピラミッドの周りを散策します。砂漠の風を感じながら、壮大な景色を楽しむことができます。",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ギザ近くの地元のレストランで、エジプト料理を堪能します。タジンやケバブなど、スパイシーで美味しい料理が楽しめます。",
+          "locationEn": "Giza, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "カイロ博物館訪問",
+          "description": "エジプトの歴史を深く知るために、カイロ博物館を訪れます。ツタンカーメンの財宝や古代の遺物が展示されており、見応えがあります。",
+          "searchQuery": "Egyptian Museum",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "カイロの街を散策",
+          "description": "カイロの街を散策し、地元の市場やショップを訪れます。エジプトの文化や人々の生活を感じることができる貴重な時間です。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "ホテルに戻り、エジプト料理のディナーを楽しみます。旅の締めくくりにふさわしい、豪華な食事を堪能しましょう。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

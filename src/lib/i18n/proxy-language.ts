@@ -8,7 +8,7 @@ interface ResolveDetectedLanguageParams {
 
 interface ResolveRoutingLanguageParams {
   languageFromPath: LanguageCode | null;
-  preferredLanguage: LanguageCode | null;
+  persistedLanguage: LanguageCode | null;
   detectedLanguage: LanguageCode;
 }
 
@@ -22,8 +22,8 @@ export function resolveDetectedLanguageForProxy({
 
 export function resolveRoutingLanguageForProxy({
   languageFromPath,
-  preferredLanguage,
+  persistedLanguage,
   detectedLanguage,
 }: ResolveRoutingLanguageParams): LanguageCode {
-  return languageFromPath ?? preferredLanguage ?? detectedLanguage;
+  return languageFromPath ?? persistedLanguage ?? detectedLanguage;
 }

@@ -1,0 +1,273 @@
+{
+  "id": "38d9d00f-e53f-4a9d-b7a6-eb14a079e355",
+  "destination": "Seoul",
+  "description": "Immerse yourself in the vibrant culture of Seoul, where modern trends meet rich traditions. Over three days, you and your friends will explore bustling shopping districts, indulge in delicious Korean cuisine, and discover the latest beauty trends in this dynamic city. From trendy cafes to street food stalls, every moment will be filled with excitement and flavor, making it a trip to remember.",
+  "heroImage": "https://images.unsplash.com/photo-1676730222750-f14b6d1e3140?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODE2MzN8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Nurulloh A.A",
+  "heroImagePhotographerUrl": "https://unsplash.com/@nurullokh?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Trendy Shopping in Myeongdong",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious breakfast at a trendy café in Myeongdong. Enjoy a classic Korean breakfast set with rice, soup, and side dishes, or opt for a fluffy pancake stack with fresh fruit and syrup.",
+          "searchQuery": "Myeongdong Café",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Shopping in Myeongdong",
+          "description": "Dive into the vibrant shopping scene of Myeongdong, where you can find everything from K-beauty products to the latest fashion trends. Don't miss the chance to explore popular cosmetic stores like Innisfree and Etude House, as well as unique local boutiques.",
+          "searchQuery": "Myeongdong Shopping Street",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Myeongdong Street Food",
+          "description": "Indulge in a variety of street food options for lunch. Try the famous tteokbokki (spicy rice cakes), hotteok (sweet pancakes), and crispy fried chicken from the many stalls lining the streets.",
+          "searchQuery": "Myeongdong Street Food",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Namsan Tower",
+          "description": "Take a short hike or a cable car ride to Namsan Tower for stunning panoramic views of Seoul. The tower is a great spot for photos, and you can also enjoy a coffee at the café while soaking in the scenery.",
+          "searchQuery": "Namsan Tower",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Dongdaemun Design Plaza (DDP)",
+          "description": "Head over to Dongdaemun Design Plaza, an architectural marvel. Explore the design exhibitions and unique shops, and don’t forget to check out the LED rose garden outside, especially beautiful in the evening.",
+          "searchQuery": "Dongdaemun Design Plaza",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Trendy Restaurant",
+          "description": "Enjoy dinner at a stylish restaurant in Dongdaemun. Opt for Korean BBQ or a fusion dish that combines traditional flavors with modern twists, perfect for sharing with friends.",
+          "searchQuery": "Dongdaemun Restaurant",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll and Dessert",
+          "description": "After dinner, take a leisurely stroll around Dongdaemun. Stop by a dessert café for some bingsu (shaved ice) or a slice of cake to end your day on a sweet note.",
+          "searchQuery": "Dongdaemun Dessert Café",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Culinary Delights and Beauty Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Cafe Mamas",
+          "description": "Start your day with a delicious brunch at Cafe Mamas, known for its fresh salads and signature ricotta cheese pancakes. The cozy atmosphere makes it a perfect spot to relax before a day of exploration.",
+          "searchQuery": "Cafe Mamas",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Insadong",
+          "description": "Stroll through Insadong, a vibrant neighborhood filled with traditional tea houses, art galleries, and unique shops. Don't miss the chance to pick up some authentic Korean souvenirs and handicrafts.",
+          "searchQuery": "Insadong",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Tosokchon Samgyetang",
+          "description": "Enjoy a hearty lunch at Tosokchon, famous for its ginseng chicken soup (samgyetang). This dish is not only delicious but also believed to be revitalizing, perfect for a day of shopping and sightseeing.",
+          "searchQuery": "Tosokchon Samgyetang",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Shopping in Myeongdong",
+          "description": "Head to Myeongdong, one of Seoul's busiest shopping districts. Here, you can find everything from trendy fashion to K-beauty products. Be sure to stop by the numerous cosmetic shops for some great deals.",
+          "searchQuery": "Myeongdong",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Coffee Break at Cafe de Lulu",
+          "description": "Take a break at Cafe de Lulu, a chic cafe known for its Instagram-worthy desserts and artisanal coffee. It's a great place to recharge before continuing your shopping spree.",
+          "searchQuery": "Cafe de Lulu",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Evening Shopping in Gangnam",
+          "description": "Explore the upscale shopping scene in Gangnam, where you can find luxury brands and trendy boutiques. This area is also known for its vibrant nightlife, so enjoy the atmosphere as you shop.",
+          "searchQuery": "Gangnam",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Dinner at Hanam Pig House",
+          "description": "End your day with a delicious Korean BBQ dinner at Hanam Pig House. Enjoy grilling your own meat at the table and savor the rich flavors of Korean cuisine in a lively setting.",
+          "searchQuery": "Hanam Pig House",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cafes and Departure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Cafe Mamas",
+          "description": "Start your day with a delicious brunch at Cafe Mamas, famous for its fresh salads and hearty sandwiches. The cozy atmosphere makes it a perfect spot to relax before a day of exploring.",
+          "searchQuery": "Cafe Mamas",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Bukchon Hanok Village",
+          "description": "Stroll through the picturesque Bukchon Hanok Village, where traditional Korean houses (hanoks) are beautifully preserved. Enjoy the charming streets and take plenty of photos of this cultural gem.",
+          "searchQuery": "Bukchon Hanok Village",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Tosokchon Samgyetang",
+          "description": "Indulge in a hearty bowl of samgyetang (ginseng chicken soup) at Tosokchon, a beloved local restaurant. This dish is not only delicious but also known for its health benefits, making it a must-try.",
+          "searchQuery": "Tosokchon Samgyetang",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Shopping in Itaewon",
+          "description": "Head to Itaewon for an afternoon of shopping. This vibrant district is known for its trendy boutiques and international brands, perfect for finding unique fashion pieces and cosmetics.",
+          "searchQuery": "Itaewon",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Coffee Break at The Lounge & Bar",
+          "description": "Take a break at The Lounge & Bar, located in the heart of Itaewon. Enjoy a cup of artisanal coffee or a refreshing tea while soaking in the chic ambiance before continuing your shopping spree.",
+          "searchQuery": "The Lounge & Bar",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Last-minute Shopping in Myeongdong",
+          "description": "Wrap up your trip with some last-minute shopping in Myeongdong, a bustling shopping district known for its cosmetics shops and street food stalls. Don't miss the chance to grab some souvenirs!",
+          "searchQuery": "Myeongdong",
+          "locationEn": "Seoul, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

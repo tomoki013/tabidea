@@ -1,0 +1,424 @@
+{
+  "id": "a68d9b91-86f5-49d7-9391-e124efdb3049",
+  "destination": "広島・宮島",
+  "description": "歴史と食文化が息づく広島と、自然の美しさが広がる宮島を巡る旅。世界遺産を訪れながら、地元の味覚を堪能し、鹿たちとのふれあいを楽しむ特別な4日間をお届けします。家族での思い出を作るための、心温まる旅のプランです。",
+  "days": [
+    {
+      "day": 1,
+      "title": "広島の歴史を感じる一日",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "広島",
+          "time": "12:00"
+        },
+        "duration": "3h 0m",
+        "memo": "新幹線で広島へ移動します。快適な車内で景色を楽しみながら、広島の旅をスタートしましょう。"
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "広島平和記念公園",
+          "description": "広島の歴史を深く理解するために、平和記念公園を訪れます。原爆ドームや平和記念資料館を見学し、戦争の悲惨さと平和の大切さを感じることができます。",
+          "searchQuery": "Hiroshima Peace Memorial Park",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "お好み村でランチ",
+          "description": "広島名物のお好み焼きを楽しむために、お好み村へ。地元の人に愛されるお店が集まっており、様々なスタイルのお好み焼きを味わえます。",
+          "searchQuery": "Okonomimura",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "原爆ドーム",
+          "description": "世界遺産に登録されている原爆ドームを見学します。戦争の記憶を伝える重要な場所で、静かな時間を過ごしながらその歴史を感じましょう。",
+          "searchQuery": "Hiroshima Peace Memorial",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "広島城",
+          "description": "広島城を訪れ、歴史的な建物と美しい庭園を散策します。城内の展示も興味深く、広島の歴史をさらに学ぶことができます。",
+          "searchQuery": "Hiroshima Castle",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "広島の居酒屋でディナー",
+          "description": "地元の居酒屋で新鮮な海の幸や広島の郷土料理を楽しみます。アットホームな雰囲気の中で、家族と共に楽しいひとときを過ごしましょう。",
+          "searchQuery": "Hiroshima Izakaya",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "宮島で自然と文化を楽しむ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "広島",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "宮島",
+          "time": "08:10"
+        },
+        "duration": "10m",
+        "memo": "広島から宮島へはフェリーでの移動が便利です。朝早めに出発して、宮島の美しい風景を楽しみましょう。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "厳島神社",
+          "description": "世界遺産に登録されている厳島神社は、海上に浮かぶ神社として有名です。美しい朱色の社殿と、干潮時には歩いて近づける鳥居が印象的です。",
+          "searchQuery": "Itsukushima Shrine",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "宮島の鹿と触れ合う",
+          "description": "宮島では、自由に歩き回る鹿たちと触れ合うことができます。彼らは人懐っこく、餌をあげることもできるので、楽しいひとときを過ごせます。",
+          "searchQuery": "Miyajima Deer",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "宮島でランチ（お好み焼き）",
+          "description": "宮島名物の穴子お好み焼きを楽しみましょう。地元の食材を使ったお好み焼きは、ふわふわで絶品です。",
+          "searchQuery": "Anago Okonomiyaki",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "弥山登山",
+          "description": "弥山は宮島のシンボルで、山頂からの眺望は絶景です。ロープウェイを利用すれば、手軽に山頂までアクセスできます。",
+          "searchQuery": "Mount Misen",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "宮島の夕日を楽しむ",
+          "description": "弥山からの帰り道、夕日が沈む時間帯に合わせて、海に映る夕日を楽しみましょう。特別な瞬間を家族で共有できます。",
+          "searchQuery": "Miyajima Sunset",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "広島に戻り、ディナー（広島風お好み焼き）",
+          "description": "広島に戻ったら、広島風お好み焼きの名店でディナーを楽しみましょう。層になったお好み焼きは、食べ応え抜群です。",
+          "searchQuery": "Hiroshima-style Okonomiyaki",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "広島のグルメを堪能する",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "広島名物の牡蠣や地元の食材を使った和朝食で、エネルギーをチャージ。朝からしっかりと食べて、今日の冒険に備えましょう。",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "お好み村",
+          "description": "広島のソウルフード、お好み焼きの名店が集まるお好み村へ。自分好みのトッピングを選んで、熱々のお好み焼きを楽しむことができます。",
+          "searchQuery": "Okonomi-mura",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "広島平和記念公園",
+          "description": "世界遺産に登録されている広島平和記念公園を訪れ、原爆ドームや平和記念資料館を見学。歴史を学び、平和の大切さを感じる貴重な時間を過ごします。",
+          "searchQuery": "Hiroshima Peace Memorial Park",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "広島風お好み焼きのランチ",
+          "description": "お好み村でのランチ後、さらに別の名店で広島風お好み焼きを堪能。地元の人に人気の店で、味の違いを楽しむのも面白いです。",
+          "searchQuery": "Hiroshima-style Okonomiyaki",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "宮島へ渡るフェリー",
+          "description": "広島港から宮島へ向かうフェリーに乗船。約10分の船旅で、海の景色を楽しみながら宮島へ向かいます。",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "厳島神社",
+          "description": "世界遺産の厳島神社を訪れ、海に浮かぶ鳥居を間近で見学。神社の美しい景観と歴史を感じながら、心を落ち着けるひとときを過ごします。",
+          "searchQuery": "Itsukushima Shrine",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "宮島の鹿と触れ合う",
+          "description": "宮島のシンボル、鹿たちと触れ合いながら、自然の中でリラックス。鹿せんべいをあげることもでき、子供たちにも大人気です。",
+          "searchQuery": "Miyajima Deer",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "宮島で夕食",
+          "description": "宮島名物の穴子飯を楽しむ夕食。新鮮な穴子を使った料理は、地元の人にも愛される一品です。",
+          "searchQuery": "Anago Meshi",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "広島へ戻るフェリー",
+          "description": "宮島から広島へ戻るフェリーに乗船。夕暮れ時の海を眺めながら、今日の思い出を振り返ります。",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルチェックイン",
+          "description": "広島市内のホテルにチェックイン。旅の疲れを癒し、明日の冒険に備えましょう。",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "思い出を胸に東京へ帰る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "広島の地元食材を使った和朝食を楽しみます。特に、広島名物の牡蠣を使った料理が絶品です。",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "広島平和記念公園",
+          "description": "世界遺産にも登録されている広島平和記念公園を訪れ、原爆ドームや平和記念資料館を見学します。歴史を学び、平和の大切さを感じる貴重な体験です。",
+          "searchQuery": "Hiroshima Peace Memorial Park",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "お好み村でランチ",
+          "description": "広島名物のお好み焼きを楽しむために、お好み村へ。多くの店舗が集まるこの場所で、各店の個性豊かなお好み焼きを食べ比べてみてください。",
+          "searchQuery": "Okonomimura",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "宮島へ移動",
+          "description": "フェリーで宮島へ向かいます。約10分の船旅で、海の景色を楽しみながらの移動です。",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "厳島神社",
+          "description": "世界遺産の厳島神社を訪れ、海に浮かぶ鳥居を間近で見ることができます。潮の満ち引きによって異なる景色を楽しめるので、時間帯に合わせて訪れるのがおすすめです。",
+          "searchQuery": "Itsukushima Shrine",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "宮島の鹿と触れ合う",
+          "description": "宮島のシンボルである鹿と触れ合いながら、のんびりとした時間を過ごします。鹿たちにエサをあげることもできるので、ぜひ体験してみてください。",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "宮島でお土産購入",
+          "description": "宮島名物のもみじ饅頭や、地元の工芸品をお土産に購入します。観光地ならではのユニークなお土産が揃っています。",
+          "searchQuery": "Miyajima Souvenirs",
+          "locationEn": "Miyajima, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "広島へ戻る",
+          "description": "フェリーで広島へ戻ります。夕暮れ時の海の景色を楽しみながら、旅の締めくくりを。",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "広島駅近くで夕食",
+          "description": "広島駅近くの居酒屋で、地元の新鮮な海の幸を使った料理を楽しみます。特に、広島の牡蠣や穴子料理は絶品です。",
+          "locationEn": "Hiroshima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "東京へ帰る",
+          "description": "広島駅から新幹線で東京へ向かいます。約4時間の旅で、思い出を振り返りながら帰路につきます。",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,260 @@
+{
+  "id": "d4481e56-7318-4684-b886-61752cbc00c3",
+  "destination": "伊勢・志摩",
+  "description": "伊勢・志摩の美しい自然と歴史を感じながら、カップルで特別なひとときを過ごす旅へ出かけましょう。神社仏閣の荘厳さと、地元のグルメを堪能する贅沢な時間が待っています。ゆったりとしたペースで、心温まる体験をお楽しみください。",
+  "days": [
+    {
+      "day": 1,
+      "title": "伊勢神宮の神秘と海の幸",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "名古屋駅",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "伊勢市駅",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "名古屋から伊勢市までの直通電車で、快適な旅を楽しめます。"
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "伊勢神宮 外宮",
+          "description": "伊勢神宮の外宮を訪れ、神聖な雰囲気の中で参拝します。美しい自然に囲まれた境内は、心を落ち着けるのに最適です。",
+          "searchQuery": "Ise Jingu Geku",
+          "locationEn": "Ise, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "伊勢志摩の海鮮料理（ランチ）",
+          "description": "新鮮な伊勢海老や魚介を使った海鮮料理を楽しめるお店で、地元の味を堪能します。特に伊勢海老の刺身は絶品です。",
+          "searchQuery": "Ise Shima Seafood Restaurant",
+          "locationEn": "Ise, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "伊勢神宮 内宮",
+          "description": "伊勢神宮の内宮へ移動し、天照大神を祀る神社を参拝します。荘厳な雰囲気の中で、神聖な時間を過ごしましょう。",
+          "searchQuery": "Ise Jingu Naiku",
+          "locationEn": "Ise, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "おかげ横丁散策",
+          "description": "伊勢神宮の近くにあるおかげ横丁で、伝統的な町並みを楽しみながら、地元の特産品やスイーツを味わいます。",
+          "searchQuery": "Okage Yokocho",
+          "locationEn": "Ise, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "松阪牛のディナー",
+          "description": "松阪牛を使った贅沢なディナーを楽しむため、評判の良い焼肉店へ。柔らかい肉質と豊かな風味を堪能できます。",
+          "searchQuery": "Matsusaka Beef Restaurant",
+          "locationEn": "Ise, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "宿泊先チェックイン",
+          "description": "伊勢のリゾートホテルにチェックイン。ゆったりとした時間を過ごし、温泉でリラックスしましょう。",
+          "searchQuery": "Ise Resort Hotel",
+          "locationEn": "Ise, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "志摩のリゾートで癒しのひととき",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "伊勢",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "志摩",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "伊勢から志摩へは電車での移動。美しい海岸線を楽しみながら、リゾート地へ向かいます。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "伊勢神宮 外宮参拝",
+          "description": "伊勢神宮の外宮を訪れ、神聖な雰囲気の中でお参りをします。美しい自然に囲まれた境内で、心を落ち着けるひとときを過ごしましょう。",
+          "searchQuery": "Ise Jingu Geku",
+          "locationEn": "Ise, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "伊勢海老のランチ",
+          "description": "新鮮な伊勢海老を使った料理を楽しめるお店で、贅沢なランチを堪能します。海の幸を存分に味わえる絶品の一皿です。",
+          "searchQuery": "Ise Ebi Restaurant",
+          "locationEn": "Shima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "志摩スペイン村",
+          "description": "志摩スペイン村で、スペインの雰囲気を楽しみながらアトラクションやショーを満喫します。カップルでのデートにもぴったりな場所です。",
+          "searchQuery": "Shima Spain Village",
+          "locationEn": "Shima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルチェックイン",
+          "description": "志摩のリゾートホテルにチェックイン。ゆったりとした客室で、海の景色を楽しみながらリラックスしましょう。",
+          "searchQuery": "Shima Resort Hotel",
+          "locationEn": "Shima, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "松阪牛のディナー",
+          "description": "松阪牛を贅沢に使ったディナーを楽しむ時間。柔らかくて風味豊かな肉を、特別な調理法で味わえます。",
+          "searchQuery": "Matsusaka Beef Restaurant",
+          "locationEn": "Shima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "伊勢の風情を感じる帰路",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "志摩",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "伊勢市",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "志摩から伊勢市へ車での移動。美しい海岸線を楽しみながらのドライブ。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "伊勢神宮 外宮参拝",
+          "description": "伊勢神宮の外宮を訪れ、神聖な雰囲気の中でお参りをします。美しい森に囲まれた境内は、心を落ち着けるのにぴったりです。",
+          "searchQuery": "Ise Jingu Geku",
+          "locationEn": "Ise, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "伊勢海老のランチ",
+          "description": "伊勢名物の伊勢海老を使った料理を楽しめるお店で、贅沢なランチを堪能します。新鮮な海の幸を味わいながら、ゆったりとした時間を過ごしましょう。",
+          "searchQuery": "Ise Ebi Restaurant",
+          "locationEn": "Ise, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "おかげ横丁散策",
+          "description": "伊勢神宮の近くにあるおかげ横丁で、伝統的な町並みを楽しみながら、地元の特産品やお土産を探します。食べ歩きも楽しめるスポットです。",
+          "searchQuery": "Okage Yokocho",
+          "locationEn": "Ise, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "松阪牛の試食",
+          "description": "松阪牛の名店で、贅沢な肉料理を試食します。柔らかくて風味豊かな松阪牛を堪能し、特別なひとときを過ごしましょう。",
+          "searchQuery": "Matsusaka Beef Restaurant",
+          "locationEn": "Matsusaka, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "東京へ移動",
+          "description": "伊勢から東京へ向けて出発します。美しい景色を眺めながら、ゆったりとしたドライブを楽しんでください。",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}
