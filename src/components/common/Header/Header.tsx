@@ -39,7 +39,9 @@ export default function Header({
   const { openModal } = usePlanModal();
   const { user, isAuthenticated, isLoading: isAuthLoading } = useAuth();
   const language = resolveLanguageFromPathname(pathname);
-  const isHome = stripLanguagePrefix(pathname) === "/";
+  const strippedPath = stripLanguagePrefix(pathname);
+  const isHome = strippedPath === "/";
+  const isShiori = /^\/shiori\/.+/.test(strippedPath);
 
   // Scroll-based visibility for homepage
   const [scrollPastThreshold, setScrollPastThreshold] = useState(false);
@@ -50,25 +52,30 @@ export default function Header({
     return () => clearTimeout(timer);
   }, [pathname]);
 
-  // Scroll listener for homepage - show header after scrolling past threshold
+  // Scroll listener for homepage and shiori pages - show header after scrolling past threshold
   useEffect(() => {
-    if (!isHome || !forceShow) {
+    if ((!isHome && !isShiori) || !forceShow) {
       return;
     }
 
     const handleScroll = () => {
-      // Show header when the input form reaches 2/3 of the screen from the top
-      // (or 1/3 from the bottom)
-      const element = document.getElementById("planner-input-section");
-
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        // The header appears when the top of the input form reaches 2/3 of the screen height
-        setScrollPastThreshold(rect.top < (window.innerHeight * 2 / 3));
+      if (isShiori) {
+        // Show header after scrolling past 2/3 of the hero image height
+        const element = document.getElementById("shiori-hero");
+        if (element) {
+          setScrollPastThreshold(window.scrollY > element.offsetHeight * 2 / 3);
+        } else {
+          setScrollPastThreshold(window.scrollY > 200);
+        }
       } else {
-        // Fallback if element not found
-        const threshold = 400; // Appeared much earlier now
-        setScrollPastThreshold(window.scrollY > threshold);
+        // Show header when the input form reaches 2/3 of the screen from the top
+        const element = document.getElementById("planner-input-section");
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          setScrollPastThreshold(rect.top < (window.innerHeight * 2 / 3));
+        } else {
+          setScrollPastThreshold(window.scrollY > 400);
+        }
       }
     };
 
@@ -79,21 +86,22 @@ export default function Header({
 
     window.addEventListener("scroll", throttledScroll, { passive: true });
     return () => window.removeEventListener("scroll", throttledScroll);
-  }, [isHome, forceShow]);
+  }, [isHome, isShiori, forceShow]);
 
-  // Global Header Logic: If this is the global header (forceShow=false) and we are on Home, hide it completely (return null).
-  if (!forceShow && isHome) {
+  // Global Header Logic: If this is the global header (forceShow=false) and we are on Home or Shiori, hide it completely (return null).
+  if (!forceShow && (isHome || isShiori)) {
     return null;
   }
 
-  // For homepage with forceShow: use fixed positioning, show/hide based on scroll
+  // For homepage/shiori with forceShow: use fixed positioning, show/hide based on scroll
   // For other pages: always visible with sticky/fixed positioning
-  const isVisible = isHome ? scrollPastThreshold : true;
+  const isScrollControlled = isHome || isShiori;
+  const isVisible = isScrollControlled ? scrollPastThreshold : true;
 
   // Determine container classes based on page type
-  const positionClass = isHome ? "fixed" : isSticky ? "sticky" : "fixed";
+  const positionClass = isScrollControlled ? "fixed" : isSticky ? "sticky" : "fixed";
   const commonClasses = `${positionClass} top-0 left-0 right-0 flex justify-center z-50 transition-all duration-500 ease-in-out py-4 pointer-events-none`;
-  const visibilityClasses = isHome
+  const visibilityClasses = isScrollControlled
     ? isVisible
       ? "opacity-100 translate-y-0"
       : "opacity-0 -translate-y-full pointer-events-none"

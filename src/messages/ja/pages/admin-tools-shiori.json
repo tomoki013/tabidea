@@ -125,6 +125,16 @@
           "unlisted": "限定公開",
           "private": "非公開"
         },
+        "actualCostLabel": "実際の出費",
+        "budgetSummaryTitle": "予算サマリー",
+        "overallBudget": "全体予算目標",
+        "estimatedTotal": "推定合計",
+        "actualTotal": "実績合計",
+        "editBudget": "予算を設定",
+        "budgetNotSet": "未設定",
+        "budgetCurrency": "通貨",
+        "save": "保存",
+        "cancel": "キャンセル",
         "feed": {
           "filterPlaceholder": "目的地で絞り込む",
           "sortLatest": "新しい順",

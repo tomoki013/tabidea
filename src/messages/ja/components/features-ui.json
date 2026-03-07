@@ -1671,8 +1671,12 @@
             "phase": "記録フェーズ",
             "placeName": "訪問場所",
             "content": "メモ本文",
-            "photoUrls": "写真URL（改行またはカンマ区切り）"
+            "photoUrls": "写真URL（改行またはカンマ区切り）",
+            "note": "旅メモ",
+            "actualCost": "実際の出費",
+            "currency": "通貨"
           },
+          "notePlaceholder": "何を買った・何をした・どこが良かったなど",
           "phase": {
             "before": "行く前",
             "during": "旅の最中",

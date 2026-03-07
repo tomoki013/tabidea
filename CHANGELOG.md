@@ -9,6 +9,10 @@
 
 ## 開発者向けコミット履歴（コミット単位）
 
+### 2026-03-08
+
+- `local` feat(shiori,planner,ui,db): 旅のしおり UX 改善 — メモ・予算・スクロールヘッダー。① journalタブの各アイテムカードに「旅メモ（note）」「実際の出費（actual_cost / actual_currency）」入力欄を追加し `updatePlanItemDetails` アクションで保存。② `plan_publications` に `overall_budget` / `overall_budget_currency` カラムを追加し、`get_public_shiori` RPC を更新（`user_id`・`overall_budget`・`overall_budget_currency` を返却）。しおり個別ページに `ShioriBudgetSummary` コンポーネント（全体予算目標・推定合計・実績合計の3列カード、オーナーはインライン編集可）を追加。③ `Header.tsx` に shiori ページ検出を追加し、ヒーロー画像の2/3スクロール後にフェードインするスクロール連動ヘッダーを実装。`ShioriScrollWrapper` を新規作成。新規 server action `shiori-edit.ts`。ja/en i18n キーを全件追加。
+
 ### 2026-03-07 (continued, shiori improvements)
 
 - `local` feat(shiori,ui,db): 旅のしおり機能の総合改善。DB に `plan_publications.conditions_snapshot JSONB` カラムを追加し、`get_public_shiori` RPC に `conditions_snapshot` と `thumbnail_url` を追加。`fork_public_shiori` RPC を新規作成（`plan_days`/`plan_items` をコピー、`note`・`date_value`・日記は除外）。`PublicConditionsSnapshot` 型と `buildConditionsSnapshot`/`conditionsSnapshotToUserInput` ユーティリティを追加。`upsertPlanPublication` に `conditionsSnapshot` パラメータを追加し既存の `publish_journal`/`publish_budget` を保持するよう改善。`PublicToggle` にパブリック化時の conditions_snapshot 保存ロジックを追加。しおり詳細ページをヒーロー画像・アクションバー・`ConditionsCard`・タイムラインスタイル旅程・関連しおりセクション構成に全面刷新。フィードページにスティッキーフィルターバー（目的地・テーマ・同行者・並び順）を追加。新規コンポーネント: `ConditionsCard`, `ForkButton`, `CreateWithConditionsButton`, `ShareButton`, `RelatedShioriSection`, `ShioriFeedFilters`。`PublicPlanCard` にテーマチップ・同行者バッジ・ダークモード対応を追加。ja/en i18n キーを全件追加。

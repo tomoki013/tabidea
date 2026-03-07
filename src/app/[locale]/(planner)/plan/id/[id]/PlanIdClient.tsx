@@ -9,7 +9,7 @@ import type { UserInput, Itinerary, Plan } from '@/types';
 import type { MapProviderType } from '@/lib/limits/config';
 import type { ReplanTrigger, RecoveryOption } from '@/types/replan';
 import { regeneratePlan, updatePlanItinerary, savePlanChatMessages, type ChatMessage } from '@/app/actions/travel-planner';
-import { syncJournalEntry } from '@/app/actions/plan-itinerary';
+import { syncJournalEntry, updatePlanItemDetails } from '@/app/actions/plan-itinerary';
 import { buildTripPlan, buildDefaultTravelerState, buildTripContext } from '@/lib/utils/replan-adapter';
 import { useReplan } from '@/lib/hooks/useReplan';
 import ResultView from '@/components/features/planner/ResultView';
@@ -245,6 +245,31 @@ export default function PlanIdClient({
     return { success: true, updatedAt: editedAt };
   }, [planId]);
 
+  const handleSaveItemDetails = useCallback(async (input: {
+    itemId: string;
+    note: string | null;
+    actualCost: number | null;
+    actualCurrency: string;
+  }) => {
+    const result = await updatePlanItemDetails({
+      itemId: input.itemId,
+      actualCost: input.actualCost,
+      actualCurrency: input.actualCurrency,
+      note: input.note,
+    });
+    if (result.success) {
+      setNormalizedDays((prev) => prev.map((day) => ({
+        ...day,
+        items: day.items.map((item) =>
+          item.id === input.itemId
+            ? { ...item, note: input.note, actual_cost: input.actualCost, actual_currency: input.actualCurrency }
+            : item
+        ),
+      })));
+    }
+    return result;
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9] overflow-x-clip">
       <main className="flex-1 w-full flex flex-col items-center overflow-x-clip pt-24 md:pt-28">
@@ -304,6 +329,7 @@ export default function PlanIdClient({
           initialIsPublic={plan.isPublic}
           normalizedDays={normalizedDays}
           onSyncJournalEntry={handleSyncJournalEntry}
+          onSaveItemDetails={handleSaveItemDetails}
           mapProvider={mapProvider}
           showReplanTriggers={true}
           onReplanTrigger={handleReplanTrigger}

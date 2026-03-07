@@ -125,6 +125,16 @@
           "unlisted": "Unlisted",
           "private": "Private"
         },
+        "actualCostLabel": "Actual cost",
+        "budgetSummaryTitle": "Budget summary",
+        "overallBudget": "Overall budget goal",
+        "estimatedTotal": "Estimated total",
+        "actualTotal": "Actual total",
+        "editBudget": "Set budget",
+        "budgetNotSet": "Not set",
+        "budgetCurrency": "Currency",
+        "save": "Save",
+        "cancel": "Cancel",
         "feed": {
           "filterPlaceholder": "Filter by destination",
           "sortLatest": "Latest",

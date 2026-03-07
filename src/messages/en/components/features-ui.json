@@ -1668,8 +1668,12 @@
             "phase": "Journal phase",
             "placeName": "Visited place",
             "content": "Memo",
-            "photoUrls": "Photo URLs (newline or comma separated)"
+            "photoUrls": "Photo URLs (newline or comma separated)",
+            "note": "Travel memo",
+            "actualCost": "Actual cost",
+            "currency": "Currency"
           },
+          "notePlaceholder": "What you bought, did, or where you liked...",
           "phase": {
             "before": "Before visit",
             "during": "During trip",
