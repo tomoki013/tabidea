@@ -1,9 +1,10 @@
-import { generateObject } from "ai";
+import { generateObject, streamObject } from "ai";
 import { AIService, Article } from "./types";
 import { Itinerary, PlanOutline, DayPlan, PlanOutlineDay, EntitlementStatus, type ActivityType } from '@/types';
 import { classifyActivity } from '@/lib/utils/activity-classifier';
 import {
   PlanOutlineSchema,
+  DayPlanInputSchema,
   DayPlanArrayResponseInputSchema,
   ItinerarySchema,
   LegacyItineraryResponseSchema,
@@ -179,7 +180,7 @@ function normalizeActivitySource(activity: ActivityInput): ActivityParsed {
 /**
  * Post-process generated day plan to normalize data structures
  */
-function normalizeDayPlan(day: DayPlanInput): DayPlan {
+export function normalizeDayPlan(day: DayPlanInput): DayPlan {
   // Normalize main transit
   let normalizedTransit = undefined;
   if (day.transit) {
@@ -561,7 +562,7 @@ ${prompt}`;
 
     const { systemInstruction: sandwichSystem, userPrompt: sandwichUser } = buildContextSandwich({
       context,
-      goldenPlanExamples: this.options.goldenPlanExamples,
+      // goldenPlanExamples は Outline 生成で既に活用済み。チャンクはプロンプト削減のため除外
       travelInfo: this.options.travelInfo,
       userPrompt: prompt,
       generationType: 'dayDetails',
@@ -613,6 +614,105 @@ ${prompt}`;
     `;
 
     return `${sandwichSystem}\n\n${detailInstructions}\n\nUSER REQUEST:\n${sandwichUser}`;
+  }
+
+  /**
+   * Internal: Build single-day prompt for streaming (no array wrapper, no goldenPlanExamples)
+   */
+  private buildDayDetailsPromptSingle(
+    prompt: string,
+    context: Article[],
+    dayNum: number,
+    outlineDays: PlanOutlineDay[],
+    startingLocation?: string,
+  ): string {
+    const outlineInfo = JSON.stringify(outlineDays);
+
+    const { systemInstruction: sandwichSystem, userPrompt: sandwichUser } = buildContextSandwich({
+      context,
+      travelInfo: this.options.travelInfo,
+      userPrompt: prompt,
+      generationType: 'dayDetails',
+    });
+
+    const startingLocationConstraint = startingLocation
+      ? dayNum === 1
+        ? `
+      CRITICAL - STARTING LOCATION CONSTRAINT (DAY 1):
+      The traveler is arriving at or starting their trip in "${startingLocation}".
+      Day 1's activities MUST take place in or near "${startingLocation}".
+      This is the beginning of the trip - set the scene properly.
+      Include arrival activities if appropriate (e.g., check-in, first exploration).
+      `
+        : `
+      CRITICAL - STARTING LOCATION CONSTRAINT:
+      The traveler is waking up in "${startingLocation}" on Day ${dayNum}.
+      Day ${dayNum}'s first activity MUST be in or departing from "${startingLocation}".
+      DO NOT start the day in a different city/country - this would be physically impossible.
+      If travel to another location is needed, include the travel as an activity.
+      `
+      : "";
+
+    const detailInstructions = `
+      Create a detailed itinerary for Day ${dayNum} ONLY as a SINGLE day plan object (not an array).
+      Set the "day" field to ${dayNum}.
+
+      MASTER PLAN OUTLINE (You MUST follow this):
+      ${outlineInfo}
+      ${startingLocationConstraint}
+
+      CORE RULES:
+      1. Follow "highlight_areas" and "overnight_location" from the outline for Day ${dayNum}.
+      2. Create activities (3 meals + sightseeing spots) fitting the user's pace.
+      3. Day ${dayNum} MUST start from the previous day's overnight_location (or startingLocation if specified).
+      4. TRANSIT: If travel_method_to_next is set for Day ${dayNum - 1}, generate a "transit" object with type/departure/arrival/duration/memo. Transit goes at the BEGINNING of the day.
+      5. For international trips: include departure/return flights as "transit" objects (not activities).
+
+      PLACES API SEARCH FIELDS (CRITICAL for map accuracy):
+      - searchQuery: MUST be the OFFICIAL ENGLISH name optimized for Google Places API.
+        Examples: "Kinkaku-ji Temple" (not "金閣寺"), "Ichiran Ramen Shibuya" (include branch/area for chains), "Tokyo Station", "Fushimi Inari Taisha".
+        For restaurants: include area name (e.g., "Tsukiji Sushisay Honten").
+        For hotels: use full official name (e.g., "Hotel Gracery Shinjuku").
+        This field is CRITICAL — incorrect names cause Places API search failures.
+      - locationEn: "City, Country" format (e.g., "Kyoto, Japan") for Places API region filtering.
+
+      QUALITY:
+      - Write engaging, practical descriptions in the required output language.
+      - Geographic continuity: no teleporting. Include realistic travel between cities.
+    `;
+
+    return `${sandwichSystem}\n\n${detailInstructions}\n\nUSER REQUEST:\n${sandwichUser}`;
+  }
+
+  /**
+   * Stream Day details for a single day using streamObject (SSE対応).
+   * タイムアウト問題を構造的に解消するために使用。
+   */
+  async *streamDayDetails(
+    prompt: string,
+    context: Article[],
+    dayNum: number,
+    outlineDays: PlanOutlineDay[],
+    startingLocation?: string,
+    complexity?: RequestComplexity,
+  ): AsyncGenerator<unknown> {
+    const fullPrompt = this.buildDayDetailsPromptSingle(prompt, context, dayNum, outlineDays, startingLocation);
+    const { model, temperature, modelName } = this.getModel('details', complexity);
+    console.log(`[ai-service] Streaming Day ${dayNum} using model: ${modelName}, temperature: ${temperature}`);
+
+    // ai v3 では streamObject は async (Promise を返す)
+    const result = await streamObject({
+      model,
+      schema: DayPlanInputSchema,
+      prompt: fullPrompt,
+      temperature,
+      maxTokens: 4096,
+      // AbortSignal なし — ストリーミングは接続維持で動作するためタイムアウト不要
+    });
+
+    for await (const partial of result.partialObjectStream) {
+      yield partial;
+    }
   }
 
   /**

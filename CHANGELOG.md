@@ -10,6 +10,9 @@
 ## 開発者向けコミット履歴（コミット単位）
 
 - `local` fix(ui,planner): 予算スライダーを折りたたみ式に変更。デフォルトで閉じた状態とし、クリックで開いた時点でデフォルト金額（国内: 5万〜9万円 / 海外: 10万〜30万円）を `input.budget` に自動セット。閉じると budget をクリア。`ChevronDown/Up` で開閉状態を明示。
+### 2026-03-07 (continued)
+
+- `local` feat(ai,api,planner): チャンク生成タイムアウト対策を2段階で実施。Fix A: Golden Plan Examples をチャンク生成プロンプトから除外（Outline生成で活用済みのため不要、プロンプトトークン削減で生成高速化）。Fix G: `/api/generate/chunk` を `streamObject` ベースの SSE ストリーミングに変換し、タイムアウト問題を構造的に解消。`gemini.ts` に `streamDayDetails()` async generator メソッドと `buildDayDetailsPromptSingle()` を追加、`normalizeDayPlan` をエクスポート。`PlanClient.tsx` を server action から fetch SSE 消費に変換し `partialDays` state を追加。`StreamingDayCard.tsx` を新規作成（タイトル→Transit→アクティビティの段階的 Framer Motion アニメーション）。`PartialDayData` 型を `@/types` に追加。ja/en `streamingDayCard` i18n キーを追加。
 
 ### 2026-03-07
 
