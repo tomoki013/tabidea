@@ -71,6 +71,26 @@ export interface GenerationState {
 }
 
 /**
+ * ストリーミング中の部分的な Day データ（チャンク SSE で使用）
+ */
+export interface PartialDayData {
+  day?: number;
+  title?: string;
+  transit?: {
+    type?: string;
+    departure?: { place?: string; time?: string | null };
+    arrival?: { place?: string; time?: string | null };
+    duration?: string | null;
+    memo?: string | null;
+  } | null;
+  activities?: Array<{
+    time?: string;
+    activity?: string;
+    description?: string;
+  }>;
+}
+
+/**
  * 初期生成状態
  */
 export const initialGenerationState: GenerationState = {

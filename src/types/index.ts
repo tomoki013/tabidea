@@ -148,6 +148,7 @@ export type {
   HeroImageData,
   ChunkInfo,
   GenerationState,
+  PartialDayData,
 } from './streaming';
 
 export { initialGenerationState } from './streaming';

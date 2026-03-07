@@ -9,6 +9,10 @@
 
 ## 開発者向けコミット履歴（コミット単位）
 
+### 2026-03-07 (continued)
+
+- `local` feat(ai,api,planner): チャンク生成タイムアウト対策を2段階で実施。Fix A: Golden Plan Examples をチャンク生成プロンプトから除外（Outline生成で活用済みのため不要、プロンプトトークン削減で生成高速化）。Fix G: `/api/generate/chunk` を `streamObject` ベースの SSE ストリーミングに変換し、タイムアウト問題を構造的に解消。`gemini.ts` に `streamDayDetails()` async generator メソッドと `buildDayDetailsPromptSingle()` を追加、`normalizeDayPlan` をエクスポート。`PlanClient.tsx` を server action から fetch SSE 消費に変換し `partialDays` state を追加。`StreamingDayCard.tsx` を新規作成（タイトル→Transit→アクティビティの段階的 Framer Motion アニメーション）。`PartialDayData` 型を `@/types` に追加。ja/en `streamingDayCard` i18n キーを追加。
+
 ### 2026-03-07
 
 - `local` fix(ui,planner,i18n): 希望入力フォームのUI改善。「希望する移動手段」セクションを削除（AI プロンプト側は維持）。予約済み交通手段カードに便名・出発日・出発時刻のラベルを追加し、ホテルカードにもホテル名ラベルを追加して視認性を向上。モバイル最適化としてコンテナ padding・ヘッダーフォントサイズ・セクション間スペース・同行者カード padding・ペース/予算グリッド gap・生成ボタン下余白を縮小し、sm/md ブレークポイントで段階的に拡大するよう変更。`phase3.reservations.timeLabel` を ja/en に追加し、`phase3.transport` / `transport.options` キーを削除。

@@ -1674,6 +1674,12 @@
             "restored": "入力内容を復元しました"
           }
         },
+        "streamingDayCard": {
+          "dayLabel": "日目",
+          "composing": "プランを作成中...",
+          "activitiesProgress": "{current}/{estimated} スポット",
+          "transitArrived": "移動情報"
+        },
         "streamingResultView": {
           "durationString": "{nights}泊{days}日",
           "dayLabel": "日目",
