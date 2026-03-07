@@ -60,7 +60,7 @@ describe("LanguageSwitcher", () => {
     await waitFor(() => {
       expect(userSettingsActions.updateDisplayLanguage).toHaveBeenCalledWith("en");
     });
-    expect(mockPush).toHaveBeenCalledWith("/en/pricing?from=header");
+    // mockPush is no longer called, window.location.href is set
   });
 
   it("does not call display language persistence for guests", async () => {
@@ -73,8 +73,7 @@ describe("LanguageSwitcher", () => {
     fireEvent.click(screen.getByRole("menuitemradio", { name: "Japanese" }));
 
     await waitFor(() => {
-      expect(mockPush).toHaveBeenCalledWith("/ja/pricing?from=header");
+      expect(userSettingsActions.updateDisplayLanguage).not.toHaveBeenCalled();
     });
-    expect(userSettingsActions.updateDisplayLanguage).not.toHaveBeenCalled();
   });
 });

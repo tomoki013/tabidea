@@ -113,7 +113,7 @@ export default function LanguageSwitcher({ className = "" }: LanguageSwitcherPro
     const queryString = searchParams.toString();
     const href = queryString ? `${nextPath}?${queryString}` : nextPath;
 
-    router.push(href);
+    window.location.href = href;
   };
 
   return (
