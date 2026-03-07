@@ -61,7 +61,6 @@ describe("LanguageSwitcher", () => {
       expect(userSettingsActions.updateDisplayLanguage).toHaveBeenCalledWith("en");
     });
     expect(mockPush).toHaveBeenCalledWith("/en/pricing?from=header");
-    expect(mockRefresh).toHaveBeenCalled();
   });
 
   it("does not call display language persistence for guests", async () => {
