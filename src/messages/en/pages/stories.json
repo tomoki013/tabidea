@@ -1,0 +1,14 @@
+{
+  "pages": {
+    "stories": {
+      "meta": {
+        "title": "Travel Stories | Tabidea",
+        "description": "Discover travel stories from the community. Coming soon."
+      },
+      "title": "Travel Stories",
+      "description": "A place to discover and share travel stories, insights, and recommended plans created by other travelers on Tabidea.",
+      "message": "We are currently preparing a new platform where you can share and discover travel stories. Stay tuned!",
+      "backHome": "Back to Home"
+    }
+  }
+}

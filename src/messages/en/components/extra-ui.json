@@ -42,7 +42,7 @@
         "compactText": "Log in to save your plan",
         "compactCta": "Log in"
       },
-      "blogEditor": {
+      "storiesEditor": {
         "uploadFailed": "Failed to upload image",
         "uploadCompleted": "Upload completed: {url}",
         "usernameRequired": "username is required",

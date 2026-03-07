@@ -70,7 +70,7 @@ export default function Footer() {
         <FooterSection title={t("explore")}>
           <FooterLink href={localizeHref("/shiori", language)}>{t("shiori")}</FooterLink>
           <FooterLink href={localizeHref("/samples", language)}>{t("samples")}</FooterLink>
-          <FooterLink href={localizeHref("/blog", language)}>{t("blog")}</FooterLink>
+          <FooterLink href={localizeHref("/stories", language)}>{t("stories")}</FooterLink>
           <FooterLink href={localizeHref("/travel-info", language)}>{t("travelInfo")}</FooterLink>
         </FooterSection>
 

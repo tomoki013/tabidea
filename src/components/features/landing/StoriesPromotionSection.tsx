@@ -4,8 +4,8 @@ import { useTranslations } from 'next-intl';
 import { FaArrowRight, FaBookOpen, FaPlaneDeparture, FaStar } from 'react-icons/fa';
 import { Tape, HandwrittenText } from '@/components/ui/journal';
 
-export default function BlogPromotionSection() {
-  const t = useTranslations('components.features.landing.blogPromotionSection');
+export default function StoriesPromotionSection() {
+  const t = useTranslations('components.features.landing.storiesPromotionSection');
   const highlights = [
     {
       title: t('highlights.0.title'),
@@ -61,7 +61,7 @@ export default function BlogPromotionSection() {
 
               <div className="space-y-4">
                  {highlights.map((highlight) => (
-                    <BlogHighlight
+                    <StoriesHighlight
                       key={`${highlight.category}-${highlight.date}`}
                       title={highlight.title}
                       category={highlight.category}
@@ -73,10 +73,10 @@ export default function BlogPromotionSection() {
 
               <div className="pt-4">
                  <Link
-                    href="/blog"
+                    href="/stories"
                     className="inline-flex items-center gap-3 bg-white text-stone-800 border-2 border-stone-200 px-8 py-4 rounded-full font-bold hover:border-primary hover:text-primary transition-all shadow-sm hover:shadow-lg hover:-translate-y-1"
                  >
-                    {t('readBlog')}
+                    {t('readTravel Stories')}
                     <FaArrowRight />
                  </Link>
               </div>
@@ -86,7 +86,7 @@ export default function BlogPromotionSection() {
             <div className="relative order-1 lg:order-2 hidden lg:block">
                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-green-50 rounded-full blur-3xl -z-10" />
 
-               {/* Mock Browser Window / Blog Post */}
+               {/* Mock Browser Window / Travel Stories Post */}
                <div className="relative transform rotate-3 transition-transform hover:rotate-1 duration-500">
                   <div className="bg-white rounded-xl shadow-2xl border border-stone-200 overflow-hidden max-w-sm mx-auto">
                      {/* Window Header */}
@@ -98,7 +98,7 @@ export default function BlogPromotionSection() {
                         </div>
                         <div className="flex-1 text-center">
                            <div className="bg-white border border-stone-200 rounded-md py-1 px-4 text-[10px] text-stone-400 font-mono inline-block w-32 truncate">
-                              tabide.ai/blog/tips
+                              tabide.ai/stories/tips
                            </div>
                         </div>
                      </div>
@@ -146,10 +146,10 @@ export default function BlogPromotionSection() {
   );
 }
 
-function BlogHighlight({ title, category, date, isNew }: { title: string, category: string, date: string, isNew?: boolean }) {
-   const t = useTranslations('components.features.landing.blogPromotionSection');
+function StoriesHighlight({ title, category, date, isNew }: { title: string, category: string, date: string, isNew?: boolean }) {
+   const t = useTranslations('components.features.landing.storiesPromotionSection');
    return (
-      <Link href="/blog" className="block group">
+      <Link href="/stories" className="block group">
          <div className="flex items-center gap-4 p-4 rounded-xl bg-white border border-stone-100 hover:border-primary/30 hover:shadow-md transition-all duration-300 transform hover:-translate-x-1">
             <div className="flex flex-col items-center justify-center w-14 h-14 bg-stone-50 rounded-lg border border-stone-100 shrink-0 text-center">
                <span className="text-xs font-bold text-stone-400 uppercase leading-none">{category.substring(0, 3)}</span>
