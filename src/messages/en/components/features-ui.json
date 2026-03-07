@@ -1671,6 +1671,12 @@
             "restored": "Input has been restored."
           }
         },
+        "streamingDayCard": {
+          "dayLabel": "Day",
+          "composing": "Creating plan...",
+          "activitiesProgress": "{current}/{estimated} spots",
+          "transitArrived": "Transit info"
+        },
         "streamingResultView": {
           "durationString": "{nights} nights {days} days",
           "dayLabel": "Day",

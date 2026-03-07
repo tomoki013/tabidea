@@ -9,9 +9,10 @@ import {
   FaCalendarAlt,
   FaSpinner,
 } from "react-icons/fa";
-import type { GenerationState, UserInput, DayPlan, Itinerary } from "@/types";
+import type { GenerationState, UserInput, DayPlan, Itinerary, PartialDayData } from "@/types";
 import type { ReplanTrigger } from "@/types/replan";
 import DayPlaceholder from "./DayPlaceholder";
+import StreamingDayCard from "./StreamingDayCard";
 import ShareButtons from "@/components/ShareButtons";
 import PDFDownloadButton from "./PDFDownloadButton";
 import { SpotCard, TransitCard as CardTransitCard, AccommodationCard } from "@/components/features/plan/cards";
@@ -35,6 +36,8 @@ interface StreamingResultViewProps {
   onReplanTrigger?: (trigger: ReplanTrigger) => void;
   /** Whether replanning is currently running. */
   isReplanning?: boolean;
+  /** SSE ストリーミング中の部分的な Day データ */
+  partialDays?: Map<number, PartialDayData>;
 }
 
 // ============================================================================
@@ -50,6 +53,7 @@ export default function StreamingResultView({
   showReplanTriggers = false,
   onReplanTrigger,
   isReplanning = false,
+  partialDays,
 }: StreamingResultViewProps) {
   const t = useTranslations("components.features.planner.streamingResultView");
   // Card expansion state: track which cards are expanded
@@ -414,6 +418,18 @@ export default function StreamingResultView({
                     </div>
                   </motion.div>
                 </AnimatePresence>
+              );
+            }
+
+            // generating + partialDays あり → StreamingDayCard
+            if (dayStatus === 'generating' && partialDays?.has(outlineDay.day)) {
+              return (
+                <StreamingDayCard
+                  key={outlineDay.day}
+                  partial={partialDays.get(outlineDay.day)!}
+                  dayNum={outlineDay.day}
+                  outline={outlineDay}
+                />
               );
             }
 

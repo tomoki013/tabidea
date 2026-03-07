@@ -5,9 +5,9 @@ import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { UserInput, Itinerary, DayPlan, GenerationState, initialGenerationState } from '@/types';
-import type { DayGenerationStatus, ChunkInfo, Article, PlanOutlineDay } from '@/types';
+import type { DayGenerationStatus, ChunkInfo, Article, PlanOutlineDay, PartialDayData } from '@/types';
 import { splitDaysIntoChunks, extractDuration } from "@/lib/utils";
-import { generatePlanChunk, savePlan } from "@/app/actions/travel-planner";
+import { savePlan } from "@/app/actions/travel-planner";
 import { getSamplePlanById } from "@/lib/sample-plans";
 import { saveLocalPlan } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
@@ -41,6 +41,7 @@ function PlanContent() {
   const [transitionMessage, setTransitionMessage] = useState<string>("");
   const [currentInput, setCurrentInput] = useState<UserInput | null>(null);
   const [generationState, setGenerationState] = useState<GenerationState>(initialGenerationState);
+  const [partialDays, setPartialDays] = useState<Map<number, PartialDayData>>(new Map());
 
   const mapPlanError = useCallback((code?: string | null) => {
     switch (code) {
@@ -75,16 +76,16 @@ function PlanContent() {
     });
   }, []);
 
-  // Helper to add completed days
-  const addCompletedDays = useCallback((days: DayPlan[]) => {
+  // Helper to add a single completed day
+  const addCompletedDay = useCallback((day: DayPlan) => {
     setGenerationState(prev => {
-      const newCompletedDays = [...prev.completedDays, ...days];
+      const newCompletedDays = [...prev.completedDays, day];
       newCompletedDays.sort((a, b) => a.day - b.day);
       return { ...prev, completedDays: newCompletedDays };
     });
   }, []);
 
-  // Generate a single chunk
+  // Generate a single chunk via SSE fetch
   const generateChunk = useCallback(async (
     chunkInput: UserInput,
     context: Article[],
@@ -93,13 +94,10 @@ function PlanContent() {
     allOutlineDays: PlanOutlineDay[],
     destination?: string
   ) => {
-    // Mark days as generating
-    for (let d = chunk.start; d <= chunk.end; d++) {
-      updateDayStatus(d, 'generating');
-    }
+    const dayNum = chunk.start; // CHUNK_SIZE=1 なので start===end
+    updateDayStatus(dayNum, 'generating');
 
-    // Determine start location from previous day's outline overnight_location,
-    // or use the destination for the first chunk so the AI knows where the traveler starts
+    // 前日の宿泊地を特定
     let previousOvernightLocation: string | undefined = undefined;
     if (chunk.start > 1) {
       const prevDay = allOutlineDays.find((d: PlanOutlineDay) => d.day === chunk.start - 1);
@@ -107,38 +105,80 @@ function PlanContent() {
         previousOvernightLocation = prevDay.overnight_location;
       }
     } else if (destination) {
-      // For chunk starting at day 1, use the destination as starting location context
       previousOvernightLocation = destination;
     }
 
-    try {
-      const chunkOutlineDays = outlineDays.filter(d => d.day >= chunk.start && d.day <= chunk.end);
-      const result = await generatePlanChunk(
-        chunkInput,
-        context,
-        chunkOutlineDays,
-        chunk.start,
-        chunk.end,
-        previousOvernightLocation
-      );
+    const chunkOutlineDays = outlineDays.filter(d => d.day >= chunk.start && d.day <= chunk.end);
 
-      if (result.success && result.data) {
-        for (const day of result.data) {
-          updateDayStatus(day.day, 'completed');
-        }
-        addCompletedDays(result.data);
-      } else {
-        for (let d = chunk.start; d <= chunk.end; d++) {
-          updateDayStatus(d, 'error');
+    try {
+      const response = await fetch('/api/generate/chunk', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          input: chunkInput,
+          context,
+          outlineDays: chunkOutlineDays,
+          startDay: dayNum,
+          endDay: dayNum,
+          previousOvernightLocation,
+        }),
+      });
+
+      if (!response.ok || !response.body) {
+        updateDayStatus(dayNum, 'error');
+        return;
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() ?? '';
+
+        for (const line of lines) {
+          if (!line.startsWith('data: ')) continue;
+          try {
+            const event = JSON.parse(line.slice(6)) as { type: string; day: number; data?: DayPlan; message?: string };
+
+            if (event.type === 'partial') {
+              setPartialDays(prev => new Map(prev).set(dayNum, event.data as PartialDayData));
+            } else if (event.type === 'complete' && event.data) {
+              setPartialDays(prev => {
+                const m = new Map(prev);
+                m.delete(dayNum);
+                return m;
+              });
+              updateDayStatus(dayNum, 'completed');
+              addCompletedDay(event.data);
+            } else if (event.type === 'error') {
+              setPartialDays(prev => {
+                const m = new Map(prev);
+                m.delete(dayNum);
+                return m;
+              });
+              updateDayStatus(dayNum, 'error');
+            }
+          } catch {
+            // ignore malformed SSE lines
+          }
         }
       }
     } catch (err) {
-      console.error(`Chunk ${chunk.start}-${chunk.end} failed:`, err);
-      for (let d = chunk.start; d <= chunk.end; d++) {
-        updateDayStatus(d, 'error');
-      }
+      console.error(`Chunk ${chunk.start} failed:`, err);
+      setPartialDays(prev => {
+        const m = new Map(prev);
+        m.delete(dayNum);
+        return m;
+      });
+      updateDayStatus(dayNum, 'error');
     }
-  }, [updateDayStatus, addCompletedDays]);
+  }, [updateDayStatus, addCompletedDay]);
 
   // Start Detail Generation (Loop through chunks)
   const startDetailGeneration = useCallback(async (
@@ -170,23 +210,15 @@ function PlanContent() {
     }));
 
     try {
-      // Generate first chunk sequentially with destination context,
-      // then generate remaining chunks in parallel.
-      // This ensures day 1-2 gets proper starting location and reduces failures.
-      const [firstChunk, ...remainingChunks] = chunks;
-
-      // First chunk: pass destination as starting location
-      await generateChunk(
-        updatedInput, context, outline.days, firstChunk, outline.days, outline.destination
-      );
-
-      // Remaining chunks: generate in parallel (they use outline's overnight_location)
-      if (remainingChunks.length > 0) {
-        const remainingPromises = remainingChunks.map(chunk =>
-          generateChunk(updatedInput, context, outline.days, chunk, outline.days)
-        );
-        await Promise.all(remainingPromises);
-      }
+      // Generate all chunks in parallel; previousOvernightLocation is sourced from
+      // the already-completed outline data so ordering is not required.
+      const allChunkPromises = chunks.map((chunk) => {
+        const prevLocation = chunk.start === 1
+          ? outline.destination
+          : outline.days.find((d) => d.day === chunk.start - 1)?.overnight_location;
+        return generateChunk(updatedInput, context, outline.days, chunk, outline.days, prevLocation);
+      });
+      await Promise.all(allChunkPromises);
     } catch (e) {
       console.error("Detail generation error:", e);
       setStatus("error");
@@ -460,6 +492,7 @@ function PlanContent() {
           onRetryChunk={handleRetryChunk}
           isTransitioningToDetail={status === "saving"}
           transitionMessage={transitionMessage}
+          partialDays={partialDays}
         />
       );
   }
