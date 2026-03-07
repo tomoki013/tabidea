@@ -1270,7 +1270,16 @@
             "dates": "Dates / Timing",
             "pace": "Travel pace",
             "transits": "Transit",
+            "bookedItems": "Booked transport / hotels",
             "freeText": "Additional requests"
+          },
+          "bookingTypes": {
+            "flight": "Flight",
+            "train": "Train / Shinkansen",
+            "bus": "Bus",
+            "hotel": "Hotel",
+            "activity": "Activity",
+            "other": "Other"
           },
           "pace": {
             "value": "{label} ({desc})",

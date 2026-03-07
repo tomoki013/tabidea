@@ -34,7 +34,8 @@
             },
             "destinationInput": {
               "placeholderFirst": "Example: Kyoto, Paris, Hawaii...",
-              "placeholderNext": "Add another destination..."
+              "placeholderNext": "Add another destination...",
+              "addButton": "Add destination"
             },
             "dates": {
               "label": "2) Dates",
@@ -70,21 +71,31 @@
           "phase3": {
             "title": "More Details",
             "subtitle": "Optional",
+            "toggle": "Add must-have details",
             "reservations": {
               "label": "Booked items (flight / hotel, etc.)",
+              "transportTitle": "Booked transport",
+              "hotelTitle": "Booked hotel",
               "addTitle": "Add booked item",
               "namePlaceholder": "Name (e.g. JL123, Hilton Tokyo)",
+              "transportNamePlaceholder": "Transport name (e.g. JL123, Nozomi 12)",
+              "hotelNamePlaceholder": "Hotel name",
+              "hotelMemoPlaceholder": "Hotel note (optional)",
               "memoPlaceholder": "Memo (optional)",
               "cancel": "Cancel",
               "add": "Add",
-              "addButton": "Add booked item"
+              "addButton": "Add booked item",
+              "addTransportButton": "Add booked transport",
+              "addHotelButton": "Add booked hotel",
+              "empty": "No booked transport or hotel added yet."
             },
             "transport": {
               "label": "Preferred transport"
             },
             "mustVisit": {
               "label": "Must-visit places",
-              "placeholder": "Enter a place name (e.g. Kiyomizu-dera)"
+              "placeholder": "Enter a place name (e.g. Kiyomizu-dera)",
+              "addButton": "Add must-visit place"
             },
             "freeText": {
               "label": "Additional requests",

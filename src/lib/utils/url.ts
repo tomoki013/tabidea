@@ -1,6 +1,6 @@
 import pako from "pako";
 import LZString from "lz-string";
-import { UserInput, Itinerary, Reference } from "@/types";
+import { UserInput, Itinerary } from "@/types";
 
 // Minified structures for URL compression
 interface MinifiedInput {
@@ -16,6 +16,7 @@ interface MinifiedInput {
   idd?: number; // isDestinationDecided (1 for true, 0 for false)
   ft?: string; // freeText
   dsts?: string[]; // destinations (multi-city support)
+  fs?: UserInput["fixedSchedule"]; // fixed bookings
 }
 
 interface MinifiedReference {
@@ -61,7 +62,8 @@ export function encodeInputData(input: UserInput): string {
     hmv: input.hasMustVisitPlaces ? 1 : 0,
     idd: input.isDestinationDecided ? 1 : 0,
     ft: input.freeText,
-    dsts: input.destinations // Include destinations for multi-city support
+    dsts: input.destinations, // Include destinations for multi-city support
+    fs: input.fixedSchedule,
   };
 
   // Add destinations to data
@@ -98,13 +100,14 @@ export function decodeInputData(encoded: string): UserInput | null {
         freeText: minInput.ft || "",
         travelVibe: minInput.tv || "",
         mustVisitPlaces: minInput.mv || [],
-        hasMustVisitPlaces: minInput.hmv === 1
+        hasMustVisitPlaces: minInput.hmv === 1,
+        fixedSchedule: minInput.fs || [],
       };
       return input;
     }
 
     return null;
-  } catch (e) {
+  } catch {
     return null;
   }
 }
@@ -123,7 +126,8 @@ export function encodePlanData(input: UserInput, result: Itinerary): string {
     hmv: input.hasMustVisitPlaces ? 1 : 0,
     idd: input.isDestinationDecided ? 1 : 0,
     ft: input.freeText,
-    dsts: input.destinations
+    dsts: input.destinations,
+    fs: input.fixedSchedule,
   };
 
   const minResult: MinifiedItinerary = {
@@ -179,11 +183,11 @@ export function decodePlanData(encoded: string): { input: UserInput, result: Iti
 
             // Unknown format
             return null;
-        } catch (e) {
+        } catch {
             // Not valid JSON, ignore
         }
     }
-  } catch (e) {
+  } catch {
       // Ignore LZString error
   }
 
@@ -209,7 +213,7 @@ export function decodePlanData(encoded: string): { input: UserInput, result: Iti
 
     const decompressed = pako.inflate(bytes, { to: "string" });
     return JSON.parse(decompressed);
-  } catch (e) {
+  } catch {
     // console.error("Failed to decode plan data:", e);
     return null;
   }
@@ -233,7 +237,8 @@ function hydrateMinifiedData(data: MinifiedData): { input: UserInput, result: It
         freeText: minInput.ft || "",
         travelVibe: minInput.tv || "",
         mustVisitPlaces: minInput.mv || [],
-        hasMustVisitPlaces: minInput.hmv === 1
+        hasMustVisitPlaces: minInput.hmv === 1,
+        fixedSchedule: minInput.fs || [],
     };
 
     // Hydrate Result

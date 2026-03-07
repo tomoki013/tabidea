@@ -17,7 +17,10 @@ describe("urlUtils", () => {
     freeText: "",
     travelVibe: "vibey",
     mustVisitPlaces: ["Place A"],
-    hasMustVisitPlaces: true
+    hasMustVisitPlaces: true,
+    fixedSchedule: [
+      { type: "flight", name: "JL123", date: "2026-04-10", time: "09:00" },
+    ],
   };
 
   const mockResult: Itinerary = {
@@ -61,6 +64,7 @@ describe("urlUtils", () => {
     expect(decoded?.input.travelVibe).toBe(mockInput.travelVibe);
     expect(decoded?.input.mustVisitPlaces).toEqual(mockInput.mustVisitPlaces);
     expect(decoded?.input.hasMustVisitPlaces).toBe(mockInput.hasMustVisitPlaces);
+    expect(decoded?.input.fixedSchedule).toEqual(mockInput.fixedSchedule);
 
     // Verify Result
     expect(decoded?.result.destination).toBe(mockResult.destination);
@@ -135,6 +139,7 @@ describe("urlUtils", () => {
       expect(decoded?.travelVibe).toBe(mockInput.travelVibe);
       expect(decoded?.mustVisitPlaces).toEqual(mockInput.mustVisitPlaces);
       expect(decoded?.hasMustVisitPlaces).toBe(mockInput.hasMustVisitPlaces);
+      expect(decoded?.fixedSchedule).toEqual(mockInput.fixedSchedule);
       expect(decoded?.isDestinationDecided).toBe(mockInput.isDestinationDecided);
     });
 

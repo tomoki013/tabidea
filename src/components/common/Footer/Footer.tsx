@@ -44,7 +44,9 @@ export default function Footer() {
             <br />
             <span className="text-xs opacity-60 block mt-2">{t("supportedBy")}</span>
           </HandwrittenText>
-          <LanguageSwitcher />
+          <div className="rounded-full border border-stone-200/70 bg-white/70 p-1 shadow-sm dark:border-[#6e5645]/60 dark:bg-[#2b2019]/80">
+            <LanguageSwitcher />
+          </div>
           <div className="flex gap-4 pt-2">
             <a
               href="https://github.com/tomoki013/ai-travel-planner"

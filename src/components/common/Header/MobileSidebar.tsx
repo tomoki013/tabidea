@@ -363,7 +363,9 @@ export default function MobileSidebar({
                 <SidebarLink href={localizeHref('/pricing', language)} icon={<FaCrown />} label={t('pricing')} onClick={onClose} />
                 <SidebarLink href={localizeHref('/faq', language)} icon={<FaQuestionCircle />} label={t('faq')} onClick={onClose} />
                 <div className="px-3 pt-2">
+                  <div className="rounded-2xl border border-stone-200 bg-white/80 p-2 dark:border-stone-700 dark:bg-stone-900/50">
                   <LanguageSwitcher />
+                  </div>
                 </div>
               </nav>
 

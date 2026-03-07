@@ -143,7 +143,9 @@ export default function Header({
               <NavLink href={localizeHref("/pricing", language)} label={t("pricing")} />
               <NavLink href={localizeHref("/faq", language)} label={t("faq")} />
 
-              <LanguageSwitcher />
+              <div className="rounded-full bg-white/70 p-1 shadow-sm dark:bg-[#3b2c22]/70">
+                <LanguageSwitcher />
+              </div>
 
               <JournalButton
                 variant="primary"
