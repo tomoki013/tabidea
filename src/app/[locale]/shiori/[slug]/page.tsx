@@ -8,6 +8,7 @@ import { getTranslations } from 'next-intl/server';
 import { localizePath, resolveOpenGraphLocale, resolveRegionalLocale } from '@/lib/i18n/locales';
 import { getRequestLanguage } from '@/lib/i18n/server';
 import { createClient, getUser } from '@/lib/supabase/server';
+import { calculateTravelCost } from '@/lib/utils/cost-calculator';
 import type { PublicConditionsSnapshot } from '@/types/plans';
 import ShioriLikeButton from '@/components/features/shiori/ShioriLikeButton';
 import ConditionsCard from '@/components/features/shiori/ConditionsCard';
@@ -15,6 +16,8 @@ import ForkButton from '@/components/features/shiori/ForkButton';
 import CreateWithConditionsButton from '@/components/features/shiori/CreateWithConditionsButton';
 import ShareButton from '@/components/features/shiori/ShareButton';
 import RelatedShioriSection from '@/components/features/shiori/RelatedShioriSection';
+import ShioriBudgetSummary from '@/components/features/shiori/ShioriBudgetSummary';
+import ShioriScrollWrapper from '@/components/features/shiori/ShioriScrollWrapper';
 
 interface ShioriItem {
   id: string;
@@ -24,6 +27,9 @@ interface ShioriItem {
   start_time: string | null;
   location: string | null;
   note: string | null;
+  estimated_cost: number | null;
+  actual_cost: number | null;
+  currency: string | null;
   journal: {
     id: string;
     content: string;
@@ -51,6 +57,10 @@ interface ShioriPayload {
     likes_count: number | null;
     viewer_liked: boolean | null;
     conditions_snapshot: PublicConditionsSnapshot | null;
+    user_id: string | null;
+    publish_budget: boolean | null;
+    overall_budget: number | null;
+    overall_budget_currency: string;
   };
   days: ShioriDay[];
 }
@@ -144,11 +154,32 @@ export default async function ShioriPage({ params, searchParams }: PageProps) {
 
   const destination = data.plan.destination ?? t('headerDestinationFallback');
   const conditions = data.plan.conditions_snapshot;
+  const isOwner = Boolean(user && data.plan.user_id && user.id === data.plan.user_id);
+
+  // Budget totals (only relevant when publish_budget is true)
+  const itemEstimatedTotal = data.days.reduce((sum, day) =>
+    sum + day.items.reduce((s, item) => s + (item.estimated_cost ?? 0), 0), 0);
+  const actualTotal = data.days.reduce((sum, day) =>
+    sum + day.items.reduce((s, item) => s + (item.actual_cost ?? 0), 0), 0);
+
+  // If per-item estimated costs are empty, fall back to calculateTravelCost()
+  let estimatedTotal = itemEstimatedTotal;
+  if (estimatedTotal === 0 && conditions && data.plan.duration_days) {
+    const calc = calculateTravelCost({
+      destination: data.plan.destination ?? '',
+      days: data.plan.duration_days,
+      budget: conditions.budget,
+      companions: conditions.companions,
+      region: conditions.region,
+    });
+    estimatedTotal = Math.round((calc.total.min + calc.total.max) / 2);
+  }
 
   return (
+    <ShioriScrollWrapper>
     <main className="min-h-screen bg-[#fcfbf9] dark:bg-stone-900 pb-24">
       {/* Hero */}
-      <div className="relative h-64 md:h-80 bg-stone-200 dark:bg-stone-800 overflow-hidden">
+      <div id="shiori-hero" className="relative h-64 md:h-80 bg-stone-200 dark:bg-stone-800 overflow-hidden">
         {data.plan.thumbnail_url ? (
           <Image
             src={data.plan.thumbnail_url}
@@ -285,6 +316,18 @@ export default async function ShioriPage({ params, searchParams }: PageProps) {
           </section>
         ))}
 
+        {/* Budget Summary */}
+        {data.plan.publish_budget && (
+          <ShioriBudgetSummary
+            overallBudget={data.plan.overall_budget}
+            overallBudgetCurrency={data.plan.overall_budget_currency}
+            estimatedTotal={estimatedTotal}
+            actualTotal={actualTotal}
+            isOwner={isOwner}
+            slug={slug}
+          />
+        )}
+
         {/* Related Shiori */}
         <Suspense fallback={null}>
           <RelatedShioriSection
@@ -295,5 +338,6 @@ export default async function ShioriPage({ params, searchParams }: PageProps) {
         </Suspense>
       </div>
     </main>
+    </ShioriScrollWrapper>
   );
 }

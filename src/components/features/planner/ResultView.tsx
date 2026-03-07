@@ -113,6 +113,12 @@ interface ResultViewProps {
     placeName: string | null;
     photoUrls: string[];
   }) => Promise<{ success: boolean; error?: string; updatedAt?: string }>;
+  onSaveItemDetails?: (input: {
+    itemId: string;
+    note: string | null;
+    actualCost: number | null;
+    actualCurrency: string;
+  }) => Promise<{ success: boolean; error?: string }>;
 }
 
 export default function ResultView({
@@ -139,6 +145,7 @@ export default function ResultView({
   isReplanning = false,
   normalizedDays,
   onSyncJournalEntry,
+  onSaveItemDetails,
 }: ResultViewProps) {
   const t = useTranslations("components.features.planner.resultView");
   // Use heroImage if available, else a fallback
@@ -811,6 +818,7 @@ export default function ResultView({
             <ShioriJournalEditor
               days={normalizedDays ?? []}
               onSaveEntry={onSyncJournalEntry!}
+              onSaveItemDetails={onSaveItemDetails}
             />
           </div>
         )}
