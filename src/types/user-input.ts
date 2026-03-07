@@ -19,6 +19,12 @@ export interface FixedScheduleItem {
   name: string;
   /** メモ */
   notes?: string;
+  /** 出発地（フライト・電車・バス用） */
+  from?: string;
+  /** 到着地（フライト・電車・バス用） */
+  to?: string;
+  /** チェックアウト日 (YYYY-MM-DD、ホテル用) */
+  checkoutDate?: string;
 }
 
 /**
