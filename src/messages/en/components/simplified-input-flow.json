@@ -95,10 +95,11 @@
               "addButton": "Add booked item",
               "addTransportButton": "Add booked transport",
               "addHotelButton": "Add booked hotel",
-              "empty": "No booked transport or hotel added yet."
-            },
-            "transport": {
-              "label": "Preferred transport"
+              "empty": "No booked transport or hotel added yet.",
+              "fromPlaceholder": "Departure (e.g. Tokyo)",
+              "toPlaceholder": "Arrival (e.g. Osaka)",
+              "checkoutLabel": "Check-out date",
+              "timeLabel": "Departure Time"
             },
             "mustVisit": {
               "label": "Must-visit places",
@@ -108,16 +109,6 @@
             "freeText": {
               "label": "Additional requests",
               "placeholder": "Feel free to add requests, such as museum hopping or a restaurant with a great night view..."
-            }
-          },
-          "transport": {
-            "options": {
-              "flight": "Flight",
-              "shinkansen": "Shinkansen",
-              "train": "Train",
-              "bus": "Bus",
-              "car": "Car / rental car",
-              "ferry": "Ferry"
             }
           },
           "reservation": {

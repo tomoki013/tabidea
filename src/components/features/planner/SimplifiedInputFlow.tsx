@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Check, ChevronDown, ChevronUp, Plus, X } from "lucide-react";
 import { FaBus, FaHotel, FaPlane, FaTrain } from "react-icons/fa";
@@ -50,7 +50,6 @@ const BUDGET_KEYS = ["saving", "standard", "high", "luxury"] as const;
 const PACE_KEYS = ["relaxed", "balanced", "active", "packed"] as const;
 const DURATION_VALUES = [0, 1, 2, 3, 4, 5, 6] as const;
 const TRANSPORT_TYPES: FixedScheduleItem["type"][] = ["flight", "train", "bus", "other"];
-const PREFERRED_TRANSPORT = ["flight", "shinkansen", "train", "bus"] as const;
 
 const BUDGET_CONFIG = {
   domestic: { min: 10000, max: 300000, step: 5000, defaultAmount: 70000, band: 20000 },
@@ -156,9 +155,13 @@ export default function SimplifiedInputFlow({
   const [transportDate, setTransportDate] = useState("");
   const [transportTime, setTransportTime] = useState("");
   const [transportNote, setTransportNote] = useState("");
+  const [transportFrom, setTransportFrom] = useState("");
+  const [transportTo, setTransportTo] = useState("");
   const [hotelName, setHotelName] = useState("");
   const [hotelDate, setHotelDate] = useState("");
   const [hotelNote, setHotelNote] = useState("");
+  const [hotelCheckout, setHotelCheckout] = useState("");
+  const formRef = useRef<HTMLDivElement>(null);
 
   const addDestination = useCallback(() => {
     const trimmed = destinationInput.trim();
@@ -200,6 +203,7 @@ export default function SimplifiedInputFlow({
   };
 
   const handleGenerateClick = () => {
+    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     const finalInput = { ...input };
     const trimmed = destinationInput.trim();
     if (trimmed && !input.destinations.includes(trimmed)) {
@@ -254,9 +258,9 @@ export default function SimplifiedInputFlow({
           : "luxury";
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-6 py-5 font-sans text-stone-900 dark:text-stone-50 md:py-7">
+    <div ref={formRef} className="mx-auto w-full max-w-3xl px-4 py-4 font-sans text-stone-900 dark:text-stone-50 sm:px-6 sm:py-5 md:py-7">
       <div className="mb-6 text-center md:mb-8">
-        <h1 className="mb-3 text-4xl font-bold tracking-tight text-stone-900 dark:text-white md:text-6xl">
+        <h1 className="mb-3 text-3xl font-bold tracking-tight text-stone-900 dark:text-white sm:text-4xl md:text-6xl">
           {t("header.title")}
         </h1>
         <p className="mx-auto max-w-md text-base font-medium text-stone-600 dark:text-stone-300 md:text-lg">
@@ -264,7 +268,7 @@ export default function SimplifiedInputFlow({
         </p>
       </div>
 
-      <div className="space-y-10 md:space-y-12">
+      <div className="space-y-8 md:space-y-12">
         <section>
           <div className="mb-5 flex items-center gap-3">
             <div className={getStepBadgeClasses()}>1</div>
@@ -454,7 +458,7 @@ export default function SimplifiedInputFlow({
                   type="button"
                   data-testid={`companion-option-${option.id}`}
                   onClick={() => onChange({ companions: option.id })}
-                  className={`relative rounded-[1.75rem] border-2 p-5 text-left transition-all ${selected ? "border-orange-400 bg-orange-600 text-white shadow-lg shadow-orange-500/20" : "border-stone-200 bg-white text-stone-800 hover:border-orange-300 hover:bg-orange-50/70 dark:border-stone-700 dark:bg-stone-900/40 dark:text-stone-100 dark:hover:border-stone-500 dark:hover:bg-stone-800"}`}
+                  className={`relative rounded-[1.75rem] border-2 p-4 text-left transition-all sm:p-5 ${selected ? "border-orange-400 bg-orange-600 text-white shadow-lg shadow-orange-500/20" : "border-stone-200 bg-white text-stone-800 hover:border-orange-300 hover:bg-orange-50/70 dark:border-stone-700 dark:bg-stone-900/40 dark:text-stone-100 dark:hover:border-stone-500 dark:hover:bg-stone-800"}`}
                 >
                   <div className="mb-3 flex items-center justify-between">
                     <span className="text-3xl">{option.icon}</span>
@@ -539,7 +543,7 @@ export default function SimplifiedInputFlow({
               </div>
             </section>
 
-            <section className="grid grid-cols-1 gap-12 md:grid-cols-2">
+            <section className="grid grid-cols-1 gap-8 md:grid-cols-2">
               <div>
                 <div className="mb-5 text-2xl font-bold text-stone-900 dark:text-white">
                   {t("phase2.pace.label")}
@@ -679,34 +683,6 @@ export default function SimplifiedInputFlow({
 
             <section>
               <div className="mb-5 text-2xl font-bold text-stone-900 dark:text-white">
-                {t("phase3.transport.label")}
-              </div>
-              <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-                {PREFERRED_TRANSPORT.map((transport) => {
-                  const selected = input.preferredTransport?.includes(transport) ?? false;
-                  const current = input.preferredTransport ?? [];
-                  return (
-                    <button
-                      key={transport}
-                      type="button"
-                      onClick={() =>
-                        onChange({
-                          preferredTransport: selected
-                            ? current.filter((item) => item !== transport)
-                            : [...current, transport],
-                        })
-                      }
-                      className={`rounded-2xl border-2 px-4 py-3 text-sm font-bold ${selected ? "border-orange-400 bg-orange-600 text-white" : "border-stone-200 bg-white text-stone-800 dark:border-stone-600 dark:bg-stone-800/50 dark:text-stone-100"}`}
-                    >
-                      {t(`transport.options.${transport}`)}
-                    </button>
-                  );
-                })}
-              </div>
-            </section>
-
-            <section>
-              <div className="mb-5 text-2xl font-bold text-stone-900 dark:text-white">
                 {t("phase3.mustVisit.label")}
               </div>
               <div className="rounded-[2rem] border border-stone-200 bg-white/80 p-5 shadow-sm dark:border-stone-700 dark:bg-stone-900/40 md:p-6">
@@ -774,26 +750,57 @@ export default function SimplifiedInputFlow({
                   ))}
                 </div>
                 <div className="space-y-3">
-                  <input
-                    value={transportName}
-                    onChange={(e) => setTransportName(e.target.value)}
-                    placeholder={t("phase3.reservations.transportNamePlaceholder")}
-                    className="w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 placeholder:text-stone-400 dark:border-stone-600 dark:bg-stone-800 dark:text-white"
-                  />
+                  <div className="flex flex-col gap-1">
+                    <label className="px-1 text-xs font-medium text-stone-500 dark:text-stone-400">
+                      {t("phase3.reservations.transportNamePlaceholder")}
+                    </label>
+                    <input
+                      value={transportName}
+                      onChange={(e) => setTransportName(e.target.value)}
+                      placeholder={t("phase3.reservations.transportNamePlaceholder")}
+                      className="w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 placeholder:text-stone-400 dark:border-stone-600 dark:bg-stone-800 dark:text-white"
+                    />
+                  </div>
+                  {transportType === "flight" && (
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                      <input
+                        value={transportFrom}
+                        onChange={(e) => setTransportFrom(e.target.value)}
+                        placeholder={t("phase3.reservations.fromPlaceholder")}
+                        className="w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 placeholder:text-stone-400 dark:border-stone-600 dark:bg-stone-800 dark:text-white"
+                      />
+                      <input
+                        value={transportTo}
+                        onChange={(e) => setTransportTo(e.target.value)}
+                        placeholder={t("phase3.reservations.toPlaceholder")}
+                        className="w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 placeholder:text-stone-400 dark:border-stone-600 dark:bg-stone-800 dark:text-white"
+                      />
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                    <input
-                      type="date"
-                      value={transportDate}
-                      min={today}
-                      onChange={(e) => setTransportDate(e.target.value)}
-                      className="w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 dark:border-stone-600 dark:bg-stone-800 dark:text-white"
-                    />
-                    <input
-                      type="time"
-                      value={transportTime}
-                      onChange={(e) => setTransportTime(e.target.value)}
-                      className="w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 dark:border-stone-600 dark:bg-stone-800 dark:text-white"
-                    />
+                    <div className="flex flex-col gap-1">
+                      <label className="px-1 text-xs font-medium text-stone-500 dark:text-stone-400">
+                        {t("step1.dates.departureLabel")}
+                      </label>
+                      <input
+                        type="date"
+                        value={transportDate}
+                        min={today}
+                        onChange={(e) => setTransportDate(e.target.value)}
+                        className="w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 dark:border-stone-600 dark:bg-stone-800 dark:text-white"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <label className="px-1 text-xs font-medium text-stone-500 dark:text-stone-400">
+                        {t("phase3.reservations.timeLabel")}
+                      </label>
+                      <input
+                        type="time"
+                        value={transportTime}
+                        onChange={(e) => setTransportTime(e.target.value)}
+                        className="w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 dark:border-stone-600 dark:bg-stone-800 dark:text-white"
+                      />
+                    </div>
                   </div>
                   <textarea
                     value={transportNote}
@@ -811,11 +818,15 @@ export default function SimplifiedInputFlow({
                         date: transportDate || undefined,
                         time: transportTime || undefined,
                         notes: transportNote || undefined,
+                        from: transportType === "flight" ? transportFrom || undefined : undefined,
+                        to: transportType === "flight" ? transportTo || undefined : undefined,
                       });
                       setTransportName("");
                       setTransportDate("");
                       setTransportTime("");
                       setTransportNote("");
+                      setTransportFrom("");
+                      setTransportTo("");
                       setTransportType("flight");
                     }}
                     disabled={!transportName.trim()}
@@ -833,19 +844,43 @@ export default function SimplifiedInputFlow({
                   {t("phase3.reservations.hotelTitle")}
                 </div>
                 <div className="space-y-3">
-                  <input
-                    value={hotelName}
-                    onChange={(e) => setHotelName(e.target.value)}
-                    placeholder={t("phase3.reservations.hotelNamePlaceholder")}
-                    className="w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 placeholder:text-stone-400 dark:border-stone-600 dark:bg-stone-800 dark:text-white"
-                  />
-                  <input
-                    type="date"
-                    value={hotelDate}
-                    min={today}
-                    onChange={(e) => setHotelDate(e.target.value)}
-                    className="w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 dark:border-stone-600 dark:bg-stone-800 dark:text-white"
-                  />
+                  <div className="flex flex-col gap-1">
+                    <label className="px-1 text-xs font-medium text-stone-500 dark:text-stone-400">
+                      {t("phase3.reservations.hotelNamePlaceholder")}
+                    </label>
+                    <input
+                      value={hotelName}
+                      onChange={(e) => setHotelName(e.target.value)}
+                      placeholder={t("phase3.reservations.hotelNamePlaceholder")}
+                      className="w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 placeholder:text-stone-400 dark:border-stone-600 dark:bg-stone-800 dark:text-white"
+                    />
+                  </div>
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    <div className="flex flex-col gap-1">
+                      <label className="text-xs font-medium text-stone-500 dark:text-stone-400 px-1">
+                        {t("step1.dates.departureLabel")}
+                      </label>
+                      <input
+                        type="date"
+                        value={hotelDate}
+                        min={today}
+                        onChange={(e) => setHotelDate(e.target.value)}
+                        className="w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 dark:border-stone-600 dark:bg-stone-800 dark:text-white"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <label className="text-xs font-medium text-stone-500 dark:text-stone-400 px-1">
+                        {t("phase3.reservations.checkoutLabel")}
+                      </label>
+                      <input
+                        type="date"
+                        value={hotelCheckout}
+                        min={hotelDate || today}
+                        onChange={(e) => setHotelCheckout(e.target.value)}
+                        className="w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 dark:border-stone-600 dark:bg-stone-800 dark:text-white"
+                      />
+                    </div>
+                  </div>
                   <textarea
                     value={hotelNote}
                     onChange={(e) => setHotelNote(e.target.value)}
@@ -860,10 +895,12 @@ export default function SimplifiedInputFlow({
                         type: "hotel",
                         name: hotelName.trim(),
                         date: hotelDate || undefined,
+                        checkoutDate: hotelCheckout || undefined,
                         notes: hotelNote || undefined,
                       });
                       setHotelName("");
                       setHotelDate("");
+                      setHotelCheckout("");
                       setHotelNote("");
                     }}
                     disabled={!hotelName.trim()}
@@ -907,9 +944,20 @@ export default function SimplifiedInputFlow({
                             {item.name}
                           </span>
                         </div>
-                        {formatBookingDateTime(item.date, item.time) && (
+                        {(item.from || item.to) && (
                           <p className="mt-2 text-sm font-medium text-stone-600 dark:text-stone-300">
+                            {[item.from, item.to].filter(Boolean).join(" → ")}
+                          </p>
+                        )}
+                        {formatBookingDateTime(item.date, item.time) && (
+                          <p className="mt-1 text-sm font-medium text-stone-600 dark:text-stone-300">
                             {formatBookingDateTime(item.date, item.time)}
+                            {item.checkoutDate && ` → ${item.checkoutDate}`}
+                          </p>
+                        )}
+                        {!item.date && item.checkoutDate && (
+                          <p className="mt-1 text-sm font-medium text-stone-600 dark:text-stone-300">
+                            → {item.checkoutDate}
                           </p>
                         )}
                         {item.notes && (
@@ -949,12 +997,12 @@ export default function SimplifiedInputFlow({
           </div>
         )}
 
-        <div className="mt-8 w-full max-w-md pb-16 md:mt-10">
+        <div className="mt-6 w-full max-w-md pb-10 md:mt-10 md:pb-16">
           <button
             type="button"
             onClick={handleGenerateClick}
             disabled={isGenerating || !hasDest || !hasCompanion || !hasDates}
-            className={`w-full rounded-full border-2 px-10 py-6 text-xl font-black uppercase tracking-[0.1em] ${isGenerating || !hasDest || !hasCompanion || !hasDates ? "cursor-not-allowed border-stone-300 bg-stone-200 text-stone-500 opacity-60 dark:border-stone-700 dark:bg-stone-800" : "border-orange-400 bg-orange-600 text-white"}`}
+            className={`w-full rounded-full border-2 px-10 py-6 text-xl font-black uppercase tracking-[0.1em] transition-all duration-200 ${isGenerating || !hasDest || !hasCompanion || !hasDates ? "cursor-not-allowed border-stone-300 bg-stone-200 text-stone-500 opacity-60 dark:border-stone-700 dark:bg-stone-800" : "border-orange-400 bg-orange-600 text-white hover:scale-[1.02] hover:shadow-xl hover:bg-orange-500 active:scale-[0.98]"}`}
           >
             {isGenerating ? (
               <span className="flex items-center justify-center gap-4">
