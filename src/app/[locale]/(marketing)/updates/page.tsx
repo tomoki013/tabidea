@@ -573,6 +573,36 @@ const rawRoadmapData: RoadmapItem[] = [
     updateType: "patch",
     translationKey: "entry094",
   },
+  {
+    status: "done",
+    date: "2026.03.05",
+    updateType: "minor",
+    translationKey: "entry095",
+  },
+  {
+    status: "done",
+    date: "2026.03.06",
+    updateType: "minor",
+    translationKey: "entry096",
+  },
+  {
+    status: "done",
+    date: "2026.03.07",
+    updateType: "minor",
+    translationKey: "entry097",
+  },
+  {
+    status: "done",
+    date: "2026.03.07",
+    updateType: "minor",
+    translationKey: "entry098",
+  },
+  {
+    status: "done",
+    date: "2026.03.08",
+    updateType: "release",
+    translationKey: "entry099",
+  },
 ];
 
 // Helper to calculate versions
