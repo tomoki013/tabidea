@@ -94,10 +94,11 @@
               "hotelMemoPlaceholder": "ホテルのメモ (任意)",
               "addTransportButton": "予約済みの交通を追加",
               "addHotelButton": "予約済みのホテルを追加",
-              "empty": "予約済みの交通やホテルはまだ追加されていません。"
-            },
-            "transport": {
-              "label": "希望する移動手段"
+              "empty": "予約済みの交通やホテルはまだ追加されていません。",
+              "fromPlaceholder": "出発地（例：東京）",
+              "toPlaceholder": "到着地（例：大阪）",
+              "checkoutLabel": "チェックアウト日",
+              "timeLabel": "出発時刻"
             },
             "mustVisit": {
               "label": "絶対行きたい場所",
@@ -109,16 +110,6 @@
               "placeholder": "美術館巡りがしたい、夜景が綺麗なレストランに行きたい、など自由に入力してください..."
             },
             "toggle": "こだわり条件を追加する"
-          },
-          "transport": {
-            "options": {
-              "flight": "飛行機",
-              "shinkansen": "新幹線",
-              "train": "電車",
-              "bus": "バス",
-              "car": "車・レンタカー",
-              "ferry": "フェリー"
-            }
           },
           "reservation": {
             "types": {
