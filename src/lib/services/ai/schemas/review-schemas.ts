@@ -7,7 +7,7 @@ import { z } from 'zod';
 
 export const ReviewIssueSchema = z.object({
   /** 対象日（指定可能な場合） */
-  day: z.number().optional().describe('問題のある日番号'),
+  day: z.number().nullable().optional().describe('問題のある日番号'),
   /** 問題カテゴリ */
   category: z.enum(['geographic', 'timing', 'quality', 'accuracy', 'diversity']).describe('問題の種類'),
   /** 重要度 */

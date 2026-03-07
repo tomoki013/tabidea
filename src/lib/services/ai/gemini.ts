@@ -82,6 +82,11 @@ async function withRetry<T>(
       lastError = error instanceof Error ? error : new Error(String(error));
       console.warn(`[gemini] Attempt ${attempt + 1}/${maxRetries + 1} failed:`, lastError.message);
 
+      // タイムアウトはリトライしない（同一コンテキスト内で即リトライしても確実に失敗する）
+      if (lastError.name === 'TimeoutError' || lastError.name === 'AbortError') {
+        throw lastError;
+      }
+
       if (attempt < maxRetries) {
         await delay(delayMs * (attempt + 1)); // Exponential backoff
       }

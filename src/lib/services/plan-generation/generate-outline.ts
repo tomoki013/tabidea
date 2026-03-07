@@ -5,6 +5,7 @@ import type { UserInput, PlanOutline, Article } from "@/types";
 import type { UserType } from "@/lib/limits/config";
 import { getUnsplashImage } from "@/lib/unsplash";
 import { extractDuration } from "@/lib/utils";
+import { extractSearchableDestination } from "@/lib/utils/plan";
 import { buildConstraintsPrompt, buildTransitSchedulePrompt } from "@/lib/prompts";
 import { getBudgetContext, getFixedSchedulePrompt } from "@/lib/utils/plan-prompt-helpers";
 import { getOutlineCache, setOutlineCache } from "@/lib/cache";
@@ -427,7 +428,7 @@ export async function executeOutlineGeneration(
       ? null
       : await (async () => {
           onProgress?.("hero_image", t("progress.steps.hero_image"));
-          return timer.measure("hero_image", () => getUnsplashImage(outline.destination));
+          return timer.measure("hero_image", () => getUnsplashImage(extractSearchableDestination(outline.destination)));
         })();
 
     // 6. キャッシュ保存（非同期）

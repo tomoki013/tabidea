@@ -52,17 +52,14 @@ export interface ModifyItineraryCallback {
 
 /**
  * 現在の戦略を取得
+ * - AI_STRATEGY_ITINERARY=full → full（両モデル並列、明示的に設定した場合のみ）
  * - AI_STRATEGY_ITINERARY=single → single
- * - OPENAI_API_KEY設定あり → full（デフォルト）
- * - OPENAI_API_KEY未設定 → single（フォールバック）
+ * - 未設定 → single（デフォルト、コスト効率優先）
  */
 export function getStrategy(): AIStrategy {
   const explicit = process.env.AI_STRATEGY_ITINERARY;
-  if (explicit === 'single') return 'single';
   if (explicit === 'full') return 'full';
-  // デフォルト: 両方のキーがあればfull
-  if (isBothProvidersAvailable()) return 'full';
-  return 'single';
+  return 'single'; // デフォルト: コスト効率の良いシングルモデル
 }
 
 // ============================================
