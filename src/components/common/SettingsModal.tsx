@@ -513,6 +513,29 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
 
                   {/* Actions */}
                   <div className="space-y-4">
+                    <div className="flex justify-end pt-2">
+                      {settingsError && (
+                        <p className="mr-auto text-sm text-red-600 font-hand self-center">
+                          {settingsError}
+                        </p>
+                      )}
+                      <JournalButton
+                        variant="primary"
+                        onClick={handleSaveSettings}
+                        disabled={isSaving}
+                        className="shadow-md"
+                      >
+                        {isSaving ? (
+                          <>
+                            <FaSpinner className="animate-spin mr-2" /> {tSettings("saving")}
+                          </>
+                        ) : (
+                          <>
+                            <FaSave className="mr-2" /> {tSettings("save")}
+                          </>
+                        )}
+                      </JournalButton>
+                    </div>
                     <JournalButton
                       variant="outline"
                       onClick={handleSignOut}
