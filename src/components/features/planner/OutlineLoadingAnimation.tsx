@@ -9,9 +9,9 @@ import type { GenerationStep } from "@/lib/hooks/useGenerationProgress";
 const stepIcons: Record<string, string> = {
   usage_check: "\u{1F511}",
   cache_check: "\u{1F4E6}",
-  rag_search: "\u{1F50D}",
+  rag_search: "\u{1F5FA}\uFE0F",
   prompt_build: "\u{1F4DD}",
-  ai_generation: "\u{1F916}",
+  ai_generation: "\u2708\uFE0F",
   hero_image: "\u{1F4F8}",
 };
 
@@ -213,24 +213,28 @@ function FallbackAnimation({
       <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#44403c_1px,transparent_1px)] bg-[size:24px_24px]" />
 
       <div className="relative z-10 flex flex-col items-center gap-8 p-10 text-center max-w-md">
-        {/* Animated Icon */}
+        {/* Passport stamp-style animated icon */}
         <motion.div
-          className="w-28 h-28 rounded-2xl bg-primary/10 flex items-center justify-center border-2 border-primary/20"
-          animate={{ scale: [1, 1.05, 1] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="w-28 h-28 rounded-full border-4 border-dashed border-primary/40 flex items-center justify-center bg-primary/5"
+          animate={{ rotate: [0, 3, -3, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={step}
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.5, opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-5xl"
-            >
-              {currentStep.icon}
-            </motion.div>
-          </AnimatePresence>
+          <motion.div
+            className="w-20 h-20 rounded-full border-2 border-primary/20 bg-white dark:bg-stone-900 flex items-center justify-center shadow-inner"
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={step}
+                initial={{ scale: 0.4, opacity: 0, rotate: -15 }}
+                animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                exit={{ scale: 0.4, opacity: 0, rotate: 15 }}
+                transition={{ duration: 0.5 }}
+                className="text-4xl"
+              >
+                {currentStep.icon}
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
         </motion.div>
 
         <div className="space-y-3">
@@ -242,7 +246,7 @@ function FallbackAnimation({
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4 }}
             >
-              <p className="text-2xl font-bold text-stone-800 leading-tight min-h-10">
+              <p className="text-2xl font-hand text-stone-800 dark:text-stone-200 leading-tight min-h-10">
                 {currentStep.text}
               </p>
               <p className="text-xs text-stone-400 font-mono uppercase tracking-widest mt-2">
@@ -251,14 +255,21 @@ function FallbackAnimation({
             </motion.div>
           </AnimatePresence>
 
-          <div className="w-48 mx-auto">
-            <div className="w-full h-2 bg-stone-100 rounded-full overflow-hidden">
+          {/* Wave-bouncing dots */}
+          <div className="flex gap-2 items-end justify-center h-6 mt-2">
+            {[0, 1, 2].map((i) => (
               <motion.div
-                className="h-full bg-primary rounded-full"
-                animate={{ width: `${progressPercent}%` }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
+                key={i}
+                className="w-2.5 h-2.5 rounded-full bg-primary"
+                animate={{ y: [0, -8, 0] }}
+                transition={{
+                  duration: 0.8,
+                  repeat: Infinity,
+                  delay: i * 0.15,
+                  ease: "easeInOut",
+                }}
               />
-            </div>
+            ))}
           </div>
         </div>
 

@@ -9,7 +9,16 @@ export function getFixedSchedulePrompt(schedule?: FixedScheduleItem[]): string {
   return `
     === FIXED SCHEDULE (USER BOOKINGS) ===
     The user has the following fixed reservations. You MUST incorporate these into the itinerary at the specified times.
-    ${schedule.map(item => `- [${item.type}] ${item.name} ${item.date ? `(Date: ${item.date})` : ''} ${item.time ? `(Time: ${item.time})` : ''} ${item.notes ? `Note: ${item.notes}` : ''}`).join('\n')}
+    ${schedule.map(item => {
+      if (item.type === 'hotel') {
+        const checkin = item.date ? `Check-in: ${item.date}` : '';
+        const checkout = item.checkoutDate ? `Check-out: ${item.checkoutDate}` : '';
+        const dates = [checkin, checkout].filter(Boolean).join(', ');
+        return `- [hotel] ${item.name}${dates ? ` (${dates})` : ''}${item.notes ? ` Note: ${item.notes}` : ''}`;
+      }
+      const route = item.from && item.to ? ` ${item.from} → ${item.to}` : '';
+      return `- [${item.type}] ${item.name}${route}${item.date ? ` (Date: ${item.date}` : ''}${item.time ? `, ${item.time})` : item.date ? ')' : ''}${item.notes ? ` Note: ${item.notes}` : ''}`;
+    }).join('\n')}
     ======================================
   `;
 }
