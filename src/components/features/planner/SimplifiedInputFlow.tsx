@@ -618,9 +618,32 @@ export default function SimplifiedInputFlow({
                 </div>
 
                 <div
-                  className={`mt-4 rounded-[1.75rem] border-2 p-5 ${isBudgetSliderSelected ? "border-orange-400 bg-orange-50 dark:bg-orange-500/10" : "border-stone-200 bg-white dark:border-stone-700 dark:bg-stone-900/40"}`}
+                  className={`mt-4 rounded-[1.75rem] border-2 ${isBudgetSliderSelected ? "border-orange-400 bg-orange-50 dark:bg-orange-500/10" : "border-stone-200 bg-white dark:border-stone-700 dark:bg-stone-900/40"}`}
                 >
-                  <div className="flex items-start justify-between gap-4">
+                  {/* トグルヘッダー */}
+                  <button
+                    type="button"
+                    className="flex w-full items-start justify-between gap-4 p-5 text-left"
+                    onClick={() => {
+                      if (isBudgetSliderSelected) {
+                        // 閉じる: budget をクリア
+                        onChange({ budget: "" });
+                      } else {
+                        // 開く: デフォルト値をセット
+                        const defaultMin = clamp(
+                          budgetConfig.defaultAmount - budgetConfig.band,
+                          budgetConfig.min,
+                          budgetConfig.max - budgetConfig.step,
+                        );
+                        const defaultMax = clamp(
+                          budgetConfig.defaultAmount + budgetConfig.band,
+                          defaultMin + budgetConfig.step,
+                          budgetConfig.max,
+                        );
+                        onChange({ budget: encodeBudgetRange(defaultMin, defaultMax) });
+                      }
+                    }}
+                  >
                     <div>
                       <div className="text-base font-bold text-stone-900 dark:text-white">
                         {t("phase2.budget.sliderTitle")}
@@ -629,54 +652,63 @@ export default function SimplifiedInputFlow({
                         {t("phase2.budget.sliderLead")}
                       </p>
                     </div>
-                    {isBudgetSliderSelected && (
-                      <span className={getSelectedIndicatorClasses()}>
-                        <Check className="h-3.5 w-3.5" />
-                      </span>
-                    )}
-                  </div>
+                    <div className="flex flex-shrink-0 items-center gap-2">
+                      {isBudgetSliderSelected && (
+                        <span className={getSelectedIndicatorClasses()}>
+                          <Check className="h-3.5 w-3.5" />
+                        </span>
+                      )}
+                      {isBudgetSliderSelected
+                        ? <ChevronUp className="h-5 w-5 text-stone-400" />
+                        : <ChevronDown className="h-5 w-5 text-stone-400" />
+                      }
+                    </div>
+                  </button>
 
-                  <div className="mt-5">
-                    <input
-                      type="range"
-                      min={budgetConfig.min}
-                      max={budgetConfig.max}
-                      step={budgetConfig.step}
-                      value={sliderAmount}
-                      aria-label={t("phase2.budget.sliderTitle")}
-                      onChange={(e) => {
-                        const amount = Number(e.target.value);
-                        const nextMin = clamp(
-                          amount - budgetConfig.band,
-                          budgetConfig.min,
-                          budgetConfig.max - budgetConfig.step,
-                        );
-                        const nextMax = clamp(
-                          amount + budgetConfig.band,
-                          nextMin + budgetConfig.step,
-                          budgetConfig.max,
-                        );
-                        onChange({ budget: encodeBudgetRange(nextMin, nextMax) });
-                      }}
-                      className="h-2 w-full cursor-pointer appearance-none rounded-full bg-orange-200 accent-orange-500 dark:bg-stone-700"
-                    />
-                    <div className="mt-4 flex items-end justify-between gap-4">
-                      <div>
-                        <div className="text-2xl font-black text-stone-900 dark:text-white">
-                          {formatBudgetAmount(sliderAmount)}
+                  {/* スライダー本体: 開いている時のみ表示 */}
+                  {isBudgetSliderSelected && (
+                    <div className="px-5 pb-5">
+                      <input
+                        type="range"
+                        min={budgetConfig.min}
+                        max={budgetConfig.max}
+                        step={budgetConfig.step}
+                        value={sliderAmount}
+                        aria-label={t("phase2.budget.sliderTitle")}
+                        onChange={(e) => {
+                          const amount = Number(e.target.value);
+                          const nextMin = clamp(
+                            amount - budgetConfig.band,
+                            budgetConfig.min,
+                            budgetConfig.max - budgetConfig.step,
+                          );
+                          const nextMax = clamp(
+                            amount + budgetConfig.band,
+                            nextMin + budgetConfig.step,
+                            budgetConfig.max,
+                          );
+                          onChange({ budget: encodeBudgetRange(nextMin, nextMax) });
+                        }}
+                        className="h-2 w-full cursor-pointer appearance-none rounded-full bg-orange-200 accent-orange-500 dark:bg-stone-700"
+                      />
+                      <div className="mt-4 flex items-end justify-between gap-4">
+                        <div>
+                          <div className="text-2xl font-black text-stone-900 dark:text-white">
+                            {formatBudgetAmount(sliderAmount)}
+                          </div>
+                          <p className="mt-1 text-sm text-stone-500 dark:text-stone-300">
+                            {t(`phase2.budget.moods.${budgetMoodKey}`)}
+                          </p>
                         </div>
-                        <p className="mt-1 text-sm text-stone-500 dark:text-stone-300">
-                          {t(`phase2.budget.moods.${budgetMoodKey}`)}
-                        </p>
-                      </div>
-                      <div className="text-right text-sm text-stone-500 dark:text-stone-300">
-                        <div>{t("phase2.budget.rangeLabel")}</div>
-                        <div className="mt-1 font-semibold text-stone-700 dark:text-stone-100">
-                          {formatBudgetAmount(sliderRange.min)} - {formatBudgetAmount(sliderRange.max)}
+                        <div className="text-right text-sm text-stone-500 dark:text-stone-300">
+                          <div>{t("phase2.budget.rangeLabel")}</div>
+                          <div className="mt-1 font-semibold text-stone-700 dark:text-stone-100">
+                            {formatBudgetAmount(sliderRange.min)} - {formatBudgetAmount(sliderRange.max)}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </section>
