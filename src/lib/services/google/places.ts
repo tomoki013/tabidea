@@ -15,6 +15,7 @@ import type {
   PlacesApiErrorCode,
 } from '@/types/places';
 import { PlacesApiError } from '@/types/places';
+import { extractSearchableDestination } from '@/lib/utils/plan';
 
 // ============================================
 // Constants
@@ -121,14 +122,16 @@ export class GooglePlacesService {
       const cleanedQuery = this.cleanSearchQuery(originalQuery);
       const hasSearchQuery = !!query.searchQuery;
       const primaryQuery = query.searchQuery || originalQuery;
+      // 複合宛先文字列から検索可能な単一地名を抽出（例: "東京・大阪周遊" → "東京"）
+      const nearQuery = query.near ? extractSearchableDestination(query.near) : undefined;
 
       let searchResult: { found: boolean; place?: NonNullable<PlacesTextSearchResponse['places']>[0] };
 
       // === Phase 1: そのまま試す (searchQuery or original) ===
 
       // Step 1: searchQuery (or original) + near
-      if (query.near) {
-        searchResult = await this.performSearchWithRetry(`${primaryQuery} ${query.near}`, query);
+      if (nearQuery) {
+        searchResult = await this.performSearchWithRetry(`${primaryQuery} ${nearQuery}`, query);
         if (searchResult.found) return this.buildResult(searchResult, originalQuery, startTime);
       }
 
@@ -138,8 +141,8 @@ export class GooglePlacesService {
 
       // Step 3-4: searchQueryがある場合、original queryも試す
       if (hasSearchQuery) {
-        if (query.near) {
-          searchResult = await this.performSearchWithRetry(`${originalQuery} ${query.near}`, query);
+        if (nearQuery) {
+          searchResult = await this.performSearchWithRetry(`${originalQuery} ${nearQuery}`, query);
           if (searchResult.found) return this.buildResult(searchResult, originalQuery, startTime);
         }
         searchResult = await this.performSearchWithRetry(originalQuery, query);
@@ -148,8 +151,8 @@ export class GooglePlacesService {
 
       // === Phase 2: クリーニングして試す ===
       if (cleanedQuery !== primaryQuery && cleanedQuery !== originalQuery) {
-        if (query.near) {
-          searchResult = await this.performSearchWithRetry(`${cleanedQuery} ${query.near}`, query);
+        if (nearQuery) {
+          searchResult = await this.performSearchWithRetry(`${cleanedQuery} ${nearQuery}`, query);
           if (searchResult.found) return this.buildResult(searchResult, originalQuery, startTime);
         }
         searchResult = await this.performSearchWithRetry(cleanedQuery, query);
@@ -169,8 +172,8 @@ export class GooglePlacesService {
       }
 
       // === Phase 4: 最終手段 ===
-      if (query.near) {
-        searchResult = await this.performSearchWithRetry(query.near, query);
+      if (nearQuery) {
+        searchResult = await this.performSearchWithRetry(nearQuery, query);
         if (searchResult.found) return this.buildResult(searchResult, originalQuery, startTime);
       }
 

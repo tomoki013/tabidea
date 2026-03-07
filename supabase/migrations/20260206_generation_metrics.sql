@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS generation_metrics (
   outline_time_ms INTEGER,
   detail_time_ms INTEGER,
   total_time_ms INTEGER,
+  step_timings JSONB,
   -- 品質
   validation_pass_rate REAL,
   self_correction_count INTEGER DEFAULT 0,

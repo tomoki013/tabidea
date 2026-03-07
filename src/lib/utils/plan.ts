@@ -1,5 +1,21 @@
 import type { DayPlan, TimelineItem } from '@/types';
 
+/**
+ * 複合的な宛先文字列から検索可能な単一の地名を抽出
+ * 例: "マレーシア・シンガポール・インドネシア周遊 (クアラルンプール、シンガポール...)" → "クアラルンプール"
+ * 例: "東京・京都" → "東京"
+ * 例: "沖縄" → "沖縄"
+ */
+export function extractSearchableDestination(destination: string): string {
+  // 括弧内があれば最初の項目を使用
+  const parenMatch = destination.match(/\(([^,)]+)/);
+  if (parenMatch) return parenMatch[1].trim();
+  // 余分な説明文（周遊、旅行、観光など）を除去
+  const cleaned = destination.replace(/\s*(周遊|旅行|観光).*$/, '').trim();
+  // 区切り文字（・、,）で分割して最初の要素を返す
+  return cleaned.split(/[・、,]/)[0].trim();
+}
+
 export function extractDuration(dates: string): number {
   // Support "X日間" format (e.g., "3日間")
   const daysMatch = dates.match(/(\d+)日間/);
