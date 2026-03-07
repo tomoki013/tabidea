@@ -8,7 +8,7 @@ import SpotCard from "@/components/features/plan/cards/SpotCard";
 import { UserInput, Itinerary } from "@/types";
 import React from "react";
 
-const translationMessages = vi.hoisted(() => ({
+const translationMessages = vi.hoisted<Record<string, string | string[]>>(() => ({
   "components.features.planner.simplifiedInputFlow.header.lead": "必要な情報を入力して、AIがあなただけのプランを作成します",
   "components.features.planner.simplifiedInputFlow.step1.destinationModeLabel": "① 目的地はどうしますか？",
   "components.features.planner.simplifiedInputFlow.step1.destinationInput.placeholderFirst": "例：京都、パリ、ハワイ...",
@@ -21,23 +21,110 @@ const translationMessages = vi.hoisted(() => ({
   "components.features.planner.simplifiedInputFlow.phase2.theme.label": "テーマ（複数選択可）",
   "components.features.planner.simplifiedInputFlow.phase2.pace.label": "旅のペース",
   "components.features.planner.simplifiedInputFlow.phase2.budget.label": "予算感",
+  "components.features.planner.simplifiedInputFlow.phase2.budget.sliderTitle": "総額を細かく指定",
+  "components.features.planner.simplifiedInputFlow.phase2.budget.sliderLead": "スライダーで旅全体の予算感を決めます",
+  "components.features.planner.simplifiedInputFlow.phase2.budget.rangeLabel": "おすすめ幅",
+  "components.features.planner.simplifiedInputFlow.phase2.budget.moods.saving": "節約寄り",
+  "components.features.planner.simplifiedInputFlow.phase2.budget.moods.standard": "ちょうどいい",
+  "components.features.planner.simplifiedInputFlow.phase2.budget.moods.high": "少し余裕あり",
+  "components.features.planner.simplifiedInputFlow.phase2.budget.moods.luxury": "かなり贅沢",
   "components.features.planner.simplifiedInputFlow.phase3.freeText.label": "その他のリクエスト",
   "components.features.planner.simplifiedInputFlow.phase3.freeText.placeholder": "自由入力",
+  "components.features.planner.simplifiedInputFlow.phase3.toggle": "こだわり条件を追加する（任意）",
   "components.features.planner.simplifiedInputFlow.generate.generating": "プランを生成中...",
   "components.features.planner.simplifiedInputFlow.generate.quick": "AIで旅をデザインする",
   "components.features.planner.simplifiedInputFlow.budget.units.tenThousandYen": "万円",
   "components.features.planner.simplifiedInputFlow.budget.units.yen": "円",
   "components.features.planner.steps.stepCompanions.options.solo.label": "ひとり旅",
+  "components.features.planner.steps.stepCompanions.options.solo.desc": "自由な旅",
   "components.features.planner.steps.stepCompanions.options.couple.label": "カップル",
-  "components.features.planner.steps.stepCompanions.options.family.label": "家族",
+  "components.features.planner.steps.stepCompanions.options.couple.desc": "落ち着いた旅",
+  "components.features.planner.steps.stepCompanions.options.anniversary.label": "記念日",
+  "components.features.planner.steps.stepCompanions.options.anniversary.desc": "特別感",
+  "components.features.planner.steps.stepCompanions.options.family_kids.label": "子連れ家族",
+  "components.features.planner.steps.stepCompanions.options.family_kids.desc": "安心",
+  "components.features.planner.steps.stepCompanions.options.three_generation.label": "三世代",
+  "components.features.planner.steps.stepCompanions.options.three_generation.desc": "ゆったり",
   "components.features.planner.steps.stepCompanions.options.friends.label": "友達",
-  "components.features.planner.steps.stepCompanions.options.male_trip.label": "男子旅",
-  "components.features.planner.steps.stepCompanions.options.female_trip.label": "女子旅",
-  "components.features.planner.steps.stepCompanions.options.backpacker.label": "バックパッカー",
+  "components.features.planner.steps.stepCompanions.options.friends.desc": "賑やか",
+  "components.features.planner.steps.stepCompanions.options.girls_trip.label": "女子旅",
+  "components.features.planner.steps.stepCompanions.options.girls_trip.desc": "華やか",
+  "components.features.planner.steps.stepCompanions.options.boys_trip.label": "男子旅",
+  "components.features.planner.steps.stepCompanions.options.boys_trip.desc": "アクティブ",
+  "components.features.planner.steps.stepCompanions.options.oshikatsu.label": "推し活",
+  "components.features.planner.steps.stepCompanions.options.oshikatsu.desc": "熱量高め",
   "components.features.planner.steps.stepCompanions.options.business.label": "出張",
+  "components.features.planner.steps.stepCompanions.options.business.desc": "効率重視",
   "components.features.planner.steps.stepCompanions.options.pet.label": "ペット連れ",
+  "components.features.planner.steps.stepCompanions.options.pet.desc": "やさしい旅",
+  "components.features.planner.steps.stepCompanions.options.workation.label": "ワーケーション",
+  "components.features.planner.steps.stepCompanions.options.workation.desc": "両立",
   "components.features.planner.steps.stepThemes.themes.gourmet": "グルメ",
+  "components.features.planner.steps.stepThemes.descriptions.gourmet": "ご当地の味",
   "components.features.planner.steps.stepThemes.themeValues.gourmet": "グルメ",
+  "components.features.planner.steps.stepThemes.themes.cafeHopping": "カフェ巡り",
+  "components.features.planner.steps.stepThemes.descriptions.cafeHopping": "ゆるく街歩き",
+  "components.features.planner.steps.stepThemes.themeValues.cafeHopping": "カフェ巡り",
+  "components.features.planner.steps.stepThemes.themes.historyCulture": "歴史・文化",
+  "components.features.planner.steps.stepThemes.descriptions.historyCulture": "深く知る",
+  "components.features.planner.steps.stepThemes.themeValues.historyCulture": "歴史・文化",
+  "components.features.planner.steps.stepThemes.themes.natureScenery": "自然・絶景",
+  "components.features.planner.steps.stepThemes.descriptions.natureScenery": "開放感",
+  "components.features.planner.steps.stepThemes.themeValues.natureScenery": "自然・絶景",
+  "components.features.planner.steps.stepThemes.themes.spectacularViews": "絶景",
+  "components.features.planner.steps.stepThemes.descriptions.spectacularViews": "景色主役",
+  "components.features.planner.steps.stepThemes.themeValues.spectacularViews": "絶景",
+  "components.features.planner.steps.stepThemes.themes.cityWalk": "街歩き",
+  "components.features.planner.steps.stepThemes.descriptions.cityWalk": "街の空気",
+  "components.features.planner.steps.stepThemes.themeValues.cityWalk": "街歩き",
+  "components.features.planner.steps.stepThemes.themes.resort": "リゾート",
+  "components.features.planner.steps.stepThemes.descriptions.resort": "非日常",
+  "components.features.planner.steps.stepThemes.themeValues.resort": "リゾート",
+  "components.features.planner.steps.stepThemes.themes.relax": "リラックス",
+  "components.features.planner.steps.stepThemes.descriptions.relax": "余白あり",
+  "components.features.planner.steps.stepThemes.themeValues.relax": "リラックス",
+  "components.features.planner.steps.stepThemes.themes.hiddenSpots": "穴場スポット",
+  "components.features.planner.steps.stepThemes.descriptions.hiddenSpots": "発見重視",
+  "components.features.planner.steps.stepThemes.themeValues.hiddenSpots": "穴場スポット",
+  "components.features.planner.steps.stepThemes.themes.shopping": "ショッピング",
+  "components.features.planner.steps.stepThemes.descriptions.shopping": "高揚感",
+  "components.features.planner.steps.stepThemes.themeValues.shopping": "ショッピング",
+  "components.features.planner.steps.stepThemes.themes.art": "アート",
+  "components.features.planner.steps.stepThemes.descriptions.art": "感性",
+  "components.features.planner.steps.stepThemes.themeValues.art": "アート",
+  "components.features.planner.steps.stepThemes.themes.architecture": "建築",
+  "components.features.planner.steps.stepThemes.descriptions.architecture": "造形美",
+  "components.features.planner.steps.stepThemes.themeValues.architecture": "建築",
+  "components.features.planner.steps.stepThemes.themes.nightlife": "ナイトライフ",
+  "components.features.planner.steps.stepThemes.descriptions.nightlife": "夜も満喫",
+  "components.features.planner.steps.stepThemes.themeValues.nightlife": "ナイトライフ",
+  "components.features.planner.steps.stepThemes.themes.experienceActivity": "体験・アクティビティ",
+  "components.features.planner.steps.stepThemes.descriptions.experienceActivity": "体験中心",
+  "components.features.planner.steps.stepThemes.themeValues.experienceActivity": "体験・アクティビティ",
+  "components.features.planner.steps.stepThemes.themes.localExperience": "ローカル体験",
+  "components.features.planner.steps.stepThemes.descriptions.localExperience": "現地目線",
+  "components.features.planner.steps.stepThemes.themeValues.localExperience": "ローカル体験",
+  "components.features.planner.steps.stepThemes.themes.onsenSauna": "温泉・サウナ",
+  "components.features.planner.steps.stepThemes.descriptions.onsenSauna": "回復",
+  "components.features.planner.steps.stepThemes.themeValues.onsenSauna": "温泉・サウナ",
+  "components.features.planner.steps.stepThemes.themes.wellness": "ウェルネス",
+  "components.features.planner.steps.stepThemes.descriptions.wellness": "整える",
+  "components.features.planner.steps.stepThemes.themeValues.wellness": "ウェルネス",
+  "components.features.planner.steps.stepThemes.themes.photogenic": "写真映え",
+  "components.features.planner.steps.stepThemes.descriptions.photogenic": "残したくなる",
+  "components.features.planner.steps.stepThemes.themeValues.photogenic": "写真映え",
+  "components.features.planner.steps.stepThemes.themes.powerSpots": "パワースポット",
+  "components.features.planner.steps.stepThemes.descriptions.powerSpots": "気持ちを整える",
+  "components.features.planner.steps.stepThemes.themeValues.powerSpots": "パワースポット",
+  "components.features.planner.steps.stepThemes.themes.seasonalEvents": "季節イベント",
+  "components.features.planner.steps.stepThemes.descriptions.seasonalEvents": "今だけ",
+  "components.features.planner.steps.stepThemes.themeValues.seasonalEvents": "季節イベント",
+  "components.features.planner.steps.stepThemes.themes.adventure": "冒険",
+  "components.features.planner.steps.stepThemes.descriptions.adventure": "体験価値",
+  "components.features.planner.steps.stepThemes.themeValues.adventure": "冒険",
+  "components.features.planner.steps.stepThemes.themes.oshikatsu": "推し活",
+  "components.features.planner.steps.stepThemes.descriptions.oshikatsu": "熱量高く巡る",
+  "components.features.planner.steps.stepThemes.themeValues.oshikatsu": "推し活",
   "components.features.planner.steps.stepBudget.options.saving.label": "節約",
   "components.features.planner.steps.stepBudget.options.saving.desc": "なるべく安く",
   "components.features.planner.steps.stepBudget.options.standard.label": "標準",
@@ -62,6 +149,8 @@ const translationMessages = vi.hoisted(() => ({
   "components.features.planner.resultView.tabs.packing": "持ち物",
   "components.features.planner.resultView.chat.title": "AIと相談しながら調整する",
   "components.features.planner.resultView.actions.addActivity": "予定を追加",
+  "components.features.planner.resultView.addSchedule": "予定を追加",
+  "components.travelPlannerChat.suggestionChips": [],
 }));
 
 const navigationMock = vi.hoisted(() => {
@@ -136,24 +225,50 @@ vi.mock("@/context/PlanModalContext", () => ({
 }));
 
 vi.mock("next-intl", () => ({
-  useTranslations: (namespace?: string) => (key: string, values?: Record<string, string | number>) => {
-    const fullKey = namespace ? `${namespace}.${key}` : key;
-    const template = translationMessages[fullKey] ?? key;
-    if (!values) return template;
-    return Object.entries(values).reduce(
-      (acc, [name, value]) => acc.replace(`{${name}}`, String(value)),
-      template,
-    );
-  },
-  createTranslator: ({ messages: scopedMessages }: { messages?: Record<string, string> }) =>
-    (key: string, values?: Record<string, string | number>) => {
-      const template = scopedMessages?.[key] ?? translationMessages[key] ?? key;
+  useTranslations: (namespace?: string) => {
+    const translator = (key: string, values?: Record<string, string | number>) => {
+      const fullKey = namespace ? `${namespace}.${key}` : key;
+      const template = translationMessages[fullKey] ?? key;
+      if (Array.isArray(template)) return key;
       if (!values) return template;
       return Object.entries(values).reduce(
         (acc, [name, value]) => acc.replace(`{${name}}`, String(value)),
         template,
       );
-    },
+    };
+    translator.raw = (key: string) => {
+      const fullKey = namespace ? `${namespace}.${key}` : key;
+      return translationMessages[fullKey] ?? key;
+    };
+    translator.rich = (key: string, values?: Record<string, string | number>) =>
+      translator(key, values);
+    return translator;
+  },
+  useLocale: () => "ja",
+  useMessages: () => ({}),
+  createTranslator: ({ messages: scopedMessages }: { messages?: Record<string, string> }) =>
+    Object.assign(
+      (key: string, values?: Record<string, string | number>) => {
+        const template = scopedMessages?.[key] ?? translationMessages[key] ?? key;
+        if (Array.isArray(template)) return key;
+        if (!values) return template;
+        return Object.entries(values).reduce(
+          (acc, [name, value]) => acc.replace(`{${name}}`, String(value)),
+          template,
+        );
+      },
+      {
+        rich: (key: string, values?: Record<string, string | number>) => {
+          const template = scopedMessages?.[key] ?? translationMessages[key] ?? key;
+          if (Array.isArray(template)) return key;
+          if (!values) return template;
+          return Object.entries(values).reduce(
+            (acc, [name, value]) => acc.replace(`{${name}}`, String(value)),
+            template,
+          );
+        },
+      },
+    ),
 }));
 
 const mockOnChange = vi.fn();
@@ -389,5 +504,24 @@ describe("UI Fixes Regression Tests", () => {
     expect(screen.getByTestId("theme-option-gourmet").className).toContain("bg-orange-600");
     expect(screen.getByTestId("pace-option-relaxed").className).toContain("bg-orange-600");
     expect(screen.getByTestId("budget-option-saving").className).toContain("bg-orange-600");
+  });
+
+  it("SimplifiedInputFlow: budget slider stores a detailed range value", () => {
+    render(
+      <SimplifiedInputFlow
+        input={{ ...defaultInput }}
+        onChange={mockOnChange}
+        onGenerate={mockOnGenerate}
+      />
+    );
+
+    fireEvent.click(screen.getByText("こだわり条件を追加する（任意）"));
+    fireEvent.change(screen.getByRole("slider", { name: "総額を細かく指定" }), {
+      target: { value: "120000" },
+    });
+
+    expect(mockOnChange).toHaveBeenCalledWith(
+      expect.objectContaining({ budget: "range:100000:140000" }),
+    );
   });
 });

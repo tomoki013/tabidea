@@ -33,15 +33,36 @@ export interface RegionMultiplier {
  * UserInputのbudget値を内部の予算レベルにマッピング
  */
 export function mapBudgetLevel(budget: string): BudgetLevel {
+  if (budget.startsWith('range:')) {
+    const parts = budget.split(':');
+    if (parts.length >= 3) {
+      const min = Number.parseInt(parts[1], 10);
+      const max = Number.parseInt(parts[2], 10);
+      if (!Number.isNaN(min) && !Number.isNaN(max)) {
+        const midpoint = (min + max) / 2;
+        if (midpoint >= 300000) {
+          return 'luxury';
+        }
+        if (midpoint >= 120000) {
+          return 'high';
+        }
+        if (midpoint <= 60000) {
+          return 'saving';
+        }
+        return 'standard';
+      }
+    }
+  }
+
   const normalized = budget.toLowerCase();
   if (normalized.includes('安') || normalized.includes('節約') || normalized.includes('saving')) {
     return 'saving';
   }
-  if (normalized.includes('高') || normalized.includes('贅沢') || normalized.includes('high')) {
-    return 'high';
-  }
   if (normalized.includes('最高') || normalized.includes('ラグジュアリー') || normalized.includes('luxury')) {
     return 'luxury';
+  }
+  if (normalized.includes('高') || normalized.includes('贅沢') || normalized.includes('high')) {
+    return 'high';
   }
   return 'standard';
 }

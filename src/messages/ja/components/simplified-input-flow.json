@@ -61,7 +61,15 @@
             "budget": {
               "label": "予算感",
               "useSlider": "具体的な金額で指定する",
-              "sliderTitle": "金額範囲を指定",
+              "sliderTitle": "総額を細かく指定",
+              "sliderLead": "スライダーで旅全体の予算感を決めます",
+              "rangeLabel": "おすすめ幅",
+              "moods": {
+                "saving": "かなり節約寄りで、身軽に動く雰囲気",
+                "standard": "無理なく楽しめる、ちょうどいい雰囲気",
+                "high": "ホテルや食事にも余裕を持たせる雰囲気",
+                "luxury": "移動も滞在も質重視のご褒美旅"
+              },
               "backToPresets": "選択式に戻す"
             },
             "pace": {

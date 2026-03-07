@@ -122,11 +122,34 @@ export default function RequestSummary({
   const tTransitTypes = useTranslations("components.features.planner.steps.transitForm.types");
   const tBudgetOptions = useTranslations("components.features.planner.steps.stepBudget.options");
 
-  const companionLabelMap: Record<string, "solo" | "couple" | "friends" | "family"> = {
+  const companionLabelMap: Record<
+    string,
+    | "solo"
+    | "couple"
+    | "anniversary"
+    | "family_kids"
+    | "three_generation"
+    | "friends"
+    | "girls_trip"
+    | "boys_trip"
+    | "oshikatsu"
+    | "pet"
+    | "workation"
+    | "business"
+  > = {
     solo: "solo",
     couple: "couple",
+    anniversary: "anniversary",
+    family_kids: "family_kids",
+    three_generation: "three_generation",
     friends: "friends",
-    family: "family",
+    family: "family_kids",
+    girls_trip: "girls_trip",
+    boys_trip: "boys_trip",
+    oshikatsu: "oshikatsu",
+    pet: "pet",
+    workation: "workation",
+    business: "business",
   };
 
   const paceLabelMap: Record<string, "relaxed" | "balanced" | "active" | "packed"> = {

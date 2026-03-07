@@ -311,11 +311,32 @@ export function inferCompanionType(companions: string): CompanionType {
     return 'solo';
   }
 
-  if (lower.includes('カップル') || lower.includes('恋人') || lower.includes('パートナー') || lower.includes('couple')) {
+  if (
+    lower.includes('カップル') ||
+    lower.includes('恋人') ||
+    lower.includes('パートナー') ||
+    lower.includes('couple') ||
+    lower.includes('記念日') ||
+    lower.includes('anniversary')
+  ) {
     return 'couple';
   }
 
-  if (lower.includes('家族') || lower.includes('ファミリー') || lower.includes('family')) {
+  if (
+    lower.includes('三世代') ||
+    lower.includes('three_generation') ||
+    lower.includes('family_senior') ||
+    lower.includes('シニア')
+  ) {
+    return 'family_senior';
+  }
+
+  if (
+    lower.includes('家族') ||
+    lower.includes('ファミリー') ||
+    lower.includes('family') ||
+    lower.includes('family_kids')
+  ) {
     if (lower.includes('シニア') || lower.includes('親') || lower.includes('祖父') || lower.includes('祖母') || lower.includes('高齢')) {
       return 'family_senior';
     }
@@ -325,12 +346,35 @@ export function inferCompanionType(companions: string): CompanionType {
     return 'family'; // デフォルトは子供ありファミリー
   }
 
-  if (lower.includes('友人') || lower.includes('友達') || lower.includes('仲間') || lower.includes('グループ') || lower.includes('friends')) {
+  if (
+    lower.includes('友人') ||
+    lower.includes('友達') ||
+    lower.includes('仲間') ||
+    lower.includes('グループ') ||
+    lower.includes('friends') ||
+    lower.includes('女子旅') ||
+    lower.includes('girls_trip') ||
+    lower.includes('男子旅') ||
+    lower.includes('boys_trip') ||
+    lower.includes('推し活') ||
+    lower.includes('oshikatsu')
+  ) {
     return 'friends';
   }
 
-  if (lower.includes('ビジネス') || lower.includes('出張') || lower.includes('仕事') || lower.includes('business')) {
+  if (
+    lower.includes('ビジネス') ||
+    lower.includes('出張') ||
+    lower.includes('仕事') ||
+    lower.includes('business') ||
+    lower.includes('workation') ||
+    lower.includes('ワーケーション')
+  ) {
     return 'business';
+  }
+
+  if (lower.includes('pet') || lower.includes('ペット')) {
+    return 'family';
   }
 
   // デフォルトは友人グループ（最も汎用的）

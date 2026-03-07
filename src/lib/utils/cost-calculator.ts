@@ -142,17 +142,55 @@ function estimatePersonCount(companions: string): number {
 
   const normalized = companions.toLowerCase();
 
-  if (normalized.includes('1人') || normalized.includes('ひとり') || normalized.includes('一人') || normalized.includes('ソロ')) {
+  if (
+    normalized.includes('1人') ||
+    normalized.includes('ひとり') ||
+    normalized.includes('一人') ||
+    normalized.includes('ソロ') ||
+    normalized.includes('solo')
+  ) {
     return 1;
   }
-  if (normalized.includes('カップル') || normalized.includes('夫婦') || normalized.includes('2人') || normalized.includes('二人')) {
+  if (
+    normalized.includes('カップル') ||
+    normalized.includes('夫婦') ||
+    normalized.includes('2人') ||
+    normalized.includes('二人') ||
+    normalized.includes('couple') ||
+    normalized.includes('anniversary')
+  ) {
     return 2;
   }
-  if (normalized.includes('家族') || normalized.includes('ファミリー')) {
+  if (
+    normalized.includes('三世代') ||
+    normalized.includes('three_generation') ||
+    normalized.includes('family_senior')
+  ) {
+    return 5;
+  }
+  if (
+    normalized.includes('家族') ||
+    normalized.includes('ファミリー') ||
+    normalized.includes('family') ||
+    normalized.includes('family_kids')
+  ) {
     return 4;
   }
-  if (normalized.includes('グループ') || normalized.includes('友人')) {
+  if (
+    normalized.includes('グループ') ||
+    normalized.includes('友人') ||
+    normalized.includes('friends') ||
+    normalized.includes('girls_trip') ||
+    normalized.includes('boys_trip') ||
+    normalized.includes('oshikatsu')
+  ) {
     return 3;
+  }
+  if (normalized.includes('pet')) {
+    return 2;
+  }
+  if (normalized.includes('business') || normalized.includes('workation')) {
+    return 1;
   }
 
   // 数値を直接抽出

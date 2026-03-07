@@ -59,6 +59,19 @@ describe('calculateTravelCost', () => {
 
     expect(result.budgetLevel).toBe('saving');
   });
+
+  it('詳細金額レンジから予算レベルを判定', () => {
+    const result = calculateTravelCost({
+      destination: 'ソウル',
+      days: 4,
+      budget: 'range:180000:380000',
+      companions: 'girls_trip',
+      region: 'overseas',
+    });
+
+    expect(result.budgetLevel).toBe('high');
+    expect(result.total.min).toBeGreaterThan(0);
+  });
 });
 
 describe('formatCurrency', () => {

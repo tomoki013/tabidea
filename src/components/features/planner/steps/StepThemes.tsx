@@ -28,17 +28,27 @@ interface StepThemesProps {
 
 const THEME_ITEMS = [
   { key: "gourmet", icon: FaUtensils },
+  { key: "cafeHopping", icon: FaCoffee },
   { key: "historyCulture", icon: FaLandmark },
   { key: "natureScenery", icon: FaMountain },
+  { key: "spectacularViews", icon: FaCamera },
+  { key: "cityWalk", icon: FaCompass },
+  { key: "resort", icon: FaCoffee },
   { key: "relax", icon: FaCoffee },
   { key: "hiddenSpots", icon: FaSearch },
   { key: "shopping", icon: FaShoppingBag },
   { key: "art", icon: FaPalette },
+  { key: "architecture", icon: FaLandmark },
+  { key: "nightlife", icon: FaCamera },
   { key: "experienceActivity", icon: FaRunning },
+  { key: "localExperience", icon: FaSearch },
   { key: "onsenSauna", icon: FaHotTub },
+  { key: "wellness", icon: FaHotTub },
   { key: "photogenic", icon: FaCamera },
+  { key: "powerSpots", icon: FaLandmark },
+  { key: "seasonalEvents", icon: FaCamera },
   { key: "adventure", icon: FaCompass },
-  { key: "other", icon: FaQuestion },
+  { key: "oshikatsu", icon: FaQuestion },
 ];
 
 export default function StepThemes({ input, onChange, onNext, canComplete, onComplete }: StepThemesProps) {
@@ -46,6 +56,7 @@ export default function StepThemes({ input, onChange, onNext, canComplete, onCom
   const items = THEME_ITEMS.map((item) => ({
     ...item,
     label: t(`themes.${item.key}`),
+    desc: t(`descriptions.${item.key}`),
     value: t(`themeValues.${item.key}`),
   }));
 
@@ -105,6 +116,9 @@ export default function StepThemes({ input, onChange, onNext, canComplete, onCom
                   ${isSelected ? "text-[#2c2c2c] font-bold" : "text-stone-500"}
                 `}>
                   {item.label}
+                </span>
+                <span className={`mt-2 text-center text-[11px] leading-relaxed ${isSelected ? "text-stone-700" : "text-stone-400"}`}>
+                  {item.desc}
                 </span>
               </button>
             );

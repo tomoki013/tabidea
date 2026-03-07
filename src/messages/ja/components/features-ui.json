@@ -972,39 +972,51 @@
             "options": {
               "solo": {
                 "label": "一人旅",
-                "desc": "気ままに"
+                "desc": "自分の気分で寄り道しやすい、自由度高めの旅"
               },
               "couple": {
                 "label": "カップル・夫婦",
-                "desc": "ロマンチックに"
+                "desc": "景色や食事をゆっくり共有する、落ち着いた旅"
               },
-              "family": {
-                "label": "家族",
-                "desc": "みんなで楽しく"
+              "anniversary": {
+                "label": "記念日・お祝い",
+                "desc": "特別感のある演出や上質な時間を楽しむ旅"
+              },
+              "family_kids": {
+                "label": "子連れ家族",
+                "desc": "休憩を挟みながら、安心して楽しめる旅"
+              },
+              "three_generation": {
+                "label": "三世代・大家族",
+                "desc": "無理のない移動で、みんなが過ごしやすい旅"
               },
               "friends": {
                 "label": "友人",
-                "desc": "ワイワイと"
+                "desc": "話題スポットも盛り込みやすい、賑やかな旅"
               },
-              "male_trip": {
-                "label": "男旅",
-                "desc": "とことん"
+              "girls_trip": {
+                "label": "女子旅",
+                "desc": "カフェや写真映えを楽しむ、華やかな旅"
               },
-              "female_trip": {
-                "label": "女旅",
-                "desc": "華やかに"
+              "boys_trip": {
+                "label": "男子旅",
+                "desc": "グルメもアクティブも詰め込みやすい旅"
               },
-              "backpacker": {
-                "label": "バックパッカー",
-                "desc": "冒険を"
+              "oshikatsu": {
+                "label": "推し活",
+                "desc": "聖地巡礼やイベント中心で熱量高めの旅"
+              },
+              "pet": {
+                "label": "ペットと一緒",
+                "desc": "散歩や休憩を大切にする、やさしい旅"
+              },
+              "workation": {
+                "label": "ワーケーション",
+                "desc": "仕事時間と気分転換を両立する旅"
               },
               "business": {
                 "label": "ビジネス",
-                "desc": "効率的に"
-              },
-              "pet": {
-                "label": "ペットと",
-                "desc": "一緒に"
+                "desc": "移動効率を重視しつつ、外さない時間を作る旅"
               }
             }
           },
@@ -1016,19 +1028,19 @@
             "options": {
               "relaxed": {
                 "label": "ゆったり",
-                "desc": "1日1-2箇所、のんびりと"
+                "desc": "景色や食事を味わいながら、余白を楽しむ雰囲気"
               },
               "balanced": {
                 "label": "バランスよく",
-                "desc": "観光と休息を程よく"
+                "desc": "定番も休憩も両立して、心地よく回る雰囲気"
               },
               "active": {
                 "label": "アクティブ",
-                "desc": "主要スポットを網羅"
+                "desc": "見たい場所をしっかり押さえる、充実感重視の雰囲気"
               },
               "packed": {
                 "label": "詰め込み",
-                "desc": "朝から晩まで全力で"
+                "desc": "朝から夜まで動いて、やりたいことを最大化する雰囲気"
               }
             }
           },
@@ -1044,24 +1056,24 @@
             },
             "slider": {
               "title": "金額で指定する",
-              "lead": "スライダーで予算範囲を設定"
+              "lead": "総額の目安を細かく決めて、旅の雰囲気を合わせる"
             },
             "options": {
               "saving": {
                 "label": "なるべく安く",
-                "desc": "お財布に優しく、賢く旅する"
+                "desc": "コスパ重視で、軽やかに動く旅"
               },
               "standard": {
                 "label": "普通",
-                "desc": "一般的な予算で楽しむ"
+                "desc": "無理なく王道を楽しむ、安心感のある旅"
               },
               "high": {
                 "label": "少し贅沢に",
-                "desc": "良いホテルや食事をプラス"
+                "desc": "宿や食事に少しこだわる、満足度高めの旅"
               },
               "luxury": {
                 "label": "リッチに",
-                "desc": "最高級の体験を味わう"
+                "desc": "移動も滞在も質重視の、ご褒美旅"
               }
             }
           },
@@ -1141,31 +1153,75 @@
             "skipAndCreate": "任意項目をスキップしてプランを作成",
             "themes": {
               "gourmet": "グルメ",
+              "cafeHopping": "カフェ巡り",
               "historyCulture": "歴史・文化",
               "natureScenery": "自然・絶景",
+              "spectacularViews": "絶景",
+              "cityWalk": "街歩き",
+              "resort": "リゾート",
               "relax": "リラックス",
               "hiddenSpots": "穴場スポット",
               "shopping": "ショッピング",
               "art": "アート",
+              "architecture": "建築",
+              "nightlife": "ナイトライフ",
               "experienceActivity": "体験・アクティビティ",
+              "localExperience": "ローカル体験",
               "onsenSauna": "温泉・サウナ",
+              "wellness": "ウェルネス",
               "photogenic": "写真映え",
+              "powerSpots": "パワースポット",
+              "seasonalEvents": "季節イベント",
               "adventure": "冒険",
-              "other": "その他"
+              "oshikatsu": "推し活"
+            },
+            "descriptions": {
+              "gourmet": "ご当地の味や名店を中心に、満足感高めの旅",
+              "cafeHopping": "気になる店をつないで、ゆるく街を楽しむ旅",
+              "historyCulture": "物語や背景を味わいながら、深く知る旅",
+              "natureScenery": "空気や景色に癒やされる、開放感ある旅",
+              "spectacularViews": "ここでしか見られない景色を主役にする旅",
+              "cityWalk": "路地や商店街まで含めて、街の空気を楽しむ旅",
+              "resort": "移動を減らして、非日常をゆっくり味わう旅",
+              "relax": "予定を詰めすぎず、心と体を休める旅",
+              "hiddenSpots": "定番よりも、自分だけの発見を楽しむ旅",
+              "shopping": "買い物やマーケット巡りで高揚感を楽しむ旅",
+              "art": "感性を刺激する展示や空間を巡る旅",
+              "architecture": "建物や街並みの美しさに浸る旅",
+              "nightlife": "夜景やバー、ライブで一日を締める旅",
+              "experienceActivity": "体験そのものを思い出の中心にする旅",
+              "localExperience": "暮らしや文化に近い目線で楽しむ旅",
+              "onsenSauna": "湯やととのい時間を軸に、回復する旅",
+              "wellness": "食事や静けさも含めて整える旅",
+              "photogenic": "思わず残したくなる景色を集める旅",
+              "powerSpots": "神社仏閣や聖地で気持ちを整える旅",
+              "seasonalEvents": "その時期だけの景色や催しを楽しむ旅",
+              "adventure": "少しハードでも体験価値を優先する旅",
+              "oshikatsu": "イベントや聖地巡礼で熱量高く巡る旅"
             },
             "themeValues": {
               "gourmet": "グルメ",
+              "cafeHopping": "カフェ巡り",
               "historyCulture": "歴史・文化",
               "natureScenery": "自然・絶景",
+              "spectacularViews": "絶景",
+              "cityWalk": "街歩き",
+              "resort": "リゾート",
               "relax": "リラックス",
               "hiddenSpots": "穴場スポット",
               "shopping": "ショッピング",
               "art": "アート",
+              "architecture": "建築",
+              "nightlife": "ナイトライフ",
               "experienceActivity": "体験・アクティビティ",
+              "localExperience": "ローカル体験",
               "onsenSauna": "温泉・サウナ",
+              "wellness": "ウェルネス",
               "photogenic": "写真映え",
+              "powerSpots": "パワースポット",
+              "seasonalEvents": "季節イベント",
               "adventure": "冒険",
-              "other": "その他"
+              "oshikatsu": "推し活"
             }
           },
           "stepDates": {

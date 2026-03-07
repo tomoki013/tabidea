@@ -61,7 +61,15 @@
             "budget": {
               "label": "Budget level",
               "useSlider": "Set a specific amount",
-              "sliderTitle": "Set budget range",
+              "sliderTitle": "Set a detailed total budget",
+              "sliderLead": "Use the slider to set the overall trip budget",
+              "rangeLabel": "Suggested range",
+              "moods": {
+                "saving": "Lean and cost-conscious with a light footprint",
+                "standard": "Comfortable and easygoing without overspending",
+                "high": "Extra room for better hotels and dining",
+                "luxury": "Premium stays and polished experiences throughout"
+              },
               "backToPresets": "Back to presets"
             },
             "pace": {

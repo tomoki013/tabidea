@@ -969,39 +969,51 @@
             "options": {
               "solo": {
                 "label": "Solo",
-                "desc": "At your own pace"
+                "desc": "A flexible trip where detours and mood-led choices fit easily"
               },
               "couple": {
                 "label": "Couple",
-                "desc": "Romantic style"
+                "desc": "A calm trip built around scenery, meals, and time together"
               },
-              "family": {
-                "label": "Family",
-                "desc": "Fun for everyone"
+              "anniversary": {
+                "label": "Anniversary",
+                "desc": "A special trip with elevated moments and memorable touches"
+              },
+              "family_kids": {
+                "label": "Family with kids",
+                "desc": "An easygoing trip with breaks and child-friendly pacing"
+              },
+              "three_generation": {
+                "label": "Multi-generation",
+                "desc": "A low-strain trip designed so everyone can move comfortably"
               },
               "friends": {
                 "label": "Friends",
-                "desc": "Lively and social"
+                "desc": "A lively trip that mixes hotspots and shared memories"
               },
-              "male_trip": {
-                "label": "Guys trip",
-                "desc": "All in"
-              },
-              "female_trip": {
+              "girls_trip": {
                 "label": "Girls trip",
-                "desc": "Stylish and fun"
+                "desc": "A stylish trip with cafes, photos, and fun stops"
               },
-              "backpacker": {
-                "label": "Backpacker",
-                "desc": "For adventure"
+              "boys_trip": {
+                "label": "Guys trip",
+                "desc": "A high-energy trip for food, activities, and long days"
               },
-              "business": {
-                "label": "Business",
-                "desc": "Efficient and focused"
+              "oshikatsu": {
+                "label": "Fan trip",
+                "desc": "A high-excitement trip focused on events and pilgrimage spots"
               },
               "pet": {
                 "label": "With pet",
-                "desc": "Together always"
+                "desc": "A gentle trip with walks, pauses, and pet-friendly stops"
+              },
+              "workation": {
+                "label": "Workation",
+                "desc": "A balanced trip that blends work time and a change of scene"
+              },
+              "business": {
+                "label": "Business",
+                "desc": "An efficient trip that still leaves room for a solid local moment"
               }
             }
           },
@@ -1013,19 +1025,19 @@
             "options": {
               "relaxed": {
                 "label": "Relaxed",
-                "desc": "1-2 spots per day, take it slow"
+                "desc": "A spacious rhythm for meals, views, and unhurried moments"
               },
               "balanced": {
                 "label": "Balanced",
-                "desc": "A good mix of sightseeing and rest"
+                "desc": "A comfortable mix of highlights and breaks"
               },
               "active": {
                 "label": "Active",
-                "desc": "Cover major highlights"
+                "desc": "A fuller schedule that still keeps the trip feeling smooth"
               },
               "packed": {
                 "label": "Packed",
-                "desc": "Full-on from morning to night"
+                "desc": "A maximize-the-day style from morning through night"
               }
             }
           },
@@ -1041,24 +1053,24 @@
             },
             "slider": {
               "title": "Set by amount",
-              "lead": "Adjust your budget range with the slider"
+              "lead": "Set a detailed total budget and match the trip mood"
             },
             "options": {
               "saving": {
                 "label": "Budget",
-                "desc": "Smart and cost-friendly travel"
+                "desc": "A smart, light-footed trip focused on value"
               },
               "standard": {
                 "label": "Standard",
-                "desc": "Enjoy with a typical budget"
+                "desc": "A comfortable trip with a steady, familiar balance"
               },
               "high": {
                 "label": "Comfort+",
-                "desc": "Better hotels and meals"
+                "desc": "A more polished trip with better stays and dining"
               },
               "luxury": {
                 "label": "Luxury",
-                "desc": "Premium experiences all the way"
+                "desc": "A premium trip with standout comfort throughout"
               }
             }
           },
@@ -1138,31 +1150,75 @@
             "skipAndCreate": "Skip optional items and create plan",
             "themes": {
               "gourmet": "Food",
+              "cafeHopping": "Cafe Hopping",
               "historyCulture": "History & Culture",
               "natureScenery": "Nature & Scenery",
+              "spectacularViews": "Scenic Views",
+              "cityWalk": "City Walks",
+              "resort": "Resort",
               "relax": "Relaxation",
               "hiddenSpots": "Hidden Gems",
               "shopping": "Shopping",
               "art": "Art",
+              "architecture": "Architecture",
+              "nightlife": "Nightlife",
               "experienceActivity": "Experiences & Activities",
+              "localExperience": "Local Experiences",
               "onsenSauna": "Onsen & Sauna",
+              "wellness": "Wellness",
               "photogenic": "Photogenic",
+              "powerSpots": "Sacred Spots",
+              "seasonalEvents": "Seasonal Events",
               "adventure": "Adventure",
-              "other": "Other"
+              "oshikatsu": "Fan Trip"
+            },
+            "descriptions": {
+              "gourmet": "A satisfying trip led by local specialties and standout meals",
+              "cafeHopping": "A relaxed trip stitched together by memorable cafes",
+              "historyCulture": "A deeper trip shaped by stories, heritage, and context",
+              "natureScenery": "An open-air trip built around scenery and fresh air",
+              "spectacularViews": "A trip that makes iconic landscapes the main event",
+              "cityWalk": "A trip that enjoys streets, neighborhoods, and everyday atmosphere",
+              "resort": "A low-transfer trip focused on a polished escape",
+              "relax": "A slower trip that leaves space to unwind",
+              "hiddenSpots": "A discovery-led trip that skips the obvious path",
+              "shopping": "An upbeat trip with markets, districts, and good finds",
+              "art": "A creative trip shaped by exhibitions and inspiring spaces",
+              "architecture": "A trip for design details, skylines, and beautiful buildings",
+              "nightlife": "A trip that keeps energy for bars, lights, and live evenings",
+              "experienceActivity": "A memory-first trip centered on doing rather than just seeing",
+              "localExperience": "A grounded trip that gets closer to local life and culture",
+              "onsenSauna": "A restorative trip anchored by hot springs and reset time",
+              "wellness": "A balancing trip with care for body, food, and calm",
+              "photogenic": "A trip that collects scenes worth capturing",
+              "powerSpots": "A reflective trip shaped by shrines, temples, and sacred places",
+              "seasonalEvents": "A timely trip built around what only happens this season",
+              "adventure": "A higher-intensity trip that prioritizes experience value",
+              "oshikatsu": "A high-energy trip shaped by fandom stops and special events"
             },
             "themeValues": {
               "gourmet": "Food",
+              "cafeHopping": "Cafe Hopping",
               "historyCulture": "History & Culture",
               "natureScenery": "Nature & Scenery",
+              "spectacularViews": "Scenic Views",
+              "cityWalk": "City Walks",
+              "resort": "Resort",
               "relax": "Relaxation",
               "hiddenSpots": "Hidden Gems",
               "shopping": "Shopping",
               "art": "Art",
+              "architecture": "Architecture",
+              "nightlife": "Nightlife",
               "experienceActivity": "Experiences & Activities",
+              "localExperience": "Local Experiences",
               "onsenSauna": "Onsen & Sauna",
+              "wellness": "Wellness",
               "photogenic": "Photogenic",
+              "powerSpots": "Sacred Spots",
+              "seasonalEvents": "Seasonal Events",
               "adventure": "Adventure",
-              "other": "Other"
+              "oshikatsu": "Fan Trip"
             }
           },
           "stepDates": {
