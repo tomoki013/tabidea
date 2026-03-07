@@ -40,7 +40,7 @@
               "description": "旅程・費用・メモをまとめて公開。同行者や家族に、URLひとつで旅の全体像を共有できます。",
               "cta": "旅のしおりの使い方を見る"
             },
-            "blog": {
+            "stories": {
               "title": "ブログ",
               "description": "旅の背景や気づき、現地で役立った情報を記事化。旅のしおりの埋め込みで、実用性の高い旅行記事を作れます。",
               "cta": "ブログ機能を詳しく見る"
@@ -96,7 +96,7 @@
           "viewTravelInfoGuide": "渡航情報・安全ガイドはこちら",
           "visualWriting": "AI is writing your plan..."
         },
-        "blogPromotionSection": {
+        "storiesPromotionSection": {
           "badge": "Everyone's Blog",
           "titleLine1": "みんなの",
           "titleLine2": "旅行記",
@@ -826,7 +826,7 @@
             "official_api": "公式情報",
             "web_search": "Web検索",
             "ai_generated": "AI生成",
-            "blog": "ブログ",
+            "stories": "みんなの旅の記録",
             "default": "情報源"
           },
           "aria": {

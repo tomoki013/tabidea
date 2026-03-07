@@ -42,7 +42,7 @@
         "compactText": "ログインしてプランを保存",
         "compactCta": "ログイン"
       },
-      "blogEditor": {
+      "storiesEditor": {
         "uploadFailed": "画像アップロードに失敗しました",
         "uploadCompleted": "アップロード完了: {url}",
         "usernameRequired": "username は必須です",

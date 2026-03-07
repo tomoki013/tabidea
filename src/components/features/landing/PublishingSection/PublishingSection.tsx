@@ -13,10 +13,10 @@ export default function PublishingSection() {
       icon: FaMapMarkedAlt,
     },
     {
-      title: t('cards.blog.title'),
-      description: t('cards.blog.description'),
-      href: '/blog/guide',
-      cta: t('cards.blog.cta'),
+      title: t('cards.stories.title'),
+      description: t('cards.stories.description'),
+      href: '/stories',
+      cta: t('cards.stories.cta'),
       icon: FaFeatherAlt,
     },
   ];

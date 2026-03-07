@@ -40,7 +40,7 @@
               "description": "Publish itinerary, costs, and notes in one place. Share the full trip picture with companions and family using a single URL.",
               "cta": "See how to use travel notes"
             },
-            "blog": {
+            "stories": {
               "title": "Blog",
               "description": "Write about the context, insights, and practical tips from your trip. Embed travel notes to create highly practical travel posts.",
               "cta": "Learn more about the blog feature"
@@ -96,7 +96,7 @@
           "viewTravelInfoGuide": "Travel info and safety guide",
           "visualWriting": "AI is writing your plan..."
         },
-        "blogPromotionSection": {
+        "storiesPromotionSection": {
           "badge": "Everyone's Blog",
           "titleLine1": "Traveler",
           "titleLine2": "stories",
@@ -826,7 +826,7 @@
             "official_api": "Official source",
             "web_search": "Web search",
             "ai_generated": "AI generated",
-            "blog": "Blog",
+            "stories": "Travel Stories",
             "default": "Source"
           },
           "aria": {

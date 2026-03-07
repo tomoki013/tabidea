@@ -24,7 +24,7 @@ export const ROUTES = {
 
   // 公開コンテンツ
   SHIORI: '/shiori',
-  BLOG: '/blog',
+  STORIES: '/stories',
 
   // 渡航情報
   TRAVEL_INFO: '/travel-info',
