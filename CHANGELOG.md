@@ -9,6 +9,10 @@
 
 ## 開発者向けコミット履歴（コミット単位）
 
+### 2026-03-07 (continued, shiori improvements)
+
+- `local` feat(shiori,ui,db): 旅のしおり機能の総合改善。DB に `plan_publications.conditions_snapshot JSONB` カラムを追加し、`get_public_shiori` RPC に `conditions_snapshot` と `thumbnail_url` を追加。`fork_public_shiori` RPC を新規作成（`plan_days`/`plan_items` をコピー、`note`・`date_value`・日記は除外）。`PublicConditionsSnapshot` 型と `buildConditionsSnapshot`/`conditionsSnapshotToUserInput` ユーティリティを追加。`upsertPlanPublication` に `conditionsSnapshot` パラメータを追加し既存の `publish_journal`/`publish_budget` を保持するよう改善。`PublicToggle` にパブリック化時の conditions_snapshot 保存ロジックを追加。しおり詳細ページをヒーロー画像・アクションバー・`ConditionsCard`・タイムラインスタイル旅程・関連しおりセクション構成に全面刷新。フィードページにスティッキーフィルターバー（目的地・テーマ・同行者・並び順）を追加。新規コンポーネント: `ConditionsCard`, `ForkButton`, `CreateWithConditionsButton`, `ShareButton`, `RelatedShioriSection`, `ShioriFeedFilters`。`PublicPlanCard` にテーマチップ・同行者バッジ・ダークモード対応を追加。ja/en i18n キーを全件追加。
+
 ### 2026-03-07 (continued)
 
 - `local` feat(ai,api,planner): チャンク生成タイムアウト対策を2段階で実施。Fix A: Golden Plan Examples をチャンク生成プロンプトから除外（Outline生成で活用済みのため不要、プロンプトトークン削減で生成高速化）。Fix G: `/api/generate/chunk` を `streamObject` ベースの SSE ストリーミングに変換し、タイムアウト問題を構造的に解消。`gemini.ts` に `streamDayDetails()` async generator メソッドと `buildDayDetailsPromptSingle()` を追加、`normalizeDayPlan` をエクスポート。`PlanClient.tsx` を server action から fetch SSE 消費に変換し `partialDays` state を追加。`StreamingDayCard.tsx` を新規作成（タイトル→Transit→アクティビティの段階的 Framer Motion アニメーション）。`PartialDayData` 型を `@/types` に追加。ja/en `streamingDayCard` i18n キーを追加。

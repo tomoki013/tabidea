@@ -16,6 +16,10 @@ export default async function PublicPlanCard({ plan, language }: PublicPlanCardP
     locale: language,
     namespace: 'components.features.shiori.publicPlanCard',
   });
+  const tConditions = await getTranslations({
+    locale: language,
+    namespace: 'components.features.shiori.conditionsCard',
+  });
   const destination = plan.destination || t('destinationTbd');
 
   const days = plan.durationDays || 0;
@@ -23,12 +27,15 @@ export default async function PublicPlanCard({ plan, language }: PublicPlanCardP
     ? t('duration', { nights: Math.max(0, days - 1), days })
     : t('durationTbd');
 
+  const themes = plan.conditionsSummary?.theme?.slice(0, 3) ?? [];
+  const companion = plan.conditionsSummary?.companions ?? null;
+
   return (
     <Link href={localizePath(`/shiori/${plan.slug}`, language)} className="block group h-full">
-      <div className="relative bg-white h-full flex flex-col shadow-sm border border-stone-200 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:rotate-1 rounded-sm overflow-hidden">
+      <div className="relative bg-card h-full flex flex-col shadow-sm border border-stone-200 dark:border-stone-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:rotate-1 rounded-sm overflow-hidden">
 
         {/* Thumbnail */}
-        <div className="relative aspect-video w-full overflow-hidden bg-stone-100 border-b border-stone-100">
+        <div className="relative aspect-video w-full overflow-hidden bg-stone-100 dark:bg-stone-700 border-b border-stone-100 dark:border-stone-700">
           {plan.thumbnailUrl ? (
             <Image
               src={plan.thumbnailUrl}
@@ -38,7 +45,7 @@ export default async function PublicPlanCard({ plan, language }: PublicPlanCardP
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-stone-300 bg-stone-50">
+            <div className="w-full h-full flex items-center justify-center text-stone-300 dark:text-stone-600 bg-stone-50 dark:bg-stone-800">
               <FaMapMarkerAlt size={32} />
             </div>
           )}
@@ -50,29 +57,48 @@ export default async function PublicPlanCard({ plan, language }: PublicPlanCardP
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
 
           <div className="absolute bottom-3 left-3 right-3">
-             <h3 className="font-serif font-bold text-xl text-white drop-shadow-md line-clamp-2 leading-tight">
+            <h3 className="font-serif font-bold text-xl text-white drop-shadow-md line-clamp-2 leading-tight">
               {destination}
             </h3>
+            {companion && (
+              <span className="inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-medium bg-white/20 text-white backdrop-blur-sm">
+                {tConditions(`companionOptions.${companion}`, { fallback: companion })}
+              </span>
+            )}
           </div>
         </div>
 
         {/* Content */}
-        <div className="p-4 flex-1 flex flex-col justify-between bg-[#fcfbf9]">
-          <div className="flex items-center justify-between text-xs text-stone-500 font-mono">
-            <span className="flex items-center gap-1 bg-stone-100 px-2 py-1 rounded-full">
-              <FaCalendarAlt className="text-stone-400" />
+        <div className="p-4 flex-1 flex flex-col justify-between bg-card">
+          <div className="flex items-center justify-between text-xs text-stone-500 dark:text-stone-400 font-mono">
+            <span className="flex items-center gap-1 bg-stone-100 dark:bg-stone-700 px-2 py-1 rounded-full">
+              <FaCalendarAlt className="text-stone-400 dark:text-stone-500" />
               {duration}
             </span>
             <span>
               {new Date(plan.createdAt).toLocaleDateString(resolveRegionalLocale(language))}
             </span>
           </div>
-          <div className="mt-3 flex items-center gap-2 text-xs text-stone-500">
-            <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-1 border border-stone-200">
+
+          {themes.length > 0 && (
+            <div className="mt-2 flex flex-wrap gap-1">
+              {themes.map((key) => (
+                <span
+                  key={key}
+                  className="inline-block px-2 py-0.5 rounded-full text-xs bg-primary/10 dark:bg-primary/20 text-primary"
+                >
+                  {tConditions(`themeOptions.${key}`, { fallback: key })}
+                </span>
+              ))}
+            </div>
+          )}
+
+          <div className="mt-3 flex items-center gap-2 text-xs text-stone-500 dark:text-stone-400">
+            <span className="inline-flex items-center gap-1 rounded-full bg-white dark:bg-stone-700 px-2 py-1 border border-stone-200 dark:border-stone-600">
               <FaBookOpen className="text-stone-400" />
               {t('entries')} {plan.entriesCount}
             </span>
-            <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-1 border border-stone-200">
+            <span className="inline-flex items-center gap-1 rounded-full bg-white dark:bg-stone-700 px-2 py-1 border border-stone-200 dark:border-stone-600">
               <FaHeart className="text-rose-400" />
               {t('likes')} {plan.likesCount}
             </span>

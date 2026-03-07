@@ -9,7 +9,7 @@ import {
   type EncryptedPlanData,
 } from '@/lib/encryption';
 import { nanoid } from 'nanoid';
-import type { UserInput, Itinerary, Plan, PlanListItem, PublicShioriListItem } from '@/types';
+import type { UserInput, Itinerary, Plan, PlanListItem, PublicShioriListItem, PublicConditionsSnapshot } from '@/types';
 
 // ============================================
 // Types
@@ -559,6 +559,9 @@ export class PlanService {
     limit?: number;
     offset?: number;
     destination?: string;
+    theme?: string;
+    companions?: string;
+    sortBy?: 'latest' | 'popular';
   }): Promise<{
     success: boolean;
     plans?: PublicShioriListItem[];
@@ -575,13 +578,13 @@ export class PlanService {
         id,
         slug,
         publish_journal,
+        conditions_snapshot,
         plan:plans!inner(
           id,
           share_code,
           destination,
           duration_days,
           thumbnail_url,
-          is_public,
           created_at,
           updated_at
         )
@@ -600,7 +603,6 @@ export class PlanService {
       destination: string | null;
       duration_days: number | null;
       thumbnail_url: string | null;
-      is_public: boolean;
       created_at: string;
       updated_at: string;
     };
@@ -609,17 +611,19 @@ export class PlanService {
       id: string;
       slug: string;
       publish_journal: boolean;
+      conditions_snapshot: Record<string, unknown> | null;
       plan: PlanRow | PlanRow[] | null;
     };
 
     const rows = ((data ?? []) as PublicationRow[])
       .map((row) => {
         const plan = Array.isArray(row.plan) ? row.plan[0] : row.plan;
-        if (!plan || !plan.is_public) return null;
+        if (!plan) return null;
         return {
           publicationId: row.id,
           slug: row.slug,
           publishJournal: row.publish_journal,
+          conditionsSnapshot: row.conditions_snapshot,
           plan,
         };
       })
@@ -627,13 +631,25 @@ export class PlanService {
         publicationId: string;
         slug: string;
         publishJournal: boolean;
+        conditionsSnapshot: Record<string, unknown> | null;
         plan: PlanRow;
       } => row !== null);
 
     const destinationFilter = options?.destination?.trim().toLowerCase();
-    const filteredRows = destinationFilter
-      ? rows.filter((row) => (row.plan.destination ?? '').toLowerCase().includes(destinationFilter))
-      : rows;
+    const themeFilter = options?.theme?.trim();
+    const companionsFilter = options?.companions?.trim();
+
+    const filteredRows = rows.filter((row) => {
+      if (destinationFilter && !(row.plan.destination ?? '').toLowerCase().includes(destinationFilter)) return false;
+      if (themeFilter) {
+        const themes = (row.conditionsSnapshot?.theme as string[] | undefined) ?? [];
+        if (!themes.includes(themeFilter)) return false;
+      }
+      if (companionsFilter) {
+        if ((row.conditionsSnapshot?.companions as string | undefined) !== companionsFilter) return false;
+      }
+      return true;
+    });
 
     const publicationIds = filteredRows.map((row) => row.publicationId);
     const planIds = filteredRows.map((row) => row.plan.id);
@@ -669,20 +685,25 @@ export class PlanService {
       }
     }
 
-    const plans: PublicShioriListItem[] = filteredRows.map((row) => ({
+    let plans: PublicShioriListItem[] = filteredRows.map((row) => ({
       id: row.plan.id,
       shareCode: row.plan.share_code,
       destination: row.plan.destination,
       durationDays: row.plan.duration_days,
       thumbnailUrl: row.plan.thumbnail_url,
-      isPublic: row.plan.is_public,
+      isPublic: true,
       createdAt: new Date(row.plan.created_at),
       updatedAt: new Date(row.plan.updated_at),
       slug: row.slug,
       likesCount: likeCounts.get(row.publicationId) ?? 0,
       entriesCount: row.publishJournal ? (entryCounts.get(row.plan.id) ?? 0) : 0,
       publishJournal: row.publishJournal,
+      conditionsSummary: row.conditionsSnapshot as PublicConditionsSnapshot | null,
     }));
+
+    if (options?.sortBy === 'popular') {
+      plans = plans.sort((a, b) => b.likesCount - a.likesCount);
+    }
 
     return {
       success: true,

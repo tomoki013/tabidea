@@ -653,6 +653,87 @@
           "duration": "{days} day(s)",
           "entries": "Entries",
           "likes": "Likes"
+        },
+        "conditionsCard": {
+          "title": "Plan Conditions",
+          "destinations": "Destination",
+          "dates": "Dates",
+          "companions": "Companions",
+          "budget": "Budget",
+          "pace": "Pace",
+          "travelVibe": "Travel Vibe",
+          "themes": "Themes",
+          "mustVisit": "Must-visit Places",
+          "companionOptions": {
+            "solo": "Solo",
+            "couple": "Couple",
+            "anniversary": "Anniversary",
+            "family_kids": "Family with Kids",
+            "three_generation": "Multi-generation",
+            "friends": "Friends",
+            "girls_trip": "Girls Trip",
+            "boys_trip": "Boys Trip",
+            "oshikatsu": "Fan Trip",
+            "pet": "With Pet",
+            "workation": "Workation",
+            "business": "Business"
+          },
+          "budgetOptions": {
+            "saving": "Budget",
+            "standard": "Standard",
+            "high": "Splurge",
+            "luxury": "Luxury"
+          },
+          "paceOptions": {
+            "relaxed": "Relaxed",
+            "balanced": "Balanced",
+            "active": "Active",
+            "packed": "Packed"
+          },
+          "themeOptions": {
+            "gourmet": "Gourmet",
+            "cafeHopping": "Cafe Hopping",
+            "historyCulture": "History & Culture",
+            "natureScenery": "Nature & Scenery",
+            "spectacularViews": "Scenic Views",
+            "cityWalk": "City Walk",
+            "resort": "Resort",
+            "relax": "Relaxation",
+            "hiddenSpots": "Hidden Gems",
+            "shopping": "Shopping",
+            "art": "Art",
+            "architecture": "Architecture",
+            "nightlife": "Nightlife",
+            "experienceActivity": "Activities",
+            "localExperience": "Local Experience",
+            "onsenSauna": "Onsen & Sauna",
+            "wellness": "Wellness",
+            "photogenic": "Photogenic",
+            "powerSpots": "Power Spots",
+            "seasonalEvents": "Seasonal Events",
+            "adventure": "Adventure",
+            "oshikatsu": "Fan Activities"
+          }
+        },
+        "forkButton": {
+          "fork": "Fork this Plan",
+          "forking": "Copying...",
+          "loginRequired": "Log in to fork this plan",
+          "confirmTitle": "Copy this plan?",
+          "confirmBody": "The itinerary will be copied to your plans. Journal entries and notes will not be included.",
+          "confirmYes": "Copy",
+          "confirmNo": "Cancel",
+          "forkFailed": "Fork failed"
+        },
+        "createWithConditionsButton": {
+          "label": "Create with these conditions"
+        },
+        "shareButton": {
+          "copy": "Copy URL",
+          "copied": "Copied!"
+        },
+        "relatedSection": {
+          "title": "More travel notes for this destination"
         }
       },
       "samples": {

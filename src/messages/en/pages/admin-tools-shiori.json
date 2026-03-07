@@ -105,7 +105,11 @@
         "headerBadge": "Tabidea Travel Shiori",
         "headerDestinationFallback": "Travel Note",
         "headerSummary": "{days} day(s) / {entries} entries / {visibility}",
+        "heroAlt": "Travel note for {destination}",
         "backToList": "Back to community travel notes",
+        "forkCta": "Fork",
+        "createCta": "Create with these conditions",
+        "shareCta": "Copy URL",
         "dayLabel": "Day {day}",
         "dayTitleFallback": "Trip record",
         "locationFallback": "No location set",
@@ -120,6 +124,12 @@
           "public": "Public",
           "unlisted": "Unlisted",
           "private": "Private"
+        },
+        "feed": {
+          "filterPlaceholder": "Filter by destination",
+          "sortLatest": "Latest",
+          "sortPopular": "Popular",
+          "clearFilters": "Clear filters"
         }
       }
     },

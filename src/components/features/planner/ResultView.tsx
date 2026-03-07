@@ -441,7 +441,12 @@ export default function ResultView({
         {/* Action Buttons & Public Toggle */}
         <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start gap-8 mt-12 flex-wrap">
           {enableEditing && planId && typeof initialIsPublic !== 'undefined' && (
-             <PublicToggle planId={planId} initialIsPublic={initialIsPublic} />
+             <PublicToggle
+               planId={planId}
+               initialIsPublic={initialIsPublic}
+               userInput={input}
+               durationDays={result?.days?.length ?? null}
+             />
           )}
           {showShareButtons && <ShareButtons input={input} result={result} shareCode={shareCode} localId={localId} />}
           {!isSimplifiedView && (

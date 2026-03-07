@@ -49,11 +49,25 @@ export interface PlanListItem {
   updatedAt: Date;
 }
 
+export interface PublicConditionsSnapshot {
+  destinations: string[];
+  region: string;
+  dates: string;
+  companions: string;
+  theme: string[];
+  budget: string;
+  pace: string;
+  travelVibe?: string;
+  mustVisitPlaces?: string[];
+  durationDays?: number | null;
+}
+
 export interface PublicShioriListItem extends PlanListItem {
   slug: string;
   likesCount: number;
   entriesCount: number;
   publishJournal: boolean;
+  conditionsSummary?: PublicConditionsSnapshot | null;
 }
 
 // ============================================
