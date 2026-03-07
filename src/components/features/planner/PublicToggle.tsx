@@ -3,18 +3,25 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { updatePlanVisibility } from "@/app/actions/travel-planner";
+import { upsertPlanPublication } from "@/app/actions/plan-itinerary";
 import { motion } from "framer-motion";
 import { FaGlobe, FaLock } from "react-icons/fa";
+import type { UserInput } from "@/types";
+import { buildConditionsSnapshot } from "@/lib/plans/conditions";
 
 interface PublicToggleProps {
   planId: string;
   initialIsPublic: boolean;
+  userInput?: UserInput;
+  durationDays?: number | null;
   className?: string;
 }
 
 export default function PublicToggle({
   planId,
   initialIsPublic,
+  userInput,
+  durationDays,
   className = "",
 }: PublicToggleProps) {
   const t = useTranslations("components.features.planner.publicToggle");
@@ -35,10 +42,22 @@ export default function PublicToggle({
     try {
       const result = await updatePlanVisibility(planId, newState);
       if (!result.success) {
-        // Revert on failure
         setIsPublic(!newState);
         console.error("Failed to update visibility:", result.error);
-        // Could add toast here
+        return;
+      }
+
+      // When going public, also save conditions_snapshot to plan_publications
+      if (newState && userInput) {
+        const conditionsSnapshot = buildConditionsSnapshot(userInput, durationDays);
+        await upsertPlanPublication({
+          planId,
+          destination: userInput.destinations[0] ?? null,
+          visibility: 'public',
+          publishJournal: true,
+          publishBudget: false,
+          conditionsSnapshot,
+        });
       }
     } catch (e) {
       setIsPublic(!newState);
@@ -50,7 +69,7 @@ export default function PublicToggle({
 
   return (
     <div className={`flex flex-col items-center sm:items-start gap-2 ${className}`}>
-      <span className="text-sm font-bold text-stone-600 flex items-center gap-2">
+      <span className="text-sm font-bold text-stone-600 dark:text-stone-400 flex items-center gap-2">
         {isPublic ? <FaGlobe /> : <FaLock />}
         {t("label")}
       </span>
@@ -60,7 +79,7 @@ export default function PublicToggle({
           disabled={isLoading}
           className={`
             relative w-14 h-8 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary
-            ${isPublic ? "bg-primary" : "bg-stone-300"}
+            ${isPublic ? "bg-primary" : "bg-stone-300 dark:bg-stone-600"}
             ${isLoading ? "opacity-70 cursor-wait" : "cursor-pointer"}
           `}
           aria-label={isPublic ? t("states.public") : t("states.private")}
@@ -80,7 +99,7 @@ export default function PublicToggle({
             )}
           </motion.div>
         </button>
-        <span className="text-xs font-mono text-stone-500 min-w-[4rem]">
+        <span className="text-xs font-mono text-stone-500 dark:text-stone-400 min-w-[4rem]">
           {isPublic ? t("states.public") : t("states.private")}
         </span>
       </div>

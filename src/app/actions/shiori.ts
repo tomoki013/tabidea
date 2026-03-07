@@ -4,6 +4,43 @@ import { revalidatePath } from 'next/cache';
 
 import { createClient, getUser } from '@/lib/supabase/server';
 
+export async function forkPublicShiori(slug: string): Promise<{
+  success: boolean;
+  newPlanId?: string;
+  newSlug?: string;
+  error?: string;
+  requiresAuth?: boolean;
+}> {
+  const user = await getUser();
+  if (!user) {
+    return { success: false, error: 'authentication_required', requiresAuth: true };
+  }
+
+  const supabase = await createClient();
+  const { data, error } = await supabase.rpc('fork_public_shiori', { p_slug: slug });
+
+  if (error) {
+    if (error.message.includes('authentication_required')) {
+      return { success: false, error: 'authentication_required', requiresAuth: true };
+    }
+    if (error.message.includes('shiori_not_found')) {
+      return { success: false, error: 'shiori_not_found' };
+    }
+    return { success: false, error: error.message };
+  }
+
+  const result = data as { new_plan_id: string; new_slug: string } | null;
+  if (!result) return { success: false, error: 'unexpected_error' };
+
+  revalidatePath('/my-plans');
+
+  return {
+    success: true,
+    newPlanId: result.new_plan_id,
+    newSlug: result.new_slug,
+  };
+}
+
 export async function getShioriLikeState(slug: string) {
   const supabase = await createClient();
   const user = await getUser();

@@ -113,6 +113,7 @@ export type {
   UpdatePlanParams,
   PlanListItem,
   PublicShioriListItem,
+  PublicConditionsSnapshot,
   LocalPlan,
   LocalPlanStorage,
   EncryptedPlanData,

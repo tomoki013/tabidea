@@ -184,13 +184,14 @@ export async function upsertPlanPublication(input: {
   visibility: 'private' | 'unlisted' | 'public';
   publishJournal: boolean;
   publishBudget: boolean;
+  conditionsSnapshot?: import('@/types/plans').PublicConditionsSnapshot | null;
 }) {
   const user = await assertUser();
   const supabase = await createClient();
 
   const { data: existing } = await supabase
     .from('plan_publications')
-    .select('slug, unlisted_token')
+    .select('slug, unlisted_token, publish_journal, publish_budget')
     .eq('plan_id', input.planId)
     .eq('user_id', user.id)
     .maybeSingle();
@@ -200,14 +201,19 @@ export async function upsertPlanPublication(input: {
     ? existing?.unlisted_token ?? crypto.randomUUID().replace(/-/g, '').slice(0, 18)
     : null;
 
+  // Preserve existing publish settings if the record already exists
+  const publishJournal = existing ? (existing.publish_journal ?? input.publishJournal) : input.publishJournal;
+  const publishBudget = existing ? (existing.publish_budget ?? input.publishBudget) : input.publishBudget;
+
   const { error } = await supabase.from('plan_publications').upsert({
     plan_id: input.planId,
     user_id: user.id,
     slug,
     visibility: input.visibility,
     unlisted_token: unlistedToken,
-    publish_journal: input.publishJournal,
-    publish_budget: input.publishBudget,
+    publish_journal: publishJournal,
+    publish_budget: publishBudget,
+    conditions_snapshot: input.conditionsSnapshot ?? null,
     updated_at: new Date().toISOString(),
   }, { onConflict: 'plan_id' });
 

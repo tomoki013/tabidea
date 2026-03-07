@@ -653,6 +653,87 @@
           "duration": "{nights}泊{days}日",
           "entries": "記録",
           "likes": "いいね"
+        },
+        "conditionsCard": {
+          "title": "このプランの条件",
+          "destinations": "目的地",
+          "dates": "日程",
+          "companions": "同行者",
+          "budget": "予算",
+          "pace": "ペース",
+          "travelVibe": "旅の雰囲気",
+          "themes": "テーマ",
+          "mustVisit": "行きたい場所",
+          "companionOptions": {
+            "solo": "一人旅",
+            "couple": "カップル・夫婦",
+            "anniversary": "記念日・お祝い",
+            "family_kids": "子連れ家族",
+            "three_generation": "三世代・大家族",
+            "friends": "友人",
+            "girls_trip": "女子旅",
+            "boys_trip": "男子旅",
+            "oshikatsu": "推し活",
+            "pet": "ペットと一緒",
+            "workation": "ワーケーション",
+            "business": "ビジネス"
+          },
+          "budgetOptions": {
+            "saving": "なるべく安く",
+            "standard": "普通",
+            "high": "少し贅沢に",
+            "luxury": "リッチに"
+          },
+          "paceOptions": {
+            "relaxed": "ゆったり",
+            "balanced": "バランスよく",
+            "active": "アクティブ",
+            "packed": "詰め込み"
+          },
+          "themeOptions": {
+            "gourmet": "グルメ",
+            "cafeHopping": "カフェ巡り",
+            "historyCulture": "歴史・文化",
+            "natureScenery": "自然・絶景",
+            "spectacularViews": "絶景",
+            "cityWalk": "街歩き",
+            "resort": "リゾート",
+            "relax": "リラックス",
+            "hiddenSpots": "穴場スポット",
+            "shopping": "ショッピング",
+            "art": "アート",
+            "architecture": "建築",
+            "nightlife": "ナイトライフ",
+            "experienceActivity": "体験・アクティビティ",
+            "localExperience": "ローカル体験",
+            "onsenSauna": "温泉・サウナ",
+            "wellness": "ウェルネス",
+            "photogenic": "写真映え",
+            "powerSpots": "パワースポット",
+            "seasonalEvents": "季節イベント",
+            "adventure": "冒険",
+            "oshikatsu": "推し活"
+          }
+        },
+        "forkButton": {
+          "fork": "このプランをフォーク",
+          "forking": "コピー中...",
+          "loginRequired": "ログインするとフォークできます",
+          "confirmTitle": "プランをコピーしますか？",
+          "confirmBody": "旅程をあなたのプランとしてコピーします。日記・メモは引き継がれません。",
+          "confirmYes": "コピーする",
+          "confirmNo": "キャンセル",
+          "forkFailed": "フォークに失敗しました"
+        },
+        "createWithConditionsButton": {
+          "label": "この条件で作成する"
+        },
+        "shareButton": {
+          "copy": "URLをコピー",
+          "copied": "コピーしました！"
+        },
+        "relatedSection": {
+          "title": "同じ目的地の旅のしおり"
         }
       },
       "samples": {

@@ -105,7 +105,11 @@
         "headerBadge": "Tabidea 旅のしおり",
         "headerDestinationFallback": "旅のしおり",
         "headerSummary": "{days}日間 / 記録 {entries}件 / {visibility}",
+        "heroAlt": "{destination}の旅のしおり",
         "backToList": "みんなの旅のしおり一覧に戻る",
+        "forkCta": "フォーク",
+        "createCta": "この条件で作成",
+        "shareCta": "URLをコピー",
         "dayLabel": "{day}日目",
         "dayTitleFallback": "旅の記録",
         "locationFallback": "場所未設定",
@@ -120,6 +124,12 @@
           "public": "公開",
           "unlisted": "限定公開",
           "private": "非公開"
+        },
+        "feed": {
+          "filterPlaceholder": "目的地で絞り込む",
+          "sortLatest": "新しい順",
+          "sortPopular": "人気順",
+          "clearFilters": "フィルタを解除"
         }
       }
     },
