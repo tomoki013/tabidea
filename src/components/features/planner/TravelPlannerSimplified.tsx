@@ -45,6 +45,8 @@ const DEFAULT_INPUT: UserInput = {
   travelVibe: "",
   mustVisitPlaces: [],
   hasMustVisitPlaces: undefined,
+  preferredTransport: [],
+  fixedSchedule: [],
 };
 
 // ============================================================================

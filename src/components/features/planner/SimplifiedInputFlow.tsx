@@ -1,124 +1,24 @@
 "use client";
 
-import {
-  useState,
-  useEffect,
-  useCallback,
-  KeyboardEvent,
-  useMemo,
-} from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
-import { UserInput } from "@/types";
-import {
-  Check,
-  X,
-  ArrowRight,
-  ChevronDown,
-  ChevronUp,
-} from "lucide-react";
-import {
-  FaUtensils,
-  FaLandmark,
-  FaMountain,
-  FaCoffee,
-  FaSearch,
-  FaShoppingBag,
-  FaPalette,
-  FaRunning,
-  FaHotTub,
-  FaCamera,
-  FaCompass,
-  FaQuestion,
-} from "react-icons/fa";
-
-// ============================================================================
-// Constants
-// ============================================================================
+import { Check, ChevronDown, ChevronUp, Plus, X } from "lucide-react";
+import { FaBus, FaHotel, FaPlane, FaTrain } from "react-icons/fa";
+import type { FixedScheduleItem, UserInput } from "@/types";
 
 const COMPANION_OPTIONS = [
-  { id: "solo", key: "solo", icon: "👤" },
-  { id: "couple", key: "couple", icon: "💑" },
-  { id: "family", key: "family", icon: "👨‍👩‍👧‍👦" },
-  { id: "friends", key: "friends", icon: "👯" },
-  { id: "male_trip", key: "male_trip", icon: "🍻" },
-  { id: "female_trip", key: "female_trip", icon: "💅" },
-  { id: "backpacker", key: "backpacker", icon: "🎒" },
-  { id: "business", key: "business", icon: "💼" },
-  { id: "pet", key: "pet", icon: "🐕" },
-];
+  { id: "solo", key: "solo", icon: "1" },
+  { id: "couple", key: "couple", icon: "2" },
+  { id: "family", key: "family", icon: "F" },
+  { id: "friends", key: "friends", icon: "G" },
+] as const;
 
-const THEME_OPTIONS = [
-  { key: "gourmet", icon: FaUtensils },
-  { key: "historyCulture", icon: FaLandmark },
-  { key: "natureScenery", icon: FaMountain },
-  { key: "relax", icon: FaCoffee },
-  { key: "hiddenSpots", icon: FaSearch },
-  { key: "shopping", icon: FaShoppingBag },
-  { key: "art", icon: FaPalette },
-  { key: "experienceActivity", icon: FaRunning },
-  { key: "onsenSauna", icon: FaHotTub },
-  { key: "photogenic", icon: FaCamera },
-  { key: "adventure", icon: FaCompass },
-  { key: "other", icon: FaQuestion },
-];
-
-const BUDGET_PRESETS = [
-  { id: "saving", key: "saving", icon: "💸" },
-  { id: "standard", key: "standard", icon: "💰" },
-  { id: "high", key: "high", icon: "✨" },
-  { id: "luxury", key: "luxury", icon: "💎" },
-];
-
-const PACE_OPTIONS = [
-  { id: "relaxed", key: "relaxed", icon: "☕" },
-  { id: "balanced", key: "balanced", icon: "⚖️" },
-  { id: "active", key: "active", icon: "👟" },
-  { id: "packed", key: "packed", icon: "🔥" },
-];
-
-const DURATION_OPTIONS = [
-  { value: 0 },
-  { value: 1 },
-  { value: 2 },
-  { value: 3 },
-  { value: 4 },
-  { value: 5 },
-  { value: 6 },
-  { value: 7 },
-];
-
-// Budget sliding calculation
-const BUDGET_MIN = 10000;
-const BUDGET_MAX = 2000000;
-const BREAKPOINT_AMOUNT = 500000;
-const STEP_SMALL = 10000;
-const STEP_LARGE = 100000;
-
-const STEPS_RANGE_1 = (BREAKPOINT_AMOUNT - BUDGET_MIN) / STEP_SMALL;
-const STEPS_RANGE_2 = (BUDGET_MAX - BREAKPOINT_AMOUNT) / STEP_LARGE;
-const SLIDER_MAX = STEPS_RANGE_1 + STEPS_RANGE_2;
-
-function getBudgetAmount(index: number): number {
-  if (index <= STEPS_RANGE_1) {
-    return BUDGET_MIN + index * STEP_SMALL;
-  } else {
-    return BREAKPOINT_AMOUNT + (index - STEPS_RANGE_1) * STEP_LARGE;
-  }
-}
-
-function getBudgetIndex(amount: number): number {
-  if (amount <= BREAKPOINT_AMOUNT) {
-    return Math.round((amount - BUDGET_MIN) / STEP_SMALL);
-  } else {
-    return (
-      STEPS_RANGE_1 + Math.round((amount - BREAKPOINT_AMOUNT) / STEP_LARGE)
-    );
-  }
-}
-
-// ============================================================================
-// Types
-// ============================================================================
+const THEME_KEYS = ["gourmet", "historyCulture", "natureScenery", "shopping", "art", "relax"] as const;
+const BUDGET_KEYS = ["saving", "standard", "high", "luxury"] as const;
+const PACE_KEYS = ["relaxed", "balanced", "active", "packed"] as const;
+const DURATION_VALUES = [0, 1, 2, 3, 4, 5, 6] as const;
+const TRANSPORT_TYPES: FixedScheduleItem["type"][] = ["flight", "train", "bus", "other"];
+const PREFERRED_TRANSPORT = ["flight", "shinkansen", "train", "bus"] as const;
 
 interface SimplifiedInputFlowProps {
   input: UserInput;
@@ -128,9 +28,17 @@ interface SimplifiedInputFlowProps {
   isInModal?: boolean;
 }
 
-// ============================================================================
-// Utility Functions
-// ============================================================================
+function getStepBadgeClasses(): string {
+  return "flex h-8 w-8 items-center justify-center rounded-full border-2 border-orange-300 bg-orange-50 text-sm font-bold text-orange-700 dark:border-orange-400/70 dark:bg-orange-500/15 dark:text-orange-100";
+}
+
+function getSelectedIndicatorClasses(): string {
+  return "inline-flex h-6 w-6 items-center justify-center rounded-full border border-orange-300 bg-orange-500 text-white";
+}
+
+function getUnselectedPillClasses(): string {
+  return "border-stone-300 bg-white text-stone-700 hover:border-orange-300 hover:bg-orange-50/60 hover:text-stone-900 dark:border-stone-600 dark:bg-stone-800/50 dark:text-stone-200 dark:hover:border-stone-400 dark:hover:bg-stone-700/80 dark:hover:text-white";
+}
 
 function parseDurationValue(
   str: string,
@@ -140,53 +48,16 @@ function parseDurationValue(
   if (str === labels.undecided) return 0;
   if (str.includes(labels.dayTrip)) return 1;
   const numbers = str.match(/\d+/g);
-  if (numbers && numbers.length > 0) {
-    const last = Number(numbers[numbers.length - 1]);
-    if (Number.isFinite(last) && last > 0 && last < 1000) {
-      return last;
-    }
-  }
-  return 3;
+  if (!numbers || numbers.length === 0) return 3;
+  return Number(numbers[numbers.length - 1]) || 3;
 }
 
-function formatBudget(
-  amount: number,
-  units: { tenThousandYen: string; yen: string },
-): string {
-  if (amount >= 10000) {
-    return `${(amount / 10000).toLocaleString()}${units.tenThousandYen}`;
-  }
-  return `${amount.toLocaleString()}${units.yen}`;
+function formatBookingDateTime(date?: string, time?: string): string {
+  if (date && time) return `${date} ${time}`;
+  if (date) return date;
+  if (time) return time;
+  return "";
 }
-
-function parseBudgetRange(value: string): { min: number; max: number } | null {
-  if (!value || !value.startsWith("range:")) return null;
-  const parts = value.split(":");
-  if (parts.length >= 3) {
-    return { min: parseInt(parts[1], 10), max: parseInt(parts[2], 10) };
-  }
-  return null;
-}
-
-function encodeBudgetRange(min: number, max: number): string {
-  return `range:${min}:${max}`;
-}
-
-function getStepBadgeClasses(): string {
-  return "w-8 h-8 rounded-full border-2 border-orange-300 bg-orange-50 text-orange-700 shadow-[0_0_0_1px_rgba(251,146,60,0.12)] dark:border-orange-400/70 dark:bg-orange-500/15 dark:text-orange-100 flex items-center justify-center font-bold text-sm transition-all duration-500 group-hover:bg-orange-600 group-hover:text-white group-hover:border-orange-400 group-hover:shadow-lg group-hover:shadow-orange-600/20";
-}
-
-function getSelectedIndicatorClasses(): string {
-  return "inline-flex h-6 w-6 items-center justify-center rounded-full border border-orange-300 bg-orange-500 text-white shadow-md shadow-orange-500/30";
-}
-
-function getUnselectedPillClasses(): string {
-  return "bg-white text-stone-700 border-stone-300 hover:border-orange-300 hover:text-stone-900 hover:bg-orange-50/60 dark:bg-stone-800/50 dark:text-stone-200 dark:border-stone-600 dark:hover:border-stone-400 dark:hover:text-white dark:hover:bg-stone-700/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#171717]";
-}
-
-// ============================================================================
-// Main Component (Zen Progressive Disclosure)
-// ============================================================================
 
 export default function SimplifiedInputFlow({
   input,
@@ -194,746 +65,136 @@ export default function SimplifiedInputFlow({
   onGenerate: parentOnGenerate,
   isGenerating = false,
 }: SimplifiedInputFlowProps) {
-  // Translation hooks
   const t = useTranslations("components.features.planner.simplifiedInputFlow");
-  const tCompanion = useTranslations(
-    "components.features.planner.steps.stepCompanions.options",
-  );
-  const tTheme = useTranslations(
-    "components.features.planner.steps.stepThemes.themes",
-  );
-  const tThemeValue = useTranslations(
-    "components.features.planner.steps.stepThemes.themeValues",
-  );
-  const tBudget = useTranslations(
-    "components.features.planner.steps.stepBudget.options",
-  );
-  const tPace = useTranslations(
-    "components.features.planner.steps.stepPace.options",
-  );
-  const tDateFormats = useTranslations(
-    "components.features.planner.steps.stepDates.formats",
-  );
+  const tCompanion = useTranslations("components.features.planner.steps.stepCompanions.options");
+  const tTheme = useTranslations("components.features.planner.steps.stepThemes.themes");
+  const tThemeValue = useTranslations("components.features.planner.steps.stepThemes.themeValues");
+  const tBudget = useTranslations("components.features.planner.steps.stepBudget.options");
+  const tPace = useTranslations("components.features.planner.steps.stepPace.options");
+  const tDateFormats = useTranslations("components.features.planner.steps.stepDates.formats");
 
-  const durationLabels = useMemo(
-    () => ({
-      undecided: tDateFormats("dateUndecidedValue"),
-      dayTrip: tDateFormats("dayTrip"),
-    }),
-    [tDateFormats],
-  );
-
-  const formatDuration = useCallback(
-    (days: number) => {
-      if (days === 0) return durationLabels.undecided;
-      if (days === 1) return durationLabels.dayTrip;
-      return tDateFormats("nightsDays", { nights: days - 1, days });
-    },
-    [durationLabels.dayTrip, durationLabels.undecided, tDateFormats],
-  );
-
-  const budgetUnits = {
-    tenThousandYen: t("budget.units.tenThousandYen"),
-    yen: t("budget.units.yen"),
-  };
-
-  // Mapped options
-  const companionOptions = COMPANION_OPTIONS.map((opt) => ({
-    ...opt,
-    label: tCompanion(`${opt.key}.label`),
-  }));
-  const themeOptions = THEME_OPTIONS.map((opt) => ({
-    ...opt,
-    label: tTheme(opt.key),
-    value: tThemeValue(opt.key),
-  }));
-  const budgetPresets = BUDGET_PRESETS.map((opt) => ({
-    ...opt,
-    label: tBudget(`${opt.key}.label`),
-    desc: tBudget(`${opt.key}.desc`),
-  }));
-  const paceOptions = PACE_OPTIONS.map((opt) => ({
-    ...opt,
-    label: tPace(`${opt.key}.label`),
-    desc: tPace(`${opt.key}.desc`),
-  }));
-  const durationOptions = DURATION_OPTIONS.map((opt) => ({
-    value: opt.value,
-    label: formatDuration(opt.value),
-  }));
-  // Form State
-  const isOmakase = input.isDestinationDecided === false;
-  const [destinationInput, setDestinationInput] = useState("");
+  const durationLabels = useMemo(() => ({
+    undecided: tDateFormats("dateUndecidedValue"),
+    dayTrip: tDateFormats("dayTrip"),
+  }), [tDateFormats]);
 
   const duration = parseDurationValue(input.dates, durationLabels);
-  const dateMatch = input.dates?.match(/(\d{4}-\d{2}-\d{2})/);
-  const currentStartDate = dateMatch ? dateMatch[1] : "";
-  const [startDate, setStartDate] = useState(currentStartDate);
-  const [endDate, setEndDate] = useState(() => {
-    if (currentStartDate && duration) {
-      const d = new Date(currentStartDate);
-      d.setDate(d.getDate() + (duration - 1));
-      return d.toISOString().split("T")[0];
-    }
-    return "";
-  });
-  const [useCalendar, setUseCalendar] = useState(
-    !!currentStartDate || duration <= 0,
-  );
+  const isOmakase = input.isDestinationDecided === false;
+  const today = new Date().toISOString().split("T")[0];
+  const matchedDates = input.dates?.match(/(\d{4}-\d{2}-\d{2})/);
 
-  const existingBudgetRange = parseBudgetRange(input.budget);
-  const [useBudgetSlider, setUseBudgetSlider] = useState(!!existingBudgetRange);
-  const [budgetMinAmount, setBudgetMinAmount] = useState(
-    existingBudgetRange?.min ?? 30000,
-  );
-  const [budgetMaxAmount, setBudgetMaxAmount] = useState(
-    existingBudgetRange?.max ?? 100000,
-  );
-
-  // Progressive Disclosure State
+  const [destinationInput, setDestinationInput] = useState("");
+  const [mustVisitInput, setMustVisitInput] = useState("");
   const [showAdvanced, setShowAdvanced] = useState(false);
+  const [startDate, setStartDate] = useState(matchedDates?.[1] ?? "");
+  const [endDate, setEndDate] = useState("");
+  const [useCalendar, setUseCalendar] = useState(Boolean(matchedDates?.[1]));
+  const [transportType, setTransportType] = useState<FixedScheduleItem["type"]>("flight");
+  const [transportName, setTransportName] = useState("");
+  const [transportDate, setTransportDate] = useState("");
+  const [transportTime, setTransportTime] = useState("");
+  const [transportNote, setTransportNote] = useState("");
+  const [hotelName, setHotelName] = useState("");
+  const [hotelDate, setHotelDate] = useState("");
+  const [hotelNote, setHotelNote] = useState("");
 
-  // Sync effect
-  useEffect(() => {
-    const match = input.dates?.match(/(\d{4}-\d{2}-\d{2})/);
-    if (match) {
-      queueMicrotask(() => {
-        setStartDate(match[1]);
-        const dur = parseDurationValue(input.dates, durationLabels);
-        if (dur > 0) {
-          const d = new Date(match[1]);
-          d.setDate(d.getDate() + (dur - 1));
-          setEndDate(d.toISOString().split("T")[0]);
-        }
-      });
-    }
-  }, [durationLabels, input.dates]);
-
-  // Handlers
-  const handleDestinationKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && destinationInput.trim()) {
-      e.preventDefault();
-      addDestination();
-    }
-  };
-
-  const addDestination = () => {
+  const addDestination = useCallback(() => {
     const trimmed = destinationInput.trim();
-    if (trimmed && !input.destinations.includes(trimmed)) {
-      onChange({
-        destinations: [...input.destinations, trimmed],
-        isDestinationDecided: true,
-      });
-      setDestinationInput("");
-    }
-  };
+    if (!trimmed || input.destinations.includes(trimmed)) return;
+    onChange({ destinations: [...input.destinations, trimmed], isDestinationDecided: true });
+    setDestinationInput("");
+  }, [destinationInput, input.destinations, onChange]);
 
   const removeDestination = (index: number) => {
-    const newDestinations = input.destinations.filter(
-      (_: string, i: number) => i !== index,
-    );
-    onChange({
-      destinations: newDestinations,
-      isDestinationDecided: newDestinations.length > 0 ? true : undefined,
-    });
+    const next = input.destinations.filter((_, i) => i !== index);
+    onChange({ destinations: next, isDestinationDecided: next.length > 0 ? true : undefined });
   };
 
-  const toggleOmakase = () => {
-    if (isOmakase) {
-      onChange({
-        isDestinationDecided: input.destinations.length > 0 ? true : undefined,
-        region: "",
-        travelVibe: "",
-      });
-    } else {
-      onChange({ isDestinationDecided: false, destinations: [] });
-    }
+  const addMustVisit = () => {
+    const trimmed = mustVisitInput.trim();
+    const current = input.mustVisitPlaces ?? [];
+    if (!trimmed || current.includes(trimmed)) return;
+    onChange({ mustVisitPlaces: [...current, trimmed], hasMustVisitPlaces: true });
+    setMustVisitInput("");
   };
 
-  const handleDateRangeChange = (newStart: string, newEnd: string) => {
-    setStartDate(newStart);
-    setEndDate(newEnd);
-    if (newStart && newEnd) {
-      const s = new Date(newStart);
-      const e = new Date(newEnd);
-      const diffDays = Math.ceil(
-        (e.getTime() - s.getTime()) / (1000 * 60 * 60 * 24),
-      );
-      if (diffDays >= 0) {
-        onChange({
-          dates: tDateFormats("dateFromWithDuration", {
-            date: newStart,
-            duration: formatDuration(diffDays + 1),
-          }),
-        });
-      }
-    }
+  const removeMustVisit = (index: number) => {
+    const next = (input.mustVisitPlaces ?? []).filter((_, i) => i !== index);
+    onChange({ mustVisitPlaces: next, hasMustVisitPlaces: next.length > 0 });
   };
 
-  const handleDurationChange = (newDuration: number) => {
-    onChange({ dates: formatDuration(newDuration) });
+  const addFixedSchedule = (item: FixedScheduleItem) => {
+    onChange({ fixedSchedule: [...(input.fixedSchedule ?? []), item] });
   };
 
-  // Validations for Generate Button
-  const hasDest =
-    input.destinations.length > 0 ||
-    isOmakase ||
-    destinationInput.trim().length > 0;
-  const hasCompanion = !!input.companions;
-  const hasValidDates = useCalendar
-    ? !!(startDate && endDate)
-    : input.dates === durationLabels.undecided || !!input.dates;
-
-  // Clean boolean for Generate readiness
-  const canGenerate = hasDest && hasCompanion && hasValidDates;
+  const removeFixedSchedule = (index: number) => {
+    onChange({ fixedSchedule: (input.fixedSchedule ?? []).filter((_, i) => i !== index) });
+  };
 
   const handleGenerateClick = () => {
     const finalInput = { ...input };
-    if (useCalendar && (!startDate || !endDate)) {
-      finalInput.dates = durationLabels.undecided;
-      onChange({ dates: durationLabels.undecided });
-    }
     const trimmed = destinationInput.trim();
     if (trimmed && !input.destinations.includes(trimmed)) {
       finalInput.destinations = [...input.destinations, trimmed];
       finalInput.isDestinationDecided = true;
-      onChange({
-        destinations: finalInput.destinations,
-        isDestinationDecided: true,
-      });
-      setDestinationInput("");
     }
     parentOnGenerate(finalInput);
   };
 
+  const hasDest = input.destinations.length > 0 || isOmakase || destinationInput.trim().length > 0;
+  const hasCompanion = Boolean(input.companions);
+  const hasDates = useCalendar ? Boolean(startDate && endDate) : Boolean(input.dates);
+
   return (
-    <div className="w-full max-w-3xl mx-auto px-6 py-8 md:py-12 font-sans text-stone-900 dark:text-stone-50 antialiased">
-      {/* Zen Header */}
-      <div className="text-center mb-10 md:mb-12 opacity-0 animate-fade-in-up">
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 text-stone-900 dark:text-white">
-          Where to next?
-        </h1>
-        <p className="text-stone-600 dark:text-stone-300 font-medium text-base md:text-lg max-w-md mx-auto">
-          {t("header.lead")}
-        </p>
+    <div className="mx-auto w-full max-w-3xl px-6 py-5 font-sans text-stone-900 dark:text-stone-50 md:py-7">
+      <div className="mb-6 text-center md:mb-8">
+        <h1 className="mb-3 text-4xl font-bold tracking-tight text-stone-900 dark:text-white md:text-6xl">{t("header.title")}</h1>
+        <p className="mx-auto max-w-md text-base font-medium text-stone-600 dark:text-stone-300 md:text-lg">{t("header.lead")}</p>
       </div>
 
-      <div className="space-y-12 md:space-y-14">
-        {/* ========================================================= */}
-        {/* ESSENTIAL INPUTS (Progressively disclosed top-to-bottom) */}
-        {/* ========================================================= */}
-
-        <div
-          className="group animate-fade-in-up"
-          style={{ animationDelay: "100ms" }}
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <div className={getStepBadgeClasses()}>
-              1
-            </div>
-            <label className="text-xl font-bold text-stone-900 dark:text-white tracking-tight">
-              {t("step1.destinationModeLabel")} {!hasDest && "*"}
-            </label>
-          </div>
-          <div
-            className={`transition-opacity duration-500 ease-out ${isOmakase ? "opacity-40 grayscale" : "opacity-100"}`}
-          >
-            <div className="relative">
-              <input
-                value={destinationInput}
-                onChange={(e) => setDestinationInput(e.target.value)}
-                onKeyDown={handleDestinationKeyDown}
-                placeholder={
-                  input.destinations.length === 0
-                    ? t("step1.destinationInput.placeholderFirst")
-                    : t("step1.destinationInput.placeholderNext")
-                }
-                className="w-full bg-transparent border-b-2 border-stone-300 dark:border-stone-600 py-3 md:py-5 px-2 text-2xl md:text-3xl font-medium text-stone-900 dark:text-white placeholder:text-stone-400 dark:placeholder:text-stone-400 focus:outline-none focus:border-orange-400 focus-visible:ring-2 focus-visible:ring-orange-400/40 transition-all"
-              />
-              {destinationInput.trim() && (
-                <button
-                  onClick={addDestination}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 text-stone-500 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white p-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400/70 rounded-full"
-                >
-                  <ArrowRight className="w-6 h-6" />
-                </button>
-              )}
-            </div>
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mt-4">
-              {input.destinations.map((dest: string, i: number) => (
-                <span
-                  key={dest}
-                  className="inline-flex items-center gap-2 px-5 py-2 bg-orange-50 text-stone-900 border border-orange-200 dark:bg-stone-800 dark:text-white dark:border-stone-700 rounded-full text-sm font-bold transition-transform hover:scale-105"
-                >
-                  {dest}
-                  <button
-                    onClick={() => removeDestination(i)}
-                  className="text-stone-500 dark:text-stone-300 hover:text-orange-500 dark:hover:text-orange-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400/70 rounded-full"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
-                </span>
-              ))}
+      <div className="space-y-10 md:space-y-12">
+        <section>
+          <div className="mb-5 flex items-center gap-3"><div className={getStepBadgeClasses()}>1</div><label className="text-xl font-bold tracking-tight text-stone-900 dark:text-white">{t("step1.destinationModeLabel")} {!hasDest && "*"}</label></div>
+          <div className={`transition-opacity duration-500 ${isOmakase ? "pointer-events-none opacity-40 grayscale" : "opacity-100"}`}>
+            <div className="rounded-[2rem] border border-stone-200 bg-white/80 p-5 shadow-sm dark:border-stone-700 dark:bg-stone-900/40 md:p-6">
+              <div className="flex flex-col gap-4 md:flex-row md:items-end">
+                <div className="flex-1"><input value={destinationInput} onChange={(e) => setDestinationInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addDestination(); } }} placeholder={input.destinations.length === 0 ? t("step1.destinationInput.placeholderFirst") : t("step1.destinationInput.placeholderNext")} className="w-full border-b-2 border-stone-300 bg-transparent px-2 py-3 text-2xl font-medium text-stone-900 placeholder:text-stone-400 focus:border-orange-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400/40 dark:border-stone-600 dark:text-white md:py-4 md:text-3xl" /></div>
+                <button type="button" onClick={addDestination} disabled={!destinationInput.trim()} className={`inline-flex items-center justify-center gap-2 rounded-full border-2 px-5 py-3 text-sm font-black tracking-[0.08em] disabled:cursor-not-allowed disabled:opacity-50 ${destinationInput.trim() ? "border-orange-400 bg-orange-600 text-white" : "border-stone-300 bg-stone-100 text-stone-500 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-400"}`}><Plus className="h-4 w-4" /><span>{t("step1.destinationInput.addButton")}</span></button>
+              </div>
+              {(input.destinations.length > 0) && <div className="mt-4 flex flex-wrap gap-2">{input.destinations.map((destination, index) => <span key={`${destination}-${index}`} className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-5 py-2 text-sm font-bold text-stone-900 dark:border-stone-700 dark:bg-stone-800 dark:text-white">{destination}<button type="button" onClick={() => removeDestination(index)} className="rounded-full text-stone-500 hover:text-orange-500 dark:text-stone-300 dark:hover:text-orange-300"><X className="h-4 w-4" /></button></span>)}</div>}
             </div>
           </div>
+          <div className="mt-6 flex items-center gap-4"><span className="text-xs font-black tracking-[0.2em] text-stone-500 dark:text-stone-400">OR</span><button type="button" onClick={() => onChange(isOmakase ? { isDestinationDecided: undefined } : { isDestinationDecided: false, destinations: [] })} className={`rounded-full border-2 px-8 py-3 text-sm font-bold tracking-wide ${isOmakase ? "border-orange-400 bg-orange-600 text-white" : getUnselectedPillClasses()}`}>{t("step1.omakase.title")}</button></div>
+        </section>
 
-          <div className="flex items-center gap-4 mt-8">
-            <span className="text-xs text-stone-500 dark:text-stone-400 font-black tracking-[0.2em]">
-              OR
-            </span>
-            <button
-              onClick={toggleOmakase}
-              className={`text-sm px-8 py-3 rounded-full border-2 shadow-xl transition-all duration-300 font-bold tracking-wide ${
-                isOmakase
-                  ? "bg-orange-600 text-white border-orange-400 shadow-orange-600/30 scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#171717]"
-                  : getUnselectedPillClasses()
-              }`}
-            >
-              {t("step1.omakase.title")}
-            </button>
-          </div>
-        </div>
-
-        {/* 2. Dates Field */}
-        <div
-          className="group animate-fade-in-up"
-          style={{ animationDelay: "200ms" }}
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <div className={getStepBadgeClasses()}>
-              2
-            </div>
-            <label className="text-xl font-bold text-stone-900 dark:text-white tracking-tight">
-              {t("step1.dates.label")} {!hasValidDates && "*"}
-            </label>
-          </div>
-
+        <section>
+          <div className="mb-6 flex items-center gap-3"><div className={getStepBadgeClasses()}>2</div><label className="text-xl font-bold tracking-tight text-stone-900 dark:text-white">{t("step1.dates.label")} {!hasDates && "*"}</label></div>
           <div className="flex flex-col gap-5">
-            <div className="flex gap-2 bg-stone-100 dark:bg-stone-800/60 p-1.5 rounded-full w-fit border border-stone-200 dark:border-stone-600">
-              <button
-                onClick={() => setUseCalendar(false)}
-                className={`px-6 py-2.5 rounded-full text-xs font-bold tracking-wider transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#171717] ${!useCalendar ? "bg-orange-600 text-white shadow-lg shadow-orange-600/20" : "text-stone-600 hover:text-stone-900 dark:text-stone-200 dark:hover:text-white"}`}
-              >
-                {t("step1.dates.mode.durationOnly")}
-              </button>
-              <button
-                onClick={() => setUseCalendar(true)}
-                className={`px-6 py-2.5 rounded-full text-xs font-bold tracking-wider transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#171717] ${useCalendar ? "bg-orange-600 text-white shadow-lg shadow-orange-600/20" : "text-stone-600 hover:text-stone-900 dark:text-stone-200 dark:hover:text-white"}`}
-              >
-                {t("step1.dates.mode.calendar")}
-              </button>
-            </div>
+            <div className="flex w-fit gap-2 rounded-full border border-stone-200 bg-stone-100 p-1.5 dark:border-stone-600 dark:bg-stone-800/60"><button type="button" onClick={() => setUseCalendar(false)} className={`rounded-full px-6 py-2.5 text-xs font-bold tracking-wider ${!useCalendar ? "bg-orange-600 text-white" : "text-stone-600 dark:text-stone-200"}`}>{t("step1.dates.mode.durationOnly")}</button><button type="button" onClick={() => setUseCalendar(true)} className={`rounded-full px-6 py-2.5 text-xs font-bold tracking-wider ${useCalendar ? "bg-orange-600 text-white" : "text-stone-600 dark:text-stone-200"}`}>{t("step1.dates.mode.calendar")}</button></div>
+            {useCalendar ? <div className="flex max-w-xl flex-col gap-4 md:flex-row md:items-center md:gap-8"><div className="flex-1"><input type="date" value={startDate} min={today} onChange={(e) => { setStartDate(e.target.value); if (e.target.value && endDate) { onChange({ dates: `${e.target.value} - ${endDate}` }); } }} className="w-full border-b-2 border-stone-300 bg-transparent py-2 text-xl font-medium text-stone-900 dark:border-stone-600 dark:text-white md:text-2xl" /></div><div className="font-bold text-stone-500">~</div><div className="flex-1"><input type="date" value={endDate} min={startDate || today} onChange={(e) => { setEndDate(e.target.value); if (startDate && e.target.value) { onChange({ dates: `${startDate} - ${e.target.value}` }); } }} className="w-full border-b-2 border-stone-300 bg-transparent py-2 text-xl font-medium text-stone-900 dark:border-stone-600 dark:text-white md:text-2xl" /></div></div> : <div className="flex flex-wrap items-center gap-2">{DURATION_VALUES.map((value) => <button key={value} type="button" onClick={() => onChange({ dates: value === 0 ? durationLabels.undecided : (value === 1 ? durationLabels.dayTrip : tDateFormats("nightsDays", { nights: value - 1, days: value })) })} className={`rounded-full border-2 px-6 py-3 text-sm font-bold ${duration === value ? "border-orange-400 bg-orange-600 text-white" : getUnselectedPillClasses()}`}>{value === 0 ? durationLabels.undecided : (value === 1 ? durationLabels.dayTrip : tDateFormats("nightsDays", { nights: value - 1, days: value }))}</button>)}</div>}
+          </div>
+        </section>
 
-            {useCalendar ? (
-              <div className="flex items-center gap-4 md:gap-8 max-w-sm">
-                <div className="flex-1">
-                  <input
-                    type="date"
-                    value={startDate}
-                    min={new Date().toISOString().split("T")[0]}
-                    onChange={(e) => {
-                      const newStart = e.target.value;
-                      if (newStart && duration) {
-                        const d = new Date(newStart);
-                        d.setDate(d.getDate() + (duration - 1));
-                        handleDateRangeChange(
-                          newStart,
-                          d.toISOString().split("T")[0],
-                        );
-                      } else {
-                        handleDateRangeChange(newStart, endDate);
-                      }
-                    }}
-                    className="w-full bg-transparent border-b-2 border-stone-300 dark:border-stone-600 py-2 text-xl md:text-2xl font-medium text-stone-900 dark:text-white appearance-none focus:outline-none focus:border-orange-400 focus-visible:ring-2 focus-visible:ring-orange-400/40"
-                  />
-                </div>
-                <div className="text-stone-500 dark:text-stone-500 font-bold">→</div>
-                <div className="flex-1">
-                  <input
-                    type="date"
-                    value={endDate}
-                    min={startDate || new Date().toISOString().split("T")[0]}
-                    onChange={(e) =>
-                      handleDateRangeChange(startDate, e.target.value)
-                    }
-                    className="w-full bg-transparent border-b-2 border-stone-300 dark:border-stone-600 py-2 text-xl md:text-2xl font-medium text-stone-900 dark:text-white appearance-none focus:outline-none focus:border-orange-400 focus-visible:ring-2 focus-visible:ring-orange-400/40"
-                  />
-                </div>
-              </div>
-            ) : (
-              <div className="flex items-center gap-2 flex-wrap">
-                <button
-                  onClick={() => handleDurationChange(0)}
-                  className={`px-6 py-3 rounded-full text-sm font-bold transition-all border-2 ${duration === 0 ? "bg-orange-600 text-white border-orange-400 shadow-lg shadow-orange-600/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#171717]" : getUnselectedPillClasses()}`}
-                >
-                  未定
-                </button>
-                {durationOptions
-                  .filter((d) => d.value > 0 && d.value <= 6)
-                  .map((opt) => (
-                    <button
-                      key={opt.value}
-                      onClick={() => handleDurationChange(opt.value)}
-                      className={`px-6 py-3 rounded-full text-sm font-bold transition-all border-2 ${duration === opt.value ? "bg-orange-600 text-white border-orange-400 shadow-lg shadow-orange-600/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#171717]" : getUnselectedPillClasses()}`}
-                    >
-                      {opt.label}
-                    </button>
-                  ))}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* 3. Companions Field */}
-        <div
-          className="group animate-fade-in-up"
-          style={{ animationDelay: "300ms" }}
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <div className={getStepBadgeClasses()}>
-              3
-            </div>
-            <label className="text-xl font-bold text-stone-900 dark:text-white tracking-tight">
-              {t("step1.companions.label")} {!hasCompanion && "*"}
-            </label>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            {companionOptions.map((opt) => (
-              (() => {
-                const isSelected = input.companions === opt.id;
-                return (
-              <button
-                key={opt.id}
-                data-testid={`companion-option-${opt.id}`}
-                onClick={() => onChange({ companions: opt.id })}
-                aria-pressed={isSelected}
-                className={`flex items-center gap-3 px-6 py-4 rounded-full border-2 transition-all duration-300 font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#171717] ${
-                  isSelected
-                    ? "bg-orange-600 text-white border-orange-400 shadow-lg shadow-orange-600/20 scale-105"
-                    : getUnselectedPillClasses()
-                }`}
-              >
-                <span className={`inline-flex h-8 w-8 items-center justify-center rounded-full border ${
-                  isSelected
-                    ? "border-orange-200/70 bg-orange-500/20 text-white"
-                    : "border-orange-200 bg-orange-50 text-orange-600 dark:border-stone-500 dark:bg-stone-700/70 dark:text-stone-100"
-                }`}>
-                  <span className="text-xl">{opt.icon}</span>
-                </span>
-                <span className="text-sm font-medium">{opt.label}</span>
-                {isSelected && (
-                  <span
-                    data-testid={`companion-indicator-${opt.id}`}
-                    className={`${getSelectedIndicatorClasses()} ml-1`}
-                  >
-                    <Check className="h-3.5 w-3.5" />
-                  </span>
-                )}
-              </button>
-                );
-              })()
-            ))}
-          </div>
-        </div>
+        <section>
+          <div className="mb-6 flex items-center gap-3"><div className={getStepBadgeClasses()}>3</div><label className="text-xl font-bold tracking-tight text-stone-900 dark:text-white">{t("step1.companions.label")} {!hasCompanion && "*"}</label></div>
+          <div className="flex flex-wrap gap-3">{COMPANION_OPTIONS.map((option) => { const selected = input.companions === option.id; return <button key={option.id} type="button" data-testid={`companion-option-${option.id}`} onClick={() => onChange({ companions: option.id })} className={`flex items-center gap-3 rounded-full border-2 px-6 py-4 font-bold ${selected ? "border-orange-400 bg-orange-600 text-white" : getUnselectedPillClasses()}`}><span>{tCompanion(`${option.key}.label`)}</span>{selected && <span data-testid={`companion-indicator-${option.id}`} className={getSelectedIndicatorClasses()}><Check className="h-3.5 w-3.5" /></span>}</button>; })}</div>
+        </section>
       </div>
 
-      <div className="h-px w-full bg-stone-200 dark:bg-stone-800 my-12 md:my-16 shadow-[0_1px_2px_rgba(255,255,255,0.05)]"></div>
+      <div className="my-10 h-px w-full bg-stone-200 dark:bg-stone-800 md:my-14" />
 
-      {/* ========================================================= */}
-      {/* ORGANIC GENERATE BUTTON AREA                              */}
-      {/* ========================================================= */}
-
-      <div
-        className="flex flex-col items-center animate-fade-in-up"
-        style={{ animationDelay: "400ms" }}
-      >
-        {/* Toggle Advanced Options */}
-        <button
-          onClick={() => setShowAdvanced(!showAdvanced)}
-          className={`flex items-center gap-3 px-10 py-5 rounded-full border-2 text-base font-black transition-all duration-300 mb-8 md:mb-10 shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#171717] ${
-            showAdvanced
-              ? "bg-orange-50 text-orange-700 border-orange-200 shadow-orange-100 dark:bg-white dark:text-orange-600 dark:border-white dark:shadow-white/10"
-              : "bg-white text-stone-800 border-stone-200 hover:bg-orange-50 hover:border-orange-200 hover:scale-105 dark:bg-stone-800/70 dark:text-stone-100 dark:border-stone-600 dark:hover:bg-stone-700 dark:hover:border-stone-400"
-          }`}
-        >
-          {showAdvanced ? (
-            <ChevronUp className="w-5 h-5" />
-          ) : (
-            <ChevronDown className="w-5 h-5" />
-          )}
-          <span>こだわり条件を追加する（任意）</span>
-        </button>
-
-        {/* PROGRESSIVE DISCLOSURE BOCK */}
-        <div
-          className={`w-full overflow-hidden transition-all duration-700 ease-in-out ${showAdvanced ? "max-h-[2000px] opacity-100 mb-16" : "max-h-0 opacity-0"}`}
-        >
-          <div className="space-y-16 py-4">
-            {/* Themes */}
-            <div>
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-1.5 h-6 bg-orange-500 rounded-full"></div>
-                <label className="text-2xl font-bold text-stone-900 dark:text-white tracking-tight">
-                  {t("phase2.theme.label")}
-                </label>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {themeOptions.map((theme) => {
-                  const isSelected = input.theme.includes(theme.value);
-                  return (
-                    <button
-                      key={theme.key}
-                      data-testid={`theme-option-${theme.key}`}
-                      onClick={() => {
-                        if (isSelected)
-                          onChange({
-                            theme: input.theme.filter(
-                              (t: string) => t !== theme.value,
-                            ),
-                          });
-                        else onChange({ theme: [...input.theme, theme.value] });
-                      }}
-                      aria-pressed={isSelected}
-                      className={`inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 text-sm font-bold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#171717] ${
-                        isSelected
-                          ? "bg-orange-600 text-white border-orange-400 shadow-lg shadow-orange-600/20 scale-105"
-                          : getUnselectedPillClasses()
-                      }`}
-                    >
-                      {isSelected && (
-                        <span
-                          data-testid={`theme-indicator-${theme.key}`}
-                          className={getSelectedIndicatorClasses()}
-                        >
-                          <Check className="h-3.5 w-3.5" />
-                        </span>
-                      )}
-                      {theme.label}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Pace & Budget */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {/* Pace */}
-              <div>
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-1.5 h-6 bg-orange-500 rounded-full"></div>
-                  <label className="text-2xl font-bold text-stone-900 dark:text-white tracking-tight">
-                    {t("phase2.pace.label")}
-                  </label>
-                </div>
-                <div className="flex flex-col gap-2">
-                  {paceOptions.map((opt) => (
-                    (() => {
-                      const isSelected = input.pace === opt.id;
-                      return (
-                        <button
-                          key={opt.id}
-                          data-testid={`pace-option-${opt.id}`}
-                          onClick={() => onChange({ pace: opt.id })}
-                          aria-pressed={isSelected}
-                          className={`flex items-center justify-between p-5 rounded-3xl border-2 transition-all font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#171717] ${
-                            isSelected
-                              ? "bg-orange-600 text-white border-orange-400 shadow-lg shadow-orange-600/20 scale-[1.02]"
-                              : "bg-white border-stone-200 text-stone-800 hover:border-orange-200 hover:text-stone-900 hover:bg-orange-50/70 dark:bg-stone-800/50 dark:border-stone-600 dark:text-stone-100 dark:hover:border-stone-400 dark:hover:text-white dark:hover:bg-stone-700/80"
-                          }`}
-                        >
-                          <span className="text-lg">{opt.label}</span>
-                          <span className="flex items-center gap-3 text-xl">
-                            {isSelected && (
-                              <span
-                                data-testid={`pace-indicator-${opt.id}`}
-                                className={getSelectedIndicatorClasses()}
-                              >
-                                <Check className="h-3.5 w-3.5" />
-                              </span>
-                            )}
-                            <span>{opt.icon}</span>
-                          </span>
-                        </button>
-                      );
-                    })()
-                  ))}
-                </div>
-              </div>
-
-              {/* Budget */}
-              <div>
-                <div className="flex items-center justify-between mb-8">
-                  <div className="flex items-center gap-3">
-                    <div className="w-1.5 h-6 bg-orange-500 rounded-full"></div>
-                    <label className="text-2xl font-bold text-stone-900 dark:text-white tracking-tight">
-                      {t("phase2.budget.label")}
-                    </label>
-                  </div>
-                  {useBudgetSlider && (
-                    <button
-                      onClick={() => setUseBudgetSlider(false)}
-                      className="text-stone-800 dark:text-white hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all text-xs font-black bg-stone-100 dark:bg-stone-700 border border-stone-300 dark:border-stone-500 px-4 py-2 rounded-full uppercase tracking-widest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#171717]"
-                    >
-                      ✕ Reset
-                    </button>
-                  )}
-                </div>
-
-                {!useBudgetSlider ? (
-                  <div className="grid grid-cols-2 gap-2">
-                    {budgetPresets.map((opt) => (
-                      (() => {
-                        const isSelected = input.budget === opt.id;
-                        return (
-                          <button
-                            key={opt.id}
-                            data-testid={`budget-option-${opt.id}`}
-                            onClick={() => onChange({ budget: opt.id })}
-                            aria-pressed={isSelected}
-                            className={`relative flex flex-col items-center justify-center p-6 rounded-3xl border-2 transition-all font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#171717] ${
-                              isSelected
-                                ? "bg-orange-600 text-white border-orange-400 shadow-lg shadow-orange-600/20 scale-105"
-                                : "bg-white text-stone-800 border-stone-200 hover:border-orange-200 hover:text-stone-900 hover:bg-orange-50/70 dark:bg-stone-800/50 dark:text-stone-100 dark:border-stone-600 dark:hover:border-stone-400 dark:hover:text-white dark:hover:bg-stone-700/80"
-                            }`}
-                          >
-                            {isSelected && (
-                              <span
-                                data-testid={`budget-indicator-${opt.id}`}
-                                className={`${getSelectedIndicatorClasses()} absolute right-4 top-4`}
-                              >
-                                <Check className="h-3.5 w-3.5" />
-                              </span>
-                            )}
-                            <span className="text-3xl mb-3">{opt.icon}</span>
-                            <span className="text-base font-bold">{opt.label}</span>
-                          </button>
-                        );
-                      })()
-                    ))}
-                    <button
-                      onClick={() => setUseBudgetSlider(true)}
-                      className="col-span-2 text-center text-sm text-orange-600 dark:text-orange-300 font-black uppercase tracking-[0.2em] underline underline-offset-8 decoration-orange-500/30 hover:decoration-orange-500 mt-8 transition-all hover:text-orange-500 dark:hover:text-orange-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#171717] rounded-full"
-                    >
-                      具体的な金額で指定する
-                    </button>
-                  </div>
-                ) : (
-                  <div className="p-8 md:p-10 bg-stone-50 rounded-[2rem] border-2 border-stone-200 dark:bg-stone-800/50 dark:border-stone-600 shadow-2xl relative">
-                    <div className="text-center mb-12">
-                      <span className="text-3xl font-black tracking-tighter text-stone-900 dark:text-white">
-                        {formatBudget(budgetMinAmount, budgetUnits)}{" "}
-                        <span className="text-stone-400 dark:text-stone-500 font-light mx-2">
-                          ~
-                        </span>{" "}
-                        {formatBudget(budgetMaxAmount, budgetUnits)}
-                      </span>
-                    </div>
-                    {/* Custom Dual Slider Range UI */}
-                    <div className="relative pb-6">
-                      <div className="relative h-2 bg-stone-200 dark:bg-stone-700 rounded-full">
-                        <div
-                          className="absolute h-full bg-orange-500 rounded-full shadow-[0_0_15px_rgba(249,115,22,0.5)]"
-                          style={{
-                            left: `${(getBudgetIndex(budgetMinAmount) / SLIDER_MAX) * 100}%`,
-                            width: `${((getBudgetIndex(budgetMaxAmount) - getBudgetIndex(budgetMinAmount)) / SLIDER_MAX) * 100}%`,
-                          }}
-                        />
-                      </div>
-                      <input
-                        type="range"
-                        min={0}
-                        max={SLIDER_MAX}
-                        step={1}
-                        value={getBudgetIndex(budgetMinAmount)}
-                        onChange={(e) => {
-                          const newAmount = getBudgetAmount(
-                            Number(e.target.value),
-                          );
-                          const clamped = Math.min(newAmount, budgetMaxAmount);
-                          setBudgetMinAmount(clamped);
-                          onChange({
-                            budget: encodeBudgetRange(clamped, budgetMaxAmount),
-                          });
-                        }}
-                        className="absolute inset-0 w-full h-1 opacity-0 cursor-pointer z-20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300/80"
-                      />
-                      <input
-                        type="range"
-                        min={0}
-                        max={SLIDER_MAX}
-                        step={1}
-                        value={getBudgetIndex(budgetMaxAmount)}
-                        onChange={(e) => {
-                          const newAmount = getBudgetAmount(
-                            Number(e.target.value),
-                          );
-                          const clamped = Math.max(newAmount, budgetMinAmount);
-                          setBudgetMaxAmount(clamped);
-                          onChange({
-                            budget: encodeBudgetRange(budgetMinAmount, clamped),
-                          });
-                        }}
-                        className="absolute inset-0 w-full h-1 opacity-0 cursor-pointer z-20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300/80"
-                      />
-                      <div
-                        className="absolute w-6 h-6 bg-white border-4 border-orange-500 rounded-full shadow-xl -translate-x-1/2 z-10 -top-2 pointer-events-none"
-                        style={{
-                          left: `${(getBudgetIndex(budgetMinAmount) / SLIDER_MAX) * 100}%`,
-                        }}
-                      />
-                      <div
-                        className="absolute w-6 h-6 bg-white border-4 border-orange-500 rounded-full shadow-xl -translate-x-1/2 z-10 -top-2 pointer-events-none"
-                        style={{
-                          left: `${(getBudgetIndex(budgetMaxAmount) / SLIDER_MAX) * 100}%`,
-                        }}
-                      />
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Free Text */}
-            <div>
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-1.5 h-6 bg-orange-500 rounded-full"></div>
-                <label className="text-2xl font-bold text-stone-900 dark:text-white tracking-tight">
-                  {t("phase3.freeText.label")}
-                </label>
-              </div>
-              <textarea
-                value={input.freeText || ""}
-                onChange={(e) => onChange({ freeText: e.target.value })}
-                placeholder={t("phase3.freeText.placeholder")}
-                className="w-full h-40 p-6 bg-white border-2 border-stone-200 dark:bg-stone-800/40 dark:border-stone-600 rounded-[2rem] focus:outline-none focus:border-orange-400 focus-visible:ring-2 focus-visible:ring-orange-400/40 transition-all shadow-inner resize-y text-stone-900 dark:text-white text-lg font-medium placeholder:text-stone-400"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* ORGANIC GENERATE BUTTON */}
-        <div className="w-full max-w-md mt-8 md:mt-10 pb-16">
-          <button
-            onClick={handleGenerateClick}
-            disabled={isGenerating || !canGenerate}
-            className={`w-full py-6 px-10 rounded-full font-black text-xl tracking-[0.1em] uppercase transition-all duration-500 ease-out shadow-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#171717] ${
-              isGenerating || !canGenerate
-                ? "bg-stone-200 dark:bg-stone-800 text-stone-500 border-2 border-stone-300 dark:border-stone-700 cursor-not-allowed opacity-60"
-                : "bg-orange-600 text-white shadow-orange-600/40 hover:bg-orange-500 hover:scale-[1.05] hover:shadow-orange-500/60 active:scale-95 border-2 border-orange-400"
-            }`}
-          >
-            {isGenerating ? (
-              <span className="flex items-center justify-center gap-4">
-                <div className="w-6 h-6 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
-                {t("generate.generating")}
-              </span>
-            ) : (
-              <span>{t("generate.quick")}</span>
-            )}
-          </button>
-        </div>
+      <div className="flex flex-col items-center">
+        <button type="button" onClick={() => setShowAdvanced((current) => !current)} className={`mb-8 flex items-center gap-3 rounded-full border-2 px-8 py-4 text-base font-black ${showAdvanced ? "border-orange-200 bg-orange-50 text-orange-700 dark:border-white dark:bg-white dark:text-orange-600" : "border-stone-200 bg-white text-stone-800 dark:border-stone-600 dark:bg-stone-800/70 dark:text-stone-100"}`}>{showAdvanced ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}<span>{t("phase3.toggle")}</span></button>
+        {showAdvanced && <div className="w-full space-y-12 py-2">
+          <section><div className="mb-5 text-2xl font-bold text-stone-900 dark:text-white">{t("phase2.theme.label")}</div><div className="flex flex-wrap gap-2">{THEME_KEYS.map((key) => { const value = tThemeValue(key); const selected = input.theme.includes(value); return <button key={key} type="button" data-testid={`theme-option-${key}`} onClick={() => onChange({ theme: selected ? input.theme.filter((item) => item !== value) : [...input.theme, value] })} className={`inline-flex items-center gap-2 rounded-full border-2 px-6 py-3 text-sm font-bold ${selected ? "border-orange-400 bg-orange-600 text-white" : getUnselectedPillClasses()}`}>{selected && <span data-testid={`theme-indicator-${key}`} className={getSelectedIndicatorClasses()}><Check className="h-3.5 w-3.5" /></span>}{tTheme(key)}</button>; })}</div></section>
+          <section className="grid grid-cols-1 gap-12 md:grid-cols-2"><div><div className="mb-5 text-2xl font-bold text-stone-900 dark:text-white">{t("phase2.pace.label")}</div><div className="flex flex-col gap-2">{PACE_KEYS.map((key) => { const selected = input.pace === key; return <button key={key} type="button" data-testid={`pace-option-${key}`} onClick={() => onChange({ pace: key })} className={`flex items-center justify-between rounded-3xl border-2 p-5 font-bold ${selected ? "border-orange-400 bg-orange-600 text-white" : "border-stone-200 bg-white text-stone-800 dark:border-stone-600 dark:bg-stone-800/50 dark:text-stone-100"}`}><span>{tPace(`${key}.label`)}</span>{selected && <span data-testid={`pace-indicator-${key}`} className={getSelectedIndicatorClasses()}><Check className="h-3.5 w-3.5" /></span>}</button>; })}</div></div><div><div className="mb-5 text-2xl font-bold text-stone-900 dark:text-white">{t("phase2.budget.label")}</div><div className="grid grid-cols-2 gap-2">{BUDGET_KEYS.map((key) => { const selected = input.budget === key; return <button key={key} type="button" data-testid={`budget-option-${key}`} onClick={() => onChange({ budget: key })} className={`relative rounded-3xl border-2 p-6 font-bold ${selected ? "border-orange-400 bg-orange-600 text-white" : "border-stone-200 bg-white text-stone-800 dark:border-stone-600 dark:bg-stone-800/50 dark:text-stone-100"}`}>{selected && <span data-testid={`budget-indicator-${key}`} className={`${getSelectedIndicatorClasses()} absolute right-4 top-4`}><Check className="h-3.5 w-3.5" /></span>}<span>{tBudget(`${key}.label`)}</span></button>; })}</div></div></section>
+          <section><div className="mb-5 text-2xl font-bold text-stone-900 dark:text-white">{t("phase3.transport.label")}</div><div className="grid grid-cols-2 gap-3 md:grid-cols-4">{PREFERRED_TRANSPORT.map((transport) => { const selected = input.preferredTransport?.includes(transport) ?? false; return <button key={transport} type="button" onClick={() => { const current = input.preferredTransport ?? []; onChange({ preferredTransport: selected ? current.filter((item) => item !== transport) : [...current, transport] }); }} className={`rounded-2xl border-2 px-4 py-3 text-sm font-bold ${selected ? "border-orange-400 bg-orange-600 text-white" : "border-stone-200 bg-white text-stone-800 dark:border-stone-600 dark:bg-stone-800/50 dark:text-stone-100"}`}>{t(`transport.options.${transport}`)}</button>; })}</div></section>
+          <section><div className="mb-5 text-2xl font-bold text-stone-900 dark:text-white">{t("phase3.mustVisit.label")}</div><div className="rounded-[2rem] border border-stone-200 bg-white/80 p-5 shadow-sm dark:border-stone-700 dark:bg-stone-900/40 md:p-6"><div className="flex flex-col gap-3 md:flex-row"><input value={mustVisitInput} onChange={(e) => setMustVisitInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addMustVisit(); } }} placeholder={t("phase3.mustVisit.placeholder")} className="flex-1 rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 placeholder:text-stone-400 dark:border-stone-600 dark:bg-stone-800 dark:text-white" /><button type="button" onClick={addMustVisit} disabled={!mustVisitInput.trim()} className={`inline-flex items-center justify-center gap-2 rounded-full border-2 px-5 py-3 text-sm font-black ${mustVisitInput.trim() ? "border-orange-400 bg-orange-600 text-white" : "border-stone-300 bg-stone-100 text-stone-500 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-400"}`}><Plus className="h-4 w-4" />{t("phase3.mustVisit.addButton")}</button></div>{(input.mustVisitPlaces?.length ?? 0) > 0 && <div className="mt-4 flex flex-wrap gap-2">{input.mustVisitPlaces?.map((place, index) => <span key={`${place}-${index}`} className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-sm font-bold text-stone-900 dark:border-stone-700 dark:bg-stone-800 dark:text-white">{place}<button type="button" onClick={() => removeMustVisit(index)} className="rounded-full text-stone-500 hover:text-orange-500 dark:text-stone-300 dark:hover:text-orange-300"><X className="h-4 w-4" /></button></span>)}</div>}</div></section>
+          <section className="grid grid-cols-1 gap-8 xl:grid-cols-2"><div className="rounded-[2rem] border border-stone-200 bg-white/80 p-5 shadow-sm dark:border-stone-700 dark:bg-stone-900/40 md:p-6"><div className="mb-5 flex items-center gap-2 text-xl font-bold text-stone-900 dark:text-white"><FaPlane className="h-4 w-4" />{t("phase3.reservations.transportTitle")}</div><div className="mb-4 grid grid-cols-2 gap-2">{TRANSPORT_TYPES.map((type) => <button key={type} type="button" onClick={() => setTransportType(type)} className={`rounded-2xl border px-3 py-2 text-sm font-bold ${transportType === type ? "border-orange-400 bg-orange-600 text-white" : "border-stone-300 bg-white text-stone-700 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200"}`}>{t(`reservation.types.${type}`)}</button>)}</div><div className="space-y-3"><input value={transportName} onChange={(e) => setTransportName(e.target.value)} placeholder={t("phase3.reservations.transportNamePlaceholder")} className="w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 placeholder:text-stone-400 dark:border-stone-600 dark:bg-stone-800 dark:text-white" /><div className="grid grid-cols-1 gap-3 sm:grid-cols-2"><input type="date" value={transportDate} min={today} onChange={(e) => setTransportDate(e.target.value)} className="w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 dark:border-stone-600 dark:bg-stone-800 dark:text-white" /><input type="time" value={transportTime} onChange={(e) => setTransportTime(e.target.value)} className="w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 dark:border-stone-600 dark:bg-stone-800 dark:text-white" /></div><textarea value={transportNote} onChange={(e) => setTransportNote(e.target.value)} placeholder={t("phase3.reservations.memoPlaceholder")} className="h-24 w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 placeholder:text-stone-400 dark:border-stone-600 dark:bg-stone-800 dark:text-white" /><button type="button" onClick={() => { if (!transportName.trim()) return; addFixedSchedule({ type: transportType, name: transportName.trim(), date: transportDate || undefined, time: transportTime || undefined, notes: transportNote || undefined }); setTransportName(""); setTransportDate(""); setTransportTime(""); setTransportNote(""); setTransportType("flight"); }} disabled={!transportName.trim()} className={`inline-flex items-center justify-center gap-2 rounded-full border-2 px-5 py-3 text-sm font-black ${transportName.trim() ? "border-orange-400 bg-orange-600 text-white" : "border-stone-300 bg-stone-100 text-stone-500 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-400"}`}><Plus className="h-4 w-4" />{t("phase3.reservations.addTransportButton")}</button></div></div><div className="rounded-[2rem] border border-stone-200 bg-white/80 p-5 shadow-sm dark:border-stone-700 dark:bg-stone-900/40 md:p-6"><div className="mb-5 flex items-center gap-2 text-xl font-bold text-stone-900 dark:text-white"><FaHotel className="h-4 w-4" />{t("phase3.reservations.hotelTitle")}</div><div className="space-y-3"><input value={hotelName} onChange={(e) => setHotelName(e.target.value)} placeholder={t("phase3.reservations.hotelNamePlaceholder")} className="w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 placeholder:text-stone-400 dark:border-stone-600 dark:bg-stone-800 dark:text-white" /><input type="date" value={hotelDate} min={today} onChange={(e) => setHotelDate(e.target.value)} className="w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 dark:border-stone-600 dark:bg-stone-800 dark:text-white" /><textarea value={hotelNote} onChange={(e) => setHotelNote(e.target.value)} placeholder={t("phase3.reservations.hotelMemoPlaceholder")} className="h-24 w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base text-stone-900 placeholder:text-stone-400 dark:border-stone-600 dark:bg-stone-800 dark:text-white" /><button type="button" onClick={() => { if (!hotelName.trim()) return; addFixedSchedule({ type: "hotel", name: hotelName.trim(), date: hotelDate || undefined, notes: hotelNote || undefined }); setHotelName(""); setHotelDate(""); setHotelNote(""); }} disabled={!hotelName.trim()} className={`inline-flex items-center justify-center gap-2 rounded-full border-2 px-5 py-3 text-sm font-black ${hotelName.trim() ? "border-orange-400 bg-orange-600 text-white" : "border-stone-300 bg-stone-100 text-stone-500 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-400"}`}><Plus className="h-4 w-4" />{t("phase3.reservations.addHotelButton")}</button></div></div></section>
+          <section><div className="mb-5 text-2xl font-bold text-stone-900 dark:text-white">{t("phase3.reservations.label")}</div>{(input.fixedSchedule?.length ?? 0) > 0 ? <div className="grid gap-3">{input.fixedSchedule?.map((item, index) => <div key={`${item.type}-${item.name}-${index}`} className="relative flex items-start gap-4 rounded-[1.75rem] border border-stone-200 bg-white p-5 shadow-sm dark:border-stone-700 dark:bg-stone-900/40"><div className="mt-1 rounded-full bg-orange-50 p-3 text-orange-600 dark:bg-orange-500/15 dark:text-orange-200">{item.type === "hotel" ? <FaHotel className="h-4 w-4" /> : item.type === "train" ? <FaTrain className="h-4 w-4" /> : item.type === "bus" ? <FaBus className="h-4 w-4" /> : <FaPlane className="h-4 w-4" />}</div><div className="min-w-0 flex-1"><div className="flex flex-wrap items-center gap-2"><span className="rounded-full bg-stone-100 px-3 py-1 text-xs font-bold text-stone-700 dark:bg-stone-800 dark:text-stone-200">{t(`reservation.types.${item.type}`)}</span><span className="text-base font-bold text-stone-900 dark:text-white">{item.name}</span></div>{formatBookingDateTime(item.date, item.time) && <p className="mt-2 text-sm font-medium text-stone-600 dark:text-stone-300">{formatBookingDateTime(item.date, item.time)}</p>}{item.notes && <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">{item.notes}</p>}</div><button type="button" onClick={() => removeFixedSchedule(index)} className="rounded-full p-2 text-stone-400 hover:text-red-500"><X className="h-4 w-4" /></button></div>)}</div> : <div className="rounded-[1.75rem] border border-dashed border-stone-300 bg-stone-50/80 px-5 py-6 text-sm font-medium text-stone-500 dark:border-stone-700 dark:bg-stone-900/20 dark:text-stone-400">{t("phase3.reservations.empty")}</div>}</section>
+          <section><div className="mb-5 text-2xl font-bold text-stone-900 dark:text-white">{t("phase3.freeText.label")}</div><textarea value={input.freeText || ""} onChange={(e) => onChange({ freeText: e.target.value })} placeholder={t("phase3.freeText.placeholder")} className="h-40 w-full resize-y rounded-[2rem] border-2 border-stone-200 bg-white p-6 text-lg font-medium text-stone-900 placeholder:text-stone-400 dark:border-stone-600 dark:bg-stone-800/40 dark:text-white" /></section>
+        </div>}
+        <div className="mt-8 w-full max-w-md pb-16 md:mt-10"><button type="button" onClick={handleGenerateClick} disabled={isGenerating || !hasDest || !hasCompanion || !hasDates} className={`w-full rounded-full border-2 px-10 py-6 text-xl font-black uppercase tracking-[0.1em] ${isGenerating || !hasDest || !hasCompanion || !hasDates ? "cursor-not-allowed border-stone-300 bg-stone-200 text-stone-500 opacity-60 dark:border-stone-700 dark:bg-stone-800" : "border-orange-400 bg-orange-600 text-white"}`}>{isGenerating ? <span className="flex items-center justify-center gap-4"><span className="h-6 w-6 animate-spin rounded-full border-4 border-white border-t-transparent" />{t("generate.generating")}</span> : <span>{t("generate.quick")}</span>}</button></div>
       </div>
     </div>
   );

@@ -135,11 +135,11 @@ export default function LanguageSwitcher({ className = "" }: LanguageSwitcherPro
         aria-expanded={isOpen}
         aria-controls={menuId}
         aria-label={t("label")}
-        className="inline-flex items-center gap-2 rounded-sm border border-stone-300 bg-white/80 px-2.5 py-1.5 text-xs font-bold text-stone-700 shadow-sm transition-colors hover:bg-stone-50 dark:border-stone-500 dark:bg-stone-800/80 dark:text-stone-100 dark:hover:bg-stone-700"
+        className="inline-flex min-h-10 items-center gap-2 rounded-full border border-stone-300/90 bg-white px-3.5 py-2 text-xs font-bold text-stone-700 shadow-sm transition-colors hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-stone-500 dark:bg-stone-800/90 dark:text-stone-100 dark:hover:bg-stone-700 dark:focus-visible:ring-offset-[#171717]"
       >
-        <FaGlobe className="text-[0.65rem] text-stone-500 dark:text-stone-300" />
+        <FaGlobe className="text-[0.75rem] text-stone-500 dark:text-stone-300" />
         <span>{t(currentLanguage)}</span>
-        <FaChevronDown className={`text-[0.55rem] text-stone-400 transition-transform dark:text-stone-300 ${isOpen ? "rotate-180" : ""}`} />
+        <FaChevronDown className={`text-[0.6rem] text-stone-400 transition-transform dark:text-stone-300 ${isOpen ? "rotate-180" : ""}`} />
       </button>
 
       {isOpen && (
@@ -150,7 +150,7 @@ export default function LanguageSwitcher({ className = "" }: LanguageSwitcherPro
           style={{
             transform: menuOffsetX !== 0 ? `translateX(${menuOffsetX}px)` : undefined,
           }}
-          className="absolute right-0 top-[calc(100%+0.35rem)] z-50 min-w-[9rem] max-w-[calc(100vw-1rem)] rounded-sm border border-stone-300 bg-white p-1 shadow-lg dark:border-stone-600 dark:bg-stone-800"
+          className="absolute right-0 top-[calc(100%+0.45rem)] z-50 min-w-[10rem] max-w-[calc(100vw-1rem)] rounded-2xl border border-stone-300 bg-white p-1.5 shadow-xl dark:border-stone-600 dark:bg-stone-800"
         >
           {SUPPORTED_LANGUAGES.map((language) => {
             const active = language === currentLanguage;
@@ -162,7 +162,7 @@ export default function LanguageSwitcher({ className = "" }: LanguageSwitcherPro
                 role="menuitemradio"
                 aria-checked={active}
                 onClick={() => handleLanguageChange(language)}
-                className={`flex w-full items-center justify-between rounded-sm px-2.5 py-2 text-left text-xs font-semibold transition-colors ${
+                className={`flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-xs font-semibold transition-colors ${
                   active
                     ? "bg-primary/15 text-primary dark:bg-primary/25"
                     : "text-stone-700 hover:bg-stone-100 dark:text-stone-100 dark:hover:bg-stone-700"

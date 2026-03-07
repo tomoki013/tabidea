@@ -34,7 +34,8 @@
             },
             "destinationInput": {
               "placeholderFirst": "例：京都、パリ、ハワイ...",
-              "placeholderNext": "次の行き先を追加..."
+              "placeholderNext": "次の行き先を追加...",
+              "addButton": "目的地を追加"
             },
             "dates": {
               "label": "② 日程",
@@ -77,19 +78,29 @@
               "memoPlaceholder": "メモ（任意）",
               "cancel": "キャンセル",
               "add": "追加",
-              "addButton": "予約済みの予定を追加"
+              "addButton": "予約済みの予定を追加",
+              "transportTitle": "予約済みの交通手段",
+              "hotelTitle": "予約済みのホテル",
+              "transportNamePlaceholder": "交通手段名 (例: JL123、のぞみ12号)",
+              "hotelNamePlaceholder": "ホテル名",
+              "hotelMemoPlaceholder": "ホテルのメモ (任意)",
+              "addTransportButton": "予約済みの交通を追加",
+              "addHotelButton": "予約済みのホテルを追加",
+              "empty": "予約済みの交通やホテルはまだ追加されていません。"
             },
             "transport": {
               "label": "希望する移動手段"
             },
             "mustVisit": {
               "label": "絶対行きたい場所",
-              "placeholder": "場所名を入力（例：清水寺）"
+              "placeholder": "場所名を入力（例：清水寺）",
+              "addButton": "絶対に行きたい場所を追加"
             },
             "freeText": {
               "label": "その他のリクエスト",
               "placeholder": "美術館巡りがしたい、夜景が綺麗なレストランに行きたい、など自由に入力してください..."
-            }
+            },
+            "toggle": "こだわり条件を追加する"
           },
           "transport": {
             "options": {

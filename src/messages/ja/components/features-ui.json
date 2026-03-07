@@ -1273,7 +1273,16 @@
             "dates": "日程・時期",
             "pace": "旅行のペース",
             "transits": "移動手段",
+            "bookedItems": "予約済みの交通・ホテル",
             "freeText": "その他の要望"
+          },
+          "bookingTypes": {
+            "flight": "飛行機",
+            "train": "電車・新幹線",
+            "bus": "バス",
+            "hotel": "ホテル",
+            "activity": "アクティビティ",
+            "other": "その他"
           },
           "pace": {
             "value": "{label} ({desc})",

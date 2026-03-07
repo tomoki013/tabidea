@@ -375,6 +375,33 @@ export default function RequestSummary({
         </div>
       )}
 
+      {/* Fixed Schedule / Bookings */}
+      {input.fixedSchedule && input.fixedSchedule.length > 0 && (
+        <div className="flex items-start gap-3 border-t border-stone-100 pt-3 first:border-t-0 first:pt-0">
+          <div className="mt-1 text-primary text-xl">
+            <FaPlane />
+          </div>
+          <div className="flex-1">
+            <div className="flex items-center">
+              <h3 className="font-bold text-stone-700 text-sm">{t("sections.bookedItems")}</h3>
+              <EditButton stepIndex={steps.freeText} onEdit={onEdit} t={t} />
+            </div>
+            <ul className="mt-1 space-y-1 text-stone-600 font-medium">
+              {input.fixedSchedule.map((item, index) => (
+                <li key={`${item.type}-${item.name}-${index}`}>
+                  <span className="font-semibold">
+                    {t(`bookingTypes.${item.type}`)}
+                  </span>
+                  {": "}
+                  {item.name}
+                  {item.date ? ` (${item.date}${item.time ? ` ${item.time}` : ""})` : ""}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+
       {/* Free Text */}
       {input.freeText && (
         <div className="mt-4 p-4 bg-stone-50 rounded-lg border border-dashed border-stone-300 relative group">
