@@ -112,35 +112,26 @@ export default function ShioriJournalEditor({ days, onSaveEntry, onSaveItemDetai
     setSavingIds((prev) => ({ ...prev, [itemId]: true }));
     setErrorByItemId((prev) => ({ ...prev, [itemId]: null }));
 
-    let entryResult: { success: boolean; error?: string; updatedAt?: string } | null = null;
-    let itemResult: { success: boolean; error?: string } | null = null;
+    const [entryResult, itemResult] = await Promise.all([
+      hasJournalContent
+        ? onSaveEntry({
+            itemId,
+            content: draft.content.trim(),
+            phase: draft.phase,
+            placeName: draft.placeName.trim() || null,
+            photoUrls: parsePhotoUrls(draft.photoUrlsText),
+          })
+        : Promise.resolve(null as { success: boolean; error?: string; updatedAt?: string } | null),
+      onSaveItemDetails
+        ? onSaveItemDetails({
+            itemId,
+            note: draft.note.trim() || null,
+            actualCost: draft.actualCost.trim() ? parseFloat(draft.actualCost) : null,
+            actualCurrency: draft.actualCurrency || 'JPY',
+          })
+        : Promise.resolve(null as { success: boolean; error?: string } | null),
+    ]);
 
-    const jobs: Promise<void>[] = [];
-
-    if (hasJournalContent) {
-      jobs.push(
-        onSaveEntry({
-          itemId,
-          content: draft.content.trim(),
-          phase: draft.phase,
-          placeName: draft.placeName.trim() || null,
-          photoUrls: parsePhotoUrls(draft.photoUrlsText),
-        }).then((r) => { entryResult = r; }),
-      );
-    }
-
-    if (onSaveItemDetails) {
-      jobs.push(
-        onSaveItemDetails({
-          itemId,
-          note: draft.note.trim() || null,
-          actualCost: draft.actualCost.trim() ? parseFloat(draft.actualCost) : null,
-          actualCurrency: draft.actualCurrency || 'JPY',
-        }).then((r) => { itemResult = r; }),
-      );
-    }
-
-    await Promise.all(jobs);
     setSavingIds((prev) => ({ ...prev, [itemId]: false }));
 
     const failed = entryResult?.success === false ? entryResult : (itemResult?.success === false ? itemResult : null);
