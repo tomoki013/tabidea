@@ -93,19 +93,20 @@ export default function LanguageSwitcher({ className = "" }: LanguageSwitcherPro
     };
   }, [isOpen]);
 
-  const handleLanguageChange = async (language: LanguageCode) => {
+  const handleLanguageChange = (language: LanguageCode) => {
     if (language === currentLanguage) {
       setIsOpen(false);
       setMenuOffsetX(0);
       return;
     }
 
+    setIsOpen(false);
+    setMenuOffsetX(0);
+
     if (isAuthenticated) {
-      try {
-        await updateDisplayLanguage(language);
-      } catch (error) {
+      updateDisplayLanguage(language).catch((error) => {
         console.error("Failed to persist display language:", error);
-      }
+      });
     }
 
     const nextPath = switchLanguagePath(pathname, language);
@@ -113,9 +114,6 @@ export default function LanguageSwitcher({ className = "" }: LanguageSwitcherPro
     const href = queryString ? `${nextPath}?${queryString}` : nextPath;
 
     router.push(href);
-    router.refresh();
-    setIsOpen(false);
-    setMenuOffsetX(0);
   };
 
   return (
