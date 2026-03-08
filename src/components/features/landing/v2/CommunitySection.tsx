@@ -2,51 +2,37 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { FaArrowRight, FaHeart, FaUserCircle } from "react-icons/fa";
+import { localizePath } from "@/lib/i18n/locales";
+import type { PublicShioriListItem } from "@/types/plans";
 
-const SAMPLE_PLAN_META = [
-  {
-    id: 1,
-    key: "kyoto",
-    image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=500&q=80",
-    likes: 124
-  },
-  {
-    id: 2,
-    key: "hawaii",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80",
-    likes: 89
-  },
-  {
-    id: 3,
-    key: "paris",
-    image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=500&q=80",
-    likes: 256
-  },
-  {
-    id: 4,
-    key: "newYork",
-    image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=500&q=80",
-    likes: 180
-  },
-  {
-    id: 5,
-    key: "santorini",
-    image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=500&q=80",
-    likes: 312
+const ALL_THEMES = [
+  'gourmet', 'cafeHopping', 'historyCulture', 'natureScenery', 
+  'spectacularViews', 'cityWalk', 'resort', 'relax', 'hiddenSpots', 
+  'shopping', 'art', 'architecture', 'nightlife', 'experienceActivity', 
+  'localExperience', 'onsenSauna', 'wellness', 'photogenic', 
+  'powerSpots', 'seasonalEvents', 'adventure', 'oshikatsu'
+];
+
+function getFallbackTags(destination: string | null): string[] {
+  if (!destination) return ['relax', 'cityWalk'];
+  let hash = 0;
+  for (let i = 0; i < destination.length; i++) {
+    hash = destination.charCodeAt(i) + ((hash << 5) - hash);
   }
-] as const;
+  const idx1 = Math.abs(hash) % ALL_THEMES.length;
+  const idx2 = Math.abs(hash + 7) % ALL_THEMES.length;
+  const tag1 = ALL_THEMES[idx1];
+  const tag2 = ALL_THEMES[idx2];
+  return tag1 === tag2 ? [tag1] : [tag1, tag2];
+}
 
-export default function CommunitySection() {
+export default function CommunitySection({ plans = [] }: { plans?: PublicShioriListItem[] }) {
   const t = useTranslations("components.features.landing.v2.communitySection");
-  const plans = SAMPLE_PLAN_META.map((meta) => ({
-    ...meta,
-    title: t(`samplePlans.${meta.key}.title`),
-    days: t(`samplePlans.${meta.key}.days`),
-    budget: t(`samplePlans.${meta.key}.budget`),
-    tags: t.raw(`samplePlans.${meta.key}.tags`) as string[],
-  }));
+  const tTheme = useTranslations("components.features.shiori.conditionsCard.themeOptions");
+  const tBudget = useTranslations("components.features.shiori.conditionsCard.budgetOptions");
+  const locale = useLocale() as "en" | "ja";
 
   return (
     <section className="w-full py-24 px-4 bg-stone-900 text-stone-100 relative overflow-hidden">
@@ -79,7 +65,7 @@ export default function CommunitySection() {
             viewport={{ once: true }}
           >
             <Link
-              href="/shiori"
+              href={localizePath("/shiori", locale)}
               className="inline-flex items-center gap-2 text-white border-b border-primary pb-1 hover:text-primary transition-colors group"
             >
               <span>{t("viewMore")}</span>
@@ -100,45 +86,66 @@ export default function CommunitySection() {
                 transition={{ delay: index * 0.1 }}
                 className="snap-center shrink-0 w-[280px] md:w-[320px]"
               >
-                <div className="group relative bg-stone-800 rounded-2xl overflow-hidden hover:-translate-y-2 transition-transform duration-300 shadow-lg border border-stone-700">
-                  {/* Image */}
-                  <div className="relative h-48 w-full overflow-hidden">
-                    <img
-                      src={plan.image}
-                      alt={plan.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <div className="absolute bottom-3 right-3 flex items-center gap-1 text-white text-sm">
-                      <FaHeart className="text-pink-500" />
-                      <span>{plan.likes}</span>
+                <Link href={localizePath(`/shiori/${plan.slug}`, locale)}>
+                  <div className="group relative h-full bg-stone-800 rounded-2xl overflow-hidden hover:-translate-y-2 transition-transform duration-300 shadow-lg border border-stone-700 flex flex-col">
+                    {/* Image */}
+                    <div className="relative h-48 w-full overflow-hidden shrink-0">
+                      {plan.thumbnailUrl ? (
+                        <img
+                          src={plan.thumbnailUrl}
+                          alt={plan.destination ?? ""}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-stone-700 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
+                          <FaUserCircle className="text-4xl text-stone-500" />
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <div className="absolute bottom-3 right-3 flex items-center gap-1 text-white text-sm">
+                        <FaHeart className="text-pink-500" />
+                        <span>{plan.likesCount ?? 0}</span>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="p-5 space-y-3">
-                    <div className="flex gap-2 flex-wrap">
-                      {plan.tags.map(tag => (
-                        <span key={tag} className="text-xs text-stone-400 bg-stone-700/50 px-2 py-1 rounded-md">
-                          {tag}
+                    {/* Content */}
+                    <div className="p-5 flex flex-col flex-1 gap-3">
+                      <div className="flex gap-2 flex-wrap">
+                        {(plan.conditionsSummary?.theme?.length
+                          ? plan.conditionsSummary.theme.slice(0, 2)
+                          : getFallbackTags(plan.destination)
+                        ).map((tag: string) => {
+                          // Normalize tag to handle potential AI capitalization or spaces
+                          const normalizedTag = tag.trim();
+                          // Try to translate, fallback to original tag if not found
+                          const translatedTag = tTheme(normalizedTag);
+                          return (
+                            <span key={tag} className="text-xs text-stone-400 bg-stone-700/50 px-2 py-1 rounded-md">
+                              #{translatedTag}
+                            </span>
+                          );
+                        })}
+                      </div>
+                      <h3 className="font-bold text-lg leading-snug group-hover:text-primary transition-colors line-clamp-2">
+                        {plan.destination}
+                      </h3>
+                      <div className="flex justify-between items-center pt-2 mt-auto border-t border-stone-700 text-sm text-stone-400">
+                        <span>{plan.durationDays ? `${plan.durationDays}日間` : ''}</span>
+                        <span>
+                          {plan.conditionsSummary?.budget && tBudget.has(plan.conditionsSummary.budget)
+                            ? tBudget(plan.conditionsSummary.budget)
+                            : plan.conditionsSummary?.budget ?? ''}
                         </span>
-                      ))}
-                    </div>
-                    <h3 className="font-bold text-lg leading-snug group-hover:text-primary transition-colors">
-                      {plan.title}
-                    </h3>
-                    <div className="flex justify-between items-center pt-2 border-t border-stone-700 text-sm text-stone-400">
-                      <span>{plan.days}</span>
-                      <span>{plan.budget}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
 
             {/* "View More" Card */}
             <div className="snap-center shrink-0 w-[200px] flex items-center justify-center">
-               <Link href="/shiori" className="flex flex-col items-center gap-4 text-stone-400 hover:text-white transition-colors group p-8 rounded-2xl border-2 border-dashed border-stone-700 hover:border-primary">
+               <Link href={localizePath("/shiori", locale)} className="flex flex-col items-center gap-4 text-stone-400 hover:text-white transition-colors group p-8 rounded-2xl border-2 border-dashed border-stone-700 hover:border-primary">
                   <div className="w-12 h-12 rounded-full bg-stone-800 flex items-center justify-center group-hover:bg-primary transition-colors">
                      <FaArrowRight className="text-xl" />
                   </div>

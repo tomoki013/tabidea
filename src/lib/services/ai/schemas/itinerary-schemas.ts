@@ -182,6 +182,7 @@ export const PlanOutlineSchema = z.object({
   destination: z.string().describe('目的地名'),
   description: z.string().describe('旅行全体の説明（トラベルマガジン風に）'),
   days: z.array(PlanOutlineDaySchema).min(1).describe('日程アウトライン'),
+  themes: z.array(z.string()).optional().describe('Select 1 to 3 themes that best fit this itinerary exactly from: gourmet, cafeHopping, historyCulture, natureScenery, spectacularViews, cityWalk, resort, relax, hiddenSpots, shopping, art, architecture, nightlife, experienceActivity, localExperience, onsenSauna, wellness, photogenic, powerSpots, seasonalEvents, adventure, oshikatsu'),
 });
 
 // ============================================

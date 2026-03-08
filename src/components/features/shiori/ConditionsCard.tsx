@@ -76,7 +76,7 @@ export default async function ConditionsCard({ conditions, language }: Condition
                 key={key}
                 className="inline-block px-2 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary dark:bg-primary/20"
               >
-                {t(`themeOptions.${key}`, { fallback: key })}
+                #{t(`themeOptions.${key}`, { fallback: key })}
               </span>
             ))}
           </div>
