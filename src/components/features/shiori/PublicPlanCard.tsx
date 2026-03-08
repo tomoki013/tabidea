@@ -6,6 +6,27 @@ import { PublicShioriListItem } from '@/types';
 import { localizePath, resolveRegionalLocale } from '@/lib/i18n/locales';
 import { Tape } from '@/components/ui/journal';
 
+const ALL_THEMES = [
+  'gourmet', 'cafeHopping', 'historyCulture', 'natureScenery', 
+  'spectacularViews', 'cityWalk', 'resort', 'relax', 'hiddenSpots', 
+  'shopping', 'art', 'architecture', 'nightlife', 'experienceActivity', 
+  'localExperience', 'onsenSauna', 'wellness', 'photogenic', 
+  'powerSpots', 'seasonalEvents', 'adventure', 'oshikatsu'
+];
+
+function getFallbackTags(destination: string | null): string[] {
+  if (!destination) return ['relax', 'cityWalk'];
+  let hash = 0;
+  for (let i = 0; i < destination.length; i++) {
+    hash = destination.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const idx1 = Math.abs(hash) % ALL_THEMES.length;
+  const idx2 = Math.abs(hash + 7) % ALL_THEMES.length;
+  const tag1 = ALL_THEMES[idx1];
+  const tag2 = ALL_THEMES[idx2];
+  return tag1 === tag2 ? [tag1] : [tag1, tag2];
+}
+
 interface PublicPlanCardProps {
   plan: PublicShioriListItem;
   language: 'ja' | 'en';
@@ -27,7 +48,9 @@ export default async function PublicPlanCard({ plan, language }: PublicPlanCardP
     ? t('duration', { nights: Math.max(0, days - 1), days })
     : t('durationTbd');
 
-  const themes = plan.conditionsSummary?.theme?.slice(0, 3) ?? [];
+  const themes = plan.conditionsSummary?.theme?.length 
+    ? plan.conditionsSummary.theme.slice(0, 3) 
+    : getFallbackTags(plan.destination);
   const companion = plan.conditionsSummary?.companions ?? null;
 
   return (
@@ -87,7 +110,7 @@ export default async function PublicPlanCard({ plan, language }: PublicPlanCardP
                   key={key}
                   className="inline-block px-2 py-0.5 rounded-full text-xs bg-primary/10 dark:bg-primary/20 text-primary"
                 >
-                  {tConditions(`themeOptions.${key}`, { fallback: key })}
+                  #{tConditions(`themeOptions.${key}`, { fallback: key })}
                 </span>
               ))}
             </div>

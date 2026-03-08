@@ -214,7 +214,7 @@ export default async function ShioriPage({ params, searchParams }: PageProps) {
           />
           <ShareButton />
           <ForkButton slug={slug} locale={locale} />
-          <CreateWithConditionsButton conditions={conditions} />
+          {conditions && <CreateWithConditionsButton conditions={conditions} />}
           <Link
             href={localizePath('/shiori', language)}
             className="ml-auto text-xs font-semibold text-primary hover:underline"

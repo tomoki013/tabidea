@@ -422,6 +422,26 @@ export async function executeOutlineGeneration(
       updatedInput.destinations = [outline.destination];
       updatedInput.isDestinationDecided = true;
     }
+    
+    // AIがテーマを生成した場合、ユーザー入力にマージする（これがShioriなどで表示される）
+    if (outline.themes && outline.themes.length > 0) {
+      // ユーザー入力のテーマが既にある場合（通常は日本語ラベル）、AI生成のテーマ（英語キー）も同じ形式に変換してマージする
+      const tThemeValue = createTranslator({
+        locale: preferredLanguage,
+        messages: getMessages(preferredLanguage),
+        namespace: "components.features.planner.steps.stepThemes.themeValues",
+      });
+
+      const translatedThemes = outline.themes.map(key => {
+        try {
+          return tThemeValue(key as never);
+        } catch {
+          return key;
+        }
+      });
+
+      updatedInput.theme = Array.from(new Set([...input.theme, ...translatedThemes]));
+    }
 
     // 5. ヒーロー画像取得
     const heroImageData = options?.skipHeroImage

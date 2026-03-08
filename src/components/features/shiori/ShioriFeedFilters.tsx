@@ -101,7 +101,7 @@ export default function ShioriFeedFilters() {
                   : 'bg-stone-100 dark:bg-stone-700 text-stone-600 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-600'
               }`}
             >
-              {tTheme(theme)}
+              #{tTheme(theme)}
             </button>
           ))}
         </div>

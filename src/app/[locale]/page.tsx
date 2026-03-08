@@ -13,6 +13,7 @@ import {
   CommunitySection,
 } from "@/components/features/landing/v2";
 import { getSamplePlanById } from "@/lib/sample-plans";
+import { planService } from "@/lib/plans/service";
 import { UserInput } from '@/types';
 import type { Metadata } from "next";
 
@@ -48,6 +49,11 @@ export default async function Home({ searchParams }: HomeProps) {
     }
   }
 
+  const { plans: topShioris } = await planService.getPublicShioriFeed({
+    limit: 5,
+    sortBy: 'popular',
+  });
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Fixed Header that appears on scroll */}
@@ -75,7 +81,7 @@ export default async function Home({ searchParams }: HomeProps) {
         <ConceptSection />
         <HowItWorksSection />
         <FeaturesSection />
-        <CommunitySection />
+        <CommunitySection plans={topShioris ?? []} />
 
         {/* Standard FAQ */}
         <FAQSection limit={5} />

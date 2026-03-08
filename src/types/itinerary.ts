@@ -243,4 +243,6 @@ export interface PlanOutline {
   description: string;
   /** 日程 */
   days: PlanOutlineDay[];
+  /** AIによって選定されたテーマ（オプショナル） */
+  themes?: string[];
 }
