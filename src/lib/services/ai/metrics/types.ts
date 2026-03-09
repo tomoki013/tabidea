@@ -41,6 +41,18 @@ export interface GenerationMetrics {
   /** 報告された問題数 */
   accuracyIssueCount?: number;
 
+  // Compose Pipeline v2 メトリクス
+  /** パイプラインバージョン */
+  pipelineVersion?: string;
+  /** 候補数 */
+  candidateCount?: number;
+  /** 照合成功数 */
+  resolvedCount?: number;
+  /** フィルタ後数 */
+  filteredCount?: number;
+  /** Places 照合が有効だったか */
+  placeResolveEnabled?: boolean;
+
   // メタデータ
   /** 使用モデル名 */
   modelName: string;

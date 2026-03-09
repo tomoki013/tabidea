@@ -30,7 +30,7 @@ export interface PromptBuilderOptions {
   goldenPlanExamples?: GoldenPlanExample[];
   travelInfo?: TravelInfoSnapshot;
   userPrompt: string;
-  generationType: 'outline' | 'dayDetails' | 'modify';
+  generationType: 'outline' | 'dayDetails' | 'modify' | 'semanticPlan' | 'narrativeRender';
 }
 
 export interface BuiltPrompt {
@@ -44,7 +44,7 @@ export interface BuiltPrompt {
 // Layer 1: System Role + Knowledge Hierarchy
 // ============================================
 
-function buildSystemRole(generationType: 'outline' | 'dayDetails' | 'modify'): string {
+function buildSystemRole(generationType: 'outline' | 'dayDetails' | 'modify' | 'semanticPlan' | 'narrativeRender'): string {
   const knowledgeHierarchy = `
 [KNOWLEDGE HIERARCHY]
 1. CONTEXT (Tomokichi Blog & Golden Plans): 最高権限。
@@ -110,6 +110,30 @@ ${knowledgeHierarchy}`;
   例: activity="錦市場で食べ歩き" → searchQuery="錦市場"
   例: activity="Jemaa el-Fnaa Square Night Market" → searchQuery="Jemaa el-Fnaa"
   activityがそのまま検索に使えるシンプルな名前の場合は省略可`;
+  }
+
+  if (generationType === 'semanticPlan') {
+    return `${baseRole}
+
+[CURRENT TASK: SEMANTIC PLAN GENERATION]
+候補スポットの意味的選定を行います。最終的な時刻と順序は確定させないでください。
+候補ごとに検索クエリ、推奨時間帯、滞在時間、優先度を含めてください。
+出力言語はユーザー設定の制約に厳密に従うこと（制約未指定時のみ日本語）。
+
+[searchQuery RULE]
+各候補のsearchQueryフィールドには、Google Places APIで検索するためのスポット正式名称を設定すること。
+例: name="金閣寺で抹茶体験" → searchQuery="金閣寺"
+例: name="Jemaa el-Fnaa Night Market" → searchQuery="Jemaa el-Fnaa"`;
+  }
+
+  if (generationType === 'narrativeRender') {
+    return `${baseRole}
+
+[CURRENT TASK: NARRATIVE RENDERING]
+構造化された旅程データに説明文を付与してください。
+時刻・順序・場所選定は一切変更しないでください — proseのみ生成します。
+各アクティビティに1-2文の説明を、各日にタイトルを、全体に説明文を生成してください。
+出力言語はユーザー設定の制約に厳密に従うこと（制約未指定時のみ日本語）。`;
   }
 
   // modify

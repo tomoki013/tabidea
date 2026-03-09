@@ -331,3 +331,47 @@ export function createPerformanceTimer(
 ): PerformanceTimer {
   return new PerformanceTimer(operation, targets);
 }
+
+// ============================================
+// Compose Pipeline Targets
+// ============================================
+
+/**
+ * Compose Pipeline 目標時間 (Flash モデル)
+ */
+export const COMPOSE_TARGETS_FLASH: PerformanceTargets = {
+  usage_check: 500,
+  normalize: 50,
+  semantic_plan: 15_000,
+  place_resolve: 10_000,
+  feasibility_score: 200,
+  route_optimize: 1_000,
+  timeline_build: 100,
+  narrative_render: 12_000,
+  hero_image: 2_000,
+  total: 45_000,
+};
+
+/**
+ * Compose Pipeline 目標時間 (Pro モデル)
+ */
+export const COMPOSE_TARGETS_PRO: PerformanceTargets = {
+  usage_check: 500,
+  normalize: 50,
+  semantic_plan: 30_000,
+  place_resolve: 10_000,
+  feasibility_score: 200,
+  route_optimize: 1_000,
+  timeline_build: 100,
+  narrative_render: 20_000,
+  hero_image: 2_000,
+  total: 65_000,
+};
+
+/**
+ * Compose Pipeline 用タイマーを作成
+ */
+export function createComposeTimer(modelTier?: ModelTier): PerformanceTimer {
+  const targets = modelTier === 'pro' ? COMPOSE_TARGETS_PRO : COMPOSE_TARGETS_FLASH;
+  return new PerformanceTimer('composePipeline', targets);
+}

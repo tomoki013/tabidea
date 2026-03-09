@@ -1564,6 +1564,14 @@
             }
           }
         },
+        "composeLoadingAnimation": {
+          "waiting": "Preparing...",
+          "stepsProgress": "{completed}/{total} steps",
+          "footer": "AI is crafting the perfect itinerary..."
+        },
+        "composeLoadingTips": {
+          "label": "Travel Tip"
+        },
         "outlineReview": {
           "title": "Your trip outline is ready",
           "leadLine1": "Before generating details, you can adjust overnight locations and the overall flow.",
