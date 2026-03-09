@@ -1,0 +1,105 @@
+import { runComposePipeline } from '@/lib/services/compose-pipeline/pipeline-orchestrator';
+import { EventLogger } from '@/lib/services/analytics/event-logger';
+import { createClient } from '@supabase/supabase-js';
+import type { UserInput } from '@/types';
+
+export const runtime = 'nodejs';
+export const maxDuration = 120;
+
+export async function POST(req: Request) {
+  const encoder = new TextEncoder();
+  const startTime = Date.now();
+
+  let body: { input: UserInput; options?: { isRetry?: boolean } };
+  try {
+    body = await req.json();
+  } catch {
+    return new Response(JSON.stringify({ error: 'Invalid request body' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  const { input, options } = body;
+
+  const stream = new ReadableStream({
+    async start(controller) {
+      const emit = (type: string, payload: Record<string, unknown>) => {
+        try {
+          controller.enqueue(
+            encoder.encode(`data: ${JSON.stringify({ type, ...payload })}\n\n`)
+          );
+        } catch {
+          // Stream may already be closed
+        }
+      };
+
+      try {
+        const result = await runComposePipeline(
+          input,
+          options,
+          (step, message) => emit('progress', { step, message })
+        );
+
+        if (result.success && result.itinerary) {
+          emit('complete', {
+            result: {
+              itinerary: result.itinerary,
+              warnings: result.warnings,
+              metadata: result.metadata,
+            },
+          });
+
+          // Log generation event (fire-and-forget)
+          const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+          const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+          if (supabaseUrl && supabaseKey) {
+            const supabase = createClient(supabaseUrl, supabaseKey);
+            const logger = new EventLogger(supabase);
+            logger
+              .logGeneration({
+                eventType: 'plan_generated',
+                destination: result.itinerary.destination,
+                durationDays: result.itinerary.days.length,
+                modelName: result.metadata?.modelName,
+                modelTier: result.metadata?.modelTier,
+                processingTimeMs: Date.now() - startTime,
+                metadata: {
+                  pipeline: 'compose_v2',
+                  candidateCount: result.metadata?.candidateCount,
+                  resolvedCount: result.metadata?.resolvedCount,
+                  filteredCount: result.metadata?.filteredCount,
+                  placeResolveEnabled: result.metadata?.placeResolveEnabled,
+                  warningCount: result.warnings.length,
+                },
+              })
+              .catch(() => {});
+          }
+        } else {
+          emit('error', {
+            message: result.message || 'compose_pipeline_failed',
+            limitExceeded: result.limitExceeded,
+            userType: result.userType,
+            resetAt: result.resetAt,
+            remaining: result.remaining,
+          });
+        }
+      } catch (err) {
+        console.error('[SSE /api/itinerary/compose] Uncaught error:', err);
+        emit('error', {
+          message: err instanceof Error ? err.message : 'unexpected_error',
+        });
+      }
+
+      controller.close();
+    },
+  });
+
+  return new Response(stream, {
+    headers: {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache, no-transform',
+      Connection: 'keep-alive',
+    },
+  });
+}

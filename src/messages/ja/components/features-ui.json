@@ -1567,6 +1567,14 @@
             }
           }
         },
+        "composeLoadingAnimation": {
+          "waiting": "準備中...",
+          "stepsProgress": "{completed}/{total} steps",
+          "footer": "AIが最適な旅程を組み立てています..."
+        },
+        "composeLoadingTips": {
+          "label": "旅の豆知識"
+        },
         "outlineReview": {
           "title": "旅の概要ができました",
           "leadLine1": "詳細プランを作成する前に、宿泊地や大まかな流れを調整できます。",

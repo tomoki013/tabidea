@@ -1,0 +1,111 @@
+/**
+ * Compose Pipeline Zod Schemas
+ * LLM 構造化出力の検証スキーマ
+ */
+
+import { z } from 'zod';
+
+// ============================================
+// Step 2: Semantic Planner Output Schema
+// ============================================
+
+export const candidateRoleSchema = z.enum([
+  'must_visit',
+  'recommended',
+  'meal',
+  'accommodation',
+  'filler',
+]);
+
+export const timeSlotHintSchema = z.enum([
+  'morning',
+  'midday',
+  'afternoon',
+  'evening',
+  'night',
+  'flexible',
+]);
+
+export const semanticCandidateSchema = z.object({
+  name: z.string().describe('スポット/アクティビティ名'),
+  role: candidateRoleSchema.describe('候補の役割'),
+  priority: z.number().min(1).max(10).describe('優先度 (1=低, 10=高)'),
+  dayHint: z.number().min(1).describe('推奨する日 (1-based)'),
+  timeSlotHint: timeSlotHintSchema.describe('推奨する時間帯'),
+  stayDurationMinutes: z
+    .number()
+    .min(15)
+    .max(480)
+    .describe('滞在時間（分）'),
+  searchQuery: z
+    .string()
+    .describe('Google Places API で検索するためのスポット正式名称'),
+  categoryHint: z
+    .string()
+    .optional()
+    .describe('カテゴリヒント (例: "temple", "cafe")'),
+  activityLabel: z
+    .string()
+    .optional()
+    .describe('装飾的なアクティビティ名 (例: "金閣寺で抹茶体験")'),
+  locationEn: z
+    .string()
+    .optional()
+    .describe('英語での場所名 (例: "Kinkaku-ji Temple")'),
+});
+
+export const dayStructureSchema = z.object({
+  day: z.number().min(1).describe('日番号 (1-based)'),
+  title: z.string().describe('日のタイトル'),
+  mainArea: z.string().describe('メインエリア'),
+  overnightLocation: z.string().describe('宿泊地'),
+  summary: z.string().describe('概要'),
+});
+
+export const semanticPlanSchema = z.object({
+  destination: z.string().describe('目的地'),
+  description: z.string().describe('プラン全体の説明'),
+  candidates: z
+    .array(semanticCandidateSchema)
+    .min(1)
+    .describe('候補スポット一覧'),
+  dayStructure: z
+    .array(dayStructureSchema)
+    .min(1)
+    .describe('日ごとの構造'),
+  themes: z
+    .array(z.string())
+    .optional()
+    .describe('AIが選んだテーマタグ'),
+});
+
+export type SemanticPlanOutput = z.infer<typeof semanticPlanSchema>;
+
+// ============================================
+// Step 7: Narrative Renderer Output Schema
+// ============================================
+
+export const narrativeActivitySchema = z.object({
+  /** TimelineNode の arrivalTime に一致するキー */
+  arrivalTime: z.string().describe('到着時刻 (HH:mm)'),
+  /** AI 生成の説明文 */
+  description: z.string().describe('アクティビティの説明文 (1-2文)'),
+  /** アクティビティ名 */
+  activityName: z.string().describe('表示用アクティビティ名'),
+});
+
+export const narrativeDaySchema = z.object({
+  day: z.number().min(1).describe('日番号'),
+  title: z.string().describe('日のタイトル'),
+  activities: z
+    .array(narrativeActivitySchema)
+    .min(1)
+    .describe('アクティビティ説明'),
+});
+
+export const narrativeOutputSchema = z.object({
+  description: z.string().describe('旅程全体の説明'),
+  days: z.array(narrativeDaySchema).min(1).describe('日ごとの説明'),
+});
+
+export type NarrativeOutput = z.infer<typeof narrativeOutputSchema>;

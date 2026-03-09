@@ -32,6 +32,23 @@
 | outline total | 20000 | 35000 |
 | chunk total | 22000 | 37000 |
 
+### 3b. Compose Pipeline Targets
+
+| Step | Flash target (ms) | Pro target (ms) | Notes |
+| --- | ---: | ---: | --- |
+| usage_check | 500 | 500 | |
+| normalize | 50 | 50 | Pure TS |
+| semantic_plan | 15000 | 30000 | Gemini generateObject |
+| place_resolve | 10000 | 10000 | Places API (flag OFF でスキップ) |
+| feasibility_score | 200 | 200 | Pure TS (flag OFF でスキップ) |
+| route_optimize | 1000 | 1000 | Haversine + greedy + 2-opt |
+| timeline_build | 100 | 100 | Pure TS |
+| narrative_render | 12000 | 20000 | Gemini generateObject |
+| hero_image | 2000 | 2000 | Unsplash |
+| total | 45000 | 65000 | Places OFF 時は ~30000 |
+
+Use `createComposeTimer(modelTier?)` factory.
+
 ## 4. Instrumentation Pattern
 
 ```ts

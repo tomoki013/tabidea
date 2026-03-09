@@ -9,6 +9,10 @@
 
 ## 開発者向けコミット履歴（コミット単位）
 
+### 2026-03-09
+
+- `local` feat(compose-pipeline): 旅程生成エンジン再設計 Phase 1 MVP — 7ステップ Compose Pipeline を新規実装。LLM が「意味」を作り、Google Maps が「現実」を返し、アプリケーションコードが「制約を解く」3層分離アーキテクチャ。① 型定義 `compose-pipeline.ts` + Zod スキーマ `compose-schemas.ts`。② 7 step パイプライン: Request Normalizer (pure TS)、Semantic Planner (Gemini generateObject)、Place Resolver (Places API, feature flag)、Feasibility Scorer (5軸100点)、Route Optimizer (greedy + 2-opt)、Timeline Builder (時刻確定)、Narrative Renderer (Gemini prose)。③ `ComposedItinerary → Itinerary` 後方互換アダプター。④ ハバーサイン距離推定 `distance-estimator.ts`。⑤ SSE API `/api/itinerary/compose`。⑥ `useComposeGeneration` フック + `ComposeLoadingAnimation` + `ComposeLoadingTips` UI (dark mode対応)。⑦ `TravelPlannerSimplified` に feature flag 分岐 (`NEXT_PUBLIC_ENABLE_COMPOSE_PIPELINE`)。⑧ `performance-timer.ts` に `COMPOSE_TARGETS` + `createComposeTimer()`。⑨ `prompt-builder.ts` に `semanticPlan`/`narrativeRender` generationType 追加。⑩ `places.ts` に `searchPlaceMulti()` 追加。⑪ DB migration `20260309000000_compose_pipeline_metadata.sql`。⑫ metrics collector + types にv2フィールド追加。⑬ ja/en i18n キー追加。⑭ 130 unit/integration tests (全 pass)。
+
 ### 2026-03-08
 
 - `local` feat(shiori,planner,ui,db): 旅のしおり UX 改善 — メモ・予算・スクロールヘッダー。① journalタブの各アイテムカードに「旅メモ（note）」「実際の出費（actual_cost / actual_currency）」入力欄を追加し `updatePlanItemDetails` アクションで保存。② `plan_publications` に `overall_budget` / `overall_budget_currency` カラムを追加し、`get_public_shiori` RPC を更新（`user_id`・`overall_budget`・`overall_budget_currency` を返却）。しおり個別ページに `ShioriBudgetSummary` コンポーネント（全体予算目標・推定合計・実績合計の3列カード、オーナーはインライン編集可）を追加。③ `Header.tsx` に shiori ページ検出を追加し、ヒーロー画像の2/3スクロール後にフェードインするスクロール連動ヘッダーを実装。`ShioriScrollWrapper` を新規作成。新規 server action `shiori-edit.ts`。ja/en i18n キーを全件追加。

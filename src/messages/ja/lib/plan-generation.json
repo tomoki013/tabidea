@@ -32,6 +32,26 @@
           "detailsFailed": "詳細プランの生成に失敗しました。"
         }
       },
+      "compose": {
+        "steps": {
+          "usage_check": "利用状況を確認中...",
+          "normalize": "旅の条件を整理中...",
+          "semantic_plan": "候補スポットを選定中...",
+          "place_resolve": "実在スポットに照合中...",
+          "feasibility_score": "営業時間・実現性を確認中...",
+          "route_optimize": "回りやすい順に調整中...",
+          "timeline_build": "タイムラインを作成中...",
+          "narrative_render": "旅程を仕上げ中...",
+          "hero_image": "ぴったりの写真を探し中..."
+        },
+        "errors": {
+          "requestFailed": "HTTP {status}: リクエストに失敗しました",
+          "generic": "エラーが発生しました",
+          "streamUnexpectedEnd": "ストリームが予期せず終了しました",
+          "cancelled": "生成がキャンセルされました",
+          "saveFailed": "プランの保存に失敗しました。"
+        }
+      },
       "server": {
         "errors": {
           "limitExceeded": "利用制限に達しました",

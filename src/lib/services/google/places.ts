@@ -299,6 +299,54 @@ export class GooglePlacesService {
   }
 
   /**
+   * 複数候補の一括検索 (top-k 対応)
+   * compose pipeline 用: 各候補に対して最大 k 件の結果を返す
+   */
+  async searchPlaceMulti(
+    queries: Array<{ searchQuery: string; near?: string; locationEn?: string }>,
+    options?: { topK?: number; delayMs?: number }
+  ): Promise<Map<string, PlaceSearchResult[]>> {
+    const topK = options?.topK ?? 1;
+    const delayMs = options?.delayMs ?? 100;
+    const results = new Map<string, PlaceSearchResult[]>();
+
+    for (const q of queries) {
+      try {
+        // top-k 検索: maxResultCount を変えて検索
+        const searchResults: PlaceSearchResult[] = [];
+        const result = await this.searchPlace({
+          query: q.searchQuery,
+          near: q.near,
+          searchQuery: q.searchQuery,
+          locationEn: q.locationEn,
+        });
+
+        if (result.found) {
+          searchResults.push(result);
+        }
+
+        // topK > 1 の場合、追加検索 (Phase 1 では k=1 がデフォルト)
+        // 将来の拡張用に interface を用意
+
+        results.set(q.searchQuery, searchResults);
+      } catch {
+        results.set(q.searchQuery, [{
+          found: false,
+          searchTime: 0,
+          error: 'Search failed',
+        }]);
+      }
+
+      // レート制限対策
+      if (delayMs > 0) {
+        await this.delay(delayMs);
+      }
+    }
+
+    return results;
+  }
+
+  /**
    * 検索結果を検証結果に変換
    */
   async validateSpot(

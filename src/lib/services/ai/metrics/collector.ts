@@ -125,6 +125,23 @@ export class MetricsCollector {
   }
 
   /**
+   * Compose Pipeline v2 メトリクスを記録
+   */
+  recordComposePipelineMetrics(metadata: {
+    pipelineVersion: string;
+    candidateCount: number;
+    resolvedCount: number;
+    filteredCount: number;
+    placeResolveEnabled: boolean;
+  }): void {
+    this.metrics.pipelineVersion = metadata.pipelineVersion;
+    this.metrics.candidateCount = metadata.candidateCount;
+    this.metrics.resolvedCount = metadata.resolvedCount;
+    this.metrics.filteredCount = metadata.filteredCount;
+    this.metrics.placeResolveEnabled = metadata.placeResolveEnabled;
+  }
+
+  /**
    * 現在のメトリクスを取得（テスト用）
    */
   getMetrics(): Partial<GenerationMetrics> {

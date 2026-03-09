@@ -32,6 +32,26 @@
           "detailsFailed": "Failed to generate detailed itinerary."
         }
       },
+      "compose": {
+        "steps": {
+          "usage_check": "Checking usage limits...",
+          "normalize": "Organizing travel preferences...",
+          "semantic_plan": "Selecting candidate spots...",
+          "place_resolve": "Verifying real locations...",
+          "feasibility_score": "Checking hours & feasibility...",
+          "route_optimize": "Optimizing route order...",
+          "timeline_build": "Building timeline...",
+          "narrative_render": "Finishing your itinerary...",
+          "hero_image": "Finding the perfect photo..."
+        },
+        "errors": {
+          "requestFailed": "HTTP {status}: Request failed",
+          "generic": "An error occurred",
+          "streamUnexpectedEnd": "The stream ended unexpectedly",
+          "cancelled": "Generation was cancelled",
+          "saveFailed": "Failed to save plan."
+        }
+      },
       "server": {
         "errors": {
           "limitExceeded": "You have reached your usage limit",

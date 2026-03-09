@@ -5,8 +5,10 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { UserInput, PlanOutline } from "@/types";
 import { usePlanGeneration, useLimitModals } from "@/lib/hooks";
+import { useComposeGeneration } from "@/lib/hooks/useComposeGeneration";
 import SimplifiedInputFlow from "./SimplifiedInputFlow";
 import OutlineLoadingAnimation from "./OutlineLoadingAnimation";
+import ComposeLoadingAnimation from "./ComposeLoadingAnimation";
 import OutlineReview from "./OutlineReview";
 import StreamingResultView from "./StreamingResultView";
 import { LoginPromptModal } from "@/components/ui/LoginPromptModal";
@@ -107,6 +109,12 @@ export default function TravelPlannerSimplified({
   });
 
   // ========================================
+  // Compose Pipeline (feature-flagged)
+  // ========================================
+  const isComposePipeline = process.env.NEXT_PUBLIC_ENABLE_COMPOSE_PIPELINE === 'true';
+  const compose = useComposeGeneration();
+
+  // ========================================
   // Handle Outline Ready -> Redirect
   // ========================================
   useEffect(() => {
@@ -176,6 +184,25 @@ export default function TravelPlannerSimplified({
     clearLimitExceeded,
   ]);
 
+  // Handle Compose Pipeline Limit Exceeded
+  useEffect(() => {
+    if (compose.limitExceeded) {
+      if (compose.limitExceeded.userType === "anonymous") {
+        showLoginPrompt({
+          userInput: input,
+          currentStep: 8,
+          isInModal: isInModal,
+        });
+      } else {
+        showLimitExceeded({
+          resetAt: compose.limitExceeded.resetAt,
+          actionType: "plan_generation",
+        });
+      }
+      compose.clearLimitExceeded();
+    }
+  }, [compose.limitExceeded, input, showLoginPrompt, showLimitExceeded, compose, isInModal]);
+
   // ========================================
   // Restore Saved State
   // ========================================
@@ -221,9 +248,13 @@ export default function TravelPlannerSimplified({
 
   const handleGenerateOutline = useCallback(
     async (inputOverride?: UserInput) => {
-      await generatePlan(inputOverride || input);
+      if (isComposePipeline) {
+        await compose.generate(inputOverride || input);
+      } else {
+        await generatePlan(inputOverride || input);
+      }
     },
-    [generatePlan, input]
+    [generatePlan, compose, input, isComposePipeline]
   );
 
   const handleProceedToDetails = useCallback(
@@ -239,6 +270,32 @@ export default function TravelPlannerSimplified({
     },
     [retryChunk]
   );
+
+  // ========================================
+  // Render: Compose Pipeline Loading
+  // ========================================
+  if (isComposePipeline && compose.isGenerating) {
+    return <ComposeLoadingAnimation steps={compose.steps} currentStep={compose.currentStep} />;
+  }
+
+  if (isComposePipeline && compose.errorMessage) {
+    const displayMessage = compose.errorMessage;
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center p-8">
+        <div className="text-6xl mb-4">😢</div>
+        <p className="text-destructive font-medium text-lg">{displayMessage}</p>
+        <button
+          onClick={() => {
+            compose.reset();
+            handleGenerateOutline();
+          }}
+          className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors font-bold"
+        >
+          {t("actions.tryAgain")}
+        </button>
+      </div>
+    );
+  }
 
   // ========================================
   // Render: Outline Loading
