@@ -26,6 +26,22 @@ import { checkAndRecordUsage } from '@/lib/limits/check';
 import type { OutlineActionState } from '@/lib/services/plan-generation/generate-outline';
 
 // ============================================
+// PipelineStepError
+// ============================================
+
+export class PipelineStepError extends Error {
+  public readonly step: string;
+  public readonly cause?: unknown;
+
+  constructor(step: string, message: string, cause?: unknown) {
+    super(message);
+    this.name = 'PipelineStepError';
+    this.step = step;
+    this.cause = cause;
+  }
+}
+
+// ============================================
 // Types
 // ============================================
 
@@ -43,6 +59,8 @@ export interface ComposeResult {
   itinerary?: Itinerary;
   warnings: string[];
   metadata?: ComposePipelineMetadata;
+  /** Which step failed (if applicable) */
+  failedStep?: string;
   /** Limit exceeded info */
   limitExceeded?: boolean;
   userType?: string;
@@ -296,9 +314,12 @@ export async function runComposePipeline(
     console.error('[compose-pipeline] Pipeline failed:', error);
     timer.log();
 
+    const failedStep = error instanceof PipelineStepError ? error.step : undefined;
+
     return {
       success: false,
       warnings: allWarnings,
+      failedStep,
       message: error instanceof Error ? error.message : 'Pipeline execution failed',
     };
   }

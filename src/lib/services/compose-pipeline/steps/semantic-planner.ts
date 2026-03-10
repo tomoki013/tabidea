@@ -10,8 +10,10 @@ import type {
   SemanticCandidate,
 } from '@/types/compose-pipeline';
 import type { Article } from '@/lib/services/ai/types';
+import type { SemanticPlanOutput } from '@/lib/services/ai/schemas/compose-schemas';
 import { semanticPlanSchema } from '@/lib/services/ai/schemas/compose-schemas';
 import { buildContextSandwich } from '@/lib/services/ai/prompt-builder';
+import { PipelineStepError } from '../pipeline-orchestrator';
 
 // ============================================
 // Public API
@@ -42,24 +44,71 @@ export async function runSemanticPlanner(
     generationType: 'semanticPlan',
   });
 
-  // Gemini generateObject() で構造化出力
+  // Gemini generateObject() で構造化出力（リトライ付き）
   const { google } = await import('@ai-sdk/google');
   const { generateObject } = await import('ai');
 
-  const result = await generateObject({
-    model: google(modelName),
-    schema: semanticPlanSchema,
-    system: systemInstruction,
-    prompt: userPrompt,
-    temperature,
-    maxRetries: 1,
-  });
+  let plan: SemanticPlanOutput;
 
-  const plan = result.object;
+  try {
+    const result = await generateObject({
+      model: google(modelName),
+      schema: semanticPlanSchema,
+      system: systemInstruction,
+      prompt: userPrompt,
+      temperature,
+      maxRetries: 2,
+    });
+    plan = result.object;
+  } catch (firstError) {
+    // Fallback: 温度を上げて再試行
+    console.warn(
+      '[semantic-planner] First attempt failed, retrying with higher temperature:',
+      firstError
+    );
+
+    try {
+      const fallbackResult = await generateObject({
+        model: google(modelName),
+        schema: semanticPlanSchema,
+        system: systemInstruction,
+        prompt: userPrompt,
+        temperature: Math.min(temperature + 0.3, 1.0),
+        maxRetries: 2,
+      });
+      plan = fallbackResult.object;
+    } catch (secondError) {
+      throw new PipelineStepError(
+        'semantic_plan',
+        `Semantic planner failed after retry: ${secondError instanceof Error ? secondError.message : 'Unknown error'}`,
+        secondError
+      );
+    }
+  }
+
+  // Post-processing
+  const processed = buildSemanticPlanResult(plan, request);
+  return processed;
+}
+
+// ============================================
+// Post-processing
+// ============================================
+
+function buildSemanticPlanResult(
+  plan: SemanticPlanOutput,
+  request: NormalizedRequest
+): SemanticPlan {
+  // dayHint: 0 → 1 に clamp
+  const clampedCandidates = plan.candidates.map((c) => ({
+    ...c,
+    dayHint: Math.max(c.dayHint, 1),
+    priority: Math.max(c.priority, 1),
+  }));
 
   // mustVisitPlaces を role: 'must_visit' で追加・マージ
   const mergedCandidates = mergeMustVisitPlaces(
-    plan.candidates,
+    clampedCandidates,
     request.mustVisitPlaces,
     request.durationDays
   );

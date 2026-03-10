@@ -29,12 +29,12 @@ export const timeSlotHintSchema = z.enum([
 export const semanticCandidateSchema = z.object({
   name: z.string().describe('スポット/アクティビティ名'),
   role: candidateRoleSchema.describe('候補の役割'),
-  priority: z.number().min(1).max(10).describe('優先度 (1=低, 10=高)'),
-  dayHint: z.number().min(1).describe('推奨する日 (1-based)'),
+  priority: z.number().min(0).max(10).describe('優先度 (0=低, 10=高)'),
+  dayHint: z.number().min(0).describe('推奨する日 (0 or 1-based)'),
   timeSlotHint: timeSlotHintSchema.describe('推奨する時間帯'),
   stayDurationMinutes: z
     .number()
-    .min(15)
+    .min(5)
     .max(480)
     .describe('滞在時間（分）'),
   searchQuery: z

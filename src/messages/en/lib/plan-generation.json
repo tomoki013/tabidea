@@ -49,7 +49,14 @@
           "generic": "An error occurred",
           "streamUnexpectedEnd": "The stream ended unexpectedly",
           "cancelled": "Generation was cancelled",
-          "saveFailed": "Failed to save plan."
+          "saveFailed": "Failed to save plan.",
+          "timeout": "The server took too long to respond. Please try again.",
+          "stepFailed": {
+            "semantic_plan": "AI spot selection failed. Please try again.",
+            "narrative_render": "Failed to create the itinerary narrative. Please try again.",
+            "place_resolve": "Location verification failed. Please try again.",
+            "unknown": "An unexpected error occurred. Please try again."
+          }
         }
       },
       "server": {

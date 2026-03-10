@@ -9,6 +9,10 @@
 
 ## 開発者向けコミット履歴（コミット単位）
 
+### 2026-03-10
+
+- `local` fix(compose-pipeline): チケット二重消費 & 生成失敗バグ修正。① `TravelPlannerSimplified` のリトライボタンで `{ isRetry: true }` を渡すよう修正し、チケット二重消費を防止。② Zod スキーマの `stayDurationMinutes.min(15)` → `.min(5)`、`priority.min(1)` → `.min(0)`、`dayHint.min(1)` → `.min(0)` に緩和し LLM 出力の validation failure を削減。③ `semantic-planner.ts` に温度を上げたフォールバックリトライと `PipelineStepError` 分類を追加。④ `narrative-renderer.ts` の `maxRetries` を 1→2 に増加。⑤ `pipeline-orchestrator.ts` に `PipelineStepError` クラスを追加し `ComposeResult.failedStep` でステップ別エラー分類を実装。⑥ `route.ts` の `maxDuration` を 120→300 に拡大、SSE error イベントに `failedStep` を含む。⑦ `useComposeGeneration.ts` で `failedStep` に基づくユーザーフレンドリーなエラーメッセージを表示。⑧ ja/en i18n に `compose.errors.timeout` / `compose.errors.stepFailed.*` キーを追加。
+
 ### 2026-03-09
 
 - `local` feat(compose-pipeline): 旅程生成エンジン再設計 Phase 1 MVP — 7ステップ Compose Pipeline を新規実装。LLM が「意味」を作り、Google Maps が「現実」を返し、アプリケーションコードが「制約を解く」3層分離アーキテクチャ。① 型定義 `compose-pipeline.ts` + Zod スキーマ `compose-schemas.ts`。② 7 step パイプライン: Request Normalizer (pure TS)、Semantic Planner (Gemini generateObject)、Place Resolver (Places API, feature flag)、Feasibility Scorer (5軸100点)、Route Optimizer (greedy + 2-opt)、Timeline Builder (時刻確定)、Narrative Renderer (Gemini prose)。③ `ComposedItinerary → Itinerary` 後方互換アダプター。④ ハバーサイン距離推定 `distance-estimator.ts`。⑤ SSE API `/api/itinerary/compose`。⑥ `useComposeGeneration` フック + `ComposeLoadingAnimation` + `ComposeLoadingTips` UI (dark mode対応)。⑦ `TravelPlannerSimplified` に feature flag 分岐 (`NEXT_PUBLIC_ENABLE_COMPOSE_PIPELINE`)。⑧ `performance-timer.ts` に `COMPOSE_TARGETS` + `createComposeTimer()`。⑨ `prompt-builder.ts` に `semanticPlan`/`narrativeRender` generationType 追加。⑩ `places.ts` に `searchPlaceMulti()` 追加。⑪ DB migration `20260309000000_compose_pipeline_metadata.sql`。⑫ metrics collector + types にv2フィールド追加。⑬ ja/en i18n キー追加。⑭ 130 unit/integration tests (全 pass)。

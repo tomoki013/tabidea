@@ -4,7 +4,7 @@ import { createClient } from '@supabase/supabase-js';
 import type { UserInput } from '@/types';
 
 export const runtime = 'nodejs';
-export const maxDuration = 120;
+export const maxDuration = 300;
 
 export async function POST(req: Request) {
   const encoder = new TextEncoder();
@@ -78,6 +78,7 @@ export async function POST(req: Request) {
         } else {
           emit('error', {
             message: result.message || 'compose_pipeline_failed',
+            failedStep: result.failedStep,
             limitExceeded: result.limitExceeded,
             userType: result.userType,
             resetAt: result.resetAt,
