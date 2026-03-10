@@ -247,9 +247,10 @@ export default function TravelPlannerSimplified({
   }, []);
 
   const handleGenerateOutline = useCallback(
-    async (inputOverride?: UserInput) => {
+    async (inputOverride?: UserInput, options?: { isRetry?: boolean }) => {
       if (isComposePipeline) {
-        await compose.generate(inputOverride || input);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        await compose.generate(inputOverride || input, options);
       } else {
         await generatePlan(inputOverride || input);
       }
@@ -287,7 +288,7 @@ export default function TravelPlannerSimplified({
         <button
           onClick={() => {
             compose.reset();
-            handleGenerateOutline();
+            handleGenerateOutline(undefined, { isRetry: true });
           }}
           className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors font-bold"
         >

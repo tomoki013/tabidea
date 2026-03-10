@@ -57,7 +57,7 @@ export async function runNarrativeRenderer(
       system: systemInstruction,
       prompt: userPrompt,
       temperature,
-      maxRetries: 1,
+      maxRetries: 2,
     });
 
     const output = result.object;

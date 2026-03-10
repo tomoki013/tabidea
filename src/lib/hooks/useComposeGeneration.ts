@@ -229,9 +229,30 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
                   remaining: event.remaining as number | undefined,
                 });
               } else {
-                setErrorMessage(
-                  (event.message as string) || t("errors.generic")
-                );
+                const failedStep = event.failedStep as string | undefined;
+                let msg: string;
+                if (failedStep) {
+                  const stepKey = `errors.stepFailed.${failedStep}` as const;
+                  // Try step-specific message, fall back to unknown, then generic
+                  try {
+                    msg = t(stepKey);
+                  } catch {
+                    try {
+                      msg = t("errors.stepFailed.unknown");
+                    } catch {
+                      msg = t("errors.generic");
+                    }
+                  }
+                } else if ((event.message as string)?.includes("timeout") || (event.message as string)?.includes("Timeout")) {
+                  try {
+                    msg = t("errors.timeout");
+                  } catch {
+                    msg = t("errors.generic");
+                  }
+                } else {
+                  msg = (event.message as string) || t("errors.generic");
+                }
+                setErrorMessage(msg);
               }
               return;
             }
