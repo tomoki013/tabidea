@@ -265,9 +265,11 @@ describe('buildTimeline', () => {
     });
 
     const [timeline] = buildTimeline([day], request);
+    const lastNode = timeline.nodes[timeline.nodes.length - 1];
 
     expect(timeline.nodes.length).toBeLessThan(4);
-    expect(timeline.nodes.at(-1)?.departureTime <= '14:30').toBe(true);
+    expect(lastNode).toBeDefined();
+    expect(lastNode!.departureTime <= '14:30').toBe(true);
   });
 
   it('travel time: legs add duration between nodes', () => {

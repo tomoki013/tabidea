@@ -21,6 +21,21 @@
         "autoSaveUnexpected": "An error occurred while saving",
         "autoSaveExpired": "Auto-save is unavailable because more than 24 hours have passed.",
         "regenerateInstruction": "Please regenerate the current plan by applying the agreed changes from this conversation.",
+        "metadata": {
+          "detail": {
+            "loginRequiredTitle": "Login required",
+            "notFoundTitle": "Plan not found",
+            "titleWithDestination": "{destination} trip plan",
+            "titleFallback": "Trip plan",
+            "descriptionFallback": "View your saved trip plan."
+          },
+          "shared": {
+            "notFoundTitle": "Shared plan not found",
+            "titleWithDestination": "{destination} shared trip plan",
+            "titleFallback": "Shared trip plan",
+            "descriptionFallback": "View a shared trip plan."
+          }
+        },
         "dateParser": {
           "jaFrom": "から",
           "jaDays": "日間",
