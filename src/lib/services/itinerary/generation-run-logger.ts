@@ -56,13 +56,17 @@ export class GenerationRunLogger {
   async startRun(input: RunLogInput): Promise<void> {
     try {
       this.supabase = createServiceRoleClient();
-      await this.supabase.from('compose_runs').insert({
+      await this.supabase.from('compose_runs').upsert({
         run_id: this.runId,
         user_id: input.userId || null,
         pipeline_version: input.pipelineVersion,
         model_name: input.modelName,
         model_tier: input.modelTier,
-        status: 'started',
+        status: 'running',
+        started_at: new Date().toISOString(),
+        last_heartbeat_at: new Date().toISOString(),
+      }, {
+        onConflict: 'run_id',
       });
     } catch (err) {
       // ログ記録失敗はパイプラインを止めない

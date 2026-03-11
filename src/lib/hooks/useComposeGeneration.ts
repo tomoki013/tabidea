@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import type { UserInput, Itinerary, PartialDayData } from "@/types";
 import type { PipelineStepId, ComposePipelineMetadata } from "@/types/itinerary-pipeline";
+import type { ComposeJobResponse } from "@/types/compose-job";
 import { savePlanViaApi } from "@/lib/plans/save-plan-client";
 import { saveLocalPlan, notifyPlanChange } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
@@ -74,62 +75,23 @@ const COMPOSE_STEP_IDS: PipelineStepId[] = [
   "hero_image",
 ];
 
-const STREAM_TIMEOUT_GRACE_MS = 10_000;
+const JOB_POLL_INTERVAL_MS = 1_500;
+const JOB_TIMEOUT_MS = 5 * 60_000;
 
-// ============================================
-// SSE Parser
-// ============================================
+function sleep(ms: number, signal: AbortSignal): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const timeoutId = window.setTimeout(() => {
+      signal.removeEventListener("abort", onAbort);
+      resolve();
+    }, ms);
 
-function parseSSELine(
-  line: string
-):
-  | ({
-      type: "progress";
-      step: PipelineStepId;
-      message: string;
-      totalDays?: number;
-      destination?: string;
-      description?: string;
-    } & Record<string, unknown>)
-  | ({
-      type: "day_complete";
-      step?: PipelineStepId;
-      day: number;
-      dayData: PartialDayData;
-      isComplete?: boolean;
-      totalDays?: number;
-      destination?: string;
-      description?: string;
-    } & Record<string, unknown>)
-  | ({
-      type: "complete";
-      result: {
-        itinerary: Itinerary;
-        warnings: string[];
-        metadata: ComposePipelineMetadata;
-      };
-    } & Record<string, unknown>)
-  | ({
-      type: "ack";
-      requestId: string;
-      startedAt: string;
-    } & Record<string, unknown>)
-  | ({
-      type: "heartbeat";
-      requestId?: string;
-      step?: PipelineStepId | null;
-      elapsedMs?: number;
-      remainingMs?: number;
-    } & Record<string, unknown>)
-  | ({ type: "done" } & Record<string, unknown>)
-  | ({ type: "error" } & Record<string, unknown>)
-  | null {
-  if (!line.startsWith("data: ")) return null;
-  try {
-    return JSON.parse(line.slice(6));
-  } catch {
-    return null;
-  }
+    const onAbort = () => {
+      window.clearTimeout(timeoutId);
+      reject(new DOMException("Aborted", "AbortError"));
+    };
+
+    signal.addEventListener("abort", onAbort, { once: true });
+  });
 }
 
 // ============================================
@@ -155,7 +117,6 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
   const [previewDestination, setPreviewDestination] = useState("");
   const [previewDescription, setPreviewDescription] = useState("");
   const abortRef = useRef<AbortController | null>(null);
-  const lastHeartbeatAtRef = useRef<number | null>(null);
 
   const initSteps = useCallback((): ComposeStep[] => {
     return COMPOSE_STEP_IDS.map((id) => ({
@@ -180,7 +141,6 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
       setTotalDays(0);
       setPreviewDestination("");
       setPreviewDescription("");
-      lastHeartbeatAtRef.current = null;
 
       // Abort any previous stream
       abortRef.current?.abort();
@@ -188,7 +148,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
       abortRef.current = controller;
 
       try {
-        const response = await fetch("/api/itinerary/compose", {
+        const response = await fetch("/api/itinerary/compose-jobs", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -196,57 +156,61 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
           signal: controller.signal,
         });
 
-        if (!response.ok || !response.body) {
+        if (!response.ok) {
           setErrorMessage(t("errors.requestFailed", { status: response.status }));
           setIsGenerating(false);
           return;
         }
 
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
-        let buffer = "";
-        let receivedTerminalEvent = false;
+        const { jobId, accessToken } = (await response.json()) as {
+          jobId?: string;
+          accessToken?: string;
+        };
 
-        const processLine = async (line: string) => {
-          const trimmed = line.trim();
-          if (!trimmed) return false;
+        if (!jobId || !accessToken) {
+          setErrorMessage(t("errors.generic"));
+          setIsGenerating(false);
+          return;
+        }
 
-          const event = parseSSELine(trimmed);
-          if (!event) return false;
+        const startedAt = Date.now();
 
-          if (event.type === "ack") {
-            return false;
+        while (true) {
+          if (Date.now() - startedAt > JOB_TIMEOUT_MS) {
+            setErrorMessage(t("errors.timeout"));
+            setIsGenerating(false);
+            return;
           }
 
-          if (event.type === "heartbeat") {
-            lastHeartbeatAtRef.current = Date.now();
-
-            if (event.step) {
-              setCurrentStep(event.step);
+          const pollResponse = await fetch(
+            `/api/itinerary/compose-jobs/${jobId}?accessToken=${encodeURIComponent(accessToken)}`,
+            {
+              method: "GET",
+              credentials: "include",
+              cache: "no-store",
+              signal: controller.signal,
             }
+          );
 
-            return false;
+          if (!pollResponse.ok) {
+            setErrorMessage(t("errors.requestFailed", { status: pollResponse.status }));
+            setIsGenerating(false);
+            return;
           }
 
-          if (event.type === "progress") {
-            const stepId = event.step;
-            const message = event.message;
+          const job = (await pollResponse.json()) as ComposeJobResponse;
+
+          if (job.currentStep) {
+            const stepId = job.currentStep;
             setCurrentStep(stepId);
-
-            if (event.totalDays) {
-              setTotalDays(event.totalDays);
-            }
-            if (event.destination) {
-              setPreviewDestination(event.destination);
-            }
-            if (event.description) {
-              setPreviewDescription(event.description);
-            }
-
             setSteps((prev) =>
               prev.map((s) => {
                 if (s.id === stepId) {
-                  return { ...s, status: "active", message: message || s.message };
+                  return {
+                    ...s,
+                    status: job.status === "completed" ? "completed" : "active",
+                    message: job.currentMessage || s.message,
+                  };
                 }
                 const currentIdx = COMPOSE_STEP_IDS.indexOf(stepId);
                 const thisIdx = COMPOSE_STEP_IDS.indexOf(s.id);
@@ -256,162 +220,61 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
                 return s;
               })
             );
-            return false;
           }
 
-          if (event.type === "day_complete") {
-            const dayNum = event.day;
-            const dayData = event.dayData;
-            if (dayNum && dayData) {
-              setPartialDays((prev) => {
-                const next = new Map(prev);
-                next.set(dayNum, dayData);
-                return next;
-              });
+          if (job.progress.totalDays) {
+            setTotalDays(job.progress.totalDays);
+          }
+          if (job.progress.destination) {
+            setPreviewDestination(job.progress.destination);
+          }
+          if (job.progress.description) {
+            setPreviewDescription(job.progress.description);
+          }
+          if (job.progress.partialDays) {
+            const next = new Map<number, PartialDayData>();
+            for (const [day, dayData] of Object.entries(job.progress.partialDays)) {
+              next.set(Number(day), dayData);
             }
-            if (event.totalDays) {
-              setTotalDays(event.totalDays);
-            }
-            if (event.destination) {
-              setPreviewDestination(event.destination);
-            }
-            if (event.description) {
-              setPreviewDescription(event.description);
-            }
-            return false;
+            setPartialDays(next);
           }
 
-          if (event.type === "complete") {
-            receivedTerminalEvent = true;
-
-            // Mark all steps completed
-            setSteps((prev) =>
-              prev.map((s) => ({ ...s, status: "completed" }))
-            );
+          if (job.status === "completed" && job.result) {
+            setSteps((prev) => prev.map((s) => ({ ...s, status: "completed" })));
             setCurrentStep(null);
             setIsGenerating(false);
             setIsCompleted(true);
             setPartialDays(new Map());
+            setWarnings(job.result.warnings || []);
 
-            const result = event.result as {
-              itinerary: Itinerary;
-              warnings: string[];
-              metadata: ComposePipelineMetadata;
-            };
-
-            setWarnings(result.warnings || []);
-
-            try {
-              if (isAuthenticated) {
-                const saveResult = await savePlanViaApi(input, result.itinerary, false);
-                if (saveResult.success && saveResult.plan) {
-                  await refreshPlans();
-                  router.push(`/plan/id/${saveResult.plan.id}`);
-                } else {
-                  const localPlan = await saveLocalPlan(input, result.itinerary);
-                  notifyPlanChange();
-                  router.push(`/plan/local/${localPlan.id}`);
-                }
-              } else {
-                const localPlan = await saveLocalPlan(input, result.itinerary);
-                notifyPlanChange();
-                router.push(`/plan/local/${localPlan.id}`);
-              }
-            } catch (saveErr) {
-              console.error("[compose] Save failed:", saveErr);
-              setErrorMessage(t("errors.saveFailed"));
-            }
-            return true;
+            await handleCompletedResult(input, job.result, {
+              isAuthenticated,
+              refreshPlans,
+              router,
+              setErrorMessage,
+              t,
+            });
+            return;
           }
 
-          if (event.type === "error") {
-            receivedTerminalEvent = true;
+          if (job.status === "failed") {
             setCurrentStep(null);
             setIsGenerating(false);
             setPartialDays(new Map());
 
-            if (event.limitExceeded) {
+            if (job.error?.limitExceeded) {
               setLimitExceeded({
-                userType: (event.userType as UserType) || "anonymous",
-                resetAt: event.resetAt
-                  ? new Date(event.resetAt as string)
-                  : null,
-                remaining: event.remaining as number | undefined,
+                userType: (job.error.userType as UserType) || "anonymous",
+                resetAt: job.error.resetAt ? new Date(job.error.resetAt) : null,
+                remaining: job.error.remaining,
               });
             } else {
-              const failedStep = event.failedStep as string | undefined;
-              let msg: string;
-              if (failedStep) {
-                const stepKey = `errors.stepFailed.${failedStep}` as const;
-                try {
-                  msg = t(stepKey);
-                } catch {
-                  try {
-                    msg = t("errors.stepFailed.unknown");
-                  } catch {
-                    msg = t("errors.generic");
-                  }
-                }
-              } else if ((event.message as string)?.includes("timeout") || (event.message as string)?.includes("Timeout")) {
-                try {
-                  msg = t("errors.timeout");
-                } catch {
-                  msg = t("errors.generic");
-                }
-              } else {
-                msg = (event.message as string) || t("errors.generic");
-              }
-              setErrorMessage(msg);
+              setErrorMessage(resolveJobErrorMessage(job, t));
             }
-            return true;
-          }
-
-          if (event.type === "done") {
-            receivedTerminalEvent = true;
-            return false;
-          }
-
-          return false;
-        };
-
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) {
-            buffer += decoder.decode();
-            break;
-          }
-
-          buffer += decoder.decode(value, { stream: true });
-          const lines = buffer.split("\n");
-          buffer = lines.pop() || "";
-
-          for (const line of lines) {
-            const shouldStop = await processLine(line);
-            if (shouldStop) {
-              return;
-            }
-          }
-        }
-
-        if (buffer.trim()) {
-          const shouldStop = await processLine(buffer);
-          if (shouldStop) {
             return;
           }
-        }
 
-        // Stream ended without complete/error
-        if (!receivedTerminalEvent) {
-          const lastHeartbeatAt = lastHeartbeatAtRef.current;
-          if (
-            lastHeartbeatAt !== null &&
-            Date.now() - lastHeartbeatAt <= STREAM_TIMEOUT_GRACE_MS
-          ) {
-            setErrorMessage(t("errors.timeout"));
-          } else {
-            setErrorMessage(t("errors.streamUnexpectedEnd"));
-          }
-          setIsGenerating(false);
+          await sleep(JOB_POLL_INTERVAL_MS, controller.signal);
         }
       } catch (err) {
         if ((err as Error).name === "AbortError") {
@@ -439,7 +302,6 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
     setTotalDays(0);
     setPreviewDestination("");
     setPreviewDescription("");
-    lastHeartbeatAtRef.current = null;
     abortRef.current?.abort();
   }, []);
 
@@ -463,4 +325,59 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
     reset,
     clearLimitExceeded,
   };
+}
+
+function resolveJobErrorMessage(
+  job: ComposeJobResponse,
+  t: ReturnType<typeof useTranslations>
+): string {
+  const failedStep = job.error?.failedStep;
+  if (failedStep) {
+    const stepKey = `errors.stepFailed.${failedStep}` as const;
+    try {
+      return t(stepKey);
+    } catch {
+      return t("errors.stepFailed.unknown");
+    }
+  }
+
+  if (job.error?.message?.includes("timeout") || job.error?.message?.includes("Timed out")) {
+    return t("errors.timeout");
+  }
+
+  return job.error?.message || t("errors.generic");
+}
+
+async function handleCompletedResult(
+  input: UserInput,
+  result: {
+    itinerary: Itinerary;
+    warnings: string[];
+    metadata?: ComposePipelineMetadata;
+  },
+  deps: {
+    isAuthenticated: boolean;
+    refreshPlans: () => Promise<void>;
+    router: ReturnType<typeof useRouter>;
+    setErrorMessage: (message: string) => void;
+    t: ReturnType<typeof useTranslations>;
+  }
+): Promise<void> {
+  try {
+    if (deps.isAuthenticated) {
+      const saveResult = await savePlanViaApi(input, result.itinerary, false);
+      if (saveResult.success && saveResult.plan) {
+        await deps.refreshPlans();
+        deps.router.push(`/plan/id/${saveResult.plan.id}`);
+        return;
+      }
+    }
+
+    const localPlan = await saveLocalPlan(input, result.itinerary);
+    notifyPlanChange();
+    deps.router.push(`/plan/local/${localPlan.id}`);
+  } catch (saveErr) {
+    console.error("[compose] Save failed:", saveErr);
+    deps.setErrorMessage(deps.t("errors.saveFailed"));
+  }
 }

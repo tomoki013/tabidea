@@ -651,6 +651,7 @@ export async function runComposePipeline(
         semanticId: s.semanticId,
         feasibilityScore: s.feasibilityScore,
       })),
+      finalItinerarySnapshot: itinerary,
     }).catch(() => {});
 
     return {
@@ -668,7 +669,7 @@ export async function runComposePipeline(
     // Log failure (fire-and-forget)
     logger.endRun({
       success: false,
-      totalDurationMs: 0,
+      totalDurationMs: Date.now() - pipelineStartedAt,
       errorMessage: error instanceof Error ? error.message : 'Pipeline execution failed',
       failedStep,
       fallbackUsed: false,
