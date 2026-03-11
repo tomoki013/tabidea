@@ -2,9 +2,13 @@ import { runComposePipeline } from '@/lib/services/itinerary/pipeline-orchestrat
 import { EventLogger } from '@/lib/services/analytics/event-logger';
 import { createClient } from '@supabase/supabase-js';
 import type { UserInput } from '@/types';
+import type { PipelineStepId } from '@/types/itinerary-pipeline';
 
+export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 export const maxDuration = 25;
+
+const HEARTBEAT_INTERVAL_MS = 4_000;
 
 export async function POST(req: Request) {
   const encoder = new TextEncoder();
@@ -25,6 +29,9 @@ export async function POST(req: Request) {
   const stream = new ReadableStream({
     async start(controller) {
       let terminalEventSent = false;
+      let currentStep: PipelineStepId | null = null;
+      const requestId = crypto.randomUUID();
+
       const emit = (type: string, payload: Record<string, unknown>) => {
         try {
           controller.enqueue(
@@ -34,12 +41,27 @@ export async function POST(req: Request) {
           // Stream may already be closed
         }
       };
+      const heartbeatId = setInterval(() => {
+        emit('heartbeat', {
+          requestId,
+          step: currentStep,
+          elapsedMs: Date.now() - startTime,
+          remainingMs: Math.max(0, maxDuration * 1_000 - (Date.now() - startTime)),
+        });
+      }, HEARTBEAT_INTERVAL_MS);
 
       try {
+        emit('ack', {
+          requestId,
+          startedAt: new Date(startTime).toISOString(),
+        });
+
         const result = await runComposePipeline(
           input,
           options,
           (event) => {
+            currentStep = event.step;
+
             if (event.type === 'day_complete') {
               emit('day_complete', {
                 step: event.step,
@@ -119,6 +141,7 @@ export async function POST(req: Request) {
         emit('done', {});
         terminalEventSent = true;
       } finally {
+        clearInterval(heartbeatId);
         if (!terminalEventSent) {
           emit('done', {});
         }

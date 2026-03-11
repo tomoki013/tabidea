@@ -11,6 +11,7 @@ import type {
 } from '@/types/itinerary-pipeline';
 import type { Article } from '@/lib/services/ai/types';
 import type { SemanticPlanOutput } from '@/lib/services/ai/schemas/compose-schemas';
+import type { AIProviderName } from '@/lib/services/ai/providers/types';
 import { semanticPlanSchema } from '@/lib/services/ai/schemas/compose-schemas';
 import { buildContextSandwich } from '@/lib/services/ai/prompt-builder';
 import { PipelineStepError } from '../errors';
@@ -23,8 +24,12 @@ export interface SemanticPlannerInput {
   request: NormalizedRequest;
   context: Article[];
   modelName: string;
+  provider?: AIProviderName;
   temperature: number;
   retryOnFailure?: boolean;
+  targetCandidateCount?: number;
+  fastMode?: boolean;
+  onProgress?: (message: string) => void;
 }
 
 /**
@@ -33,10 +38,22 @@ export interface SemanticPlannerInput {
 export async function runSemanticPlanner(
   input: SemanticPlannerInput
 ): Promise<SemanticPlan> {
-  const { request, context, modelName, temperature, retryOnFailure = true } = input;
+  const {
+    request,
+    context,
+    modelName,
+    provider = 'gemini',
+    temperature,
+    retryOnFailure = true,
+    targetCandidateCount,
+    fastMode = false,
+    onProgress,
+  } = input;
+
+  onProgress?.('候補条件を整理中...');
 
   // ユーザープロンプトを構築
-  const userPrompt = buildSemanticPlannerPrompt(request);
+  const userPrompt = buildSemanticPlannerPrompt(request, targetCandidateCount, fastMode);
 
   // Context Sandwich でシステムプロンプトを構築
   const { systemInstruction } = buildContextSandwich({
@@ -46,19 +63,21 @@ export async function runSemanticPlanner(
   });
 
   // Gemini generateObject() で構造化出力（リトライ付き）
-  const { google } = await import('@ai-sdk/google');
   const { generateObject } = await import('ai');
+  const model = await resolveLanguageModel(provider, modelName);
 
   let plan: SemanticPlanOutput;
+  const primaryRetries = retryOnFailure ? 1 : 0;
 
   try {
+    onProgress?.('AIが候補スポットを選定中...');
     const result = await generateObject({
-      model: google(modelName),
+      model,
       schema: semanticPlanSchema,
       system: systemInstruction,
       prompt: userPrompt,
       temperature,
-      maxRetries: 2,
+      maxRetries: primaryRetries,
     });
     plan = result.object;
   } catch (firstError) {
@@ -78,12 +97,12 @@ export async function runSemanticPlanner(
 
     try {
       const fallbackResult = await generateObject({
-        model: google(modelName),
+        model,
         schema: semanticPlanSchema,
         system: systemInstruction,
         prompt: userPrompt,
         temperature: Math.min(temperature + 0.3, 1.0),
-        maxRetries: 2,
+        maxRetries: 0,
       });
       plan = fallbackResult.object;
     } catch (secondError) {
@@ -96,7 +115,8 @@ export async function runSemanticPlanner(
   }
 
   // Post-processing
-  const processed = buildSemanticPlanResult(plan, request);
+  onProgress?.('候補スポットを整形中...');
+  const processed = buildSemanticPlanResult(plan, request, targetCandidateCount);
   return processed;
 }
 
@@ -106,7 +126,8 @@ export async function runSemanticPlanner(
 
 function buildSemanticPlanResult(
   plan: SemanticPlanOutput,
-  request: NormalizedRequest
+  request: NormalizedRequest,
+  targetCandidateCount?: number
 ): SemanticPlan {
   // dayHint: 0 → 1 に clamp, semanticId を付与
   const clampedCandidates = plan.candidates.map((c) => ({
@@ -122,11 +143,12 @@ function buildSemanticPlanResult(
     request.mustVisitPlaces,
     request.durationDays
   );
+  const limitedCandidates = limitCandidates(mergedCandidates, targetCandidateCount);
 
   return {
     destination: plan.destination,
     description: plan.description,
-    candidates: mergedCandidates,
+    candidates: limitedCandidates,
     dayStructure: plan.dayStructure,
     themes: plan.themes,
     // v3 追加フィールド
@@ -140,17 +162,23 @@ function buildSemanticPlanResult(
 // Prompt construction
 // ============================================
 
-function buildSemanticPlannerPrompt(request: NormalizedRequest): string {
+function buildSemanticPlannerPrompt(
+  request: NormalizedRequest,
+  targetCandidateCount?: number,
+  fastMode: boolean = false
+): string {
   const destinations = request.destinations.join('、');
   const themes = request.themes.join('、');
   const paceMap = { relaxed: 'ゆったり', balanced: 'バランス', active: '充実' };
   const budgetMap = { budget: '格安', standard: '普通', premium: '少し贅沢', luxury: '贅沢' };
 
   const lang = request.outputLanguage === 'en' ? 'English' : '日本語';
+  const suggestedCandidateCount = targetCandidateCount ?? calculateCandidateTarget(request);
+  const perDayTarget = Math.max(3, Math.ceil(suggestedCandidateCount / Math.max(request.durationDays, 1)));
 
-  let prompt = `以下の条件で旅行プランの候補スポットを選定してください。
+  let prompt = `旅行条件に合う候補スポット案を構造化して返してください。
 
-【旅行条件】
+条件:
 - 目的地: ${request.isDestinationDecided ? destinations : `未定 (${request.region})`}
 - 日数: ${request.durationDays}日間
 - 同行者: ${request.companions || '指定なし'}
@@ -158,6 +186,8 @@ function buildSemanticPlannerPrompt(request: NormalizedRequest): string {
 - 予算: ${budgetMap[request.budgetLevel]}
 - ペース: ${paceMap[request.pace]}
 - 出力言語: ${lang}
+- 候補総数の目安: ${suggestedCandidateCount}件以内
+- 1日あたりの目安: ${perDayTarget}〜${perDayTarget + 1}件
 `;
 
   if (request.travelVibe) {
@@ -173,7 +203,7 @@ function buildSemanticPlannerPrompt(request: NormalizedRequest): string {
   }
 
   if (request.fixedSchedule.length > 0) {
-    prompt += `\n【予約済みスケジュール】\n`;
+    prompt += `\n予約済み:\n`;
     for (const fs of request.fixedSchedule) {
       prompt += `- ${fs.type}: ${fs.name}`;
       if (fs.date) prompt += ` (${fs.date})`;
@@ -183,30 +213,18 @@ function buildSemanticPlannerPrompt(request: NormalizedRequest): string {
   }
 
   prompt += `
-【出力ルール】
-1. 各日に半日なら4-6個、1日なら6-8個の候補スポットを提案してください
-2. 各候補には以下を含めてください:
-   - name: スポットの正式名称
-   - role: must_visit(必須) / recommended(推奨) / meal(食事) / accommodation(宿泊) / filler(時間調整)
-   - priority: 1-10の優先度 (10=最高)
-   - dayHint: 推奨する日 (1-based)
-   - timeSlotHint: 推奨する時間帯 (morning/midday/afternoon/evening/night/flexible)
-   - stayDurationMinutes: 推奨滞在時間（分）
-   - searchQuery: Google Places APIで検索するためのスポット正式名称
-   - categoryHint: カテゴリ (temple, cafe, restaurant, park, museum, etc.)
-   - locationEn: 英語での場所名
-   - rationale: この候補を選んだ理由 (1文)
-   - areaHint: エリア名 (例: "浅草エリア", "銀座周辺")
-   - indoorOutdoor: 'indoor', 'outdoor', or 'both'
-   - tags: 候補のタグ (例: ["写真映え", "静か"])
+出力ルール:
+1. candidates には name, role, priority, dayHint, timeSlotHint, stayDurationMinutes, searchQuery を必ず含める
+2. 可能なら categoryHint, locationEn, rationale, areaHint, indoorOutdoor, tags も含める
+3. dayStructure には各日の title, mainArea, overnightLocation, summary を入れる
+4. 必ず訪れたい場所は role='must_visit' にする
+5. 時刻と最終順序は確定しない
+6. tripIntentSummary, orderingPreferences, fallbackHints を短く入れる
+7. 説明文は簡潔にする`;
 
-3. 最終的な時刻と順序は確定させないでください — それは後のステップで決定します
-4. dayStructureで各日のメインエリア・宿泊地・概要を定義してください
-5. 食事スポット（朝食・昼食・夕食）を各日に適切に含めてください
-6. 必ず訪れたい場所は role: 'must_visit' として含めてください
-7. tripIntentSummary: 旅の意図を1-2文でまとめてください
-8. orderingPreferences: 順序に関する好みのリスト (例: ["寺社は午前中", "食事は地元の店"])
-9. fallbackHints: 候補が不足した場合の補完ヒントリスト`;
+  if (fastMode) {
+    prompt += `\n8. 速度優先。エリアの重複を避け、候補は厳選してください`;
+  }
 
   return prompt;
 }
@@ -252,4 +270,42 @@ function mergeMustVisitPlaces(
   }
 
   return result;
+}
+
+function calculateCandidateTarget(request: NormalizedRequest): number {
+  const perDay = request.durationDays >= 4 ? 5 : 6;
+  const minimum = request.mustVisitPlaces.length + request.durationDays * 2;
+  return Math.max(minimum, Math.min(request.durationDays * perDay, 20));
+}
+
+function limitCandidates(
+  candidates: SemanticCandidate[],
+  targetCandidateCount?: number
+): SemanticCandidate[] {
+  if (!targetCandidateCount || candidates.length <= targetCandidateCount) {
+    return candidates;
+  }
+
+  const mustVisit = candidates.filter((candidate) => candidate.role === 'must_visit');
+  const others = candidates
+    .filter((candidate) => candidate.role !== 'must_visit')
+    .sort((left, right) => {
+      if (right.priority !== left.priority) {
+        return right.priority - left.priority;
+      }
+      return left.dayHint - right.dayHint;
+    });
+
+  const remainingSlots = Math.max(targetCandidateCount - mustVisit.length, 0);
+  return [...mustVisit, ...others.slice(0, remainingSlots)];
+}
+
+async function resolveLanguageModel(provider: AIProviderName, modelName: string) {
+  if (provider === 'openai') {
+    const { openai } = await import('@ai-sdk/openai');
+    return openai(modelName);
+  }
+
+  const { google } = await import('@ai-sdk/google');
+  return google(modelName);
 }

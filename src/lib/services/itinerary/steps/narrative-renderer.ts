@@ -14,6 +14,7 @@ import type { PartialDayData } from '@/types';
 import { narrativeOutputSchema } from '@/lib/services/ai/schemas/compose-schemas';
 import { buildContextSandwich } from '@/lib/services/ai/prompt-builder';
 import type { Article } from '@/lib/services/ai/types';
+import type { AIProviderName } from '@/lib/services/ai/providers/types';
 
 // ============================================
 // Public API
@@ -24,6 +25,7 @@ export interface NarrativeRendererInput {
   request: NormalizedRequest;
   context: Article[];
   modelName: string;
+  provider?: AIProviderName;
   temperature: number;
 }
 
@@ -49,15 +51,15 @@ export interface NarrativeStreamResult {
 export async function runNarrativeRenderer(
   input: NarrativeRendererInput
 ): Promise<NarrativeRendererOutput> {
-  const { timelineDays, request, modelName, temperature } = input;
+  const { timelineDays, request, modelName, provider = 'gemini', temperature } = input;
   const { userPrompt, systemInstruction } = buildNarrativeInstructions(input);
 
   try {
-    const { google } = await import('@ai-sdk/google');
     const { generateObject } = await import('ai');
+    const model = await resolveLanguageModel(provider, modelName);
 
     const result = await generateObject({
-      model: google(modelName),
+      model,
       schema: narrativeOutputSchema,
       system: systemInstruction,
       prompt: userPrompt,
@@ -72,7 +74,7 @@ export async function runNarrativeRenderer(
   } catch (error) {
     console.error('[narrative-renderer] LLM generation failed, using fallback:', error);
     // フォールバック: 構造化データのみで構築
-    return buildFallbackNarrative(timelineDays, request);
+    return buildFallbackNarrativeOutput(timelineDays, request);
   }
 }
 
@@ -82,15 +84,15 @@ export async function runNarrativeRenderer(
 export async function streamNarrativeRendererWithResult(
   input: NarrativeRendererInput
 ): Promise<NarrativeStreamResult> {
-  const { timelineDays, request, modelName, temperature } = input;
+  const { timelineDays, request, modelName, provider = 'gemini', temperature } = input;
   const { userPrompt, systemInstruction } = buildNarrativeInstructions(input);
 
   try {
-    const { google } = await import('@ai-sdk/google');
     const { streamObject } = await import('ai');
+    const model = await resolveLanguageModel(provider, modelName);
 
     const result = await streamObject({
-      model: google(modelName),
+      model,
       schema: narrativeOutputSchema,
       system: systemInstruction,
       prompt: userPrompt,
@@ -104,7 +106,7 @@ export async function streamNarrativeRendererWithResult(
       )
       .catch((error) => {
         console.error('[narrative-renderer] Final object assembly failed, using fallback:', error);
-        return buildFallbackNarrative(timelineDays, request);
+        return buildFallbackNarrativeOutput(timelineDays, request);
       });
 
     return {
@@ -117,7 +119,7 @@ export async function streamNarrativeRendererWithResult(
     };
   } catch (error) {
     console.error('[narrative-renderer] streamObject failed, using fallback:', error);
-    const fallback = buildFallbackNarrative(timelineDays, request);
+    const fallback = buildFallbackNarrativeOutput(timelineDays, request);
 
     return {
       dayStream: createFallbackDayStream(fallback),
@@ -366,7 +368,7 @@ function createFallbackDayStream(
 // Fallback (LLM failure)
 // ============================================
 
-function buildFallbackNarrative(
+export function buildFallbackNarrativeOutput(
   timelineDays: TimelineDay[],
   request: NormalizedRequest
 ): NarrativeRendererOutput {
@@ -390,4 +392,14 @@ function buildFallbackNarrative(
   const description = `${destinations}の${request.durationDays}日間の旅行プラン`;
 
   return { description, days };
+}
+
+async function resolveLanguageModel(provider: AIProviderName, modelName: string) {
+  if (provider === 'openai') {
+    const { openai } = await import('@ai-sdk/openai');
+    return openai(modelName);
+  }
+
+  const { google } = await import('@ai-sdk/google');
+  return google(modelName);
 }

@@ -74,6 +74,8 @@ const COMPOSE_STEP_IDS: PipelineStepId[] = [
   "hero_image",
 ];
 
+const STREAM_TIMEOUT_GRACE_MS = 10_000;
+
 // ============================================
 // SSE Parser
 // ============================================
@@ -106,6 +108,18 @@ function parseSSELine(
         warnings: string[];
         metadata: ComposePipelineMetadata;
       };
+    } & Record<string, unknown>)
+  | ({
+      type: "ack";
+      requestId: string;
+      startedAt: string;
+    } & Record<string, unknown>)
+  | ({
+      type: "heartbeat";
+      requestId?: string;
+      step?: PipelineStepId | null;
+      elapsedMs?: number;
+      remainingMs?: number;
     } & Record<string, unknown>)
   | ({ type: "done" } & Record<string, unknown>)
   | ({ type: "error" } & Record<string, unknown>)
@@ -141,6 +155,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
   const [previewDestination, setPreviewDestination] = useState("");
   const [previewDescription, setPreviewDescription] = useState("");
   const abortRef = useRef<AbortController | null>(null);
+  const lastHeartbeatAtRef = useRef<number | null>(null);
 
   const initSteps = useCallback((): ComposeStep[] => {
     return COMPOSE_STEP_IDS.map((id) => ({
@@ -165,6 +180,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
       setTotalDays(0);
       setPreviewDestination("");
       setPreviewDescription("");
+      lastHeartbeatAtRef.current = null;
 
       // Abort any previous stream
       abortRef.current?.abort();
@@ -197,6 +213,20 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
 
           const event = parseSSELine(trimmed);
           if (!event) return false;
+
+          if (event.type === "ack") {
+            return false;
+          }
+
+          if (event.type === "heartbeat") {
+            lastHeartbeatAtRef.current = Date.now();
+
+            if (event.step) {
+              setCurrentStep(event.step);
+            }
+
+            return false;
+          }
 
           if (event.type === "progress") {
             const stepId = event.step;
@@ -372,7 +402,15 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
 
         // Stream ended without complete/error
         if (!receivedTerminalEvent) {
-          setErrorMessage(t("errors.streamUnexpectedEnd"));
+          const lastHeartbeatAt = lastHeartbeatAtRef.current;
+          if (
+            lastHeartbeatAt !== null &&
+            Date.now() - lastHeartbeatAt <= STREAM_TIMEOUT_GRACE_MS
+          ) {
+            setErrorMessage(t("errors.timeout"));
+          } else {
+            setErrorMessage(t("errors.streamUnexpectedEnd"));
+          }
           setIsGenerating(false);
         }
       } catch (err) {
@@ -401,6 +439,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
     setTotalDays(0);
     setPreviewDestination("");
     setPreviewDescription("");
+    lastHeartbeatAtRef.current = null;
     abortRef.current?.abort();
   }, []);
 
