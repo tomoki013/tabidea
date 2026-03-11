@@ -7,7 +7,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import { useAuth } from '@/context/AuthContext';
 import { getLocalPlans, syncLocalPlansToServer } from '@/lib/local-storage/plans';
-import { savePlan, getUserPlansCount } from '@/app/actions/travel-planner';
+import { getUserPlansCount } from '@/app/actions/travel-planner';
+import { savePlanViaApi } from '@/lib/plans/save-plan-client';
 import type { SyncResult } from '@/types';
 
 interface SyncPromptProps {
@@ -38,7 +39,7 @@ export function SyncPrompt({ onSyncComplete }: SyncPromptProps) {
     try {
       const result = await syncLocalPlansToServer(
         async (input, itinerary) => {
-          const saveResult = await savePlan(input, itinerary, false);
+          const saveResult = await savePlanViaApi(input, itinerary, false);
           return {
             success: saveResult.success,
             shareCode: saveResult.shareCode,

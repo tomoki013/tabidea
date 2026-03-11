@@ -7,8 +7,9 @@ import { FaPlus } from 'react-icons/fa6';
 import { useTranslations } from 'next-intl';
 
 import type { UserInput, Itinerary, LocalPlan } from '@/types';
-import { regeneratePlan, savePlan } from '@/app/actions/travel-planner';
+import { regeneratePlan } from '@/app/actions/travel-planner';
 import { getLocalPlans, updateLocalPlan, deleteLocalPlan } from '@/lib/local-storage/plans';
+import { savePlanViaApi } from '@/lib/plans/save-plan-client';
 import { useAuth } from '@/context/AuthContext';
 import ResultView from '@/components/features/planner/ResultView';
 import { PlanModal } from '@/components/common';
@@ -75,7 +76,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
     setStatus('syncing');
 
     try {
-      const saveResult = await savePlan(restoredInput, restoredItinerary, false);
+      const saveResult = await savePlanViaApi(restoredInput, restoredItinerary, false);
 
       if (saveResult.success && saveResult.plan) {
         // ローカルプランを削除
@@ -147,7 +148,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
     setStatus('syncing');
 
     try {
-      const saveResult = await savePlan(input, result, false);
+      const saveResult = await savePlanViaApi(input, result, false);
 
       if (saveResult.success && saveResult.plan) {
         // Delete from local storage after successful sync

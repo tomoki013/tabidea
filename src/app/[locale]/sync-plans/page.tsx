@@ -14,7 +14,7 @@ import {
   syncLocalPlansSelectively,
 } from '@/lib/local-storage/plans';
 import { checkPlanStorageLimit } from '@/app/actions/limits';
-import { savePlan } from '@/app/actions/travel-planner';
+import { savePlanViaApi } from '@/lib/plans/save-plan-client';
 import { createClient } from '@/lib/supabase/client';
 
 function SyncPlansContent() {
@@ -92,7 +92,7 @@ function SyncPlansContent() {
     try {
       const result = await syncLocalPlansSelectively(
         async (input, itinerary) => {
-          const saveResult = await savePlan(input, itinerary, false);
+          const saveResult = await savePlanViaApi(input, itinerary, false);
           return saveResult;
         },
         {
