@@ -866,14 +866,14 @@ Total files: 884
 | src/types/streaming.ts | Type Definitions | TypeScript Module | Active | Shared TypeScript contracts for streaming domain. |
 | src/types/travel-info.ts | Type Definitions | TypeScript Module | Active | Shared TypeScript contracts for travel info domain. |
 | src/types/user-input.ts | Type Definitions | TypeScript Module | Active | Shared TypeScript contracts for user input domain. |
-| supabase/migrations/20250224_add_analytics_tables.sql | Database Migrations | SQL Migration | Active | Database schema migration: 20250224_add_analytics_tables.sql. |
-| supabase/migrations/20250224_add_reflections_table.sql | Database Migrations | SQL Migration | Active | Database schema migration: 20250224_add_reflections_table.sql. |
+| supabase/migrations/20250224090000_add_analytics_tables.sql | Database Migrations | SQL Migration | Active | Database schema migration: 20250224090000_add_analytics_tables.sql. |
+| supabase/migrations/20250224100000_add_reflections_table.sql | Database Migrations | SQL Migration | Active | Database schema migration: 20250224100000_add_reflections_table.sql. |
 | supabase/migrations/20260126_add_chat_and_admin.sql | Database Migrations | SQL Migration | Active | Database schema migration: 20260126_add_chat_and_admin.sql. |
 | supabase/migrations/20260129064236_usage_limits.sql | Database Migrations | SQL Migration | Active | Database schema migration: 20260129064236_usage_limits.sql. |
 | supabase/migrations/20260131_stripe_webhook_improvements.sql | Database Migrations | SQL Migration | Active | Database schema migration: 20260131_stripe_webhook_improvements.sql. |
 | supabase/migrations/20260205_places_cache.sql | Database Migrations | SQL Migration | Active | Database schema migration: 20260205_places_cache.sql. |
-| supabase/migrations/20260206_generation_metrics.sql | Database Migrations | SQL Migration | Active | Database schema migration: 20260206_generation_metrics.sql. |
-| supabase/migrations/20260206_plan_feedback.sql | Database Migrations | SQL Migration | Active | Database schema migration: 20260206_plan_feedback.sql. |
+| supabase/migrations/20260206090000_generation_metrics.sql | Database Migrations | SQL Migration | Active | Database schema migration: 20260206090000_generation_metrics.sql. |
+| supabase/migrations/20260206100000_plan_feedback.sql | Database Migrations | SQL Migration | Active | Database schema migration: 20260206100000_plan_feedback.sql. |
 | supabase/migrations/20260216110000_plan_normalization_phase0_3.sql | Database Migrations | SQL Migration | Active | Database schema migration: 20260216110000_plan_normalization_phase0_3.sql. |
 | supabase/migrations/20260217090000_phase4_phase5_external_and_blog.sql | Database Migrations | SQL Migration | Active | Database schema migration: 20260217090000_phase4_phase5_external_and_blog.sql. |
 | supabase/migrations/20260217103000_sync_public_plans_to_publications.sql | Database Migrations | SQL Migration | Active | Database schema migration: 20260217103000_sync_public_plans_to_publications.sql. |
