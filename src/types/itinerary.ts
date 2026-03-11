@@ -111,6 +111,8 @@ export interface Activity {
   source?: ActivitySource;
   /** Places API検索用のクエリ（スポットの正式名称。例: "金閣寺"） */
   searchQuery?: string;
+  /** v3: パイプライン追跡用メタデータ (nodeId, semanticId) */
+  metadata?: Record<string, unknown>;
 }
 
 /**

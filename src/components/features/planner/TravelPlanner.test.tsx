@@ -10,10 +10,25 @@ vi.mock("next/image", () => ({
 
 // Mock server actions
 vi.mock("@/app/actions/travel-planner", () => ({
-  generatePlanOutline: vi.fn(),
-  generatePlanChunk: vi.fn(),
-  regeneratePlan: vi.fn(),
   savePlan: vi.fn(),
+}));
+
+// Mock useComposeGeneration
+vi.mock("@/lib/hooks/useComposeGeneration", () => ({
+  useComposeGeneration: () => ({
+    steps: [],
+    currentStep: null,
+    isGenerating: false,
+    isCompleted: false,
+    errorMessage: "",
+    limitExceeded: null,
+    warnings: [],
+    partialDays: new Map(),
+    totalDays: 0,
+    generate: vi.fn(),
+    reset: vi.fn(),
+    clearLimitExceeded: vi.fn(),
+  }),
 }));
 
 // Mock next/navigation

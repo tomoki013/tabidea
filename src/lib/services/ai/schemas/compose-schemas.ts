@@ -52,6 +52,23 @@ export const semanticCandidateSchema = z.object({
     .string()
     .optional()
     .describe('英語での場所名 (例: "Kinkaku-ji Temple")'),
+  // ---- v3 追加フィールド (LLM 出力、optional) ----
+  rationale: z
+    .string()
+    .optional()
+    .describe('この候補を選んだ理由 (1文)'),
+  areaHint: z
+    .string()
+    .optional()
+    .describe('候補が位置するエリア名 (例: "浅草エリア", "銀座周辺")'),
+  indoorOutdoor: z
+    .enum(['indoor', 'outdoor', 'both'])
+    .optional()
+    .describe('屋内/屋外'),
+  tags: z
+    .array(z.string())
+    .optional()
+    .describe('候補のタグ (例: ["写真映え", "静か"])'),
 });
 
 export const dayStructureSchema = z.object({
@@ -77,6 +94,19 @@ export const semanticPlanSchema = z.object({
     .array(z.string())
     .optional()
     .describe('AIが選んだテーマタグ'),
+  // ---- v3 追加フィールド ----
+  tripIntentSummary: z
+    .string()
+    .optional()
+    .describe('旅の意図サマリー (例: "歴史ある京都の寺社を巡り、抹茶スイーツを楽しむ3日間")'),
+  orderingPreferences: z
+    .array(z.string())
+    .optional()
+    .describe('順序に関する好み (例: ["寺社は午前中に", "食事は地元の店で"])'),
+  fallbackHints: z
+    .array(z.string())
+    .optional()
+    .describe('候補不足時の補完ヒント (例: ["近くの公園", "駅前のカフェ"])'),
 });
 
 export type SemanticPlanOutput = z.infer<typeof semanticPlanSchema>;
