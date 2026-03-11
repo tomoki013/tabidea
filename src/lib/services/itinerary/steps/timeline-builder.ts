@@ -37,9 +37,7 @@ function buildDayTimeline(
   day: OptimizedDay,
   request: NormalizedRequest
 ): TimelineDay {
-  // v3: NormalizedRequest.startTime / endTime を尊重
-  const dayStartTime = request.startTime || DEFAULT_START_TIME;
-  const dayEndLimit = request.endTime || DEFAULT_END_LIMIT;
+  const { dayStartTime, dayEndLimit } = determineDayBounds(day.day, request);
 
   if (day.nodes.length === 0) {
     return {
@@ -119,7 +117,7 @@ function buildDayTimeline(
   }
 
   // 時間不足: priority 低い候補から削除
-  const trimmedNodes = trimOverflowNodes(nodes, endLimit);
+  const trimmedNodes = trimOverflowNodes(nodes, endLimit, request);
 
   return {
     day: day.day,
@@ -176,6 +174,47 @@ function determineStartTime(
   }
 
   return defaultStart;
+}
+
+function determineDayBounds(
+  dayNum: number,
+  request: NormalizedRequest
+): { dayStartTime: string; dayEndLimit: string } {
+  let dayStartTime = request.startTime || DEFAULT_START_TIME;
+  let endLimitMinutes = timeToMinutes(request.endTime || DEFAULT_END_LIMIT);
+
+  const destinationMatches = (value?: string) =>
+    value
+      ? request.destinations.some((destination) => value.includes(destination))
+      : false;
+
+  for (const transport of request.hardConstraints.fixedTransports) {
+    if (!transport.time || transport.day !== dayNum) continue;
+
+    const transportMinutes = timeToMinutes(transport.time);
+    const isArrival =
+      destinationMatches(transport.to) ||
+      (!transport.from && dayNum === 1);
+    const isDeparture =
+      destinationMatches(transport.from) ||
+      (!transport.to && dayNum === request.durationDays);
+
+    if (isArrival) {
+      const arrivalTime = minutesToTime(transportMinutes + 90);
+      if (timeToMinutes(arrivalTime) > timeToMinutes(dayStartTime)) {
+        dayStartTime = arrivalTime;
+      }
+    }
+
+    if (isDeparture) {
+      endLimitMinutes = Math.min(endLimitMinutes, Math.max(transportMinutes - 90, timeToMinutes(dayStartTime)));
+    }
+  }
+
+  return {
+    dayStartTime,
+    dayEndLimit: minutesToTime(endLimitMinutes),
+  };
 }
 
 // ============================================
@@ -255,7 +294,8 @@ function parseTimeStringToHour(time: string): number {
 
 function trimOverflowNodes(
   nodes: TimelineNode[],
-  endLimitMinutes: number
+  endLimitMinutes: number,
+  request: NormalizedRequest
 ): TimelineNode[] {
   const lastNode = nodes[nodes.length - 1];
   if (!lastNode || timeToMinutes(lastNode.departureTime) <= endLimitMinutes) {
@@ -269,7 +309,7 @@ function trimOverflowNodes(
   const removed = new Set<TimelineNode>();
 
   for (const node of sorted) {
-    if (node.stop.candidate.role === 'must_visit') continue;
+    if (isHardLockedNode(node, request)) continue;
 
     removed.add(node);
 
@@ -285,6 +325,19 @@ function trimOverflowNodes(
 
   const result = nodes.filter((n) => !removed.has(n));
   return recalculateTimes(result, timeToMinutes(result[0]?.arrivalTime || DEFAULT_START_TIME));
+}
+
+function isHardLockedNode(
+  node: TimelineNode,
+  request: NormalizedRequest
+): boolean {
+  if (node.stop.candidate.role === 'must_visit') {
+    return true;
+  }
+
+  return request.fixedSchedule.some((item) =>
+    item.name.includes(node.stop.candidate.name) || node.stop.candidate.name.includes(item.name)
+  );
 }
 
 function recalculateTimes(nodes: TimelineNode[], startMinutes: number): TimelineNode[] {

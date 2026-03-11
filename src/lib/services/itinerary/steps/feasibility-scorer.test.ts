@@ -64,6 +64,27 @@ const makeRequest = (overrides: Partial<NormalizedRequest> = {}): NormalizedRequ
   region: 'domestic',
   outputLanguage: 'ja',
   originalInput: makeUserInput(),
+  hardConstraints: {
+    destinations: ['東京'],
+    dateConstraints: ['3日間'],
+    mustVisitPlaces: [],
+    fixedTransports: [],
+    fixedHotels: [],
+    freeTextDirectives: [],
+    summaryLines: [],
+  },
+  softPreferences: {
+    themes: ['グルメ'],
+    rankedRequests: [],
+    suppressedCount: 0,
+  },
+  compaction: {
+    applied: false,
+    hardConstraintCount: 2,
+    softPreferenceCount: 1,
+    suppressedSoftPreferenceCount: 0,
+    longInputDetected: false,
+  },
   ...overrides,
 });
 

@@ -310,5 +310,50 @@ describe('normalizeRequest', () => {
       const result = normalizeRequest(makeInput({}), 'en');
       expect(result.outputLanguage).toBe('en');
     });
+
+    it('classifies explicit must wording as hard constraints', () => {
+      const result = normalizeRequest(
+        makeInput({
+          freeText: 'このカフェは絶対に行きたい。夜景も見たい。',
+        })
+      );
+
+      expect(result.hardConstraints.freeTextDirectives).toContain('このカフェは絶対に行きたい');
+      expect(result.softPreferences.rankedRequests).toContain('夜景も見たい');
+    });
+
+    it('compacts excess themes and soft requests', () => {
+      const result = normalizeRequest(
+        makeInput({
+          theme: ['グルメ', 'カフェ', '歴史', '自然', '買い物'],
+          freeText:
+            '朝活したい。写真映え重視。穴場も見たい。カフェ多め。散歩したい。ゆっくりしたい。買い物もしたい。',
+          travelVibe: '大人っぽい旅',
+        })
+      );
+
+      expect(result.themes).toHaveLength(4);
+      expect(result.softPreferences.rankedRequests).toHaveLength(6);
+      expect(result.compaction.applied).toBe(true);
+      expect(result.compaction.suppressedSoftPreferenceCount).toBeGreaterThan(0);
+    });
+
+    it('extracts fixed hotel and transport as hard constraints', () => {
+      const result = normalizeRequest(
+        makeInput({
+          dates: '2025-04-10 3日間',
+          fixedSchedule: [
+            { type: 'flight', name: 'NH12', date: '2025-04-10', time: '10:00', to: '東京' },
+            { type: 'hotel', name: 'ホテル椿', date: '2025-04-10', checkoutDate: '2025-04-12' },
+          ],
+        })
+      );
+
+      expect(result.hardConstraints.fixedTransports[0]?.name).toBe('NH12');
+      expect(result.hardConstraints.fixedTransports[0]?.day).toBe(1);
+      expect(result.hardConstraints.fixedHotels[0]?.name).toBe('ホテル椿');
+      expect(result.hardConstraints.fixedHotels[0]?.startDay).toBe(1);
+      expect(result.hardConstraints.fixedHotels[0]?.endDay).toBe(2);
+    });
   });
 });

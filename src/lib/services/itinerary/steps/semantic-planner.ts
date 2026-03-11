@@ -144,12 +144,16 @@ function buildSemanticPlanResult(
     request.durationDays
   );
   const limitedCandidates = limitCandidates(mergedCandidates, targetCandidateCount);
+  const constrainedDayStructure = applyHotelConstraintsToDayStructure(
+    plan.dayStructure,
+    request
+  );
 
   return {
     destination: plan.destination,
     description: plan.description,
     candidates: limitedCandidates,
-    dayStructure: plan.dayStructure,
+    dayStructure: constrainedDayStructure,
     themes: plan.themes,
     // v3 追加フィールド
     tripIntentSummary: plan.tripIntentSummary,
@@ -168,7 +172,7 @@ function buildSemanticPlannerPrompt(
   fastMode: boolean = false
 ): string {
   const destinations = request.destinations.join('、');
-  const themes = request.themes.join('、');
+  const themes = request.softPreferences.themes.join('、');
   const paceMap = { relaxed: 'ゆったり', balanced: 'バランス', active: '充実' };
   const budgetMap = { budget: '格安', standard: '普通', premium: '少し贅沢', luxury: '贅沢' };
 
@@ -190,16 +194,27 @@ function buildSemanticPlannerPrompt(
 - 1日あたりの目安: ${perDayTarget}〜${perDayTarget + 1}件
 `;
 
-  if (request.travelVibe) {
-    prompt += `- 旅の雰囲気: ${request.travelVibe}\n`;
+  if (request.softPreferences.travelVibe) {
+    prompt += `- 旅の雰囲気: ${request.softPreferences.travelVibe}\n`;
   }
 
-  if (request.freeText) {
-    prompt += `- 補足: ${request.freeText}\n`;
+  if (request.hardConstraints.summaryLines.length > 0) {
+    prompt += `\n必ず守る条件:\n`;
+    for (const line of request.hardConstraints.summaryLines) {
+      prompt += `- ${line}\n`;
+    }
   }
 
-  if (request.mustVisitPlaces.length > 0) {
-    prompt += `- 必ず訪れたい場所: ${request.mustVisitPlaces.join('、')}\n`;
+  const softSummaryLines = [
+    ...request.softPreferences.rankedRequests.map((preference) => `希望: ${preference}`),
+    `予算感: ${budgetMap[request.budgetLevel]}`,
+    `旅のペース: ${paceMap[request.pace]}`,
+  ];
+  if (softSummaryLines.length > 0) {
+    prompt += `\n参考にする希望:\n`;
+    for (const line of softSummaryLines) {
+      prompt += `- ${line}\n`;
+    }
   }
 
   if (request.fixedSchedule.length > 0) {
@@ -220,10 +235,12 @@ function buildSemanticPlannerPrompt(
 4. 必ず訪れたい場所は role='must_visit' にする
 5. 時刻と最終順序は確定しない
 6. tripIntentSummary, orderingPreferences, fallbackHints を短く入れる
-7. 説明文は簡潔にする`;
+7. 説明文は簡潔にする
+8. 絶対条件は必ず守る
+9. 参考条件は全てを機械的に盛り込まず、全体のまとまりを優先して良い感じに反映する`;
 
   if (fastMode) {
-    prompt += `\n8. 速度優先。エリアの重複を避け、候補は厳選してください`;
+    prompt += `\n10. 速度優先。エリアの重複を避け、候補は厳選してください`;
   }
 
   return prompt;
@@ -274,7 +291,7 @@ function mergeMustVisitPlaces(
 
 function calculateCandidateTarget(request: NormalizedRequest): number {
   const perDay = request.durationDays >= 4 ? 5 : 6;
-  const minimum = request.mustVisitPlaces.length + request.durationDays * 2;
+  const minimum = request.hardConstraints.mustVisitPlaces.length + request.durationDays * 2;
   return Math.max(minimum, Math.min(request.durationDays * perDay, 20));
 }
 
@@ -298,6 +315,32 @@ function limitCandidates(
 
   const remainingSlots = Math.max(targetCandidateCount - mustVisit.length, 0);
   return [...mustVisit, ...others.slice(0, remainingSlots)];
+}
+
+function applyHotelConstraintsToDayStructure(
+  dayStructure: SemanticPlan['dayStructure'],
+  request: NormalizedRequest
+): SemanticPlan['dayStructure'] {
+  if (request.hardConstraints.fixedHotels.length === 0) {
+    return dayStructure;
+  }
+
+  return dayStructure.map((day) => {
+    const bookedHotel = request.hardConstraints.fixedHotels.find((hotel) => {
+      const startDay = hotel.startDay ?? day.day;
+      const endDay = hotel.endDay ?? startDay;
+      return day.day >= startDay && day.day <= endDay;
+    });
+
+    if (!bookedHotel) {
+      return day;
+    }
+
+    return {
+      ...day,
+      overnightLocation: bookedHotel.name,
+    };
+  });
 }
 
 async function resolveLanguageModel(provider: AIProviderName, modelName: string) {
