@@ -8,12 +8,12 @@ import type {
   NormalizedRequest,
   SemanticPlan,
   SemanticCandidate,
-} from '@/types/compose-pipeline';
+} from '@/types/itinerary-pipeline';
 import type { Article } from '@/lib/services/ai/types';
 import type { SemanticPlanOutput } from '@/lib/services/ai/schemas/compose-schemas';
 import { semanticPlanSchema } from '@/lib/services/ai/schemas/compose-schemas';
 import { buildContextSandwich } from '@/lib/services/ai/prompt-builder';
-import { PipelineStepError } from '../pipeline-orchestrator';
+import { PipelineStepError } from '../errors';
 
 // ============================================
 // Public API
@@ -99,11 +99,12 @@ function buildSemanticPlanResult(
   plan: SemanticPlanOutput,
   request: NormalizedRequest
 ): SemanticPlan {
-  // dayHint: 0 → 1 に clamp
+  // dayHint: 0 → 1 に clamp, semanticId を付与
   const clampedCandidates = plan.candidates.map((c) => ({
     ...c,
     dayHint: Math.max(c.dayHint, 1),
     priority: Math.max(c.priority, 1),
+    semanticId: crypto.randomUUID(),
   }));
 
   // mustVisitPlaces を role: 'must_visit' で追加・マージ
@@ -119,6 +120,10 @@ function buildSemanticPlanResult(
     candidates: mergedCandidates,
     dayStructure: plan.dayStructure,
     themes: plan.themes,
+    // v3 追加フィールド
+    tripIntentSummary: plan.tripIntentSummary,
+    orderingPreferences: plan.orderingPreferences,
+    fallbackHints: plan.fallbackHints,
   };
 }
 
@@ -181,11 +186,18 @@ function buildSemanticPlannerPrompt(request: NormalizedRequest): string {
    - searchQuery: Google Places APIで検索するためのスポット正式名称
    - categoryHint: カテゴリ (temple, cafe, restaurant, park, museum, etc.)
    - locationEn: 英語での場所名
+   - rationale: この候補を選んだ理由 (1文)
+   - areaHint: エリア名 (例: "浅草エリア", "銀座周辺")
+   - indoorOutdoor: 'indoor', 'outdoor', or 'both'
+   - tags: 候補のタグ (例: ["写真映え", "静か"])
 
 3. 最終的な時刻と順序は確定させないでください — それは後のステップで決定します
 4. dayStructureで各日のメインエリア・宿泊地・概要を定義してください
 5. 食事スポット（朝食・昼食・夕食）を各日に適切に含めてください
-6. 必ず訪れたい場所は role: 'must_visit' として含めてください`;
+6. 必ず訪れたい場所は role: 'must_visit' として含めてください
+7. tripIntentSummary: 旅の意図を1-2文でまとめてください
+8. orderingPreferences: 順序に関する好みのリスト (例: ["寺社は午前中", "食事は地元の店"])
+9. fallbackHints: 候補が不足した場合の補完ヒントリスト`;
 
   return prompt;
 }
@@ -225,6 +237,7 @@ function mergeMustVisitPlaces(
         stayDurationMinutes: 60,
         searchQuery: place,
         locationEn: undefined,
+        semanticId: crypto.randomUUID(),
       });
     }
   }

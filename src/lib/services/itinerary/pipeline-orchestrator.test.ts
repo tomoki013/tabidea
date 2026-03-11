@@ -61,6 +61,15 @@ vi.mock('./steps/semantic-planner', () => ({
   }),
 }));
 
+vi.mock('./generation-run-logger', () => {
+  class MockGenerationRunLogger {
+    async startRun() {}
+    async logStep() {}
+    async endRun() {}
+  }
+  return { GenerationRunLogger: MockGenerationRunLogger };
+});
+
 vi.mock('./steps/place-resolver', () => ({
   isPlaceResolveEnabled: vi.fn().mockReturnValue(false),
   resolvePlaces: vi.fn(),
@@ -126,6 +135,91 @@ vi.mock('./steps/narrative-renderer', () => ({
       },
     ],
   }),
+  streamNarrativeRendererWithResult: vi.fn().mockResolvedValue({
+    dayStream: {
+      async *[Symbol.asyncIterator]() {
+        yield {
+          day: 1,
+          dayData: {
+            day: 1,
+            title: '浅草散策',
+            activities: [
+              {
+                time: '08:00',
+                activity: '浅草寺',
+                description: '浅草寺を訪問',
+              },
+              {
+                time: '09:15',
+                activity: 'カフェ',
+                description: 'カフェでランチ',
+              },
+            ],
+          },
+          isComplete: true,
+        };
+      },
+    },
+    finalOutput: Promise.resolve({
+      description: '東京の1日旅行',
+      days: [
+        {
+          day: 1,
+          title: '浅草散策',
+          activities: [
+            {
+              node: {
+                stop: {
+                  candidate: {
+                    name: '浅草寺',
+                    role: 'must_visit',
+                    priority: 10,
+                    dayHint: 1,
+                    timeSlotHint: 'morning',
+                    stayDurationMinutes: 60,
+                    searchQuery: '浅草寺',
+                  },
+                  feasibilityScore: 50,
+                  warnings: [],
+                },
+                arrivalTime: '08:00',
+                departureTime: '09:00',
+                stayMinutes: 60,
+                warnings: [],
+              },
+              description: '浅草寺を訪問',
+              activityName: '浅草寺',
+            },
+            {
+              node: {
+                stop: {
+                  candidate: {
+                    name: 'カフェ',
+                    role: 'meal',
+                    priority: 5,
+                    dayHint: 1,
+                    timeSlotHint: 'midday',
+                    stayDurationMinutes: 45,
+                    searchQuery: 'カフェ 浅草',
+                  },
+                  feasibilityScore: 50,
+                  warnings: [],
+                },
+                arrivalTime: '09:15',
+                departureTime: '10:00',
+                stayMinutes: 45,
+                warnings: [],
+              },
+              description: 'カフェでランチ',
+              activityName: 'カフェ',
+            },
+          ],
+          legs: [],
+          overnightLocation: '浅草',
+        },
+      ],
+    }),
+  }),
 }));
 
 vi.mock('@/lib/unsplash', () => ({
@@ -160,8 +254,8 @@ describe('pipeline-orchestrator', () => {
     const input = makeTestInput();
     const progressSteps: string[] = [];
 
-    const result = await runComposePipeline(input, undefined, (step) => {
-      progressSteps.push(step);
+    const result = await runComposePipeline(input, undefined, (event) => {
+      progressSteps.push(event.step);
     });
 
     expect(result.success).toBe(true);
@@ -170,7 +264,7 @@ describe('pipeline-orchestrator', () => {
     expect(result.itinerary!.days.length).toBeGreaterThan(0);
     expect(result.warnings).toBeDefined();
     expect(result.metadata).toBeDefined();
-    expect(result.metadata!.pipelineVersion).toBe('v2');
+    expect(result.metadata!.pipelineVersion).toBe('v3');
     expect(result.metadata!.placeResolveEnabled).toBe(false);
 
     // All progress steps should have been emitted
@@ -229,8 +323,8 @@ describe('pipeline-orchestrator', () => {
   it('should emit progress callbacks in order', async () => {
     const progressOrder: string[] = [];
 
-    await runComposePipeline(makeTestInput(), undefined, (step) => {
-      progressOrder.push(step);
+    await runComposePipeline(makeTestInput(), undefined, (event) => {
+      progressOrder.push(event.step);
     });
 
     // Verify key steps are in the right order

@@ -16,7 +16,7 @@ import { config } from "dotenv";
 config({ path: path.resolve(process.cwd(), ".env.local") });
 
 import { samplePlans } from "../lib/sample-plans";
-import { generateSampleItinerary } from "@/lib/services/plan-generation/generate-sample-itinerary";
+import { runComposePipeline } from "@/lib/services/itinerary/pipeline-orchestrator";
 import type { Itinerary, UserInput } from "@/types";
 import type { LanguageCode } from "@/lib/i18n/locales";
 
@@ -93,10 +93,17 @@ async function generateForSample(
   };
 
   console.log(`\n=== Generating [${locale}] itinerary for: ${sample.title} (${sample.id}) ===`);
-  const result = await generateSampleItinerary(input, locale);
+  const result = await runComposePipeline(input, undefined, (event) => {
+    if (event.type === "progress") {
+      console.log(`  [${event.step}] ${event.message}`);
+      return;
+    }
+
+    console.log(`  [${event.step}] day ${event.day} ready`);
+  });
 
   if (!result.success || !result.itinerary) {
-    console.error(`[sample-generation] Failed: ${sample.id} (${locale}) -> ${result.error}`);
+    console.error(`[sample-generation] Failed: ${sample.id} (${locale}) -> ${result.message}`);
     return null;
   }
 

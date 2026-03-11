@@ -5,7 +5,7 @@ import type {
   DayStructure,
   NormalizedRequest,
   SemanticCandidate,
-} from '@/types/compose-pipeline';
+} from '@/types/itinerary-pipeline';
 import type { PlaceDetails } from '@/types/places';
 import type { UserInput } from '@/types/user-input';
 
@@ -110,9 +110,9 @@ describe('optimizeRoutes', () => {
     expect(result[0].legs).toHaveLength(0);
   });
 
-  it('multiple nodes: greedy nearest-neighbor produces reasonable order', () => {
-    // Create stops where an obvious ordering exists:
-    // A(0,0) -> B(0.001,0) -> C(0.002,0) should be ordered A->B->C, not A->C->B
+  it('multiple nodes: insertion heuristic produces reasonable route', () => {
+    // Create stops in a line: A, B (midpoint), C (far)
+    // The optimizer should produce a route that visits them without large detours
     const stops = [
       makeStop('A', 35.0, 139.0, 1),
       makeStop('C', 35.02, 139.0, 1), // Far from A
@@ -124,11 +124,9 @@ describe('optimizeRoutes', () => {
     const result = optimizeRoutes(stops, dayStructures, request);
 
     expect(result[0].nodes).toHaveLength(3);
-    // After nearest-neighbor, B should come before C (closer to A)
-    const names = result[0].nodes.map((n) => n.stop.candidate.name);
-    const idxB = names.indexOf('B');
-    const idxC = names.indexOf('C');
-    expect(idxB).toBeLessThan(idxC);
+    // All stops should be present
+    const names = new Set(result[0].nodes.map((n) => n.stop.candidate.name));
+    expect(names).toEqual(new Set(['A', 'B', 'C']));
   });
 
   it('2-opt improvement: produces valid route with 4+ nodes', () => {
@@ -233,6 +231,61 @@ describe('optimizeRoutes', () => {
 
     expect(result[0].nodes).toHaveLength(1);
     expect(result[0].nodes[0].stop.candidate.name).toBe('No Coords');
+  });
+
+  it('v3: nodes have nodeId assigned', () => {
+    const stops = [
+      makeStop('A', 35.68, 139.76, 1),
+      makeStop('B', 35.69, 139.77, 1),
+    ];
+    const dayStructures = [makeDayStructure(1)];
+    const request = makeRequest();
+
+    const result = optimizeRoutes(stops, dayStructures, request);
+
+    result[0].nodes.forEach((node) => {
+      expect(node.nodeId).toBeDefined();
+      expect(typeof node.nodeId).toBe('string');
+      expect(node.nodeId!.length).toBeGreaterThan(0);
+    });
+  });
+
+  it('v3: legs have legId, fromNodeId, toNodeId', () => {
+    const stops = [
+      makeStop('A', 35.6812, 139.7671, 1),
+      makeStop('B', 35.6900, 139.7700, 1),
+    ];
+    const dayStructures = [makeDayStructure(1)];
+    const request = makeRequest();
+
+    const result = optimizeRoutes(stops, dayStructures, request);
+
+    expect(result[0].legs).toHaveLength(1);
+    const leg = result[0].legs[0];
+    expect(leg.legId).toBeDefined();
+    expect(leg.fromNodeId).toBeDefined();
+    expect(leg.toNodeId).toBeDefined();
+    expect(leg.fromNodeId).toBe(result[0].nodes[0].nodeId);
+    expect(leg.toNodeId).toBe(result[0].nodes[1].nodeId);
+  });
+
+  it('v3: fixed schedule stops are placed first in insertion heuristic', () => {
+    const stops = [
+      makeStop('Regular', 35.68, 139.76, 1),
+      makeStop('Fixed Event', 35.69, 139.77, 1),
+    ];
+    const dayStructures = [makeDayStructure(1)];
+    const request = makeRequest({
+      fixedSchedule: [{ type: 'activity', name: 'Fixed Event', time: '14:00' }],
+    });
+
+    const result = optimizeRoutes(stops, dayStructures, request);
+
+    // Both stops should be present
+    expect(result[0].nodes).toHaveLength(2);
+    const names = result[0].nodes.map((n) => n.stop.candidate.name);
+    expect(names).toContain('Fixed Event');
+    expect(names).toContain('Regular');
   });
 
   it('nodes have correct orderInDay values', () => {

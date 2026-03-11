@@ -9,7 +9,14 @@ import {
   FaCalendarAlt,
   FaSpinner,
 } from "react-icons/fa";
-import type { GenerationState, UserInput, DayPlan, Itinerary, PartialDayData } from "@/types";
+import type {
+  GenerationState,
+  UserInput,
+  DayPlan,
+  Itinerary,
+  PartialDayData,
+  PlanOutlineDay,
+} from "@/types";
 import type { ReplanTrigger } from "@/types/replan";
 import DayPlaceholder from "./DayPlaceholder";
 import StreamingDayCard from "./StreamingDayCard";
@@ -19,13 +26,160 @@ import { SpotCard, TransitCard as CardTransitCard, AccommodationCard } from "@/c
 import type { CardState } from "@/components/features/plan/cards";
 import { ReplanTriggerPanel } from "@/components/features/replan";
 import { JournalSheet, Tape, HandwrittenText } from "@/components/ui/journal";
+import ComposeLoadingTips from "./ComposeLoadingTips";
+
+// ============================================================================
+// Compose Streaming View (narrative_render phase)
+// ============================================================================
+
+function ComposeStreamingView({
+  partialDays,
+  totalDays,
+  input,
+  previewDestination,
+  previewDescription,
+  t,
+}: {
+  partialDays: Map<number, PartialDayData>;
+  totalDays: number;
+  input: UserInput;
+  previewDestination?: string;
+  previewDescription?: string;
+  t: ReturnType<typeof useTranslations>;
+}) {
+  const displayTotalDays = Math.max(totalDays, partialDays.size);
+  const completedCount = partialDays.size;
+  const visibleDays = Array.from({ length: displayTotalDays }, (_, i) => i + 1);
+  const activeGeneratingDay = visibleDays.find((dayNum) => !partialDays.has(dayNum));
+  const destination =
+    previewDestination ||
+    input.destinations.join(" / ") ||
+    input.region ||
+    t("hero.destinationLabel");
+  const description =
+    previewDescription ||
+    input.freeText ||
+    t("progress.generatingDetails");
+
+  return (
+    <div className="w-full max-w-5xl mx-auto mt-4 pt-4 px-2 sm:px-6 lg:px-8 pb-20">
+      <div className="rounded-[2rem] border border-stone-200 bg-white shadow-sm dark:border-stone-700 dark:bg-stone-900">
+        <div className="grid gap-6 p-5 md:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)] md:p-7">
+          <div className="relative min-h-[220px] overflow-hidden rounded-[1.75rem] border border-stone-200 bg-[radial-gradient(circle_at_top_left,_rgba(245,158,11,0.18),_transparent_38%),linear-gradient(135deg,_rgba(251,191,36,0.18),_rgba(255,255,255,0.9)_55%)] dark:border-stone-700 dark:bg-[radial-gradient(circle_at_top_left,_rgba(245,158,11,0.22),_transparent_40%),linear-gradient(135deg,_rgba(68,64,60,0.85),_rgba(28,25,23,0.98)_55%)]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_rgba(59,130,246,0.12),_transparent_28%)] dark:bg-[radial-gradient(circle_at_bottom_right,_rgba(56,189,248,0.12),_transparent_30%)]" />
+            <div className="relative z-10 flex h-full flex-col justify-between gap-6 p-6">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/70 bg-white/80 px-3 py-1 text-xs uppercase tracking-[0.28em] text-stone-500 shadow-sm backdrop-blur dark:border-stone-600 dark:bg-stone-900/70 dark:text-stone-300">
+                <FaMapMarkerAlt className="text-primary" />
+                {t("hero.destinationLabel")}
+              </div>
+              <div className="space-y-3">
+                <h1 className="text-3xl font-serif tracking-tight text-stone-900 dark:text-stone-100 sm:text-4xl">
+                  {destination}
+                </h1>
+                <p className="max-w-2xl text-sm leading-7 text-stone-600 dark:text-stone-300 sm:text-base">
+                  {description}
+                </p>
+              </div>
+              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-white/85 px-3 py-1.5 text-sm text-stone-600 shadow-sm backdrop-blur dark:border-primary/30 dark:bg-stone-900/80 dark:text-stone-200">
+                <FaSpinner className="animate-spin text-primary" />
+                {t("hero.loadingImage")}
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <div className="rounded-[1.5rem] border border-stone-200 bg-stone-50/80 p-5 shadow-sm dark:border-stone-700 dark:bg-stone-950/60">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-sm font-medium text-stone-700 dark:text-stone-300">
+                  {t("progress.generatingDetails")}
+                </span>
+                <span className="text-sm text-stone-500 dark:text-stone-400 font-mono">
+                  {t("progress.dayCount", {
+                    completed: completedCount,
+                    total: displayTotalDays,
+                  })}
+                </span>
+              </div>
+              <div className="w-full h-2 bg-stone-100 dark:bg-stone-800 rounded-full overflow-hidden">
+                <motion.div
+                  className="h-full bg-primary rounded-full"
+                  initial={{ width: "0%" }}
+                  animate={{ width: `${displayTotalDays > 0 ? (completedCount / displayTotalDays) * 100 : 0}%` }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                />
+              </div>
+            </div>
+
+            <div className="rounded-[1.5rem] border border-stone-200 bg-white p-5 shadow-sm dark:border-stone-700 dark:bg-stone-950/60">
+              {input.dates ? (
+                <div className="flex items-center gap-3 text-sm text-stone-600 dark:text-stone-300">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <FaCalendarAlt />
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-xs uppercase tracking-[0.24em] text-stone-400 dark:text-stone-500">
+                      {t("dayLabel")}
+                    </p>
+                    <p className="font-medium text-stone-800 dark:text-stone-100">
+                      {input.dates}
+                    </p>
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-8 space-y-8">
+        {visibleDays.map((dayNum) => {
+          const dayData = partialDays.get(dayNum);
+          if (dayData) {
+            const outline: PlanOutlineDay = {
+              day: dayNum,
+              title:
+                dayData.title || t("dayLabelWithNumber", { day: dayNum }),
+              highlight_areas: [],
+              overnight_location: "",
+            };
+
+            return (
+              <motion.div
+                key={dayNum}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45 }}
+              >
+                <StreamingDayCard
+                  partial={dayData}
+                  dayNum={dayNum}
+                  outline={outline}
+                />
+              </motion.div>
+            );
+          }
+
+          return (
+            <DayPlaceholder
+              key={dayNum}
+              day={dayNum}
+              status={dayNum === activeGeneratingDay ? "generating" : "pending"}
+            />
+          );
+        })}
+      </div>
+
+      <ComposeLoadingTips className="mt-8" />
+    </div>
+  );
+}
 
 // ============================================================================
 // Types
 // ============================================================================
 
 interface StreamingResultViewProps {
-  generationState: GenerationState;
+  generationState?: GenerationState;
   input: UserInput;
   onRetryChunk?: (dayStart: number, dayEnd: number) => void;
   isTransitioningToDetail?: boolean;
@@ -38,6 +192,20 @@ interface StreamingResultViewProps {
   isReplanning?: boolean;
   /** SSE ストリーミング中の部分的な Day データ */
   partialDays?: Map<number, PartialDayData>;
+  /** Compose pipeline mode — streaming day cards during narrative_render */
+  composeMode?: boolean;
+  /** Compose step progress */
+  composeSteps?: Array<{ id: string; message: string; status: string }>;
+  /** Current compose step */
+  composeCurrentStep?: string | null;
+  /** Partial days from compose streaming */
+  partialComposeDays?: Map<number, PartialDayData>;
+  /** Total days expected from compose */
+  totalDays?: number;
+  /** Destination preview for compose streaming */
+  previewDestination?: string;
+  /** Description preview for compose streaming */
+  previewDescription?: string;
 }
 
 // ============================================================================
@@ -54,10 +222,34 @@ export default function StreamingResultView({
   onReplanTrigger,
   isReplanning = false,
   partialDays,
+  composeMode = false,
+  composeSteps,
+  composeCurrentStep,
+  partialComposeDays,
+  totalDays: composeTotalDays,
+  previewDestination,
+  previewDescription,
 }: StreamingResultViewProps) {
   const t = useTranslations("components.features.planner.streamingResultView");
   // Card expansion state: track which cards are expanded
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
+
+  // Compose mode: render streaming day cards during narrative_render
+  if (composeMode && partialComposeDays) {
+    return (
+      <ComposeStreamingView
+        partialDays={partialComposeDays}
+        totalDays={composeTotalDays || 0}
+        input={input}
+        previewDestination={previewDestination}
+        previewDescription={previewDescription}
+        t={t}
+      />
+    );
+  }
+
+  // Legacy mode requires generationState
+  if (!generationState) return null;
 
   const { outline, heroImage, dayStatuses, completedDays, totalDays, phase } =
     generationState;

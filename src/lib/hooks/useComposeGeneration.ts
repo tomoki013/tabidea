@@ -3,8 +3,8 @@
 import { useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import type { UserInput, Itinerary } from "@/types";
-import type { PipelineStepId, ComposePipelineMetadata } from "@/types/compose-pipeline";
+import type { UserInput, Itinerary, PartialDayData } from "@/types";
+import type { PipelineStepId, ComposePipelineMetadata } from "@/types/itinerary-pipeline";
 import { savePlan } from "@/app/actions/travel-planner";
 import { saveLocalPlan, notifyPlanChange } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
@@ -42,6 +42,14 @@ export interface UseComposeGenerationReturn {
   limitExceeded: ComposeLimitExceeded | null;
   /** Pipeline warnings */
   warnings: string[];
+  /** Partial day data from streaming narrative render */
+  partialDays: Map<number, PartialDayData>;
+  /** Total days expected */
+  totalDays: number;
+  /** Destination preview shown during streaming */
+  previewDestination: string;
+  /** Description preview shown during streaming */
+  previewDescription: string;
   /** Start compose generation */
   generate: (input: UserInput, options?: { isRetry?: boolean }) => Promise<void>;
   /** Reset state */
@@ -72,7 +80,35 @@ const COMPOSE_STEP_IDS: PipelineStepId[] = [
 
 function parseSSELine(
   line: string
-): { type: string; [key: string]: unknown } | null {
+):
+  | ({
+      type: "progress";
+      step: PipelineStepId;
+      message: string;
+      totalDays?: number;
+      destination?: string;
+      description?: string;
+    } & Record<string, unknown>)
+  | ({
+      type: "day_complete";
+      step?: PipelineStepId;
+      day: number;
+      dayData: PartialDayData;
+      isComplete?: boolean;
+      totalDays?: number;
+      destination?: string;
+      description?: string;
+    } & Record<string, unknown>)
+  | ({
+      type: "complete";
+      result: {
+        itinerary: Itinerary;
+        warnings: string[];
+        metadata: ComposePipelineMetadata;
+      };
+    } & Record<string, unknown>)
+  | ({ type: "error" } & Record<string, unknown>)
+  | null {
   if (!line.startsWith("data: ")) return null;
   try {
     return JSON.parse(line.slice(6));
@@ -99,6 +135,10 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
   const [limitExceeded, setLimitExceeded] =
     useState<ComposeLimitExceeded | null>(null);
   const [warnings, setWarnings] = useState<string[]>([]);
+  const [partialDays, setPartialDays] = useState<Map<number, PartialDayData>>(new Map());
+  const [totalDays, setTotalDays] = useState(0);
+  const [previewDestination, setPreviewDestination] = useState("");
+  const [previewDescription, setPreviewDescription] = useState("");
   const abortRef = useRef<AbortController | null>(null);
 
   const initSteps = useCallback((): ComposeStep[] => {
@@ -120,6 +160,10 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
       setErrorMessage("");
       setLimitExceeded(null);
       setWarnings([]);
+      setPartialDays(new Map());
+      setTotalDays(0);
+      setPreviewDestination("");
+      setPreviewDescription("");
 
       // Abort any previous stream
       abortRef.current?.abort();
@@ -161,9 +205,20 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
             if (!event) continue;
 
             if (event.type === "progress") {
-              const stepId = event.step as PipelineStepId;
-              const message = event.message as string;
+              const stepId = event.step;
+              const message = event.message;
               setCurrentStep(stepId);
+
+              if (event.totalDays) {
+                setTotalDays(event.totalDays);
+              }
+              if (event.destination) {
+                setPreviewDestination(event.destination);
+              }
+              if (event.description) {
+                setPreviewDescription(event.description);
+              }
+
               setSteps((prev) =>
                 prev.map((s) => {
                   if (s.id === stepId) {
@@ -177,6 +232,25 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
                   return s;
                 })
               );
+            } else if (event.type === "day_complete") {
+              const dayNum = event.day;
+              const dayData = event.dayData;
+              if (dayNum && dayData) {
+                setPartialDays((prev) => {
+                  const next = new Map(prev);
+                  next.set(dayNum, dayData);
+                  return next;
+                });
+              }
+              if (event.totalDays) {
+                setTotalDays(event.totalDays);
+              }
+              if (event.destination) {
+                setPreviewDestination(event.destination);
+              }
+              if (event.description) {
+                setPreviewDescription(event.description);
+              }
             } else if (event.type === "complete") {
               // Mark all steps completed
               setSteps((prev) =>
@@ -185,6 +259,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
               setCurrentStep(null);
               setIsGenerating(false);
               setIsCompleted(true);
+              setPartialDays(new Map());
 
               const result = event.result as {
                 itinerary: Itinerary;
@@ -219,6 +294,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
             } else if (event.type === "error") {
               setCurrentStep(null);
               setIsGenerating(false);
+              setPartialDays(new Map());
 
               if (event.limitExceeded) {
                 setLimitExceeded({
@@ -233,7 +309,6 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
                 let msg: string;
                 if (failedStep) {
                   const stepKey = `errors.stepFailed.${failedStep}` as const;
-                  // Try step-specific message, fall back to unknown, then generic
                   try {
                     msg = t(stepKey);
                   } catch {
@@ -286,6 +361,10 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
     setErrorMessage("");
     setLimitExceeded(null);
     setWarnings([]);
+    setPartialDays(new Map());
+    setTotalDays(0);
+    setPreviewDestination("");
+    setPreviewDescription("");
     abortRef.current?.abort();
   }, []);
 
@@ -301,6 +380,10 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
     errorMessage,
     limitExceeded,
     warnings,
+    partialDays,
+    totalDays,
+    previewDestination,
+    previewDescription,
     generate,
     reset,
     clearLimitExceeded,

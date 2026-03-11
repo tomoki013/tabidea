@@ -3,13 +3,11 @@
 import { useState, useEffect, useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { UserInput, PlanOutline } from "@/types";
-import { usePlanGeneration, useLimitModals } from "@/lib/hooks";
+import { UserInput } from "@/types";
+import { useLimitModals } from "@/lib/hooks";
 import { useComposeGeneration } from "@/lib/hooks/useComposeGeneration";
 import SimplifiedInputFlow from "./SimplifiedInputFlow";
-import OutlineLoadingAnimation from "./OutlineLoadingAnimation";
 import ComposeLoadingAnimation from "./ComposeLoadingAnimation";
-import OutlineReview from "./OutlineReview";
 import StreamingResultView from "./StreamingResultView";
 import { LoginPromptModal } from "@/components/ui/LoginPromptModal";
 import { LimitExceededModal } from "@/components/ui/LimitExceededModal";
@@ -25,8 +23,6 @@ import {
 interface TravelPlannerSimplifiedProps {
   initialInput?: UserInput | null;
   onClose?: () => void;
-  /** If true, show outline review before generating details */
-  showOutlineReview?: boolean;
   isInModal?: boolean;
 }
 
@@ -58,7 +54,6 @@ const DEFAULT_INPUT: UserInput = {
 export default function TravelPlannerSimplified({
   initialInput,
   onClose,
-  showOutlineReview = true, // Force true to handle redirection after outline
   isInModal = false,
 }: TravelPlannerSimplifiedProps) {
   const t = useTranslations("components.features.planner.travelPlannerSimplified");
@@ -88,56 +83,9 @@ export default function TravelPlannerSimplified({
   });
 
   // ========================================
-  // Plan Generation Hook
+  // Compose Pipeline
   // ========================================
-  const {
-    generationState,
-    generatePlan,
-    proceedToDetails,
-    retryChunk,
-    reset,
-    limitExceeded,
-    errorMessage,
-    clearLimitExceeded,
-    isGenerating,
-    isReviewingOutline,
-    progressSteps,
-    progressCurrentStep,
-  } = usePlanGeneration({
-    onComplete: onClose,
-    streamingMode: !showOutlineReview,
-  });
-
-  // ========================================
-  // Compose Pipeline (feature-flagged)
-  // ========================================
-  const isComposePipeline = process.env.NEXT_PUBLIC_ENABLE_COMPOSE_PIPELINE === 'true';
   const compose = useComposeGeneration();
-
-  // ========================================
-  // Handle Outline Ready -> Redirect
-  // ========================================
-  useEffect(() => {
-    if (isReviewingOutline && generationState.outline) {
-      // Save state to localStorage
-      const stateToSave = {
-        outline: generationState.outline,
-        context: generationState.context,
-        input: generationState.updatedInput || input,
-        heroImage: generationState.heroImage,
-        savedAt: new Date().toISOString(),
-      };
-      localStorage.setItem("tabidea_outline_state", JSON.stringify(stateToSave));
-
-      // Close modal before navigating (prevents modal staying open on new page)
-      if (onClose) {
-        onClose();
-      }
-
-      // Redirect to plan page with outline mode
-      router.push("/plan?mode=outline");
-    }
-  }, [isReviewingOutline, generationState, input, router, onClose]);
 
   // ========================================
   // Limit Modals Hook
@@ -158,33 +106,8 @@ export default function TravelPlannerSimplified({
   const [showRestoredNotice, setShowRestoredNotice] = useState(false);
 
   // ========================================
-  // Handle Limit Exceeded
-  // ========================================
-  useEffect(() => {
-    if (limitExceeded) {
-      if (limitExceeded.userType === "anonymous") {
-        showLoginPrompt({
-          userInput: input,
-          currentStep: 8,
-          isInModal: isInModal,
-        });
-      } else {
-        showLimitExceeded({
-          resetAt: limitExceeded.resetAt,
-          actionType: "plan_generation",
-        });
-      }
-      clearLimitExceeded();
-    }
-  }, [
-    limitExceeded,
-    input,
-    showLoginPrompt,
-    showLimitExceeded,
-    clearLimitExceeded,
-  ]);
-
   // Handle Compose Pipeline Limit Exceeded
+  // ========================================
   useEffect(() => {
     if (compose.limitExceeded) {
       if (compose.limitExceeded.userType === "anonymous") {
@@ -209,8 +132,6 @@ export default function TravelPlannerSimplified({
   useEffect(() => {
     if (!shouldRestore) return;
 
-    // Use requestAnimationFrame to defer state updates
-    // This avoids the "setState in effect" lint warning
     const frameId = requestAnimationFrame(() => {
       const result = restorePendingState();
 
@@ -246,40 +167,43 @@ export default function TravelPlannerSimplified({
     setInput((prev) => ({ ...prev, ...update }));
   }, []);
 
-  const handleGenerateOutline = useCallback(
+  const handleGenerate = useCallback(
     async (inputOverride?: UserInput, options?: { isRetry?: boolean }) => {
-      if (isComposePipeline) {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        await compose.generate(inputOverride || input, options);
-      } else {
-        await generatePlan(inputOverride || input);
-      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      await compose.generate(inputOverride || input, options);
     },
-    [generatePlan, compose, input, isComposePipeline]
+    [compose, input]
   );
 
-  const handleProceedToDetails = useCallback(
-    async (confirmedOutline: PlanOutline) => {
-      await proceedToDetails(confirmedOutline);
-    },
-    [proceedToDetails]
-  );
-
-  const handleRetryChunk = useCallback(
-    async (dayStart: number, dayEnd: number) => {
-      await retryChunk(dayStart, dayEnd);
-    },
-    [retryChunk]
-  );
+  // ========================================
+  // Render: Compose Pipeline — Streaming Day Cards
+  // ========================================
+  if (compose.isGenerating && compose.currentStep === 'narrative_render' && compose.partialDays.size > 0) {
+    return (
+      <StreamingResultView
+        composeMode
+        composeSteps={compose.steps}
+        composeCurrentStep={compose.currentStep}
+        partialComposeDays={compose.partialDays}
+        totalDays={compose.totalDays}
+        previewDestination={compose.previewDestination}
+        previewDescription={compose.previewDescription}
+        input={input}
+      />
+    );
+  }
 
   // ========================================
   // Render: Compose Pipeline Loading
   // ========================================
-  if (isComposePipeline && compose.isGenerating) {
+  if (compose.isGenerating) {
     return <ComposeLoadingAnimation steps={compose.steps} currentStep={compose.currentStep} />;
   }
 
-  if (isComposePipeline && compose.errorMessage) {
+  // ========================================
+  // Render: Compose Pipeline Error
+  // ========================================
+  if (compose.errorMessage) {
     const displayMessage = compose.errorMessage;
     return (
       <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center p-8">
@@ -288,75 +212,11 @@ export default function TravelPlannerSimplified({
         <button
           onClick={() => {
             compose.reset();
-            handleGenerateOutline(undefined, { isRetry: true });
+            handleGenerate(undefined, { isRetry: true });
           }}
           className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors font-bold"
         >
           {t("actions.tryAgain")}
-        </button>
-      </div>
-    );
-  }
-
-  // ========================================
-  // Render: Outline Loading
-  // ========================================
-  if (generationState.phase === "generating_outline") {
-    return <OutlineLoadingAnimation steps={progressSteps} currentStep={progressCurrentStep} />;
-  }
-
-  // ========================================
-  // Render: Outline Review (if enabled)
-  // ========================================
-  if (isReviewingOutline && generationState.outline) {
-    // Should redirecting, but show loading state just in case
-    return <OutlineLoadingAnimation steps={progressSteps} currentStep={progressCurrentStep} />;
-  }
-
-  // ========================================
-  // Render: Streaming Result View
-  // ========================================
-  if (
-    generationState.phase === "outline_ready" ||
-    generationState.phase === "generating_details" ||
-    generationState.phase === "completed"
-  ) {
-    return (
-      <StreamingResultView
-        generationState={generationState}
-        input={generationState.updatedInput || input}
-        onRetryChunk={handleRetryChunk}
-      />
-    );
-  }
-
-  // ========================================
-  // Render: Error State
-  // ========================================
-  if (generationState.phase === "error") {
-    const isDeploymentError =
-      errorMessage === "DEPLOYMENT_UPDATE_ERROR" ||
-      generationState.error === "DEPLOYMENT_UPDATE_ERROR";
-    const displayMessage = isDeploymentError
-      ? t("errors.deploymentUpdate")
-      : generationState.error || errorMessage || t("errors.generic");
-
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center p-8">
-        <div className="text-6xl mb-4">😢</div>
-        <p className="text-destructive font-medium text-lg">{displayMessage}</p>
-        <button
-          onClick={() => {
-            if (isDeploymentError) {
-              window.location.reload();
-            } else {
-              reset();
-              handleGenerateOutline();
-            }
-          }}
-          className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors font-bold"
-        >
-          {isDeploymentError ? t("actions.reloadPage") : t("actions.tryAgain")}
         </button>
         <p className="text-stone-600 text-sm mt-2">
           {t("contact.prefix")}
@@ -469,8 +329,8 @@ export default function TravelPlannerSimplified({
       <SimplifiedInputFlow
         input={input}
         onChange={handleChange}
-        onGenerate={handleGenerateOutline}
-        isGenerating={isGenerating}
+        onGenerate={handleGenerate}
+        isGenerating={false}
         isInModal={isInModal}
       />
 

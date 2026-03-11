@@ -1,45 +1,37 @@
 /**
- * Compose Pipeline Orchestrator
+ * Compose Pipeline Orchestrator (v3)
  * 7 step パイプラインの統合実行
+ * + GenerationRunLogger による観測ログ
  */
 
 import type { UserInput } from '@/types/user-input';
 import type { Itinerary, ModelInfo } from '@/types/itinerary';
+import type { PartialDayData } from '@/types';
 import type { Article } from '@/lib/services/ai/types';
 import type {
   PipelineStepId,
-  PipelineProgress,
   ComposedItinerary,
   ComposePipelineMetadata,
-} from '@/types/compose-pipeline';
+} from '@/types/itinerary-pipeline';
 import { normalizeRequest } from './steps/normalize-request';
 import { runSemanticPlanner } from './steps/semantic-planner';
 import { resolvePlaces, isPlaceResolveEnabled } from './steps/place-resolver';
 import { scoreAndSelect, candidatesToStops } from './steps/feasibility-scorer';
 import { optimizeRoutes } from './steps/route-optimizer';
 import { buildTimeline } from './steps/timeline-builder';
-import { runNarrativeRenderer } from './steps/narrative-renderer';
+import {
+  runNarrativeRenderer,
+  streamNarrativeRendererWithResult,
+} from './steps/narrative-renderer';
 import { composedToItinerary } from './adapter';
+import { PipelineStepError } from './errors';
+import { GenerationRunLogger } from './generation-run-logger';
 import { selectModel } from '@/lib/services/ai/model-selector';
 import { createComposeTimer } from '@/lib/utils/performance-timer';
 import { checkAndRecordUsage } from '@/lib/limits/check';
-import type { OutlineActionState } from '@/lib/services/plan-generation/generate-outline';
 
-// ============================================
-// PipelineStepError
-// ============================================
-
-export class PipelineStepError extends Error {
-  public readonly step: string;
-  public readonly cause?: unknown;
-
-  constructor(step: string, message: string, cause?: unknown) {
-    super(message);
-    this.name = 'PipelineStepError';
-    this.step = step;
-    this.cause = cause;
-  }
-}
+// Re-export for backward compatibility
+export { PipelineStepError } from './errors';
 
 // ============================================
 // Types
@@ -49,10 +41,27 @@ export interface ComposeOptions {
   isRetry?: boolean;
 }
 
-export type ProgressCallback = (
-  step: PipelineStepId,
-  message: string
-) => void;
+export type ComposeProgressEvent =
+  | {
+      type: 'progress';
+      step: PipelineStepId;
+      message: string;
+      totalDays?: number;
+      destination?: string;
+      description?: string;
+    }
+  | {
+      type: 'day_complete';
+      step: 'narrative_render';
+      day: number;
+      dayData: PartialDayData;
+      isComplete: boolean;
+      totalDays: number;
+      destination: string;
+      description: string;
+    };
+
+export type ProgressCallback = (event: ComposeProgressEvent) => void;
 
 export interface ComposeResult {
   success: boolean;
@@ -74,7 +83,7 @@ export interface ComposeResult {
 // ============================================
 
 /**
- * Compose Pipeline を実行
+ * Compose Pipeline を実行 (v3)
  */
 export async function runComposePipeline(
   input: UserInput,
@@ -83,16 +92,35 @@ export async function runComposePipeline(
 ): Promise<ComposeResult> {
   const timer = createComposeTimer();
   const allWarnings: string[] = [];
+  const runId = crypto.randomUUID();
+  const logger = new GenerationRunLogger(runId);
 
-  const emit = (step: PipelineStepId, message: string) => {
-    onProgress?.(step, message);
+  const emitProgress = (
+    step: PipelineStepId,
+    message: string,
+    data?: Omit<Extract<ComposeProgressEvent, { type: 'progress' }>, 'type' | 'step' | 'message'>
+  ) => {
+    onProgress?.({
+      type: 'progress',
+      step,
+      message,
+      ...data,
+    });
+  };
+
+  const emitDayComplete = (payload: Omit<Extract<ComposeProgressEvent, { type: 'day_complete' }>, 'type' | 'step'>) => {
+    onProgress?.({
+      type: 'day_complete',
+      step: 'narrative_render',
+      ...payload,
+    });
   };
 
   try {
     // ====================================
     // Step 0: Usage check
     // ====================================
-    emit('usage_check', '利用状況を確認中...');
+    emitProgress('usage_check', '利用状況を確認中...');
     const usageResult = await timer.measure('usage_check', async () => {
       return checkAndRecordUsage('plan_generation', undefined, {
         skipConsume: options?.isRetry,
@@ -114,7 +142,7 @@ export async function runComposePipeline(
     // ====================================
     // Step 1: Normalize Request
     // ====================================
-    emit('normalize', '旅の条件を整理中...');
+    emitProgress('normalize', '旅の条件を整理中...');
     const normalizedRequest = await timer.measure('normalize', async () => {
       return normalizeRequest(input);
     });
@@ -137,11 +165,19 @@ export async function runComposePipeline(
       timer.setTargets(COMPOSE_TARGETS_PRO);
     }
 
+    // Start run logging (fire-and-forget)
+    logger.startRun({
+      pipelineVersion: 'v3',
+      modelName: modelSelection.modelName,
+      modelTier: modelSelection.tier,
+    }).catch(() => {});
+
     // ====================================
     // Step 2: Semantic Planner
     // ====================================
-    emit('semantic_plan', '候補スポットを選定中...');
+    emitProgress('semantic_plan', '候補スポットを選定中...');
     const context: Article[] = []; // RAG context could be added here
+    const semanticPlanStart = Date.now();
     const semanticPlan = await timer.measure('semantic_plan', async () => {
       return runSemanticPlanner({
         request: normalizedRequest,
@@ -152,6 +188,12 @@ export async function runComposePipeline(
     });
 
     const candidateCount = semanticPlan.candidates.length;
+    logger.logStep({
+      stepName: 'semantic_plan',
+      status: 'success',
+      durationMs: Date.now() - semanticPlanStart,
+      metadata: { candidateCount },
+    }).catch(() => {});
 
     // ====================================
     // Step 3: Place Resolver (conditional)
@@ -159,9 +201,13 @@ export async function runComposePipeline(
     const placeResolveEnabled = isPlaceResolveEnabled();
     let stops;
     let resolvedCount = 0;
+    let filteredOutCount = 0;
+    let droppedCount = 0;
+    let fallbackUsed = false;
 
     if (placeResolveEnabled) {
-      emit('place_resolve', '実在スポットに照合中...');
+      emitProgress('place_resolve', '実在スポットに照合中...');
+      const resolveStart = Date.now();
       const resolvedGroups = await timer.measure('place_resolve', async () => {
         return resolvePlaces(
           semanticPlan.candidates,
@@ -170,11 +216,24 @@ export async function runComposePipeline(
       });
 
       resolvedCount = resolvedGroups.filter((g) => g.success).length;
+      const failedResolves = resolvedGroups.filter((g) => !g.success).length;
+
+      logger.logStep({
+        stepName: 'place_resolve',
+        status: failedResolves > 0 ? 'fallback' : 'success',
+        durationMs: Date.now() - resolveStart,
+        metadata: { resolvedCount, failedResolves },
+      }).catch(() => {});
+
+      if (failedResolves > 0) {
+        fallbackUsed = true;
+      }
 
       // ====================================
       // Step 4: Feasibility Scorer
       // ====================================
-      emit('feasibility_score', '営業時間・実現性を確認中...');
+      emitProgress('feasibility_score', '営業時間・実現性を確認中...');
+      const scoreStart = Date.now();
       const { selected, filtered } = await timer.measure(
         'feasibility_score',
         async () => {
@@ -183,6 +242,15 @@ export async function runComposePipeline(
       );
 
       stops = selected;
+      filteredOutCount = filtered.length;
+      droppedCount = candidateCount - selected.length;
+
+      logger.logStep({
+        stepName: 'feasibility_score',
+        status: 'success',
+        durationMs: Date.now() - scoreStart,
+        metadata: { selectedCount: selected.length, filteredCount: filtered.length },
+      }).catch(() => {});
 
       if (filtered.length > 0) {
         allWarnings.push(
@@ -195,15 +263,36 @@ export async function runComposePipeline(
         allWarnings.push(...stop.warnings);
       }
     } else {
-      emit('place_resolve', 'スポット照合をスキップ中...');
-      emit('feasibility_score', '実現性チェックをスキップ中...');
+      emitProgress('place_resolve', 'スポット照合をスキップ中...');
+      emitProgress('feasibility_score', '実現性チェックをスキップ中...');
       stops = candidatesToStops(semanticPlan.candidates);
       resolvedCount = 0;
+
+      logger.logStep({
+        stepName: 'place_resolve',
+        status: 'skipped',
+        durationMs: 0,
+      }).catch(() => {});
+      logger.logStep({
+        stepName: 'feasibility_score',
+        status: 'skipped',
+        durationMs: 0,
+      }).catch(() => {});
     }
 
-    const filteredCount = stops.length;
+    const selectedCount = stops.length;
 
     if (stops.length === 0) {
+      await logger.endRun({
+        success: false,
+        totalDurationMs: Date.now(),
+        candidateCount,
+        resolvedCount,
+        filteredCount: filteredOutCount,
+        errorMessage: 'No viable spots found after filtering',
+        failedStep: 'feasibility_score',
+      });
+
       return {
         success: false,
         warnings: allWarnings,
@@ -214,41 +303,88 @@ export async function runComposePipeline(
     // ====================================
     // Step 5: Route Optimizer
     // ====================================
-    emit('route_optimize', '回りやすい順に調整中...');
+    emitProgress('route_optimize', '回りやすい順に調整中...');
+    const routeStart = Date.now();
     const optimizedDays = await timer.measure('route_optimize', async () => {
       return optimizeRoutes(
         stops,
         semanticPlan.dayStructure,
-        normalizedRequest
+        normalizedRequest,
+        semanticPlan
       );
     });
+
+    logger.logStep({
+      stepName: 'route_optimize',
+      status: 'success',
+      durationMs: Date.now() - routeStart,
+    }).catch(() => {});
 
     // ====================================
     // Step 6: Timeline Builder
     // ====================================
-    emit('timeline_build', 'タイムラインを作成中...');
+    emitProgress('timeline_build', 'タイムラインを作成中...');
+    const timelineStart = Date.now();
     const timelineDays = await timer.measure('timeline_build', async () => {
       return buildTimeline(optimizedDays, normalizedRequest);
     });
 
+    logger.logStep({
+      stepName: 'timeline_build',
+      status: 'success',
+      durationMs: Date.now() - timelineStart,
+    }).catch(() => {});
+
     // ====================================
-    // Step 7: Narrative Renderer
+    // Step 7: Narrative Renderer (streaming)
     // ====================================
-    emit('narrative_render', '旅程を仕上げ中...');
-    const narrative = await timer.measure('narrative_render', async () => {
-      return runNarrativeRenderer({
-        timelineDays,
-        request: normalizedRequest,
-        context,
-        modelName: modelSelection.modelName,
-        temperature: 0.3,
-      });
+    emitProgress('narrative_render', '旅程を仕上げ中...', {
+      totalDays: timelineDays.length,
+      destination: semanticPlan.destination,
+      description: semanticPlan.description,
     });
+    const narrativeStart = Date.now();
+
+    const narrativeInput = {
+      timelineDays,
+      request: normalizedRequest,
+      context,
+      modelName: modelSelection.modelName,
+      temperature: 0.3,
+    };
+
+    const narrative = await timer.measure('narrative_render', async () => {
+      try {
+        const streamResult = await streamNarrativeRendererWithResult(narrativeInput);
+
+        for await (const event of streamResult.dayStream) {
+          emitDayComplete({
+            day: event.day,
+            dayData: event.dayData,
+            isComplete: event.isComplete,
+            totalDays: timelineDays.length,
+            destination: semanticPlan.destination,
+            description: semanticPlan.description,
+          });
+        }
+
+        return await streamResult.finalOutput;
+      } catch (streamError) {
+        console.warn('[compose-pipeline] streamNarrativeRenderer failed, falling back to generateObject:', streamError);
+        return runNarrativeRenderer(narrativeInput);
+      }
+    });
+
+    logger.logStep({
+      stepName: 'narrative_render',
+      status: 'success',
+      durationMs: Date.now() - narrativeStart,
+    }).catch(() => {});
 
     // ====================================
     // Hero Image
     // ====================================
-    emit('hero_image', 'ぴったりの写真を探し中...');
+    emitProgress('hero_image', 'ぴったりの写真を探し中...');
     let heroImage: ComposedItinerary['heroImage'] | undefined;
     await timer.measure('hero_image', async () => {
       try {
@@ -278,14 +414,17 @@ export async function runComposePipeline(
     }
 
     const metadata: ComposePipelineMetadata = {
-      pipelineVersion: 'v2',
+      pipelineVersion: 'v3',
       candidateCount,
       resolvedCount,
-      filteredCount,
+      filteredCount: selectedCount,
       placeResolveEnabled,
       stepTimings,
       modelName: modelSelection.modelName,
       modelTier: modelSelection.tier,
+      warningCount: allWarnings.length,
+      droppedCandidateCount: droppedCount,
+      fallbackUsed,
     };
 
     const composed: ComposedItinerary = {
@@ -304,6 +443,30 @@ export async function runComposePipeline(
 
     const itinerary = composedToItinerary(composed, modelInfo);
 
+    // End run logging (fire-and-forget)
+    logger.endRun({
+      success: true,
+      totalDurationMs: report.totalDuration,
+      candidateCount,
+      resolvedCount,
+      filteredCount: selectedCount,
+      droppedCount,
+      warningCount: allWarnings.length,
+      fallbackUsed,
+      inputSnapshot: normalizedRequest,
+      semanticPlanSnapshot: {
+        destination: semanticPlan.destination,
+        candidateCount: semanticPlan.candidates.length,
+        dayCount: semanticPlan.dayStructure.length,
+        tripIntentSummary: semanticPlan.tripIntentSummary,
+      },
+      selectedStopsSnapshot: stops.map((s) => ({
+        name: s.candidate.name,
+        semanticId: s.semanticId,
+        feasibilityScore: s.feasibilityScore,
+      })),
+    }).catch(() => {});
+
     return {
       success: true,
       itinerary,
@@ -315,6 +478,15 @@ export async function runComposePipeline(
     timer.log();
 
     const failedStep = error instanceof PipelineStepError ? error.step : undefined;
+
+    // Log failure (fire-and-forget)
+    logger.endRun({
+      success: false,
+      totalDurationMs: 0,
+      errorMessage: error instanceof Error ? error.message : 'Pipeline execution failed',
+      failedStep,
+      fallbackUsed: false,
+    }).catch(() => {});
 
     return {
       success: false,

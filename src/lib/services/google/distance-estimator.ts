@@ -8,7 +8,7 @@ import type {
   TransportMode,
   AreaType,
   DistanceEstimate,
-} from '@/types/compose-pipeline';
+} from '@/types/itinerary-pipeline';
 
 // ============================================
 // Constants

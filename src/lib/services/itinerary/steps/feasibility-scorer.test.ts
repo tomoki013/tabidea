@@ -6,7 +6,7 @@ import type {
   ResolvedPlaceGroup,
   SemanticCandidate,
   SelectedStop,
-} from '@/types/compose-pipeline';
+} from '@/types/itinerary-pipeline';
 import type { UserInput } from '@/types/user-input';
 
 // ==============================
@@ -302,6 +302,99 @@ describe('budget match scoring', () => {
     expect(cheapSelected[0].feasibilityScore).toBeGreaterThan(
       expensiveSelected[0].feasibilityScore
     );
+  });
+});
+
+describe('v3: must_visit threshold exemption', () => {
+  it('must_visit candidates pass even with very high threshold', () => {
+    const place = makePlaceDetails({
+      placeId: 'must',
+      rating: 2.0,
+      userRatingsTotal: 5,
+      types: ['storage'],
+      priceLevel: 4,
+    });
+
+    const groups: ResolvedPlaceGroup[] = [
+      makeGroup(makeCandidate({ name: 'Must Place', role: 'must_visit', priority: 10 }), [place]),
+    ];
+
+    const request = makeRequest();
+    const { selected } = scoreAndSelect(groups, request, undefined, 99);
+
+    expect(selected).toHaveLength(1);
+    expect(selected[0].candidate.role).toBe('must_visit');
+  });
+
+  it('high priority (>=8) candidates pass even with high threshold', () => {
+    const place = makePlaceDetails({
+      placeId: 'high-pri',
+      rating: 2.5,
+      userRatingsTotal: 10,
+      types: ['store'],
+      priceLevel: 3,
+    });
+
+    const groups: ResolvedPlaceGroup[] = [
+      makeGroup(makeCandidate({ name: 'High Priority', priority: 9 }), [place]),
+    ];
+
+    const request = makeRequest();
+    const { selected } = scoreAndSelect(groups, request, undefined, 99);
+
+    expect(selected).toHaveLength(1);
+  });
+});
+
+describe('v3: semanticId propagation', () => {
+  it('propagates semanticId from candidate to SelectedStop', () => {
+    const place = makePlaceDetails({ rating: 4.5, userRatingsTotal: 1000 });
+    const candidate = makeCandidate({ name: 'Spot', semanticId: 'test-semantic-id' });
+    const groups: ResolvedPlaceGroup[] = [makeGroup(candidate, [place])];
+
+    const request = makeRequest();
+    const { selected } = scoreAndSelect(groups, request, undefined, 0);
+
+    expect(selected[0].semanticId).toBe('test-semantic-id');
+  });
+
+  it('candidatesToStops propagates semanticId', () => {
+    const candidate = makeCandidate({ name: 'Spot', semanticId: 'sem-123' });
+    const stops = candidatesToStops([candidate]);
+
+    expect(stops[0].semanticId).toBe('sem-123');
+  });
+});
+
+describe('v3: lowReviewPenalty', () => {
+  it('places with many reviews score higher than places with few', () => {
+    const manyReviews = makePlaceDetails({
+      placeId: 'many',
+      rating: 4.0,
+      userRatingsTotal: 5000,
+      types: ['tourist_attraction'],
+      priceLevel: 2,
+    });
+    const fewReviews = makePlaceDetails({
+      placeId: 'few',
+      rating: 4.0,
+      userRatingsTotal: 5,
+      types: ['tourist_attraction'],
+      priceLevel: 2,
+    });
+
+    const request = makeRequest();
+
+    const { selected: manyResult } = scoreAndSelect(
+      [makeGroup(makeCandidate({ name: 'Many' }), [manyReviews])],
+      request, undefined, 0
+    );
+    const { selected: fewResult } = scoreAndSelect(
+      [makeGroup(makeCandidate({ name: 'Few' }), [fewReviews])],
+      request, undefined, 0
+    );
+
+    expect(manyResult[0].feasibilityScore).toBeGreaterThan(fewResult[0].feasibilityScore);
   });
 });
 

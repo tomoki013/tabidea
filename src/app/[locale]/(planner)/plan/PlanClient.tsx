@@ -1,24 +1,17 @@
 "use client";
 
 import { Suspense, useEffect, useState, useRef, useCallback } from "react";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { UserInput, Itinerary, DayPlan, GenerationState, initialGenerationState } from '@/types';
-import type { DayGenerationStatus, ChunkInfo, Article, PlanOutlineDay, PartialDayData } from '@/types';
-import { splitDaysIntoChunks, extractDuration } from "@/lib/utils";
-import { savePlan } from "@/app/actions/travel-planner";
+import type { UserInput } from "@/types";
 import { getSamplePlanById } from "@/lib/sample-plans";
-import { saveLocalPlan } from "@/lib/local-storage/plans";
-import { useAuth } from "@/context/AuthContext";
-import { useGenerationProgress } from "@/lib/hooks/useGenerationProgress";
-import OutlineLoadingAnimation from "@/components/features/planner/OutlineLoadingAnimation";
-import OutlineReview from "@/components/features/planner/OutlineReview";
+import { useComposeGeneration } from "@/lib/hooks/useComposeGeneration";
+import ComposeLoadingAnimation from "@/components/features/planner/ComposeLoadingAnimation";
 import StreamingResultView from "@/components/features/planner/StreamingResultView";
 import { PlanModal } from "@/components/common";
 import { FAQSection, ExampleSection } from "@/components/features/landing";
 import { FaPlus } from "react-icons/fa6";
-import { PlanOutline } from "@/types";
 import { localizeHref, resolveLanguageFromPathname } from "@/lib/i18n/navigation";
 
 function PlanContent() {
@@ -28,399 +21,45 @@ function PlanContent() {
   const language = resolveLanguageFromPathname(pathname);
   const t = useTranslations("app.planner.plan");
   const tError = useTranslations("errors.ui.plan");
-  const { isAuthenticated, isLoading: authLoading } = useAuth();
-  const { steps: progressSteps, currentStep: progressCurrentStep, generateOutlineStream, resetProgress } = useGenerationProgress();
   const sampleId = searchParams.get("sample");
   const legacyQ = searchParams.get("q");
   const mode = searchParams.get("mode");
 
-  const [error, setError] = useState<string>("");
-  const [status, setStatus] = useState<
-    "loading" | "generating" | "saving" | "error"
-  >("loading");
-  const [transitionMessage, setTransitionMessage] = useState<string>("");
-  const [currentInput, setCurrentInput] = useState<UserInput | null>(null);
-  const [generationState, setGenerationState] = useState<GenerationState>(initialGenerationState);
-  const [partialDays, setPartialDays] = useState<Map<number, PartialDayData>>(new Map());
-
-  const mapPlanError = useCallback((code?: string | null) => {
-    switch (code) {
-      case "api_key_missing":
-        return tError("apiKeyMissing");
-      case "outline_generation_failed":
-        return tError("outlineFailed");
-      case "detail_generation_failed":
-      case "chunk_generation_failed":
-        return tError("detailGenerationFailed");
-      case "regenerate_failed":
-        return tError("regenerateFailed");
-      case "regenerate_no_effect":
-        return tError("regenerateNoEffect");
-      case "timeout":
-      case "replan_timeout":
-        return tError("timeout");
-      default:
-        return tError("generic");
-    }
-  }, [tError]);
-
+  const compose = useComposeGeneration();
   const hasStartedGeneration = useRef(false);
-  const hasStartedTransition = useRef(false);
+  const [sampleInput, setSampleInput] = useState<UserInput | null>(null);
 
-  // Helper to update day status
-  const updateDayStatus = useCallback((dayNumber: number, dayStatus: DayGenerationStatus) => {
-    setGenerationState(prev => {
-      const newStatuses = new Map(prev.dayStatuses);
-      newStatuses.set(dayNumber, dayStatus);
-      return { ...prev, dayStatuses: newStatuses };
-    });
-  }, []);
+  const fallbackInput: UserInput = sampleInput || {
+    destinations: [],
+    region: "",
+    dates: "",
+    companions: "",
+    theme: [],
+    budget: "",
+    pace: "",
+    freeText: "",
+    travelVibe: "",
+    mustVisitPlaces: [],
+    hasMustVisitPlaces: false,
+    preferredTransport: [],
+    fixedSchedule: [],
+  };
 
-  // Helper to add a single completed day
-  const addCompletedDay = useCallback((day: DayPlan) => {
-    setGenerationState(prev => {
-      const newCompletedDays = [...prev.completedDays, day];
-      newCompletedDays.sort((a, b) => a.day - b.day);
-      return { ...prev, completedDays: newCompletedDays };
-    });
-  }, []);
-
-  // Generate a single chunk via SSE fetch
-  const generateChunk = useCallback(async (
-    chunkInput: UserInput,
-    context: Article[],
-    outlineDays: PlanOutlineDay[],
-    chunk: ChunkInfo,
-    allOutlineDays: PlanOutlineDay[],
-    destination?: string
-  ) => {
-    const dayNum = chunk.start; // CHUNK_SIZE=1 なので start===end
-    updateDayStatus(dayNum, 'generating');
-
-    // 前日の宿泊地を特定
-    let previousOvernightLocation: string | undefined = undefined;
-    if (chunk.start > 1) {
-      const prevDay = allOutlineDays.find((d: PlanOutlineDay) => d.day === chunk.start - 1);
-      if (prevDay) {
-        previousOvernightLocation = prevDay.overnight_location;
-      }
-    } else if (destination) {
-      previousOvernightLocation = destination;
-    }
-
-    const chunkOutlineDays = outlineDays.filter(d => d.day >= chunk.start && d.day <= chunk.end);
-
-    try {
-      const response = await fetch('/api/generate/chunk', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          input: chunkInput,
-          context,
-          outlineDays: chunkOutlineDays,
-          startDay: dayNum,
-          endDay: dayNum,
-          previousOvernightLocation,
-        }),
-      });
-
-      if (!response.ok || !response.body) {
-        updateDayStatus(dayNum, 'error');
-        return;
-      }
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = '';
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split('\n');
-        buffer = lines.pop() ?? '';
-
-        for (const line of lines) {
-          if (!line.startsWith('data: ')) continue;
-          try {
-            const event = JSON.parse(line.slice(6)) as { type: string; day: number; data?: DayPlan; message?: string };
-
-            if (event.type === 'partial') {
-              setPartialDays(prev => new Map(prev).set(dayNum, event.data as PartialDayData));
-            } else if (event.type === 'complete' && event.data) {
-              setPartialDays(prev => {
-                const m = new Map(prev);
-                m.delete(dayNum);
-                return m;
-              });
-              updateDayStatus(dayNum, 'completed');
-              addCompletedDay(event.data);
-            } else if (event.type === 'error') {
-              setPartialDays(prev => {
-                const m = new Map(prev);
-                m.delete(dayNum);
-                return m;
-              });
-              updateDayStatus(dayNum, 'error');
-            }
-          } catch {
-            // ignore malformed SSE lines
-          }
-        }
-      }
-    } catch (err) {
-      console.error(`Chunk ${chunk.start} failed:`, err);
-      setPartialDays(prev => {
-        const m = new Map(prev);
-        m.delete(dayNum);
-        return m;
-      });
-      updateDayStatus(dayNum, 'error');
-    }
-  }, [updateDayStatus, addCompletedDay]);
-
-  // Start Detail Generation (Loop through chunks)
-  const startDetailGeneration = useCallback(async (
-    outline: PlanOutline,
-    updatedInput: UserInput,
-    context: Article[]
-  ) => {
-    // Calculate total days
-    let totalDays = extractDuration(updatedInput.dates);
-    if (totalDays === 0 && outline.days.length > 0) {
-      totalDays = outline.days.length;
-    }
-
-    // Initialize day statuses
-    const initialDayStatuses = new Map<number, DayGenerationStatus>();
-    for (let d = 1; d <= totalDays; d++) {
-      initialDayStatuses.set(d, 'pending');
-    }
-
-    const chunks = splitDaysIntoChunks(totalDays);
-
-    // Update state to show chunks pending
-    setGenerationState(prev => ({
-      ...prev,
-      phase: 'generating_details',
-      dayStatuses: initialDayStatuses,
-      totalDays,
-      currentChunks: chunks,
-    }));
-
-    try {
-      // Generate all chunks in parallel; previousOvernightLocation is sourced from
-      // the already-completed outline data so ordering is not required.
-      const allChunkPromises = chunks.map((chunk) => {
-        const prevLocation = chunk.start === 1
-          ? outline.destination
-          : outline.days.find((d) => d.day === chunk.start - 1)?.overnight_location;
-        return generateChunk(updatedInput, context, outline.days, chunk, outline.days, prevLocation);
-      });
-      await Promise.all(allChunkPromises);
-    } catch (e) {
-      console.error("Detail generation error:", e);
-      setStatus("error");
-      setError(tError("detailGenerationFailed"));
-    }
-  }, [generateChunk, tError]);
-
-  // Save completed plan and transition to detail page quickly.
-  // Always persist to local storage first, then let PlanLocalClient auto-sync for signed-in users.
-  const saveCompletedPlan = useCallback(async () => {
-    if (hasStartedTransition.current) {
-      return;
-    }
-
-    const { outline, heroImage, completedDays, context, updatedInput } = generationState;
-
-    if (!outline || !updatedInput || completedDays.length === 0) {
-      return;
-    }
-
-    hasStartedTransition.current = true;
-    setStatus("saving");
-    setTransitionMessage(t("savingTransition"));
-
-    const sortedDays = [...completedDays].sort((a, b) => a.day - b.day);
-    const simpleId = Math.random().toString(36).substring(2, 15);
-
-    const finalPlan: Itinerary = {
-      id: simpleId,
-      destination: outline.destination,
-      description: outline.description,
-      heroImage: heroImage?.url || undefined,
-      heroImagePhotographer: heroImage?.photographer || undefined,
-      heroImagePhotographerUrl: heroImage?.photographerUrl || undefined,
-      days: sortedDays,
-      references: (context || []).map(c => ({
-        title: c.title,
-        url: c.url,
-        image: c.imageUrl,
-        snippet: c.snippet
-      }))
-    };
-
-    try {
-      const localPlan = await saveLocalPlan(updatedInput, finalPlan);
-      router.replace(localizeHref(`/plan/local/${localPlan.id}`, language));
-    } catch (localSaveErr) {
-      console.error("Failed to save to local storage:", localSaveErr);
-
-      // Fallback: for authenticated users, try direct DB save.
-      if (isAuthenticated) {
-        try {
-          const saveResult = await savePlan(updatedInput, finalPlan, false);
-          if (saveResult.success && saveResult.plan) {
-            router.replace(localizeHref(`/plan/id/${saveResult.plan.id}`, language));
-            return;
-          }
-        } catch (dbSaveErr) {
-          console.error("Failed to save to DB fallback:", dbSaveErr);
-        }
-      }
-
-      hasStartedTransition.current = false;
-      setTransitionMessage("");
-      setStatus("error");
-      setError(tError("saveFailed"));
-    }
-  }, [generationState, isAuthenticated, language, router, t, tError]);
-
-  // Watch for completion
-  useEffect(() => {
-    const { phase, completedDays, totalDays } = generationState;
-
-    if (phase === 'generating_details' && totalDays > 0 && completedDays.length === totalDays) {
-      setGenerationState(prev => ({ ...prev, phase: 'completed' }));
-      void saveCompletedPlan();
-    }
-  }, [generationState.completedDays.length, generationState.totalDays, generationState.phase, saveCompletedPlan]);
-
-  // Generate plan from sample with streaming
+  // Generate plan from sample using compose pipeline
   const generateFromSample = useCallback(async (sampleInput: UserInput) => {
-    hasStartedTransition.current = false;
-    setStatus("generating");
-    setError("");
-    setTransitionMessage("");
-    setCurrentInput(sampleInput);
-
-    // Start outline generation
-    setGenerationState({
-      ...initialGenerationState,
-      phase: 'generating_outline',
-      dayStatuses: new Map(),
-      completedDays: [],
-    });
-
-    try {
-      // Step 1: Generate Master Outline (with real-time SSE progress)
-      resetProgress();
-      const outlineResponse = await generateOutlineStream(sampleInput);
-
-      if (!outlineResponse.success || !outlineResponse.data) {
-        throw new Error(outlineResponse.message || "outline_generation_failed");
-      }
-
-      const { outline, context, input: updatedInput, heroImage } = outlineResponse.data;
-
-      // Update state to show outline (skip direct detail generation here, call startDetailGeneration instead)
-      // Actually we want streaming immediately for sample
-
-      setGenerationState({
-        phase: 'outline_ready',
-        outline,
-        heroImage: heroImage || null,
-        updatedInput,
-        context,
-        dayStatuses: new Map(), // Will be reset in startDetailGeneration
-        completedDays: [],
-        totalDays: 0, // Will be set in startDetailGeneration
-      });
-
-      // Step 2: Generate Details
-      await startDetailGeneration(outline, updatedInput, context);
-
-    } catch (e: unknown) {
-      console.error(e);
-      setStatus("error");
-      const errorCode = e instanceof Error ? e.message : "generic";
-      const mappedMessage = mapPlanError(errorCode);
-      setGenerationState(prev => ({
-        ...prev,
-        phase: 'error',
-        error: mappedMessage,
-      }));
-      setError(mappedMessage);
-    }
-  }, [generateOutlineStream, mapPlanError, resetProgress, startDetailGeneration]);
-
-  // Handler to retry a failed chunk
-  const handleRetryChunk = useCallback(async (dayStart: number, dayEnd: number) => {
-    const { updatedInput, context, outline } = generationState;
-    if (!updatedInput || !context || !outline) return;
-
-    const chunk: ChunkInfo = { start: dayStart, end: dayEnd };
-    // Pass destination for first chunk retries
-    const destination = dayStart === 1 ? outline.destination : undefined;
-    await generateChunk(updatedInput, context, outline.days, chunk, outline.days, destination);
-  }, [generationState, generateChunk]);
-
-  // Proceed from outline review to details
-  const handleProceedToDetails = useCallback(async (confirmedOutline: PlanOutline) => {
-    const { updatedInput, context } = generationState;
-    if (!updatedInput || !context) return;
-
-    hasStartedTransition.current = false;
-    setGenerationState(prev => ({ ...prev, outline: confirmedOutline }));
-    await startDetailGeneration(confirmedOutline, updatedInput, context);
-  }, [generationState, startDetailGeneration]);
+    await compose.generate(sampleInput);
+  }, [compose]);
 
   useEffect(() => {
-    // Wait for auth state to be determined
-    if (authLoading) return;
-
-    // Handle Outline Mode (from redirection)
-    if (mode === 'outline' && !hasStartedGeneration.current) {
-      const storedState = localStorage.getItem("tabidea_outline_state");
-      if (storedState) {
-        try {
-          const { outline, context, input, heroImage } = JSON.parse(storedState);
-          // Restore state and start detail generation immediately (skip review)
-          setGenerationState({
-            ...initialGenerationState,
-            phase: 'outline_ready',
-            outline,
-            context,
-            updatedInput: input,
-            heroImage,
-          });
-          setCurrentInput(input);
-          setStatus('generating'); // Use generating status to show UI
-          setTransitionMessage("");
-          hasStartedTransition.current = false;
-          hasStartedGeneration.current = true;
-
-          // Trigger detail generation immediately
-          // This ensures we skip the manual confirmation step
-          startDetailGeneration(outline, input, context);
-
-          // Clear localStorage to prevent reuse? Maybe keep it for refresh safety
-          // localStorage.removeItem("tabidea_outline_state");
-        } catch (e) {
-          console.error("Failed to parse stored outline state", e);
-          router.replace(localizeHref("/", language));
-        }
-      } else {
-        router.replace(localizeHref("/", language));
-      }
+    // Handle legacy outline mode — redirect to home (no longer supported)
+    if (mode === 'outline') {
+      localStorage.removeItem("tabidea_outline_state");
+      router.replace(localizeHref("/", language));
       return;
     }
 
-    // Handle legacy q parameter - redirect to home with a message
+    // Handle legacy q parameter - redirect to home
     if (legacyQ && !sampleId) {
-      // Old format URL - redirect to home
       router.replace(localizeHref("/", language));
       return;
     }
@@ -430,95 +69,55 @@ function PlanContent() {
       hasStartedGeneration.current = true;
       const samplePlan = getSamplePlanById(sampleId);
       if (samplePlan) {
-        // Prepare input with default values for missing fields
         const sampleInput: UserInput = {
           ...samplePlan.input,
           hasMustVisitPlaces: samplePlan.input.hasMustVisitPlaces ?? false,
           mustVisitPlaces: samplePlan.input.mustVisitPlaces ?? [],
         };
+        setSampleInput(sampleInput);
         generateFromSample(sampleInput);
       } else {
-        setError(tError("sampleNotFound"));
-        setStatus("error");
+        compose.reset();
       }
     } else if (!sampleId && !legacyQ && !mode) {
-      // No parameters - redirect to home
       router.replace(localizeHref("/", language));
     }
-  }, [authLoading, sampleId, legacyQ, mode, router, generateFromSample, language, tError]);
+  }, [sampleId, legacyQ, mode, router, generateFromSample, language, compose]);
 
-  if (status === "loading" || authLoading) {
+  // Show streaming day cards during narrative_render
+  if (compose.isGenerating && compose.currentStep === 'narrative_render' && compose.partialDays.size > 0) {
     return (
-      <div className="flex items-center justify-center min-h-[50vh]">
-        <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
-      </div>
-    );
-  }
-
-  // Show outline loading animation during outline generation (with real progress)
-  if (generationState.phase === 'generating_outline') {
-    return <OutlineLoadingAnimation steps={progressSteps} currentStep={progressCurrentStep} />;
-  }
-
-  // Show Outline Review
-  if (generationState.phase === 'outline_ready' && generationState.outline) {
-    return (
-      <OutlineReview
-        outline={generationState.outline}
-        onConfirm={handleProceedToDetails}
-        isGenerating={false}
+      <StreamingResultView
+        composeMode
+        composeSteps={compose.steps}
+        composeCurrentStep={compose.currentStep}
+        partialComposeDays={compose.partialDays}
+        totalDays={compose.totalDays}
+        previewDestination={compose.previewDestination}
+        previewDescription={compose.previewDescription}
+        input={fallbackInput}
       />
     );
   }
 
-  // Show streaming result view during/after detail generation
-  if (
-    generationState.phase === 'generating_details' ||
-    generationState.phase === 'completed'
-  ) {
-    return (
-        <StreamingResultView
-          generationState={generationState}
-          input={generationState.updatedInput || currentInput || {
-          destinations: [],
-          region: "",
-          dates: "",
-          companions: "",
-          theme: [],
-          budget: "",
-          pace: "",
-          freeText: "",
-          }}
-          onRetryChunk={handleRetryChunk}
-          isTransitioningToDetail={status === "saving"}
-          transitionMessage={transitionMessage}
-          partialDays={partialDays}
-        />
-      );
+  // Show compose loading animation
+  if (compose.isGenerating) {
+    return <ComposeLoadingAnimation steps={compose.steps} currentStep={compose.currentStep} />;
   }
 
-  if (status === "saving") {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4">
-        <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
-        <p className="text-stone-600">{t("saving")}</p>
-      </div>
-    );
-  }
-
-  if (status === "error" || generationState.phase === 'error') {
+  // Error state
+  if (compose.errorMessage) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center p-8">
         <div className="text-6xl mb-4">😢</div>
         <p className="text-destructive font-medium text-lg">
-          {error || generationState.error || tError("generic")}
+          {compose.errorMessage}
         </p>
         {sampleId && (
           <button
             onClick={() => {
               hasStartedGeneration.current = false;
-              setStatus("loading");
-              setGenerationState(initialGenerationState);
+              compose.reset();
             }}
             className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors font-bold"
           >
@@ -545,7 +144,7 @@ function PlanContent() {
     );
   }
 
-  // Default: should not reach here, redirect to home
+  // Loading state (initial)
   return (
     <div className="flex items-center justify-center min-h-[50vh]">
       <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
@@ -572,7 +171,6 @@ export default function PlanClient() {
         </Suspense>
 
         {/* Call to Action - Create New Plan */}
-        {/* This button allows users to start a fresh planning session easily */}
         <div className="w-full flex justify-center pb-16 pt-8">
           <button
             onClick={() => setIsNewPlanModalOpen(true)}

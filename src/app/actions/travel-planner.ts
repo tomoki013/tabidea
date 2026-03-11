@@ -1,11 +1,8 @@
 "use server";
 
 import { GeminiService } from "@/lib/services/ai/gemini";
-import { Itinerary, UserInput, PlanOutlineDay, DayPlan, Article } from '@/types';
+import { Itinerary, UserInput } from '@/types';
 import { getUnsplashImage } from "@/lib/unsplash";
-import { extractDuration, splitDaysIntoChunks } from "@/lib/utils";
-import { buildConstraintsPrompt, buildTransitSchedulePrompt } from "@/lib/prompts";
-import { getBudgetContext, getFixedSchedulePrompt } from "@/lib/utils/plan-prompt-helpers";
 import { getUser, createAdminClient, createClient } from "@/lib/supabase/server";
 import { planService } from "@/lib/plans/service";
 import { isAdminEmail } from "@/lib/billing/billing-checker";
@@ -13,18 +10,48 @@ import { EntitlementService } from "@/lib/entitlements";
 import { checkPlanCreationRate, checkPlanUpdateRate } from "@/lib/security/rate-limit";
 import { revalidatePath } from "next/cache";
 import { GOLDEN_PLAN_EXAMPLES } from "@/data/golden-plans/examples";
-import { getSpotValidator } from "@/lib/services/validation/spot-validator";
-import { selfCorrectItinerary } from "@/lib/services/ai/self-correction";
-import { createChunkTimer, CHUNK_TARGETS_PRO } from "@/lib/utils/performance-timer";
 import { buildDefaultPublicationSlug } from "@/lib/plans/normalized";
+import { getUserSettings } from "@/app/actions/user-settings";
 import {
-  executeOutlineGeneration,
-  getUserConstraintPrompt,
-  type OutlineActionState,
-} from "@/lib/services/plan-generation/generate-outline";
+  getDefaultHomeBaseCityForRegion,
+  getDefaultRegionForLanguage,
+  isLanguageCode,
+  type LanguageCode,
+  DEFAULT_LANGUAGE,
+} from "@/lib/i18n/locales";
 
-// Re-export for backward compatibility
-export { getUserConstraintPrompt, type OutlineActionState };
+/**
+ * Fetch and format user custom instructions (travel style + constraints).
+ */
+async function getUserConstraintPrompt(): Promise<string> {
+  const { settings } = await getUserSettings();
+  const preferredLanguage: LanguageCode =
+    settings?.preferredLanguage && isLanguageCode(settings.preferredLanguage)
+      ? settings.preferredLanguage
+      : DEFAULT_LANGUAGE;
+  const preferredRegion =
+    settings?.preferredRegion ?? getDefaultRegionForLanguage(preferredLanguage);
+  const homeBaseCity =
+    settings?.homeBaseCity?.trim() ||
+    getDefaultHomeBaseCityForRegion(preferredRegion);
+  const outputLanguageLabel = preferredLanguage === "en" ? "English" : "Japanese";
+
+  let prompt = `\n=== OUTPUT LANGUAGE (MUST FOLLOW) ===
+All user-facing itinerary text MUST be written in ${outputLanguageLabel}.
+Do not switch to other languages except for proper nouns or official place names.
+=====================================\n`;
+
+  if (homeBaseCity) {
+    prompt += `\nUser's home base city: ${homeBaseCity}\n`;
+  }
+
+  const customInstructions = settings?.customInstructions?.trim();
+  if (customInstructions) {
+    prompt += `\n=== USER TRAVEL PREFERENCES (MUST FOLLOW) ===\n${customInstructions}\n=====================================\n`;
+  }
+
+  return prompt;
+}
 
 export type ActionState = {
   success: boolean;
@@ -32,165 +59,6 @@ export type ActionState = {
   data?: Itinerary;
 };
 
-export type ChunkActionState = {
-  success: boolean;
-  message?: string;
-  data?: DayPlan[];
-  modelInfo?: { modelName: string; tier: 'flash' | 'pro' };
-};
-
-/**
- * Step 1: Generate Master Outline (Client-Side Orchestration Flow)
- * Delegates to shared core logic in plan-generation/generate-outline.ts
- */
-export async function generatePlanOutline(
-  input: UserInput,
-  options?: { isRetry?: boolean }
-): Promise<OutlineActionState> {
-  return executeOutlineGeneration(input, options);
-}
-
-/**
- * Step 2: Generate Details for a specific Chunk (Client-Side Orchestration Flow)
- */
-export async function generatePlanChunk(
-  input: UserInput,
-  context: Article[],
-  outlineDays: PlanOutlineDay[],
-  startDay: number,
-  endDay: number,
-  previousOvernightLocation?: string
-): Promise<ChunkActionState> {
-  const timer = createChunkTimer(startDay, endDay);
-  console.log(`[action] generatePlanChunk days ${startDay}-${endDay}`);
-
-  const hasAIKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.OPENAI_API_KEY;
-  if (!hasAIKey) return { success: false, message: "api_key_missing" };
-
-  try {
-    const ai = new GeminiService({
-      goldenPlanExamples: GOLDEN_PLAN_EXAMPLES,
-    });
-
-    // プロンプト構築（ユーザー制約取得含む）
-    const prompt = await timer.measure('prompt_build', async () => {
-      const budgetPrompt = getBudgetContext(input.budget);
-      const destinationsStr = input.destinations.join("、");
-      const isMultiCity = input.destinations.length > 1;
-      const userConstraintPrompt = await getUserConstraintPrompt();
-      const transitConstraints = buildConstraintsPrompt(input.transits);
-      const transitSchedule = buildTransitSchedulePrompt(input.transits);
-      const fixedSchedulePrompt = getFixedSchedulePrompt(input.fixedSchedule);
-
-      return `
-        Destinations: ${destinationsStr}${isMultiCity ? " (Multi-city trip)" : ""}
-        Dates: ${input.dates}
-        Companions: ${input.companions}
-        Themes: ${input.theme.join(", ")}
-        ${budgetPrompt}
-        Pace: ${input.pace}
-        Must-Visit: ${input.mustVisitPlaces?.join(", ") || "None"}
-        Request: ${input.freeText || "None"}
-        ${isMultiCity ? `Note: This is a multi-city trip visiting: ${destinationsStr}. Ensure the itinerary covers all locations.` : ""}
-
-        ${transitSchedule}
-
-        ${fixedSchedulePrompt}
-
-        ${userConstraintPrompt}
-
-        ${transitConstraints}
-      `;
-    });
-
-    // AI生成
-    const days = await timer.measure('ai_generation', () =>
-      ai.generateDayDetails(
-        prompt,
-        context,
-        startDay,
-        endDay,
-        outlineDays,
-        previousOvernightLocation
-      )
-    );
-
-    // Pro モデル使用時は目標時間を切り替え
-    if (ai.lastModelInfo?.tier === 'pro') {
-      timer.setTargets(CHUNK_TARGETS_PRO);
-    }
-
-    timer.log();
-    return { success: true, data: days, modelInfo: ai.lastModelInfo || undefined };
-
-  } catch (error) {
-    timer.log();
-    console.error(`[action] Chunk generation failed (${startDay}-${endDay}):`, error);
-    return { success: false, message: "detail_generation_failed" };
-  }
-}
-
-/**
- * Auto-verify generated itinerary spots and self-correct if needed
- * Only runs when ENABLE_SPOT_VALIDATION=true
- */
-export async function autoVerifyItinerary(
-  itinerary: Itinerary,
-  context: Article[],
-  destination: string
-): Promise<{ itinerary: Itinerary; validationResult?: { totalSpots: number; failedCount: number; corrected: boolean } }> {
-  if (process.env.ENABLE_SPOT_VALIDATION !== 'true') {
-    return { itinerary };
-  }
-
-  try {
-    const validator = getSpotValidator({ usePlacesApi: true });
-    const validationMap = await validator.validateItinerarySpots(
-      itinerary.days,
-      destination
-    );
-
-    // Count failures
-    const failedSpots: Array<{ day: number; activityIndex: number; activityName: string; reason: string }> = [];
-    for (const dayPlan of itinerary.days) {
-      for (let i = 0; i < dayPlan.activities.length; i++) {
-        const act = dayPlan.activities[i];
-        const validation = validationMap.get(act.activity);
-        if (validation && !validation.isVerified && (validation.confidence === 'low' || validation.confidence === 'unverified')) {
-          failedSpots.push({
-            day: dayPlan.day,
-            activityIndex: i,
-            activityName: act.activity,
-            reason: 'not_found',
-          });
-        }
-      }
-    }
-
-    const totalSpots = validationMap.size;
-
-    if (failedSpots.length > 0 && failedSpots.length / totalSpots < 0.3) {
-      console.warn(`[action] ${failedSpots.length} spots failed validation, attempting self-correction`);
-      const hasKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.OPENAI_API_KEY;
-      if (hasKey) {
-        const ai = new GeminiService();
-        const corrected = await selfCorrectItinerary(ai, itinerary, failedSpots, context);
-        return {
-          itinerary: corrected,
-          validationResult: { totalSpots, failedCount: failedSpots.length, corrected: true },
-        };
-      }
-    }
-
-    return {
-      itinerary,
-      validationResult: { totalSpots, failedCount: failedSpots.length, corrected: false },
-    };
-  } catch (error) {
-    console.warn('[action] Auto-verification failed (non-blocking):', error);
-    return { itinerary };
-  }
-}
 
 export async function fetchHeroImage(
   destination: string

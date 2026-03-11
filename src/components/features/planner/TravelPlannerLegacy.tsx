@@ -1,18 +1,13 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { UserInput, Itinerary, DayPlan, GenerationState, initialGenerationState } from '@/types';
-import type { DayGenerationStatus, ChunkInfo, Article, PlanOutlineDay } from '@/types';
-import { splitDaysIntoChunks, extractDuration } from "@/lib/utils";
-import { generatePlanOutline, generatePlanChunk, savePlan } from "@/app/actions/travel-planner";
-import { saveLocalPlan, notifyPlanChange } from "@/lib/local-storage/plans";
-import { useAuth } from "@/context/AuthContext";
-import { useUserPlans } from "@/context/UserPlansContext";
+import { UserInput, GenerationState, initialGenerationState } from '@/types';
+import { useComposeGeneration } from "@/lib/hooks/useComposeGeneration";
 import StepContainer from "./StepContainer";
-import OutlineLoadingAnimation from "./OutlineLoadingAnimation";
+import ComposeLoadingAnimation from "./ComposeLoadingAnimation";
 import StreamingResultView from "./StreamingResultView";
 import StepDestination from "./steps/StepDestination";
 import StepDates from "./steps/StepDates";
@@ -55,8 +50,7 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
   const t = useTranslations("components.extraUi.travelPlannerLegacy");
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { isAuthenticated } = useAuth();
-  const { refreshPlans } = useUserPlans();
+  const compose = useComposeGeneration();
 
   // 復元フラグをチェック
   const shouldRestore = searchParams.get('restore') === 'true';
@@ -93,9 +87,8 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
   >("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Streaming generation state
+  // Streaming generation state (legacy — kept for type compat but not used for generation)
   const [generationState, setGenerationState] = useState<GenerationState>(initialGenerationState);
-  const chunkPromisesRef = useRef<Map<string, Promise<void>>>(new Map());
 
   // 利用制限関連のステート
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
@@ -300,158 +293,11 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
     }, 700); // Wait for most of the animation to play before switching view
   };
 
-  // Helper to update day status in generationState
-  const updateDayStatus = useCallback((dayNumber: number, status: DayGenerationStatus) => {
-    setGenerationState(prev => {
-      const newStatuses = new Map(prev.dayStatuses);
-      newStatuses.set(dayNumber, status);
-      return { ...prev, dayStatuses: newStatuses };
-    });
-  }, []);
-
-  // Helper to add completed days
-  const addCompletedDays = useCallback((days: DayPlan[]) => {
-    setGenerationState(prev => {
-      const newCompletedDays = [...prev.completedDays, ...days];
-      // Sort by day number
-      newCompletedDays.sort((a, b) => a.day - b.day);
-      return { ...prev, completedDays: newCompletedDays };
-    });
-  }, []);
-
-  // Generate a single chunk and update state
-  const generateChunk = useCallback(async (
-    chunkInput: UserInput,
-    context: Article[],
-    outlineDays: PlanOutlineDay[],
-    chunk: ChunkInfo,
-    allOutlineDays: PlanOutlineDay[]
-  ) => {
-    // Mark days as generating
-    for (let d = chunk.start; d <= chunk.end; d++) {
-      updateDayStatus(d, 'generating');
-    }
-
-    // Determine start location from previous day
-    let previousOvernightLocation: string | undefined = undefined;
-    if (chunk.start > 1) {
-      const prevDay = allOutlineDays.find((d) => d.day === chunk.start - 1);
-      if (prevDay) {
-        previousOvernightLocation = prevDay.overnight_location;
-      }
-    }
-
-    try {
-      const chunkOutlineDays = outlineDays.filter(d => d.day >= chunk.start && d.day <= chunk.end);
-      const result = await generatePlanChunk(
-        chunkInput,
-        context,
-        chunkOutlineDays,
-        chunk.start,
-        chunk.end,
-        previousOvernightLocation
-      );
-
-      if (result.success && result.data) {
-        // Mark days as completed and add them
-        for (const day of result.data) {
-          updateDayStatus(day.day, 'completed');
-        }
-        addCompletedDays(result.data);
-      } else {
-        // Mark days as error
-        for (let d = chunk.start; d <= chunk.end; d++) {
-          updateDayStatus(d, 'error');
-        }
-      }
-    } catch (error) {
-      console.error(`Chunk ${chunk.start}-${chunk.end} failed:`, error);
-      for (let d = chunk.start; d <= chunk.end; d++) {
-        updateDayStatus(d, 'error');
-      }
-    }
-  }, [updateDayStatus, addCompletedDays]);
-
-  // Save the completed plan
-  const saveCompletedPlan = useCallback(async () => {
-    const { outline, heroImage, completedDays, context, updatedInput } = generationState;
-
-    if (!outline || !updatedInput || completedDays.length === 0) {
-      return;
-    }
-
-    const sortedDays = [...completedDays].sort((a, b) => a.day - b.day);
-    const simpleId = Math.random().toString(36).substring(2, 15);
-
-    const finalPlan: Itinerary = {
-      id: simpleId,
-      destination: outline.destination,
-      description: outline.description,
-      heroImage: heroImage?.url || undefined,
-      heroImagePhotographer: heroImage?.photographer || undefined,
-      heroImagePhotographerUrl: heroImage?.photographerUrl || undefined,
-      days: sortedDays,
-      references: (context || []).map(c => ({
-        title: c.title,
-        url: c.url,
-        image: c.imageUrl,
-        snippet: c.snippet
-      }))
-    };
-
-    try {
-      if (isAuthenticated) {
-        const saveResult = await savePlan(updatedInput, finalPlan, false);
-        if (saveResult.success && saveResult.shareCode) {
-          await refreshPlans();
-          router.push(`/plan/${saveResult.shareCode}`);
-        } else {
-          console.error("Failed to save to DB, falling back to local storage:", saveResult.error);
-          const localPlan = await saveLocalPlan(updatedInput, finalPlan);
-          notifyPlanChange();
-          router.push(`/plan/local/${localPlan.id}`);
-        }
-      } else {
-        const localPlan = await saveLocalPlan(updatedInput, finalPlan);
-        notifyPlanChange();
-        router.push(`/plan/local/${localPlan.id}`);
-      }
-
-      if (onClose) {
-        onClose();
-      }
-    } catch (error) {
-      console.error("Failed to save plan:", error);
-      setGenerationState(prev => ({
-        ...prev,
-        phase: 'error',
-        error: t("errors.saveFailed"),
-        errorType: 'save'
-      }));
-    }
-  }, [generationState, isAuthenticated, refreshPlans, router, onClose, t]);
-
-  // Watch for completion and auto-save
-  useEffect(() => {
-    const { phase, completedDays, totalDays } = generationState;
-
-    if (phase === 'generating_details' && totalDays > 0 && completedDays.length === totalDays) {
-      // All days completed, mark as complete and save
-      setGenerationState(prev => ({ ...prev, phase: 'completed' }));
-    }
-  }, [generationState.completedDays.length, generationState.totalDays, generationState.phase]);
-
-  // Auto-save when completed
-  useEffect(() => {
-    if (generationState.phase === 'completed') {
-      saveCompletedPlan();
-    }
-  }, [generationState.phase, saveCompletedPlan]);
+  // Generation is now handled by compose pipeline (useComposeGeneration hook)
 
   const handlePlan = async () => {
     if (!validateStep(step)) return;
 
-    // Reset generation state and start outline generation
     setGenerationState({
       ...initialGenerationState,
       phase: 'generating_outline',
@@ -460,125 +306,56 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
     });
     setErrorMessage("");
 
-    try {
-      // Step 1: Generate Master Outline
-      const outlineResponse = await generatePlanOutline(input);
+    // Use compose pipeline for generation
+    await compose.generate(input);
 
-      // 利用制限超過のハンドリング
-      if (!outlineResponse.success && outlineResponse.limitExceeded) {
-        setGenerationState(prev => ({ ...prev, phase: 'idle' }));
-        setUserType(outlineResponse.userType || 'anonymous');
+    // Handle limit exceeded
+    if (compose.limitExceeded) {
+      setGenerationState(prev => ({ ...prev, phase: 'idle' }));
+      setUserType(compose.limitExceeded.userType || 'anonymous');
 
-        if (outlineResponse.userType === 'anonymous') {
-          setLoginPromptProps({
-            userInput: input,
-            currentStep: 8,
-            isInModal: false,
-          });
-          setShowLoginPrompt(true);
-        } else {
-          setLimitResetAt(
-            outlineResponse.resetAt ? new Date(outlineResponse.resetAt) : null
-          );
-          setShowLimitExceeded(true);
-        }
-        return;
-      }
-
-      if (!outlineResponse.success || !outlineResponse.data) {
-        throw new Error(outlineResponse.message || t("errors.outlineGenerationFailed"));
-      }
-
-      const { outline, context, input: updatedInput, heroImage } = outlineResponse.data;
-
-      // Update local input if destination was decided
-      if (input.isDestinationDecided === false) {
-        setInput(updatedInput);
-      }
-
-      // Calculate total days
-      let totalDays = extractDuration(updatedInput.dates);
-      if (totalDays === 0 && outline.days.length > 0) {
-        totalDays = outline.days.length;
-      }
-
-      // Initialize day statuses as pending
-      const initialDayStatuses = new Map<number, DayGenerationStatus>();
-      for (let d = 1; d <= totalDays; d++) {
-        initialDayStatuses.set(d, 'pending');
-      }
-
-      // Split into chunks
-      const chunks = splitDaysIntoChunks(totalDays);
-
-      // Update state to show outline and transition to streaming view
-      setGenerationState({
-        phase: 'outline_ready',
-        outline,
-        heroImage: heroImage || null,
-        updatedInput,
-        context,
-        dayStatuses: initialDayStatuses,
-        completedDays: [],
-        totalDays,
-        currentChunks: chunks,
-      });
-
-      // Immediately start detail generation
-      setGenerationState(prev => ({ ...prev, phase: 'generating_details' }));
-
-      // Start all chunk generations in parallel
-      const chunkPromises = chunks.map(chunk =>
-        generateChunk(updatedInput, context, outline.days, chunk, outline.days)
-      );
-
-      // Wait for all chunks (they update state as they complete)
-      await Promise.all(chunkPromises);
-
-    } catch (e: unknown) {
-      console.error(e);
-      const msg = (e instanceof Error ? e.message : null) || t("errors.networkOrTimeout");
-
-      if (msg.includes("Server Action") && msg.includes("not found")) {
-        setGenerationState(prev => ({
-          ...prev,
-          phase: 'error',
-          error: "DEPLOYMENT_UPDATE_ERROR",
-          errorType: 'network'
-        }));
-        setErrorMessage("DEPLOYMENT_UPDATE_ERROR");
+      if (compose.limitExceeded.userType === 'anonymous') {
+        setLoginPromptProps({
+          userInput: input,
+          currentStep: 8,
+          isInModal: false,
+        });
+        setShowLoginPrompt(true);
       } else {
-        setGenerationState(prev => ({
-          ...prev,
-          phase: 'error',
-          error: msg,
-          errorType: 'outline'
-        }));
-        setErrorMessage(msg);
+        setLimitResetAt(compose.limitExceeded.resetAt);
+        setShowLimitExceeded(true);
       }
+      compose.clearLimitExceeded();
+      return;
+    }
+
+    if (compose.errorMessage) {
+      setGenerationState(prev => ({
+        ...prev,
+        phase: 'error',
+        error: compose.errorMessage,
+        errorType: 'outline'
+      }));
+      setErrorMessage(compose.errorMessage);
     }
   };
 
-  // Handler to retry a failed chunk
-  const handleRetryChunk = useCallback(async (dayStart: number, dayEnd: number) => {
-    const { updatedInput, context, outline } = generationState;
-    if (!updatedInput || !context || !outline) return;
-
-    const chunk: ChunkInfo = { start: dayStart, end: dayEnd };
-    await generateChunk(updatedInput, context, outline.days, chunk, outline.days);
-  }, [generationState, generateChunk]);
+  // Retry is no longer supported in legacy mode (compose pipeline handles retries internally)
+  const handleRetryChunk = useCallback(async (_dayStart: number, _dayEnd: number) => {
+    // No-op: compose pipeline handles retries
+  }, []);
 
   const handleJumpToStep = (targetStep: number) => {
     setErrorMessage("");
     setStep(targetStep);
   };
 
-  // Show outline loading animation during outline generation
-  if (generationState.phase === 'generating_outline') {
-    return <OutlineLoadingAnimation />;
+  // Show compose loading animation during generation
+  if (compose.isGenerating || generationState.phase === 'generating_outline') {
+    return <ComposeLoadingAnimation steps={compose.steps} currentStep={compose.currentStep} />;
   }
 
-  // Show streaming result view during/after detail generation
+  // Show streaming result view during/after detail generation (legacy compat)
   if (
     generationState.phase === 'outline_ready' ||
     generationState.phase === 'generating_details' ||

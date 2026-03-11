@@ -33,8 +33,6 @@ export interface TravelPlannerProps {
   initialStep?: number;
   /** Callback when planner is closed/completed */
   onClose?: () => void;
-  /** Show outline review step before generating details */
-  showOutlineReview?: boolean;
 }
 
 // ============================================================================
@@ -58,7 +56,6 @@ export default function TravelPlanner({
   initialInput,
   initialStep,
   onClose,
-  showOutlineReview = false,
 }: TravelPlannerProps) {
   // Use legacy wizard if initialStep is explicitly provided (for backward compatibility)
   if (initialStep !== undefined) {
@@ -75,7 +72,6 @@ export default function TravelPlanner({
     <TravelPlannerSimplified
       initialInput={initialInput}
       onClose={onClose}
-      showOutlineReview={showOutlineReview}
     />
   );
 }
@@ -96,15 +92,5 @@ export { default as SimplifiedInputFlow } from "./SimplifiedInputFlow";
 // Re-export streaming result view
 export { default as StreamingResultView } from "./StreamingResultView";
 
-// Re-export loading animations
-export { default as OutlineLoadingAnimation } from "./OutlineLoadingAnimation";
-export { default as LoadingView } from "./LoadingView";
-
-// Re-export outline review
-export { default as OutlineReview } from "./OutlineReview";
-
 // Re-export day placeholder
 export { default as DayPlaceholder } from "./DayPlaceholder";
-
-// Re-export generating overlay
-export { default as GeneratingOverlay } from "./GeneratingOverlay";

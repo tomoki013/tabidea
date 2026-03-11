@@ -19,11 +19,12 @@ import type {
   NarrativeActivity,
   RouteLeg,
   TransportMode,
-} from '@/types/compose-pipeline';
+} from '@/types/itinerary-pipeline';
 import type { TransitType } from '@/types/itinerary';
+import { MODE_TO_TRANSIT, MODE_TO_LABEL } from './constants';
 
 // ============================================
-// Transport mode mapping
+// Transport mode mapping (legacy compat)
 // ============================================
 
 const MODE_TO_TRANSIT_TYPE: Record<TransportMode, TransitType> = {
@@ -31,13 +32,6 @@ const MODE_TO_TRANSIT_TYPE: Record<TransportMode, TransitType> = {
   public_transit: 'train',
   car: 'car',
   bicycle: 'other',
-};
-
-const MODE_TO_LABEL: Record<TransportMode, string> = {
-  walking: '徒歩',
-  public_transit: '公共交通',
-  car: '車',
-  bicycle: '自転車',
 };
 
 // ============================================
@@ -124,6 +118,11 @@ function convertActivity(activity: NarrativeActivity): Activity {
     activityType,
     searchQuery: candidate.searchQuery,
     source: activity.source,
+    // v3: nodeId / semanticId をメタデータに保存
+    metadata: {
+      ...(node.nodeId && { nodeId: node.nodeId }),
+      ...(node.semanticId && { semanticId: node.semanticId }),
+    },
   };
 
   // locationEn

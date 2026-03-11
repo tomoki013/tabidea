@@ -1,4 +1,4 @@
-import { runComposePipeline } from '@/lib/services/compose-pipeline/pipeline-orchestrator';
+import { runComposePipeline } from '@/lib/services/itinerary/pipeline-orchestrator';
 import { EventLogger } from '@/lib/services/analytics/event-logger';
 import { createClient } from '@supabase/supabase-js';
 import type { UserInput } from '@/types';
@@ -38,7 +38,28 @@ export async function POST(req: Request) {
         const result = await runComposePipeline(
           input,
           options,
-          (step, message) => emit('progress', { step, message })
+          (event) => {
+            if (event.type === 'day_complete') {
+              emit('day_complete', {
+                step: event.step,
+                day: event.day,
+                dayData: event.dayData,
+                isComplete: event.isComplete,
+                totalDays: event.totalDays,
+                destination: event.destination,
+                description: event.description,
+              });
+              return;
+            }
+
+            emit('progress', {
+              step: event.step,
+              message: event.message,
+              ...(event.totalDays ? { totalDays: event.totalDays } : {}),
+              ...(event.destination ? { destination: event.destination } : {}),
+              ...(event.description ? { description: event.description } : {}),
+            });
+          }
         );
 
         if (result.success && result.itinerary) {
@@ -65,7 +86,7 @@ export async function POST(req: Request) {
                 modelTier: result.metadata?.modelTier,
                 processingTimeMs: Date.now() - startTime,
                 metadata: {
-                  pipeline: 'compose_v2',
+                  pipeline: 'compose_v3',
                   candidateCount: result.metadata?.candidateCount,
                   resolvedCount: result.metadata?.resolvedCount,
                   filteredCount: result.metadata?.filteredCount,

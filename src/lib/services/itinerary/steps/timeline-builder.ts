@@ -1,7 +1,8 @@
 /**
- * Step 6: Timeline Builder
+ * Step 6: Timeline Builder (v3)
  * 純粋 TypeScript — 外部 API 不使用
  * OptimizedDay[] → TimelineDay[] への時刻確定
+ * + nodeId 付与、meal window 調整、startTime/endTime 尊重
  */
 
 import type {
@@ -10,25 +11,9 @@ import type {
   TimelineNode,
   RouteLeg,
   NormalizedRequest,
-} from '@/types/compose-pipeline';
+} from '@/types/itinerary-pipeline';
 import type { FixedScheduleItem } from '@/types/user-input';
-
-// ============================================
-// Constants
-// ============================================
-
-/** デフォルト開始時刻 */
-const DEFAULT_START_TIME = '08:00';
-
-/** 最終アクティビティの終了リミット */
-const DEFAULT_END_LIMIT = '22:00';
-
-/** 食事タイムスロットの目安 */
-const MEAL_SLOTS = {
-  breakfast: { start: '07:30', end: '09:00' },
-  lunch: { start: '11:30', end: '13:30' },
-  dinner: { start: '18:00', end: '20:00' },
-};
+import { DEFAULT_START_TIME, DEFAULT_END_LIMIT, MEAL_SLOTS } from '../constants';
 
 // ============================================
 // Public API
@@ -52,6 +37,10 @@ function buildDayTimeline(
   day: OptimizedDay,
   request: NormalizedRequest
 ): TimelineDay {
+  // v3: NormalizedRequest.startTime / endTime を尊重
+  const dayStartTime = request.startTime || DEFAULT_START_TIME;
+  const dayEndLimit = request.endTime || DEFAULT_END_LIMIT;
+
   if (day.nodes.length === 0) {
     return {
       day: day.day,
@@ -59,12 +48,12 @@ function buildDayTimeline(
       nodes: [],
       legs: day.legs,
       overnightLocation: day.overnightLocation,
-      startTime: DEFAULT_START_TIME,
+      startTime: dayStartTime,
     };
   }
 
   // 開始時刻を決定
-  const startTime = determineStartTime(day.day, request.fixedSchedule);
+  const startTime = determineStartTime(day.day, request.fixedSchedule, dayStartTime);
 
   // Fixed schedule items for this day
   const fixedItems = request.fixedSchedule.filter(
@@ -73,7 +62,7 @@ function buildDayTimeline(
 
   const nodes: TimelineNode[] = [];
   let currentTime = timeToMinutes(startTime);
-  const endLimit = timeToMinutes(DEFAULT_END_LIMIT);
+  const endLimit = timeToMinutes(dayEndLimit);
 
   for (let i = 0; i < day.nodes.length; i++) {
     const node = day.nodes[i];
@@ -90,6 +79,11 @@ function buildDayTimeline(
       currentTime += day.legs[i - 1].durationMinutes;
     }
 
+    // v3: 食事候補を meal window に引き寄せる
+    if (node.stop.candidate.role === 'meal') {
+      currentTime = adjustForMealWindow(currentTime, node.stop.candidate.timeSlotHint);
+    }
+
     const arrivalTime = currentTime;
     const departureTime = arrivalTime + stayMinutes;
 
@@ -97,7 +91,6 @@ function buildDayTimeline(
     const warnings: string[] = [];
 
     if (departureTime > endLimit) {
-      // priority 低い候補を削除する代わりに、warning 追加
       warnings.push('活動時間が遅くなります (22:00以降)');
     }
 
@@ -117,6 +110,9 @@ function buildDayTimeline(
       departureTime: minutesToTime(departureTime),
       stayMinutes,
       warnings: [...node.stop.warnings, ...warnings],
+      // v3: nodeId と semanticId
+      nodeId: node.nodeId,
+      semanticId: node.stop.semanticId,
     });
 
     currentTime = departureTime;
@@ -136,27 +132,50 @@ function buildDayTimeline(
 }
 
 // ============================================
+// v3: Meal window adjustment
+// ============================================
+
+function adjustForMealWindow(currentMinutes: number, timeSlotHint: string): number {
+  let targetStart: number | null = null;
+
+  if (timeSlotHint === 'morning') targetStart = timeToMinutes(MEAL_SLOTS.breakfast.start);
+  else if (timeSlotHint === 'midday') targetStart = timeToMinutes(MEAL_SLOTS.lunch.start);
+  else if (timeSlotHint === 'evening') targetStart = timeToMinutes(MEAL_SLOTS.dinner.start);
+
+  if (targetStart === null) return currentMinutes;
+
+  // もう食事時間帯を過ぎていたら、そのまま
+  const targetEnd = targetStart + 120; // 2h window
+  if (currentMinutes > targetEnd) return currentMinutes;
+
+  // まだ早い場合は、食事時間帯の開始に寄せる (ただし30分以上早い場合のみ)
+  if (currentMinutes < targetStart - 30) return currentMinutes;
+  if (currentMinutes < targetStart) return targetStart;
+
+  return currentMinutes;
+}
+
+// ============================================
 // Start time determination
 // ============================================
 
 function determineStartTime(
   dayNum: number,
-  fixedSchedule: FixedScheduleItem[]
+  fixedSchedule: FixedScheduleItem[],
+  defaultStart: string
 ): string {
-  // 初日にフライト到着がある場合、到着時刻 + 移動時間
   const arrival = fixedSchedule.find(
     (fs) => fs.type === 'flight' && fs.to && fs.time
   );
 
   if (dayNum === 1 && arrival?.time) {
-    // フライト到着 + 90分（入国・移動）
     const arrivalMinutes = timeToMinutes(arrival.time) + 90;
-    if (arrivalMinutes > timeToMinutes(DEFAULT_START_TIME)) {
+    if (arrivalMinutes > timeToMinutes(defaultStart)) {
       return minutesToTime(arrivalMinutes);
     }
   }
 
-  return DEFAULT_START_TIME;
+  return defaultStart;
 }
 
 // ============================================
@@ -203,7 +222,7 @@ function checkOpeningHours(
   departureMinutes: number
 ): string | null {
   if (!openingHours?.periods || openingHours.periods.length === 0) {
-    return null; // データなし → 警告なし
+    return null;
   }
 
   const arrivalHour = arrivalMinutes / 60;
@@ -215,7 +234,7 @@ function checkOpeningHours(
       : 24;
 
     if (openHour <= arrivalHour && closeHour >= arrivalHour) {
-      return null; // 営業時間内
+      return null;
     }
   }
 
@@ -238,13 +257,11 @@ function trimOverflowNodes(
   nodes: TimelineNode[],
   endLimitMinutes: number
 ): TimelineNode[] {
-  // 全ノードが時間内に収まっている場合はそのまま
   const lastNode = nodes[nodes.length - 1];
   if (!lastNode || timeToMinutes(lastNode.departureTime) <= endLimitMinutes) {
     return nodes;
   }
 
-  // priority 低い候補から削除
   const sorted = [...nodes].sort(
     (a, b) => a.stop.candidate.priority - b.stop.candidate.priority
   );
@@ -252,27 +269,21 @@ function trimOverflowNodes(
   const removed = new Set<TimelineNode>();
 
   for (const node of sorted) {
-    // must_visit は削除しない
     if (node.stop.candidate.role === 'must_visit') continue;
 
     removed.add(node);
 
-    // 残りのノードで時間を再計算
     const remaining = nodes.filter((n) => !removed.has(n));
     if (remaining.length === 0) break;
 
     const lastRemaining = remaining[remaining.length - 1];
-    // 簡易チェック: 削除したノードの滞在時間分だけ余裕ができる
-    const savedMinutes = node.stayMinutes + 15; // +15 for travel
+    const savedMinutes = node.stayMinutes + 15;
     const lastDeparture = timeToMinutes(lastRemaining.departureTime) - savedMinutes;
 
     if (lastDeparture <= endLimitMinutes) break;
   }
 
-  // 削除後のノードリスト (元の順序を維持)
   const result = nodes.filter((n) => !removed.has(n));
-
-  // 時刻を再計算
   return recalculateTimes(result, timeToMinutes(result[0]?.arrivalTime || DEFAULT_START_TIME));
 }
 
@@ -281,7 +292,7 @@ function recalculateTimes(nodes: TimelineNode[], startMinutes: number): Timeline
 
   return nodes.map((node, i) => {
     if (i > 0) {
-      currentTime += 15; // デフォルトの移動時間
+      currentTime += 15;
     }
     const arrivalTime = currentTime;
     const departureTime = arrivalTime + node.stayMinutes;
@@ -301,7 +312,6 @@ function adjustLegsForTrimming(
   newCount: number
 ): RouteLeg[] {
   if (originalCount === newCount) return legs;
-  // 簡易: ノード数が変わった場合はレッグを切り詰め
   return legs.slice(0, Math.max(0, newCount - 1));
 }
 

@@ -9,7 +9,7 @@ import type {
   SelectedStop,
   SemanticCandidate,
   ComposePipelineMetadata,
-} from '@/types/compose-pipeline';
+} from '@/types/itinerary-pipeline';
 import type { PlaceDetails } from '@/types/places';
 import type { ModelInfo } from '@/types/itinerary';
 
@@ -421,6 +421,50 @@ describe('composedToItinerary', () => {
     if (transitItem?.itemType === 'transit') {
       expect(transitItem.data.duration).toBe('2h 30m');
     }
+  });
+
+  it('v3: nodeId and semanticId are stored in activity metadata', () => {
+    const stop = makeStop('浅草寺');
+    const node: TimelineNode = {
+      ...makeTimelineNode(stop, '08:00', '09:00'),
+      nodeId: 'node-abc',
+      semanticId: 'sem-xyz',
+    };
+
+    const day: NarrativeDay = {
+      day: 1,
+      title: 'Day 1',
+      activities: [makeNarrativeActivity(node)],
+      legs: [],
+      overnightLocation: '',
+    };
+
+    const composed = makeComposed([day]);
+    const itinerary = composedToItinerary(composed);
+
+    const activity = itinerary.days[0].activities[0];
+    expect(activity.metadata).toBeDefined();
+    expect(activity.metadata!.nodeId).toBe('node-abc');
+    expect(activity.metadata!.semanticId).toBe('sem-xyz');
+  });
+
+  it('v3: metadata is empty object when nodeId/semanticId not provided', () => {
+    const stop = makeStop('浅草寺');
+    const node = makeTimelineNode(stop, '08:00', '09:00');
+
+    const day: NarrativeDay = {
+      day: 1,
+      title: 'Day 1',
+      activities: [makeNarrativeActivity(node)],
+      legs: [],
+      overnightLocation: '',
+    };
+
+    const composed = makeComposed([day]);
+    const itinerary = composedToItinerary(composed);
+
+    const activity = itinerary.days[0].activities[0];
+    expect(activity.metadata).toEqual({});
   });
 
   it('transit for car mode has correct transit type', () => {

@@ -1,7 +1,7 @@
 /**
- * Step 4: Feasibility Scorer
+ * Step 4: Feasibility Scorer (v3)
  * 純粋 TypeScript — 外部 API 不使用
- * 5 軸スコアリングでスポット候補の実現可能性を評価
+ * 8 軸スコアリングでスポット候補の実現可能性を評価
  */
 
 import type { PlaceDetails } from '@/types/places';
@@ -14,33 +14,15 @@ import type {
   SemanticCandidate,
   BudgetLevel,
   TimeSlotHint,
-} from '@/types/compose-pipeline';
+} from '@/types/itinerary-pipeline';
 import { haversineDistance } from '@/lib/services/google/distance-estimator';
-
-// ============================================
-// Constants
-// ============================================
-
-/** デフォルトのフィルタ閾値 */
-const DEFAULT_THRESHOLD = 30;
-
-/** 予算レベルと priceLevel のマッピング */
-const BUDGET_PRICE_MAP: Record<BudgetLevel, number[]> = {
-  budget: [0, 1],
-  standard: [1, 2],
-  premium: [2, 3],
-  luxury: [3, 4],
-};
-
-/** 時間帯と営業時間の期待 (24h) */
-const TIME_SLOT_HOURS: Record<TimeSlotHint, { start: number; end: number }> = {
-  morning: { start: 8, end: 12 },
-  midday: { start: 11, end: 14 },
-  afternoon: { start: 13, end: 17 },
-  evening: { start: 17, end: 21 },
-  night: { start: 20, end: 24 },
-  flexible: { start: 9, end: 18 },
-};
+import {
+  FEASIBILITY_WEIGHTS,
+  DEFAULT_FEASIBILITY_THRESHOLD,
+  LOW_REVIEW_THRESHOLD,
+  BUDGET_PRICE_MAP,
+  TIME_SLOT_HOURS,
+} from '../constants';
 
 // ============================================
 // Public API
@@ -53,7 +35,7 @@ export function scoreAndSelect(
   groups: ResolvedPlaceGroup[],
   request: NormalizedRequest,
   prevLatLng?: { lat: number; lng: number },
-  threshold: number = DEFAULT_THRESHOLD
+  threshold: number = DEFAULT_FEASIBILITY_THRESHOLD
 ): { selected: SelectedStop[]; filtered: ScoredPlace[] } {
   const selected: SelectedStop[] = [];
   const filtered: ScoredPlace[] = [];
@@ -68,6 +50,7 @@ export function scoreAndSelect(
         placeDetails: undefined,
         feasibilityScore: 0,
         warnings: [group.error || 'Place resolve failed'],
+        semanticId: group.candidate.semanticId,
       });
       continue;
     }
@@ -81,11 +64,14 @@ export function scoreAndSelect(
         currentLatLng
       );
       const totalScore =
+        breakdown.nameMatch +
+        breakdown.areaHintMatch +
         breakdown.openHoursMatch +
         breakdown.ratingQuality +
         breakdown.budgetMatch +
         breakdown.categoryRelevance +
-        breakdown.distanceFromPrev;
+        breakdown.distanceFromPrev +
+        breakdown.lowReviewPenalty;
 
       const warnings: string[] = [];
       if (breakdown.openHoursMatch === 0) {
@@ -111,12 +97,17 @@ export function scoreAndSelect(
     scored.sort((a, b) => b.totalScore - a.totalScore);
     const best = scored[0];
 
-    if (best.totalScore >= threshold) {
+    // must/high priority 候補は threshold 免除
+    const isExempt =
+      group.candidate.role === 'must_visit' || group.candidate.priority >= 8;
+
+    if (isExempt || best.totalScore >= threshold) {
       selected.push({
         candidate: best.candidate,
         placeDetails: best.placeDetails,
         feasibilityScore: best.totalScore,
         warnings: best.warnings,
+        semanticId: group.candidate.semanticId,
       });
 
       // 次の候補の距離計算用に位置を更新
@@ -145,11 +136,12 @@ export function candidatesToStops(
     placeDetails: undefined,
     feasibilityScore: 50, // デフォルトスコア
     warnings: [],
+    semanticId: candidate.semanticId,
   }));
 }
 
 // ============================================
-// Internal scoring functions
+// Internal scoring functions (v3: 8 axes)
 // ============================================
 
 function scorePlaceCandidate(
@@ -159,75 +151,140 @@ function scorePlaceCandidate(
   prevLatLng?: { lat: number; lng: number }
 ): FeasibilityScoreBreakdown {
   return {
+    nameMatch: scoreNameMatch(candidate.name, candidate.searchQuery, place.name),
+    areaHintMatch: scoreAreaHintMatch(candidate.areaHint, place.formattedAddress),
     openHoursMatch: scoreOpenHours(candidate.timeSlotHint, place.openingHours),
     ratingQuality: scoreRating(place.rating, place.userRatingsTotal),
     budgetMatch: scoreBudget(request.budgetLevel, place.priceLevel),
     categoryRelevance: scoreCategoryRelevance(request.themes, place.types, candidate.categoryHint),
     distanceFromPrev: scoreDistance(place, prevLatLng),
+    lowReviewPenalty: scoreLowReview(place.userRatingsTotal),
   };
 }
 
 /**
- * 営業時間マッチ (0-25)
+ * 候補名一致度 (0-10)
+ */
+function scoreNameMatch(
+  candidateName: string,
+  searchQuery: string,
+  placeName: string
+): number {
+  if (!placeName) return Math.round(FEASIBILITY_WEIGHTS.nameMatch * 0.5);
+
+  const placeNameLower = placeName.toLowerCase();
+  const candidateLower = candidateName.toLowerCase();
+  const queryLower = searchQuery.toLowerCase();
+
+  if (placeNameLower === candidateLower || placeNameLower === queryLower) {
+    return FEASIBILITY_WEIGHTS.nameMatch;
+  }
+  if (placeNameLower.includes(candidateLower) || candidateLower.includes(placeNameLower)) {
+    return Math.round(FEASIBILITY_WEIGHTS.nameMatch * 0.8);
+  }
+  if (placeNameLower.includes(queryLower) || queryLower.includes(placeNameLower)) {
+    return Math.round(FEASIBILITY_WEIGHTS.nameMatch * 0.7);
+  }
+
+  const overlap = calculateCharOverlap(candidateLower, placeNameLower);
+  return Math.round(FEASIBILITY_WEIGHTS.nameMatch * Math.min(overlap, 1));
+}
+
+function calculateCharOverlap(a: string, b: string): number {
+  if (a.length === 0 || b.length === 0) return 0;
+  let matches = 0;
+  const bChars = new Set(b);
+  for (const ch of a) {
+    if (bChars.has(ch)) matches++;
+  }
+  return matches / Math.max(a.length, b.length);
+}
+
+/**
+ * エリアヒント一致度 (0-10)
+ */
+function scoreAreaHintMatch(
+  areaHint: string | undefined,
+  formattedAddress: string
+): number {
+  if (!areaHint) return Math.round(FEASIBILITY_WEIGHTS.areaHintMatch * 0.5);
+  if (!formattedAddress) return Math.round(FEASIBILITY_WEIGHTS.areaHintMatch * 0.5);
+
+  const hintLower = areaHint.toLowerCase();
+  const addressLower = formattedAddress.toLowerCase();
+
+  if (addressLower.includes(hintLower) || hintLower.includes(addressLower)) {
+    return FEASIBILITY_WEIGHTS.areaHintMatch;
+  }
+
+  const words = hintLower.split(/[\s、,]+/).filter(Boolean);
+  const matchCount = words.filter((w) => addressLower.includes(w)).length;
+  if (matchCount > 0) {
+    return Math.round(FEASIBILITY_WEIGHTS.areaHintMatch * (matchCount / words.length));
+  }
+
+  return 2;
+}
+
+/**
+ * 営業時間マッチ (0-20)
  */
 function scoreOpenHours(
   timeSlot: TimeSlotHint,
   openingHours?: { periods?: Array<{ open: { day: number; time: string }; close?: { day: number; time: string } }> }
 ): number {
   if (!openingHours?.periods || openingHours.periods.length === 0) {
-    // 営業時間データなし: 中程度のスコア
-    return 12;
+    return Math.round(FEASIBILITY_WEIGHTS.openHoursMatch * 0.5);
   }
 
   const expected = TIME_SLOT_HOURS[timeSlot];
   const midHour = (expected.start + expected.end) / 2;
 
-  // いずれかの period が訪問予定時間帯をカバーしているかチェック
   for (const period of openingHours.periods) {
     const openHour = parseTimeToHour(period.open.time);
     const closeHour = period.close
       ? parseTimeToHour(period.close.time)
       : 24;
 
-    // 訪問予定時間帯の中央が営業時間内か
     if (openHour <= midHour && closeHour >= midHour) {
-      return 25;
+      return FEASIBILITY_WEIGHTS.openHoursMatch;
     }
-
-    // 部分的に重なるか
     if (openHour < expected.end && closeHour > expected.start) {
-      return 18;
+      return Math.round(FEASIBILITY_WEIGHTS.openHoursMatch * 0.7);
     }
   }
 
-  return 5; // 営業時間外
+  return Math.round(FEASIBILITY_WEIGHTS.openHoursMatch * 0.2);
 }
 
 /**
- * 評価品質 (0-20): rating × log(1 + userRatingsTotal)
+ * 評価品質 (0-15)
  */
 function scoreRating(rating?: number, userRatingsTotal?: number): number {
-  if (!rating) return 10; // データなし: 中程度
+  if (!rating) return Math.round(FEASIBILITY_WEIGHTS.ratingQuality * 0.5);
 
-  const normalizedRating = Math.min(rating / 5, 1); // 0-1
+  const normalizedRating = Math.min(rating / 5, 1);
   const reviewWeight = Math.log(1 + (userRatingsTotal || 0)) / Math.log(1 + 10000);
   const clamped = Math.min(reviewWeight, 1);
 
-  return Math.round(normalizedRating * 12 + clamped * 8);
+  return Math.round(
+    normalizedRating * (FEASIBILITY_WEIGHTS.ratingQuality * 0.6) +
+    clamped * (FEASIBILITY_WEIGHTS.ratingQuality * 0.4)
+  );
 }
 
 /**
- * 予算マッチ (0-20)
+ * 予算マッチ (0-15)
  */
 function scoreBudget(
   budgetLevel: BudgetLevel,
   priceLevel?: number
 ): number {
-  if (priceLevel === undefined) return 15; // データなし: やや高め
+  if (priceLevel === undefined) return Math.round(FEASIBILITY_WEIGHTS.budgetMatch * 0.75);
 
   const expectedRange = BUDGET_PRICE_MAP[budgetLevel];
   if (priceLevel >= expectedRange[0] && priceLevel <= expectedRange[1]) {
-    return 20; // 完全マッチ
+    return FEASIBILITY_WEIGHTS.budgetMatch;
   }
 
   const distance = Math.min(
@@ -235,20 +292,19 @@ function scoreBudget(
     Math.abs(priceLevel - expectedRange[1])
   );
 
-  return Math.max(0, 20 - distance * 8);
+  return Math.max(0, FEASIBILITY_WEIGHTS.budgetMatch - distance * 6);
 }
 
 /**
- * カテゴリ関連度 (0-20)
+ * カテゴリ関連度 (0-15)
  */
 function scoreCategoryRelevance(
   themes: string[],
   placeTypes?: string[],
   categoryHint?: string
 ): number {
-  if (!placeTypes || placeTypes.length === 0) return 10;
+  if (!placeTypes || placeTypes.length === 0) return Math.round(FEASIBILITY_WEIGHTS.categoryRelevance * 0.5);
 
-  // テーマとカテゴリの関連マッピング
   const themeToTypes: Record<string, string[]> = {
     'グルメ': ['restaurant', 'cafe', 'bakery', 'meal_delivery', 'food'],
     'Gourmet': ['restaurant', 'cafe', 'bakery', 'meal_delivery', 'food'],
@@ -262,35 +318,33 @@ function scoreCategoryRelevance(
     'Art': ['art_gallery', 'museum'],
   };
 
-  let score = 10; // ベーススコア
+  let score = Math.round(FEASIBILITY_WEIGHTS.categoryRelevance * 0.5);
 
-  // テーマとの関連性チェック
   for (const theme of themes) {
     const expectedTypes = themeToTypes[theme];
     if (expectedTypes) {
       const hasMatch = placeTypes.some((t) => expectedTypes.includes(t));
       if (hasMatch) {
-        score = Math.min(20, score + 5);
+        score = Math.min(FEASIBILITY_WEIGHTS.categoryRelevance, score + 4);
       }
     }
   }
 
-  // categoryHint との一致
   if (categoryHint && placeTypes.some((t) => t.includes(categoryHint))) {
-    score = Math.min(20, score + 5);
+    score = Math.min(FEASIBILITY_WEIGHTS.categoryRelevance, score + 4);
   }
 
   return score;
 }
 
 /**
- * 距離ペナルティ (0-15): 近いほど高スコア
+ * 距離ペナルティ (0-10)
  */
 function scoreDistance(
   place: PlaceDetails,
   prevLatLng?: { lat: number; lng: number }
 ): number {
-  if (!prevLatLng) return 15; // 最初のスポット: フルスコア
+  if (!prevLatLng) return FEASIBILITY_WEIGHTS.distanceFromPrev;
 
   const dist = haversineDistance(
     prevLatLng.lat,
@@ -299,12 +353,20 @@ function scoreDistance(
     place.longitude
   );
 
-  // 2km 以内: 15点, 5km: 12点, 10km: 8点, 20km+: 3点
-  if (dist <= 2) return 15;
-  if (dist <= 5) return 12;
-  if (dist <= 10) return 8;
-  if (dist <= 20) return 5;
-  return 3;
+  if (dist <= 2) return FEASIBILITY_WEIGHTS.distanceFromPrev;
+  if (dist <= 5) return Math.round(FEASIBILITY_WEIGHTS.distanceFromPrev * 0.8);
+  if (dist <= 10) return Math.round(FEASIBILITY_WEIGHTS.distanceFromPrev * 0.5);
+  if (dist <= 20) return Math.round(FEASIBILITY_WEIGHTS.distanceFromPrev * 0.3);
+  return Math.round(FEASIBILITY_WEIGHTS.distanceFromPrev * 0.2);
+}
+
+/**
+ * レビュー数少ペナルティ (0-5)
+ */
+function scoreLowReview(userRatingsTotal?: number): number {
+  if (userRatingsTotal === undefined) return Math.round(FEASIBILITY_WEIGHTS.lowReviewPenalty * 0.5);
+  if (userRatingsTotal >= LOW_REVIEW_THRESHOLD) return FEASIBILITY_WEIGHTS.lowReviewPenalty;
+  return Math.round(FEASIBILITY_WEIGHTS.lowReviewPenalty * (userRatingsTotal / LOW_REVIEW_THRESHOLD));
 }
 
 // ============================================
