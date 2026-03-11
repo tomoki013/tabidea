@@ -9,6 +9,10 @@
 
 ## 開発者向けコミット履歴（コミット単位）
 
+### 2026-03-12
+
+- `local` feat(compose-jobs,planner,netlify): プラン生成のタイムアウト回避を非同期ジョブ化で実装。① 新規 API `POST /api/itinerary/compose-jobs` / `GET /api/itinerary/compose-jobs/[jobId]` を追加し、compose 実行をジョブ作成 + polling 方式へ変更。② `compose_runs` をジョブ台帳として拡張し、`current_step` / `current_message` / `progress_payload` / `result_payload` / `error_payload` / `access_token_hash` などを保存する migration `20260312030000_compose_jobs_async.sql` を追加。③ Netlify Background Function `compose-background` と `processComposeJob()` を追加し、長時間の `runComposePipeline()` を App Router route から切り離した。④ `useComposeGeneration` を SSE reader から polling ベースに更新し、`partialDays` を job progress から復元するよう変更。⑤ `GenerationRunLogger` は compose job と共存できるよう `compose_runs` へ upsert する形に調整。⑥ ローディング画面では「AIが最適な旅程を組み立てています...」の footer を外し、カード内に `旅の豆知識` を埋め込むレイアウトへ変更。⑦ architecture / performance docs と compose hook / compose jobs API テストを更新。
+
 ### 2026-03-11
 
 - `local` fix(planner,compose,constraints): 希望入力が多いときの compose 生成を軽くしつつ、絶対条件の遵守を強化。① `normalize-request.ts` で入力を hard constraints / soft preferences に分離し、テーマと自由記述の希望を決定論的に圧縮して `NormalizedRequest` に保持するよう変更。② 絶対条件は目的地・日程・必訪問スポット・予約済みホテル・予約済み交通として構造化し、soft なテーマ/雰囲気/任意希望は上限付きで要約。③ `semantic-planner.ts` のプロンプトを「必ず守る条件」と「参考にする希望」に分離し、soft 条件は全部盛りせず全体のまとまり優先で反映するルールを追加。④ 予約済みホテルは day structure の宿泊地へ反映し、予約済み交通は `timeline-builder.ts` で日内の開始・終了可能時刻の hard anchor として扱うよう改善。⑤ timeline の overflow trimming では `must_visit` と fixed schedule に紐づくノードを削除対象から除外。⑥ compose metadata に `compactionApplied` / `hardConstraintCount` / `softPreferenceCount` / `suppressedSoftPreferenceCount` を追加。⑦ normalize / timeline / pipeline のテストを拡充。

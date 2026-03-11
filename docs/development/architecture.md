@@ -49,21 +49,22 @@ UserInput → [1] Request Normalizer (TS) → NormalizedRequest
          → [GenerationRunLogger] → compose_runs / compose_run_steps (DB)
 ```
 
-- API: `POST /api/itinerary/compose` (SSE stream, `maxDuration=25`, route-level `ack` / `heartbeat` / `progress` / `day_complete` / `complete` / `error` / `done`)
+- API: `POST /api/itinerary/compose-jobs` で compose job を作成し、`GET /api/itinerary/compose-jobs/[jobId]` を polling して進捗と結果を取得
 - 型: `src/types/itinerary-pipeline.ts`
 - 実装: `src/lib/services/itinerary/`
 - 定数: `src/lib/services/itinerary/constants.ts`
 - エラー: `src/lib/services/itinerary/errors.ts`
 - 観測ログ: `src/lib/services/itinerary/generation-run-logger.ts` → compose_runs / compose_run_steps
+- Job 状態: `compose_runs` に `current_step`, `current_message`, `progress_payload`, `result_payload`, `error_payload` を保持し、匿名ユーザーは `jobId + accessToken` で参照
 - UI: `ComposeLoadingAnimation` + `ComposeLoadingTips` (ステップ 1-6)、narrative_render フェーズでは `StreamingResultView` で日ごとカード段階表示
-- Hook: `useComposeGeneration` (`partialDays`, `totalDays` で streaming day data を管理)
-- Route は接続直後に `ack` を返し、重い LLM ステップ中も `heartbeat` を返して無通信区間を避ける
+- Hook: `useComposeGeneration` は job 作成後に polling し、`partialDays`, `totalDays` を job progress から復元
+- 実行本体は Netlify Background Function `compose-background` に移し、App Router route の 25 秒制限を回避
 - モデル解決は phase-aware (`outline` / `chunk`) で行い、compose pipeline は既存の `AI_MODEL_OUTLINE_*` / `AI_MODEL_CHUNK_*` env 契約を使う
 - Places 照合は `ENABLE_COMPOSE_PLACE_RESOLVE` で ON/OFF 制御
 - Phase 1 はハバーサイン距離推定 (`distance-estimator.ts`)、Phase 2 で Routes API (`routes-client.ts`) に差替予定
 - Pipeline version: `v3`
-- Narrative Renderer: `streamObject` で日ごとに部分 JSON を返し、SSE `day_complete` イベントで UI に中間結果を配信
-- Netlify の実行上限を踏まえ、パイプラインは 25 秒 deadline 前提で Places / narrative / hero image を段階的に縮退する
+- Narrative Renderer: `streamObject` で日ごとに部分 JSON を返し、job progress の `partialDays` 経由で UI に中間結果を配信
+- Netlify の route timeout 回避は Background Function へ寄せ、パイプライン内部では Places / narrative / hero image の縮退ロジックを継続する
 
 補足（サンプル再生成）:
 - `src/scripts/generate-sample-itineraries.ts` は compose pipeline (`runComposePipeline`) を使用してサンプル旅程を生成

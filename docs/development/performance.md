@@ -49,6 +49,9 @@
 
 Use `createComposeTimer(modelTier?)` factory.
 
+- App Router route は compose job の enqueue のみを担当し、長時間の compose 実行は Netlify Background Function に移譲する。
+- `semantic_plan` の target 超過は引き続き `PerformanceTimer` で監視し、route timeout 回避は polling + background execution で吸収する。
+
 ## 4. Instrumentation Pattern
 
 ```ts

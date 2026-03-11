@@ -175,14 +175,9 @@ export default function ComposeLoadingAnimation({
             </p>
           </div>
 
-          <p className="text-sm text-stone-400 dark:text-stone-500 font-hand">
-            {t("footer")}
-          </p>
+          <ComposeLoadingTips embedded />
         </div>
       </div>
-
-      {/* Loading Tips below the main animation */}
-      <ComposeLoadingTips />
     </div>
   );
 }
