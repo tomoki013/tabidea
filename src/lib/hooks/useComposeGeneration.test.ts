@@ -18,6 +18,9 @@ vi.mock("next-intl", () => ({
     if (key === "errors.requestFailed") {
       return `HTTP ${values?.status}: request failed`;
     }
+    if (key === "errors.network") {
+      return "Network request failed";
+    }
     return key;
   },
 }));
@@ -45,6 +48,20 @@ describe("useComposeGeneration", () => {
     global.fetch = mockFetch as typeof fetch;
     mockSaveLocalPlan.mockResolvedValue({ id: "local-plan-1" });
   });
+
+  function createSseBody(events: unknown[]): ReadableStream<Uint8Array> {
+    const encoder = new TextEncoder();
+    const payload = events
+      .map((event) => `data: ${JSON.stringify(event)}\n\n`)
+      .join("");
+
+    return new ReadableStream<Uint8Array>({
+      start(controller) {
+        controller.enqueue(encoder.encode(payload));
+        controller.close();
+      },
+    });
+  }
 
   it("polls compose jobs until completion and navigates with the saved local plan", async () => {
     mockFetch
@@ -197,5 +214,126 @@ describe("useComposeGeneration", () => {
 
     expect(result.current.errorMessage).toBe("");
     expect(mockPush).not.toHaveBeenCalled();
+  });
+
+  it("falls back to legacy compose when the async job backend is unavailable", async () => {
+    mockFetch
+      .mockResolvedValueOnce({
+        ok: false,
+        status: 500,
+        json: async () => ({
+          error: "Compose job backend is unavailable",
+          code: "compose_job_backend_unavailable",
+        }),
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        body: createSseBody([
+          {
+            type: "progress",
+            step: "semantic_plan",
+            message: "候補スポットを選定中...",
+            totalDays: 2,
+            destination: "東京",
+            description: "週末の東京旅行",
+          },
+          {
+            type: "day_complete",
+            step: "narrative_render",
+            day: 1,
+            dayData: {
+              day: 1,
+              title: "浅草散策",
+              activities: [],
+            },
+            totalDays: 2,
+            destination: "東京",
+            description: "週末の東京旅行",
+          },
+          {
+            type: "complete",
+            result: {
+              itinerary: {
+                id: "itin-legacy",
+                destination: "東京",
+                description: "週末の東京旅行",
+                days: [
+                  {
+                    day: 1,
+                    title: "浅草散策",
+                    activities: [],
+                  },
+                ],
+              },
+              warnings: [],
+            },
+          },
+          {
+            type: "done",
+          },
+        ]),
+      });
+
+    const { result } = renderHook(() => useComposeGeneration());
+
+    await act(async () => {
+      await result.current.generate({
+        destinations: ["東京"],
+        region: "domestic",
+        dates: "2日間",
+        companions: "友達",
+        theme: ["グルメ"],
+        budget: "standard",
+        pace: "balanced",
+        freeText: "",
+      });
+    });
+
+    await waitFor(() => {
+      expect(mockSaveLocalPlan).toHaveBeenCalledTimes(1);
+    });
+
+    expect(mockFetch).toHaveBeenNthCalledWith(
+      2,
+      "/api/itinerary/compose",
+      expect.objectContaining({
+        method: "POST",
+      })
+    );
+    expect(result.current.isCompleted).toBe(true);
+    expect(result.current.errorMessage).toBe("");
+  });
+
+  it("maps polling fetch failures to a localized network error", async () => {
+    mockFetch
+      .mockResolvedValueOnce({
+        ok: true,
+        status: 202,
+        json: async () => ({
+          jobId: "job-1",
+          accessToken: "token-1",
+        }),
+      })
+      .mockRejectedValueOnce(new Error("Failed to fetch"));
+
+    const { result } = renderHook(() => useComposeGeneration());
+
+    await act(async () => {
+      await result.current.generate({
+        destinations: ["東京"],
+        region: "domestic",
+        dates: "2日間",
+        companions: "友達",
+        theme: ["グルメ"],
+        budget: "standard",
+        pace: "balanced",
+        freeText: "",
+      });
+    });
+
+    await waitFor(() => {
+      expect(result.current.errorMessage).toBe("Network request failed");
+    });
   });
 });

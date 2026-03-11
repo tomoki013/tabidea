@@ -71,6 +71,72 @@ describe("POST /api/itinerary/compose-jobs", () => {
       /^[0-9a-f-]{36}$/i
     );
   });
+
+  it("falls back to in-process execution when background trigger returns a non-ok response", async () => {
+    mockCreateJob.mockResolvedValue({
+      jobId: "job-1",
+      accessToken: "token-1",
+    });
+    global.fetch = vi.fn().mockResolvedValue({
+      ok: false,
+      status: 500,
+    }) as typeof fetch;
+
+    const { POST } = await import("./route");
+    const response = await POST(
+      new Request("https://example.com/api/itinerary/compose-jobs", {
+        method: "POST",
+        body: JSON.stringify({
+          input: {
+            destinations: ["東京"],
+            region: "domestic",
+            dates: "1日間",
+            companions: "友達",
+            theme: ["グルメ"],
+            budget: "standard",
+            pace: "balanced",
+            freeText: "",
+          },
+        }),
+      })
+    );
+
+    expect(response.status).toBe(202);
+
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(mockProcessComposeJob).toHaveBeenCalledTimes(1);
+  });
+
+  it("returns a classified backend-unavailable error when job store bootstrap fails", async () => {
+    mockCreateJob.mockRejectedValue(
+      new Error("Missing Supabase service role environment variables")
+    );
+
+    const { POST } = await import("./route");
+    const response = await POST(
+      new Request("https://example.com/api/itinerary/compose-jobs", {
+        method: "POST",
+        body: JSON.stringify({
+          input: {
+            destinations: ["東京"],
+            region: "domestic",
+            dates: "1日間",
+            companions: "友達",
+            theme: ["グルメ"],
+            budget: "standard",
+            pace: "balanced",
+            freeText: "",
+          },
+        }),
+      })
+    );
+
+    expect(response.status).toBe(500);
+    await expect(response.json()).resolves.toEqual({
+      error: "Compose job backend is unavailable",
+      code: "compose_job_backend_unavailable",
+    });
+  });
 });
 
 describe("GET /api/itinerary/compose-jobs/[jobId]", () => {

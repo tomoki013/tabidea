@@ -17,7 +17,58 @@ function buildBackgroundUrl(requestUrl: string): string {
   return new URL("/.netlify/functions/compose-background", normalizedBase).toString();
 }
 
+function shouldUseRemoteBackgroundTrigger(): boolean {
+  return Boolean(
+    process.env.NETLIFY ||
+      process.env.CONTEXT ||
+      process.env.DEPLOY_URL ||
+      process.env.DEPLOY_PRIME_URL ||
+      process.env.URL
+  );
+}
+
+function classifyComposeJobError(error: unknown): { code: string; message: string } {
+  const message = error instanceof Error ? error.message : "Failed to create compose job";
+
+  if (message.includes("Missing Supabase service role environment variables")) {
+    return {
+      code: "compose_job_backend_unavailable",
+      message: "Compose job backend is unavailable",
+    };
+  }
+
+  if (
+    message.includes("column") ||
+    message.includes("compose_runs") ||
+    message.includes("relation") ||
+    message.includes("schema cache")
+  ) {
+    return {
+      code: "compose_job_store_misconfigured",
+      message: "Compose job store is misconfigured",
+    };
+  }
+
+  return {
+    code: "compose_job_create_failed",
+    message,
+  };
+}
+
+async function runInProcessFallback(jobId: string): Promise<void> {
+  queueMicrotask(() => {
+    void processComposeJob(jobId).catch((jobError) => {
+      console.error("[compose-jobs] In-process compose fallback failed:", jobError);
+    });
+  });
+}
+
 async function triggerBackgroundJob(jobId: string, requestUrl: string): Promise<void> {
+  if (!shouldUseRemoteBackgroundTrigger()) {
+    await runInProcessFallback(jobId);
+    return;
+  }
+
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
   };
@@ -27,18 +78,18 @@ async function triggerBackgroundJob(jobId: string, requestUrl: string): Promise<
   }
 
   try {
-    await fetch(buildBackgroundUrl(requestUrl), {
+    const response = await fetch(buildBackgroundUrl(requestUrl), {
       method: "POST",
       headers,
       body: JSON.stringify({ jobId }),
     });
+
+    if (!response.ok) {
+      throw new Error(`Background trigger returned ${response.status}`);
+    }
   } catch (error) {
     console.warn("[compose-jobs] Background trigger failed, using in-process fallback:", error);
-    queueMicrotask(() => {
-      void processComposeJob(jobId).catch((jobError) => {
-        console.error("[compose-jobs] In-process compose fallback failed:", jobError);
-      });
-    });
+    await runInProcessFallback(jobId);
   }
 }
 
@@ -54,11 +105,11 @@ export async function POST(req: Request) {
     return Response.json({ error: "input is required" }, { status: 400 });
   }
 
-  const user = await getUser();
-  const store = new ComposeJobStore();
-  const jobId = crypto.randomUUID();
-
   try {
+    const user = await getUser();
+    const store = new ComposeJobStore();
+    const jobId = crypto.randomUUID();
+
     const created = await store.createJob({
       jobId,
       input: body.input,
@@ -76,9 +127,11 @@ export async function POST(req: Request) {
       { status: 202 }
     );
   } catch (error) {
+    const classified = classifyComposeJobError(error);
     return Response.json(
       {
-        error: error instanceof Error ? error.message : "Failed to create compose job",
+        error: classified.message,
+        code: classified.code,
       },
       { status: 500 }
     );

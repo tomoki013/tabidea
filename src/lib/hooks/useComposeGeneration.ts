@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, type Dispatch, type SetStateAction } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import type { UserInput, Itinerary, PartialDayData } from "@/types";
@@ -11,6 +11,7 @@ import { saveLocalPlan, notifyPlanChange } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
 import { useUserPlans } from "@/context/UserPlansContext";
 import type { UserType } from "@/lib/limits/config";
+import type { ComposeJobErrorPayload } from "@/types/compose-job";
 
 // ============================================
 // Types
@@ -78,6 +79,34 @@ const COMPOSE_STEP_IDS: PipelineStepId[] = [
 const JOB_POLL_INTERVAL_MS = 1_500;
 const JOB_TIMEOUT_MS = 5 * 60_000;
 
+interface ComposeJobCreateResponse {
+  jobId?: string;
+  accessToken?: string;
+  error?: string;
+  code?: string;
+}
+
+interface LegacyComposeEvent {
+  type: string;
+  step?: PipelineStepId;
+  message?: string;
+  totalDays?: number;
+  destination?: string;
+  description?: string;
+  day?: number;
+  dayData?: PartialDayData;
+  result?: {
+    itinerary: Itinerary;
+    warnings: string[];
+    metadata?: ComposePipelineMetadata;
+  };
+  failedStep?: string;
+  limitExceeded?: boolean;
+  userType?: UserType | string;
+  resetAt?: string | null;
+  remaining?: number;
+}
+
 function sleep(ms: number, signal: AbortSignal): Promise<void> {
   return new Promise((resolve, reject) => {
     const timeoutId = window.setTimeout(() => {
@@ -92,6 +121,13 @@ function sleep(ms: number, signal: AbortSignal): Promise<void> {
 
     signal.addEventListener("abort", onAbort, { once: true });
   });
+}
+
+function shouldFallbackToLegacyCompose(payload: ComposeJobCreateResponse | null): boolean {
+  return (
+    payload?.code === "compose_job_backend_unavailable" ||
+    payload?.code === "compose_job_store_misconfigured"
+  );
 }
 
 // ============================================
@@ -157,15 +193,40 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         });
 
         if (!response.ok) {
+          let errorPayload: ComposeJobCreateResponse | null = null;
+          try {
+            errorPayload = (await response.json()) as ComposeJobCreateResponse;
+          } catch {
+            errorPayload = null;
+          }
+
+          if (shouldFallbackToLegacyCompose(errorPayload)) {
+            await runLegacyComposeGeneration(input, options, controller, {
+              setCurrentStep,
+              setSteps,
+              setErrorMessage,
+              setIsGenerating,
+              setIsCompleted,
+              setLimitExceeded,
+              setWarnings,
+              setPartialDays,
+              setTotalDays,
+              setPreviewDestination,
+              setPreviewDescription,
+              isAuthenticated,
+              refreshPlans,
+              router,
+              t,
+            });
+            return;
+          }
+
           setErrorMessage(t("errors.requestFailed", { status: response.status }));
           setIsGenerating(false);
           return;
         }
 
-        const { jobId, accessToken } = (await response.json()) as {
-          jobId?: string;
-          accessToken?: string;
-        };
+        const { jobId, accessToken } = (await response.json()) as ComposeJobCreateResponse;
 
         if (!jobId || !accessToken) {
           setErrorMessage(t("errors.generic"));
@@ -280,9 +341,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         if ((err as Error).name === "AbortError") {
           setErrorMessage(t("errors.cancelled"));
         } else {
-          setErrorMessage(
-            err instanceof Error ? err.message : t("errors.generic")
-          );
+          setErrorMessage(t("errors.network"));
         }
         setIsGenerating(false);
       }
@@ -327,11 +386,211 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
   };
 }
 
+interface LegacyComposeRunDeps {
+  setCurrentStep: (step: PipelineStepId | null) => void;
+  setSteps: Dispatch<SetStateAction<ComposeStep[]>>;
+  setErrorMessage: (message: string) => void;
+  setIsGenerating: (value: boolean) => void;
+  setIsCompleted: (value: boolean) => void;
+  setLimitExceeded: (value: ComposeLimitExceeded | null) => void;
+  setWarnings: (value: string[]) => void;
+  setPartialDays: Dispatch<SetStateAction<Map<number, PartialDayData>>>;
+  setTotalDays: (value: number) => void;
+  setPreviewDestination: (value: string) => void;
+  setPreviewDescription: (value: string) => void;
+  isAuthenticated: boolean;
+  refreshPlans: () => Promise<void>;
+  router: ReturnType<typeof useRouter>;
+  t: ReturnType<typeof useTranslations>;
+}
+
+async function runLegacyComposeGeneration(
+  input: UserInput,
+  options: { isRetry?: boolean } | undefined,
+  controller: AbortController,
+  deps: LegacyComposeRunDeps
+): Promise<void> {
+  const response = await fetch("/api/itinerary/compose", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ input, options }),
+    signal: controller.signal,
+  });
+
+  if (!response.ok) {
+    deps.setErrorMessage(deps.t("errors.requestFailed", { status: response.status }));
+    deps.setIsGenerating(false);
+    return;
+  }
+
+  if (!response.body) {
+    deps.setErrorMessage(deps.t("errors.streamUnexpectedEnd"));
+    deps.setIsGenerating(false);
+    return;
+  }
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let terminalEventSeen = false;
+
+  const handleProgressStep = (
+    stepId: PipelineStepId,
+    message?: string
+  ) => {
+    deps.setCurrentStep(stepId);
+    deps.setSteps((prev) =>
+      prev.map((s) => {
+        if (s.id === stepId) {
+          return {
+            ...s,
+            status: "active",
+            message: message || s.message,
+          };
+        }
+        const currentIdx = COMPOSE_STEP_IDS.indexOf(stepId);
+        const thisIdx = COMPOSE_STEP_IDS.indexOf(s.id);
+        if (thisIdx < currentIdx && s.status !== "completed") {
+          return { ...s, status: "completed" };
+        }
+        return s;
+      })
+    );
+  };
+
+  const applyPreviewFields = (event: LegacyComposeEvent) => {
+    if (event.totalDays) {
+      deps.setTotalDays(event.totalDays);
+    }
+    if (event.destination) {
+      deps.setPreviewDestination(event.destination);
+    }
+    if (event.description) {
+      deps.setPreviewDescription(event.description);
+    }
+  };
+
+  const handleLegacyEvent = async (event: LegacyComposeEvent): Promise<void> => {
+    switch (event.type) {
+      case "progress":
+        if (event.step) {
+          handleProgressStep(event.step, event.message);
+        }
+        applyPreviewFields(event);
+        break;
+      case "day_complete":
+        applyPreviewFields(event);
+        if (typeof event.day === "number" && event.dayData) {
+          deps.setCurrentStep("narrative_render");
+          deps.setPartialDays((prev) => {
+            const next = new Map(prev);
+            next.set(event.day as number, event.dayData as PartialDayData);
+            return next;
+          });
+        }
+        break;
+      case "complete":
+        if (!event.result) {
+          deps.setErrorMessage(deps.t("errors.generic"));
+          deps.setIsGenerating(false);
+          return;
+        }
+
+        deps.setSteps((prev) => prev.map((s) => ({ ...s, status: "completed" })));
+        deps.setCurrentStep(null);
+        deps.setIsGenerating(false);
+        deps.setIsCompleted(true);
+        deps.setPartialDays(new Map());
+        deps.setWarnings(event.result.warnings || []);
+        terminalEventSeen = true;
+
+        await handleCompletedResult(input, event.result, {
+          isAuthenticated: deps.isAuthenticated,
+          refreshPlans: deps.refreshPlans,
+          router: deps.router,
+          setErrorMessage: deps.setErrorMessage,
+          t: deps.t,
+        });
+        break;
+      case "error": {
+        terminalEventSeen = true;
+        deps.setCurrentStep(null);
+        deps.setIsGenerating(false);
+        deps.setPartialDays(new Map());
+
+        const errorPayload: ComposeJobErrorPayload = {
+          message: event.message || "compose_pipeline_failed",
+          failedStep: event.failedStep,
+          limitExceeded: event.limitExceeded,
+          userType: event.userType,
+          resetAt: event.resetAt,
+          remaining: event.remaining,
+        };
+
+        if (errorPayload.limitExceeded) {
+          deps.setLimitExceeded({
+            userType: (errorPayload.userType as UserType) || "anonymous",
+            resetAt: errorPayload.resetAt ? new Date(errorPayload.resetAt) : null,
+            remaining: errorPayload.remaining,
+          });
+        } else {
+          deps.setErrorMessage(resolveErrorPayloadMessage(errorPayload, deps.t));
+        }
+        break;
+      }
+      case "done":
+        terminalEventSeen = true;
+        break;
+      default:
+        break;
+    }
+  };
+
+  while (true) {
+    const { done, value } = await reader.read();
+    buffer += decoder.decode(value, { stream: !done });
+
+    const chunks = buffer.split("\n\n");
+    buffer = chunks.pop() ?? "";
+
+    for (const chunk of chunks) {
+      const dataLines = chunk
+        .split("\n")
+        .filter((line) => line.startsWith("data:"))
+        .map((line) => line.slice(5).trim());
+
+      if (dataLines.length === 0) {
+        continue;
+      }
+
+      const event = JSON.parse(dataLines.join("\n")) as LegacyComposeEvent;
+      await handleLegacyEvent(event);
+    }
+
+    if (done) {
+      break;
+    }
+  }
+
+  if (!terminalEventSeen) {
+    deps.setErrorMessage(deps.t("errors.streamUnexpectedEnd"));
+    deps.setIsGenerating(false);
+  }
+}
+
 function resolveJobErrorMessage(
   job: ComposeJobResponse,
   t: ReturnType<typeof useTranslations>
 ): string {
-  const failedStep = job.error?.failedStep;
+  return resolveErrorPayloadMessage(job.error, t);
+}
+
+function resolveErrorPayloadMessage(
+  error: ComposeJobErrorPayload | undefined,
+  t: ReturnType<typeof useTranslations>
+): string {
+  const failedStep = error?.failedStep;
   if (failedStep) {
     const stepKey = `errors.stepFailed.${failedStep}` as const;
     try {
@@ -341,11 +600,11 @@ function resolveJobErrorMessage(
     }
   }
 
-  if (job.error?.message?.includes("timeout") || job.error?.message?.includes("Timed out")) {
+  if (error?.message?.includes("timeout") || error?.message?.includes("Timed out")) {
     return t("errors.timeout");
   }
 
-  return job.error?.message || t("errors.generic");
+  return error?.message || t("errors.generic");
 }
 
 async function handleCompletedResult(
