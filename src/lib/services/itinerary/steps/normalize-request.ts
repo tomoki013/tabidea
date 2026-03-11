@@ -10,6 +10,8 @@ import type {
   BudgetLevel,
   PaceLevel,
   TransportMode,
+  FixedTransportConstraint,
+  FixedHotelConstraint,
 } from '@/types/itinerary-pipeline';
 import { extractDuration } from '@/lib/utils/plan';
 
@@ -77,6 +79,26 @@ const TRANSPORT_MAP: Record<string, TransportMode> = {
   'bicycle': 'bicycle',
 };
 
+const HARD_REQUEST_PATTERNS = [
+  /絶対/,
+  /必須/,
+  /マスト/,
+  /外せない/,
+  /予約済/,
+  /チェックイン/,
+  /チェックアウト/,
+  /便/,
+  /列車/,
+  /バス/,
+  /\bmust\b/i,
+  /\brequired\b/i,
+  /\bbooked\b/i,
+];
+
+const MAX_THEME_COUNT = 4;
+const MAX_SOFT_REQUEST_COUNT = 6;
+const SOFT_TEXT_SPLIT_PATTERN = /[\n\r。！？!?,、]+/;
+
 // ============================================
 // Public API
 // ============================================
@@ -89,18 +111,52 @@ export function normalizeRequest(
   outputLanguage: string = 'ja'
 ): NormalizedRequest {
   const durationDays = parseDuration(input.dates);
+  const startDate = extractStartDate(input.dates);
   const budgetLevel = normalizeBudget(input.budget);
   const pace = normalizePace(input.pace);
   const preferredTransport = normalizeTransport(input.preferredTransport);
   const mustVisitPlaces = normalizeMustVisitPlaces(input.mustVisitPlaces);
-  const fixedSchedule = input.fixedSchedule ?? [];
+  const fixedSchedule = normalizeFixedSchedule(input.fixedSchedule);
+  const normalizedThemes = normalizeThemes(input.theme);
+  const hardDirectives = extractHardFreeTextDirectives(input.freeText);
+  const softRequests = extractSoftPreferenceRequests(input.freeText);
+  const compactThemes = normalizedThemes.slice(0, MAX_THEME_COUNT);
+  const compactSoftRequests = softRequests.slice(0, MAX_SOFT_REQUEST_COUNT);
+  const fixedTransports = extractFixedTransports(fixedSchedule, startDate);
+  const fixedHotels = extractFixedHotels(fixedSchedule, startDate, durationDays);
+  const hardConstraints = buildHardConstraintSummary({
+    input,
+    startDate,
+    mustVisitPlaces,
+    fixedTransports,
+    fixedHotels,
+    hardDirectives,
+  });
+  const softPreferences = buildSoftPreferenceSummary({
+    themes: compactThemes,
+    travelVibe: normalizeOptionalText(input.travelVibe),
+    softRequests: compactSoftRequests,
+    totalSoftCount:
+      normalizedThemes.length +
+      softRequests.length +
+      (normalizeOptionalText(input.travelVibe) ? 1 : 0),
+  });
+  const compaction = buildCompactionMetadata({
+    input,
+    hardConstraints,
+    softPreferences,
+    totalSoftCount:
+      normalizedThemes.length +
+      softRequests.length +
+      (normalizeOptionalText(input.travelVibe) ? 1 : 0),
+  });
 
   return {
     destinations: input.destinations.filter((d) => d.trim().length > 0),
     durationDays,
-    startDate: extractStartDate(input.dates),
+    startDate,
     companions: input.companions || '',
-    themes: input.theme.length > 0 ? input.theme : ['Gourmet'],
+    themes: compactThemes.length > 0 ? compactThemes : ['Gourmet'],
     budgetLevel,
     pace,
     freeText: input.freeText || '',
@@ -115,6 +171,9 @@ export function normalizeRequest(
     // v3 追加フィールド
     durationMinutes: durationDays * 840, // 14h/day default (08:00-22:00)
     locale: outputLanguage,
+    hardConstraints,
+    softPreferences,
+    compaction,
   };
 }
 
@@ -210,4 +269,183 @@ function normalizeTransport(transports?: string[]): TransportMode[] {
 function normalizeMustVisitPlaces(places?: string[]): string[] {
   if (!places) return [];
   return places.map((p) => p.trim()).filter((p) => p.length > 0);
+}
+
+function normalizeThemes(themes: string[]): string[] {
+  const normalized = themes
+    .map((theme) => theme.trim())
+    .filter((theme) => theme.length > 0);
+
+  return Array.from(new Set(normalized));
+}
+
+function normalizeFixedSchedule(items?: UserInput['fixedSchedule']): NonNullable<UserInput['fixedSchedule']> {
+  if (!items) return [];
+  return items
+    .map((item) => ({
+      ...item,
+      name: item.name.trim(),
+      notes: item.notes?.trim(),
+      from: item.from?.trim(),
+      to: item.to?.trim(),
+    }))
+    .filter((item) => item.name.length > 0);
+}
+
+function normalizeOptionalText(value?: string): string | undefined {
+  const trimmed = value?.trim();
+  return trimmed ? trimmed : undefined;
+}
+
+function extractHardFreeTextDirectives(freeText: string): string[] {
+  return splitFreeText(freeText).filter((sentence) =>
+    HARD_REQUEST_PATTERNS.some((pattern) => pattern.test(sentence))
+  );
+}
+
+function extractSoftPreferenceRequests(freeText: string): string[] {
+  const sentences = splitFreeText(freeText);
+  return sentences.filter((sentence) =>
+    !HARD_REQUEST_PATTERNS.some((pattern) => pattern.test(sentence))
+  );
+}
+
+function splitFreeText(freeText: string): string[] {
+  if (!freeText) return [];
+  return Array.from(
+    new Set(
+      freeText
+        .split(SOFT_TEXT_SPLIT_PATTERN)
+        .map((sentence) => sentence.trim())
+        .filter((sentence) => sentence.length > 0)
+    )
+  );
+}
+
+function buildHardConstraintSummary(input: {
+  input: UserInput;
+  startDate?: string;
+  mustVisitPlaces: string[];
+  fixedTransports: FixedTransportConstraint[];
+  fixedHotels: FixedHotelConstraint[];
+  hardDirectives: string[];
+}) {
+  const destinations = input.input.destinations.map((destination) => destination.trim()).filter(Boolean);
+  const dateConstraints = [input.input.dates.trim()].filter(Boolean);
+
+  const summaryLines = [
+    ...destinations.map((destination) => `目的地: ${destination}`),
+    ...dateConstraints.map((dates) => `日程: ${dates}`),
+    ...input.mustVisitPlaces.map((place) => `必訪問: ${place}`),
+    ...input.fixedHotels.map((hotel) => `予約済みホテル: ${hotel.name}`),
+    ...input.fixedTransports.map((transport) => `予約済み交通: ${transport.name}`),
+    ...input.hardDirectives.map((directive) => `厳守メモ: ${directive}`),
+  ];
+
+  return {
+    destinations,
+    dateConstraints,
+    mustVisitPlaces: input.mustVisitPlaces,
+    fixedTransports: input.fixedTransports,
+    fixedHotels: input.fixedHotels,
+    freeTextDirectives: input.hardDirectives,
+    summaryLines,
+  };
+}
+
+function buildSoftPreferenceSummary(input: {
+  themes: string[];
+  travelVibe?: string;
+  softRequests: string[];
+  totalSoftCount: number;
+}) {
+  const rankedRequests = input.softRequests;
+  const keptCount = input.themes.length + rankedRequests.length + (input.travelVibe ? 1 : 0);
+
+  return {
+    themes: input.themes.length > 0 ? input.themes : ['Gourmet'],
+    travelVibe: input.travelVibe,
+    rankedRequests,
+    suppressedCount: Math.max(input.totalSoftCount - keptCount, 0),
+  };
+}
+
+function buildCompactionMetadata(input: {
+  input: UserInput;
+  hardConstraints: NormalizedRequest['hardConstraints'];
+  softPreferences: NormalizedRequest['softPreferences'];
+  totalSoftCount: number;
+}) {
+  const freeTextLength = input.input.freeText.trim().length;
+  const longInputDetected =
+    freeTextLength > 240 ||
+    input.totalSoftCount > MAX_THEME_COUNT + MAX_SOFT_REQUEST_COUNT ||
+    (input.input.mustVisitPlaces?.length ?? 0) >= 4;
+
+  return {
+    applied: input.softPreferences.suppressedCount > 0,
+    hardConstraintCount:
+      input.hardConstraints.destinations.length +
+      input.hardConstraints.dateConstraints.length +
+      input.hardConstraints.mustVisitPlaces.length +
+      input.hardConstraints.fixedHotels.length +
+      input.hardConstraints.fixedTransports.length +
+      input.hardConstraints.freeTextDirectives.length,
+    softPreferenceCount: input.totalSoftCount,
+    suppressedSoftPreferenceCount: input.softPreferences.suppressedCount,
+    longInputDetected,
+  };
+}
+
+function extractFixedTransports(
+  fixedSchedule: NonNullable<UserInput['fixedSchedule']>,
+  startDate?: string
+): FixedTransportConstraint[] {
+  return fixedSchedule
+    .filter((item) => item.type !== 'hotel' && item.type !== 'activity')
+    .map((item) => ({
+      type: item.type,
+      name: item.name,
+      date: item.date,
+      time: item.time,
+      from: item.from,
+      to: item.to,
+      notes: item.notes,
+      day: resolveTripDay(item.date, startDate),
+    }));
+}
+
+function extractFixedHotels(
+  fixedSchedule: NonNullable<UserInput['fixedSchedule']>,
+  startDate: string | undefined,
+  durationDays: number
+): FixedHotelConstraint[] {
+  return fixedSchedule
+    .filter((item) => item.type === 'hotel')
+    .map((item) => {
+      const startDay = resolveTripDay(item.date, startDate) ?? 1;
+      const checkoutDay = resolveTripDay(item.checkoutDate, startDate);
+
+      return {
+        name: item.name,
+        checkInDate: item.date,
+        checkOutDate: item.checkoutDate,
+        notes: item.notes,
+        startDay,
+        endDay: checkoutDay ? Math.max(startDay, checkoutDay - 1) : Math.min(startDay, durationDays),
+      };
+    });
+}
+
+function resolveTripDay(date: string | undefined, startDate?: string): number | undefined {
+  if (!date || !startDate) return undefined;
+
+  try {
+    const start = new Date(`${startDate}T00:00:00`);
+    const target = new Date(`${date}T00:00:00`);
+    const diffMs = target.getTime() - start.getTime();
+    return Math.floor(diffMs / (24 * 60 * 60 * 1000)) + 1;
+  } catch {
+    return undefined;
+  }
 }

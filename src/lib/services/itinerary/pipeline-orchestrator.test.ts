@@ -385,6 +385,23 @@ describe('pipeline-orchestrator', () => {
     expect(result.metadata!.modelTier).toBe('flash');
   });
 
+  it('should report compaction metadata when optional requests are excessive', async () => {
+    const result = await runComposePipeline(
+      makeTestInput({
+        theme: ['グルメ', 'カフェ', '歴史', '自然', '買い物'],
+        travelVibe: '大人っぽい旅',
+        freeText:
+          '朝活したい。写真映え重視。穴場も見たい。カフェ多め。散歩したい。ゆっくりしたい。買い物もしたい。ホテルは絶対守って。',
+      })
+    );
+
+    expect(result.success).toBe(true);
+    expect(result.metadata?.compactionApplied).toBe(true);
+    expect(result.metadata?.softPreferenceCount).toBeGreaterThan(0);
+    expect(result.metadata?.suppressedSoftPreferenceCount).toBeGreaterThan(0);
+    expect(result.metadata?.hardConstraintCount).toBeGreaterThan(0);
+  });
+
   it('should skip place resolve when the deadline is close', async () => {
     const { isPlaceResolveEnabled, resolvePlaces } = await import('./steps/place-resolver');
     vi.mocked(isPlaceResolveEnabled).mockReturnValueOnce(true);

@@ -17,6 +17,51 @@ export type TransportMode = 'walking' | 'public_transit' | 'car' | 'bicycle';
 export type WeatherTolerance = 'rain_ok' | 'indoor_preferred' | 'outdoor_only';
 export type MealPreference = 'local_cuisine' | 'fast_food' | 'cafe' | 'fine_dining' | 'no_preference';
 
+export interface FixedTransportConstraint {
+  type: 'flight' | 'train' | 'bus' | 'other';
+  name: string;
+  date?: string;
+  time?: string;
+  from?: string;
+  to?: string;
+  notes?: string;
+  day?: number;
+}
+
+export interface FixedHotelConstraint {
+  name: string;
+  checkInDate?: string;
+  checkOutDate?: string;
+  notes?: string;
+  startDay?: number;
+  endDay?: number;
+}
+
+export interface HardConstraintSummary {
+  destinations: string[];
+  dateConstraints: string[];
+  mustVisitPlaces: string[];
+  fixedTransports: FixedTransportConstraint[];
+  fixedHotels: FixedHotelConstraint[];
+  freeTextDirectives: string[];
+  summaryLines: string[];
+}
+
+export interface SoftPreferenceSummary {
+  themes: string[];
+  travelVibe?: string;
+  rankedRequests: string[];
+  suppressedCount: number;
+}
+
+export interface RequestCompactionMetadata {
+  applied: boolean;
+  hardConstraintCount: number;
+  softPreferenceCount: number;
+  suppressedSoftPreferenceCount: number;
+  longInputDetected: boolean;
+}
+
 export interface NormalizedRequest {
   /** 正規化済みの目的地リスト */
   destinations: string[];
@@ -66,6 +111,12 @@ export interface NormalizedRequest {
   mealPreferences?: MealPreference[];
   /** ロケール */
   locale?: string;
+  /** 絶対に守る条件の要約 */
+  hardConstraints: HardConstraintSummary;
+  /** 参考にする希望の要約 */
+  softPreferences: SoftPreferenceSummary;
+  /** 入力圧縮のメタデータ */
+  compaction: RequestCompactionMetadata;
 }
 
 // ============================================
@@ -383,6 +434,14 @@ export interface ComposePipelineMetadata {
   fallbackUsed?: boolean;
   /** タイムアウト回避のため縮退したか */
   timeoutMitigationUsed?: boolean;
+  /** 入力圧縮が適用されたか */
+  compactionApplied?: boolean;
+  /** hard constraint 件数 */
+  hardConstraintCount?: number;
+  /** soft preference 件数 */
+  softPreferenceCount?: number;
+  /** 圧縮で省略した soft preference 件数 */
+  suppressedSoftPreferenceCount?: number;
 }
 
 // ============================================

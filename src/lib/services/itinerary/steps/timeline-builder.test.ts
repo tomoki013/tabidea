@@ -78,6 +78,27 @@ const makeRequest = (overrides: Partial<NormalizedRequest> = {}): NormalizedRequ
   region: 'domestic',
   outputLanguage: 'ja',
   originalInput: makeUserInput(),
+  hardConstraints: {
+    destinations: ['東京'],
+    dateConstraints: ['3日間'],
+    mustVisitPlaces: [],
+    fixedTransports: [],
+    fixedHotels: [],
+    freeTextDirectives: [],
+    summaryLines: [],
+  },
+  softPreferences: {
+    themes: ['グルメ'],
+    rankedRequests: [],
+    suppressedCount: 0,
+  },
+  compaction: {
+    applied: false,
+    hardConstraintCount: 2,
+    softPreferenceCount: 1,
+    suppressedSoftPreferenceCount: 0,
+    longInputDetected: false,
+  },
   ...overrides,
 });
 
@@ -197,6 +218,56 @@ describe('buildTimeline', () => {
     // Flight arrival at 10:00 + 90 minutes = 11:30
     expect(timeline.startTime).toBe('11:30');
     expect(timeline.nodes[0].arrivalTime).toBe('11:30');
+  });
+
+  it('hard transport departure shortens the available day window', () => {
+    const nodes: OptimizedNode[] = [];
+    const legs: RouteLeg[] = [];
+
+    for (let i = 0; i < 4; i++) {
+      nodes.push(makeNode(makeStop(`Spot${i}`, 120, i === 0 ? 'must_visit' : 'filler', i === 0 ? 10 : 2), i));
+      if (i > 0) {
+        legs.push(makeLeg({ fromIndex: i - 1, toIndex: i, durationMinutes: 20 }));
+      }
+    }
+
+    const day = makeOptimizedDay({ nodes, legs });
+    const request = makeRequest({
+      durationDays: 1,
+      startDate: '2025-04-12',
+      fixedSchedule: [
+        {
+          type: 'flight',
+          name: '帰りの便',
+          date: '2025-04-12',
+          time: '16:00',
+          from: '東京',
+        },
+      ],
+      hardConstraints: {
+        destinations: ['東京'],
+        dateConstraints: ['2025-04-12 1日間'],
+        mustVisitPlaces: [],
+        fixedTransports: [
+          {
+            type: 'flight',
+            name: '帰りの便',
+            date: '2025-04-12',
+            time: '16:00',
+            from: '東京',
+            day: 1,
+          },
+        ],
+        fixedHotels: [],
+        freeTextDirectives: [],
+        summaryLines: ['予約済み交通: 帰りの便'],
+      },
+    });
+
+    const [timeline] = buildTimeline([day], request);
+
+    expect(timeline.nodes.length).toBeLessThan(4);
+    expect(timeline.nodes.at(-1)?.departureTime <= '14:30').toBe(true);
   });
 
   it('travel time: legs add duration between nodes', () => {
@@ -377,5 +448,29 @@ describe('buildTimeline', () => {
     const [timeline] = buildTimeline([day], request);
 
     expect(timeline.nodes[0].stayMinutes).toBe(90);
+  });
+
+  it('keeps fixed-schedule matched nodes when trimming overflow', () => {
+    const mustStop = makeStop('絶対スポット', 180, 'must_visit', 10);
+    const bookedStop = makeStop('予約イベント', 180, 'recommended', 1);
+    const fillerStop = makeStop('調整候補', 180, 'filler', 1);
+
+    const day = makeOptimizedDay({
+      nodes: [makeNode(mustStop, 0), makeNode(bookedStop, 1), makeNode(fillerStop, 2)],
+      legs: [
+        makeLeg({ fromIndex: 0, toIndex: 1, durationMinutes: 30 }),
+        makeLeg({ fromIndex: 1, toIndex: 2, durationMinutes: 30 }),
+      ],
+    });
+
+    const request = makeRequest({
+      fixedSchedule: [{ type: 'activity', name: '予約イベント', time: '14:00' }],
+    });
+
+    const [timeline] = buildTimeline([day], request);
+    const remainingNames = timeline.nodes.map((node) => node.stop.candidate.name);
+
+    expect(remainingNames).toContain('絶対スポット');
+    expect(remainingNames).toContain('予約イベント');
   });
 });

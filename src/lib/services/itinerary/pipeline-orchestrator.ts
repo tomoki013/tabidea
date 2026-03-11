@@ -66,7 +66,9 @@ function shouldUseSemanticFastMode(
     remainingMs < MIN_REMAINING_FOR_SEMANTIC_FAST_MODE_MS ||
     request.durationDays >= 4 ||
     request.destinations.length > 1 ||
-    request.mustVisitPlaces.length >= 4
+    request.mustVisitPlaces.length >= 4 ||
+    request.compaction.longInputDetected ||
+    request.softPreferences.rankedRequests.length >= 5
   );
 }
 
@@ -75,7 +77,7 @@ function getSemanticCandidateTarget(
   fastMode: boolean
 ): number {
   const perDay = fastMode ? 4 : request.durationDays >= 4 ? 5 : 6;
-  const minimum = request.mustVisitPlaces.length + request.durationDays * 2;
+  const minimum = request.hardConstraints.mustVisitPlaces.length + request.durationDays * 2;
   const cap = fastMode ? 14 : 20;
   return Math.max(minimum, Math.min(request.durationDays * perDay, cap));
 }
@@ -605,6 +607,10 @@ export async function runComposePipeline(
       droppedCandidateCount: droppedCount,
       fallbackUsed,
       timeoutMitigationUsed,
+      compactionApplied: normalizedRequest.compaction.applied,
+      hardConstraintCount: normalizedRequest.compaction.hardConstraintCount,
+      softPreferenceCount: normalizedRequest.compaction.softPreferenceCount,
+      suppressedSoftPreferenceCount: normalizedRequest.compaction.suppressedSoftPreferenceCount,
     };
 
     const composed: ComposedItinerary = {
