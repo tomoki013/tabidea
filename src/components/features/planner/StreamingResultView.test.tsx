@@ -6,6 +6,59 @@ import StreamingResultView from "./StreamingResultView";
 import type { DayPlan, GenerationState, UserInput } from "@/types";
 import { initialGenerationState } from "@/types";
 
+const { createTranslator } = vi.hoisted(() => {
+  const translationMessages: Record<string, string> = {
+    "components.features.planner.streamingResultView.transition.title": "詳細ページへ自動移動します",
+    "components.features.planner.streamingResultView.transition.defaultMessage": "詳細が完成しました。数秒以内に自動で詳細ページへ切り替わります。",
+    "components.features.planner.streamingResultView.progress.movingToDetail": "詳細ページへ移動中...",
+    "components.features.planner.streamingResultView.progress.completed": "生成完了",
+    "components.features.planner.streamingResultView.progress.generatingDetails": "詳細プランを生成中...",
+    "components.features.planner.streamingResultView.progress.detailReadyMessage": "詳細が完成しました。このまましばらくお待ちください。自動で詳細ページへ移動します。",
+    "components.features.planner.streamingResultView.hero.photoBy": "Photo by",
+    "components.features.planner.streamingResultView.hero.on": "on",
+    "components.features.planner.streamingResultView.hero.unsplash": "Unsplash",
+    "components.features.planner.streamingResultView.hero.loadingImage": "画像を読み込み中...",
+    "components.features.planner.streamingResultView.hero.destinationLabel": "Your Destination",
+    "components.features.planner.streamingResultView.disclaimer.title": "AI生成プランに関する重要なお知らせ",
+    "components.features.planner.streamingResultView.disclaimer.body": "このプランはAIによって自動生成されています。",
+    "components.features.planner.streamingResultView.shareDisabled": "シェア・PDF出力は生成完了後に利用可能です",
+    "components.features.planner.streamingResultView.dayLabel": "日目",
+    "components.features.planner.streamingResultView.accommodationDescription": "{day}日目の宿泊エリア",
+  };
+
+  const translatorFactory = (namespace: string) => {
+    const translate = ((key: string, values?: Record<string, string | number>) => {
+      const fullKey = `${namespace}.${key}`;
+      if (fullKey === "components.features.planner.streamingResultView.durationString") {
+        return `${values?.nights}泊${values?.days}日`;
+      }
+      if (fullKey === "components.features.planner.streamingResultView.progress.dayCount") {
+        return `${values?.completed}/${values?.total} 日`;
+      }
+      if (fullKey === "components.features.planner.streamingResultView.dayLabelWithNumber") {
+        return `${values?.day}日目`;
+      }
+      if (fullKey === "components.features.planner.streamingResultView.accommodationDescription") {
+        return `${values?.day}日目の宿泊エリア`;
+      }
+      return translationMessages[fullKey] ?? key.split(".").pop() ?? key;
+    }) as ((key: string, values?: Record<string, string | number>) => string) & {
+      raw: (key: string) => unknown;
+    };
+
+    translate.raw = () => [];
+    return translate;
+  };
+
+  return { createTranslator: translatorFactory };
+});
+
+vi.mock("next-intl", () => ({
+  useTranslations: (namespace: string) => createTranslator(namespace),
+  createTranslator: ({ locale: _locale, messages: _messages, namespace }: { locale?: string; messages?: unknown; namespace?: string }) =>
+    createTranslator(namespace || ""),
+}));
+
 vi.mock("next/image", () => ({
   default: (props: any) => <img {...props} />,
 }));

@@ -3,6 +3,64 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import TravelPlannerSimplified from "./TravelPlannerSimplified";
 
+const { createTranslator } = vi.hoisted(() => {
+  const translationMessages: Record<string, string> = {
+    "components.features.planner.travelPlannerSimplified.defaultDates": "2泊3日",
+    "components.features.planner.travelPlannerSimplified.actions.tryAgain": "もう一度試す",
+    "components.features.planner.travelPlannerSimplified.contact.prefix": "",
+    "components.features.planner.travelPlannerSimplified.contact.link": "お問い合わせ",
+    "components.features.planner.travelPlannerSimplified.contact.suffix": "",
+    "components.features.planner.travelPlannerSimplified.notices.expired": "期限切れ",
+    "components.features.planner.travelPlannerSimplified.notices.restored": "復元しました",
+    "components.features.planner.simplifiedInputFlow.header.title": "旅行プランを作成",
+    "components.features.planner.simplifiedInputFlow.header.lead": "条件を選んでプランを作ります",
+    "components.features.planner.simplifiedInputFlow.step1.destinationModeLabel": "① 目的地はどうしますか？",
+    "components.features.planner.simplifiedInputFlow.step1.destinationInput.placeholderFirst": "例：京都、パリ、ハワイ...",
+    "components.features.planner.simplifiedInputFlow.step1.destinationInput.placeholderNext": "次の目的地を追加",
+    "components.features.planner.simplifiedInputFlow.step1.destinationInput.addButton": "追加",
+    "components.features.planner.simplifiedInputFlow.step1.omakase.title": "おまかせ",
+    "components.features.planner.simplifiedInputFlow.step1.dates.label": "② 日程",
+    "components.features.planner.simplifiedInputFlow.step1.dates.mode.durationOnly": "日数から選ぶ",
+    "components.features.planner.simplifiedInputFlow.step1.dates.mode.calendar": "日付を選ぶ",
+    "components.features.planner.simplifiedInputFlow.step1.companions.label": "③ 誰と行く？",
+    "components.features.planner.simplifiedInputFlow.phase3.toggle": "詳細を設定",
+    "components.features.planner.simplifiedInputFlow.generate.quick": "とりあえず生成する",
+    "components.features.planner.simplifiedInputFlow.generate.generating": "生成中",
+    "components.features.planner.steps.stepCompanions.options.friends": "友人",
+    "components.features.planner.steps.stepThemes.themes.gourmet": "グルメ",
+    "components.features.planner.steps.stepBudget.options.standard.label": "普通",
+    "components.features.planner.steps.stepBudget.options.standard.desc": "標準的な予算感",
+    "components.features.planner.steps.stepPace.options.balanced.label": "バランスよく",
+    "components.features.planner.steps.stepPace.options.balanced.desc": "無理のないペース",
+    "components.features.planner.steps.stepDates.formats.dayTrip": "日帰り",
+    "components.features.planner.steps.stepDates.formats.dateUndecidedValue": "日程未定",
+  };
+
+  const translatorFactory = (namespace: string) => {
+    const translate = ((key: string, values?: Record<string, string | number>) => {
+      const fullKey = `${namespace}.${key}`;
+      if (fullKey === "components.features.planner.steps.stepDates.formats.nightsDays") {
+        return `${values?.nights}泊${values?.days}日`;
+      }
+      return translationMessages[fullKey] ?? key.split(".").pop() ?? key;
+    }) as ((key: string, values?: Record<string, string | number>) => string) & {
+      raw: (key: string) => unknown;
+    };
+
+    translate.raw = () => [];
+    return translate;
+  };
+
+  return { createTranslator: translatorFactory };
+});
+
+vi.mock("next-intl", () => ({
+  useTranslations: (namespace: string) => createTranslator(namespace),
+  createTranslator: ({ locale: _locale, messages: _messages, namespace }: { locale?: string; messages?: unknown; namespace?: string }) =>
+    createTranslator(namespace || ""),
+  useLocale: () => "ja",
+}));
+
 // Mock Image component
 vi.mock("next/image", () => ({
   default: (props: any) => <img {...props} />,
@@ -10,10 +68,25 @@ vi.mock("next/image", () => ({
 
 // Mock server actions
 vi.mock("@/app/actions/travel-planner", () => ({
-  generatePlanOutline: vi.fn(),
-  generatePlanChunk: vi.fn(),
-  regeneratePlan: vi.fn(),
   savePlan: vi.fn(),
+}));
+
+// Mock useComposeGeneration
+vi.mock("@/lib/hooks/useComposeGeneration", () => ({
+  useComposeGeneration: () => ({
+    steps: [],
+    currentStep: null,
+    isGenerating: false,
+    isCompleted: false,
+    errorMessage: "",
+    limitExceeded: null,
+    warnings: [],
+    partialDays: new Map(),
+    totalDays: 0,
+    generate: vi.fn(),
+    reset: vi.fn(),
+    clearLimitExceeded: vi.fn(),
+  }),
 }));
 
 // Mock next/navigation
@@ -73,9 +146,9 @@ describe("TravelPlannerSimplified", () => {
     render(<TravelPlannerSimplified />);
     // Use flexible matchers or exact strings including the numbers
     expect(screen.getByText("旅行プランを作成")).toBeDefined();
-    expect(screen.getByText("① 目的地はどうしますか？")).toBeDefined();
-    expect(screen.getByText("② 日程")).toBeDefined();
-    expect(screen.getByText("③ 誰と行く？")).toBeDefined();
+    expect(screen.getByText(/① 目的地はどうしますか？/)).toBeDefined();
+    expect(screen.getByText(/② 日程/)).toBeDefined();
+    expect(screen.getByText(/③ 誰と行く？/)).toBeDefined();
   });
 
   it("can interact with the form", async () => {
@@ -117,7 +190,7 @@ describe("TravelPlannerSimplified", () => {
     if (dayBtn) fireEvent.click(dayBtn);
 
     // 3. Select Companion
-    const friendBtn = screen.getByText("友人");
+    const friendBtn = screen.getByTestId("companion-option-friends");
     fireEvent.click(friendBtn);
 
     // 4. Generate button should be visible and enabled

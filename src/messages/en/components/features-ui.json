@@ -1570,7 +1570,31 @@
           "footer": "AI is crafting the perfect itinerary..."
         },
         "composeLoadingTips": {
-          "label": "Travel Tip"
+          "label": "Travel Tip",
+          "tips": [
+            "ATMs often offer better exchange rates than airport currency counters.",
+            "Ask hotel staff for local recommendations to find less obvious spots.",
+            "Use Tabidea's Shiori feature to share the itinerary with your travel group.",
+            "Start checking the weather about a week before departure.",
+            "A charger and portable battery save a lot of friction during long days out.",
+            "Popular restaurants fill up quickly, especially on weekends, so book early.",
+            "Setting up a local SIM or eSIM before arrival makes your first transfer easier.",
+            "Dedicated travel insurance can cover gaps left by credit card benefits.",
+            "Local supermarkets and convenience stores are great places to find souvenirs.",
+            "Arriving at major attractions early usually means fewer crowds and better photos.",
+            "You can download Tabidea plans as PDF files for offline access.",
+            "Use the Journal feature to keep notes and trip memories in one place.",
+            "Keep passport copies on both your phone and cloud storage.",
+            "Buying a local transit card on arrival makes moving around easier.",
+            "A reusable water bottle helps on long sightseeing days and saves money.",
+            "Many hotels can store luggage before check-in so you can explore right away.",
+            "Offline language packs in Google Translate are worth downloading before the trip.",
+            "Carry at least two credit cards in case one stops working.",
+            "Morning markets are one of the easiest ways to find local food culture.",
+            "Switch Tabidea's output language in settings to generate plans in English or Japanese.",
+            "Open each spot in your plan to review details before you head out.",
+            "Publishing a Shiori lets other travelers use your plan as a reference."
+          ]
         },
         "outlineReview": {
           "title": "Your trip outline is ready",

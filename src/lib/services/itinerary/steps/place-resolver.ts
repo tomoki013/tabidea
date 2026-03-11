@@ -8,8 +8,9 @@ import type {
   SemanticCandidate,
   ResolvedPlaceGroup,
   ResolvedPlace,
-} from '@/types/compose-pipeline';
+} from '@/types/itinerary-pipeline';
 import { getGooglePlacesService } from '@/lib/services/google/places';
+import { DEFAULT_TOP_K, DEFAULT_RESOLVE_DELAY_MS } from '../constants';
 
 // ============================================
 // Public API
@@ -30,8 +31,8 @@ export async function resolvePlaces(
   destination: string,
   options?: { topK?: number; delayMs?: number }
 ): Promise<ResolvedPlaceGroup[]> {
-  const topK = options?.topK ?? 1;
-  const delayMs = options?.delayMs ?? 100;
+  const topK = options?.topK ?? DEFAULT_TOP_K;
+  const delayMs = options?.delayMs ?? DEFAULT_RESOLVE_DELAY_MS;
 
   let placesService;
   try {

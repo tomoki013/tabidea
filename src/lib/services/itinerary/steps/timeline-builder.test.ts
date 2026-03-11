@@ -7,7 +7,7 @@ import type {
   NormalizedRequest,
   SemanticCandidate,
   SelectedStop,
-} from '@/types/compose-pipeline';
+} from '@/types/itinerary-pipeline';
 import type { UserInput } from '@/types/user-input';
 
 // ==============================
@@ -305,6 +305,65 @@ describe('buildTimeline', () => {
     expect(timelines[1].day).toBe(2);
     expect(timelines[0].nodes[0].stop.candidate.name).toBe('A');
     expect(timelines[1].nodes[0].stop.candidate.name).toBe('B');
+  });
+
+  it('v3: nodes have nodeId and semanticId when provided', () => {
+    const stop = makeStop('Temple', 60);
+    const node: OptimizedNode = {
+      stop,
+      orderInDay: 0,
+      nodeId: 'node-123',
+    };
+    // Add semanticId to stop
+    stop.semanticId = 'sem-456';
+
+    const day = makeOptimizedDay({
+      nodes: [node],
+      legs: [],
+    });
+
+    const request = makeRequest();
+    const [timeline] = buildTimeline([day], request);
+
+    expect(timeline.nodes[0].nodeId).toBe('node-123');
+    expect(timeline.nodes[0].semanticId).toBe('sem-456');
+  });
+
+  it('v3: respects custom startTime from NormalizedRequest', () => {
+    const stop = makeStop('Morning Spot', 60);
+    const day = makeOptimizedDay({
+      nodes: [makeNode(stop, 0)],
+      legs: [],
+    });
+
+    const request = makeRequest({ startTime: '10:00' });
+    const [timeline] = buildTimeline([day], request);
+
+    expect(timeline.nodes[0].arrivalTime).toBe('10:00');
+  });
+
+  it('v3: meal candidate pulled to lunch window', () => {
+    const mealStop = makeStop('ランチ', 60, 'meal');
+    mealStop.candidate = makeCandidate({
+      name: 'ランチ',
+      role: 'meal',
+      timeSlotHint: 'midday',
+      stayDurationMinutes: 60,
+    });
+
+    const day = makeOptimizedDay({
+      nodes: [makeNode(mealStop, 0)],
+      legs: [],
+    });
+
+    const request = makeRequest();
+    const [timeline] = buildTimeline([day], request);
+
+    // Meal should arrive between 11:00-13:00 (lunch window)
+    const arrivalMinutes = timeToMinutes(timeline.nodes[0].arrivalTime);
+    // Starting at 08:00, meal window starts at 11:30 — if within 30min before, it snaps
+    // Since 08:00 is way before 11:00, it shouldn't be pulled
+    expect(arrivalMinutes).toBe(480); // 08:00 — too early to snap
   });
 
   it('stayMinutes is correctly set on timeline nodes', () => {

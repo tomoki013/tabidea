@@ -10,7 +10,7 @@ import type {
   BudgetLevel,
   PaceLevel,
   TransportMode,
-} from '@/types/compose-pipeline';
+} from '@/types/itinerary-pipeline';
 import { extractDuration } from '@/lib/utils/plan';
 
 // ============================================
@@ -112,6 +112,9 @@ export function normalizeRequest(
     region: input.region || 'domestic',
     outputLanguage,
     originalInput: input,
+    // v3 追加フィールド
+    durationMinutes: durationDays * 840, // 14h/day default (08:00-22:00)
+    locale: outputLanguage,
   };
 }
 

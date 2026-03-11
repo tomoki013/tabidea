@@ -285,6 +285,21 @@ describe('normalizeRequest', () => {
       expect(result.themes).toEqual(['Gourmet']);
     });
 
+    it('v3: sets durationMinutes from durationDays', () => {
+      const result = normalizeRequest(makeInput({ dates: '3日間' }));
+      expect(result.durationMinutes).toBe(3 * 840);
+    });
+
+    it('v3: sets locale from outputLanguage', () => {
+      const result = normalizeRequest(makeInput({}), 'en');
+      expect(result.locale).toBe('en');
+    });
+
+    it('v3: locale defaults to ja', () => {
+      const result = normalizeRequest(makeInput({}));
+      expect(result.locale).toBe('ja');
+    });
+
     it('preserves originalInput reference', () => {
       const input = makeInput({});
       const result = normalizeRequest(input);

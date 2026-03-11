@@ -1,5 +1,5 @@
 /**
- * Compose Pipeline 中間型定義
+ * Compose Pipeline v3 中間型定義
  * 7-step パイプラインの全中間データ型
  */
 
@@ -14,6 +14,8 @@ import type { UserInput, FixedScheduleItem } from './user-input';
 export type BudgetLevel = 'budget' | 'standard' | 'premium' | 'luxury';
 export type PaceLevel = 'relaxed' | 'balanced' | 'active';
 export type TransportMode = 'walking' | 'public_transit' | 'car' | 'bicycle';
+export type WeatherTolerance = 'rain_ok' | 'indoor_preferred' | 'outdoor_only';
+export type MealPreference = 'local_cuisine' | 'fast_food' | 'cafe' | 'fine_dining' | 'no_preference';
 
 export interface NormalizedRequest {
   /** 正規化済みの目的地リスト */
@@ -48,6 +50,22 @@ export interface NormalizedRequest {
   outputLanguage: string;
   /** 元の UserInput (参照保持) */
   originalInput: UserInput;
+
+  // ---- v3 追加フィールド (optional) ----
+  /** 1 日の開始時刻 (HH:mm) */
+  startTime?: string;
+  /** 1 日の終了時刻 (HH:mm) */
+  endTime?: string;
+  /** 旅行全体の有効分数 (durationDays × (endTime - startTime)) */
+  durationMinutes?: number;
+  /** 避けたいキーワード */
+  avoidKeywords?: string[];
+  /** 天候耐性 */
+  weatherTolerance?: WeatherTolerance;
+  /** 食事の好み */
+  mealPreferences?: MealPreference[];
+  /** ロケール */
+  locale?: string;
 }
 
 // ============================================
@@ -62,6 +80,7 @@ export type CandidateRole =
   | 'filler';
 
 export type TimeSlotHint = 'morning' | 'midday' | 'afternoon' | 'evening' | 'night' | 'flexible';
+export type IndoorOutdoor = 'indoor' | 'outdoor' | 'both';
 
 export interface SemanticCandidate {
   /** スポット/アクティビティ名 */
@@ -84,6 +103,18 @@ export interface SemanticCandidate {
   activityLabel?: string;
   /** 英語での場所名 */
   locationEn?: string;
+
+  // ---- v3 追加フィールド ----
+  /** パイプライン全体で一貫した候補追跡 ID */
+  semanticId?: string;
+  /** この候補を選んだ理由 */
+  rationale?: string;
+  /** エリアヒント (例: "浅草エリア", "銀座周辺") */
+  areaHint?: string;
+  /** 屋内/屋外 */
+  indoorOutdoor?: IndoorOutdoor;
+  /** タグ (例: ["写真映え", "静か"]) */
+  tags?: string[];
 }
 
 export interface DayStructure {
@@ -110,6 +141,14 @@ export interface SemanticPlan {
   dayStructure: DayStructure[];
   /** AIが選んだテーマタグ */
   themes?: string[];
+
+  // ---- v3 追加フィールド ----
+  /** 旅の意図サマリー */
+  tripIntentSummary?: string;
+  /** 順序に関する好み (例: ["寺社は午前中", "食事は地元の店"]) */
+  orderingPreferences?: string[];
+  /** フォールバックヒント (候補不足時の補完ヒント) */
+  fallbackHints?: string[];
 }
 
 // ============================================
@@ -139,16 +178,22 @@ export interface ResolvedPlaceGroup {
 // ============================================
 
 export interface FeasibilityScoreBreakdown {
-  /** 営業時間マッチ (0-25) */
+  /** 候補名一致度 (0-10) — v3 追加 */
+  nameMatch: number;
+  /** エリアヒント一致度 (0-10) — v3 追加 */
+  areaHintMatch: number;
+  /** 営業時間マッチ (0-20) */
   openHoursMatch: number;
-  /** 評価品質 (0-20) */
+  /** 評価品質 (0-15) */
   ratingQuality: number;
-  /** 予算マッチ (0-20) */
+  /** 予算マッチ (0-15) */
   budgetMatch: number;
-  /** カテゴリ関連度 (0-20) */
+  /** カテゴリ関連度 (0-15) */
   categoryRelevance: number;
-  /** 距離ペナルティ (0-15) */
+  /** 距離ペナルティ (0-10) */
   distanceFromPrev: number;
+  /** レビュー数少ペナルティ (0-5) — v3 追加 */
+  lowReviewPenalty: number;
 }
 
 export interface ScoredPlace {
@@ -173,6 +218,8 @@ export interface SelectedStop {
   feasibilityScore: number;
   /** 警告 */
   warnings: string[];
+  /** パイプライン追跡 ID — v3 追加 */
+  semanticId?: string;
 }
 
 // ============================================
@@ -180,9 +227,9 @@ export interface SelectedStop {
 // ============================================
 
 export interface RouteLeg {
-  /** 出発ノード index */
+  /** 出発ノード index (後方互換) */
   fromIndex: number;
-  /** 到着ノード index */
+  /** 到着ノード index (後方互換) */
   toIndex: number;
   /** 距離 (km) */
   distanceKm: number;
@@ -192,6 +239,14 @@ export interface RouteLeg {
   mode: TransportMode;
   /** 移動手段タイプ (Itinerary 互換) */
   transitType: TransitType;
+
+  // ---- v3 追加フィールド ----
+  /** レッグ固有 ID */
+  legId?: string;
+  /** 出発ノード ID */
+  fromNodeId?: string;
+  /** 到着ノード ID */
+  toNodeId?: string;
 }
 
 export interface OptimizedNode {
@@ -199,6 +254,8 @@ export interface OptimizedNode {
   stop: SelectedStop;
   /** 日内の順序 (0-based) */
   orderInDay: number;
+  /** ノード固有 ID — v3 追加 */
+  nodeId?: string;
 }
 
 export interface OptimizedDay {
@@ -229,6 +286,10 @@ export interface TimelineNode {
   stayMinutes: number;
   /** 警告 (営業時間外など) */
   warnings: string[];
+  /** ノード固有 ID — v3 追加 */
+  nodeId?: string;
+  /** 候補追跡 ID — v3 追加 */
+  semanticId?: string;
 }
 
 export interface TimelineDay {
@@ -299,7 +360,7 @@ export interface ComposedItinerary {
 
 export interface ComposePipelineMetadata {
   /** パイプラインバージョン */
-  pipelineVersion: 'v2';
+  pipelineVersion: 'v2' | 'v3';
   /** 候補数 */
   candidateCount: number;
   /** 照合成功数 */
@@ -314,6 +375,65 @@ export interface ComposePipelineMetadata {
   modelName: string;
   /** モデルティア */
   modelTier: 'flash' | 'pro';
+  /** 警告数 — v3 追加 */
+  warningCount?: number;
+  /** スコアリングで落ちた候補数 — v3 追加 */
+  droppedCandidateCount?: number;
+  /** フォールバックが使用されたか — v3 追加 */
+  fallbackUsed?: boolean;
+}
+
+// ============================================
+// v3 新規: FinalItinerary (内部 source of truth)
+// ============================================
+
+export interface FinalItinerary {
+  /** 旅程サマリー */
+  summary: string;
+  /** タイムラインノード (日を跨いで全ノード) */
+  nodes: TimelineNode[];
+  /** ノード間移動レッグ */
+  legs: ItineraryLeg[];
+  /** 警告一覧 */
+  warnings: string[];
+  /** ナラティブ情報 */
+  narrative: NarrativeDay[];
+}
+
+export interface ItineraryLeg {
+  /** レッグ固有 ID */
+  legId: string;
+  /** 出発ノード ID */
+  fromNodeId: string;
+  /** 到着ノード ID */
+  toNodeId: string;
+  /** 移動手段 */
+  mode: TransportMode;
+  /** 所要時間 (分) */
+  durationMinutes: number;
+  /** 距離 (メートル) */
+  distanceMeters: number;
+  /** データソース */
+  source: 'haversine' | 'routes_api' | 'cache';
+  /** キャッシュ期限 */
+  expiresAt?: string;
+}
+
+export interface RouteMatrixEntry {
+  /** 出発地 Place ID */
+  fromPlaceId: string;
+  /** 到着地 Place ID */
+  toPlaceId: string;
+  /** 移動手段 */
+  mode: TransportMode;
+  /** 所要時間 (分) */
+  durationMinutes: number;
+  /** 距離 (メートル) */
+  distanceMeters: number;
+  /** データソース */
+  source: 'haversine' | 'routes_api' | 'cache';
+  /** キャッシュ期限 */
+  expiresAt?: string;
 }
 
 // ============================================
