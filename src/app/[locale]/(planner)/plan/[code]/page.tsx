@@ -16,7 +16,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const language = await getRequestLanguage();
-  const t = await getTranslations("pages.planCode");
+  const t = await getTranslations("app.planner.plan.metadata.shared");
   const { code } = await params;
   const user = await getUser();
   const result = await planService.getPlanByShareCode(code, user?.id);

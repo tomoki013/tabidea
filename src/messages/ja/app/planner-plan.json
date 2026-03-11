@@ -21,6 +21,21 @@
         "autoSaveUnexpected": "保存中にエラーが発生しました",
         "autoSaveExpired": "保存から24時間以上経過したため、自動保存できませんでした。",
         "regenerateInstruction": "この会話で合意した変更内容を現在のプランに反映して再生成してください。",
+        "metadata": {
+          "detail": {
+            "loginRequiredTitle": "ログインが必要です",
+            "notFoundTitle": "プランが見つかりません",
+            "titleWithDestination": "{destination}の旅行プラン",
+            "titleFallback": "旅行プラン",
+            "descriptionFallback": "保存済みの旅行プランを確認できます。"
+          },
+          "shared": {
+            "notFoundTitle": "共有プランが見つかりません",
+            "titleWithDestination": "{destination}の共有旅行プラン",
+            "titleFallback": "共有旅行プラン",
+            "descriptionFallback": "共有された旅行プランを確認できます。"
+          }
+        },
         "dateParser": {
           "jaFrom": "から",
           "jaDays": "日間",

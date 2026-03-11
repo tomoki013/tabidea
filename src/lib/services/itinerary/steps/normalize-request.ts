@@ -402,7 +402,7 @@ function extractFixedTransports(
   startDate?: string
 ): FixedTransportConstraint[] {
   return fixedSchedule
-    .filter((item) => item.type !== 'hotel' && item.type !== 'activity')
+    .filter(isFixedTransportItem)
     .map((item) => ({
       type: item.type,
       name: item.name,
@@ -413,6 +413,19 @@ function extractFixedTransports(
       notes: item.notes,
       day: resolveTripDay(item.date, startDate),
     }));
+}
+
+function isFixedTransportItem(
+  item: NonNullable<UserInput['fixedSchedule']>[number]
+): item is NonNullable<UserInput['fixedSchedule']>[number] & {
+  type: FixedTransportConstraint['type'];
+} {
+  return (
+    item.type === 'flight' ||
+    item.type === 'train' ||
+    item.type === 'bus' ||
+    item.type === 'other'
+  );
 }
 
 function extractFixedHotels(
