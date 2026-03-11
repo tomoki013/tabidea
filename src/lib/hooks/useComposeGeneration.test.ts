@@ -19,8 +19,8 @@ vi.mock("next-intl", () => ({
   },
 }));
 
-vi.mock("@/app/actions/travel-planner", () => ({
-  savePlan: vi.fn(),
+vi.mock("@/lib/plans/save-plan-client", () => ({
+  savePlanViaApi: vi.fn(),
 }));
 
 vi.mock("@/lib/local-storage/plans", () => ({

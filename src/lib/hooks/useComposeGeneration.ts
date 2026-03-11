@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import type { UserInput, Itinerary, PartialDayData } from "@/types";
 import type { PipelineStepId, ComposePipelineMetadata } from "@/types/itinerary-pipeline";
-import { savePlan } from "@/app/actions/travel-planner";
+import { savePlanViaApi } from "@/lib/plans/save-plan-client";
 import { saveLocalPlan, notifyPlanChange } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
 import { useUserPlans } from "@/context/UserPlansContext";
@@ -273,7 +273,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
 
             try {
               if (isAuthenticated) {
-                const saveResult = await savePlan(input, result.itinerary, false);
+                const saveResult = await savePlanViaApi(input, result.itinerary, false);
                 if (saveResult.success && saveResult.plan) {
                   await refreshPlans();
                   router.push(`/plan/id/${saveResult.plan.id}`);

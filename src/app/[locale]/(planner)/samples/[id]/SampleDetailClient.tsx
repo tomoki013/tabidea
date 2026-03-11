@@ -5,8 +5,9 @@ import { useRouter } from "next/navigation";
 import { UserInput, Itinerary } from '@/types';
 import ResultView from "@/components/features/planner/ResultView";
 import { PlanModal } from "@/components/common";
-import { regeneratePlan, savePlan } from "@/app/actions/travel-planner";
+import { regeneratePlan } from "@/app/actions/travel-planner";
 import { saveLocalPlan } from "@/lib/local-storage/plans";
+import { savePlanViaApi } from "@/lib/plans/save-plan-client";
 import { useAuth } from "@/context/AuthContext";
 
 interface SampleDetailClientProps {
@@ -40,7 +41,7 @@ export default function SampleDetailClient({
       if (response.success && response.data) {
         // Save the regenerated plan
         if (isAuthenticated) {
-          const saveResult = await savePlan(sampleInput, response.data, false);
+          const saveResult = await savePlanViaApi(sampleInput, response.data, false);
           if (saveResult.success && saveResult.shareCode) {
             router.push(`/plan/${saveResult.shareCode}`);
           } else {

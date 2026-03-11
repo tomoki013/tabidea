@@ -21,12 +21,13 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 
 import type { PlanListItem } from '@/types';
-import { deletePlan, savePlan, updatePlanName, getFlaggedPlans, updatePlanVisibility } from '@/app/actions/travel-planner';
+import { deletePlan, updatePlanName, getFlaggedPlans, updatePlanVisibility } from '@/app/actions/travel-planner';
 import { usePlanModal } from '@/context/PlanModalContext';
 import { useAuth } from '@/context/AuthContext';
 import { useUserPlans } from '@/context/UserPlansContext';
 import { useFlags } from '@/context/FlagsContext';
 import { getLocalPlans, deleteLocalPlan } from '@/lib/local-storage/plans';
+import { savePlanViaApi } from '@/lib/plans/save-plan-client';
 import { localizeHref, resolveLanguageFromPathname } from '@/lib/i18n/navigation';
 import { resolveRegionalLocale } from '@/lib/i18n/locales';
 import { JournalSheet, Tape, Stamp, HandwrittenText, JournalButton } from '@/components/ui/journal';
@@ -159,7 +160,7 @@ export default function MyPlansClient({
 
     for (const localPlan of localPlans) {
       try {
-        const result = await savePlan(localPlan.input, localPlan.itinerary, false);
+        const result = await savePlanViaApi(localPlan.input, localPlan.itinerary, false);
         if (result.success && result.shareCode && result.plan) {
           syncedCount++;
           deleteLocalPlan(localPlan.id);
