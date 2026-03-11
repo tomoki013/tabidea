@@ -47,6 +47,7 @@
         "errors": {
           "requestFailed": "HTTP {status}: Request failed",
           "generic": "An error occurred",
+          "network": "A network error occurred. Check your connection and try again.",
           "streamUnexpectedEnd": "The stream ended unexpectedly",
           "cancelled": "Generation was cancelled",
           "saveFailed": "Failed to save plan.",

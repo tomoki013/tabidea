@@ -14,6 +14,7 @@ export interface ComposeJobProgressPayload {
 
 export interface ComposeJobErrorPayload {
   message: string;
+  code?: string;
   failedStep?: string;
   limitExceeded?: boolean;
   userType?: UserType | string;
