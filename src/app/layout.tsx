@@ -20,6 +20,8 @@ import {
 } from "@/lib/i18n/locales";
 import "./globals.css";
 
+export const dynamic = "force-dynamic";
+
 // Fonts are now loaded via fontsource CSS imports in globals.css
 // This avoids Turbopack's issues with fetching Google Fonts during development
 

@@ -107,6 +107,7 @@ function parseSSELine(
         metadata: ComposePipelineMetadata;
       };
     } & Record<string, unknown>)
+  | ({ type: "done" } & Record<string, unknown>)
   | ({ type: "error" } & Record<string, unknown>)
   | null {
   if (!line.startsWith("data: ")) return null;
@@ -188,154 +189,189 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
         let buffer = "";
+        let receivedTerminalEvent = false;
+
+        const processLine = async (line: string) => {
+          const trimmed = line.trim();
+          if (!trimmed) return false;
+
+          const event = parseSSELine(trimmed);
+          if (!event) return false;
+
+          if (event.type === "progress") {
+            const stepId = event.step;
+            const message = event.message;
+            setCurrentStep(stepId);
+
+            if (event.totalDays) {
+              setTotalDays(event.totalDays);
+            }
+            if (event.destination) {
+              setPreviewDestination(event.destination);
+            }
+            if (event.description) {
+              setPreviewDescription(event.description);
+            }
+
+            setSteps((prev) =>
+              prev.map((s) => {
+                if (s.id === stepId) {
+                  return { ...s, status: "active", message: message || s.message };
+                }
+                const currentIdx = COMPOSE_STEP_IDS.indexOf(stepId);
+                const thisIdx = COMPOSE_STEP_IDS.indexOf(s.id);
+                if (thisIdx < currentIdx && s.status !== "completed") {
+                  return { ...s, status: "completed" };
+                }
+                return s;
+              })
+            );
+            return false;
+          }
+
+          if (event.type === "day_complete") {
+            const dayNum = event.day;
+            const dayData = event.dayData;
+            if (dayNum && dayData) {
+              setPartialDays((prev) => {
+                const next = new Map(prev);
+                next.set(dayNum, dayData);
+                return next;
+              });
+            }
+            if (event.totalDays) {
+              setTotalDays(event.totalDays);
+            }
+            if (event.destination) {
+              setPreviewDestination(event.destination);
+            }
+            if (event.description) {
+              setPreviewDescription(event.description);
+            }
+            return false;
+          }
+
+          if (event.type === "complete") {
+            receivedTerminalEvent = true;
+
+            // Mark all steps completed
+            setSteps((prev) =>
+              prev.map((s) => ({ ...s, status: "completed" }))
+            );
+            setCurrentStep(null);
+            setIsGenerating(false);
+            setIsCompleted(true);
+            setPartialDays(new Map());
+
+            const result = event.result as {
+              itinerary: Itinerary;
+              warnings: string[];
+              metadata: ComposePipelineMetadata;
+            };
+
+            setWarnings(result.warnings || []);
+
+            try {
+              if (isAuthenticated) {
+                const saveResult = await savePlan(input, result.itinerary, false);
+                if (saveResult.success && saveResult.plan) {
+                  await refreshPlans();
+                  router.push(`/plan/id/${saveResult.plan.id}`);
+                } else {
+                  const localPlan = await saveLocalPlan(input, result.itinerary);
+                  notifyPlanChange();
+                  router.push(`/plan/local/${localPlan.id}`);
+                }
+              } else {
+                const localPlan = await saveLocalPlan(input, result.itinerary);
+                notifyPlanChange();
+                router.push(`/plan/local/${localPlan.id}`);
+              }
+            } catch (saveErr) {
+              console.error("[compose] Save failed:", saveErr);
+              setErrorMessage(t("errors.saveFailed"));
+            }
+            return true;
+          }
+
+          if (event.type === "error") {
+            receivedTerminalEvent = true;
+            setCurrentStep(null);
+            setIsGenerating(false);
+            setPartialDays(new Map());
+
+            if (event.limitExceeded) {
+              setLimitExceeded({
+                userType: (event.userType as UserType) || "anonymous",
+                resetAt: event.resetAt
+                  ? new Date(event.resetAt as string)
+                  : null,
+                remaining: event.remaining as number | undefined,
+              });
+            } else {
+              const failedStep = event.failedStep as string | undefined;
+              let msg: string;
+              if (failedStep) {
+                const stepKey = `errors.stepFailed.${failedStep}` as const;
+                try {
+                  msg = t(stepKey);
+                } catch {
+                  try {
+                    msg = t("errors.stepFailed.unknown");
+                  } catch {
+                    msg = t("errors.generic");
+                  }
+                }
+              } else if ((event.message as string)?.includes("timeout") || (event.message as string)?.includes("Timeout")) {
+                try {
+                  msg = t("errors.timeout");
+                } catch {
+                  msg = t("errors.generic");
+                }
+              } else {
+                msg = (event.message as string) || t("errors.generic");
+              }
+              setErrorMessage(msg);
+            }
+            return true;
+          }
+
+          if (event.type === "done") {
+            receivedTerminalEvent = true;
+            return false;
+          }
+
+          return false;
+        };
 
         while (true) {
           const { done, value } = await reader.read();
-          if (done) break;
+          if (done) {
+            buffer += decoder.decode();
+            break;
+          }
 
           buffer += decoder.decode(value, { stream: true });
           const lines = buffer.split("\n");
           buffer = lines.pop() || "";
 
           for (const line of lines) {
-            const trimmed = line.trim();
-            if (!trimmed) continue;
-
-            const event = parseSSELine(trimmed);
-            if (!event) continue;
-
-            if (event.type === "progress") {
-              const stepId = event.step;
-              const message = event.message;
-              setCurrentStep(stepId);
-
-              if (event.totalDays) {
-                setTotalDays(event.totalDays);
-              }
-              if (event.destination) {
-                setPreviewDestination(event.destination);
-              }
-              if (event.description) {
-                setPreviewDescription(event.description);
-              }
-
-              setSteps((prev) =>
-                prev.map((s) => {
-                  if (s.id === stepId) {
-                    return { ...s, status: "active", message: message || s.message };
-                  }
-                  const currentIdx = COMPOSE_STEP_IDS.indexOf(stepId);
-                  const thisIdx = COMPOSE_STEP_IDS.indexOf(s.id);
-                  if (thisIdx < currentIdx && s.status !== "completed") {
-                    return { ...s, status: "completed" };
-                  }
-                  return s;
-                })
-              );
-            } else if (event.type === "day_complete") {
-              const dayNum = event.day;
-              const dayData = event.dayData;
-              if (dayNum && dayData) {
-                setPartialDays((prev) => {
-                  const next = new Map(prev);
-                  next.set(dayNum, dayData);
-                  return next;
-                });
-              }
-              if (event.totalDays) {
-                setTotalDays(event.totalDays);
-              }
-              if (event.destination) {
-                setPreviewDestination(event.destination);
-              }
-              if (event.description) {
-                setPreviewDescription(event.description);
-              }
-            } else if (event.type === "complete") {
-              // Mark all steps completed
-              setSteps((prev) =>
-                prev.map((s) => ({ ...s, status: "completed" }))
-              );
-              setCurrentStep(null);
-              setIsGenerating(false);
-              setIsCompleted(true);
-              setPartialDays(new Map());
-
-              const result = event.result as {
-                itinerary: Itinerary;
-                warnings: string[];
-                metadata: ComposePipelineMetadata;
-              };
-
-              setWarnings(result.warnings || []);
-
-              // Save the plan
-              try {
-                if (isAuthenticated) {
-                  const saveResult = await savePlan(input, result.itinerary, false);
-                  if (saveResult.success && saveResult.plan) {
-                    await refreshPlans();
-                    router.push(`/plan/id/${saveResult.plan.id}`);
-                  } else {
-                    const localPlan = await saveLocalPlan(input, result.itinerary);
-                    notifyPlanChange();
-                    router.push(`/plan/local/${localPlan.id}`);
-                  }
-                } else {
-                  const localPlan = await saveLocalPlan(input, result.itinerary);
-                  notifyPlanChange();
-                  router.push(`/plan/local/${localPlan.id}`);
-                }
-              } catch (saveErr) {
-                console.error("[compose] Save failed:", saveErr);
-                setErrorMessage(t("errors.saveFailed"));
-              }
-              return;
-            } else if (event.type === "error") {
-              setCurrentStep(null);
-              setIsGenerating(false);
-              setPartialDays(new Map());
-
-              if (event.limitExceeded) {
-                setLimitExceeded({
-                  userType: (event.userType as UserType) || "anonymous",
-                  resetAt: event.resetAt
-                    ? new Date(event.resetAt as string)
-                    : null,
-                  remaining: event.remaining as number | undefined,
-                });
-              } else {
-                const failedStep = event.failedStep as string | undefined;
-                let msg: string;
-                if (failedStep) {
-                  const stepKey = `errors.stepFailed.${failedStep}` as const;
-                  try {
-                    msg = t(stepKey);
-                  } catch {
-                    try {
-                      msg = t("errors.stepFailed.unknown");
-                    } catch {
-                      msg = t("errors.generic");
-                    }
-                  }
-                } else if ((event.message as string)?.includes("timeout") || (event.message as string)?.includes("Timeout")) {
-                  try {
-                    msg = t("errors.timeout");
-                  } catch {
-                    msg = t("errors.generic");
-                  }
-                } else {
-                  msg = (event.message as string) || t("errors.generic");
-                }
-                setErrorMessage(msg);
-              }
+            const shouldStop = await processLine(line);
+            if (shouldStop) {
               return;
             }
           }
         }
 
+        if (buffer.trim()) {
+          const shouldStop = await processLine(buffer);
+          if (shouldStop) {
+            return;
+          }
+        }
+
         // Stream ended without complete/error
-        if (!isCompleted) {
+        if (!receivedTerminalEvent) {
           setErrorMessage(t("errors.streamUnexpectedEnd"));
           setIsGenerating(false);
         }
@@ -350,7 +386,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         setIsGenerating(false);
       }
     },
-    [initSteps, isAuthenticated, refreshPlans, router, t, isCompleted]
+    [initSteps, isAuthenticated, refreshPlans, router, t]
   );
 
   const reset = useCallback(() => {

@@ -33,6 +33,12 @@ import { checkAndRecordUsage } from '@/lib/limits/check';
 // Re-export for backward compatibility
 export { PipelineStepError } from './errors';
 
+const COMPOSE_DEADLINE_MS = 25_000;
+const MIN_REMAINING_FOR_PLACE_RESOLVE_MS = 8_000;
+const MIN_REMAINING_FOR_HERO_IMAGE_MS = 2_500;
+const MIN_REMAINING_FOR_SEMANTIC_RETRY_MS = 14_000;
+const DEADLINE_RESERVE_MS = 2_000;
+
 // ============================================
 // Types
 // ============================================
@@ -94,6 +100,49 @@ export async function runComposePipeline(
   const allWarnings: string[] = [];
   const runId = crypto.randomUUID();
   const logger = new GenerationRunLogger(runId);
+  const pipelineStartedAt = Date.now();
+  const deadlineAt = pipelineStartedAt + COMPOSE_DEADLINE_MS;
+  let timeoutMitigationUsed = false;
+
+  const remainingTimeMs = () => deadlineAt - Date.now();
+
+  const logStepWindow = (step: string) => {
+    console.info(`[compose-pipeline] ${step}`, {
+      elapsedMs: Date.now() - pipelineStartedAt,
+      remainingMs: remainingTimeMs(),
+    });
+  };
+
+  const createDeadlineError = (step: PipelineStepId, message: string) =>
+    new PipelineStepError(step, message);
+
+  const runWithDeadline = async <T>(
+    step: PipelineStepId,
+    task: () => Promise<T>,
+    reserveMs: number = DEADLINE_RESERVE_MS
+  ): Promise<T> => {
+    const remaining = remainingTimeMs() - reserveMs;
+    if (remaining <= 0) {
+      throw createDeadlineError(step, `Timed out before ${step}`);
+    }
+
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+    try {
+      return await Promise.race([
+        task(),
+        new Promise<T>((_, reject) => {
+          timeoutId = setTimeout(() => {
+            reject(createDeadlineError(step, `${step} timed out before platform deadline`));
+          }, remaining);
+        }),
+      ]);
+    } finally {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    }
+  };
 
   const emitProgress = (
     step: PipelineStepId,
@@ -121,10 +170,11 @@ export async function runComposePipeline(
     // Step 0: Usage check
     // ====================================
     emitProgress('usage_check', '利用状況を確認中...');
+    logStepWindow('usage_check:start');
     const usageResult = await timer.measure('usage_check', async () => {
-      return checkAndRecordUsage('plan_generation', undefined, {
+      return runWithDeadline('usage_check', () => checkAndRecordUsage('plan_generation', undefined, {
         skipConsume: options?.isRetry,
-      });
+      }));
     });
 
     if (!usageResult.allowed) {
@@ -143,8 +193,9 @@ export async function runComposePipeline(
     // Step 1: Normalize Request
     // ====================================
     emitProgress('normalize', '旅の条件を整理中...');
+    logStepWindow('normalize:start');
     const normalizedRequest = await timer.measure('normalize', async () => {
-      return normalizeRequest(input);
+      return runWithDeadline('normalize', async () => normalizeRequest(input));
     });
 
     // ====================================
@@ -176,15 +227,17 @@ export async function runComposePipeline(
     // Step 2: Semantic Planner
     // ====================================
     emitProgress('semantic_plan', '候補スポットを選定中...');
+    logStepWindow('semantic_plan:start');
     const context: Article[] = []; // RAG context could be added here
     const semanticPlanStart = Date.now();
     const semanticPlan = await timer.measure('semantic_plan', async () => {
-      return runSemanticPlanner({
+      return runWithDeadline('semantic_plan', () => runSemanticPlanner({
         request: normalizedRequest,
         context,
         modelName: modelSelection.modelName,
         temperature: modelSelection.temperature,
-      });
+        retryOnFailure: remainingTimeMs() >= MIN_REMAINING_FOR_SEMANTIC_RETRY_MS,
+      }));
     });
 
     const candidateCount = semanticPlan.candidates.length;
@@ -206,61 +259,100 @@ export async function runComposePipeline(
     let fallbackUsed = false;
 
     if (placeResolveEnabled) {
-      emitProgress('place_resolve', '実在スポットに照合中...');
-      const resolveStart = Date.now();
-      const resolvedGroups = await timer.measure('place_resolve', async () => {
-        return resolvePlaces(
-          semanticPlan.candidates,
-          semanticPlan.destination
-        );
-      });
-
-      resolvedCount = resolvedGroups.filter((g) => g.success).length;
-      const failedResolves = resolvedGroups.filter((g) => !g.success).length;
-
-      logger.logStep({
-        stepName: 'place_resolve',
-        status: failedResolves > 0 ? 'fallback' : 'success',
-        durationMs: Date.now() - resolveStart,
-        metadata: { resolvedCount, failedResolves },
-      }).catch(() => {});
-
-      if (failedResolves > 0) {
+      const remainingBeforeResolve = remainingTimeMs();
+      if (remainingBeforeResolve < MIN_REMAINING_FOR_PLACE_RESOLVE_MS) {
+        timeoutMitigationUsed = true;
         fallbackUsed = true;
-      }
+        emitProgress('place_resolve', 'スポット照合を時間制限のためスキップ中...');
+        emitProgress('feasibility_score', '実現性チェックを時間制限のため簡略化中...');
+        console.info('[compose-pipeline] skipping place resolve due to deadline', {
+          remainingMs: remainingBeforeResolve,
+          candidateCount,
+        });
+        stops = candidatesToStops(semanticPlan.candidates);
+        resolvedCount = 0;
 
-      // ====================================
-      // Step 4: Feasibility Scorer
-      // ====================================
-      emitProgress('feasibility_score', '営業時間・実現性を確認中...');
-      const scoreStart = Date.now();
-      const { selected, filtered } = await timer.measure(
-        'feasibility_score',
-        async () => {
-          return scoreAndSelect(resolvedGroups, normalizedRequest);
+        logger.logStep({
+          stepName: 'place_resolve',
+          status: 'skipped',
+          durationMs: 0,
+          metadata: { reason: 'deadline', remainingMs: remainingBeforeResolve },
+        }).catch(() => {});
+        logger.logStep({
+          stepName: 'feasibility_score',
+          status: 'skipped',
+          durationMs: 0,
+          metadata: { reason: 'deadline' },
+        }).catch(() => {});
+      } else {
+        emitProgress('place_resolve', '実在スポットに照合中...');
+        logStepWindow('place_resolve:start');
+        const resolveStart = Date.now();
+        const maxCandidatesToResolve =
+          remainingBeforeResolve < 12_000 ? Math.min(candidateCount, 8) : candidateCount;
+        if (maxCandidatesToResolve < candidateCount) {
+          timeoutMitigationUsed = true;
+          fallbackUsed = true;
         }
-      );
+        const resolvedGroups = await timer.measure('place_resolve', async () => {
+          return runWithDeadline('place_resolve', () => resolvePlaces(
+            semanticPlan.candidates,
+            semanticPlan.destination,
+            {
+              delayMs: remainingBeforeResolve < 12_000 ? 0 : undefined,
+              maxCandidates: maxCandidatesToResolve,
+            }
+          ));
+        });
 
-      stops = selected;
-      filteredOutCount = filtered.length;
-      droppedCount = candidateCount - selected.length;
+        resolvedCount = resolvedGroups.filter((g) => g.success).length;
+        const failedResolves = resolvedGroups.filter((g) => !g.success).length;
 
-      logger.logStep({
-        stepName: 'feasibility_score',
-        status: 'success',
-        durationMs: Date.now() - scoreStart,
-        metadata: { selectedCount: selected.length, filteredCount: filtered.length },
-      }).catch(() => {});
+        logger.logStep({
+          stepName: 'place_resolve',
+          status: failedResolves > 0 ? 'fallback' : 'success',
+          durationMs: Date.now() - resolveStart,
+          metadata: { resolvedCount, failedResolves, maxCandidatesToResolve },
+        }).catch(() => {});
 
-      if (filtered.length > 0) {
-        allWarnings.push(
-          `${filtered.length}件の候補がスコア不足でフィルタされました`
+        if (failedResolves > 0) {
+          fallbackUsed = true;
+        }
+
+        // ====================================
+        // Step 4: Feasibility Scorer
+        // ====================================
+        emitProgress('feasibility_score', '営業時間・実現性を確認中...');
+        logStepWindow('feasibility_score:start');
+        const scoreStart = Date.now();
+        const { selected, filtered } = await timer.measure(
+          'feasibility_score',
+          async () => {
+            return runWithDeadline('feasibility_score', async () => scoreAndSelect(resolvedGroups, normalizedRequest));
+          }
         );
-      }
 
-      // Collect warnings from selected stops
-      for (const stop of stops) {
-        allWarnings.push(...stop.warnings);
+        stops = selected;
+        filteredOutCount = filtered.length;
+        droppedCount = candidateCount - selected.length;
+
+        logger.logStep({
+          stepName: 'feasibility_score',
+          status: 'success',
+          durationMs: Date.now() - scoreStart,
+          metadata: { selectedCount: selected.length, filteredCount: filtered.length },
+        }).catch(() => {});
+
+        if (filtered.length > 0) {
+          allWarnings.push(
+            `${filtered.length}件の候補がスコア不足でフィルタされました`
+          );
+        }
+
+        // Collect warnings from selected stops
+        for (const stop of stops) {
+          allWarnings.push(...stop.warnings);
+        }
       }
     } else {
       emitProgress('place_resolve', 'スポット照合をスキップ中...');
@@ -304,14 +396,15 @@ export async function runComposePipeline(
     // Step 5: Route Optimizer
     // ====================================
     emitProgress('route_optimize', '回りやすい順に調整中...');
+    logStepWindow('route_optimize:start');
     const routeStart = Date.now();
     const optimizedDays = await timer.measure('route_optimize', async () => {
-      return optimizeRoutes(
+      return runWithDeadline('route_optimize', async () => optimizeRoutes(
         stops,
         semanticPlan.dayStructure,
         normalizedRequest,
         semanticPlan
-      );
+      ));
     });
 
     logger.logStep({
@@ -324,9 +417,10 @@ export async function runComposePipeline(
     // Step 6: Timeline Builder
     // ====================================
     emitProgress('timeline_build', 'タイムラインを作成中...');
+    logStepWindow('timeline_build:start');
     const timelineStart = Date.now();
     const timelineDays = await timer.measure('timeline_build', async () => {
-      return buildTimeline(optimizedDays, normalizedRequest);
+      return runWithDeadline('timeline_build', async () => buildTimeline(optimizedDays, normalizedRequest));
     });
 
     logger.logStep({
@@ -343,6 +437,7 @@ export async function runComposePipeline(
       destination: semanticPlan.destination,
       description: semanticPlan.description,
     });
+    logStepWindow('narrative_render:start');
     const narrativeStart = Date.now();
 
     const narrativeInput = {
@@ -355,7 +450,10 @@ export async function runComposePipeline(
 
     const narrative = await timer.measure('narrative_render', async () => {
       try {
-        const streamResult = await streamNarrativeRendererWithResult(narrativeInput);
+        const streamResult = await runWithDeadline(
+          'narrative_render',
+          () => streamNarrativeRendererWithResult(narrativeInput)
+        );
 
         for await (const event of streamResult.dayStream) {
           emitDayComplete({
@@ -368,10 +466,11 @@ export async function runComposePipeline(
           });
         }
 
-        return await streamResult.finalOutput;
+        return await runWithDeadline('narrative_render', () => streamResult.finalOutput, 1_000);
       } catch (streamError) {
         console.warn('[compose-pipeline] streamNarrativeRenderer failed, falling back to generateObject:', streamError);
-        return runNarrativeRenderer(narrativeInput);
+        fallbackUsed = true;
+        return runWithDeadline('narrative_render', () => runNarrativeRenderer(narrativeInput));
       }
     });
 
@@ -386,21 +485,31 @@ export async function runComposePipeline(
     // ====================================
     emitProgress('hero_image', 'ぴったりの写真を探し中...');
     let heroImage: ComposedItinerary['heroImage'] | undefined;
-    await timer.measure('hero_image', async () => {
-      try {
-        const { getUnsplashImage } = await import('@/lib/unsplash');
-        const image = await getUnsplashImage(semanticPlan.destination);
-        if (image) {
-          heroImage = {
-            url: image.url,
-            photographer: image.photographer,
-            photographerUrl: image.photographerUrl,
-          };
+    const remainingBeforeHero = remainingTimeMs();
+    if (remainingBeforeHero < MIN_REMAINING_FOR_HERO_IMAGE_MS) {
+      timeoutMitigationUsed = true;
+      console.info('[compose-pipeline] skipping hero image due to deadline', {
+        remainingMs: remainingBeforeHero,
+      });
+    } else {
+      logStepWindow('hero_image:start');
+      await timer.measure('hero_image', async () => {
+        try {
+          const { getUnsplashImage } = await import('@/lib/unsplash');
+          const image = await runWithDeadline('hero_image', () => getUnsplashImage(semanticPlan.destination), 500);
+          if (image) {
+            heroImage = {
+              url: image.url,
+              photographer: image.photographer,
+              photographerUrl: image.photographerUrl,
+            };
+          }
+        } catch (err) {
+          timeoutMitigationUsed = true;
+          console.warn('[compose] Hero image fetch failed:', err);
         }
-      } catch (err) {
-        console.warn('[compose] Hero image fetch failed:', err);
-      }
-    });
+      });
+    }
 
     // ====================================
     // Assemble composed itinerary
@@ -425,6 +534,7 @@ export async function runComposePipeline(
       warningCount: allWarnings.length,
       droppedCandidateCount: droppedCount,
       fallbackUsed,
+      timeoutMitigationUsed,
     };
 
     const composed: ComposedItinerary = {

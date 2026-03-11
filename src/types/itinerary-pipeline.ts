@@ -381,6 +381,8 @@ export interface ComposePipelineMetadata {
   droppedCandidateCount?: number;
   /** フォールバックが使用されたか — v3 追加 */
   fallbackUsed?: boolean;
+  /** タイムアウト回避のため縮退したか */
+  timeoutMitigationUsed?: boolean;
 }
 
 // ============================================

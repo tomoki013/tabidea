@@ -4,7 +4,7 @@ import { createClient } from '@supabase/supabase-js';
 import type { UserInput } from '@/types';
 
 export const runtime = 'nodejs';
-export const maxDuration = 300;
+export const maxDuration = 25;
 
 export async function POST(req: Request) {
   const encoder = new TextEncoder();
@@ -24,6 +24,7 @@ export async function POST(req: Request) {
 
   const stream = new ReadableStream({
     async start(controller) {
+      let terminalEventSent = false;
       const emit = (type: string, payload: Record<string, unknown>) => {
         try {
           controller.enqueue(
@@ -96,6 +97,8 @@ export async function POST(req: Request) {
               })
               .catch(() => {});
           }
+          emit('done', {});
+          terminalEventSent = true;
         } else {
           emit('error', {
             message: result.message || 'compose_pipeline_failed',
@@ -105,15 +108,22 @@ export async function POST(req: Request) {
             resetAt: result.resetAt,
             remaining: result.remaining,
           });
+          emit('done', {});
+          terminalEventSent = true;
         }
       } catch (err) {
         console.error('[SSE /api/itinerary/compose] Uncaught error:', err);
         emit('error', {
           message: err instanceof Error ? err.message : 'unexpected_error',
         });
+        emit('done', {});
+        terminalEventSent = true;
+      } finally {
+        if (!terminalEventSent) {
+          emit('done', {});
+        }
+        controller.close();
       }
-
-      controller.close();
     },
   });
 

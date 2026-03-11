@@ -24,6 +24,7 @@ export interface SemanticPlannerInput {
   context: Article[];
   modelName: string;
   temperature: number;
+  retryOnFailure?: boolean;
 }
 
 /**
@@ -32,7 +33,7 @@ export interface SemanticPlannerInput {
 export async function runSemanticPlanner(
   input: SemanticPlannerInput
 ): Promise<SemanticPlan> {
-  const { request, context, modelName, temperature } = input;
+  const { request, context, modelName, temperature, retryOnFailure = true } = input;
 
   // ユーザープロンプトを構築
   const userPrompt = buildSemanticPlannerPrompt(request);
@@ -61,6 +62,14 @@ export async function runSemanticPlanner(
     });
     plan = result.object;
   } catch (firstError) {
+    if (!retryOnFailure) {
+      throw new PipelineStepError(
+        'semantic_plan',
+        `Semantic planner failed: ${firstError instanceof Error ? firstError.message : 'Unknown error'}`,
+        firstError
+      );
+    }
+
     // Fallback: 温度を上げて再試行
     console.warn(
       '[semantic-planner] First attempt failed, retrying with higher temperature:',
