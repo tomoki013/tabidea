@@ -2,7 +2,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import TravelPlanner from "@/components/features/planner";
-import * as TravelPlannerActions from "@/app/actions/travel-planner";
 
 // Mock Image component
 vi.mock("next/image", () => ({
@@ -22,8 +21,6 @@ vi.mock("next/navigation", () => ({
 
 // Mock server actions
 vi.mock("@/app/actions/travel-planner", () => ({
-  generatePlanOutline: vi.fn(),
-  generatePlanChunk: vi.fn(),
   savePlan: vi.fn(),
 }));
 
@@ -44,6 +41,7 @@ vi.mock("@/context/AuthContext", () => ({
 vi.mock("@/lib/local-storage/plans", () => ({
   saveLocalPlan: vi.fn(() => ({ id: "local_test_123" })),
   getLocalPlans: vi.fn(() => []),
+  notifyPlanChange: vi.fn(),
 }));
 
 // Mock UserPlansContext
@@ -51,6 +49,26 @@ vi.mock("@/context/UserPlansContext", () => ({
   useUserPlans: () => ({
     refreshPlans: vi.fn(),
   }),
+}));
+
+// Mock useComposeGeneration for error testing
+const mockCompose = {
+  steps: [] as Array<{ id: string; message: string; status: string }>,
+  currentStep: null as string | null,
+  isGenerating: false,
+  isCompleted: false,
+  errorMessage: "",
+  limitExceeded: null as any,
+  warnings: [] as string[],
+  partialDays: new Map(),
+  totalDays: 0,
+  generate: vi.fn(),
+  reset: vi.fn(),
+  clearLimitExceeded: vi.fn(),
+};
+
+vi.mock("@/lib/hooks/useComposeGeneration", () => ({
+  useComposeGeneration: () => mockCompose,
 }));
 
 const mockInput = {
@@ -71,53 +89,41 @@ const mockInput = {
 describe("TravelPlanner Error Handling", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    mockCompose.errorMessage = "";
+    mockCompose.isGenerating = false;
   });
 
-  it("shows generic error and retry button on standard failure", async () => {
-    // Mock generic error
-    vi.mocked(TravelPlannerActions.generatePlanOutline).mockRejectedValue(new Error("Network Error"));
+  it("shows error message when compose pipeline returns an error", async () => {
+    mockCompose.errorMessage = "Generation failed";
 
     render(
       <TravelPlanner
-        initialStep={9}
         initialInput={mockInput}
       />
     );
 
-    // Click submit
-    const submitBtn = screen.getByRole("button", { name: /プランを作成する/ });
-    fireEvent.click(submitBtn);
-
-    // Expect generic error UI
+    // Expect error UI with retry button
     await waitFor(() => {
-      expect(screen.getByText("もう一度試す")).toBeDefined();
+      expect(screen.getByText("Generation failed")).toBeDefined();
+      expect(screen.getByRole("button")).toBeDefined();
     });
-    // Ensure we don't see the refresh button
-    expect(screen.queryByText("ページを更新")).toBeNull();
   });
 
-  it("shows refresh button on Server Action not found error", async () => {
-    // Mock Server Action not found error
-    // The exact error message string usually contains "Server Action ... was not found on the server"
-    vi.mocked(TravelPlannerActions.generatePlanOutline).mockRejectedValue(
-      new Error('Server Action "40ebdd9b5d999cb6d88070a7a86b52097f6be0d1fe" was not found on the server')
-    );
+  it("shows loading animation when compose pipeline is generating", async () => {
+    mockCompose.isGenerating = true;
+    mockCompose.steps = [
+      { id: "normalize", message: "Normalizing...", status: "active" },
+    ];
 
     render(
       <TravelPlanner
-        initialStep={9}
         initialInput={mockInput}
       />
     );
 
-    // Click submit
-    const submitBtn = screen.getByRole("button", { name: /プランを作成する/ });
-    fireEvent.click(submitBtn);
-
-    // Expect refresh UI
-    // Note: This test is expected to FAIL initially because we haven't implemented the fix yet.
+    // ComposeLoadingAnimation should be rendered
     await waitFor(() => {
-      expect(screen.getByText("ページを更新")).toBeDefined();
+      expect(screen.getByText("Normalizing...")).toBeDefined();
     });
   });
 });
