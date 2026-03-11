@@ -347,4 +347,49 @@ describe('pipeline-orchestrator', () => {
     expect(result.metadata!.modelName).toBe('gemini-3-flash-preview');
     expect(result.metadata!.modelTier).toBe('flash');
   });
+
+  it('should skip place resolve when the deadline is close', async () => {
+    const { isPlaceResolveEnabled, resolvePlaces } = await import('./steps/place-resolver');
+    vi.mocked(isPlaceResolveEnabled).mockReturnValueOnce(true);
+
+    let fakeNow = 0;
+    const nowSpy = vi.spyOn(Date, 'now').mockImplementation(() => fakeNow);
+    const { runSemanticPlanner } = await import('./steps/semantic-planner');
+    vi.mocked(runSemanticPlanner).mockImplementationOnce(async () => {
+      fakeNow = 19_500;
+      return {
+        destination: '東京',
+        description: 'テスト旅行プラン',
+        candidates: [
+          {
+            name: '浅草寺',
+            role: 'must_visit',
+            priority: 10,
+            dayHint: 1,
+            timeSlotHint: 'morning',
+            stayDurationMinutes: 60,
+            searchQuery: '浅草寺',
+            categoryHint: 'temple',
+          },
+        ],
+        dayStructure: [
+          {
+            day: 1,
+            title: '浅草散策',
+            mainArea: '浅草',
+            overnightLocation: '浅草',
+            summary: '浅草を楽しむ一日',
+          },
+        ],
+        themes: ['歴史'],
+      };
+    });
+
+    const result = await runComposePipeline(makeTestInput());
+
+    expect(result.success).toBe(true);
+    expect(resolvePlaces).not.toHaveBeenCalled();
+    expect(result.metadata?.timeoutMitigationUsed).toBe(true);
+    nowSpy.mockRestore();
+  });
 });

@@ -29,10 +29,11 @@ export function isPlaceResolveEnabled(): boolean {
 export async function resolvePlaces(
   candidates: SemanticCandidate[],
   destination: string,
-  options?: { topK?: number; delayMs?: number }
+  options?: { topK?: number; delayMs?: number; maxCandidates?: number }
 ): Promise<ResolvedPlaceGroup[]> {
   const topK = options?.topK ?? DEFAULT_TOP_K;
   const delayMs = options?.delayMs ?? DEFAULT_RESOLVE_DELAY_MS;
+  const maxCandidates = options?.maxCandidates;
 
   let placesService;
   try {
@@ -49,7 +50,12 @@ export async function resolvePlaces(
   }
 
   // 一括検索
-  const queries = candidates.map((c) => ({
+  const candidatesToResolve =
+    typeof maxCandidates === 'number' && maxCandidates > 0 && maxCandidates < candidates.length
+      ? prioritizeCandidates(candidates).slice(0, maxCandidates)
+      : candidates;
+
+  const queries = candidatesToResolve.map((c) => ({
     searchQuery: c.searchQuery,
     near: destination,
     locationEn: c.locationEn,
@@ -61,7 +67,18 @@ export async function resolvePlaces(
   });
 
   // 結果を ResolvedPlaceGroup[] に変換
+  const resolvedCandidateQueries = new Set(candidatesToResolve.map((candidate) => candidate.searchQuery));
+
   return candidates.map((candidate) => {
+    if (!resolvedCandidateQueries.has(candidate.searchQuery)) {
+      return {
+        candidate,
+        resolved: [],
+        success: false,
+        error: 'Place resolve skipped due to time limit',
+      };
+    }
+
     const results = searchResults.get(candidate.searchQuery) || [];
     const resolved: ResolvedPlace[] = results
       .filter((r) => r.found && r.place)
@@ -79,4 +96,30 @@ export async function resolvePlaces(
         : undefined,
     };
   });
+}
+
+function prioritizeCandidates(candidates: SemanticCandidate[]): SemanticCandidate[] {
+  return [...candidates].sort((a, b) => {
+    const roleRank = getRoleRank(a.role) - getRoleRank(b.role);
+    if (roleRank !== 0) return roleRank;
+    if (a.priority !== b.priority) return b.priority - a.priority;
+    return a.dayHint - b.dayHint;
+  });
+}
+
+function getRoleRank(role: SemanticCandidate['role']): number {
+  switch (role) {
+    case 'must_visit':
+      return 0;
+    case 'recommended':
+      return 1;
+    case 'accommodation':
+      return 2;
+    case 'meal':
+      return 3;
+    case 'filler':
+      return 4;
+    default:
+      return 5;
+  }
 }
