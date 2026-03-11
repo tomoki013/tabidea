@@ -81,4 +81,60 @@ describe("useComposeGeneration", () => {
     expect(result.current.errorMessage).not.toBe("errors.streamUnexpectedEnd");
     expect(mockPush).not.toHaveBeenCalled();
   });
+
+  it("treats a heartbeat-followed disconnect as a timeout instead of an unexpected end", async () => {
+    const encoder = new TextEncoder();
+    const body = new ReadableStream<Uint8Array>({
+      start(controller) {
+        controller.enqueue(
+          encoder.encode(
+            `data: ${JSON.stringify({
+              type: "ack",
+              requestId: "req-1",
+              startedAt: "2026-03-12T00:00:00.000Z",
+            })}\n\n`
+          )
+        );
+        controller.enqueue(
+          encoder.encode(
+            `data: ${JSON.stringify({
+              type: "heartbeat",
+              requestId: "req-1",
+              step: "semantic_plan",
+              elapsedMs: 4000,
+              remainingMs: 21000,
+            })}\n\n`
+          )
+        );
+        controller.close();
+      },
+    });
+
+    mockFetch.mockResolvedValue({
+      ok: true,
+      status: 200,
+      body,
+    });
+
+    const { result } = renderHook(() => useComposeGeneration());
+
+    await act(async () => {
+      await result.current.generate({
+        destinations: ["東京"],
+        region: "domestic",
+        dates: "1日間",
+        companions: "友達",
+        theme: ["グルメ"],
+        budget: "standard",
+        pace: "balanced",
+        freeText: "",
+      });
+    });
+
+    await waitFor(() => {
+      expect(result.current.errorMessage).toBe("errors.timeout");
+    });
+
+    expect(result.current.currentStep).toBe("semantic_plan");
+  });
 });

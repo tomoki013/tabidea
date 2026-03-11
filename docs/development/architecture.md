@@ -1,6 +1,6 @@
 # Architecture
 
-更新日: 2026-03-11
+更新日: 2026-03-12
 
 ## 1. System Overview
 
@@ -49,7 +49,7 @@ UserInput → [1] Request Normalizer (TS) → NormalizedRequest
          → [GenerationRunLogger] → compose_runs / compose_run_steps (DB)
 ```
 
-- API: `POST /api/itinerary/compose` (SSE stream, `maxDuration=300`)
+- API: `POST /api/itinerary/compose` (SSE stream, `maxDuration=25`, route-level `ack` / `heartbeat` / `progress` / `day_complete` / `complete` / `error` / `done`)
 - 型: `src/types/itinerary-pipeline.ts`
 - 実装: `src/lib/services/itinerary/`
 - 定数: `src/lib/services/itinerary/constants.ts`
@@ -57,10 +57,13 @@ UserInput → [1] Request Normalizer (TS) → NormalizedRequest
 - 観測ログ: `src/lib/services/itinerary/generation-run-logger.ts` → compose_runs / compose_run_steps
 - UI: `ComposeLoadingAnimation` + `ComposeLoadingTips` (ステップ 1-6)、narrative_render フェーズでは `StreamingResultView` で日ごとカード段階表示
 - Hook: `useComposeGeneration` (`partialDays`, `totalDays` で streaming day data を管理)
+- Route は接続直後に `ack` を返し、重い LLM ステップ中も `heartbeat` を返して無通信区間を避ける
+- モデル解決は phase-aware (`outline` / `chunk`) で行い、compose pipeline は既存の `AI_MODEL_OUTLINE_*` / `AI_MODEL_CHUNK_*` env 契約を使う
 - Places 照合は `ENABLE_COMPOSE_PLACE_RESOLVE` で ON/OFF 制御
 - Phase 1 はハバーサイン距離推定 (`distance-estimator.ts`)、Phase 2 で Routes API (`routes-client.ts`) に差替予定
 - Pipeline version: `v3`
 - Narrative Renderer: `streamObject` で日ごとに部分 JSON を返し、SSE `day_complete` イベントで UI に中間結果を配信
+- Netlify の実行上限を踏まえ、パイプラインは 25 秒 deadline 前提で Places / narrative / hero image を段階的に縮退する
 
 補足（サンプル再生成）:
 - `src/scripts/generate-sample-itineraries.ts` は compose pipeline (`runComposePipeline`) を使用してサンプル旅程を生成

@@ -8,10 +8,12 @@ import type { UserInput } from '@/types/user-input';
 import type { Itinerary, ModelInfo } from '@/types/itinerary';
 import type { PartialDayData } from '@/types';
 import type { Article } from '@/lib/services/ai/types';
+import type { UserType } from '@/lib/limits/config';
 import type {
   PipelineStepId,
   ComposedItinerary,
   ComposePipelineMetadata,
+  NormalizedRequest,
 } from '@/types/itinerary-pipeline';
 import { normalizeRequest } from './steps/normalize-request';
 import { runSemanticPlanner } from './steps/semantic-planner';
@@ -21,12 +23,13 @@ import { optimizeRoutes } from './steps/route-optimizer';
 import { buildTimeline } from './steps/timeline-builder';
 import {
   runNarrativeRenderer,
+  buildFallbackNarrativeOutput,
   streamNarrativeRendererWithResult,
 } from './steps/narrative-renderer';
 import { composedToItinerary } from './adapter';
 import { PipelineStepError } from './errors';
 import { GenerationRunLogger } from './generation-run-logger';
-import { selectModel } from '@/lib/services/ai/model-selector';
+import { getDefaultProvider, resolveModelForPhase } from '@/lib/services/ai/model-resolver';
 import { createComposeTimer } from '@/lib/utils/performance-timer';
 import { checkAndRecordUsage } from '@/lib/limits/check';
 
@@ -37,7 +40,45 @@ const COMPOSE_DEADLINE_MS = 25_000;
 const MIN_REMAINING_FOR_PLACE_RESOLVE_MS = 8_000;
 const MIN_REMAINING_FOR_HERO_IMAGE_MS = 2_500;
 const MIN_REMAINING_FOR_SEMANTIC_RETRY_MS = 14_000;
+const MIN_REMAINING_FOR_NARRATIVE_LLM_MS = 6_500;
+const MIN_REMAINING_FOR_SEMANTIC_FAST_MODE_MS = 18_000;
 const DEADLINE_RESERVE_MS = 2_000;
+
+function getItineraryProvider(): 'gemini' | 'openai' {
+  const provider = process.env.AI_PROVIDER_ITINERARY;
+  if (provider === 'gemini' || provider === 'openai') {
+    return provider;
+  }
+  return getDefaultProvider();
+}
+
+function toComposeModelTier(userType: UserType): 'flash' | 'pro' {
+  return userType === 'pro' || userType === 'premium' || userType === 'admin'
+    ? 'pro'
+    : 'flash';
+}
+
+function shouldUseSemanticFastMode(
+  request: NormalizedRequest,
+  remainingMs: number
+): boolean {
+  return (
+    remainingMs < MIN_REMAINING_FOR_SEMANTIC_FAST_MODE_MS ||
+    request.durationDays >= 4 ||
+    request.destinations.length > 1 ||
+    request.mustVisitPlaces.length >= 4
+  );
+}
+
+function getSemanticCandidateTarget(
+  request: NormalizedRequest,
+  fastMode: boolean
+): number {
+  const perDay = fastMode ? 4 : request.durationDays >= 4 ? 5 : 6;
+  const minimum = request.mustVisitPlaces.length + request.durationDays * 2;
+  const cap = fastMode ? 14 : 20;
+  return Math.max(minimum, Math.min(request.durationDays * perDay, cap));
+}
 
 // ============================================
 // Types
@@ -199,19 +240,24 @@ export async function runComposePipeline(
     });
 
     // ====================================
-    // Model Selection
+    // Model Resolution
     // ====================================
-    const modelSelection = selectModel({
-      phase: 'outline',
-      complexity: {
-        durationDays: normalizedRequest.durationDays,
-        isMultiCity: normalizedRequest.destinations.length > 1,
-        companionType: normalizedRequest.companions,
-      },
+    const userType = usageResult.userType as UserType;
+    const provider = getItineraryProvider();
+    const semanticModel = resolveModelForPhase('outline', userType, provider);
+    const narrativeModel = resolveModelForPhase('chunk', userType, provider);
+    const modelTier = toComposeModelTier(userType);
+
+    console.info('[compose-pipeline] model_resolution', {
+      provider,
+      userType,
+      semanticModel: semanticModel.modelName,
+      narrativeModel: narrativeModel.modelName,
+      modelTier,
     });
 
     // Update timer targets based on model tier
-    if (modelSelection.tier === 'pro') {
+    if (modelTier === 'pro') {
       const { COMPOSE_TARGETS_PRO } = await import('@/lib/utils/performance-timer');
       timer.setTargets(COMPOSE_TARGETS_PRO);
     }
@@ -219,8 +265,8 @@ export async function runComposePipeline(
     // Start run logging (fire-and-forget)
     logger.startRun({
       pipelineVersion: 'v3',
-      modelName: modelSelection.modelName,
-      modelTier: modelSelection.tier,
+      modelName: semanticModel.modelName,
+      modelTier,
     }).catch(() => {});
 
     // ====================================
@@ -230,13 +276,22 @@ export async function runComposePipeline(
     logStepWindow('semantic_plan:start');
     const context: Article[] = []; // RAG context could be added here
     const semanticPlanStart = Date.now();
+    const semanticFastMode = shouldUseSemanticFastMode(normalizedRequest, remainingTimeMs());
+    const semanticCandidateTarget = getSemanticCandidateTarget(normalizedRequest, semanticFastMode);
+    if (semanticFastMode) {
+      timeoutMitigationUsed = true;
+    }
     const semanticPlan = await timer.measure('semantic_plan', async () => {
       return runWithDeadline('semantic_plan', () => runSemanticPlanner({
         request: normalizedRequest,
         context,
-        modelName: modelSelection.modelName,
-        temperature: modelSelection.temperature,
-        retryOnFailure: remainingTimeMs() >= MIN_REMAINING_FOR_SEMANTIC_RETRY_MS,
+        modelName: semanticModel.modelName,
+        provider,
+        temperature: semanticModel.temperature,
+        retryOnFailure: !semanticFastMode && remainingTimeMs() >= MIN_REMAINING_FOR_SEMANTIC_RETRY_MS,
+        targetCandidateCount: semanticCandidateTarget,
+        fastMode: semanticFastMode,
+        onProgress: (message) => emitProgress('semantic_plan', message),
       }));
     });
 
@@ -245,7 +300,11 @@ export async function runComposePipeline(
       stepName: 'semantic_plan',
       status: 'success',
       durationMs: Date.now() - semanticPlanStart,
-      metadata: { candidateCount },
+      metadata: {
+        candidateCount,
+        fastMode: semanticFastMode,
+        targetCandidateCount: semanticCandidateTarget,
+      },
     }).catch(() => {});
 
     // ====================================
@@ -444,11 +503,18 @@ export async function runComposePipeline(
       timelineDays,
       request: normalizedRequest,
       context,
-      modelName: modelSelection.modelName,
-      temperature: 0.3,
+      modelName: narrativeModel.modelName,
+      provider,
+      temperature: narrativeModel.temperature,
     };
 
     const narrative = await timer.measure('narrative_render', async () => {
+      if (remainingTimeMs() < MIN_REMAINING_FOR_NARRATIVE_LLM_MS) {
+        timeoutMitigationUsed = true;
+        fallbackUsed = true;
+        return buildFallbackNarrativeOutput(timelineDays, normalizedRequest);
+      }
+
       try {
         const streamResult = await runWithDeadline(
           'narrative_render',
@@ -470,6 +536,10 @@ export async function runComposePipeline(
       } catch (streamError) {
         console.warn('[compose-pipeline] streamNarrativeRenderer failed, falling back to generateObject:', streamError);
         fallbackUsed = true;
+        if (remainingTimeMs() < MIN_REMAINING_FOR_NARRATIVE_LLM_MS) {
+          timeoutMitigationUsed = true;
+          return buildFallbackNarrativeOutput(timelineDays, normalizedRequest);
+        }
         return runWithDeadline('narrative_render', () => runNarrativeRenderer(narrativeInput));
       }
     });
@@ -529,8 +599,8 @@ export async function runComposePipeline(
       filteredCount: selectedCount,
       placeResolveEnabled,
       stepTimings,
-      modelName: modelSelection.modelName,
-      modelTier: modelSelection.tier,
+      modelName: semanticModel.modelName,
+      modelTier,
       warningCount: allWarnings.length,
       droppedCandidateCount: droppedCount,
       fallbackUsed,
@@ -547,8 +617,8 @@ export async function runComposePipeline(
     };
 
     const modelInfo: ModelInfo = {
-      modelName: modelSelection.modelName,
-      tier: modelSelection.tier,
+      modelName: semanticModel.modelName,
+      tier: modelTier,
     };
 
     const itinerary = composedToItinerary(composed, modelInfo);

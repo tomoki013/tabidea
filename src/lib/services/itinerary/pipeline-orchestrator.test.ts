@@ -13,13 +13,14 @@ vi.mock('@/lib/limits/check', () => ({
   }),
 }));
 
-vi.mock('@/lib/services/ai/model-selector', () => ({
-  selectModel: vi.fn().mockReturnValue({
-    modelName: 'gemini-3-flash-preview',
-    tier: 'flash',
-    reason: 'test',
-    temperature: 0.3,
-  }),
+vi.mock('@/lib/services/ai/model-resolver', () => ({
+  getDefaultProvider: vi.fn().mockReturnValue('gemini'),
+  resolveModelForPhase: vi.fn((phase: string) => ({
+    modelName: phase === 'outline' ? 'gemini-2.5-flash' : 'gemini-3-flash-preview',
+    provider: 'gemini',
+    temperature: phase === 'outline' ? 0.3 : 0.1,
+    source: 'default',
+  })),
 }));
 
 vi.mock('./steps/semantic-planner', () => ({
@@ -128,6 +129,42 @@ vi.mock('./steps/narrative-renderer', () => ({
             },
             description: 'カフェでランチ',
             activityName: 'カフェ',
+          },
+        ],
+        legs: [],
+        overnightLocation: '浅草',
+      },
+    ],
+  }),
+  buildFallbackNarrativeOutput: vi.fn().mockReturnValue({
+    description: '東京の1日旅行',
+    days: [
+      {
+        day: 1,
+        title: '浅草散策',
+        activities: [
+          {
+            node: {
+              stop: {
+                candidate: {
+                  name: '浅草寺',
+                  role: 'must_visit',
+                  priority: 10,
+                  dayHint: 1,
+                  timeSlotHint: 'morning',
+                  stayDurationMinutes: 60,
+                  searchQuery: '浅草寺',
+                },
+                feasibilityScore: 50,
+                warnings: [],
+              },
+              arrivalTime: '08:00',
+              departureTime: '09:00',
+              stayMinutes: 60,
+              warnings: [],
+            },
+            description: '浅草寺',
+            activityName: '浅草寺',
           },
         ],
         legs: [],
@@ -344,7 +381,7 @@ describe('pipeline-orchestrator', () => {
     expect(result.metadata).toBeDefined();
     expect(result.metadata!.stepTimings).toBeDefined();
     expect(typeof result.metadata!.stepTimings.normalize).toBe('number');
-    expect(result.metadata!.modelName).toBe('gemini-3-flash-preview');
+    expect(result.metadata!.modelName).toBe('gemini-2.5-flash');
     expect(result.metadata!.modelTier).toBe('flash');
   });
 
@@ -389,6 +426,54 @@ describe('pipeline-orchestrator', () => {
 
     expect(result.success).toBe(true);
     expect(resolvePlaces).not.toHaveBeenCalled();
+    expect(result.metadata?.timeoutMitigationUsed).toBe(true);
+    nowSpy.mockRestore();
+  });
+
+  it('should fall back to a plain narrative when the remaining budget is too small', async () => {
+    let fakeNow = 0;
+    const nowSpy = vi.spyOn(Date, 'now').mockImplementation(() => fakeNow);
+    const { streamNarrativeRendererWithResult } = await import('./steps/narrative-renderer');
+
+    vi.mocked(streamNarrativeRendererWithResult).mockImplementationOnce(async () => {
+      throw new Error('stream should be skipped when time is low');
+    });
+
+    const { runSemanticPlanner } = await import('./steps/semantic-planner');
+    vi.mocked(runSemanticPlanner).mockImplementationOnce(async () => {
+      fakeNow = 19_500;
+      return {
+        destination: '東京',
+        description: 'テスト旅行プラン',
+        candidates: [
+          {
+            name: '浅草寺',
+            role: 'must_visit',
+            priority: 10,
+            dayHint: 1,
+            timeSlotHint: 'morning',
+            stayDurationMinutes: 60,
+            searchQuery: '浅草寺',
+            categoryHint: 'temple',
+          },
+        ],
+        dayStructure: [
+          {
+            day: 1,
+            title: '浅草散策',
+            mainArea: '浅草',
+            overnightLocation: '浅草',
+            summary: '浅草を楽しむ一日',
+          },
+        ],
+        themes: ['歴史'],
+      };
+    });
+
+    const result = await runComposePipeline(makeTestInput());
+
+    expect(result.success).toBe(true);
+    expect(streamNarrativeRendererWithResult).not.toHaveBeenCalled();
     expect(result.metadata?.timeoutMitigationUsed).toBe(true);
     nowSpy.mockRestore();
   });
