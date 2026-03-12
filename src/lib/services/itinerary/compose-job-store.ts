@@ -159,6 +159,7 @@ export class ComposeJobStore {
       status: "failed",
       current_step: null,
       current_message: null,
+      progress_payload: {},
       error_payload: payload,
       warnings: result.warnings,
       failed_step: result.failedStep ?? null,

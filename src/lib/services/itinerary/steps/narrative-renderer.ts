@@ -190,7 +190,8 @@ function buildNarrativePrompt(
 2. 各日にその日の見どころを反映したタイトルを付けてください
 3. 全体の旅程を1-2文で紹介する description を生成してください
 4. 時刻・順序・場所は変更しないでください
-5. arrivalTime は入力データと完全に一致させてください`;
+5. arrivalTime は入力データと完全に一致させてください
+6. 文を途中で切らず、各 description は完結した自然な文章で終える（「...」「…」で終わらない）`;
 
   return prompt;
 }
