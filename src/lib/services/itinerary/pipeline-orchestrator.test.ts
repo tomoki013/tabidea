@@ -494,4 +494,20 @@ describe('pipeline-orchestrator', () => {
     expect(result.metadata?.timeoutMitigationUsed).toBe(true);
     nowSpy.mockRestore();
   });
+
+  it('should fallback to deterministic semantic plan when semantic planner times out', async () => {
+    const { runSemanticPlanner } = await import('./steps/semantic-planner');
+    const { PipelineStepError } = await import('./errors');
+
+    vi.mocked(runSemanticPlanner).mockRejectedValueOnce(
+      new PipelineStepError('semantic_plan', 'semantic_plan timed out before platform deadline')
+    );
+
+    const result = await runComposePipeline(makeTestInput({ mustVisitPlaces: ['浅草寺'] }));
+
+    expect(result.success).toBe(true);
+    expect(result.metadata?.timeoutMitigationUsed).toBe(true);
+    expect(result.metadata?.fallbackUsed).toBe(true);
+    expect(result.itinerary?.destination).toBe('東京');
+  });
 });

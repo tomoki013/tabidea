@@ -14,6 +14,7 @@ import type {
   ComposedItinerary,
   ComposePipelineMetadata,
   NormalizedRequest,
+  SemanticPlan,
 } from '@/types/itinerary-pipeline';
 import { normalizeRequest } from './steps/normalize-request';
 import { runSemanticPlanner } from './steps/semantic-planner';
@@ -37,10 +38,12 @@ import { checkAndRecordUsage } from '@/lib/limits/check';
 export { PipelineStepError } from './errors';
 
 const COMPOSE_DEADLINE_MS = 22_000;
-const MIN_REMAINING_FOR_PLACE_RESOLVE_MS = 8_000;
+const MIN_REMAINING_FOR_PLACE_RESOLVE_MS = 9_000;
 const MIN_REMAINING_FOR_HERO_IMAGE_MS = 2_500;
 const MIN_REMAINING_FOR_SEMANTIC_RETRY_MS = 14_000;
+const MIN_REMAINING_FOR_SEMANTIC_LLM_MS = 5_500;
 const MIN_REMAINING_FOR_NARRATIVE_LLM_MS = 6_500;
+const MIN_REMAINING_FOR_NARRATIVE_STREAM_MS = 9_000;
 const MIN_REMAINING_FOR_SEMANTIC_FAST_MODE_MS = 18_000;
 const DEADLINE_RESERVE_MS = 2_000;
 
@@ -80,6 +83,92 @@ function getSemanticCandidateTarget(
   const minimum = request.hardConstraints.mustVisitPlaces.length + request.durationDays * 2;
   const cap = fastMode ? 14 : 20;
   return Math.max(minimum, Math.min(request.durationDays * perDay, cap));
+}
+
+function isTimeoutLikeError(error: unknown): boolean {
+  if (error instanceof PipelineStepError) {
+    return /timed out|timeout/i.test(error.message);
+  }
+
+  if (error instanceof Error) {
+    return /timed out|timeout|deadline/i.test(error.message);
+  }
+
+  return false;
+}
+
+function buildDeterministicSemanticPlan(request: NormalizedRequest): SemanticPlan {
+  const destination = request.destinations[0] ?? (request.region === 'domestic' ? '日本' : '海外');
+  const baseThemes = request.themes.length > 0 ? request.themes : ['観光'];
+
+  const dayStructure = Array.from({ length: request.durationDays }, (_, idx) => ({
+    day: idx + 1,
+    title: `${idx + 1}日目の${destination}散策`,
+    mainArea: destination,
+    overnightLocation: destination,
+    summary: `${destination}を無理なく巡るプラン`,
+  }));
+
+  const mustVisits = request.mustVisitPlaces.map((place, index) => ({
+    name: place,
+    role: 'must_visit' as const,
+    priority: 10,
+    dayHint: Math.min(index + 1, request.durationDays),
+    timeSlotHint: 'flexible' as const,
+    stayDurationMinutes: 75,
+    searchQuery: place,
+    semanticId: crypto.randomUUID(),
+    areaHint: destination,
+  }));
+
+  const fillerCandidates = dayStructure.flatMap((day) => [
+    {
+      name: `${destination}の定番スポット ${day.day}`,
+      role: 'recommended' as const,
+      priority: 7,
+      dayHint: day.day,
+      timeSlotHint: 'morning' as const,
+      stayDurationMinutes: 90,
+      searchQuery: `${destination} 観光名所`,
+      semanticId: crypto.randomUUID(),
+      areaHint: destination,
+    },
+    {
+      name: `${destination}のランチ ${day.day}`,
+      role: 'meal' as const,
+      priority: 6,
+      dayHint: day.day,
+      timeSlotHint: 'midday' as const,
+      stayDurationMinutes: 60,
+      searchQuery: `${destination} ランチ`,
+      semanticId: crypto.randomUUID(),
+      areaHint: destination,
+    },
+    {
+      name: `${destination}の夜散策 ${day.day}`,
+      role: 'recommended' as const,
+      priority: 5,
+      dayHint: day.day,
+      timeSlotHint: 'evening' as const,
+      stayDurationMinutes: 90,
+      searchQuery: `${destination} 夜景`,
+      semanticId: crypto.randomUUID(),
+      areaHint: destination,
+    },
+  ]);
+
+  const candidates = [...mustVisits, ...fillerCandidates];
+
+  return {
+    destination,
+    description: `${destination}の${request.durationDays}日間プラン`,
+    candidates,
+    dayStructure,
+    themes: baseThemes,
+    tripIntentSummary: `${destination}を無理なく楽しむ`,
+    orderingPreferences: ['午前に主要スポット', '昼食を挟んでエリア内を回遊'],
+    fallbackHints: ['主要エリア優先', '移動時間を短く保つ'],
+  };
 }
 
 // ============================================
@@ -146,6 +235,7 @@ export async function runComposePipeline(
   const pipelineStartedAt = Date.now();
   const deadlineAt = pipelineStartedAt + COMPOSE_DEADLINE_MS;
   let timeoutMitigationUsed = false;
+  let fallbackUsed = false;
 
   const remainingTimeMs = () => deadlineAt - Date.now();
 
@@ -284,17 +374,35 @@ export async function runComposePipeline(
       timeoutMitigationUsed = true;
     }
     const semanticPlan = await timer.measure('semantic_plan', async () => {
-      return runWithDeadline('semantic_plan', () => runSemanticPlanner({
-        request: normalizedRequest,
-        context,
-        modelName: semanticModel.modelName,
-        provider,
-        temperature: semanticModel.temperature,
-        retryOnFailure: !semanticFastMode && remainingTimeMs() >= MIN_REMAINING_FOR_SEMANTIC_RETRY_MS,
-        targetCandidateCount: semanticCandidateTarget,
-        fastMode: semanticFastMode,
-        onProgress: (message) => emitProgress('semantic_plan', message),
-      }));
+      if (remainingTimeMs() < MIN_REMAINING_FOR_SEMANTIC_LLM_MS) {
+        timeoutMitigationUsed = true;
+        fallbackUsed = true;
+        emitProgress('semantic_plan', '時間制限のため軽量プランで継続中...');
+        return buildDeterministicSemanticPlan(normalizedRequest);
+      }
+
+      try {
+        return await runWithDeadline('semantic_plan', () => runSemanticPlanner({
+          request: normalizedRequest,
+          context,
+          modelName: semanticModel.modelName,
+          provider,
+          temperature: semanticModel.temperature,
+          retryOnFailure: !semanticFastMode && remainingTimeMs() >= MIN_REMAINING_FOR_SEMANTIC_RETRY_MS,
+          targetCandidateCount: semanticCandidateTarget,
+          fastMode: semanticFastMode,
+          onProgress: (message) => emitProgress('semantic_plan', message),
+        }));
+      } catch (semanticError) {
+        if (isTimeoutLikeError(semanticError)) {
+          timeoutMitigationUsed = true;
+          fallbackUsed = true;
+          console.warn('[compose-pipeline] semantic planner timed out, using deterministic fallback:', semanticError);
+          emitProgress('semantic_plan', '候補選定を簡略化して継続中...');
+          return buildDeterministicSemanticPlan(normalizedRequest);
+        }
+        throw semanticError;
+      }
     });
 
     const candidateCount = semanticPlan.candidates.length;
@@ -309,6 +417,29 @@ export async function runComposePipeline(
       },
     }).catch(() => {});
 
+    // Prefetch hero image in background to save tail latency
+    let heroImagePromise: Promise<ComposedItinerary['heroImage'] | undefined> | undefined;
+    const remainingAfterSemantic = remainingTimeMs();
+    if (remainingAfterSemantic >= MIN_REMAINING_FOR_NARRATIVE_STREAM_MS) {
+      heroImagePromise = (async () => {
+        try {
+          const { getUnsplashImage } = await import('@/lib/unsplash');
+          const image = await getUnsplashImage(semanticPlan.destination);
+          if (!image) {
+            return undefined;
+          }
+
+          return {
+            url: image.url,
+            photographer: image.photographer,
+            photographerUrl: image.photographerUrl,
+          };
+        } catch {
+          return undefined;
+        }
+      })();
+    }
+
     // ====================================
     // Step 3: Place Resolver (conditional)
     // ====================================
@@ -317,7 +448,6 @@ export async function runComposePipeline(
     let resolvedCount = 0;
     let filteredOutCount = 0;
     let droppedCount = 0;
-    let fallbackUsed = false;
 
     if (placeResolveEnabled) {
       const remainingBeforeResolve = remainingTimeMs();
@@ -518,6 +648,12 @@ export async function runComposePipeline(
       }
 
       try {
+        if (remainingTimeMs() < MIN_REMAINING_FOR_NARRATIVE_STREAM_MS) {
+          timeoutMitigationUsed = true;
+          fallbackUsed = true;
+          return buildFallbackNarrativeOutput(timelineDays, normalizedRequest);
+        }
+
         const streamResult = await runWithDeadline(
           'narrative_render',
           () => streamNarrativeRendererWithResult(narrativeInput)
@@ -542,7 +678,15 @@ export async function runComposePipeline(
           timeoutMitigationUsed = true;
           return buildFallbackNarrativeOutput(timelineDays, normalizedRequest);
         }
-        return runWithDeadline('narrative_render', () => runNarrativeRenderer(narrativeInput));
+
+        try {
+          return await runWithDeadline('narrative_render', () => runNarrativeRenderer(narrativeInput));
+        } catch (narrativeError) {
+          timeoutMitigationUsed = timeoutMitigationUsed || isTimeoutLikeError(narrativeError);
+          fallbackUsed = true;
+          console.warn('[compose-pipeline] narrative renderer fallback failed, using deterministic narrative:', narrativeError);
+          return buildFallbackNarrativeOutput(timelineDays, normalizedRequest);
+        }
       }
     });
 
@@ -567,6 +711,11 @@ export async function runComposePipeline(
       logStepWindow('hero_image:start');
       await timer.measure('hero_image', async () => {
         try {
+          if (heroImagePromise) {
+            heroImage = await runWithDeadline('hero_image', () => heroImagePromise, 500);
+            return;
+          }
+
           const { getUnsplashImage } = await import('@/lib/unsplash');
           const image = await runWithDeadline('hero_image', () => getUnsplashImage(semanticPlan.destination), 500);
           if (image) {
