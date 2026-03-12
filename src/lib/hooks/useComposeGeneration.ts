@@ -292,7 +292,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
           if (job.progress.description) {
             setPreviewDescription(job.progress.description);
           }
-          if (job.progress.partialDays) {
+          if (job.status === "running" && job.progress.partialDays) {
             const next = new Map<number, PartialDayData>();
             for (const [day, dayData] of Object.entries(job.progress.partialDays)) {
               next.set(Number(day), dayData);
@@ -343,6 +343,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         } else {
           setErrorMessage(t("errors.network"));
         }
+        setPartialDays(new Map());
         setIsGenerating(false);
       }
     },
@@ -575,6 +576,7 @@ async function runLegacyComposeGeneration(
 
   if (!terminalEventSeen) {
     deps.setErrorMessage(deps.t("errors.streamUnexpectedEnd"));
+    deps.setPartialDays(new Map());
     deps.setIsGenerating(false);
   }
 }

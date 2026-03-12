@@ -336,4 +336,60 @@ describe("useComposeGeneration", () => {
       expect(result.current.errorMessage).toBe("Network request failed");
     });
   });
+
+  it("clears partial days when legacy SSE stream ends without a terminal event", async () => {
+    mockFetch
+      .mockResolvedValueOnce({
+        ok: false,
+        status: 500,
+        json: async () => ({
+          error: "Compose job backend is unavailable",
+          code: "compose_job_backend_unavailable",
+        }),
+      })
+      .mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        body: createSseBody([
+          {
+            type: "progress",
+            step: "narrative_render",
+            message: "旅程を仕上げ中...",
+          },
+          {
+            type: "day_complete",
+            step: "narrative_render",
+            day: 1,
+            dayData: {
+              day: 1,
+              title: "浅草散策",
+              activities: [],
+            },
+          },
+        ]),
+      });
+
+    const { result } = renderHook(() => useComposeGeneration());
+
+    await act(async () => {
+      await result.current.generate({
+        destinations: ["東京"],
+        region: "domestic",
+        dates: "2日間",
+        companions: "友達",
+        theme: ["グルメ"],
+        budget: "standard",
+        pace: "balanced",
+        freeText: "",
+      });
+    });
+
+    await waitFor(() => {
+      expect(result.current.errorMessage).toBe("errors.streamUnexpectedEnd");
+    });
+
+    expect(result.current.partialDays.size).toBe(0);
+    expect(result.current.isGenerating).toBe(false);
+    expect(result.current.isCompleted).toBe(false);
+  });
 });

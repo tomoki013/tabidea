@@ -36,7 +36,7 @@ import { checkAndRecordUsage } from '@/lib/limits/check';
 // Re-export for backward compatibility
 export { PipelineStepError } from './errors';
 
-const COMPOSE_DEADLINE_MS = 25_000;
+const COMPOSE_DEADLINE_MS = 22_000;
 const MIN_REMAINING_FOR_PLACE_RESOLVE_MS = 8_000;
 const MIN_REMAINING_FOR_HERO_IMAGE_MS = 2_500;
 const MIN_REMAINING_FOR_SEMANTIC_RETRY_MS = 14_000;
