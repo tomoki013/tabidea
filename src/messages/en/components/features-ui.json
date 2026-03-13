@@ -1565,6 +1565,7 @@
           }
         },
         "composeLoadingAnimation": {
+          "liveBadge": "Live itinerary build",
           "waiting": "Preparing...",
           "stepsProgress": "{completed}/{total} steps",
           "footer": "AI is crafting the perfect itinerary..."
@@ -1725,6 +1726,7 @@
           "photoUrlPlaceholder": "https://..."
         },
         "resultView": {
+          "dayTrip": "Day trip",
           "durationString": "{nights} nights {days} days",
           "updatingTitle": "Rewriting your plan...",
           "newActivity": {
@@ -1795,6 +1797,7 @@
           "transitArrived": "Transit info"
         },
         "streamingResultView": {
+          "dayTrip": "Day trip",
           "durationString": "{nights} nights {days} days",
           "dayLabel": "Day",
           "shareDisabled": "Share and PDF export become available after generation completes.",

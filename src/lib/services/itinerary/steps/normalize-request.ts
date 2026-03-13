@@ -186,26 +186,128 @@ export function normalizeRequest(
  * extractDuration を拡張し、英語パターンもサポート
  */
 function parseDuration(dates: string): number {
+  const trimmed = dates.trim();
+
+  const rangeDuration = parseDateRangeDuration(trimmed);
+  if (rangeDuration > 0) return rangeDuration;
+
   // 既存ロジック: "3日間", "2泊3日"
-  const existing = extractDuration(dates);
+  const existing = extractDuration(trimmed);
   if (existing > 0) return existing;
 
   // English: "3 days", "5-day"
-  const enMatch = dates.match(/(\d+)\s*-?\s*days?/i);
+  const enMatch = trimmed.match(/(\d+)\s*-?\s*days?/i);
   if (enMatch) return parseInt(enMatch[1], 10);
 
   // "X nights" → X+1 days
-  const nightMatch = dates.match(/(\d+)\s*nights?/i);
+  const nightMatch = trimmed.match(/(\d+)\s*nights?/i);
   if (nightMatch) return parseInt(nightMatch[1], 10) + 1;
 
   // 数字だけの場合
-  const numMatch = dates.match(/^(\d+)$/);
+  const numMatch = trimmed.match(/^(\d+)$/);
   if (numMatch) return parseInt(numMatch[1], 10);
 
   // フォールバック: 半日 → 1
-  if (/半日|half\s*day/i.test(dates)) return 1;
+  if (/半日|half\s*day/i.test(trimmed)) return 1;
 
   return 1; // default to 1 day
+}
+
+function parseDateRangeDuration(dates: string): number {
+  const separatorPattern = /(?:〜|～|~|ー|−|-|to|until)/i;
+
+  // ISO/Slash ranges: 2026-03-17 ~ 2026-03-18
+  const fullDateMatches = Array.from(dates.matchAll(/(\d{4})[\/-](\d{1,2})[\/-](\d{1,2})/g));
+  if (fullDateMatches.length >= 2) {
+    const start = buildUtcDate(
+      Number.parseInt(fullDateMatches[0][1], 10),
+      Number.parseInt(fullDateMatches[0][2], 10),
+      Number.parseInt(fullDateMatches[0][3], 10)
+    );
+    const end = buildUtcDate(
+      Number.parseInt(fullDateMatches[1][1], 10),
+      Number.parseInt(fullDateMatches[1][2], 10),
+      Number.parseInt(fullDateMatches[1][3], 10)
+    );
+    return calculateInclusiveDays(start, end);
+  }
+
+  // Japanese ranges with year: 2026年3月17日〜3月18日 / 2026年3月17日〜18日
+  const jpYearRange = dates.match(
+    /(\d{4})年\s*(\d{1,2})月\s*(\d{1,2})日\s*(?:〜|～|~|ー|−|-)\s*(?:(\d{1,2})月\s*)?(\d{1,2})日/
+  );
+  if (jpYearRange) {
+    const year = Number.parseInt(jpYearRange[1], 10);
+    const startMonth = Number.parseInt(jpYearRange[2], 10);
+    const startDay = Number.parseInt(jpYearRange[3], 10);
+    const endMonth = jpYearRange[4]
+      ? Number.parseInt(jpYearRange[4], 10)
+      : startMonth;
+    const endDay = Number.parseInt(jpYearRange[5], 10);
+    const start = buildUtcDate(year, startMonth, startDay);
+    const end = buildUtcDate(year, endMonth, endDay);
+    return calculateInclusiveDays(start, end);
+  }
+
+  // English month name ranges: March 17-18, 2026 / Mar 17 to Mar 18
+  const monthRanges = Array.from(
+    dates.matchAll(
+      /(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+(\d{1,2})(?:,\s*(\d{4}))?/gi
+    )
+  );
+  if (monthRanges.length >= 2 && separatorPattern.test(dates)) {
+    const startMonth = monthNameToNumber(monthRanges[0][1]);
+    const endMonth = monthNameToNumber(monthRanges[1][1]);
+    if (startMonth > 0 && endMonth > 0) {
+      const fallbackYear = new Date().getUTCFullYear();
+      const startYear = monthRanges[0][3]
+        ? Number.parseInt(monthRanges[0][3], 10)
+        : monthRanges[1][3]
+          ? Number.parseInt(monthRanges[1][3], 10)
+          : fallbackYear;
+      const endYear = monthRanges[1][3]
+        ? Number.parseInt(monthRanges[1][3], 10)
+        : startYear;
+      const start = buildUtcDate(startYear, startMonth, Number.parseInt(monthRanges[0][2], 10));
+      const end = buildUtcDate(endYear, endMonth, Number.parseInt(monthRanges[1][2], 10));
+      return calculateInclusiveDays(start, end);
+    }
+  }
+
+  return 0;
+}
+
+function buildUtcDate(year: number, month: number, day: number): Date {
+  return new Date(Date.UTC(year, month - 1, day));
+}
+
+function calculateInclusiveDays(start: Date, end: Date): number {
+  const diff = end.getTime() - start.getTime();
+  if (Number.isNaN(diff) || diff < 0) {
+    return 0;
+  }
+
+  return Math.floor(diff / 86_400_000) + 1;
+}
+
+function monthNameToNumber(monthName: string): number {
+  const short = monthName.toLowerCase().slice(0, 3);
+  const MONTHS: Record<string, number> = {
+    jan: 1,
+    feb: 2,
+    mar: 3,
+    apr: 4,
+    may: 5,
+    jun: 6,
+    jul: 7,
+    aug: 8,
+    sep: 9,
+    oct: 10,
+    nov: 11,
+    dec: 12,
+  };
+
+  return MONTHS[short] ?? 0;
 }
 
 /**

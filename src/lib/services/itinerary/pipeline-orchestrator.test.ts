@@ -510,4 +510,27 @@ describe('pipeline-orchestrator', () => {
     expect(result.metadata?.fallbackUsed).toBe(true);
     expect(result.itinerary?.destination).toBe('東京');
   });
+
+  it('should fallback route/timeline when route optimizer times out near deadline', async () => {
+    let fakeNow = 0;
+    const nowSpy = vi.spyOn(Date, 'now').mockImplementation(() => fakeNow);
+    const { optimizeRoutes } = await import('./steps/route-optimizer');
+    const { PipelineStepError } = await import('./errors');
+
+    const optimizeSpy = vi.spyOn(await import('./steps/route-optimizer'), 'optimizeRoutes');
+    optimizeSpy.mockImplementationOnce(() => {
+      fakeNow = 20_700;
+      throw new PipelineStepError('route_optimize', 'route_optimize timed out before platform deadline');
+    });
+
+    const result = await runComposePipeline(makeTestInput());
+
+    expect(optimizeRoutes).toBeDefined();
+    expect(result.success).toBe(true);
+    expect(result.metadata?.timeoutMitigationUsed).toBe(true);
+    expect(result.metadata?.fallbackUsed).toBe(true);
+
+    nowSpy.mockRestore();
+    optimizeSpy.mockRestore();
+  });
 });

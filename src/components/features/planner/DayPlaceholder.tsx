@@ -25,17 +25,17 @@ export default function DayPlaceholder({
   // Pending state - Dim placeholder
   if (status === "pending") {
     return (
-      <div className="space-y-4 opacity-50">
+      <div className="space-y-4 opacity-60">
         {/* Day Header - Pending */}
         <div className="flex items-center gap-4">
-          <div className="inline-flex items-center gap-4 bg-stone-100 py-3 px-6 rounded-r-full border border-stone-200 border-l-4 border-l-stone-300">
-            <span className="text-4xl font-serif text-stone-400">{day}</span>
+          <div className="inline-flex items-center gap-4 bg-white/90 dark:bg-stone-900/80 py-3 px-6 rounded-r-full border border-stone-200 dark:border-stone-700 border-l-4 border-l-stone-300 dark:border-l-stone-500 shadow-sm">
+            <span className="text-4xl font-serif text-stone-400 dark:text-stone-500">{day}</span>
             <div className="flex flex-col">
-              <span className="text-xs text-stone-400 uppercase tracking-widest font-bold">
+              <span className="text-xs text-stone-400 dark:text-stone-500 uppercase tracking-widest font-bold">
                 {t("dayLabel")}
               </span>
               {title && (
-                <span className="text-stone-500 font-serif italic text-lg leading-none">
+                <span className="text-stone-500 dark:text-stone-300 font-serif italic text-lg leading-none">
                   {title}
                 </span>
               )}
@@ -49,7 +49,7 @@ export default function DayPlaceholder({
             {highlightAreas.map((area, idx) => (
               <span
                 key={idx}
-                className="px-3 py-1 bg-stone-100 text-stone-400 text-sm rounded-full border border-stone-200"
+                className="px-3 py-1 bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-300 text-sm rounded-full border border-stone-200 dark:border-stone-700"
               >
                 {area}
               </span>
@@ -58,8 +58,8 @@ export default function DayPlaceholder({
         )}
 
         {/* Placeholder Content */}
-        <div className="border-l-2 border-stone-200 ml-8 space-y-6 pb-4">
-          <div className="pl-10 text-stone-400 text-sm italic py-4">
+        <div className="border-l-2 border-stone-200 dark:border-stone-700 ml-8 space-y-6 pb-4">
+          <div className="pl-10 text-stone-500 dark:text-stone-400 text-sm italic py-4">
             {t("pendingDetails")}
           </div>
         </div>
@@ -74,17 +74,17 @@ export default function DayPlaceholder({
         {/* Day Header - Generating */}
         <div className="flex items-center gap-4">
           <motion.div
-            className="inline-flex items-center gap-4 bg-white py-3 px-6 rounded-r-full shadow-md border border-primary/30 border-l-4 border-l-primary"
+            className="inline-flex items-center gap-4 bg-white/90 dark:bg-stone-900/85 py-3 px-6 rounded-r-full shadow-lg border border-primary/30 border-l-4 border-l-primary"
             animate={{ opacity: [1, 0.7, 1] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           >
             <span className="text-4xl font-serif text-primary">{day}</span>
             <div className="flex flex-col">
-              <span className="text-xs text-stone-400 uppercase tracking-widest font-bold">
+              <span className="text-xs text-stone-400 dark:text-stone-500 uppercase tracking-widest font-bold">
                 {t("dayLabel")}
               </span>
               {title && (
-                <span className="text-stone-600 font-serif italic text-lg leading-none">
+                <span className="text-stone-700 dark:text-stone-200 font-serif italic text-lg leading-none">
                   {title}
                 </span>
               )}
@@ -93,7 +93,7 @@ export default function DayPlaceholder({
 
           {/* Loading indicator */}
           <motion.div
-            className="flex items-center gap-2 text-primary text-sm font-medium"
+            className="flex items-center gap-2 text-primary text-sm font-medium rounded-full bg-primary/10 dark:bg-primary/20 px-3 py-1"
             animate={{ opacity: [1, 0.5, 1] }}
             transition={{ duration: 1, repeat: Infinity }}
           >
@@ -112,7 +112,7 @@ export default function DayPlaceholder({
             {highlightAreas.map((area, idx) => (
               <span
                 key={idx}
-                className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full border border-primary/20"
+                className="px-3 py-1 bg-primary/10 dark:bg-primary/20 text-primary text-sm rounded-full border border-primary/20 dark:border-primary/40"
               >
                 {area}
               </span>
@@ -121,19 +121,19 @@ export default function DayPlaceholder({
         )}
 
         {/* Skeleton Activities */}
-        <div className="border-l-2 border-primary/30 ml-8 space-y-6 pb-4">
+        <div className="border-l-2 border-primary/40 ml-8 space-y-6 pb-4">
           {[0, 1, 2].map((i) => (
             <div key={i} className="relative pl-10">
               {/* Dot on timeline */}
               <motion.div
-                className="absolute left-[-9px] top-6 w-4 h-4 rounded-full bg-white border-4 border-primary/30"
+                className="absolute left-[-9px] top-6 w-4 h-4 rounded-full bg-white dark:bg-stone-900 border-4 border-primary/30"
                 animate={{ opacity: [0.5, 1, 0.5] }}
                 transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
               />
 
               {/* Skeleton Card */}
               <motion.div
-                className="bg-white border border-stone-100 rounded-xl p-6 shadow-sm"
+                className="bg-white/90 dark:bg-stone-900/80 border border-stone-100 dark:border-stone-700 rounded-2xl p-6 shadow-sm"
                 animate={{ opacity: [0.7, 1, 0.7] }}
                 transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.1 }}
               >
@@ -141,14 +141,14 @@ export default function DayPlaceholder({
                 <div className="animate-pulse space-y-3">
                   {/* Time skeleton */}
                   <div className="flex items-center gap-2">
-                    <div className="h-6 w-16 bg-stone-200 rounded-md" />
+                    <div className="h-6 w-16 bg-stone-200 dark:bg-stone-700 rounded-md" />
                   </div>
                   {/* Title skeleton */}
-                  <div className="h-5 w-3/4 bg-stone-200 rounded" />
+                  <div className="h-5 w-3/4 bg-stone-200 dark:bg-stone-700 rounded" />
                   {/* Description skeleton */}
                   <div className="space-y-2">
-                    <div className="h-3 w-full bg-stone-100 rounded" />
-                    <div className="h-3 w-5/6 bg-stone-100 rounded" />
+                    <div className="h-3 w-full bg-stone-100 dark:bg-stone-800 rounded" />
+                    <div className="h-3 w-5/6 bg-stone-100 dark:bg-stone-800 rounded" />
                   </div>
                 </div>
               </motion.div>

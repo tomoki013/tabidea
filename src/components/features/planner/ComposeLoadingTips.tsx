@@ -43,10 +43,10 @@ export default function ComposeLoadingTips({
   return (
     <div className={`w-full ${embedded ? "" : "max-w-2xl mx-auto mt-4"} ${className}`}>
       <div
-        className={`px-6 py-4 rounded-xl border ${
+        className={`px-6 py-4 rounded-2xl border shadow-sm backdrop-blur ${
           embedded
-            ? "bg-amber-50/70 dark:bg-amber-950/25 border-amber-200/60 dark:border-amber-800/40"
-            : "bg-amber-50/60 dark:bg-amber-950/20 border-amber-200/50 dark:border-amber-800/30"
+            ? "bg-amber-50/75 dark:bg-amber-950/30 border-amber-200/70 dark:border-amber-800/45"
+            : "bg-amber-50/70 dark:bg-amber-950/25 border-amber-200/60 dark:border-amber-800/35"
         }`}
       >
         <p className="text-xs font-mono uppercase tracking-widest text-amber-600/70 dark:text-amber-400/60 mb-1">

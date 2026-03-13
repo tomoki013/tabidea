@@ -15,6 +15,10 @@ import type {
   ComposePipelineMetadata,
   NormalizedRequest,
   SemanticPlan,
+  OptimizedDay,
+  TimelineDay,
+  DayStructure,
+  SelectedStop,
 } from '@/types/itinerary-pipeline';
 import { normalizeRequest } from './steps/normalize-request';
 import { runSemanticPlanner } from './steps/semantic-planner';
@@ -45,6 +49,10 @@ const MIN_REMAINING_FOR_SEMANTIC_LLM_MS = 5_500;
 const MIN_REMAINING_FOR_NARRATIVE_LLM_MS = 6_500;
 const MIN_REMAINING_FOR_NARRATIVE_STREAM_MS = 9_000;
 const MIN_REMAINING_FOR_SEMANTIC_FAST_MODE_MS = 18_000;
+const MIN_REMAINING_FOR_ROUTE_OPTIMIZE_MS = 1_800;
+const MIN_REMAINING_FOR_TIMELINE_BUILD_MS = 1_200;
+const MIN_REMAINING_FOR_POST_SEMANTIC_STEPS_MS = 4_200;
+const SEMANTIC_STEP_RESERVE_MS = 5_000;
 const DEADLINE_RESERVE_MS = 2_000;
 
 function getItineraryProvider(): 'gemini' | 'openai' {
@@ -171,6 +179,76 @@ function buildDeterministicSemanticPlan(request: NormalizedRequest): SemanticPla
   };
 }
 
+function buildFallbackOptimizedDays(
+  stops: SelectedStop[],
+  dayStructures: DayStructure[]
+): OptimizedDay[] {
+  const grouped = new Map<number, SelectedStop[]>();
+
+  for (const structure of dayStructures) {
+    grouped.set(structure.day, []);
+  }
+
+  for (const stop of stops) {
+    const day = stop.candidate.dayHint;
+    const fallbackDay = dayStructures[0]?.day ?? 1;
+    const targetDay = grouped.has(day) ? day : fallbackDay;
+    const target = grouped.get(targetDay) ?? [];
+    target.push(stop);
+    grouped.set(targetDay, target);
+  }
+
+  return dayStructures.map((structure) => {
+    const dayStops = (grouped.get(structure.day) ?? []).sort(
+      (a, b) => b.candidate.priority - a.candidate.priority
+    );
+
+    return {
+      day: structure.day,
+      title: structure.title || `${structure.day}日目`,
+      overnightLocation: structure.overnightLocation || '',
+      nodes: dayStops.map((stop, index) => ({
+        stop,
+        orderInDay: index,
+        nodeId: stop.semanticId || crypto.randomUUID(),
+      })),
+      legs: [],
+    };
+  });
+}
+
+function buildFallbackTimelineDays(optimizedDays: OptimizedDay[]): TimelineDay[] {
+  return optimizedDays.map((day) => {
+    let currentMinutes = 9 * 60;
+
+    const nodes = day.nodes.map((node) => {
+      const stayMinutes = node.stop.candidate.stayDurationMinutes;
+      const arrivalMinutes = currentMinutes;
+      const departureMinutes = arrivalMinutes + stayMinutes;
+      currentMinutes = departureMinutes + 20;
+
+      return {
+        stop: node.stop,
+        arrivalTime: `${String(Math.floor(arrivalMinutes / 60)).padStart(2, '0')}:${String(arrivalMinutes % 60).padStart(2, '0')}`,
+        departureTime: `${String(Math.floor(departureMinutes / 60)).padStart(2, '0')}:${String(departureMinutes % 60).padStart(2, '0')}`,
+        stayMinutes,
+        warnings: [...node.stop.warnings],
+        nodeId: node.nodeId,
+        semanticId: node.stop.semanticId,
+      };
+    });
+
+    return {
+      day: day.day,
+      title: day.title,
+      nodes,
+      legs: day.legs,
+      overnightLocation: day.overnightLocation,
+      startTime: '09:00',
+    };
+  });
+}
+
 // ============================================
 // Types
 // ============================================
@@ -254,10 +332,12 @@ export async function runComposePipeline(
     task: () => Promise<T>,
     reserveMs: number = DEADLINE_RESERVE_MS
   ): Promise<T> => {
-    const remaining = remainingTimeMs() - reserveMs;
-    if (remaining <= 0) {
+    const totalRemaining = remainingTimeMs();
+    if (totalRemaining <= 0) {
       throw createDeadlineError(step, `Timed out before ${step}`);
     }
+
+    const remaining = Math.max(totalRemaining - reserveMs, 50);
 
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
@@ -382,6 +462,10 @@ export async function runComposePipeline(
       }
 
       try {
+        const semanticReserve = remainingTimeMs() > MIN_REMAINING_FOR_POST_SEMANTIC_STEPS_MS
+          ? Math.max(DEADLINE_RESERVE_MS, SEMANTIC_STEP_RESERVE_MS)
+          : DEADLINE_RESERVE_MS;
+
         return await runWithDeadline('semantic_plan', () => runSemanticPlanner({
           request: normalizedRequest,
           context,
@@ -392,7 +476,7 @@ export async function runComposePipeline(
           targetCandidateCount: semanticCandidateTarget,
           fastMode: semanticFastMode,
           onProgress: (message) => emitProgress('semantic_plan', message),
-        }));
+        }), semanticReserve);
       } catch (semanticError) {
         if (isTimeoutLikeError(semanticError)) {
           timeoutMitigationUsed = true;
@@ -590,12 +674,31 @@ export async function runComposePipeline(
     logStepWindow('route_optimize:start');
     const routeStart = Date.now();
     const optimizedDays = await timer.measure('route_optimize', async () => {
-      return runWithDeadline('route_optimize', async () => optimizeRoutes(
-        stops,
-        semanticPlan.dayStructure,
-        normalizedRequest,
-        semanticPlan
-      ));
+      if (remainingTimeMs() < MIN_REMAINING_FOR_ROUTE_OPTIMIZE_MS) {
+        timeoutMitigationUsed = true;
+        fallbackUsed = true;
+        emitProgress('route_optimize', '時間制限のため回遊順を簡略化中...');
+        return buildFallbackOptimizedDays(stops, semanticPlan.dayStructure);
+      }
+
+      try {
+        return await runWithDeadline('route_optimize', async () => optimizeRoutes(
+          stops,
+          semanticPlan.dayStructure,
+          normalizedRequest,
+          semanticPlan
+        ));
+      } catch (routeError) {
+        if (isTimeoutLikeError(routeError)) {
+          timeoutMitigationUsed = true;
+          fallbackUsed = true;
+          console.warn('[compose-pipeline] route optimizer timed out, using deterministic fallback:', routeError);
+          emitProgress('route_optimize', '時間制限のため回遊順を簡略化中...');
+          return buildFallbackOptimizedDays(stops, semanticPlan.dayStructure);
+        }
+
+        throw routeError;
+      }
     });
 
     logger.logStep({
@@ -611,7 +714,26 @@ export async function runComposePipeline(
     logStepWindow('timeline_build:start');
     const timelineStart = Date.now();
     const timelineDays = await timer.measure('timeline_build', async () => {
-      return runWithDeadline('timeline_build', async () => buildTimeline(optimizedDays, normalizedRequest));
+      if (remainingTimeMs() < MIN_REMAINING_FOR_TIMELINE_BUILD_MS) {
+        timeoutMitigationUsed = true;
+        fallbackUsed = true;
+        emitProgress('timeline_build', '時間制限のためタイムラインを簡略化中...');
+        return buildFallbackTimelineDays(optimizedDays);
+      }
+
+      try {
+        return await runWithDeadline('timeline_build', async () => buildTimeline(optimizedDays, normalizedRequest));
+      } catch (timelineError) {
+        if (isTimeoutLikeError(timelineError)) {
+          timeoutMitigationUsed = true;
+          fallbackUsed = true;
+          console.warn('[compose-pipeline] timeline builder timed out, using deterministic fallback:', timelineError);
+          emitProgress('timeline_build', '時間制限のためタイムラインを簡略化中...');
+          return buildFallbackTimelineDays(optimizedDays);
+        }
+
+        throw timelineError;
+      }
     });
 
     logger.logStep({

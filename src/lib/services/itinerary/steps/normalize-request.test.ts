@@ -77,6 +77,23 @@ describe('normalizeRequest', () => {
     });
   });
 
+  describe('date range parsing', () => {
+    it('parses ISO range "2026-03-17~2026-03-18" → 2', () => {
+      const result = normalizeRequest(makeInput({ dates: '2026-03-17~2026-03-18' }));
+      expect(result.durationDays).toBe(2);
+    });
+
+    it('parses Japanese range "2026年3月17日〜3月18日" → 2', () => {
+      const result = normalizeRequest(makeInput({ dates: '2026年3月17日〜3月18日' }));
+      expect(result.durationDays).toBe(2);
+    });
+
+    it('parses Japanese same month range "2026年3月17日〜18日" → 2', () => {
+      const result = normalizeRequest(makeInput({ dates: '2026年3月17日〜18日' }));
+      expect(result.durationDays).toBe(2);
+    });
+  });
+
   // ==============================
   // Budget normalization
   // ==============================
