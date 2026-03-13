@@ -9,6 +9,10 @@
 
 ## 開発者向けコミット履歴（コミット単位）
 
+### 2026-03-13
+
+- `local` perf(planner,compose-ui): 生成完了後に希望入力画面へ戻って見える挙動を解消し、成功ステータス画面を表示したまま詳細ページへ遷移するよう改善。あわせて保存完了後の遷移を先行させ、`refreshPlans` は非同期で後続実行にして体感遷移速度を短縮。
+
 ### 2026-03-12
 
 - `local` fix(compose,streaming-ui,timeout): プラン生成のタイムアウト耐性とSSEストリーミング体験を再設計。① `semantic_plan` の実行予算に専用 reserve を設け、後続ステップ用の時間を確保。② `route_optimize` / `timeline_build` は残時間不足または timeout 時に deterministic fallback（回遊順・タイムライン簡略化）へ自動切替し、全体失敗ではなく完走優先に変更。③ compose background job は timeout 失敗時の再試行を 1 回→最大3回（短い backoff 付き）へ強化。④ `ComposeLoadingAnimation` / `StreamingResultView` / `DayPlaceholder` / `ComposeLoadingTips` を旅の高揚感を出すビジュアルへ刷新（ライト/ダーク両対応、既存i18n準拠）。⑤ pipeline / process-compose-job のテストを追加・更新。
