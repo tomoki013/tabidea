@@ -1788,6 +1788,10 @@
           "notices": {
             "expired": "The saved input was deleted because more than 24 hours have passed.",
             "restored": "Input has been restored."
+          },
+          "success": {
+            "title": "Plan generated successfully! Moving to the detail page…",
+            "description": "Please wait a moment."
           }
         },
         "streamingDayCard": {
