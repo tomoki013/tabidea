@@ -628,15 +628,15 @@ async function handleCompletedResult(
     if (deps.isAuthenticated) {
       const saveResult = await savePlanViaApi(input, result.itinerary, false);
       if (saveResult.success && saveResult.plan) {
-        await deps.refreshPlans();
         deps.router.push(`/plan/id/${saveResult.plan.id}`);
+        void deps.refreshPlans();
         return;
       }
     }
 
     const localPlan = await saveLocalPlan(input, result.itinerary);
-    notifyPlanChange();
     deps.router.push(`/plan/local/${localPlan.id}`);
+    notifyPlanChange();
   } catch (saveErr) {
     console.error("[compose] Save failed:", saveErr);
     deps.setErrorMessage(deps.t("errors.saveFailed"));
