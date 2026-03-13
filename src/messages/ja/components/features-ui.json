@@ -1568,6 +1568,7 @@
           }
         },
         "composeLoadingAnimation": {
+          "liveBadge": "旅程をライブ生成中",
           "waiting": "準備中...",
           "stepsProgress": "{completed}/{total} steps",
           "footer": "AIが最適な旅程を組み立てています..."
@@ -1728,6 +1729,7 @@
           "photoUrlPlaceholder": "https://..."
         },
         "resultView": {
+          "dayTrip": "日帰り",
           "durationString": "{nights}泊{days}日",
           "updatingTitle": "プランを書き直しています...",
           "newActivity": {
@@ -1798,6 +1800,7 @@
           "transitArrived": "移動情報"
         },
         "streamingResultView": {
+          "dayTrip": "日帰り",
           "durationString": "{nights}泊{days}日",
           "dayLabel": "日目",
           "shareDisabled": "シェア・PDF出力は生成完了後に利用可能です",

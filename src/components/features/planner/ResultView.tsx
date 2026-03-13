@@ -235,7 +235,9 @@ export default function ResultView({
   const travelDates = input.dates;
   const numberOfDays = result.days.length;
   const numberOfNights = Math.max(0, numberOfDays - 1);
-  const durationString = t("durationString", { nights: numberOfNights, days: numberOfDays });
+  const durationString = numberOfDays <= 1
+    ? t("dayTrip")
+    : t("durationString", { nights: numberOfNights, days: numberOfDays });
   const newActivityDefaults = useMemo(
     () => ({
       title: t("newActivity.title"),
