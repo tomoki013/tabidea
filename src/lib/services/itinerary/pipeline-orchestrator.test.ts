@@ -512,6 +512,49 @@ describe('pipeline-orchestrator', () => {
   });
 
 
+
+  it('should retry semantic planning in emergency mode before deterministic fallback', async () => {
+    const { runSemanticPlanner } = await import('./steps/semantic-planner');
+    const { PipelineStepError } = await import('./errors');
+
+    vi.mocked(runSemanticPlanner)
+      .mockRejectedValueOnce(new PipelineStepError('semantic_plan', 'semantic_plan timed out before platform deadline'))
+      .mockResolvedValueOnce({
+        destination: '東京',
+        description: '緊急再試行プラン',
+        candidates: [
+          {
+            name: '東京国立博物館',
+            role: 'recommended',
+            priority: 9,
+            dayHint: 1,
+            timeSlotHint: 'morning',
+            stayDurationMinutes: 90,
+            searchQuery: '東京国立博物館',
+          },
+        ],
+        dayStructure: [
+          {
+            day: 1,
+            title: '上野文化散策',
+            mainArea: '上野',
+            overnightLocation: '上野',
+            summary: '博物館中心に巡る一日',
+          },
+        ],
+        themes: ['文化'],
+      });
+
+    const result = await runComposePipeline(makeTestInput({ destinations: ['東京'] }));
+
+    expect(result.success).toBe(true);
+    expect(runSemanticPlanner).toHaveBeenCalledTimes(2);
+    expect(runSemanticPlanner).toHaveBeenNthCalledWith(2, expect.objectContaining({
+      fastMode: true,
+      retryOnFailure: false,
+    }));
+  });
+
   it('should include concrete fallback spots when deterministic semantic plan is used', async () => {
     const { runSemanticPlanner } = await import('./steps/semantic-planner');
     const { PipelineStepError } = await import('./errors');

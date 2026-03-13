@@ -46,6 +46,7 @@ const MIN_REMAINING_FOR_PLACE_RESOLVE_MS = 9_000;
 const MIN_REMAINING_FOR_HERO_IMAGE_MS = 2_500;
 const MIN_REMAINING_FOR_SEMANTIC_RETRY_MS = 14_000;
 const MIN_REMAINING_FOR_SEMANTIC_LLM_MS = 5_500;
+const MIN_REMAINING_FOR_EMERGENCY_SEMANTIC_LLM_MS = 2_200;
 const MIN_REMAINING_FOR_NARRATIVE_LLM_MS = 6_500;
 const MIN_REMAINING_FOR_NARRATIVE_STREAM_MS = 9_000;
 const MIN_REMAINING_FOR_SEMANTIC_FAST_MODE_MS = 18_000;
@@ -480,10 +481,40 @@ export async function runComposePipeline(
       timeoutMitigationUsed = true;
     }
     const semanticPlan = await timer.measure('semantic_plan', async () => {
+      const runEmergencySemanticPlanner = async () => {
+        timeoutMitigationUsed = true;
+        emitProgress('semantic_plan', '時間制限のため候補数を絞って再選定中...');
+
+        const emergencyTarget = Math.max(
+          normalizedRequest.hardConstraints.mustVisitPlaces.length + normalizedRequest.durationDays,
+          Math.min(normalizedRequest.durationDays * 3, 10)
+        );
+
+        return runWithDeadline('semantic_plan', () => runSemanticPlanner({
+          request: normalizedRequest,
+          context,
+          modelName: semanticModel.modelName,
+          provider,
+          temperature: Math.max(semanticModel.temperature - 0.1, 0),
+          retryOnFailure: false,
+          targetCandidateCount: emergencyTarget,
+          fastMode: true,
+          onProgress: (message) => emitProgress('semantic_plan', message),
+        }), DEADLINE_RESERVE_MS);
+      };
+
       if (remainingTimeMs() < MIN_REMAINING_FOR_SEMANTIC_LLM_MS) {
+        if (remainingTimeMs() >= MIN_REMAINING_FOR_EMERGENCY_SEMANTIC_LLM_MS) {
+          try {
+            return await runEmergencySemanticPlanner();
+          } catch (emergencyError) {
+            console.warn('[compose-pipeline] emergency semantic planner failed, using deterministic fallback:', emergencyError);
+          }
+        }
+
         timeoutMitigationUsed = true;
         fallbackUsed = true;
-        emitProgress('semantic_plan', '時間制限のため軽量プランで継続中...');
+        emitProgress('semantic_plan', '時間制限のため最終フォールバックで継続中...');
         return buildDeterministicSemanticPlan(normalizedRequest);
       }
 
@@ -506,6 +537,14 @@ export async function runComposePipeline(
       } catch (semanticError) {
         if (isTimeoutLikeError(semanticError)) {
           timeoutMitigationUsed = true;
+          if (remainingTimeMs() >= MIN_REMAINING_FOR_EMERGENCY_SEMANTIC_LLM_MS) {
+            try {
+              return await runEmergencySemanticPlanner();
+            } catch (emergencyError) {
+              console.warn('[compose-pipeline] emergency semantic retry failed, using deterministic fallback:', emergencyError);
+            }
+          }
+
           fallbackUsed = true;
           console.warn('[compose-pipeline] semantic planner timed out, using deterministic fallback:', semanticError);
           emitProgress('semantic_plan', '候補選定を簡略化して継続中...');
