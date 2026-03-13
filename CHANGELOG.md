@@ -9,6 +9,10 @@
 
 ## 開発者向けコミット履歴（コミット単位）
 
+### 2026-03-13
+
+- `local` fix(compose,pipeline): 生成プランが抽象的な候補名ばかりになる不具合を修正し、タイムアウト耐性と品質の両立を改善。① `semantic_plan` が deadline/timeout で deterministic fallback に切り替わる場合でも、`東京/京都/大阪/札幌` は実在スポットベース（例: 浅草寺、清水寺、道頓堀）の候補を優先し、汎用的な「定番スポット」表現を抑制。② 未定義の目的地でも駅周辺・市場・文化施設・夜景など検索可能な具体クエリを返す汎用シードを導入。③ semantic step の deadline reserve を残時間比率でも制御し、後段処理の時間を確保しつつ semantic LLM に必要な時間を配分して、タイムアウト回避一辺倒ではなく候補品質の安定化を図った。
+
 ### 2026-03-12
 
 - `local` fix(compose,streaming-ui,timeout): プラン生成のタイムアウト耐性とSSEストリーミング体験を再設計。① `semantic_plan` の実行予算に専用 reserve を設け、後続ステップ用の時間を確保。② `route_optimize` / `timeline_build` は残時間不足または timeout 時に deterministic fallback（回遊順・タイムライン簡略化）へ自動切替し、全体失敗ではなく完走優先に変更。③ compose background job は timeout 失敗時の再試行を 1 回→最大3回（短い backoff 付き）へ強化。④ `ComposeLoadingAnimation` / `StreamingResultView` / `DayPlaceholder` / `ComposeLoadingTips` を旅の高揚感を出すビジュアルへ刷新（ライト/ダーク両対応、既存i18n準拠）。⑤ pipeline / process-compose-job のテストを追加・更新。
