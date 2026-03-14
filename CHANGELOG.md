@@ -15,6 +15,7 @@
 - `local` chore(git): rebase/merge 失敗（"This branch can't be rebased"）を減らすため、`.gitattributes` を追加。`CHANGELOG.md` は `merge=union` で追記衝突を自動統合し、`src/lib/i18n/generated-locales.ts` は `merge=ours` で衝突時にブランチ側を優先して CI で再生成可能な運用に変更。
 - `local` fix(compose,pipeline): 生成プランが抽象的な候補名ばかりになる不具合を修正し、タイムアウト耐性と品質の両立を改善。① `semantic_plan` が deadline/timeout で deterministic fallback に切り替わる場合でも、`東京/京都/大阪/札幌` は実在スポットベース（例: 浅草寺、清水寺、道頓堀）の候補を優先し、汎用的な「定番スポット」表現を抑制。② 未定義の目的地でも駅周辺・市場・文化施設・夜景など検索可能な具体クエリを返す汎用シードを導入。③ semantic step の deadline reserve を残時間比率でも制御し、後段処理の時間を確保しつつ semantic LLM に必要な時間を配分して、タイムアウト回避一辺倒ではなく候補品質の安定化を図った。
 - `local` fix(compose,semantic): timeout 圧迫時でも「ちゃんとした場所名」を優先するよう改善。① `semantic_plan` が timeout した際に即 deterministic fallback へ落とさず、候補数を絞った emergency semantic 再実行（LLM）を先に試すフェーズを追加。② semantic planner プロンプトに「抽象名禁止・固有名詞必須」を明示し、post-process でも抽象候補名を `searchQuery` ベースの具体名へ正規化。③ 最終手段の deterministic fallback は維持しつつ、通常は LLM 再試行で実在スポットを確保してプラン品質を担保。
+- `local` perf(planner,compose-ui): 生成完了後に希望入力画面へ戻って見える挙動を解消し、成功ステータス画面を表示したまま詳細ページへ遷移するよう改善。あわせて保存完了後の遷移を先行させ、`refreshPlans` は非同期で後続実行にして体感遷移速度を短縮。
 
 ### 2026-03-12
 
