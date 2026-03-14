@@ -14,7 +14,6 @@ import type {
   ComposedItinerary,
   ComposePipelineMetadata,
   NormalizedRequest,
-  SemanticPlan,
   OptimizedDay,
   TimelineDay,
   DayStructure,
@@ -37,6 +36,7 @@ import { GenerationRunLogger } from './generation-run-logger';
 import { getDefaultProvider, resolveModelForPhase } from '@/lib/services/ai/model-resolver';
 import { createComposeTimer } from '@/lib/utils/performance-timer';
 import { checkAndRecordUsage } from '@/lib/limits/check';
+import { buildDeterministicSemanticPlan } from './steps/deterministic-semantic-fallback';
 
 // Re-export for backward compatibility
 export { PipelineStepError } from './errors';
@@ -46,6 +46,7 @@ const MIN_REMAINING_FOR_PLACE_RESOLVE_MS = 9_000;
 const MIN_REMAINING_FOR_HERO_IMAGE_MS = 2_500;
 const MIN_REMAINING_FOR_SEMANTIC_RETRY_MS = 14_000;
 const MIN_REMAINING_FOR_SEMANTIC_LLM_MS = 5_500;
+const MIN_REMAINING_FOR_EMERGENCY_SEMANTIC_LLM_MS = 2_200;
 const MIN_REMAINING_FOR_NARRATIVE_LLM_MS = 6_500;
 const MIN_REMAINING_FOR_NARRATIVE_STREAM_MS = 9_000;
 const MIN_REMAINING_FOR_SEMANTIC_FAST_MODE_MS = 18_000;
@@ -54,6 +55,7 @@ const MIN_REMAINING_FOR_TIMELINE_BUILD_MS = 1_200;
 const MIN_REMAINING_FOR_POST_SEMANTIC_STEPS_MS = 4_200;
 const SEMANTIC_STEP_RESERVE_MS = 5_000;
 const DEADLINE_RESERVE_MS = 2_000;
+
 
 function getItineraryProvider(): 'gemini' | 'openai' {
   const provider = process.env.AI_PROVIDER_ITINERARY;
@@ -103,80 +105,6 @@ function isTimeoutLikeError(error: unknown): boolean {
   }
 
   return false;
-}
-
-function buildDeterministicSemanticPlan(request: NormalizedRequest): SemanticPlan {
-  const destination = request.destinations[0] ?? (request.region === 'domestic' ? '日本' : '海外');
-  const baseThemes = request.themes.length > 0 ? request.themes : ['観光'];
-
-  const dayStructure = Array.from({ length: request.durationDays }, (_, idx) => ({
-    day: idx + 1,
-    title: `${idx + 1}日目の${destination}散策`,
-    mainArea: destination,
-    overnightLocation: destination,
-    summary: `${destination}を無理なく巡るプラン`,
-  }));
-
-  const mustVisits = request.mustVisitPlaces.map((place, index) => ({
-    name: place,
-    role: 'must_visit' as const,
-    priority: 10,
-    dayHint: Math.min(index + 1, request.durationDays),
-    timeSlotHint: 'flexible' as const,
-    stayDurationMinutes: 75,
-    searchQuery: place,
-    semanticId: crypto.randomUUID(),
-    areaHint: destination,
-  }));
-
-  const fillerCandidates = dayStructure.flatMap((day) => [
-    {
-      name: `${destination}の定番スポット ${day.day}`,
-      role: 'recommended' as const,
-      priority: 7,
-      dayHint: day.day,
-      timeSlotHint: 'morning' as const,
-      stayDurationMinutes: 90,
-      searchQuery: `${destination} 観光名所`,
-      semanticId: crypto.randomUUID(),
-      areaHint: destination,
-    },
-    {
-      name: `${destination}のランチ ${day.day}`,
-      role: 'meal' as const,
-      priority: 6,
-      dayHint: day.day,
-      timeSlotHint: 'midday' as const,
-      stayDurationMinutes: 60,
-      searchQuery: `${destination} ランチ`,
-      semanticId: crypto.randomUUID(),
-      areaHint: destination,
-    },
-    {
-      name: `${destination}の夜散策 ${day.day}`,
-      role: 'recommended' as const,
-      priority: 5,
-      dayHint: day.day,
-      timeSlotHint: 'evening' as const,
-      stayDurationMinutes: 90,
-      searchQuery: `${destination} 夜景`,
-      semanticId: crypto.randomUUID(),
-      areaHint: destination,
-    },
-  ]);
-
-  const candidates = [...mustVisits, ...fillerCandidates];
-
-  return {
-    destination,
-    description: `${destination}の${request.durationDays}日間プラン`,
-    candidates,
-    dayStructure,
-    themes: baseThemes,
-    tripIntentSummary: `${destination}を無理なく楽しむ`,
-    orderingPreferences: ['午前に主要スポット', '昼食を挟んでエリア内を回遊'],
-    fallbackHints: ['主要エリア優先', '移動時間を短く保つ'],
-  };
 }
 
 function buildFallbackOptimizedDays(
@@ -454,10 +382,40 @@ export async function runComposePipeline(
       timeoutMitigationUsed = true;
     }
     const semanticPlan = await timer.measure('semantic_plan', async () => {
+      const runEmergencySemanticPlanner = async () => {
+        timeoutMitigationUsed = true;
+        emitProgress('semantic_plan', '時間制限のため候補数を絞って再選定中...');
+
+        const emergencyTarget = Math.max(
+          normalizedRequest.hardConstraints.mustVisitPlaces.length + normalizedRequest.durationDays,
+          Math.min(normalizedRequest.durationDays * 3, 10)
+        );
+
+        return runWithDeadline('semantic_plan', () => runSemanticPlanner({
+          request: normalizedRequest,
+          context,
+          modelName: semanticModel.modelName,
+          provider,
+          temperature: Math.max(semanticModel.temperature - 0.1, 0),
+          retryOnFailure: false,
+          targetCandidateCount: emergencyTarget,
+          fastMode: true,
+          onProgress: (message) => emitProgress('semantic_plan', message),
+        }), DEADLINE_RESERVE_MS);
+      };
+
       if (remainingTimeMs() < MIN_REMAINING_FOR_SEMANTIC_LLM_MS) {
+        if (remainingTimeMs() >= MIN_REMAINING_FOR_EMERGENCY_SEMANTIC_LLM_MS) {
+          try {
+            return await runEmergencySemanticPlanner();
+          } catch (emergencyError) {
+            console.warn('[compose-pipeline] emergency semantic planner failed, using deterministic fallback:', emergencyError);
+          }
+        }
+
         timeoutMitigationUsed = true;
         fallbackUsed = true;
-        emitProgress('semantic_plan', '時間制限のため軽量プランで継続中...');
+        emitProgress('semantic_plan', '時間制限のため最終フォールバックで継続中...');
         return buildDeterministicSemanticPlan(normalizedRequest);
       }
 
@@ -476,10 +434,18 @@ export async function runComposePipeline(
           targetCandidateCount: semanticCandidateTarget,
           fastMode: semanticFastMode,
           onProgress: (message) => emitProgress('semantic_plan', message),
-        }), semanticReserve);
+        }), Math.min(semanticReserve, Math.max(DEADLINE_RESERVE_MS, Math.floor(remainingTimeMs() * 0.35))));
       } catch (semanticError) {
         if (isTimeoutLikeError(semanticError)) {
           timeoutMitigationUsed = true;
+          if (remainingTimeMs() >= MIN_REMAINING_FOR_EMERGENCY_SEMANTIC_LLM_MS) {
+            try {
+              return await runEmergencySemanticPlanner();
+            } catch (emergencyError) {
+              console.warn('[compose-pipeline] emergency semantic retry failed, using deterministic fallback:', emergencyError);
+            }
+          }
+
           fallbackUsed = true;
           console.warn('[compose-pipeline] semantic planner timed out, using deterministic fallback:', semanticError);
           emitProgress('semantic_plan', '候補選定を簡略化して継続中...');
