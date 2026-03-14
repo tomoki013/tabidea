@@ -201,6 +201,23 @@ export default function TravelPlannerSimplified({
   }
 
   // ========================================
+  // Render: Completion State (Before Route Transition)
+  // ========================================
+  if (compose.isCompleted) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center p-8">
+        <div className="h-12 w-12 rounded-full border-4 border-primary/30 border-t-primary animate-spin" />
+        <p className="text-lg font-bold text-stone-900 dark:text-stone-100">
+          {t("success.title")}
+        </p>
+        <p className="text-sm text-stone-600 dark:text-stone-300">
+          {t("success.description")}
+        </p>
+      </div>
+    );
+  }
+
+  // ========================================
   // Render: Compose Pipeline Error
   // ========================================
   if (compose.errorMessage) {
