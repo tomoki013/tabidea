@@ -1,0 +1,5 @@
+# Reduce frequent rebase/merge conflicts on append-only records
+CHANGELOG.md merge=union
+
+# Auto-generated locale catalog is deterministic and can be regenerated
+src/lib/i18n/generated-locales.ts merge=ours

@@ -124,18 +124,36 @@ export async function runSemanticPlanner(
 // Post-processing
 // ============================================
 
+
+const GENERIC_CANDIDATE_NAME_PATTERN = /(定番スポット|人気スポット|おすすめスポット|主要スポット|観光スポット|ローカル市場ランチ|夜景スポット|文化スポット|食べ歩きスポット|散策スポット|名所めぐり)/;
+const SPECIFIC_PLACE_HINT_PATTERN = /(寺|神社|公園|美術館|博物館|市場|タワー|城|動物園|水族館|展望台|駅|通り|横丁|ビーチ|温泉|空港|ガーデン|ミュージアム|Square|Tower|Temple|Shrine|Market|Museum|Park)/i;
+
+function normalizeCandidateName(candidate: SemanticPlanOutput['candidates'][number]): SemanticCandidate {
+  const trimmedName = candidate.name.trim();
+  const trimmedQuery = candidate.searchQuery.trim();
+  const looksGeneric = GENERIC_CANDIDATE_NAME_PATTERN.test(trimmedName) && !SPECIFIC_PLACE_HINT_PATTERN.test(trimmedName);
+
+  return {
+    ...candidate,
+    name: looksGeneric && trimmedQuery.length > 0 ? trimmedQuery : trimmedName,
+  };
+}
+
 function buildSemanticPlanResult(
   plan: SemanticPlanOutput,
   request: NormalizedRequest,
   targetCandidateCount?: number
 ): SemanticPlan {
   // dayHint: 0 → 1 に clamp, semanticId を付与
-  const clampedCandidates = plan.candidates.map((c) => ({
-    ...c,
-    dayHint: Math.max(c.dayHint, 1),
-    priority: Math.max(c.priority, 1),
-    semanticId: crypto.randomUUID(),
-  }));
+  const clampedCandidates = plan.candidates.map((candidate) => {
+    const normalized = normalizeCandidateName(candidate);
+    return {
+      ...normalized,
+      dayHint: Math.max(normalized.dayHint, 1),
+      priority: Math.max(normalized.priority, 1),
+      semanticId: crypto.randomUUID(),
+    };
+  });
 
   // mustVisitPlaces を role: 'must_visit' で追加・マージ
   const mergedCandidates = mergeMustVisitPlaces(
@@ -237,10 +255,12 @@ function buildSemanticPlannerPrompt(
 6. tripIntentSummary, orderingPreferences, fallbackHints を短く入れる
 7. 説明文は簡潔にする
 8. 絶対条件は必ず守る
-9. 参考条件は全てを機械的に盛り込まず、全体のまとまりを優先して良い感じに反映する`;
+9. 参考条件は全てを機械的に盛り込まず、全体のまとまりを優先して良い感じに反映する
+10. candidate name は実在する施設・店・エリア名などの固有名詞で記述し、"定番スポット"や"人気カフェ"のような抽象名は禁止
+11. searchQuery は Google Places でそのまま検索可能な正式名称・地名を優先する`;
 
   if (fastMode) {
-    prompt += `\n10. 速度優先。エリアの重複を避け、候補は厳選してください`;
+    prompt += `\n12. 速度優先。エリアの重複を避け、候補は厳選してください`;
   }
 
   return prompt;
