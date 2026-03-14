@@ -511,6 +511,50 @@ describe('pipeline-orchestrator', () => {
     expect(result.itinerary?.destination).toBe('東京');
   });
 
+
+  it('should keep fallback plans concrete with destination-specific spots', async () => {
+    const { runSemanticPlanner } = await import('./steps/semantic-planner');
+    const { streamNarrativeRendererWithResult } = await import('./steps/narrative-renderer');
+    const { PipelineStepError } = await import('./errors');
+
+    vi.mocked(runSemanticPlanner).mockRejectedValueOnce(
+      new PipelineStepError('semantic_plan', 'semantic_plan timed out before platform deadline')
+    );
+
+    vi.mocked(streamNarrativeRendererWithResult).mockImplementationOnce(async (input) => ({
+      dayStream: {
+        async *[Symbol.asyncIterator]() {
+          return;
+        },
+      },
+      finalOutput: Promise.resolve({
+        description: 'fallback narrative',
+        days: input.timelineDays.map((day) => ({
+          day: day.day,
+          title: day.title,
+          activities: day.nodes.map((node) => ({
+            node,
+            description: node.stop.candidate.name,
+            activityName: node.stop.candidate.name,
+          })),
+          legs: day.legs,
+          overnightLocation: day.overnightLocation,
+        })),
+      }),
+    }));
+
+    const result = await runComposePipeline(makeTestInput({ destinations: ['大阪'] }));
+
+    expect(result.success).toBe(true);
+    const activityNames = result.itinerary?.days.flatMap((day) =>
+      day.activities.map((activity) => activity.activity)
+    ) ?? [];
+
+    expect(activityNames).toContain('大阪城天守閣');
+    expect(activityNames).toContain('黒門市場');
+    expect(activityNames).toContain('道頓堀');
+  });
+
   it('should fallback route/timeline when route optimizer times out near deadline', async () => {
     let fakeNow = 0;
     const nowSpy = vi.spyOn(Date, 'now').mockImplementation(() => fakeNow);

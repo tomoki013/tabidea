@@ -105,9 +105,88 @@ function isTimeoutLikeError(error: unknown): boolean {
   return false;
 }
 
+interface DeterministicFallbackTemplate {
+  name: string;
+  searchQuery: string;
+  role: 'recommended' | 'meal';
+  timeSlotHint: 'morning' | 'midday' | 'evening';
+  stayDurationMinutes: number;
+  areaHint?: string;
+}
+
+const DETERMINISTIC_FALLBACK_TEMPLATES: Record<string, DeterministicFallbackTemplate[]> = {
+  '東京': [
+    { name: '浅草寺', searchQuery: '浅草寺', role: 'recommended', timeSlotHint: 'morning', stayDurationMinutes: 80, areaHint: '浅草' },
+    { name: '築地場外市場', searchQuery: '築地場外市場', role: 'meal', timeSlotHint: 'midday', stayDurationMinutes: 75, areaHint: '築地' },
+    { name: '東京タワー', searchQuery: '東京タワー', role: 'recommended', timeSlotHint: 'evening', stayDurationMinutes: 70, areaHint: '芝公園' },
+  ],
+  '大阪': [
+    { name: '大阪城天守閣', searchQuery: '大阪城天守閣', role: 'recommended', timeSlotHint: 'morning', stayDurationMinutes: 90, areaHint: '大阪城公園' },
+    { name: '黒門市場', searchQuery: '黒門市場', role: 'meal', timeSlotHint: 'midday', stayDurationMinutes: 70, areaHint: '日本橋' },
+    { name: '道頓堀', searchQuery: '道頓堀', role: 'recommended', timeSlotHint: 'evening', stayDurationMinutes: 80, areaHint: 'ミナミ' },
+  ],
+  '京都': [
+    { name: '清水寺', searchQuery: '清水寺', role: 'recommended', timeSlotHint: 'morning', stayDurationMinutes: 90, areaHint: '東山' },
+    { name: '錦市場', searchQuery: '錦市場', role: 'meal', timeSlotHint: 'midday', stayDurationMinutes: 70, areaHint: '四条' },
+    { name: '伏見稲荷大社', searchQuery: '伏見稲荷大社', role: 'recommended', timeSlotHint: 'evening', stayDurationMinutes: 85, areaHint: '伏見' },
+  ],
+  '福岡': [
+    { name: '太宰府天満宮', searchQuery: '太宰府天満宮', role: 'recommended', timeSlotHint: 'morning', stayDurationMinutes: 85, areaHint: '太宰府' },
+    { name: '柳橋連合市場', searchQuery: '柳橋連合市場', role: 'meal', timeSlotHint: 'midday', stayDurationMinutes: 65, areaHint: '博多' },
+    { name: '中洲屋台街', searchQuery: '中洲屋台街', role: 'recommended', timeSlotHint: 'evening', stayDurationMinutes: 80, areaHint: '中洲' },
+  ],
+  '札幌': [
+    { name: '大通公園', searchQuery: '大通公園', role: 'recommended', timeSlotHint: 'morning', stayDurationMinutes: 75, areaHint: '中央区' },
+    { name: '二条市場', searchQuery: '二条市場', role: 'meal', timeSlotHint: 'midday', stayDurationMinutes: 65, areaHint: '中央区' },
+    { name: '藻岩山展望台', searchQuery: '藻岩山展望台', role: 'recommended', timeSlotHint: 'evening', stayDurationMinutes: 85, areaHint: '南区' },
+  ],
+};
+
+function resolveDeterministicTemplates(destination: string): DeterministicFallbackTemplate[] {
+  const exact = DETERMINISTIC_FALLBACK_TEMPLATES[destination];
+  if (exact) {
+    return exact;
+  }
+
+  const partial = Object.entries(DETERMINISTIC_FALLBACK_TEMPLATES).find(([key]) =>
+    destination.includes(key) || key.includes(destination)
+  );
+  if (partial) {
+    return partial[1];
+  }
+
+  return [
+    {
+      name: `${destination}駅周辺の代表スポット`,
+      searchQuery: `${destination} 観光名所`,
+      role: 'recommended',
+      timeSlotHint: 'morning',
+      stayDurationMinutes: 80,
+      areaHint: `${destination}駅周辺`,
+    },
+    {
+      name: `${destination}の人気ランチ店`,
+      searchQuery: `${destination} ご当地ランチ`,
+      role: 'meal',
+      timeSlotHint: 'midday',
+      stayDurationMinutes: 65,
+      areaHint: destination,
+    },
+    {
+      name: `${destination}の夜景スポット`,
+      searchQuery: `${destination} 夜景スポット`,
+      role: 'recommended',
+      timeSlotHint: 'evening',
+      stayDurationMinutes: 80,
+      areaHint: destination,
+    },
+  ];
+}
+
 function buildDeterministicSemanticPlan(request: NormalizedRequest): SemanticPlan {
   const destination = request.destinations[0] ?? (request.region === 'domestic' ? '日本' : '海外');
   const baseThemes = request.themes.length > 0 ? request.themes : ['観光'];
+  const templates = resolveDeterministicTemplates(destination);
 
   const dayStructure = Array.from({ length: request.durationDays }, (_, idx) => ({
     day: idx + 1,
@@ -129,41 +208,19 @@ function buildDeterministicSemanticPlan(request: NormalizedRequest): SemanticPla
     areaHint: destination,
   }));
 
-  const fillerCandidates = dayStructure.flatMap((day) => [
-    {
-      name: `${destination}の定番スポット ${day.day}`,
-      role: 'recommended' as const,
-      priority: 7,
+  const fillerCandidates = dayStructure.flatMap((day) =>
+    templates.map((template, index) => ({
+      name: template.name,
+      role: template.role,
+      priority: template.role === 'meal' ? 6 : 7 - index,
       dayHint: day.day,
-      timeSlotHint: 'morning' as const,
-      stayDurationMinutes: 90,
-      searchQuery: `${destination} 観光名所`,
+      timeSlotHint: template.timeSlotHint,
+      stayDurationMinutes: template.stayDurationMinutes,
+      searchQuery: template.searchQuery,
       semanticId: crypto.randomUUID(),
-      areaHint: destination,
-    },
-    {
-      name: `${destination}のランチ ${day.day}`,
-      role: 'meal' as const,
-      priority: 6,
-      dayHint: day.day,
-      timeSlotHint: 'midday' as const,
-      stayDurationMinutes: 60,
-      searchQuery: `${destination} ランチ`,
-      semanticId: crypto.randomUUID(),
-      areaHint: destination,
-    },
-    {
-      name: `${destination}の夜散策 ${day.day}`,
-      role: 'recommended' as const,
-      priority: 5,
-      dayHint: day.day,
-      timeSlotHint: 'evening' as const,
-      stayDurationMinutes: 90,
-      searchQuery: `${destination} 夜景`,
-      semanticId: crypto.randomUUID(),
-      areaHint: destination,
-    },
-  ]);
+      areaHint: template.areaHint ?? destination,
+    }))
+  );
 
   const candidates = [...mustVisits, ...fillerCandidates];
 
