@@ -8,8 +8,6 @@ import {
   FaMapMarkerAlt,
   FaCalendarAlt,
   FaSpinner,
-  FaPlaneDeparture,
-  FaRegCompass,
 } from "react-icons/fa";
 import type {
   GenerationState,
@@ -34,6 +32,41 @@ import ComposeLoadingTips from "./ComposeLoadingTips";
 // Compose Streaming View (narrative_render phase)
 // ============================================================================
 
+function StreamingLoadingIndicator() {
+  return (
+    <div className="flex flex-col items-center gap-3 py-6">
+      <div className="relative w-12 h-12 flex items-center justify-center">
+        <motion.div
+          className="absolute inset-0 rounded-full border border-stone-200 dark:border-stone-700"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div
+          className="absolute w-2 h-2 rounded-full bg-primary"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+          style={{ top: -1, left: "calc(50% - 4px)", transformOrigin: "4px 25px" }}
+        />
+        <motion.div
+          className="w-4 h-4 rounded-full bg-primary/15 dark:bg-primary/20"
+          animate={{ scale: [1, 1.15, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
+      <div className="flex items-center gap-1.5">
+        {[0, 1, 2].map((i) => (
+          <motion.span
+            key={i}
+            className="w-1 h-1 rounded-full bg-stone-400 dark:bg-stone-500"
+            animate={{ opacity: [0.3, 1, 0.3] }}
+            transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function ComposeStreamingView({
   partialDays,
   totalDays,
@@ -51,6 +84,7 @@ function ComposeStreamingView({
 }) {
   const displayTotalDays = Math.max(totalDays, partialDays.size);
   const completedCount = partialDays.size;
+  const isAllComplete = displayTotalDays > 0 && completedCount >= displayTotalDays;
   const visibleDays = Array.from({ length: displayTotalDays }, (_, i) => i + 1);
   const activeGeneratingDay = visibleDays.find((dayNum) => !partialDays.has(dayNum));
   const destination =
@@ -65,54 +99,42 @@ function ComposeStreamingView({
 
   return (
     <div className="w-full max-w-5xl mx-auto mt-4 pt-4 px-2 sm:px-6 lg:px-8 pb-20">
-      <div className="relative overflow-hidden rounded-[2rem] border border-primary/20 bg-white shadow-xl dark:border-primary/35 dark:bg-stone-900">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.18),_transparent_42%),radial-gradient(circle_at_bottom_right,_rgba(249,115,22,0.16),_transparent_45%)] dark:bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.22),_transparent_42%),radial-gradient(circle_at_bottom_right,_rgba(251,146,60,0.2),_transparent_45%)]" />
+      {/* Header card */}
+      <div className="relative overflow-hidden rounded-2xl border border-stone-200/80 bg-white shadow-sm dark:border-stone-700/60 dark:bg-stone-900">
         <div className="grid gap-6 p-5 md:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)] md:p-7">
-          <div className="relative min-h-[220px] overflow-hidden rounded-[1.75rem] border border-stone-200 bg-[radial-gradient(circle_at_top_left,_rgba(245,158,11,0.2),_transparent_40%),linear-gradient(135deg,_rgba(255,255,255,0.85),_rgba(243,244,246,0.95)_55%)] dark:border-stone-700 dark:bg-[radial-gradient(circle_at_top_left,_rgba(245,158,11,0.25),_transparent_42%),linear-gradient(135deg,_rgba(41,37,36,0.95),_rgba(28,25,23,0.98)_55%)]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_rgba(59,130,246,0.16),_transparent_30%)] dark:bg-[radial-gradient(circle_at_bottom_right,_rgba(56,189,248,0.18),_transparent_32%)]" />
-            <motion.div
-              className="absolute right-10 top-8 hidden h-10 w-10 items-center justify-center rounded-full bg-white/75 text-primary shadow-md md:flex dark:bg-stone-900/80"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-            >
-              <FaRegCompass />
-            </motion.div>
-            <div className="relative z-10 flex h-full flex-col justify-between gap-6 p-6">
-              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/70 bg-white/80 px-3 py-1 text-xs uppercase tracking-[0.28em] text-stone-500 shadow-sm backdrop-blur dark:border-stone-600 dark:bg-stone-900/70 dark:text-stone-300">
+          <div className="relative min-h-[200px] overflow-hidden rounded-xl border border-stone-100 bg-stone-50 dark:border-stone-800 dark:bg-stone-950/50">
+            <div className="relative z-10 flex h-full flex-col justify-between gap-5 p-5">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-stone-200 bg-white px-3 py-1 text-xs uppercase tracking-[0.2em] text-stone-500 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-400">
                 <FaMapMarkerAlt className="text-primary" />
                 {t("hero.destinationLabel")}
               </div>
-              <div className="space-y-3">
-                <h1 className="text-3xl font-serif tracking-tight text-stone-900 dark:text-stone-100 sm:text-4xl">
+              <div className="space-y-2">
+                <h1 className="text-2xl font-serif tracking-tight text-stone-800 dark:text-stone-100 sm:text-3xl">
                   {destination}
                 </h1>
-                <p className="max-w-2xl text-sm leading-7 text-stone-600 dark:text-stone-300 sm:text-base">
+                <p className="max-w-2xl text-sm leading-relaxed text-stone-500 dark:text-stone-400 sm:text-base">
                   {description}
                 </p>
-              </div>
-              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-white/85 px-3 py-1.5 text-sm text-stone-600 shadow-sm backdrop-blur dark:border-primary/30 dark:bg-stone-900/80 dark:text-stone-200">
-                <FaSpinner className="animate-spin text-primary" />
-                {t("hero.loadingImage")} <FaPlaneDeparture className="text-primary/80" />
               </div>
             </div>
           </div>
 
           <div className="flex flex-col gap-4">
-            <div className="rounded-[1.5rem] border border-stone-200 bg-white/80 p-5 shadow-sm backdrop-blur dark:border-stone-700 dark:bg-stone-950/70">
+            <div className="rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-950/70">
               <div className="flex items-center justify-between mb-3">
-                <span className="text-sm font-medium text-stone-700 dark:text-stone-300">
+                <span className="text-sm font-medium text-stone-600 dark:text-stone-300">
                   {t("progress.generatingDetails")}
                 </span>
-                <span className="text-sm text-stone-500 dark:text-stone-400 font-mono">
+                <span className="text-sm text-stone-400 dark:text-stone-500 font-mono">
                   {t("progress.dayCount", {
                     completed: completedCount,
                     total: displayTotalDays,
                   })}
                 </span>
               </div>
-              <div className="w-full h-2.5 bg-stone-100 dark:bg-stone-800 rounded-full overflow-hidden">
+              <div className="w-full h-1.5 bg-stone-100 dark:bg-stone-800 rounded-full overflow-hidden">
                 <motion.div
-                  className="h-full rounded-full bg-gradient-to-r from-sky-500 via-primary to-orange-400"
+                  className="h-full rounded-full bg-primary"
                   initial={{ width: "0%" }}
                   animate={{ width: `${displayTotalDays > 0 ? (completedCount / displayTotalDays) * 100 : 0}%` }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
@@ -120,27 +142,28 @@ function ComposeStreamingView({
               </div>
             </div>
 
-            <div className="rounded-[1.5rem] border border-stone-200 bg-white/80 p-5 shadow-sm backdrop-blur dark:border-stone-700 dark:bg-stone-950/70">
-              {input.dates ? (
+            {input.dates && (
+              <div className="rounded-xl border border-stone-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-950/70">
                 <div className="flex items-center gap-3 text-sm text-stone-600 dark:text-stone-300">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
-                    <FaCalendarAlt />
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/8 text-primary dark:bg-primary/15">
+                    <FaCalendarAlt className="text-sm" />
                   </div>
-                  <div className="space-y-1">
-                    <p className="text-xs uppercase tracking-[0.24em] text-stone-400 dark:text-stone-500">
+                  <div className="space-y-0.5">
+                    <p className="text-xs uppercase tracking-[0.2em] text-stone-400 dark:text-stone-500">
                       {t("dayLabel")}
                     </p>
-                    <p className="font-medium text-stone-800 dark:text-stone-100">
+                    <p className="font-medium text-stone-700 dark:text-stone-200">
                       {input.dates}
                     </p>
                   </div>
                 </div>
-              ) : null}
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
 
+      {/* Day cards - SSE streaming content */}
       <div className="mt-8 space-y-8">
         {visibleDays.map((dayNum) => {
           const dayData = partialDays.get(dayNum);
@@ -179,7 +202,11 @@ function ComposeStreamingView({
         })}
       </div>
 
+      {/* Tips - below streaming content */}
       <ComposeLoadingTips className="mt-8" />
+
+      {/* Loading animation - below tips, only while generating */}
+      {!isAllComplete && <StreamingLoadingIndicator />}
     </div>
   );
 }
@@ -233,8 +260,6 @@ export default function StreamingResultView({
   isReplanning = false,
   partialDays,
   composeMode = false,
-  composeSteps,
-  composeCurrentStep,
   partialComposeDays,
   totalDays: composeTotalDays,
   previewDestination,

@@ -117,6 +117,43 @@ export async function runSemanticPlanner(
   // Post-processing
   onProgress?.('候補スポットを整形中...');
   const processed = buildSemanticPlanResult(plan, request, targetCandidateCount);
+
+  // Validate that all candidates have specific, non-generic names
+  const genericPatterns = [
+    /の人気.+店$/,
+    /の人気.+スポット$/,
+    /のおすすめ/,
+    /の代表スポット$/,
+    /の夜景スポット$/,
+    /の有名.+店$/,
+    /周辺の.+スポット$/,
+    /popular\s+(lunch|dinner|restaurant|spot)/i,
+    /recommended\s+(restaurant|cafe|spot)/i,
+  ];
+
+  const invalidCandidates = processed.candidates.filter((c) =>
+    genericPatterns.some((pattern) => pattern.test(c.name) || pattern.test(c.searchQuery))
+  );
+
+  if (invalidCandidates.length > 0) {
+    console.warn(
+      '[semantic-planner] Rejecting generic spot names:',
+      invalidCandidates.map((c) => c.name)
+    );
+    // Filter out generic candidates instead of failing entirely
+    processed.candidates = processed.candidates.filter(
+      (c) => !genericPatterns.some((pattern) => pattern.test(c.name) || pattern.test(c.searchQuery))
+    );
+
+    // If too many candidates were filtered out, fail
+    if (processed.candidates.length < processed.dayStructure.length) {
+      throw new PipelineStepError(
+        'semantic_plan',
+        'AIが具体的なスポット名を生成できませんでした。もう一度お試しください。'
+      );
+    }
+  }
+
   return processed;
 }
 
@@ -237,7 +274,8 @@ function buildSemanticPlannerPrompt(
 6. tripIntentSummary, orderingPreferences, fallbackHints を短く入れる
 7. 説明文は簡潔にする
 8. 絶対条件は必ず守る
-9. 参考条件は全てを機械的に盛り込まず、全体のまとまりを優先して良い感じに反映する`;
+9. 参考条件は全てを機械的に盛り込まず、全体のまとまりを優先して良い感じに反映する
+10. 【最重要】name と searchQuery には必ず実在する具体的なスポット名・店名を入れること。「人気ランチ店」「おすすめカフェ」「代表スポット」「夜景スポット」のような曖昧・総称的な名前は絶対に禁止。レストランなら「Café de Flore」「一蘭 渋谷店」のように固有名詞を使うこと`;
 
   if (fastMode) {
     prompt += `\n10. 速度優先。エリアの重複を避け、候補は厳選してください`;
