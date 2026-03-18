@@ -6,7 +6,7 @@ import type { PipelineStepId } from '@/types/itinerary-pipeline';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
-export const maxDuration = 25;
+export const maxDuration = 28;
 
 const HEARTBEAT_INTERVAL_MS = 4_000;
 const COMPOSE_RETRYABLE_STEPS: PipelineStepId[] = ['semantic_plan', 'place_resolve', 'feasibility_score', 'route_optimize', 'timeline_build', 'narrative_render'];

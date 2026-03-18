@@ -136,7 +136,65 @@ vi.mock('./steps/narrative-renderer', () => ({
       },
     ],
   }),
-  buildFallbackNarrativeOutput: vi.fn(),
+  buildFallbackNarrativeOutput: vi.fn().mockReturnValue({
+    description: '東京の1日旅行（フォールバック）',
+    days: [
+      {
+        day: 1,
+        title: '浅草散策',
+        activities: [
+          {
+            node: {
+              stop: {
+                candidate: {
+                  name: '浅草寺',
+                  role: 'must_visit',
+                  priority: 10,
+                  dayHint: 1,
+                  timeSlotHint: 'morning',
+                  stayDurationMinutes: 60,
+                  searchQuery: '浅草寺',
+                },
+                feasibilityScore: 50,
+                warnings: [],
+              },
+              arrivalTime: '08:00',
+              departureTime: '09:00',
+              stayMinutes: 60,
+              warnings: [],
+            },
+            description: '浅草寺を訪問',
+            activityName: '浅草寺',
+          },
+          {
+            node: {
+              stop: {
+                candidate: {
+                  name: 'カフェ',
+                  role: 'meal',
+                  priority: 5,
+                  dayHint: 1,
+                  timeSlotHint: 'midday',
+                  stayDurationMinutes: 45,
+                  searchQuery: 'カフェ 浅草',
+                },
+                feasibilityScore: 50,
+                warnings: [],
+              },
+              arrivalTime: '09:15',
+              departureTime: '10:00',
+              stayMinutes: 45,
+              warnings: [],
+            },
+            description: 'カフェでランチ',
+            activityName: 'カフェ',
+          },
+        ],
+        legs: [],
+        overnightLocation: '浅草',
+      },
+    ],
+  }),
   streamNarrativeRendererWithResult: vi.fn().mockResolvedValue({
     dayStream: {
       async *[Symbol.asyncIterator]() {
@@ -424,7 +482,7 @@ describe('pipeline-orchestrator', () => {
     const { runSemanticPlanner } = await import('./steps/semantic-planner');
     vi.mocked(runSemanticPlanner).mockImplementationOnce(async () => {
       // Advance time to leave less than MIN_REMAINING_FOR_NARRATIVE_STREAM_MS (9s)
-      // With 27s deadline, 19_500ms elapsed means 7.5s remaining — below 9s threshold
+      // With 26s deadline, 19_500ms elapsed means 6.5s remaining — below 9s threshold
       fakeNow = 19_500;
       return {
         destination: '東京',
@@ -484,7 +542,7 @@ describe('pipeline-orchestrator', () => {
 
     const optimizeSpy = vi.spyOn(await import('./steps/route-optimizer'), 'optimizeRoutes');
     optimizeSpy.mockImplementationOnce(() => {
-      // Advance time to near the 27s deadline
+      // Advance time to near the 26s deadline
       fakeNow = 25_500;
       throw new PipelineStepError('route_optimize', 'route_optimize timed out before platform deadline');
     });
