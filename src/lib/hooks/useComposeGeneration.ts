@@ -4,7 +4,14 @@ import { useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import type { UserInput, Itinerary, PartialDayData } from "@/types";
-import type { PipelineStepId, ComposePipelineMetadata, TimelineDay, NormalizedRequest } from "@/types/itinerary-pipeline";
+import type {
+  PipelineStepId,
+  ComposePipelineMetadata,
+  TimelineDay,
+  NormalizedRequest,
+  SemanticCandidate,
+} from "@/types/itinerary-pipeline";
+import type { SemanticSeedPlan } from "@/lib/services/itinerary/steps/semantic-planner";
 import { savePlanViaApi } from "@/lib/plans/save-plan-client";
 import { saveLocalPlan, notifyPlanChange } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
@@ -71,10 +78,36 @@ const COMPOSE_STEP_IDS: PipelineStepId[] = [...STRUCTURE_STEP_IDS, ...NARRATE_ST
 // Response types
 // ============================================
 
-interface StructureResponse {
+interface SeedResponse {
+  ok: boolean;
+  normalizedRequest?: NormalizedRequest;
+  seed?: SemanticSeedPlan;
+  warnings?: string[];
+  metadata?: {
+    modelName: string;
+    narrativeModelName: string;
+    modelTier: "flash" | "pro";
+    provider: string;
+  };
+  error?: string;
+  failedStep?: string;
+  limitExceeded?: boolean;
+  userType?: string;
+  resetAt?: string | null;
+  remaining?: number;
+}
+
+interface SpotsResponse {
+  ok: boolean;
+  candidates?: SemanticCandidate[];
+  warnings?: string[];
+  error?: string;
+  failedStep?: string;
+}
+
+interface AssembleResponse {
   ok: boolean;
   timeline?: TimelineDay[];
-  normalizedRequest?: NormalizedRequest;
   destination?: string;
   description?: string;
   heroImage?: { url: string; photographer: string; photographerUrl: string } | null;
@@ -90,10 +123,6 @@ interface StructureResponse {
   };
   error?: string;
   failedStep?: string;
-  limitExceeded?: boolean;
-  userType?: string;
-  resetAt?: string | null;
-  remaining?: number;
 }
 
 interface NarrateSSEEvent {
@@ -186,11 +215,11 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
 
       try {
         // ==============================
-        // Phase 1: Structure pipeline
+        // Phase 1-A: Seed pipeline
         // ==============================
         advanceStep("usage_check");
 
-        const structureRes = await fetch("/api/itinerary/plan/structure", {
+        const seedRes = await fetch("/api/itinerary/plan/seed", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -198,24 +227,24 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
           signal: controller.signal,
         });
 
-        let structureData: StructureResponse;
+        let seedData: SeedResponse;
         try {
-          structureData = (await structureRes.json()) as StructureResponse;
+          seedData = (await seedRes.json()) as SeedResponse;
         } catch {
           setErrorMessage(t("errors.generic"));
           setIsGenerating(false);
           return;
         }
 
-        if (!structureRes.ok || !structureData.ok) {
-          if (structureData.limitExceeded) {
+        if (!seedRes.ok || !seedData.ok) {
+          if (seedData.limitExceeded) {
             setLimitExceeded({
-              userType: (structureData.userType as UserType) || "anonymous",
-              resetAt: structureData.resetAt ? new Date(structureData.resetAt) : null,
-              remaining: structureData.remaining,
+              userType: (seedData.userType as UserType) || "anonymous",
+              resetAt: seedData.resetAt ? new Date(seedData.resetAt) : null,
+              remaining: seedData.remaining,
             });
           } else {
-            const failedStep = structureData.failedStep;
+            const failedStep = seedData.failedStep;
             if (failedStep) {
               try {
                 setErrorMessage(t(`errors.stepFailed.${failedStep}` as Parameters<typeof t>[0]));
@@ -223,8 +252,112 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
                 setErrorMessage(t("errors.stepFailed.unknown"));
               }
             } else {
-              setErrorMessage(structureData.error || t("errors.generic"));
+              setErrorMessage(seedData.error || t("errors.generic"));
             }
+          }
+          setIsGenerating(false);
+          return;
+        }
+
+        const { normalizedRequest, seed, warnings: seedWarnings, metadata } = seedData;
+
+        if (!normalizedRequest || !seed || !metadata) {
+          setErrorMessage(t("errors.generic"));
+          setIsGenerating(false);
+          return;
+        }
+
+        setSteps((prev) =>
+          prev.map((s) =>
+            s.id === "usage_check" || s.id === "normalize"
+              ? { ...s, status: "completed" }
+              : s
+          )
+        );
+        advanceStep("semantic_plan", t("steps.semantic_planPreparing"));
+        setPreviewDestination(seed.destination);
+        setPreviewDescription(seed.description);
+        setTotalDays(seed.dayStructure.length);
+
+        // ==============================
+        // Phase 1-B: Day-by-day spot generation
+        // ==============================
+        const accumulatedCandidates: SemanticCandidate[] = [];
+        const spotWarnings: string[] = [];
+
+        for (let day = 1; day <= seed.dayStructure.length; day += 1) {
+          advanceStep(
+            "semantic_plan",
+            t("steps.semantic_planDay", { day, total: seed.dayStructure.length })
+          );
+
+          const spotsRes = await fetch("/api/itinerary/plan/spots", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({
+              normalizedRequest,
+              seed,
+              day,
+              accumulatedCandidates,
+              modelName: metadata.modelName,
+              provider: metadata.provider,
+            }),
+            signal: controller.signal,
+          });
+
+          const spotsData = (await spotsRes.json()) as SpotsResponse;
+
+          if (!spotsRes.ok || !spotsData.ok || !spotsData.candidates) {
+            const failedStep = spotsData.failedStep;
+            if (failedStep) {
+              try {
+                setErrorMessage(t(`errors.stepFailed.${failedStep}` as Parameters<typeof t>[0]));
+              } catch {
+                setErrorMessage(t("errors.stepFailed.unknown"));
+              }
+            } else {
+              setErrorMessage(spotsData.error || t("errors.generic"));
+            }
+            setIsGenerating(false);
+            return;
+          }
+
+          accumulatedCandidates.push(...spotsData.candidates);
+          if (spotsData.warnings?.length) {
+            spotWarnings.push(...spotsData.warnings);
+          }
+        }
+
+        // ==============================
+        // Phase 1-C: Assemble structure
+        // ==============================
+        advanceStep("place_resolve");
+        const assembleRes = await fetch("/api/itinerary/plan/assemble", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({
+            normalizedRequest,
+            seed,
+            candidates: accumulatedCandidates,
+            metadata,
+          }),
+          signal: controller.signal,
+        });
+
+        const assembleData = (await assembleRes.json()) as AssembleResponse;
+
+        if (!assembleRes.ok || !assembleData.ok) {
+          const failedStep = assembleData.failedStep;
+          if (failedStep) {
+            try {
+              setErrorMessage(t(`errors.stepFailed.${failedStep}` as Parameters<typeof t>[0]));
+            } catch {
+              setErrorMessage(t("errors.stepFailed.unknown"));
+            }
+          } else {
+            setErrorMessage(assembleData.error || t("errors.generic"));
           }
           setIsGenerating(false);
           return;
@@ -232,31 +365,25 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
 
         const {
           timeline,
-          normalizedRequest,
           destination,
           description,
           heroImage,
-          warnings: structureWarnings,
-          metadata,
-        } = structureData;
+          warnings: assembleWarnings,
+          metadata: assembleMetadata,
+        } = assembleData;
 
-        if (!timeline || !normalizedRequest || !metadata) {
+        if (!timeline || !assembleMetadata) {
           setErrorMessage(t("errors.generic"));
           setIsGenerating(false);
           return;
         }
 
-        // Mark all structure steps as completed
         setSteps((prev) =>
           prev.map((s) =>
             STRUCTURE_STEP_IDS.includes(s.id) ? { ...s, status: "completed" } : s
           )
         );
         setCurrentStep(null);
-
-        if (destination) setPreviewDestination(destination);
-        if (description) setPreviewDescription(description);
-        setTotalDays(timeline.length);
 
         // ==============================
         // Phase 2: Narrate pipeline (SSE)
@@ -270,13 +397,13 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
           body: JSON.stringify({
             timeline,
             normalizedRequest,
-            narrativeModelName: metadata.narrativeModelName,
-            provider: metadata.provider,
-            modelTier: metadata.modelTier,
+            narrativeModelName: assembleMetadata.narrativeModelName,
+            provider: assembleMetadata.provider,
+            modelTier: assembleMetadata.modelTier,
             destination,
             description,
             heroImage: heroImage ?? null,
-            warnings: structureWarnings ?? [],
+            warnings: [...(seedWarnings ?? []), ...spotWarnings, ...(assembleWarnings ?? [])],
             originalInput: input,
           }),
           signal: controller.signal,

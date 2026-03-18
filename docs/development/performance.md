@@ -38,7 +38,7 @@
 | --- | ---: | ---: | --- |
 | usage_check | 500 | 500 | |
 | normalize | 50 | 50 | Pure TS |
-| semantic_plan | 15000 | 30000 | Gemini generateObject |
+| semantic_plan | 15000 | 30000 | Seed + day-sized batches of Gemini generateObject |
 | place_resolve | 10000 | 10000 | Places API (flag OFF でスキップ) |
 | feasibility_score | 200 | 200 | Pure TS (flag OFF でスキップ) |
 | route_optimize | 1000 | 1000 | Haversine + greedy + 2-opt |
@@ -49,8 +49,8 @@
 
 Use `createComposeTimer(modelTier?)` factory.
 
-- App Router route は compose job の enqueue のみを担当し、長時間の compose 実行は Netlify Background Function に移譲する。
-- `semantic_plan` の target 超過は引き続き `PerformanceTimer` で監視し、route timeout 回避は polling + background execution で吸収する。
+- App Router route は seed / spots / assemble / narrate の各短時間フェーズを担当する。
+- `semantic_plan` の target 超過は `PerformanceTimer` で監視しつつ、最も重い AI スポット生成は day-sized batches に分割して route timeout を構造的に避ける。
 
 ## 4. Instrumentation Pattern
 

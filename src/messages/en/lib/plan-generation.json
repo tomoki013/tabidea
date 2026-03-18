@@ -42,7 +42,9 @@
           "route_optimize": "Optimizing route order...",
           "timeline_build": "Building timeline...",
           "narrative_render": "Finishing your itinerary...",
-          "hero_image": "Finding the perfect photo..."
+          "hero_image": "Finding the perfect photo...",
+          "semantic_planPreparing": "Designing the trip backbone...",
+          "semantic_planDay": "Selecting spots for day {day} of {total}..."
         },
         "errors": {
           "requestFailed": "HTTP {status}: Request failed",

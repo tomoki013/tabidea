@@ -10,9 +10,17 @@ import type {
   SemanticCandidate,
 } from '@/types/itinerary-pipeline';
 import type { Article } from '@/lib/services/ai/types';
-import type { SemanticPlanOutput } from '@/lib/services/ai/schemas/compose-schemas';
+import type {
+  SemanticDayPlanOutput,
+  SemanticPlanOutput,
+  SemanticSeedOutput,
+} from '@/lib/services/ai/schemas/compose-schemas';
 import type { AIProviderName } from '@/lib/services/ai/providers/types';
-import { semanticPlanSchema } from '@/lib/services/ai/schemas/compose-schemas';
+import {
+  semanticDayPlanSchema,
+  semanticPlanSchema,
+  semanticSeedSchema,
+} from '@/lib/services/ai/schemas/compose-schemas';
 import { buildContextSandwich } from '@/lib/services/ai/prompt-builder';
 import { PipelineStepError } from '../errors';
 
@@ -29,6 +37,38 @@ export interface SemanticPlannerInput {
   retryOnFailure?: boolean;
   targetCandidateCount?: number;
   fastMode?: boolean;
+  onProgress?: (message: string) => void;
+}
+
+export interface SemanticSeedPlannerInput {
+  request: NormalizedRequest;
+  context: Article[];
+  modelName: string;
+  provider?: AIProviderName;
+  temperature: number;
+  onProgress?: (message: string) => void;
+}
+
+export interface SemanticSeedPlan {
+  destination: string;
+  description: string;
+  dayStructure: SemanticPlan['dayStructure'];
+  themes?: string[];
+  tripIntentSummary?: string;
+  orderingPreferences?: string[];
+  fallbackHints?: string[];
+}
+
+export interface SemanticDayPlannerInput {
+  request: NormalizedRequest;
+  seed: SemanticSeedPlan;
+  context: Article[];
+  modelName: string;
+  provider?: AIProviderName;
+  temperature: number;
+  day: number;
+  targetCandidateCount: number;
+  existingCandidates?: SemanticCandidate[];
   onProgress?: (message: string) => void;
 }
 
@@ -155,6 +195,106 @@ export async function runSemanticPlanner(
   }
 
   return processed;
+}
+
+export async function runSemanticSeedPlanner(
+  input: SemanticSeedPlannerInput
+): Promise<SemanticSeedPlan> {
+  const {
+    request,
+    context,
+    modelName,
+    provider = 'gemini',
+    temperature,
+    onProgress,
+  } = input;
+
+  onProgress?.('旅の骨格を設計中...');
+
+  const { systemInstruction } = buildContextSandwich({
+    context,
+    userPrompt: '',
+    generationType: 'semanticPlan',
+  });
+
+  const { generateObject } = await import('ai');
+  const model = await resolveLanguageModel(provider, modelName);
+
+  const result = await generateObject({
+    model,
+    schema: semanticSeedSchema,
+    system: systemInstruction,
+    prompt: buildSemanticSeedPrompt(request),
+    temperature,
+    maxRetries: 0,
+  });
+
+  const seed = result.object as SemanticSeedOutput;
+
+  return {
+    destination: seed.destination,
+    description: seed.description,
+    dayStructure: applyHotelConstraintsToDayStructure(seed.dayStructure, request),
+    themes: seed.themes,
+    tripIntentSummary: seed.tripIntentSummary,
+    orderingPreferences: seed.orderingPreferences,
+    fallbackHints: seed.fallbackHints,
+  };
+}
+
+export async function runSemanticDayPlanner(
+  input: SemanticDayPlannerInput
+): Promise<SemanticCandidate[]> {
+  const {
+    request,
+    seed,
+    context,
+    modelName,
+    provider = 'gemini',
+    temperature,
+    day,
+    targetCandidateCount,
+    existingCandidates = [],
+    onProgress,
+  } = input;
+
+  const currentDayStructure = seed.dayStructure.find((item) => item.day === day);
+  if (!currentDayStructure) {
+    throw new PipelineStepError('semantic_plan', `Day ${day} structure is missing`);
+  }
+
+  onProgress?.(`${day}日目の候補スポットを編集中...`);
+
+  const { systemInstruction } = buildContextSandwich({
+    context,
+    userPrompt: '',
+    generationType: 'semanticPlan',
+  });
+
+  const { generateObject } = await import('ai');
+  const model = await resolveLanguageModel(provider, modelName);
+
+  const result = await generateObject({
+    model,
+    schema: semanticDayPlanSchema,
+    system: systemInstruction,
+    prompt: buildSemanticDayPrompt({
+      request,
+      seed,
+      currentDayStructure,
+      existingCandidates,
+      day,
+      targetCandidateCount,
+    }),
+    temperature,
+    maxRetries: 0,
+  });
+
+  return sanitizeSemanticCandidates(
+    result.object as SemanticDayPlanOutput,
+    day,
+    existingCandidates
+  );
 }
 
 // ============================================
@@ -284,6 +424,87 @@ function buildSemanticPlannerPrompt(
   return prompt;
 }
 
+function buildSemanticSeedPrompt(request: NormalizedRequest): string {
+  const destinations = request.destinations.join('、');
+  const themes = request.softPreferences.themes.join('、');
+  const paceMap = { relaxed: 'ゆったり', balanced: 'バランス', active: '充実' };
+  const budgetMap = { budget: '格安', standard: '普通', premium: '少し贅沢', luxury: '贅沢' };
+  const lang = request.outputLanguage === 'en' ? 'English' : '日本語';
+
+  let prompt = `旅行条件をもとに、旅程の骨格だけを軽量に設計してください。
+
+条件:
+- 目的地: ${request.isDestinationDecided ? destinations : `未定 (${request.region})`}
+- 日数: ${request.durationDays}日間
+- 同行者: ${request.companions || '指定なし'}
+- テーマ: ${themes}
+- 予算: ${budgetMap[request.budgetLevel]}
+- ペース: ${paceMap[request.pace]}
+- 出力言語: ${lang}
+
+出力ルール:
+1. candidates は出力しない
+2. destination, description, dayStructure を必ず返す
+3. dayStructure には各日の title, mainArea, overnightLocation, summary を入れる
+4. 各日の mainArea は移動しすぎず現実的にまとめる
+5. 説明は短く、旅の期待感が高まる自然な文にする
+6. orderingPreferences と fallbackHints は短い箇条書きでよい`;
+
+  if (request.hardConstraints.summaryLines.length > 0) {
+    prompt += `\n\n必ず守る条件:\n${request.hardConstraints.summaryLines.map((line) => `- ${line}`).join('\n')}`;
+  }
+
+  if (request.softPreferences.rankedRequests.length > 0) {
+    prompt += `\n\n参考にする希望:\n${request.softPreferences.rankedRequests.map((line) => `- ${line}`).join('\n')}`;
+  }
+
+  return prompt;
+}
+
+function buildSemanticDayPrompt(input: {
+  request: NormalizedRequest;
+  seed: SemanticSeedPlan;
+  currentDayStructure: SemanticPlan['dayStructure'][number];
+  existingCandidates: SemanticCandidate[];
+  day: number;
+  targetCandidateCount: number;
+}): string {
+  const { request, seed, currentDayStructure, existingCandidates, day, targetCandidateCount } = input;
+  const alreadyChosen = existingCandidates.map((candidate) => candidate.searchQuery).slice(-12);
+  const mustVisitForDay = request.mustVisitPlaces.filter((_, index) =>
+    index % Math.max(request.durationDays, 1) === (day - 1)
+  );
+
+  return `旅行条件に合う ${day}日目 の候補スポットだけを構造化して返してください。
+
+旅の全体像:
+- 目的地: ${seed.destination}
+- 旅の説明: ${seed.description}
+- 日数: ${request.durationDays}日間
+- 出力言語: ${request.outputLanguage === 'en' ? 'English' : '日本語'}
+
+${day}日目の設計:
+- タイトル: ${currentDayStructure.title}
+- メインエリア: ${currentDayStructure.mainArea}
+- 宿泊地: ${currentDayStructure.overnightLocation}
+- 概要: ${currentDayStructure.summary}
+- 候補件数の目安: ${targetCandidateCount}件
+
+既に他の日で採用した候補:
+${alreadyChosen.length > 0 ? alreadyChosen.map((name) => `- ${name}`).join('\n') : '- まだありません'}
+
+この日に優先したい必須候補:
+${mustVisitForDay.length > 0 ? mustVisitForDay.map((name) => `- ${name}`).join('\n') : '- 特になし'}
+
+出力ルール:
+1. candidates のみ返す
+2. 全候補の dayHint は ${day} にする
+3. name と searchQuery には必ず実在する具体的な固有名詞を入れる
+4. 既に他の日で出した候補は重複禁止
+5. meal は最大1件まで、残りは観光・体験・休憩のバランスをとる
+6. なるべく ${currentDayStructure.mainArea} 周辺でまとまりよく選ぶ`;
+}
+
 // ============================================
 // Must-visit merging
 // ============================================
@@ -325,6 +546,49 @@ function mergeMustVisitPlaces(
   }
 
   return result;
+}
+
+function sanitizeSemanticCandidates(
+  output: SemanticDayPlanOutput,
+  day: number,
+  existingCandidates: SemanticCandidate[]
+): SemanticCandidate[] {
+  const genericPatterns = [
+    /の人気.+店$/,
+    /の人気.+スポット$/,
+    /のおすすめ/,
+    /の代表スポット$/,
+    /の夜景スポット$/,
+    /の有名.+店$/,
+    /周辺の.+スポット$/,
+    /popular\s+(lunch|dinner|restaurant|spot)/i,
+    /recommended\s+(restaurant|cafe|spot)/i,
+  ];
+
+  const existingNames = new Set(
+    existingCandidates.map((candidate) => candidate.searchQuery.trim().toLowerCase())
+  );
+
+  return output.candidates
+    .filter((candidate) =>
+      !genericPatterns.some(
+        (pattern) => pattern.test(candidate.name) || pattern.test(candidate.searchQuery)
+      )
+    )
+    .filter((candidate) => {
+      const normalized = candidate.searchQuery.trim().toLowerCase();
+      if (existingNames.has(normalized)) {
+        return false;
+      }
+      existingNames.add(normalized);
+      return true;
+    })
+    .map((candidate) => ({
+      ...candidate,
+      dayHint: day,
+      priority: Math.max(candidate.priority, 1),
+      semanticId: crypto.randomUUID(),
+    }));
 }
 
 function calculateCandidateTarget(request: NormalizedRequest): number {

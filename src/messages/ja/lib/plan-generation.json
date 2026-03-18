@@ -42,7 +42,9 @@
           "route_optimize": "回りやすい順に調整中...",
           "timeline_build": "タイムラインを作成中...",
           "narrative_render": "旅程を仕上げ中...",
-          "hero_image": "ぴったりの写真を探し中..."
+          "hero_image": "ぴったりの写真を探し中...",
+          "semantic_planPreparing": "旅の骨格を設計中...",
+          "semantic_planDay": "{day} / {total}日目のスポットを選定中..."
         },
         "errors": {
           "requestFailed": "HTTP {status}: リクエストに失敗しました",
