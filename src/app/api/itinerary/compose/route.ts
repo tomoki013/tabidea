@@ -6,7 +6,9 @@ import type { PipelineStepId } from '@/types/itinerary-pipeline';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
-export const maxDuration = 28;
+// Legacy SSE endpoint — kept for backward compatibility.
+// Main generation now uses /api/itinerary/plan/structure + /api/itinerary/plan/narrate.
+export const maxDuration = 9;
 
 const HEARTBEAT_INTERVAL_MS = 4_000;
 const COMPOSE_RETRYABLE_STEPS: PipelineStepId[] = ['semantic_plan', 'place_resolve', 'feasibility_score', 'route_optimize', 'timeline_build', 'narrative_render'];

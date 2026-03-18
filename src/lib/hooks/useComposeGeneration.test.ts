@@ -42,6 +42,107 @@ vi.mock("@/context/UserPlansContext", () => ({
   useUserPlans: () => ({ refreshPlans: mockRefreshPlans }),
 }));
 
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
+const MOCK_STRUCTURE_SUCCESS = {
+  ok: true,
+  status: 200,
+  json: async () => ({
+    ok: true,
+    timeline: [{ day: 1, title: "浅草散策", nodes: [], legs: [], overnightLocation: "", startTime: "09:00" }],
+    normalizedRequest: {
+      destinations: ["東京"],
+      durationDays: 2,
+      companions: "友達",
+      themes: ["グルメ"],
+      budgetLevel: "standard",
+      pace: "balanced",
+      freeText: "",
+      mustVisitPlaces: [],
+      fixedSchedule: [],
+      preferredTransport: [],
+      isDestinationDecided: true,
+      region: "domestic",
+      outputLanguage: "ja",
+      originalInput: {},
+      hardConstraints: { destinations: [], dateConstraints: [], mustVisitPlaces: [], fixedTransports: [], fixedHotels: [], freeTextDirectives: [], summaryLines: [] },
+      softPreferences: { themes: [], rankedRequests: [], suppressedCount: 0 },
+      compaction: { applied: false, hardConstraintCount: 0, softPreferenceCount: 0, suppressedSoftPreferenceCount: 0, longInputDetected: false },
+    },
+    destination: "東京",
+    description: "週末の東京旅行",
+    heroImage: null,
+    warnings: [],
+    metadata: {
+      candidateCount: 8,
+      resolvedCount: 6,
+      modelName: "gemini-2.5-flash",
+      narrativeModelName: "gemini-2.5-flash",
+      modelTier: "flash",
+      provider: "gemini",
+      timeoutMitigationUsed: false,
+    },
+  }),
+};
+
+function createSseBody(events: unknown[]): ReadableStream<Uint8Array> {
+  const encoder = new TextEncoder();
+  const payload = events.map((e) => `data: ${JSON.stringify(e)}\n\n`).join("");
+  return new ReadableStream<Uint8Array>({
+    start(controller) {
+      controller.enqueue(encoder.encode(payload));
+      controller.close();
+    },
+  });
+}
+
+const MOCK_NARRATE_SUCCESS = {
+  ok: true,
+  status: 200,
+  body: createSseBody([
+    {
+      type: "day_complete",
+      step: "narrative_render",
+      day: 1,
+      dayData: { day: 1, title: "浅草散策", activities: [] },
+      isComplete: true,
+      totalDays: 2,
+      destination: "東京",
+      description: "週末の東京旅行",
+    },
+    {
+      type: "complete",
+      result: {
+        itinerary: {
+          id: "itin-1",
+          destination: "東京",
+          description: "週末の東京旅行",
+          days: [{ day: 1, title: "浅草散策", activities: [] }],
+        },
+        warnings: [],
+      },
+    },
+    { type: "done" },
+  ]),
+};
+
+const DEFAULT_INPUT = {
+  destinations: ["東京"],
+  region: "domestic",
+  dates: "2日間",
+  companions: "友達",
+  theme: ["グルメ"],
+  budget: "standard",
+  pace: "balanced",
+  freeText: "",
+};
+
+// ---------------------------------------------------------------------------
+// Tests
+// ---------------------------------------------------------------------------
+
 describe("useComposeGeneration", () => {
   beforeEach(() => {
     vi.resetAllMocks();
@@ -49,163 +150,59 @@ describe("useComposeGeneration", () => {
     mockSaveLocalPlan.mockResolvedValue({ id: "local-plan-1" });
   });
 
-  function createSseBody(events: unknown[]): ReadableStream<Uint8Array> {
-    const encoder = new TextEncoder();
-    const payload = events
-      .map((event) => `data: ${JSON.stringify(event)}\n\n`)
-      .join("");
-
-    return new ReadableStream<Uint8Array>({
-      start(controller) {
-        controller.enqueue(encoder.encode(payload));
-        controller.close();
-      },
-    });
-  }
-
-  it("polls compose jobs until completion and navigates with the saved local plan", async () => {
+  it("completes two-phase generation and navigates to saved local plan", async () => {
     mockFetch
-      .mockResolvedValueOnce({
-        ok: true,
-        status: 202,
-        json: async () => ({
-          jobId: "job-1",
-          accessToken: "token-1",
-        }),
-      })
-      .mockResolvedValueOnce({
-        ok: true,
-        status: 200,
-        json: async () => ({
-          jobId: "job-1",
-          status: "running",
-          currentStep: "semantic_plan",
-          currentMessage: "候補スポットを選定中...",
-          progress: {
-            totalDays: 2,
-            destination: "東京",
-            description: "週末の東京旅行",
-            partialDays: {
-              "1": {
-                day: 1,
-                title: "浅草散策",
-                activities: [],
-              },
-            },
-          },
-        }),
-      })
-      .mockResolvedValueOnce({
-        ok: true,
-        status: 200,
-        json: async () => ({
-          jobId: "job-1",
-          status: "completed",
-          currentStep: null,
-          currentMessage: null,
-          progress: {
-            totalDays: 2,
-            destination: "東京",
-            description: "週末の東京旅行",
-          },
-          result: {
-            itinerary: {
-              id: "itin-1",
-              destination: "東京",
-              description: "週末の東京旅行",
-              days: [
-                {
-                  day: 1,
-                  title: "浅草散策",
-                  activities: [],
-                },
-              ],
-            },
-            warnings: [],
-            metadata: {
-              pipelineVersion: "v3",
-              candidateCount: 5,
-              resolvedCount: 0,
-              filteredCount: 5,
-              placeResolveEnabled: false,
-              stepTimings: {},
-              modelName: "gemini-2.5-flash",
-              modelTier: "flash",
-            },
-          },
-        }),
-      });
+      .mockResolvedValueOnce(MOCK_STRUCTURE_SUCCESS)
+      .mockResolvedValueOnce(MOCK_NARRATE_SUCCESS);
 
     const { result } = renderHook(() => useComposeGeneration());
 
     await act(async () => {
-      await result.current.generate({
-        destinations: ["東京"],
-        region: "domestic",
-        dates: "2日間",
-        companions: "友達",
-        theme: ["グルメ"],
-        budget: "standard",
-        pace: "balanced",
-        freeText: "",
-      });
+      await result.current.generate(DEFAULT_INPUT);
     });
 
     await waitFor(() => {
       expect(mockSaveLocalPlan).toHaveBeenCalledTimes(1);
     });
 
-    expect(result.current.totalDays).toBe(2);
+    expect(mockFetch).toHaveBeenNthCalledWith(
+      1,
+      "/api/itinerary/plan/structure",
+      expect.objectContaining({ method: "POST" })
+    );
+    expect(mockFetch).toHaveBeenNthCalledWith(
+      2,
+      "/api/itinerary/plan/narrate",
+      expect.objectContaining({ method: "POST" })
+    );
+
     expect(result.current.previewDestination).toBe("東京");
     expect(result.current.previewDescription).toBe("週末の東京旅行");
-    expect(result.current.currentStep).toBeNull();
+    expect(result.current.totalDays).toBeGreaterThanOrEqual(1);
     expect(result.current.isCompleted).toBe(true);
+    expect(result.current.errorMessage).toBe("");
     expect(mockNotifyPlanChange).toHaveBeenCalledTimes(1);
     expect(mockPush).toHaveBeenCalledWith("/plan/local/local-plan-1");
   });
 
-  it("surfaces limit exceeded payloads from a failed compose job", async () => {
-    mockFetch
-      .mockResolvedValueOnce({
-        ok: true,
-        status: 202,
-        json: async () => ({
-          jobId: "job-limit",
-          accessToken: "token-limit",
-        }),
-      })
-      .mockResolvedValueOnce({
-        ok: true,
-        status: 200,
-        json: async () => ({
-          jobId: "job-limit",
-          status: "failed",
-          currentStep: null,
-          currentMessage: null,
-          progress: {},
-          error: {
-            message: "Usage limit exceeded",
-            limitExceeded: true,
-            userType: "free",
-            resetAt: "2026-03-12T00:00:00.000Z",
-            remaining: 0,
-          },
-        }),
-      });
+  it("surfaces limit exceeded payload from structure phase", async () => {
+    mockFetch.mockResolvedValueOnce({
+      ok: false,
+      status: 429,
+      json: async () => ({
+        ok: false,
+        limitExceeded: true,
+        userType: "free",
+        resetAt: "2026-03-20T00:00:00.000Z",
+        remaining: 0,
+        error: "Usage limit exceeded",
+      }),
+    });
 
     const { result } = renderHook(() => useComposeGeneration());
 
     await act(async () => {
-      await result.current.generate({
-        destinations: ["東京"],
-        region: "domestic",
-        dates: "1日間",
-        companions: "友達",
-        theme: ["グルメ"],
-        budget: "standard",
-        pace: "balanced",
-        freeText: "",
-      });
+      await result.current.generate(DEFAULT_INPUT);
     });
 
     await waitFor(() => {
@@ -214,122 +211,41 @@ describe("useComposeGeneration", () => {
 
     expect(result.current.errorMessage).toBe("");
     expect(mockPush).not.toHaveBeenCalled();
+    expect(mockFetch).toHaveBeenCalledTimes(1); // only structure, no narrate
   });
 
-  it("falls back to legacy compose when the async job backend is unavailable", async () => {
-    mockFetch
-      .mockResolvedValueOnce({
+  it("surfaces step failure error from structure phase", async () => {
+    mockFetch.mockResolvedValueOnce({
+      ok: false,
+      status: 500,
+      json: async () => ({
         ok: false,
-        status: 500,
-        json: async () => ({
-          error: "Compose job backend is unavailable",
-          code: "compose_job_backend_unavailable",
-        }),
-      })
-      .mockResolvedValueOnce({
-        ok: true,
-        status: 200,
-        body: createSseBody([
-          {
-            type: "progress",
-            step: "semantic_plan",
-            message: "候補スポットを選定中...",
-            totalDays: 2,
-            destination: "東京",
-            description: "週末の東京旅行",
-          },
-          {
-            type: "day_complete",
-            step: "narrative_render",
-            day: 1,
-            dayData: {
-              day: 1,
-              title: "浅草散策",
-              activities: [],
-            },
-            totalDays: 2,
-            destination: "東京",
-            description: "週末の東京旅行",
-          },
-          {
-            type: "complete",
-            result: {
-              itinerary: {
-                id: "itin-legacy",
-                destination: "東京",
-                description: "週末の東京旅行",
-                days: [
-                  {
-                    day: 1,
-                    title: "浅草散策",
-                    activities: [],
-                  },
-                ],
-              },
-              warnings: [],
-            },
-          },
-          {
-            type: "done",
-          },
-        ]),
-      });
+        error: "semantic planner timed out",
+        failedStep: "semantic_plan",
+      }),
+    });
 
     const { result } = renderHook(() => useComposeGeneration());
 
     await act(async () => {
-      await result.current.generate({
-        destinations: ["東京"],
-        region: "domestic",
-        dates: "2日間",
-        companions: "友達",
-        theme: ["グルメ"],
-        budget: "standard",
-        pace: "balanced",
-        freeText: "",
-      });
+      await result.current.generate(DEFAULT_INPUT);
     });
 
     await waitFor(() => {
-      expect(mockSaveLocalPlan).toHaveBeenCalledTimes(1);
+      expect(result.current.isGenerating).toBe(false);
     });
 
-    expect(mockFetch).toHaveBeenNthCalledWith(
-      2,
-      "/api/itinerary/compose",
-      expect.objectContaining({
-        method: "POST",
-      })
-    );
-    expect(result.current.isCompleted).toBe(true);
-    expect(result.current.errorMessage).toBe("");
+    expect(result.current.errorMessage).not.toBe("");
+    expect(result.current.isCompleted).toBe(false);
   });
 
-  it("maps polling fetch failures to a localized network error", async () => {
-    mockFetch
-      .mockResolvedValueOnce({
-        ok: true,
-        status: 202,
-        json: async () => ({
-          jobId: "job-1",
-          accessToken: "token-1",
-        }),
-      })
-      .mockRejectedValueOnce(new Error("Failed to fetch"));
+  it("maps network error to localized message", async () => {
+    mockFetch.mockRejectedValueOnce(new Error("Failed to fetch"));
 
     const { result } = renderHook(() => useComposeGeneration());
 
     await act(async () => {
-      await result.current.generate({
-        destinations: ["東京"],
-        region: "domestic",
-        dates: "2日間",
-        companions: "友達",
-        theme: ["グルメ"],
-        budget: "standard",
-        pace: "balanced",
-        freeText: "",
-      });
+      await result.current.generate(DEFAULT_INPUT);
     });
 
     await waitFor(() => {
@@ -337,51 +253,27 @@ describe("useComposeGeneration", () => {
     });
   });
 
-  it("clears partial days when legacy SSE stream ends without a terminal event", async () => {
+  it("clears partial days when narrate SSE stream ends without a terminal event", async () => {
     mockFetch
-      .mockResolvedValueOnce({
-        ok: false,
-        status: 500,
-        json: async () => ({
-          error: "Compose job backend is unavailable",
-          code: "compose_job_backend_unavailable",
-        }),
-      })
+      .mockResolvedValueOnce(MOCK_STRUCTURE_SUCCESS)
       .mockResolvedValueOnce({
         ok: true,
         status: 200,
         body: createSseBody([
           {
-            type: "progress",
-            step: "narrative_render",
-            message: "旅程を仕上げ中...",
-          },
-          {
             type: "day_complete",
             step: "narrative_render",
             day: 1,
-            dayData: {
-              day: 1,
-              title: "浅草散策",
-              activities: [],
-            },
+            dayData: { day: 1, title: "浅草散策", activities: [] },
           },
+          // No 'done' event — stream ends abruptly
         ]),
       });
 
     const { result } = renderHook(() => useComposeGeneration());
 
     await act(async () => {
-      await result.current.generate({
-        destinations: ["東京"],
-        region: "domestic",
-        dates: "2日間",
-        companions: "友達",
-        theme: ["グルメ"],
-        budget: "standard",
-        pace: "balanced",
-        freeText: "",
-      });
+      await result.current.generate(DEFAULT_INPUT);
     });
 
     await waitFor(() => {

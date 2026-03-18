@@ -1565,10 +1565,15 @@
           }
         },
         "composeLoadingAnimation": {
-          "liveBadge": "Live itinerary build",
-          "waiting": "Preparing...",
+          "waiting": "Getting ready...",
+          "phase1Label": "Designing your route",
+          "phase2Label": "Crafting your itinerary",
+          "destinationRevealed": "{destination}",
           "stepsProgress": "{completed} / {total}",
-          "footer": "AI is crafting the perfect itinerary..."
+          "daysCount": "{days}-day trip",
+          "checkpointDone": "Done",
+          "checkpointActive": "Processing",
+          "checkpointPending": "Pending"
         },
         "composeLoadingTips": {
           "label": "Travel Tip",

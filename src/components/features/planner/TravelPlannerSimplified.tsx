@@ -197,7 +197,14 @@ export default function TravelPlannerSimplified({
   // Render: Compose Pipeline Loading
   // ========================================
   if (compose.isGenerating) {
-    return <ComposeLoadingAnimation steps={compose.steps} currentStep={compose.currentStep} />;
+    return (
+      <ComposeLoadingAnimation
+        steps={compose.steps}
+        currentStep={compose.currentStep}
+        previewDestination={compose.previewDestination}
+        totalDays={compose.totalDays}
+      />
+    );
   }
 
   // ========================================
