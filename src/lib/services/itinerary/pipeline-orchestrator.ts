@@ -18,9 +18,15 @@ import type {
   TimelineDay,
   DayStructure,
   SelectedStop,
+  SemanticCandidate,
 } from '@/types/itinerary-pipeline';
 import { normalizeRequest } from './steps/normalize-request';
-import { runSemanticPlanner } from './steps/semantic-planner';
+import {
+  runSemanticDayPlanner,
+  runSemanticPlanner,
+  runSemanticSeedPlanner,
+  type SemanticSeedPlan,
+} from './steps/semantic-planner';
 import { resolvePlaces, isPlaceResolveEnabled } from './steps/place-resolver';
 import { scoreAndSelect, candidatesToStops } from './steps/feasibility-scorer';
 import { optimizeRoutes } from './steps/route-optimizer';
@@ -64,6 +70,7 @@ const STRUCTURE_PLACE_RESOLVE_MS = 2_500;        // skip place resolve if <2.5s 
 const STRUCTURE_ROUTE_OPTIMIZE_MS = 1_000;
 const STRUCTURE_TIMELINE_BUILD_MS = 600;
 const STRUCTURE_DEADLINE_RESERVE_MS = 300;
+const SEMANTIC_SPOT_BATCH_RESERVE_MS = 400;
 
 // Narrate phase: step 7 only (narrative render), must complete in <9s
 const NARRATE_DEADLINE_MS = 8_500;
@@ -922,7 +929,345 @@ export interface StructurePipelineResult {
   message?: string;
 }
 
+export interface SeedPipelineResult {
+  success: boolean;
+  normalizedRequest?: NormalizedRequest;
+  seed?: SemanticSeedPlan;
+  warnings: string[];
+  metadata?: {
+    modelName: string;
+    narrativeModelName: string;
+    modelTier: 'flash' | 'pro';
+    provider: string;
+  };
+  failedStep?: string;
+  limitExceeded?: boolean;
+  userType?: string;
+  resetAt?: string | null;
+  remaining?: number;
+  message?: string;
+}
+
+export interface SpotsPipelineResult {
+  success: boolean;
+  candidates?: SemanticCandidate[];
+  warnings: string[];
+  failedStep?: string;
+  message?: string;
+}
+
+export interface AssemblePipelineResult {
+  success: boolean;
+  timeline?: TimelineDay[];
+  destination?: string;
+  description?: string;
+  heroImage?: { url: string; photographer: string; photographerUrl: string };
+  warnings: string[];
+  metadata?: {
+    candidateCount: number;
+    resolvedCount: number;
+    modelName: string;
+    narrativeModelName: string;
+    modelTier: 'flash' | 'pro';
+    provider: string;
+    timeoutMitigationUsed: boolean;
+  };
+  failedStep?: string;
+  message?: string;
+}
+
 export type StructureProgressCallback = (event: ComposeProgressEvent) => void;
+
+export async function runSeedPipeline(
+  input: UserInput,
+  options?: ComposeOptions,
+  onProgress?: StructureProgressCallback
+): Promise<SeedPipelineResult> {
+  const timer = createComposeTimer();
+  const allWarnings: string[] = [];
+
+  const emitProgress = (
+    step: PipelineStepId,
+    message: string,
+    data?: Omit<Extract<ComposeProgressEvent, { type: 'progress' }>, 'type' | 'step' | 'message'>
+  ) => {
+    onProgress?.({ type: 'progress', step, message, ...data });
+  };
+
+  try {
+    emitProgress('usage_check', '利用状況を確認中...');
+    const usageResult = await timer.measure('usage_check', () =>
+      checkAndRecordUsage('plan_generation', undefined, { skipConsume: options?.isRetry })
+    );
+
+    if (!usageResult.allowed) {
+      return {
+        success: false,
+        warnings: [],
+        limitExceeded: true,
+        userType: usageResult.userType,
+        resetAt: usageResult.resetAt?.toISOString() ?? null,
+        remaining: usageResult.remaining,
+        message: 'Usage limit exceeded',
+      };
+    }
+
+    emitProgress('normalize', '旅の条件を整理中...');
+    const normalizedRequest = await timer.measure('normalize', async () => normalizeRequest(input));
+
+    const userType = usageResult.userType as UserType;
+    const provider = getItineraryProvider();
+    const semanticModel = resolveModelForPhase('outline', userType, provider);
+    const narrativeModel = resolveModelForPhase('chunk', userType, provider);
+    const modelTier = toComposeModelTier(userType);
+
+    emitProgress('semantic_plan', '旅の骨格を設計中...');
+    const seed = await timer.measure('semantic_plan', async () =>
+      runSemanticSeedPlanner({
+        request: normalizedRequest,
+        context: [],
+        modelName: semanticModel.modelName,
+        provider,
+        temperature: semanticModel.temperature,
+        onProgress: (message) =>
+          emitProgress('semantic_plan', message, {
+            totalDays: normalizedRequest.durationDays,
+          }),
+      })
+    );
+
+    timer.log();
+
+    return {
+      success: true,
+      normalizedRequest,
+      seed,
+      warnings: allWarnings,
+      metadata: {
+        modelName: semanticModel.modelName,
+        narrativeModelName: narrativeModel.modelName,
+        modelTier,
+        provider,
+      },
+    };
+  } catch (error) {
+    console.error('[seed-pipeline] Failed:', error);
+    timer.log();
+    return {
+      success: false,
+      warnings: allWarnings,
+      failedStep: error instanceof PipelineStepError ? error.step : undefined,
+      message: error instanceof Error ? error.message : 'Seed pipeline failed',
+    };
+  }
+}
+
+export async function runSpotCandidatesPipeline(input: {
+  normalizedRequest: NormalizedRequest;
+  seed: SemanticSeedPlan;
+  day: number;
+  accumulatedCandidates?: SemanticCandidate[];
+  modelName: string;
+  provider: string;
+}): Promise<SpotsPipelineResult> {
+  const timer = createComposeTimer();
+  const allWarnings: string[] = [];
+
+  try {
+    const fastMode = shouldUseSemanticFastMode(input.normalizedRequest, 12_000);
+    const totalTarget = getSemanticCandidateTarget(input.normalizedRequest, fastMode);
+    const perDayTarget = Math.max(
+      2,
+      Math.ceil(totalTarget / Math.max(input.normalizedRequest.durationDays, 1))
+    );
+
+    const candidates = await timer.measure('semantic_plan', async () =>
+      runSemanticDayPlanner({
+        request: input.normalizedRequest,
+        seed: input.seed,
+        context: [],
+        modelName: input.modelName,
+        provider: input.provider as 'gemini' | 'openai',
+        temperature: 0.35,
+        day: input.day,
+        targetCandidateCount: perDayTarget,
+        existingCandidates: input.accumulatedCandidates ?? [],
+        onProgress: () => undefined,
+      })
+    );
+
+    const existingMustVisit = new Set(
+      (input.accumulatedCandidates ?? [])
+        .filter((candidate) => candidate.role === 'must_visit')
+        .map((candidate) => candidate.searchQuery.toLowerCase())
+    );
+
+    const mustVisitForDay = input.normalizedRequest.mustVisitPlaces
+      .filter((place) => !existingMustVisit.has(place.toLowerCase()))
+      .slice(0, 1)
+      .map((place) => ({
+        name: place,
+        role: 'must_visit' as const,
+        priority: 10,
+        dayHint: input.day,
+        timeSlotHint: 'flexible' as const,
+        stayDurationMinutes: 60,
+        searchQuery: place,
+        semanticId: crypto.randomUUID(),
+      }));
+
+    timer.log();
+
+    return {
+      success: true,
+      candidates: [...mustVisitForDay, ...candidates],
+      warnings: allWarnings,
+    };
+  } catch (error) {
+    console.error('[spots-pipeline] Failed:', error);
+    timer.log();
+    return {
+      success: false,
+      warnings: allWarnings,
+      failedStep: error instanceof PipelineStepError ? error.step : undefined,
+      message: error instanceof Error ? error.message : 'Spots pipeline failed',
+    };
+  }
+}
+
+export async function runAssemblePipeline(input: {
+  normalizedRequest: NormalizedRequest;
+  seed: SemanticSeedPlan;
+  candidates: SemanticCandidate[];
+  metadata: NonNullable<SeedPipelineResult['metadata']>;
+}): Promise<AssemblePipelineResult> {
+  const timer = createComposeTimer(input.metadata.modelTier);
+  const allWarnings: string[] = [];
+  let timeoutMitigationUsed = false;
+
+  try {
+    let heroImagePromise: Promise<AssemblePipelineResult['heroImage']> | undefined;
+    heroImagePromise = (async () => {
+      try {
+        const { getUnsplashImage } = await import('@/lib/unsplash');
+        const image = await getUnsplashImage(input.seed.destination);
+        if (!image) return undefined;
+        return { url: image.url, photographer: image.photographer, photographerUrl: image.photographerUrl };
+      } catch {
+        return undefined;
+      }
+    })();
+
+    const candidateCount = input.candidates.length;
+    const placeResolveEnabled = isPlaceResolveEnabled();
+    let stops: SelectedStop[];
+    let resolvedCount = 0;
+
+    if (placeResolveEnabled) {
+      const resolvedGroups = await timer.measure('place_resolve', () =>
+        resolvePlaces(input.candidates, input.seed.destination, {
+          delayMs: 0,
+          maxCandidates: Math.min(candidateCount, 6),
+        })
+      );
+
+      resolvedCount = resolvedGroups.filter((group) => group.success).length;
+      const { selected, filtered } = await timer.measure('feasibility_score', async () =>
+        scoreAndSelect(resolvedGroups, input.normalizedRequest)
+      );
+      stops = selected;
+      if (filtered.length > 0) {
+        allWarnings.push(`${filtered.length}件の候補がフィルタされました`);
+      }
+      for (const stop of stops) {
+        allWarnings.push(...stop.warnings);
+      }
+    } else {
+      timeoutMitigationUsed = true;
+      stops = candidatesToStops(input.candidates);
+    }
+
+    if (stops.length === 0) {
+      return {
+        success: false,
+        warnings: allWarnings,
+        failedStep: 'feasibility_score',
+        message: '有効なスポットが見つかりませんでした',
+      };
+    }
+
+    const optimizedDays = await timer.measure('route_optimize', async () => {
+      try {
+        return await optimizeRoutes(stops, input.seed.dayStructure, input.normalizedRequest, {
+          destination: input.seed.destination,
+          description: input.seed.description,
+          candidates: input.candidates,
+          dayStructure: input.seed.dayStructure,
+          themes: input.seed.themes,
+          tripIntentSummary: input.seed.tripIntentSummary,
+          orderingPreferences: input.seed.orderingPreferences,
+          fallbackHints: input.seed.fallbackHints,
+        });
+      } catch (error) {
+        if (isTimeoutLikeError(error)) {
+          timeoutMitigationUsed = true;
+          return buildFallbackOptimizedDays(stops, input.seed.dayStructure);
+        }
+        throw error;
+      }
+    });
+
+    const timeline = await timer.measure('timeline_build', async () => {
+      try {
+        return await buildTimeline(optimizedDays, input.normalizedRequest);
+      } catch (error) {
+        if (isTimeoutLikeError(error)) {
+          timeoutMitigationUsed = true;
+          return buildFallbackTimelineDays(optimizedDays);
+        }
+        throw error;
+      }
+    });
+
+    const heroImage = heroImagePromise
+      ? await Promise.race([
+          heroImagePromise,
+          new Promise<undefined>((resolve) =>
+            setTimeout(() => resolve(undefined), SEMANTIC_SPOT_BATCH_RESERVE_MS)
+          ),
+        ])
+      : undefined;
+
+    timer.log();
+
+    return {
+      success: true,
+      timeline,
+      destination: input.seed.destination,
+      description: input.seed.description,
+      heroImage,
+      warnings: allWarnings,
+      metadata: {
+        candidateCount,
+        resolvedCount,
+        modelName: input.metadata.modelName,
+        narrativeModelName: input.metadata.narrativeModelName,
+        modelTier: input.metadata.modelTier,
+        provider: input.metadata.provider,
+        timeoutMitigationUsed,
+      },
+    };
+  } catch (error) {
+    console.error('[assemble-pipeline] Failed:', error);
+    timer.log();
+    return {
+      success: false,
+      warnings: allWarnings,
+      failedStep: error instanceof PipelineStepError ? error.step : undefined,
+      message: error instanceof Error ? error.message : 'Assemble pipeline failed',
+    };
+  }
+}
 
 export async function runStructurePipeline(
   input: UserInput,

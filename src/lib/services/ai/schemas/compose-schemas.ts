@@ -111,6 +111,42 @@ export const semanticPlanSchema = z.object({
 
 export type SemanticPlanOutput = z.infer<typeof semanticPlanSchema>;
 
+export const semanticSeedSchema = z.object({
+  destination: z.string().describe('目的地'),
+  description: z.string().describe('プラン全体の説明'),
+  dayStructure: z
+    .array(dayStructureSchema)
+    .min(1)
+    .describe('日ごとの構造'),
+  themes: z
+    .array(z.string())
+    .optional()
+    .describe('AIが選んだテーマタグ'),
+  tripIntentSummary: z
+    .string()
+    .optional()
+    .describe('旅の意図サマリー'),
+  orderingPreferences: z
+    .array(z.string())
+    .optional()
+    .describe('順序に関する好み'),
+  fallbackHints: z
+    .array(z.string())
+    .optional()
+    .describe('候補不足時の補完ヒント'),
+});
+
+export type SemanticSeedOutput = z.infer<typeof semanticSeedSchema>;
+
+export const semanticDayPlanSchema = z.object({
+  candidates: z
+    .array(semanticCandidateSchema)
+    .min(1)
+    .describe('特定の日に割り当てる候補スポット一覧'),
+});
+
+export type SemanticDayPlanOutput = z.infer<typeof semanticDayPlanSchema>;
+
 // ============================================
 // Step 7: Narrative Renderer Output Schema
 // ============================================

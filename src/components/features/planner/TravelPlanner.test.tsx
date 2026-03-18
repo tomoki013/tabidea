@@ -25,6 +25,8 @@ vi.mock("@/lib/hooks/useComposeGeneration", () => ({
     warnings: [],
     partialDays: new Map(),
     totalDays: 0,
+    previewDestination: "",
+    previewDescription: "",
     generate: vi.fn(),
     reset: vi.fn(),
     clearLimitExceeded: vi.fn(),
