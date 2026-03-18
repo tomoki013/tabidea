@@ -71,6 +71,17 @@ export const semanticCandidateSchema = z.object({
     .describe('候補のタグ (例: ["写真映え", "静か"])'),
 });
 
+export const destinationHighlightSchema = z.object({
+  name: z.string().describe('その目的地らしさを感じる具体的なスポット名'),
+  searchQuery: z.string().optional().describe('Places API 検索に向いた正式名称'),
+  areaHint: z.string().describe('そのスポットがあるエリア名'),
+  dayHint: z.number().min(1).describe('どの日に入れると自然かの候補日'),
+  rationale: z.string().describe('このスポットを入れる理由'),
+  locationEn: z.string().optional().describe('英語の正式名称'),
+  timeSlotHint: timeSlotHintSchema.optional().describe('おすすめの時間帯'),
+  stayDurationMinutes: z.number().min(15).max(360).optional().describe('想定滞在時間'),
+});
+
 export const dayStructureSchema = z.object({
   day: z.number().min(1).describe('日番号 (1-based)'),
   title: z.string().describe('日のタイトル'),
@@ -94,6 +105,10 @@ export const semanticPlanSchema = z.object({
     .array(z.string())
     .optional()
     .describe('AIが選んだテーマタグ'),
+  destinationHighlights: z
+    .array(destinationHighlightSchema)
+    .optional()
+    .describe('その目的地らしさを担保する代表スポット'),
   // ---- v3 追加フィールド ----
   tripIntentSummary: z
     .string()
@@ -122,6 +137,10 @@ export const semanticSeedSchema = z.object({
     .array(z.string())
     .optional()
     .describe('AIが選んだテーマタグ'),
+  destinationHighlights: z
+    .array(destinationHighlightSchema)
+    .optional()
+    .describe('その目的地らしさを担保する代表スポット'),
   tripIntentSummary: z
     .string()
     .optional()

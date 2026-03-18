@@ -37,14 +37,14 @@
           "usage_check": "Checking usage limits...",
           "normalize": "Organizing travel preferences...",
           "semantic_plan": "Selecting candidate spots...",
-          "place_resolve": "Verifying real locations...",
-          "feasibility_score": "Checking hours & feasibility...",
+          "place_resolve": "Checking the selected places...",
+          "feasibility_score": "Checking opening hours and fit...",
           "route_optimize": "Optimizing route order...",
-          "timeline_build": "Building timeline...",
-          "narrative_render": "Finishing your itinerary...",
+          "timeline_build": "Putting the day in order...",
+          "narrative_render": "Making the itinerary easier to read...",
           "hero_image": "Finding the perfect photo...",
-          "semantic_planPreparing": "Designing the trip backbone...",
-          "semantic_planDay": "Selecting spots for day {day} of {total}..."
+          "semantic_planPreparing": "Setting the overall flow for the trip...",
+          "semantic_planDay": "Creating the spots for day {day}..."
         },
         "errors": {
           "requestFailed": "HTTP {status}: Request failed",

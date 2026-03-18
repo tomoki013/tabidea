@@ -8,6 +8,7 @@ import type {
   NormalizedRequest,
   SemanticPlan,
   SemanticCandidate,
+  DestinationHighlight,
 } from '@/types/itinerary-pipeline';
 import type { Article } from '@/lib/services/ai/types';
 import type {
@@ -24,9 +25,10 @@ import {
 import { buildContextSandwich } from '@/lib/services/ai/prompt-builder';
 import { PipelineStepError } from '../errors';
 import {
-  buildDestinationEssentialsPrompt,
-  mergeDestinationEssentialCandidates,
-} from '../destination-essentials';
+  assignHighlightDaysFromAreas,
+  buildDestinationHighlightPromptSections,
+  mergeDestinationHighlightCandidates,
+} from '../destination-highlights';
 
 // ============================================
 // Public API
@@ -61,6 +63,7 @@ export interface SemanticSeedPlan {
   tripIntentSummary?: string;
   orderingPreferences?: string[];
   fallbackHints?: string[];
+  destinationHighlights?: DestinationHighlight[];
 }
 
 export interface SemanticDayPlannerInput {
@@ -167,6 +170,8 @@ export async function runSemanticPlanner(
     /の人気.+店$/,
     /の人気.+スポット$/,
     /のおすすめ/,
+  /^おすすめ.+$/,
+  /^人気.+$/,
     /の代表スポット$/,
     /の夜景スポット$/,
     /の有名.+店$/,
@@ -235,14 +240,20 @@ export async function runSemanticSeedPlanner(
 
   const seed = result.object as SemanticSeedOutput;
 
+  const constrainedDayStructure = applyHotelConstraintsToDayStructure(seed.dayStructure, request);
+
   return {
     destination: seed.destination,
     description: seed.description,
-    dayStructure: applyHotelConstraintsToDayStructure(seed.dayStructure, request),
+    dayStructure: constrainedDayStructure,
     themes: seed.themes,
     tripIntentSummary: seed.tripIntentSummary,
     orderingPreferences: seed.orderingPreferences,
     fallbackHints: seed.fallbackHints,
+    destinationHighlights: assignHighlightDaysFromAreas(
+      seed.destinationHighlights,
+      constrainedDayStructure
+    ),
   };
 }
 
@@ -297,9 +308,9 @@ export async function runSemanticDayPlanner(
   return sanitizeSemanticCandidates(
     result.object as SemanticDayPlanOutput,
     request,
-    seed.dayStructure,
     day,
-    existingCandidates
+    existingCandidates,
+    seed.destinationHighlights
   );
 }
 
@@ -326,16 +337,20 @@ function buildSemanticPlanResult(
     request.mustVisitPlaces,
     request.durationDays
   );
-  const groundedCandidates = mergeDestinationEssentialCandidates({
-    request,
-    candidates: mergedCandidates,
-    dayStructure: plan.dayStructure,
-  });
-  const limitedCandidates = limitCandidates(groundedCandidates, targetCandidateCount);
   const constrainedDayStructure = applyHotelConstraintsToDayStructure(
     plan.dayStructure,
     request
   );
+  const destinationHighlights = assignHighlightDaysFromAreas(
+    plan.destinationHighlights,
+    constrainedDayStructure
+  );
+  const groundedCandidates = mergeDestinationHighlightCandidates({
+    request,
+    destinationHighlights,
+    candidates: mergedCandidates,
+  });
+  const limitedCandidates = limitCandidates(groundedCandidates, targetCandidateCount);
 
   return {
     destination: plan.destination,
@@ -343,6 +358,7 @@ function buildSemanticPlanResult(
     candidates: limitedCandidates,
     dayStructure: constrainedDayStructure,
     themes: plan.themes,
+    destinationHighlights,
     // v3 追加フィールド
     tripIntentSummary: plan.tripIntentSummary,
     orderingPreferences: plan.orderingPreferences,
@@ -405,11 +421,6 @@ function buildSemanticPlannerPrompt(
     }
   }
 
-  const destinationEssentialsPrompt = buildDestinationEssentialsPrompt(request);
-  if (destinationEssentialsPrompt) {
-    prompt += `\n${destinationEssentialsPrompt}\n`;
-  }
-
   if (request.fixedSchedule.length > 0) {
     prompt += `\n予約済み:\n`;
     for (const fs of request.fixedSchedule) {
@@ -428,14 +439,15 @@ function buildSemanticPlannerPrompt(
 4. 必ず訪れたい場所は role='must_visit' にする
 5. 時刻と最終順序は確定しない
 6. tripIntentSummary, orderingPreferences, fallbackHints を短く入れる
-7. 説明文は簡潔にする
-8. 絶対条件は必ず守る
-9. 参考条件は全てを機械的に盛り込まず、全体のまとまりを優先して良い感じに反映する
-10. 【最重要】name と searchQuery には必ず実在する具体的なスポット名・店名を入れること。「人気ランチ店」「おすすめカフェ」「代表スポット」「夜景スポット」のような曖昧・総称的な名前は絶対に禁止。レストランなら「Café de Flore」「一蘭 渋谷店」のように固有名詞を使うこと
-11. ユーザー条件と矛盾しない範囲で、その都市を代表する定番名所を候補から落とさないこと`;
+7. destinationHighlights には、その都市らしさを感じる具体的な代表スポットを 3〜6 件入れる
+8. 説明文は簡潔にする
+9. 絶対条件は必ず守る
+10. 参考条件は全てを機械的に盛り込まず、全体のまとまりを優先して良い感じに反映する
+11. 【最重要】name/searchQuery/destinationHighlights.name には必ず実在する具体的なスポット名・店名を入れること。「人気ランチ店」「おすすめカフェ」「代表スポット」「夜景スポット」のような曖昧・総称的な名前は絶対に禁止
+12. destinationHighlights には「この目的地に来たのに入っていないと不自然になりやすい場所」を優先して入れること`;
 
   if (fastMode) {
-    prompt += `\n12. 速度優先。エリアの重複を避け、候補は厳選してください`;
+    prompt += `\n13. 速度優先。エリアの重複を避け、候補は厳選してください`;
   }
 
   return prompt;
@@ -465,7 +477,9 @@ function buildSemanticSeedPrompt(request: NormalizedRequest): string {
 3. dayStructure には各日の title, mainArea, overnightLocation, summary を入れる
 4. 各日の mainArea は移動しすぎず現実的にまとめる
 5. 説明は短く、旅の期待感が高まる自然な文にする
-6. orderingPreferences と fallbackHints は短い箇条書きでよい`;
+6. orderingPreferences と fallbackHints は短い箇条書きでよい
+7. destinationHighlights には、その都市らしさを感じる具体的な代表スポットを 3〜6 件入れる
+8. destinationHighlights の各要素には name, areaHint, dayHint, rationale を入れる`;
 
   if (request.hardConstraints.summaryLines.length > 0) {
     prompt += `\n\n必ず守る条件:\n${request.hardConstraints.summaryLines.map((line) => `- ${line}`).join('\n')}`;
@@ -475,12 +489,7 @@ function buildSemanticSeedPrompt(request: NormalizedRequest): string {
     prompt += `\n\n参考にする希望:\n${request.softPreferences.rankedRequests.map((line) => `- ${line}`).join('\n')}`;
   }
 
-  const destinationEssentialsPrompt = buildDestinationEssentialsPrompt(request);
-  if (destinationEssentialsPrompt) {
-    prompt += `\n\n${destinationEssentialsPrompt}`;
-  }
-
-  prompt += `\n\n7. 旅のテーマと矛盾しない範囲で、その都市を代表する定番名所を少なくともいくつか骨格に含める`;
+  prompt += `\n\n9. 旅のテーマと矛盾しない範囲で、その都市を代表する定番名所を少なくともいくつか骨格に含める`;
 
   return prompt;
 }
@@ -498,6 +507,12 @@ function buildSemanticDayPrompt(input: {
   const mustVisitForDay = request.mustVisitPlaces.filter((_, index) =>
     index % Math.max(request.durationDays, 1) === (day - 1)
   );
+  const highlightSections = buildDestinationHighlightPromptSections({
+    destinationHighlights: seed.destinationHighlights,
+    durationDays: request.durationDays,
+    day,
+    existingCandidates,
+  });
 
   return `旅行条件に合う ${day}日目 の候補スポットだけを構造化して返してください。
 
@@ -514,6 +529,12 @@ ${day}日目の設計:
 - 概要: ${currentDayStructure.summary}
 - 候補件数の目安: ${targetCandidateCount}件
 
+この旅行で代表スポットとして押さえたい場所（AIが骨格段階で選んだもの）:
+${highlightSections.allHighlightsSection}
+
+まだこの日に入っていない代表スポット:
+${highlightSections.remainingHighlightsSection}
+
 既に他の日で採用した候補:
 ${alreadyChosen.length > 0 ? alreadyChosen.map((name) => `- ${name}`).join('\n') : '- まだありません'}
 
@@ -527,9 +548,7 @@ ${mustVisitForDay.length > 0 ? mustVisitForDay.map((name) => `- ${name}`).join('
 4. 既に他の日で出した候補は重複禁止
 5. meal は最大1件まで、残りは観光・体験・休憩のバランスをとる
 6. なるべく ${currentDayStructure.mainArea} 周辺でまとまりよく選ぶ
-7. もしその日のメインエリアに目的地の代表名所があるなら優先して含める
-
-${buildDestinationEssentialsPrompt(request)}`;
+7. 上の代表スポットのうち、この日に割り当てられているものは可能な限り候補に含める`;
 }
 
 
@@ -579,14 +598,16 @@ function mergeMustVisitPlaces(
 function sanitizeSemanticCandidates(
   output: SemanticDayPlanOutput,
   request: NormalizedRequest,
-  dayStructure: SemanticPlan['dayStructure'],
   day: number,
-  existingCandidates: SemanticCandidate[]
+  existingCandidates: SemanticCandidate[],
+  destinationHighlights?: DestinationHighlight[]
 ): SemanticCandidate[] {
   const genericPatterns = [
     /の人気.+店$/,
     /の人気.+スポット$/,
     /のおすすめ/,
+  /^おすすめ.+$/,
+  /^人気.+$/,
     /の代表スポット$/,
     /の夜景スポット$/,
     /の有名.+店$/,
@@ -620,10 +641,10 @@ function sanitizeSemanticCandidates(
       semanticId: crypto.randomUUID(),
     }));
 
-  return mergeDestinationEssentialCandidates({
+  return mergeDestinationHighlightCandidates({
     request,
+    destinationHighlights,
     candidates: sanitized,
-    dayStructure,
     existingCandidates,
     day,
   });

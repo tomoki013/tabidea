@@ -1578,25 +1578,26 @@
           "checkpointActive": "処理中",
           "checkpointPending": "待機中",
           "eyebrow": "Journey now boarding",
-          "leadReady": "旅の方向性が固まり次第、日ごとの立ち寄り先を順番に組み上げています。",
+          "leadReady": "行き先が固まったら、日ごとの予定を順番に作っています。",
           "progressLabel": "全体の進行",
           "currentStepLabel": "ただいまの工程",
-          "statusLive": "リアルタイムで更新中",
+          "statusLive": "いまの進み具合",
+          "stepListLabel": "進行中のチェックリスト",
           "stageDone": "完了",
           "stageActive": "進行中",
           "stagePending": "待機中",
           "stages": {
             "concept": {
               "title": "旅の骨格づくり",
-              "description": "条件を整理し、日ごとのエリア設計を固めています。"
+              "description": "旅の大まかな流れと、各日の過ごし方を決めています。"
             },
             "spots": {
               "title": "立ち寄り先を選定",
-              "description": "各日ごとに実在スポットを小さく分けて選び、タイムアウトを避けながら精度を上げます。"
+              "description": "各日ごとに、行く場所や立ち寄り先を具体的に選んでいます。"
             },
             "polish": {
               "title": "しおりとして仕上げ",
-              "description": "読みやすい旅程文と最終の見せ方を整えています。"
+              "description": "時間や説明を整えて、見やすい旅程に仕上げています。"
             }
           }
         },

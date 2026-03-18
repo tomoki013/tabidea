@@ -168,6 +168,25 @@ export interface SemanticCandidate {
   tags?: string[];
 }
 
+export interface DestinationHighlight {
+  /** 代表スポット名 */
+  name: string;
+  /** Places API 用検索名。未指定時は name / locationEn を使用 */
+  searchQuery?: string;
+  /** エリアヒント */
+  areaHint: string;
+  /** 候補日にしたい日 */
+  dayHint: number;
+  /** このスポットを入れたい理由 */
+  rationale: string;
+  /** 英語での場所名 */
+  locationEn?: string;
+  /** 推奨する時間帯 */
+  timeSlotHint?: TimeSlotHint;
+  /** 代表スポットとして想定する滞在時間 */
+  stayDurationMinutes?: number;
+}
+
 export interface DayStructure {
   /** 日番号 (1-based) */
   day: number;
@@ -192,6 +211,8 @@ export interface SemanticPlan {
   dayStructure: DayStructure[];
   /** AIが選んだテーマタグ */
   themes?: string[];
+  /** その目的地らしさを担保する代表スポット */
+  destinationHighlights?: DestinationHighlight[];
 
   // ---- v3 追加フィールド ----
   /** 旅の意図サマリー */

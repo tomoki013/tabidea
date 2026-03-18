@@ -11,7 +11,7 @@
 
 ### 2026-03-18 (3回目)
 
-- `local` fix(compose-pipeline,planner): 旅行プラン生成の根本品質を改善。① `destination-essentials.ts` を追加し、パリなど主要都市ではエッフェル塔・ルーブル美術館・凱旋門のような代表名所を deterministic なアンカー候補として seed/day planner の両方へ注入、AI が周辺スポットばかり選んでも都市の定番名所を落としにくくした。② `semantic-planner.ts` の prompt / post-process を更新し、都市の代表名所を骨格と候補に残す制約を追加。③ `adapter.ts` で抽象的な activityName を canonical place 名に ground するよう変更し、「パリ最古の広場」などの曖昧表示より `Place des Vosges` のような具体名を優先表示。④ destination essentials / adapter のテストを追加し、`docs/development/architecture.md` に新しい grounding 層を追記。
+- `local` fix(compose-pipeline,loading-ui): 旅行プラン生成の根本品質とローディングUIを改善。① 地域ごとの static 名所リストはやめ、seed 段階で AI 自身に `destinationHighlights`（その街らしさを担保する具体的代表スポット群）を宣言させ、day-by-day のスポット生成で引き継いで落としにくくする方式へ変更。② `semantic-planner.ts` / compose schema / itinerary pipeline 型を更新し、代表スポットを `name + areaHint + dayHint + rationale` で保持して日別候補へ deterministic に再注入できるようにした。③ `adapter.ts` の表示名 grounding は維持しつつ、ローディング中UIは grid ベースで再配置し、進捗・現在工程・全体チェックリストが見やすい構成に整理。④ ローディング文言は「{day}日目のスポットを作成中...」のようなユーザー向け表現に寄せ、タイムアウト回避などの裏側事情を表示しないよう変更。⑤ highlights helper / adapter のテスト、アーキテクチャ文書、CHANGELOG を更新。
 
 ### 2026-03-18 (2回目)
 
