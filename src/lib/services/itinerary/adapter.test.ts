@@ -396,6 +396,34 @@ describe('composedToItinerary', () => {
     expect(itinerary.days[0].activities[0].locationEn).toBe('Kinkaku-ji Temple');
   });
 
+
+  it('grounds abstract activity names to the canonical place name', () => {
+    const place = makePlaceDetails({ name: 'Place des Vosges' });
+    const stop: SelectedStop = {
+      candidate: makeCandidate({
+        name: 'ヴォージュ広場',
+        searchQuery: 'Place des Vosges',
+        activityLabel: 'Place des Vosgesを歩く',
+      }),
+      placeDetails: place,
+      feasibilityScore: 70,
+      warnings: [],
+    };
+    const node = makeTimelineNode(stop, '09:00', '10:00');
+
+    const day: NarrativeDay = {
+      day: 1,
+      title: 'Day 1',
+      activities: [makeNarrativeActivity(node, { activityName: 'パリ最古の広場を散策' })],
+      legs: [],
+      overnightLocation: '',
+    };
+
+    const itinerary = composedToItinerary(makeComposed([day]));
+
+    expect(itinerary.days[0].activities[0].activity).toBe('Place des Vosgesを歩く');
+  });
+
   it('transit duration formats correctly for hours and minutes', () => {
     const stop1 = makeStop('A', 'recommended', makePlaceDetails({ name: 'A' }));
     const stop2 = makeStop('B', 'recommended', makePlaceDetails({ name: 'B' }));

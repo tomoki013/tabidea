@@ -21,7 +21,7 @@ import type {
   TransportMode,
 } from '@/types/itinerary-pipeline';
 import type { TransitType } from '@/types/itinerary';
-import { MODE_TO_TRANSIT, MODE_TO_LABEL } from './constants';
+import { MODE_TO_LABEL } from './constants';
 
 // ============================================
 // Transport mode mapping (legacy compat)
@@ -110,10 +110,11 @@ function convertActivity(activity: NarrativeActivity): Activity {
   const placeDetails = node.stop.placeDetails;
 
   const activityType = mapRoleToActivityType(candidate.role);
+  const groundedActivityName = resolveGroundedActivityName(activity.activityName, candidate, placeDetails);
 
   const result: Activity = {
     time: node.arrivalTime,
-    activity: activity.activityName,
+    activity: groundedActivityName,
     description: activity.description,
     activityType,
     searchQuery: candidate.searchQuery,
@@ -138,6 +139,48 @@ function convertActivity(activity: NarrativeActivity): Activity {
   }
 
   return result;
+}
+
+function resolveGroundedActivityName(
+  generatedName: string,
+  candidate: NarrativeActivity['node']['stop']['candidate'],
+  placeDetails: NarrativeActivity['node']['stop']['placeDetails']
+): string {
+  const canonicalPlaceName = placeDetails?.name || candidate.searchQuery || candidate.name;
+  const preferredLabels = [generatedName, candidate.activityLabel, candidate.name].filter(
+    (label): label is string => Boolean(label && label.trim())
+  );
+
+  const groundedLabel = preferredLabels.find((label) =>
+    mentionsCanonicalPlace(label, canonicalPlaceName, candidate.searchQuery, candidate.name)
+  );
+
+  if (groundedLabel) {
+    return groundedLabel;
+  }
+
+  return canonicalPlaceName;
+}
+
+function mentionsCanonicalPlace(
+  label: string,
+  canonicalPlaceName: string,
+  searchQuery: string,
+  candidateName: string
+): boolean {
+  const normalizedLabel = normalizeLabel(label);
+  const normalizedCandidates = [canonicalPlaceName, searchQuery, candidateName]
+    .map(normalizeLabel)
+    .filter(Boolean);
+
+  return normalizedCandidates.some((value) => normalizedLabel.includes(value) || value.includes(normalizedLabel));
+}
+
+function normalizeLabel(value: string): string {
+  return value
+    .normalize('NFKC')
+    .toLowerCase()
+    .replace(/[\s,./\()（）・'-]+/g, '');
 }
 
 function mapRoleToActivityType(

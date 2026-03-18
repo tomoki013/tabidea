@@ -9,6 +9,10 @@
 
 ## 開発者向けコミット履歴（コミット単位）
 
+### 2026-03-18 (3回目)
+
+- `local` fix(compose-pipeline,planner): 旅行プラン生成の根本品質を改善。① `destination-essentials.ts` を追加し、パリなど主要都市ではエッフェル塔・ルーブル美術館・凱旋門のような代表名所を deterministic なアンカー候補として seed/day planner の両方へ注入、AI が周辺スポットばかり選んでも都市の定番名所を落としにくくした。② `semantic-planner.ts` の prompt / post-process を更新し、都市の代表名所を骨格と候補に残す制約を追加。③ `adapter.ts` で抽象的な activityName を canonical place 名に ground するよう変更し、「パリ最古の広場」などの曖昧表示より `Place des Vosges` のような具体名を優先表示。④ destination essentials / adapter のテストを追加し、`docs/development/architecture.md` に新しい grounding 層を追記。
+
 ### 2026-03-18 (2回目)
 
 - `local` refactor(compose-pipeline,loading-ui): AIスポット生成のタイムアウト対策を設計から刷新。① メイン導線を従来の 2 フェーズ（structure / narrate）から「seed（旅の骨格）→ day-by-day spots（各日ごとのスポット生成）→ assemble（実在スポット照合とタイムライン構築）→ narrate」へ再分割し、最も重かった `semantic_plan` を日単位の小さな LLM 呼び出しへシャーディング。② `/api/itinerary/plan/seed` / `/api/itinerary/plan/spots` / `/api/itinerary/plan/assemble` を追加し、クライアント `useComposeGeneration` は段階的に API を進めながら目的地プレビューと日別進捗を即時反映する方式へ変更。③ `semantic-planner.ts` に旅程骨格専用 seed planner と日別スポット planner を追加し、曖昧な汎用スポット名の除外・重複除外を各日バッチ単位で適用。④ `runAssemblePipeline()` を新設し、place resolve / feasibility / route / timeline を seed + candidates から再構成する形へ整理。⑤ `ComposeLoadingAnimation` / `ComposeLoadingTips` を AI 感のないモダンな“旅の搭乗準備”UIへ刷新し、進行ステージ・現在工程・全体進捗を分かりやすく表示。⑥ ja/en 文言、関連 hook テスト、planner テストモックを更新。
