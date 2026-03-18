@@ -46,12 +46,11 @@ vi.mock("@/context/UserPlansContext", () => ({
 // Helpers
 // ---------------------------------------------------------------------------
 
-const MOCK_STRUCTURE_SUCCESS = {
+const MOCK_SEED_SUCCESS = {
   ok: true,
   status: 200,
   json: async () => ({
     ok: true,
-    timeline: [{ day: 1, title: "浅草散策", nodes: [], legs: [], overnightLocation: "", startTime: "09:00" }],
     normalizedRequest: {
       destinations: ["東京"],
       durationDays: 2,
@@ -71,13 +70,58 @@ const MOCK_STRUCTURE_SUCCESS = {
       softPreferences: { themes: [], rankedRequests: [], suppressedCount: 0 },
       compaction: { applied: false, hardConstraintCount: 0, softPreferenceCount: 0, suppressedSoftPreferenceCount: 0, longInputDetected: false },
     },
+    seed: {
+      destination: "東京",
+      description: "週末の東京旅行",
+      dayStructure: [
+        { day: 1, title: "浅草散策", mainArea: "浅草", overnightLocation: "上野", summary: "下町文化を楽しむ日" },
+        { day: 2, title: "渋谷散策", mainArea: "渋谷", overnightLocation: "上野", summary: "都会の最新スポットを巡る日" },
+      ],
+    },
+    warnings: [],
+    metadata: {
+      modelName: "gemini-2.5-flash",
+      narrativeModelName: "gemini-2.5-flash",
+      modelTier: "flash",
+      provider: "gemini",
+    },
+  }),
+};
+
+const MOCK_SPOTS_SUCCESS = (day: number) => ({
+  ok: true,
+  status: 200,
+  json: async () => ({
+    ok: true,
+    candidates: [
+      {
+        name: `Spot ${day}`,
+        role: "recommended",
+        priority: 8,
+        dayHint: day,
+        timeSlotHint: "morning",
+        stayDurationMinutes: 90,
+        searchQuery: `Spot ${day}`,
+        semanticId: `semantic-${day}`,
+      },
+    ],
+    warnings: [],
+  }),
+});
+
+const MOCK_ASSEMBLE_SUCCESS = {
+  ok: true,
+  status: 200,
+  json: async () => ({
+    ok: true,
+    timeline: [{ day: 1, title: "浅草散策", nodes: [], legs: [], overnightLocation: "", startTime: "09:00" }],
     destination: "東京",
     description: "週末の東京旅行",
     heroImage: null,
     warnings: [],
     metadata: {
-      candidateCount: 8,
-      resolvedCount: 6,
+      candidateCount: 2,
+      resolvedCount: 2,
       modelName: "gemini-2.5-flash",
       narrativeModelName: "gemini-2.5-flash",
       modelTier: "flash",
@@ -152,7 +196,10 @@ describe("useComposeGeneration", () => {
 
   it("completes two-phase generation and navigates to saved local plan", async () => {
     mockFetch
-      .mockResolvedValueOnce(MOCK_STRUCTURE_SUCCESS)
+      .mockResolvedValueOnce(MOCK_SEED_SUCCESS)
+      .mockResolvedValueOnce(MOCK_SPOTS_SUCCESS(1))
+      .mockResolvedValueOnce(MOCK_SPOTS_SUCCESS(2))
+      .mockResolvedValueOnce(MOCK_ASSEMBLE_SUCCESS)
       .mockResolvedValueOnce(MOCK_NARRATE_SUCCESS);
 
     const { result } = renderHook(() => useComposeGeneration());
@@ -167,11 +214,26 @@ describe("useComposeGeneration", () => {
 
     expect(mockFetch).toHaveBeenNthCalledWith(
       1,
-      "/api/itinerary/plan/structure",
+      "/api/itinerary/plan/seed",
       expect.objectContaining({ method: "POST" })
     );
     expect(mockFetch).toHaveBeenNthCalledWith(
       2,
+      "/api/itinerary/plan/spots",
+      expect.objectContaining({ method: "POST" })
+    );
+    expect(mockFetch).toHaveBeenNthCalledWith(
+      3,
+      "/api/itinerary/plan/spots",
+      expect.objectContaining({ method: "POST" })
+    );
+    expect(mockFetch).toHaveBeenNthCalledWith(
+      4,
+      "/api/itinerary/plan/assemble",
+      expect.objectContaining({ method: "POST" })
+    );
+    expect(mockFetch).toHaveBeenNthCalledWith(
+      5,
       "/api/itinerary/plan/narrate",
       expect.objectContaining({ method: "POST" })
     );
@@ -211,7 +273,7 @@ describe("useComposeGeneration", () => {
 
     expect(result.current.errorMessage).toBe("");
     expect(mockPush).not.toHaveBeenCalled();
-    expect(mockFetch).toHaveBeenCalledTimes(1); // only structure, no narrate
+    expect(mockFetch).toHaveBeenCalledTimes(1); // only seed, no further calls
   });
 
   it("surfaces step failure error from structure phase", async () => {
@@ -255,7 +317,10 @@ describe("useComposeGeneration", () => {
 
   it("clears partial days when narrate SSE stream ends without a terminal event", async () => {
     mockFetch
-      .mockResolvedValueOnce(MOCK_STRUCTURE_SUCCESS)
+      .mockResolvedValueOnce(MOCK_SEED_SUCCESS)
+      .mockResolvedValueOnce(MOCK_SPOTS_SUCCESS(1))
+      .mockResolvedValueOnce(MOCK_SPOTS_SUCCESS(2))
+      .mockResolvedValueOnce(MOCK_ASSEMBLE_SUCCESS)
       .mockResolvedValueOnce({
         ok: true,
         status: 200,

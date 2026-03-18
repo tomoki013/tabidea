@@ -1573,7 +1573,29 @@
           "daysCount": "{days}-day trip",
           "checkpointDone": "Done",
           "checkpointActive": "Processing",
-          "checkpointPending": "Pending"
+          "checkpointPending": "Pending",
+          "eyebrow": "Journey now boarding",
+          "leadReady": "Once the trip direction is set, we build each day stop by stop for a steadier result.",
+          "progressLabel": "Overall progress",
+          "currentStepLabel": "Current step",
+          "statusLive": "Updating live",
+          "stageDone": "Done",
+          "stageActive": "In progress",
+          "stagePending": "Pending",
+          "stages": {
+            "concept": {
+              "title": "Shape the trip",
+              "description": "We organize your constraints and lock in the area plan for each day."
+            },
+            "spots": {
+              "title": "Curate real places",
+              "description": "We generate day-sized batches of real spots so the pipeline stays reliable under tight time limits."
+            },
+            "polish": {
+              "title": "Finish the travel story",
+              "description": "We turn the route into a readable itinerary and final presentation."
+            }
+          }
         },
         "composeLoadingTips": {
           "label": "Travel Tip",

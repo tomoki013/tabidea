@@ -1576,7 +1576,29 @@
           "daysCount": "{days}日間の旅",
           "checkpointDone": "完了",
           "checkpointActive": "処理中",
-          "checkpointPending": "待機中"
+          "checkpointPending": "待機中",
+          "eyebrow": "Journey now boarding",
+          "leadReady": "旅の方向性が固まり次第、日ごとの立ち寄り先を順番に組み上げています。",
+          "progressLabel": "全体の進行",
+          "currentStepLabel": "ただいまの工程",
+          "statusLive": "リアルタイムで更新中",
+          "stageDone": "完了",
+          "stageActive": "進行中",
+          "stagePending": "待機中",
+          "stages": {
+            "concept": {
+              "title": "旅の骨格づくり",
+              "description": "条件を整理し、日ごとのエリア設計を固めています。"
+            },
+            "spots": {
+              "title": "立ち寄り先を選定",
+              "description": "各日ごとに実在スポットを小さく分けて選び、タイムアウトを避けながら精度を上げます。"
+            },
+            "polish": {
+              "title": "しおりとして仕上げ",
+              "description": "読みやすい旅程文と最終の見せ方を整えています。"
+            }
+          }
         },
         "composeLoadingTips": {
           "label": "旅の豆知識",
