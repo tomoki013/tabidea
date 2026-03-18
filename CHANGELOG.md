@@ -9,6 +9,10 @@
 
 ## 開発者向けコミット履歴（コミット単位）
 
+### 2026-03-18
+
+- `local` fix(compose-pipeline,streaming-ui): プラン生成のスポット品質とSSEストリーミングUIを改善。① deterministic fallback（`${destination}の人気ランチ店` 等の汎用スポット名）を廃止し、AIがタイムアウトした場合はプラン生成を失敗として返すよう変更。② semantic planner のプロンプトに具体的スポット名の必須ルールを追加し、生成後に汎用名パターンを検出・除外するバリデーションを導入。③ COMPOSE_DEADLINE_MS を 22s→27s に拡張し、semantic planner の実行猶予を増やしてNetlify 30s制限内でのタイムアウト回避を強化。④ `ComposeLoadingAnimation` を洗練されたミニマルデザインに刷新（絵文字ステップリスト廃止、軌道アニメーション＋ドットインジケーター化）。⑤ `ComposeStreamingView` にローディングアニメーションを追加し、旅の豆知識をSSEストリーミングコンテンツの下・ローディングアニメーションの上に配置。⑥ StreamingDayCard のダークモード対応を強化。
+
 ### 2026-03-13
 
 - `local` perf(planner,compose-ui): 生成完了後に希望入力画面へ戻って見える挙動を解消し、成功ステータス画面を表示したまま詳細ページへ遷移するよう改善。あわせて保存完了後の遷移を先行させ、`refreshPlans` は非同期で後続実行にして体感遷移速度を短縮。

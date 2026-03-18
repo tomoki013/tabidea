@@ -1567,7 +1567,7 @@
         "composeLoadingAnimation": {
           "liveBadge": "Live itinerary build",
           "waiting": "Preparing...",
-          "stepsProgress": "{completed}/{total} steps",
+          "stepsProgress": "{completed} / {total}",
           "footer": "AI is crafting the perfect itinerary..."
         },
         "composeLoadingTips": {

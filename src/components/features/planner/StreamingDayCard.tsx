@@ -94,13 +94,13 @@ export default function StreamingDayCard({ partial, dayNum, outline }: Streaming
         transition={{ duration: 0.3 }}
         className="flex items-center gap-4"
       >
-        <div className="inline-flex items-center gap-4 bg-white py-3 px-6 rounded-r-full shadow-md border border-primary/30 border-l-4 border-l-primary">
+        <div className="inline-flex items-center gap-4 bg-white dark:bg-stone-900 py-3 px-6 rounded-r-full shadow-md border border-stone-200 dark:border-stone-700 border-l-4 border-l-primary">
           <span className="text-4xl font-serif text-primary">{dayNum}</span>
           <div className="flex flex-col">
-            <span className="text-xs text-stone-400 uppercase tracking-widest font-bold">
+            <span className="text-xs text-stone-400 dark:text-stone-500 uppercase tracking-widest font-bold">
               {t("dayLabel")}
             </span>
-            <span className="text-stone-600 font-serif italic text-lg leading-none">
+            <span className="text-stone-600 dark:text-stone-300 font-serif italic text-lg leading-none">
               {partial.title}
             </span>
           </div>
@@ -128,7 +128,7 @@ export default function StreamingDayCard({ partial, dayNum, outline }: Streaming
             {t("activitiesProgress", { current: activityCount, estimated: estimatedTotal })}
           </span>
         </div>
-        <div className="h-1 bg-stone-100 rounded-full overflow-hidden">
+        <div className="h-1 bg-stone-100 dark:bg-stone-800 rounded-full overflow-hidden">
           <motion.div
             className="h-full bg-primary rounded-full"
             animate={{ width: `${progress}%` }}
@@ -147,18 +147,18 @@ export default function StreamingDayCard({ partial, dayNum, outline }: Streaming
             transition={{ duration: 0.35 }}
             className="ml-8 pl-2"
           >
-            <div className="bg-sky-50 border border-sky-200 rounded-xl px-4 py-3 flex items-center gap-3 text-sm text-sky-800">
+            <div className="bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800/40 rounded-xl px-4 py-3 flex items-center gap-3 text-sm text-sky-800 dark:text-sky-200">
               <span className="text-base">{transitIcon}</span>
               <div className="flex flex-col gap-0.5">
                 <span className="font-medium">
                   {partial.transit.departure?.place} → {partial.transit.arrival?.place}
                 </span>
                 {partial.transit.duration && (
-                  <span className="text-xs text-sky-600">{partial.transit.duration}</span>
+                  <span className="text-xs text-sky-600 dark:text-sky-400">{partial.transit.duration}</span>
                 )}
               </div>
               {partial.transit.type && (
-                <span className="ml-auto text-xs text-sky-500 font-medium uppercase tracking-wide">
+                <span className="ml-auto text-xs text-sky-500 dark:text-sky-400 font-medium uppercase tracking-wide">
                   {t("transitArrived")}
                 </span>
               )}
@@ -168,7 +168,7 @@ export default function StreamingDayCard({ partial, dayNum, outline }: Streaming
       </AnimatePresence>
 
       {/* アクティビティ一覧 */}
-      <div className="border-l-2 border-primary/30 ml-8 space-y-4 pb-4">
+      <div className="border-l-2 border-primary/30 dark:border-primary/40 ml-8 space-y-4 pb-4">
         <AnimatePresence>
           {partial.activities?.map((activity, i) => (
             <motion.div
@@ -179,10 +179,10 @@ export default function StreamingDayCard({ partial, dayNum, outline }: Streaming
               className="relative pl-10"
             >
               {/* Timeline dot */}
-              <div className="absolute left-[-9px] top-5 w-4 h-4 rounded-full bg-white border-2 border-primary/40" />
+              <div className="absolute left-[-9px] top-5 w-4 h-4 rounded-full bg-white dark:bg-stone-900 border-2 border-primary/40" />
 
               {/* Activity Card */}
-              <div className="bg-white border border-stone-100 rounded-xl p-4 shadow-sm">
+              <div className="bg-white dark:bg-stone-900 border border-stone-100 dark:border-stone-800 rounded-xl p-4 shadow-sm">
                 <div className="flex items-center gap-2 mb-1">
                   {activity.time && (
                     <span className="text-xs font-mono text-primary bg-primary/10 px-2 py-0.5 rounded-md">
@@ -191,12 +191,12 @@ export default function StreamingDayCard({ partial, dayNum, outline }: Streaming
                   )}
                 </div>
                 {activity.activity && (
-                  <p className="font-medium text-stone-800 text-sm leading-snug">
+                  <p className="font-medium text-stone-800 dark:text-stone-200 text-sm leading-snug">
                     {activity.activity}
                   </p>
                 )}
                 {activity.description && (
-                  <p className="text-stone-500 text-xs mt-1 leading-relaxed line-clamp-2">
+                  <p className="text-stone-500 dark:text-stone-400 text-xs mt-1 leading-relaxed line-clamp-2">
                     {activity.description}
                   </p>
                 )}

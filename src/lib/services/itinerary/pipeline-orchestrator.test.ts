@@ -136,42 +136,7 @@ vi.mock('./steps/narrative-renderer', () => ({
       },
     ],
   }),
-  buildFallbackNarrativeOutput: vi.fn().mockReturnValue({
-    description: '東京の1日旅行',
-    days: [
-      {
-        day: 1,
-        title: '浅草散策',
-        activities: [
-          {
-            node: {
-              stop: {
-                candidate: {
-                  name: '浅草寺',
-                  role: 'must_visit',
-                  priority: 10,
-                  dayHint: 1,
-                  timeSlotHint: 'morning',
-                  stayDurationMinutes: 60,
-                  searchQuery: '浅草寺',
-                },
-                feasibilityScore: 50,
-                warnings: [],
-              },
-              arrivalTime: '08:00',
-              departureTime: '09:00',
-              stayMinutes: 60,
-              warnings: [],
-            },
-            description: '浅草寺',
-            activityName: '浅草寺',
-          },
-        ],
-        legs: [],
-        overnightLocation: '浅草',
-      },
-    ],
-  }),
+  buildFallbackNarrativeOutput: vi.fn(),
   streamNarrativeRendererWithResult: vi.fn().mockResolvedValue({
     dayStream: {
       async *[Symbol.asyncIterator]() {
@@ -458,6 +423,8 @@ describe('pipeline-orchestrator', () => {
 
     const { runSemanticPlanner } = await import('./steps/semantic-planner');
     vi.mocked(runSemanticPlanner).mockImplementationOnce(async () => {
+      // Advance time to leave less than MIN_REMAINING_FOR_NARRATIVE_STREAM_MS (9s)
+      // With 27s deadline, 19_500ms elapsed means 7.5s remaining — below 9s threshold
       fakeNow = 19_500;
       return {
         destination: '東京',
@@ -495,7 +462,7 @@ describe('pipeline-orchestrator', () => {
     nowSpy.mockRestore();
   });
 
-  it('should fallback to deterministic semantic plan when semantic planner times out', async () => {
+  it('should fail when semantic planner times out (no deterministic fallback)', async () => {
     const { runSemanticPlanner } = await import('./steps/semantic-planner');
     const { PipelineStepError } = await import('./errors');
 
@@ -505,54 +472,8 @@ describe('pipeline-orchestrator', () => {
 
     const result = await runComposePipeline(makeTestInput({ mustVisitPlaces: ['浅草寺'] }));
 
-    expect(result.success).toBe(true);
-    expect(result.metadata?.timeoutMitigationUsed).toBe(true);
-    expect(result.metadata?.fallbackUsed).toBe(true);
-    expect(result.itinerary?.destination).toBe('東京');
-  });
-
-
-  it('should keep fallback plans concrete with destination-specific spots', async () => {
-    const { runSemanticPlanner } = await import('./steps/semantic-planner');
-    const { streamNarrativeRendererWithResult } = await import('./steps/narrative-renderer');
-    const { PipelineStepError } = await import('./errors');
-
-    vi.mocked(runSemanticPlanner).mockRejectedValueOnce(
-      new PipelineStepError('semantic_plan', 'semantic_plan timed out before platform deadline')
-    );
-
-    vi.mocked(streamNarrativeRendererWithResult).mockImplementationOnce(async (input) => ({
-      dayStream: {
-        async *[Symbol.asyncIterator]() {
-          return;
-        },
-      },
-      finalOutput: Promise.resolve({
-        description: 'fallback narrative',
-        days: input.timelineDays.map((day) => ({
-          day: day.day,
-          title: day.title,
-          activities: day.nodes.map((node) => ({
-            node,
-            description: node.stop.candidate.name,
-            activityName: node.stop.candidate.name,
-          })),
-          legs: day.legs,
-          overnightLocation: day.overnightLocation,
-        })),
-      }),
-    }));
-
-    const result = await runComposePipeline(makeTestInput({ destinations: ['大阪'] }));
-
-    expect(result.success).toBe(true);
-    const activityNames = result.itinerary?.days.flatMap((day) =>
-      day.activities.map((activity) => activity.activity)
-    ) ?? [];
-
-    expect(activityNames).toContain('大阪城天守閣');
-    expect(activityNames).toContain('黒門市場');
-    expect(activityNames).toContain('道頓堀');
+    expect(result.success).toBe(false);
+    expect(result.failedStep).toBe('semantic_plan');
   });
 
   it('should fallback route/timeline when route optimizer times out near deadline', async () => {
@@ -563,7 +484,8 @@ describe('pipeline-orchestrator', () => {
 
     const optimizeSpy = vi.spyOn(await import('./steps/route-optimizer'), 'optimizeRoutes');
     optimizeSpy.mockImplementationOnce(() => {
-      fakeNow = 20_700;
+      // Advance time to near the 27s deadline
+      fakeNow = 25_500;
       throw new PipelineStepError('route_optimize', 'route_optimize timed out before platform deadline');
     });
 

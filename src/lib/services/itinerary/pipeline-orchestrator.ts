@@ -14,7 +14,6 @@ import type {
   ComposedItinerary,
   ComposePipelineMetadata,
   NormalizedRequest,
-  SemanticPlan,
   OptimizedDay,
   TimelineDay,
   DayStructure,
@@ -28,7 +27,6 @@ import { optimizeRoutes } from './steps/route-optimizer';
 import { buildTimeline } from './steps/timeline-builder';
 import {
   runNarrativeRenderer,
-  buildFallbackNarrativeOutput,
   streamNarrativeRendererWithResult,
 } from './steps/narrative-renderer';
 import { composedToItinerary } from './adapter';
@@ -41,18 +39,18 @@ import { checkAndRecordUsage } from '@/lib/limits/check';
 // Re-export for backward compatibility
 export { PipelineStepError } from './errors';
 
-const COMPOSE_DEADLINE_MS = 22_000;
+const COMPOSE_DEADLINE_MS = 27_000;
 const MIN_REMAINING_FOR_PLACE_RESOLVE_MS = 9_000;
 const MIN_REMAINING_FOR_HERO_IMAGE_MS = 2_500;
-const MIN_REMAINING_FOR_SEMANTIC_RETRY_MS = 14_000;
-const MIN_REMAINING_FOR_SEMANTIC_LLM_MS = 5_500;
+const MIN_REMAINING_FOR_SEMANTIC_RETRY_MS = 18_000;
+const MIN_REMAINING_FOR_SEMANTIC_LLM_MS = 8_000;
 const MIN_REMAINING_FOR_NARRATIVE_LLM_MS = 6_500;
 const MIN_REMAINING_FOR_NARRATIVE_STREAM_MS = 9_000;
-const MIN_REMAINING_FOR_SEMANTIC_FAST_MODE_MS = 18_000;
+const MIN_REMAINING_FOR_SEMANTIC_FAST_MODE_MS = 22_000;
 const MIN_REMAINING_FOR_ROUTE_OPTIMIZE_MS = 1_800;
 const MIN_REMAINING_FOR_TIMELINE_BUILD_MS = 1_200;
-const MIN_REMAINING_FOR_POST_SEMANTIC_STEPS_MS = 4_200;
-const SEMANTIC_STEP_RESERVE_MS = 5_000;
+const MIN_REMAINING_FOR_POST_SEMANTIC_STEPS_MS = 5_000;
+const SEMANTIC_STEP_RESERVE_MS = 6_000;
 const DEADLINE_RESERVE_MS = 2_000;
 
 function getItineraryProvider(): 'gemini' | 'openai' {
@@ -103,137 +101,6 @@ function isTimeoutLikeError(error: unknown): boolean {
   }
 
   return false;
-}
-
-interface DeterministicFallbackTemplate {
-  name: string;
-  searchQuery: string;
-  role: 'recommended' | 'meal';
-  timeSlotHint: 'morning' | 'midday' | 'evening';
-  stayDurationMinutes: number;
-  areaHint?: string;
-}
-
-const DETERMINISTIC_FALLBACK_TEMPLATES: Record<string, DeterministicFallbackTemplate[]> = {
-  '東京': [
-    { name: '浅草寺', searchQuery: '浅草寺', role: 'recommended', timeSlotHint: 'morning', stayDurationMinutes: 80, areaHint: '浅草' },
-    { name: '築地場外市場', searchQuery: '築地場外市場', role: 'meal', timeSlotHint: 'midday', stayDurationMinutes: 75, areaHint: '築地' },
-    { name: '東京タワー', searchQuery: '東京タワー', role: 'recommended', timeSlotHint: 'evening', stayDurationMinutes: 70, areaHint: '芝公園' },
-  ],
-  '大阪': [
-    { name: '大阪城天守閣', searchQuery: '大阪城天守閣', role: 'recommended', timeSlotHint: 'morning', stayDurationMinutes: 90, areaHint: '大阪城公園' },
-    { name: '黒門市場', searchQuery: '黒門市場', role: 'meal', timeSlotHint: 'midday', stayDurationMinutes: 70, areaHint: '日本橋' },
-    { name: '道頓堀', searchQuery: '道頓堀', role: 'recommended', timeSlotHint: 'evening', stayDurationMinutes: 80, areaHint: 'ミナミ' },
-  ],
-  '京都': [
-    { name: '清水寺', searchQuery: '清水寺', role: 'recommended', timeSlotHint: 'morning', stayDurationMinutes: 90, areaHint: '東山' },
-    { name: '錦市場', searchQuery: '錦市場', role: 'meal', timeSlotHint: 'midday', stayDurationMinutes: 70, areaHint: '四条' },
-    { name: '伏見稲荷大社', searchQuery: '伏見稲荷大社', role: 'recommended', timeSlotHint: 'evening', stayDurationMinutes: 85, areaHint: '伏見' },
-  ],
-  '福岡': [
-    { name: '太宰府天満宮', searchQuery: '太宰府天満宮', role: 'recommended', timeSlotHint: 'morning', stayDurationMinutes: 85, areaHint: '太宰府' },
-    { name: '柳橋連合市場', searchQuery: '柳橋連合市場', role: 'meal', timeSlotHint: 'midday', stayDurationMinutes: 65, areaHint: '博多' },
-    { name: '中洲屋台街', searchQuery: '中洲屋台街', role: 'recommended', timeSlotHint: 'evening', stayDurationMinutes: 80, areaHint: '中洲' },
-  ],
-  '札幌': [
-    { name: '大通公園', searchQuery: '大通公園', role: 'recommended', timeSlotHint: 'morning', stayDurationMinutes: 75, areaHint: '中央区' },
-    { name: '二条市場', searchQuery: '二条市場', role: 'meal', timeSlotHint: 'midday', stayDurationMinutes: 65, areaHint: '中央区' },
-    { name: '藻岩山展望台', searchQuery: '藻岩山展望台', role: 'recommended', timeSlotHint: 'evening', stayDurationMinutes: 85, areaHint: '南区' },
-  ],
-};
-
-function resolveDeterministicTemplates(destination: string): DeterministicFallbackTemplate[] {
-  const exact = DETERMINISTIC_FALLBACK_TEMPLATES[destination];
-  if (exact) {
-    return exact;
-  }
-
-  const partial = Object.entries(DETERMINISTIC_FALLBACK_TEMPLATES).find(([key]) =>
-    destination.includes(key) || key.includes(destination)
-  );
-  if (partial) {
-    return partial[1];
-  }
-
-  return [
-    {
-      name: `${destination}駅周辺の代表スポット`,
-      searchQuery: `${destination} 観光名所`,
-      role: 'recommended',
-      timeSlotHint: 'morning',
-      stayDurationMinutes: 80,
-      areaHint: `${destination}駅周辺`,
-    },
-    {
-      name: `${destination}の人気ランチ店`,
-      searchQuery: `${destination} ご当地ランチ`,
-      role: 'meal',
-      timeSlotHint: 'midday',
-      stayDurationMinutes: 65,
-      areaHint: destination,
-    },
-    {
-      name: `${destination}の夜景スポット`,
-      searchQuery: `${destination} 夜景スポット`,
-      role: 'recommended',
-      timeSlotHint: 'evening',
-      stayDurationMinutes: 80,
-      areaHint: destination,
-    },
-  ];
-}
-
-function buildDeterministicSemanticPlan(request: NormalizedRequest): SemanticPlan {
-  const destination = request.destinations[0] ?? (request.region === 'domestic' ? '日本' : '海外');
-  const baseThemes = request.themes.length > 0 ? request.themes : ['観光'];
-  const templates = resolveDeterministicTemplates(destination);
-
-  const dayStructure = Array.from({ length: request.durationDays }, (_, idx) => ({
-    day: idx + 1,
-    title: `${idx + 1}日目の${destination}散策`,
-    mainArea: destination,
-    overnightLocation: destination,
-    summary: `${destination}を無理なく巡るプラン`,
-  }));
-
-  const mustVisits = request.mustVisitPlaces.map((place, index) => ({
-    name: place,
-    role: 'must_visit' as const,
-    priority: 10,
-    dayHint: Math.min(index + 1, request.durationDays),
-    timeSlotHint: 'flexible' as const,
-    stayDurationMinutes: 75,
-    searchQuery: place,
-    semanticId: crypto.randomUUID(),
-    areaHint: destination,
-  }));
-
-  const fillerCandidates = dayStructure.flatMap((day) =>
-    templates.map((template, index) => ({
-      name: template.name,
-      role: template.role,
-      priority: template.role === 'meal' ? 6 : 7 - index,
-      dayHint: day.day,
-      timeSlotHint: template.timeSlotHint,
-      stayDurationMinutes: template.stayDurationMinutes,
-      searchQuery: template.searchQuery,
-      semanticId: crypto.randomUUID(),
-      areaHint: template.areaHint ?? destination,
-    }))
-  );
-
-  const candidates = [...mustVisits, ...fillerCandidates];
-
-  return {
-    destination,
-    description: `${destination}の${request.durationDays}日間プラン`,
-    candidates,
-    dayStructure,
-    themes: baseThemes,
-    tripIntentSummary: `${destination}を無理なく楽しむ`,
-    orderingPreferences: ['午前に主要スポット', '昼食を挟んでエリア内を回遊'],
-    fallbackHints: ['主要エリア優先', '移動時間を短く保つ'],
-  };
 }
 
 function buildFallbackOptimizedDays(
@@ -512,38 +379,27 @@ export async function runComposePipeline(
     }
     const semanticPlan = await timer.measure('semantic_plan', async () => {
       if (remainingTimeMs() < MIN_REMAINING_FOR_SEMANTIC_LLM_MS) {
-        timeoutMitigationUsed = true;
-        fallbackUsed = true;
-        emitProgress('semantic_plan', '時間制限のため軽量プランで継続中...');
-        return buildDeterministicSemanticPlan(normalizedRequest);
+        throw new PipelineStepError(
+          'semantic_plan',
+          'AIスポット生成に十分な時間がありません。もう一度お試しください。'
+        );
       }
 
-      try {
-        const semanticReserve = remainingTimeMs() > MIN_REMAINING_FOR_POST_SEMANTIC_STEPS_MS
-          ? Math.max(DEADLINE_RESERVE_MS, SEMANTIC_STEP_RESERVE_MS)
-          : DEADLINE_RESERVE_MS;
+      const semanticReserve = remainingTimeMs() > MIN_REMAINING_FOR_POST_SEMANTIC_STEPS_MS
+        ? Math.max(DEADLINE_RESERVE_MS, SEMANTIC_STEP_RESERVE_MS)
+        : DEADLINE_RESERVE_MS;
 
-        return await runWithDeadline('semantic_plan', () => runSemanticPlanner({
-          request: normalizedRequest,
-          context,
-          modelName: semanticModel.modelName,
-          provider,
-          temperature: semanticModel.temperature,
-          retryOnFailure: !semanticFastMode && remainingTimeMs() >= MIN_REMAINING_FOR_SEMANTIC_RETRY_MS,
-          targetCandidateCount: semanticCandidateTarget,
-          fastMode: semanticFastMode,
-          onProgress: (message) => emitProgress('semantic_plan', message),
-        }), semanticReserve);
-      } catch (semanticError) {
-        if (isTimeoutLikeError(semanticError)) {
-          timeoutMitigationUsed = true;
-          fallbackUsed = true;
-          console.warn('[compose-pipeline] semantic planner timed out, using deterministic fallback:', semanticError);
-          emitProgress('semantic_plan', '候補選定を簡略化して継続中...');
-          return buildDeterministicSemanticPlan(normalizedRequest);
-        }
-        throw semanticError;
-      }
+      return await runWithDeadline('semantic_plan', () => runSemanticPlanner({
+        request: normalizedRequest,
+        context,
+        modelName: semanticModel.modelName,
+        provider,
+        temperature: semanticModel.temperature,
+        retryOnFailure: !semanticFastMode && remainingTimeMs() >= MIN_REMAINING_FOR_SEMANTIC_RETRY_MS,
+        targetCandidateCount: semanticCandidateTarget,
+        fastMode: semanticFastMode,
+        onProgress: (message) => emitProgress('semantic_plan', message),
+      }), semanticReserve);
     });
 
     const candidateCount = semanticPlan.candidates.length;
@@ -593,8 +449,8 @@ export async function runComposePipeline(
     if (placeResolveEnabled) {
       const remainingBeforeResolve = remainingTimeMs();
       if (remainingBeforeResolve < MIN_REMAINING_FOR_PLACE_RESOLVE_MS) {
+        // Skip place resolve but still use AI-generated candidates (they have specific names)
         timeoutMitigationUsed = true;
-        fallbackUsed = true;
         emitProgress('place_resolve', 'スポット照合を時間制限のためスキップ中...');
         emitProgress('feasibility_score', '実現性チェックを時間制限のため簡略化中...');
         console.info('[compose-pipeline] skipping place resolve due to deadline', {
@@ -822,15 +678,14 @@ export async function runComposePipeline(
     const narrative = await timer.measure('narrative_render', async () => {
       if (remainingTimeMs() < MIN_REMAINING_FOR_NARRATIVE_LLM_MS) {
         timeoutMitigationUsed = true;
-        fallbackUsed = true;
-        return buildFallbackNarrativeOutput(timelineDays, normalizedRequest);
+        // Use non-streaming fallback which is faster than streaming
+        return await runWithDeadline('narrative_render', () => runNarrativeRenderer(narrativeInput));
       }
 
       try {
         if (remainingTimeMs() < MIN_REMAINING_FOR_NARRATIVE_STREAM_MS) {
           timeoutMitigationUsed = true;
-          fallbackUsed = true;
-          return buildFallbackNarrativeOutput(timelineDays, normalizedRequest);
+          return await runWithDeadline('narrative_render', () => runNarrativeRenderer(narrativeInput));
         }
 
         const streamResult = await runWithDeadline(
@@ -853,19 +708,8 @@ export async function runComposePipeline(
       } catch (streamError) {
         console.warn('[compose-pipeline] streamNarrativeRenderer failed, falling back to generateObject:', streamError);
         fallbackUsed = true;
-        if (remainingTimeMs() < MIN_REMAINING_FOR_NARRATIVE_LLM_MS) {
-          timeoutMitigationUsed = true;
-          return buildFallbackNarrativeOutput(timelineDays, normalizedRequest);
-        }
-
-        try {
-          return await runWithDeadline('narrative_render', () => runNarrativeRenderer(narrativeInput));
-        } catch (narrativeError) {
-          timeoutMitigationUsed = timeoutMitigationUsed || isTimeoutLikeError(narrativeError);
-          fallbackUsed = true;
-          console.warn('[compose-pipeline] narrative renderer fallback failed, using deterministic narrative:', narrativeError);
-          return buildFallbackNarrativeOutput(timelineDays, normalizedRequest);
-        }
+        // Try non-streaming as last resort — if this also fails, the pipeline fails
+        return await runWithDeadline('narrative_render', () => runNarrativeRenderer(narrativeInput));
       }
     });
 
