@@ -11,7 +11,8 @@
 
 ### 2026-03-18
 
-- `local` fix(compose-pipeline,streaming-ui): プラン生成のスポット品質とSSEストリーミングUIを改善。① deterministic fallback（`${destination}の人気ランチ店` 等の汎用スポット名）を廃止し、AIがタイムアウトした場合はプラン生成を失敗として返すよう変更。② semantic planner のプロンプトに具体的スポット名の必須ルールを追加し、生成後に汎用名パターンを検出・除外するバリデーションを導入。③ COMPOSE_DEADLINE_MS を 22s→27s に拡張し、semantic planner の実行猶予を増やしてNetlify 30s制限内でのタイムアウト回避を強化。④ `ComposeLoadingAnimation` を洗練されたミニマルデザインに刷新（絵文字ステップリスト廃止、軌道アニメーション＋ドットインジケーター化）。⑤ `ComposeStreamingView` にローディングアニメーションを追加し、旅の豆知識をSSEストリーミングコンテンツの下・ローディングアニメーションの上に配置。⑥ StreamingDayCard のダークモード対応を強化。
+- `local` fix(compose-pipeline,streaming-ui): プラン生成のスポット品質とSSEストリーミングUIを改善。① deterministic fallback（`${destination}の人気ランチ店` 等の汎用スポット名）を廃止し、AIがタイムアウトした場合はプラン生成を失敗として返すよう変更。② semantic planner のプロンプトに具体的スポット名の必須ルールを追加し、生成後に汎用名パターンを検出・除外するバリデーションを導入。③ COMPOSE_DEADLINE_MS を 22s→26s に拡張し、maxDuration を 28s に設定してタイムアウト回避を強化。④ `ComposeLoadingAnimation` を洗練されたミニマルデザインに刷新（絵文字ステップリスト廃止、軌道アニメーション＋ドットインジケーター化）。⑤ `ComposeStreamingView` にローディングアニメーションを追加し、旅の豆知識をSSEストリーミングコンテンツの下・ローディングアニメーションの上に配置。⑥ StreamingDayCard のダークモード対応を強化。
+- `local` fix(compose): レビュー修正 — maxDuration(28s) と COMPOSE_DEADLINE_MS(26s) の不整合を解消、semantic planner の fastMode プロンプトルール番号重複を修正、narrative render の最終フォールバック（buildFallbackNarrativeOutput）を復元（スポット名はセマンティックプラン段階で検証済みのため品質に影響なし）。テストモックを NarrativeRendererOutput の正しい構造に修正。
 
 ### 2026-03-13
 
