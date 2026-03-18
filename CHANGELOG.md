@@ -9,7 +9,11 @@
 
 ## 開発者向けコミット履歴（コミット単位）
 
-### 2026-03-18
+### 2026-03-18 (2回目)
+
+- `claude/remove-ai-spots-optimize-cOHOd` refactor(compose-pipeline,planner): Netlifyバックグラウンドジョブシステムを廃止し、クライアント主導の2フェーズパイプラインに刷新。① Netlify Background Function（`compose-background.ts`、`experimental-background`）と関連する compose-jobs API（`/api/itinerary/compose-jobs` / `[jobId]`）・`ComposeJobStore` ・`processComposeJob` を完全削除。② プラン生成を「Structureフェーズ（`/api/itinerary/plan/structure`、≤9s）」と「Narrateフェーズ（`/api/itinerary/plan/narrate`、SSEストリーム、≤9s）」に分割し、各関数エンドポイントがNetlify無料プランの10秒制限内に完結するよう設計。③ `pipeline-orchestrator.ts` に `runStructurePipeline()`（steps 0-6、deadline 9s）と `runNarratePipeline()`（step 7、deadline 8.5s）を追加。Structureフェーズは常にfast mode・候補数上限10件でsemantic plannerを実行し、place resolveは残時間不足時はスキップ。Narrateフェーズはタイムアウト時に `buildFallbackNarrativeOutput` で確定的ナレーション生成にフォールバック。④ `useComposeGeneration` から compose-jobs ポーリングロジックと legacy SSE フォールバックを除去し、新2フェーズAPIを直列呼び出しするシンプルな実装に刷新。クライアントが中間データ（timeline + normalizedRequest）を保持するためサーバー側ストレージ不要。⑤ `/api/itinerary/compose`（レガシーSSEエンドポイント）の `maxDuration` を28s→9sに引き下げ。⑥ `ComposeLoadingAnimation` をAI感のないトラベルルートビジュアルに刷新。水平ルートライン・チェックポイントドット・目的地テキストが順に出現するアニメーションに変更（絵文字・軌道回転・パルス円廃止）。目的地名と旅行日数を確定後即座に表示。
+
+### 2026-03-18 (1回目)
 
 - `local` fix(compose-pipeline,streaming-ui): プラン生成のスポット品質とSSEストリーミングUIを改善。① deterministic fallback（`${destination}の人気ランチ店` 等の汎用スポット名）を廃止し、AIがタイムアウトした場合はプラン生成を失敗として返すよう変更。② semantic planner のプロンプトに具体的スポット名の必須ルールを追加し、生成後に汎用名パターンを検出・除外するバリデーションを導入。③ COMPOSE_DEADLINE_MS を 22s→26s に拡張し、maxDuration を 28s に設定してタイムアウト回避を強化。④ `ComposeLoadingAnimation` を洗練されたミニマルデザインに刷新（絵文字ステップリスト廃止、軌道アニメーション＋ドットインジケーター化）。⑤ `ComposeStreamingView` にローディングアニメーションを追加し、旅の豆知識をSSEストリーミングコンテンツの下・ローディングアニメーションの上に配置。⑥ StreamingDayCard のダークモード対応を強化。
 - `local` fix(compose): レビュー修正 — maxDuration(28s) と COMPOSE_DEADLINE_MS(26s) の不整合を解消、semantic planner の fastMode プロンプトルール番号重複を修正、narrative render の最終フォールバック（buildFallbackNarrativeOutput）を復元（スポット名はセマンティックプラン段階で検証済みのため品質に影響なし）。テストモックを NarrativeRendererOutput の正しい構造に修正。

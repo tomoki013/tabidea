@@ -40,6 +40,7 @@ import { checkAndRecordUsage } from '@/lib/limits/check';
 // Re-export for backward compatibility
 export { PipelineStepError } from './errors';
 
+// ---- Legacy single-function pipeline constants (kept for runComposePipeline) ----
 const COMPOSE_DEADLINE_MS = 26_000;
 const MIN_REMAINING_FOR_PLACE_RESOLVE_MS = 9_000;
 const MIN_REMAINING_FOR_HERO_IMAGE_MS = 2_500;
@@ -53,6 +54,21 @@ const MIN_REMAINING_FOR_TIMELINE_BUILD_MS = 1_200;
 const MIN_REMAINING_FOR_POST_SEMANTIC_STEPS_MS = 5_000;
 const SEMANTIC_STEP_RESERVE_MS = 6_000;
 const DEADLINE_RESERVE_MS = 2_000;
+
+// ---- Split pipeline constants ----
+// Structure phase: steps 0-6 (no narrative), must complete in <9s (Netlify free plan safe)
+const STRUCTURE_DEADLINE_MS = 9_000;
+const STRUCTURE_MIN_SEMANTIC_LLM_MS = 5_500;   // need at least 5.5s for AI
+const STRUCTURE_SEMANTIC_RESERVE_MS = 500;       // reserve 500ms after semantic step
+const STRUCTURE_PLACE_RESOLVE_MS = 2_500;        // skip place resolve if <2.5s remaining
+const STRUCTURE_ROUTE_OPTIMIZE_MS = 1_000;
+const STRUCTURE_TIMELINE_BUILD_MS = 600;
+const STRUCTURE_DEADLINE_RESERVE_MS = 300;
+
+// Narrate phase: step 7 only (narrative render), must complete in <9s
+const NARRATE_DEADLINE_MS = 8_500;
+const NARRATE_MIN_LLM_MS = 5_000;               // need at least 5s for any LLM call
+const NARRATE_DEADLINE_RESERVE_MS = 500;
 
 function getItineraryProvider(): 'gemini' | 'openai' {
   const provider = process.env.AI_PROVIDER_ITINERARY;
@@ -868,6 +884,430 @@ export async function runComposePipeline(
       warnings: allWarnings,
       failedStep,
       message: error instanceof Error ? error.message : 'Pipeline execution failed',
+    };
+  }
+}
+
+// ============================================
+// Split Pipeline: Phase 1 — Structure
+// (usage_check → normalize → semantic_plan →
+//  place_resolve → feasibility → route → timeline)
+// Target: < 9 seconds, no narrative rendering
+// ============================================
+
+export interface StructurePipelineResult {
+  success: boolean;
+  // success fields
+  timeline?: TimelineDay[];
+  normalizedRequest?: NormalizedRequest;
+  destination?: string;
+  description?: string;
+  heroImage?: { url: string; photographer: string; photographerUrl: string };
+  warnings: string[];
+  metadata?: {
+    candidateCount: number;
+    resolvedCount: number;
+    modelName: string;
+    narrativeModelName: string;
+    modelTier: 'flash' | 'pro';
+    provider: string;
+    timeoutMitigationUsed: boolean;
+  };
+  // failure fields
+  failedStep?: string;
+  limitExceeded?: boolean;
+  userType?: string;
+  resetAt?: string | null;
+  remaining?: number;
+  message?: string;
+}
+
+export type StructureProgressCallback = (event: ComposeProgressEvent) => void;
+
+export async function runStructurePipeline(
+  input: UserInput,
+  options?: ComposeOptions,
+  onProgress?: StructureProgressCallback
+): Promise<StructurePipelineResult> {
+  const timer = createComposeTimer();
+  const allWarnings: string[] = [];
+  const runId = crypto.randomUUID();
+  const logger = new GenerationRunLogger(runId);
+  const pipelineStartedAt = Date.now();
+  const deadlineAt = pipelineStartedAt + STRUCTURE_DEADLINE_MS;
+  let timeoutMitigationUsed = false;
+
+  const remainingTimeMs = () => deadlineAt - Date.now();
+
+  const createDeadlineError = (step: PipelineStepId, message: string) =>
+    new PipelineStepError(step, message);
+
+  const runWithDeadline = async <T>(
+    step: PipelineStepId,
+    task: () => Promise<T>,
+    reserveMs: number = STRUCTURE_DEADLINE_RESERVE_MS
+  ): Promise<T> => {
+    const totalRemaining = remainingTimeMs();
+    if (totalRemaining <= 0) {
+      throw createDeadlineError(step, `Timed out before ${step}`);
+    }
+    const remaining = Math.max(totalRemaining - reserveMs, 50);
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    try {
+      return await Promise.race([
+        task(),
+        new Promise<T>((_, reject) => {
+          timeoutId = setTimeout(() => {
+            reject(createDeadlineError(step, `${step} timed out before platform deadline`));
+          }, remaining);
+        }),
+      ]);
+    } finally {
+      if (timeoutId) clearTimeout(timeoutId);
+    }
+  };
+
+  const emitProgress = (
+    step: PipelineStepId,
+    message: string,
+    data?: Omit<Extract<ComposeProgressEvent, { type: 'progress' }>, 'type' | 'step' | 'message'>
+  ) => {
+    onProgress?.({ type: 'progress', step, message, ...data });
+  };
+
+  try {
+    // Step 0: Usage check
+    emitProgress('usage_check', '利用状況を確認中...');
+    const usageResult = await timer.measure('usage_check', () =>
+      runWithDeadline('usage_check', () =>
+        checkAndRecordUsage('plan_generation', undefined, { skipConsume: options?.isRetry })
+      )
+    );
+
+    if (!usageResult.allowed) {
+      return {
+        success: false,
+        warnings: [],
+        limitExceeded: true,
+        userType: usageResult.userType,
+        resetAt: usageResult.resetAt?.toISOString() ?? null,
+        remaining: usageResult.remaining,
+        message: 'Usage limit exceeded',
+      };
+    }
+
+    // Step 1: Normalize
+    emitProgress('normalize', '旅の条件を整理中...');
+    const normalizedRequest = await timer.measure('normalize', () =>
+      runWithDeadline('normalize', async () => normalizeRequest(input))
+    );
+
+    // Model resolution
+    const userType = usageResult.userType as UserType;
+    const provider = getItineraryProvider();
+    const semanticModel = resolveModelForPhase('outline', userType, provider);
+    const narrativeModel = resolveModelForPhase('chunk', userType, provider);
+    const modelTier = toComposeModelTier(userType);
+
+    logger.startRun({ pipelineVersion: 'v3-structure', modelName: semanticModel.modelName, modelTier }).catch(() => {});
+
+    // Step 2: Semantic Planner — always fast mode within structure deadline
+    emitProgress('semantic_plan', '候補スポットを選定中...');
+    const context: Article[] = [];
+    // With a 9s total deadline, remaining after step 0+1 is ~8.4s.
+    // Since 8400ms < 22000ms (FAST_MODE threshold), fast mode is always triggered here.
+    const semanticCandidateTarget = Math.min(
+      getSemanticCandidateTarget(normalizedRequest, true), // always cap at fast-mode limit
+      10 // hard cap for structure phase to reduce AI latency
+    );
+
+    const semanticPlan = await timer.measure('semantic_plan', async () => {
+      if (remainingTimeMs() < STRUCTURE_MIN_SEMANTIC_LLM_MS) {
+        throw new PipelineStepError('semantic_plan', 'AIスポット生成に十分な時間がありません。もう一度お試しください。');
+      }
+      return runWithDeadline('semantic_plan', () => runSemanticPlanner({
+        request: normalizedRequest,
+        context,
+        modelName: semanticModel.modelName,
+        provider,
+        temperature: semanticModel.temperature,
+        retryOnFailure: false, // no time for retries in structure phase
+        targetCandidateCount: semanticCandidateTarget,
+        fastMode: true,        // always fast mode
+        onProgress: (message) => emitProgress('semantic_plan', message),
+      }), STRUCTURE_SEMANTIC_RESERVE_MS);
+    });
+
+    // Prefetch hero image in background
+    let heroImagePromise: Promise<StructurePipelineResult['heroImage']> | undefined;
+    if (remainingTimeMs() >= 3_000) {
+      heroImagePromise = (async () => {
+        try {
+          const { getUnsplashImage } = await import('@/lib/unsplash');
+          const image = await getUnsplashImage(semanticPlan.destination);
+          if (!image) return undefined;
+          return { url: image.url, photographer: image.photographer, photographerUrl: image.photographerUrl };
+        } catch { return undefined; }
+      })();
+    }
+
+    const candidateCount = semanticPlan.candidates.length;
+
+    // Step 3: Place Resolver (conditional on time)
+    const placeResolveEnabled = isPlaceResolveEnabled();
+    let stops;
+    let resolvedCount = 0;
+
+    if (placeResolveEnabled && remainingTimeMs() >= STRUCTURE_PLACE_RESOLVE_MS) {
+      emitProgress('place_resolve', '実在スポットに照合中...');
+      const resolvedGroups = await timer.measure('place_resolve', () =>
+        runWithDeadline('place_resolve', () => resolvePlaces(
+          semanticPlan.candidates,
+          semanticPlan.destination,
+          { delayMs: 0, maxCandidates: Math.min(candidateCount, 6) }
+        ))
+      );
+
+      resolvedCount = resolvedGroups.filter((g) => g.success).length;
+
+      // Step 4: Feasibility
+      emitProgress('feasibility_score', '実現性をチェック中...');
+      const { selected, filtered } = await timer.measure('feasibility_score', async () =>
+        runWithDeadline('feasibility_score', async () => scoreAndSelect(resolvedGroups, normalizedRequest))
+      );
+      stops = selected;
+      if (filtered.length > 0) allWarnings.push(`${filtered.length}件の候補がフィルタされました`);
+      for (const stop of stops) allWarnings.push(...stop.warnings);
+    } else {
+      // Skip place resolve — use AI-generated candidates directly
+      if (placeResolveEnabled) timeoutMitigationUsed = true;
+      emitProgress('place_resolve', 'スポット照合をスキップ中...');
+      emitProgress('feasibility_score', '実現性チェックをスキップ中...');
+      stops = candidatesToStops(semanticPlan.candidates);
+    }
+
+    if (stops.length === 0) {
+      return { success: false, warnings: allWarnings, message: '有効なスポットが見つかりませんでした', failedStep: 'feasibility_score' };
+    }
+
+    // Step 5: Route Optimizer
+    emitProgress('route_optimize', '回りやすい順に調整中...');
+    const optimizedDays = await timer.measure('route_optimize', async () => {
+      if (remainingTimeMs() < STRUCTURE_ROUTE_OPTIMIZE_MS) {
+        timeoutMitigationUsed = true;
+        return buildFallbackOptimizedDays(stops, semanticPlan.dayStructure);
+      }
+      try {
+        return await runWithDeadline('route_optimize', async () =>
+          optimizeRoutes(stops, semanticPlan.dayStructure, normalizedRequest, semanticPlan)
+        );
+      } catch (e) {
+        if (isTimeoutLikeError(e)) { timeoutMitigationUsed = true; return buildFallbackOptimizedDays(stops, semanticPlan.dayStructure); }
+        throw e;
+      }
+    });
+
+    // Step 6: Timeline Builder
+    emitProgress('timeline_build', 'タイムラインを作成中...');
+    const timelineDays = await timer.measure('timeline_build', async () => {
+      if (remainingTimeMs() < STRUCTURE_TIMELINE_BUILD_MS) {
+        timeoutMitigationUsed = true;
+        return buildFallbackTimelineDays(optimizedDays);
+      }
+      try {
+        return await runWithDeadline('timeline_build', async () => buildTimeline(optimizedDays, normalizedRequest));
+      } catch (e) {
+        if (isTimeoutLikeError(e)) { timeoutMitigationUsed = true; return buildFallbackTimelineDays(optimizedDays); }
+        throw e;
+      }
+    });
+
+    // Hero image (optional, non-blocking)
+    let heroImage: StructurePipelineResult['heroImage'];
+    if (heroImagePromise) {
+      try {
+        heroImage = await Promise.race([
+          heroImagePromise,
+          new Promise<undefined>((resolve) => setTimeout(() => resolve(undefined), Math.max(remainingTimeMs() - 200, 50))),
+        ]);
+      } catch { /* ignore */ }
+    }
+
+    timer.log();
+    logger.endRun({ success: true, totalDurationMs: Date.now() - pipelineStartedAt, candidateCount, resolvedCount, filteredCount: stops.length }).catch(() => {});
+
+    return {
+      success: true,
+      timeline: timelineDays,
+      normalizedRequest,
+      destination: semanticPlan.destination,
+      description: semanticPlan.description,
+      heroImage,
+      warnings: allWarnings,
+      metadata: {
+        candidateCount,
+        resolvedCount,
+        modelName: semanticModel.modelName,
+        narrativeModelName: narrativeModel.modelName,
+        modelTier,
+        provider,
+        timeoutMitigationUsed,
+      },
+    };
+  } catch (error) {
+    console.error('[structure-pipeline] Pipeline failed:', error);
+    timer.log();
+    const failedStep = error instanceof PipelineStepError ? error.step : undefined;
+    logger.endRun({ success: false, totalDurationMs: Date.now() - pipelineStartedAt, errorMessage: error instanceof Error ? error.message : 'Structure pipeline failed', failedStep }).catch(() => {});
+    return {
+      success: false,
+      warnings: allWarnings,
+      failedStep,
+      message: error instanceof Error ? error.message : 'Structure pipeline failed',
+    };
+  }
+}
+
+// ============================================
+// Split Pipeline: Phase 2 — Narrate
+// (narrative_render only, with streaming support)
+// Target: < 9 seconds, fallback to deterministic
+// ============================================
+
+export interface NarratePipelineInput {
+  timeline: TimelineDay[];
+  normalizedRequest: NormalizedRequest;
+  narrativeModelName: string;
+  provider: string;
+  modelTier?: 'flash' | 'pro';
+}
+
+export interface NarratePipelineResult {
+  success: boolean;
+  itinerary?: Itinerary;
+  heroImage?: { url: string; photographer: string; photographerUrl: string };
+  warnings: string[];
+  failedStep?: string;
+  message?: string;
+}
+
+export type NarrateProgressCallback = (event: ComposeProgressEvent) => void;
+
+export async function runNarratePipeline(
+  structureInput: NarratePipelineInput,
+  options?: {
+    destination?: string;
+    description?: string;
+    heroImage?: NarratePipelineResult['heroImage'];
+    warnings?: string[];
+  },
+  onProgress?: NarrateProgressCallback
+): Promise<NarratePipelineResult> {
+  const { timeline, normalizedRequest, narrativeModelName, provider } = structureInput;
+  const allWarnings: string[] = [...(options?.warnings ?? [])];
+  const pipelineStartedAt = Date.now();
+  const deadlineAt = pipelineStartedAt + NARRATE_DEADLINE_MS;
+
+  const remainingTimeMs = () => deadlineAt - Date.now();
+
+  const emitProgress = (
+    step: PipelineStepId,
+    message: string,
+    data?: Omit<Extract<ComposeProgressEvent, { type: 'progress' }>, 'type' | 'step' | 'message'>
+  ) => {
+    onProgress?.({ type: 'progress', step, message, ...data });
+  };
+
+  const emitDayComplete = (payload: Omit<Extract<ComposeProgressEvent, { type: 'day_complete' }>, 'type' | 'step'>) => {
+    onProgress?.({ type: 'day_complete', step: 'narrative_render', ...payload });
+  };
+
+  const destination = options?.destination ?? normalizedRequest.destinations[0] ?? '';
+  const description = options?.description ?? '';
+  const totalDays = timeline.length;
+
+  try {
+    emitProgress('narrative_render', '旅程を仕上げ中...', { totalDays, destination, description });
+
+    const context: Article[] = [];
+    const narrativeInput = {
+      timelineDays: timeline,
+      request: normalizedRequest,
+      context,
+      modelName: narrativeModelName,
+      provider: provider as import('@/lib/services/ai/providers/types').AIProviderName,
+      temperature: 0.7,
+    };
+
+    let narrative: import('./steps/narrative-renderer').NarrativeRendererOutput;
+
+    if (remainingTimeMs() < NARRATE_MIN_LLM_MS) {
+      // Not enough time — deterministic fallback
+      narrative = buildFallbackNarrativeOutput(timeline, normalizedRequest);
+    } else {
+      try {
+        // Stream per-day narrative
+        const streamResult = await new Promise<import('./steps/narrative-renderer').NarrativeStreamResult>((resolve, reject) => {
+          const timeoutId = setTimeout(() => {
+            reject(new PipelineStepError('narrative_render', 'narrative_render timed out before platform deadline'));
+          }, remainingTimeMs() - NARRATE_DEADLINE_RESERVE_MS);
+          streamNarrativeRendererWithResult(narrativeInput).then((r) => { clearTimeout(timeoutId); resolve(r); }).catch((e) => { clearTimeout(timeoutId); reject(e); });
+        });
+
+        for await (const event of streamResult.dayStream) {
+          emitDayComplete({ day: event.day, dayData: event.dayData, isComplete: event.isComplete, totalDays, destination, description });
+        }
+
+        // Final result (resolved by the stream)
+        narrative = await Promise.race([
+          streamResult.finalOutput,
+          new Promise<never>((_, reject) => setTimeout(() => reject(new Error('final output timeout')), Math.max(remainingTimeMs() - 200, 50))),
+        ]);
+      } catch (streamError) {
+        console.warn('[narrate-pipeline] Streaming failed, using deterministic fallback:', streamError);
+        narrative = buildFallbackNarrativeOutput(timeline, normalizedRequest);
+      }
+    }
+
+    // Assemble itinerary
+    const composed: ComposedItinerary = {
+      destination,
+      description: narrative.description,
+      days: narrative.days,
+      heroImage: options?.heroImage,
+      warnings: allWarnings,
+      metadata: {
+        pipelineVersion: 'v3',
+        candidateCount: 0,
+        resolvedCount: 0,
+        filteredCount: 0,
+        placeResolveEnabled: false,
+        stepTimings: { narrative_render: Date.now() - pipelineStartedAt },
+        modelName: narrativeModelName,
+        modelTier: structureInput.modelTier ?? 'flash',
+        warningCount: allWarnings.length,
+        droppedCandidateCount: 0,
+        fallbackUsed: false,
+        timeoutMitigationUsed: false,
+        compactionApplied: normalizedRequest.compaction?.applied ?? false,
+        hardConstraintCount: normalizedRequest.compaction?.hardConstraintCount ?? 0,
+        softPreferenceCount: normalizedRequest.compaction?.softPreferenceCount ?? 0,
+        suppressedSoftPreferenceCount: normalizedRequest.compaction?.suppressedSoftPreferenceCount ?? 0,
+      },
+    };
+
+    const modelInfo: ModelInfo = { modelName: narrativeModelName, tier: structureInput.modelTier ?? 'flash' };
+    const itinerary = composedToItinerary(composed, modelInfo);
+
+    return { success: true, itinerary, heroImage: options?.heroImage, warnings: allWarnings };
+  } catch (error) {
+    console.error('[narrate-pipeline] Failed:', error);
+    const failedStep = error instanceof PipelineStepError ? error.step : undefined;
+    return {
+      success: false,
+      warnings: allWarnings,
+      failedStep,
+      message: error instanceof Error ? error.message : 'Narrate pipeline failed',
     };
   }
 }

@@ -1568,10 +1568,15 @@
           }
         },
         "composeLoadingAnimation": {
-          "liveBadge": "旅程をライブ生成中",
-          "waiting": "準備中...",
+          "waiting": "出発の準備中...",
+          "phase1Label": "ルートを設計中",
+          "phase2Label": "旅程を仕上げ中",
+          "destinationRevealed": "{destination}",
           "stepsProgress": "{completed} / {total}",
-          "footer": "AIが最適な旅程を組み立てています..."
+          "daysCount": "{days}日間の旅",
+          "checkpointDone": "完了",
+          "checkpointActive": "処理中",
+          "checkpointPending": "待機中"
         },
         "composeLoadingTips": {
           "label": "旅の豆知識",
