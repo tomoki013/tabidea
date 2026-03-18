@@ -1575,25 +1575,26 @@
           "checkpointActive": "Processing",
           "checkpointPending": "Pending",
           "eyebrow": "Journey now boarding",
-          "leadReady": "Once the trip direction is set, we build each day stop by stop for a steadier result.",
+          "leadReady": "Once the destination is set, we build the plan day by day in order.",
           "progressLabel": "Overall progress",
           "currentStepLabel": "Current step",
-          "statusLive": "Updating live",
+          "statusLive": "Live progress",
+          "stepListLabel": "Progress checklist",
           "stageDone": "Done",
           "stageActive": "In progress",
           "stagePending": "Pending",
           "stages": {
             "concept": {
               "title": "Shape the trip",
-              "description": "We organize your constraints and lock in the area plan for each day."
+              "description": "We decide the overall flow and what each day should feel like."
             },
             "spots": {
               "title": "Curate real places",
-              "description": "We generate day-sized batches of real spots so the pipeline stays reliable under tight time limits."
+              "description": "We choose concrete places for each day and fill in the sightseeing stops."
             },
             "polish": {
               "title": "Finish the travel story",
-              "description": "We turn the route into a readable itinerary and final presentation."
+              "description": "We tidy up the timing and wording so the itinerary is easy to follow."
             }
           }
         },
