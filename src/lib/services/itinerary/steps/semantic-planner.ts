@@ -23,6 +23,10 @@ import {
 } from '@/lib/services/ai/schemas/compose-schemas';
 import { buildContextSandwich } from '@/lib/services/ai/prompt-builder';
 import { PipelineStepError } from '../errors';
+import {
+  buildDestinationEssentialsPrompt,
+  mergeDestinationEssentialCandidates,
+} from '../destination-essentials';
 
 // ============================================
 // Public API
@@ -292,6 +296,8 @@ export async function runSemanticDayPlanner(
 
   return sanitizeSemanticCandidates(
     result.object as SemanticDayPlanOutput,
+    request,
+    seed.dayStructure,
     day,
     existingCandidates
   );
@@ -320,7 +326,12 @@ function buildSemanticPlanResult(
     request.mustVisitPlaces,
     request.durationDays
   );
-  const limitedCandidates = limitCandidates(mergedCandidates, targetCandidateCount);
+  const groundedCandidates = mergeDestinationEssentialCandidates({
+    request,
+    candidates: mergedCandidates,
+    dayStructure: plan.dayStructure,
+  });
+  const limitedCandidates = limitCandidates(groundedCandidates, targetCandidateCount);
   const constrainedDayStructure = applyHotelConstraintsToDayStructure(
     plan.dayStructure,
     request
@@ -394,6 +405,11 @@ function buildSemanticPlannerPrompt(
     }
   }
 
+  const destinationEssentialsPrompt = buildDestinationEssentialsPrompt(request);
+  if (destinationEssentialsPrompt) {
+    prompt += `\n${destinationEssentialsPrompt}\n`;
+  }
+
   if (request.fixedSchedule.length > 0) {
     prompt += `\n予約済み:\n`;
     for (const fs of request.fixedSchedule) {
@@ -415,10 +431,11 @@ function buildSemanticPlannerPrompt(
 7. 説明文は簡潔にする
 8. 絶対条件は必ず守る
 9. 参考条件は全てを機械的に盛り込まず、全体のまとまりを優先して良い感じに反映する
-10. 【最重要】name と searchQuery には必ず実在する具体的なスポット名・店名を入れること。「人気ランチ店」「おすすめカフェ」「代表スポット」「夜景スポット」のような曖昧・総称的な名前は絶対に禁止。レストランなら「Café de Flore」「一蘭 渋谷店」のように固有名詞を使うこと`;
+10. 【最重要】name と searchQuery には必ず実在する具体的なスポット名・店名を入れること。「人気ランチ店」「おすすめカフェ」「代表スポット」「夜景スポット」のような曖昧・総称的な名前は絶対に禁止。レストランなら「Café de Flore」「一蘭 渋谷店」のように固有名詞を使うこと
+11. ユーザー条件と矛盾しない範囲で、その都市を代表する定番名所を候補から落とさないこと`;
 
   if (fastMode) {
-    prompt += `\n11. 速度優先。エリアの重複を避け、候補は厳選してください`;
+    prompt += `\n12. 速度優先。エリアの重複を避け、候補は厳選してください`;
   }
 
   return prompt;
@@ -457,6 +474,13 @@ function buildSemanticSeedPrompt(request: NormalizedRequest): string {
   if (request.softPreferences.rankedRequests.length > 0) {
     prompt += `\n\n参考にする希望:\n${request.softPreferences.rankedRequests.map((line) => `- ${line}`).join('\n')}`;
   }
+
+  const destinationEssentialsPrompt = buildDestinationEssentialsPrompt(request);
+  if (destinationEssentialsPrompt) {
+    prompt += `\n\n${destinationEssentialsPrompt}`;
+  }
+
+  prompt += `\n\n7. 旅のテーマと矛盾しない範囲で、その都市を代表する定番名所を少なくともいくつか骨格に含める`;
 
   return prompt;
 }
@@ -502,8 +526,12 @@ ${mustVisitForDay.length > 0 ? mustVisitForDay.map((name) => `- ${name}`).join('
 3. name と searchQuery には必ず実在する具体的な固有名詞を入れる
 4. 既に他の日で出した候補は重複禁止
 5. meal は最大1件まで、残りは観光・体験・休憩のバランスをとる
-6. なるべく ${currentDayStructure.mainArea} 周辺でまとまりよく選ぶ`;
+6. なるべく ${currentDayStructure.mainArea} 周辺でまとまりよく選ぶ
+7. もしその日のメインエリアに目的地の代表名所があるなら優先して含める
+
+${buildDestinationEssentialsPrompt(request)}`;
 }
+
 
 // ============================================
 // Must-visit merging
@@ -550,6 +578,8 @@ function mergeMustVisitPlaces(
 
 function sanitizeSemanticCandidates(
   output: SemanticDayPlanOutput,
+  request: NormalizedRequest,
+  dayStructure: SemanticPlan['dayStructure'],
   day: number,
   existingCandidates: SemanticCandidate[]
 ): SemanticCandidate[] {
@@ -569,7 +599,7 @@ function sanitizeSemanticCandidates(
     existingCandidates.map((candidate) => candidate.searchQuery.trim().toLowerCase())
   );
 
-  return output.candidates
+  const sanitized = output.candidates
     .filter((candidate) =>
       !genericPatterns.some(
         (pattern) => pattern.test(candidate.name) || pattern.test(candidate.searchQuery)
@@ -589,7 +619,16 @@ function sanitizeSemanticCandidates(
       priority: Math.max(candidate.priority, 1),
       semanticId: crypto.randomUUID(),
     }));
+
+  return mergeDestinationEssentialCandidates({
+    request,
+    candidates: sanitized,
+    dayStructure,
+    existingCandidates,
+    day,
+  });
 }
+
 
 function calculateCandidateTarget(request: NormalizedRequest): number {
   const perDay = request.durationDays >= 4 ? 5 : 6;
