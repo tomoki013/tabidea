@@ -16,11 +16,7 @@ export async function POST(req: Request) {
 
   const { input, options } = body;
 
-  const progressEvents: unknown[] = [];
-
-  const result = await runStructurePipeline(input, options, (event) => {
-    progressEvents.push(event);
-  });
+  const result = await runStructurePipeline(input, options);
 
   if (result.success) {
     return Response.json({

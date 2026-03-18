@@ -32,10 +32,7 @@ export async function POST(req: Request) {
   try {
     body = await req.json();
   } catch {
-    return new Response(JSON.stringify({ error: 'Invalid request body' }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return Response.json({ error: 'Invalid request body' }, { status: 400 });
   }
 
   const {
