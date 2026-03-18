@@ -27,6 +27,7 @@ import { optimizeRoutes } from './steps/route-optimizer';
 import { buildTimeline } from './steps/timeline-builder';
 import {
   runNarrativeRenderer,
+  buildFallbackNarrativeOutput,
   streamNarrativeRendererWithResult,
 } from './steps/narrative-renderer';
 import { composedToItinerary } from './adapter';
@@ -39,7 +40,7 @@ import { checkAndRecordUsage } from '@/lib/limits/check';
 // Re-export for backward compatibility
 export { PipelineStepError } from './errors';
 
-const COMPOSE_DEADLINE_MS = 27_000;
+const COMPOSE_DEADLINE_MS = 26_000;
 const MIN_REMAINING_FOR_PLACE_RESOLVE_MS = 9_000;
 const MIN_REMAINING_FOR_HERO_IMAGE_MS = 2_500;
 const MIN_REMAINING_FOR_SEMANTIC_RETRY_MS = 18_000;
@@ -677,9 +678,11 @@ export async function runComposePipeline(
 
     const narrative = await timer.measure('narrative_render', async () => {
       if (remainingTimeMs() < MIN_REMAINING_FOR_NARRATIVE_LLM_MS) {
+        // Not enough time for any LLM call — use deterministic narrative.
+        // Spot names are already validated by semantic planner, so this is safe.
         timeoutMitigationUsed = true;
-        // Use non-streaming fallback which is faster than streaming
-        return await runWithDeadline('narrative_render', () => runNarrativeRenderer(narrativeInput));
+        fallbackUsed = true;
+        return buildFallbackNarrativeOutput(timelineDays, normalizedRequest);
       }
 
       try {
@@ -708,8 +711,21 @@ export async function runComposePipeline(
       } catch (streamError) {
         console.warn('[compose-pipeline] streamNarrativeRenderer failed, falling back to generateObject:', streamError);
         fallbackUsed = true;
-        // Try non-streaming as last resort — if this also fails, the pipeline fails
-        return await runWithDeadline('narrative_render', () => runNarrativeRenderer(narrativeInput));
+
+        if (remainingTimeMs() < MIN_REMAINING_FOR_NARRATIVE_LLM_MS) {
+          // No time for another LLM call — deterministic narrative
+          timeoutMitigationUsed = true;
+          return buildFallbackNarrativeOutput(timelineDays, normalizedRequest);
+        }
+
+        try {
+          return await runWithDeadline('narrative_render', () => runNarrativeRenderer(narrativeInput));
+        } catch (narrativeError) {
+          // Final fallback — deterministic narrative with already-validated spot names
+          timeoutMitigationUsed = timeoutMitigationUsed || isTimeoutLikeError(narrativeError);
+          console.warn('[compose-pipeline] narrative renderer failed, using deterministic narrative:', narrativeError);
+          return buildFallbackNarrativeOutput(timelineDays, normalizedRequest);
+        }
       }
     });
 
