@@ -9,6 +9,10 @@
 
 ## 開発者向けコミット履歴（コミット単位）
 
+### 2026-03-19
+
+- `local` fix(itinerary-pipeline,loading-ui): 旅程生成を「観光スポット紹介」から「その順で回れる1日の流れ」中心へ再設計。① `dayStructure` に `startArea` / `endArea` / `flowSummary` / `anchorMoments` を追加し、seed 段階で朝→昼→夕方の回遊骨格を持たせた。② semantic seed/day/narrative 各プロンプトを更新し、単なる名所の羅列ではなく itinerary の導線としてスポットを選ぶよう強化した。③ PR434 レビュー対応として、must-visit の deterministic 配分ロジックを追加し、日数より多い必訪問スポットがあっても各日に配布されて取りこぼさないよう修正。④ must-visit / 候補 / destination highlights の重複判定は共通の place key 正規化で統一し、日別候補との重複追加も防止。⑤ `ComposeLoadingAnimation` は既存の進捗構成を保ちつつ、旅の要約・現在工程・残ステップをカード化して視認性を改善。⑥ 関連テスト、アーキテクチャ文書、CHANGELOG を更新。
+
 ### 2026-03-18 (3回目)
 
 - `local` fix(deploy,itinerary): `destination-highlights.ts` の重複除外キー生成で `filter(Boolean)` 後も `string | undefined` 扱いが残り、`pnpm build` の TypeScript チェックが落ちる問題を修正。`mergeDestinationHighlightCandidates()` の key 配列生成を型ガード付き filter に置き換え、Netlify/CI の本番ビルドが通るよう改善。

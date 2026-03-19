@@ -28,6 +28,7 @@ import {
   assignHighlightDaysFromAreas,
   buildDestinationHighlightPromptSections,
   mergeDestinationHighlightCandidates,
+  normalizePlaceKey,
 } from '../destination-highlights';
 
 // ============================================
@@ -436,18 +437,20 @@ function buildSemanticPlannerPrompt(
 1. candidates には name, role, priority, dayHint, timeSlotHint, stayDurationMinutes, searchQuery を必ず含める
 2. 可能なら categoryHint, locationEn, rationale, areaHint, indoorOutdoor, tags も含める
 3. dayStructure には各日の title, mainArea, overnightLocation, summary を入れる
-4. 必ず訪れたい場所は role='must_visit' にする
-5. 時刻と最終順序は確定しない
-6. tripIntentSummary, orderingPreferences, fallbackHints を短く入れる
-7. destinationHighlights には、その都市らしさを感じる具体的な代表スポットを 3〜6 件入れる
-8. 説明文は簡潔にする
-9. 絶対条件は必ず守る
-10. 参考条件は全てを機械的に盛り込まず、全体のまとまりを優先して良い感じに反映する
-11. 【最重要】name/searchQuery/destinationHighlights.name には必ず実在する具体的なスポット名・店名を入れること。「人気ランチ店」「おすすめカフェ」「代表スポット」「夜景スポット」のような曖昧・総称的な名前は絶対に禁止
-12. destinationHighlights には「この目的地に来たのに入っていないと不自然になりやすい場所」を優先して入れること`;
+4. 可能なら dayStructure に startArea, endArea, flowSummary, anchorMoments も入れ、その日をどう移動しながら過ごすかが分かる形にする
+5. 必ず訪れたい場所は role='must_visit' にする
+6. 時刻と最終順序は確定しない
+7. tripIntentSummary, orderingPreferences, fallbackHints を短く入れる
+8. destinationHighlights には、その都市らしさを感じる具体的な代表スポットを 3〜6 件入れる
+9. 説明文は簡潔にする
+10. 絶対条件は必ず守る
+11. 参考条件は全てを機械的に盛り込まず、全体のまとまりを優先して良い感じに反映する
+12. 【最重要】name/searchQuery/destinationHighlights.name には必ず実在する具体的なスポット名・店名を入れること。「人気ランチ店」「おすすめカフェ」「代表スポット」「夜景スポット」のような曖昧・総称的な名前は絶対に禁止
+13. destinationHighlights には「この目的地に来たのに入っていないと不自然になりやすい場所」を優先して入れること
+14. 候補は単なる名所の羅列ではなく、朝→昼→夕方の流れが見える“1日の回遊プラン”として組み立てること`;
 
   if (fastMode) {
-    prompt += `\n13. 速度優先。エリアの重複を避け、候補は厳選してください`;
+    prompt += `\n15. 速度優先。エリアの重複を避け、候補は厳選してください`;
   }
 
   return prompt;
@@ -475,11 +478,12 @@ function buildSemanticSeedPrompt(request: NormalizedRequest): string {
 1. candidates は出力しない
 2. destination, description, dayStructure を必ず返す
 3. dayStructure には各日の title, mainArea, overnightLocation, summary を入れる
-4. 各日の mainArea は移動しすぎず現実的にまとめる
-5. 説明は短く、旅の期待感が高まる自然な文にする
-6. orderingPreferences と fallbackHints は短い箇条書きでよい
-7. destinationHighlights には、その都市らしさを感じる具体的な代表スポットを 3〜6 件入れる
-8. destinationHighlights の各要素には name, areaHint, dayHint, rationale を入れる`;
+4. 可能なら startArea, endArea, flowSummary, anchorMoments も入れ、「どんな順で回る日か」が伝わる骨格にする
+5. 各日の mainArea は移動しすぎず現実的にまとめる
+6. 説明は短く、旅の期待感が高まる自然な文にする
+7. orderingPreferences と fallbackHints は短い箇条書きでよい
+8. destinationHighlights には、その都市らしさを感じる具体的な代表スポットを 3〜6 件入れる
+9. destinationHighlights の各要素には name, areaHint, dayHint, rationale を入れる`;
 
   if (request.hardConstraints.summaryLines.length > 0) {
     prompt += `\n\n必ず守る条件:\n${request.hardConstraints.summaryLines.map((line) => `- ${line}`).join('\n')}`;
@@ -489,7 +493,8 @@ function buildSemanticSeedPrompt(request: NormalizedRequest): string {
     prompt += `\n\n参考にする希望:\n${request.softPreferences.rankedRequests.map((line) => `- ${line}`).join('\n')}`;
   }
 
-  prompt += `\n\n9. 旅のテーマと矛盾しない範囲で、その都市を代表する定番名所を少なくともいくつか骨格に含める`;
+  prompt += `\n\n10. 旅のテーマと矛盾しない範囲で、その都市を代表する定番名所を少なくともいくつか骨格に含める`;
+  prompt += `\n11. 各 dayStructure は「朝はどこから始め、どこへ流れて、夜はどこで締めるか」が分かる itinerary らしい設計にする`;
 
   return prompt;
 }
@@ -525,8 +530,12 @@ function buildSemanticDayPrompt(input: {
 ${day}日目の設計:
 - タイトル: ${currentDayStructure.title}
 - メインエリア: ${currentDayStructure.mainArea}
+- 開始エリア: ${currentDayStructure.startArea || currentDayStructure.mainArea}
+- 終了エリア: ${currentDayStructure.endArea || currentDayStructure.overnightLocation}
 - 宿泊地: ${currentDayStructure.overnightLocation}
 - 概要: ${currentDayStructure.summary}
+- 日内フロー: ${currentDayStructure.flowSummary || '未指定'}
+- 時間帯アンカー: ${currentDayStructure.anchorMoments?.join(' / ') || '未指定'}
 - 候補件数の目安: ${targetCandidateCount}件
 
 この旅行で代表スポットとして押さえたい場所（AIが骨格段階で選んだもの）:
@@ -548,7 +557,9 @@ ${mustVisitForDay.length > 0 ? mustVisitForDay.map((name) => `- ${name}`).join('
 4. 既に他の日で出した候補は重複禁止
 5. meal は最大1件まで、残りは観光・体験・休憩のバランスをとる
 6. なるべく ${currentDayStructure.mainArea} 周辺でまとまりよく選ぶ
-7. 上の代表スポットのうち、この日に割り当てられているものは可能な限り候補に含める`;
+7. 上の代表スポットのうち、この日に割り当てられているものは可能な限り候補に含める
+8. 候補全体で、朝の導入→昼の中心体験→午後の回遊→夕方の締め、という旅程の流れが伝わるようにする
+9. 単に有名スポットを列挙するのではなく、「この順に回ると1日が成立する」という組み合わせにする`;
 }
 
 
@@ -617,7 +628,7 @@ function sanitizeSemanticCandidates(
   ];
 
   const existingNames = new Set(
-    existingCandidates.map((candidate) => candidate.searchQuery.trim().toLowerCase())
+    existingCandidates.map((candidate) => normalizePlaceKey(candidate.searchQuery))
   );
 
   const sanitized = output.candidates
@@ -627,7 +638,7 @@ function sanitizeSemanticCandidates(
       )
     )
     .filter((candidate) => {
-      const normalized = candidate.searchQuery.trim().toLowerCase();
+      const normalized = normalizePlaceKey(candidate.searchQuery);
       if (existingNames.has(normalized)) {
         return false;
       }

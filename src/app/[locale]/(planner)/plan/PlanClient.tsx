@@ -102,7 +102,15 @@ function PlanContent() {
 
   // Show compose loading animation
   if (compose.isGenerating) {
-    return <ComposeLoadingAnimation steps={compose.steps} currentStep={compose.currentStep} />;
+    return (
+      <ComposeLoadingAnimation
+        steps={compose.steps}
+        currentStep={compose.currentStep}
+        previewDestination={compose.previewDestination}
+        previewDescription={compose.previewDescription}
+        totalDays={compose.totalDays}
+      />
+    );
   }
 
   // Error state

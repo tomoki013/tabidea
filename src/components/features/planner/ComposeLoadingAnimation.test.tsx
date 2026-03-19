@@ -16,6 +16,8 @@ const messages = {
   'components.features.planner.composeLoadingAnimation.stageDone': '完了',
   'components.features.planner.composeLoadingAnimation.stageActive': '進行中',
   'components.features.planner.composeLoadingAnimation.stagePending': '待機中',
+  'components.features.planner.composeLoadingAnimation.remainingSteps': '残り {count} 工程',
+  'components.features.planner.composeLoadingAnimation.allStepsReady': '最終仕上げを待っています',
   'components.features.planner.composeLoadingAnimation.stepListLabel': '進行中のチェックリスト',
   'components.features.planner.composeLoadingAnimation.stages.concept.title': '旅の骨格づくり',
   'components.features.planner.composeLoadingAnimation.stages.concept.description': '旅の大まかな流れと、各日の過ごし方を決めています。',
@@ -69,13 +71,15 @@ describe('ComposeLoadingAnimation', () => {
         steps={steps}
         currentStep="semantic_plan"
         previewDestination="Paris"
+        previewDescription="セーヌ川沿いから美術館、街歩きへつなぐ3日間の旅。"
         totalDays={3}
       />
     );
 
-    expect(screen.getByText('進行中のチェックリスト')).toBeInTheDocument();
+    expect(screen.getAllByText('進行中のチェックリスト').length).toBeGreaterThan(0);
     expect(screen.getAllByText('2日目のスポットを作成中...').length).toBeGreaterThan(0);
     expect(screen.getByText('Paris')).toBeInTheDocument();
     expect(screen.getByText('3日間の旅')).toBeInTheDocument();
+    expect(screen.getByText('セーヌ川沿いから美術館、街歩きへつなぐ3日間の旅。')).toBeInTheDocument();
   });
 });

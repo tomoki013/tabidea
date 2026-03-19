@@ -19,7 +19,7 @@ const GENERIC_NAME_PATTERNS = [
   /recommended\s+(restaurant|cafe|spot)/i,
 ];
 
-function normalizePlaceKey(value: string): string {
+export function normalizePlaceKey(value: string): string {
   return value
     .normalize('NFKC')
     .toLowerCase()

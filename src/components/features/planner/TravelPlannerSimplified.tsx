@@ -202,6 +202,7 @@ export default function TravelPlannerSimplified({
         steps={compose.steps}
         currentStep={compose.currentStep}
         previewDestination={compose.previewDestination}
+        previewDescription={compose.previewDescription}
         totalDays={compose.totalDays}
       />
     );

@@ -25,6 +25,7 @@ interface ComposeLoadingAnimationProps {
   steps: ComposeStep[];
   currentStep: string | null;
   previewDestination?: string;
+  previewDescription?: string;
   totalDays?: number;
 }
 
@@ -33,6 +34,7 @@ export default function ComposeLoadingAnimation({
   steps,
   currentStep,
   previewDestination = "",
+  previewDescription = "",
   totalDays = 0,
 }: ComposeLoadingAnimationProps) {
   const t = useTranslations("components.features.planner.composeLoadingAnimation");
@@ -42,6 +44,7 @@ export default function ComposeLoadingAnimation({
   const progressPercent =
     steps.length > 0 ? Math.round(((completedCount + activeCount * 0.5) / steps.length) * 100) : 0;
   const activeStep = steps.find((step) => step.status === "active");
+  const remainingCount = Math.max(steps.length - completedCount - activeCount, 0);
 
   const stageCards = STAGE_GROUPS.map((group) => {
     const groupSteps = group.stepIds
@@ -107,7 +110,7 @@ export default function ComposeLoadingAnimation({
                             ) : null}
                           </div>
                           <p className="max-w-2xl text-sm leading-7 text-stone-600 dark:text-stone-300">
-                            {t("leadReady")}
+                            {previewDescription || t("leadReady")}
                           </p>
                         </motion.div>
                       ) : (
@@ -135,6 +138,34 @@ export default function ComposeLoadingAnimation({
                         </motion.div>
                       )}
                     </AnimatePresence>
+
+                    <div className="grid gap-3 sm:grid-cols-3">
+                      <div className="rounded-[22px] border border-stone-200/70 bg-white/75 px-4 py-3 dark:border-stone-700/60 dark:bg-black/10">
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-stone-500 dark:text-stone-400">
+                          {t("progressLabel")}
+                        </p>
+                        <p className="mt-2 text-2xl font-semibold text-stone-900 dark:text-stone-50">{progressPercent}%</p>
+                      </div>
+                      <div className="rounded-[22px] border border-stone-200/70 bg-white/75 px-4 py-3 dark:border-stone-700/60 dark:bg-black/10">
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-stone-500 dark:text-stone-400">
+                          {t("stageActive")}
+                        </p>
+                        <p className="mt-2 text-sm font-medium leading-6 text-stone-700 dark:text-stone-200">
+                          {activeStep?.message ?? t("waiting")}
+                        </p>
+                      </div>
+                      <div className="rounded-[22px] border border-stone-200/70 bg-white/75 px-4 py-3 dark:border-stone-700/60 dark:bg-black/10">
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-stone-500 dark:text-stone-400">
+                          {t("stepListLabel")}
+                        </p>
+                        <p className="mt-2 text-sm font-medium text-stone-700 dark:text-stone-200">
+                          {t("stepsProgress", { completed: completedCount, total: steps.length })}
+                        </p>
+                        <p className="mt-1 text-xs text-stone-500 dark:text-stone-400">
+                          {remainingCount > 0 ? t("remainingSteps", { count: remainingCount }) : t("allStepsReady")}
+                        </p>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="rounded-[24px] border border-stone-200/70 bg-white/70 p-4 backdrop-blur dark:border-stone-700/60 dark:bg-black/10">
@@ -153,6 +184,22 @@ export default function ComposeLoadingAnimation({
                       <span className="text-xs text-right text-stone-500 dark:text-stone-400">
                         {t("stepsProgress", { completed: completedCount, total: steps.length })}
                       </span>
+                    </div>
+                    <div className="mt-4 grid gap-2 text-xs text-stone-600 dark:text-stone-300">
+                      {stageCards.map((stage) => (
+                        <div key={stage.id} className="flex items-center justify-between rounded-2xl bg-stone-100/70 px-3 py-2 dark:bg-white/5">
+                          <span>{t(`stages.${stage.id}.title`)}</span>
+                          <span className={`rounded-full px-2 py-0.5 ${
+                            stage.isCompleted
+                              ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300"
+                              : stage.isActive
+                                ? "bg-primary/15 text-primary dark:bg-primary/20"
+                                : "bg-stone-200 text-stone-500 dark:bg-stone-800 dark:text-stone-400"
+                          }`}>
+                            {stage.isCompleted ? t("stageDone") : stage.isActive ? t("stageActive") : t("stagePending")}
+                          </span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>

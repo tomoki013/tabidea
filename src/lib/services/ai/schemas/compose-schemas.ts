@@ -86,8 +86,12 @@ export const dayStructureSchema = z.object({
   day: z.number().min(1).describe('日番号 (1-based)'),
   title: z.string().describe('日のタイトル'),
   mainArea: z.string().describe('メインエリア'),
+  startArea: z.string().optional().describe('その日の始まりに向くエリア'),
+  endArea: z.string().optional().describe('その日の終わりに向くエリア'),
   overnightLocation: z.string().describe('宿泊地'),
   summary: z.string().describe('概要'),
+  flowSummary: z.string().optional().describe('朝から夜までの流れの要約'),
+  anchorMoments: z.array(z.string()).optional().describe('その日の代表的な時間帯アンカー'),
 });
 
 export const semanticPlanSchema = z.object({
