@@ -5,6 +5,7 @@
 
 import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
+
 import {
   isLanguageCode,
   type LanguageCode,
@@ -16,8 +17,51 @@ type ProxyI18nPreferences = {
   uiLanguage?: LanguageCode;
 };
 
+const SUPABASE_PROXY_TIMEOUT_MS = 1_500;
+const SUPABASE_AUTH_COOKIE_MARKER = '-auth-token';
+const SUPABASE_AUTH_COOKIE_PREFIX = 'sb-';
+
 function isPlainObject(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+export function hasSupabaseAuthCookies(request: NextRequest): boolean {
+  return request.cookies.getAll().some(({ name }) =>
+    name.startsWith(SUPABASE_AUTH_COOKIE_PREFIX) && name.includes(SUPABASE_AUTH_COOKIE_MARKER)
+  );
+}
+
+async function withProxyDeadline<T>(task: () => Promise<T>): Promise<T | null> {
+  try {
+    return await Promise.race<T | null>([
+      task(),
+      new Promise<null>((resolve) => {
+        setTimeout(() => resolve(null), SUPABASE_PROXY_TIMEOUT_MS);
+      }),
+    ]);
+  } catch (error) {
+    if (
+      error instanceof Error &&
+      (error.name === 'AbortError' || error.message.includes('The signal has been aborted'))
+    ) {
+      return null;
+    }
+
+    throw error;
+  }
+}
+
+function createPassthroughResponse(
+  request: NextRequest,
+  existingResponse?: NextResponse
+): NextResponse {
+  return existingResponse ?? NextResponse.next({ request });
+}
+
+function hasSupabaseEnv(): boolean {
+  return Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  );
 }
 
 function getSupabaseProxyClient(
@@ -60,13 +104,17 @@ export async function updateSession(
   request: NextRequest,
   existingResponse?: NextResponse
 ) {
+  if (!hasSupabaseEnv() || !hasSupabaseAuthCookies(request)) {
+    // If Supabase is not configured, or the visitor is anonymous, just pass through.
+    return createPassthroughResponse(request, existingResponse);
+  }
+
   const { supabase, supabaseResponse } = getSupabaseProxyClient(
     request,
     existingResponse
   );
 
   if (!supabase) {
-    // If Supabase is not configured, just pass through
     return supabaseResponse;
   }
 
@@ -74,7 +122,7 @@ export async function updateSession(
   // A simple mistake could make it very hard to debug issues with users being
   // randomly logged out.
 
-  await supabase.auth.getUser();
+  await withProxyDeadline(() => supabase.auth.getUser());
 
   return supabaseResponse;
 }
@@ -87,6 +135,15 @@ export async function resolveUserI18nPreferences(
     detectedLanguage: LanguageCode;
   }
 ): Promise<{ response: NextResponse; preferences: ProxyI18nPreferences }> {
+  if (!hasSupabaseEnv() || !hasSupabaseAuthCookies(request)) {
+    return {
+      response: createPassthroughResponse(request, options.existingResponse),
+      preferences: {
+        uiLanguage: options.detectedLanguage,
+      },
+    };
+  }
+
   const { supabase, supabaseResponse } = getSupabaseProxyClient(
     request,
     options.existingResponse
@@ -101,10 +158,21 @@ export async function resolveUserI18nPreferences(
     };
   }
 
+  const userResult = await withProxyDeadline(() => supabase.auth.getUser());
+
+  if (!userResult) {
+    return {
+      response: supabaseResponse,
+      preferences: {
+        uiLanguage: options.detectedLanguage,
+      },
+    };
+  }
+
   const {
     data: { user },
     error: userError,
-  } = await supabase.auth.getUser();
+  } = userResult;
 
   if (userError || !user) {
     return {
@@ -115,13 +183,24 @@ export async function resolveUserI18nPreferences(
     };
   }
 
-  const { data } = await supabase
-    .from('users')
-    .select('metadata')
-    .eq('id', user.id)
-    .maybeSingle();
+  const profileResult = await withProxyDeadline(async () =>
+    await supabase
+      .from('users')
+      .select('metadata')
+      .eq('id', user.id)
+      .maybeSingle()
+  );
 
-  const metadata = (isPlainObject(data?.metadata) ? data.metadata : {}) as UserMetadata;
+  if (!profileResult) {
+    return {
+      response: supabaseResponse,
+      preferences: {
+        uiLanguage: options.detectedLanguage,
+      },
+    };
+  }
+
+  const metadata = (isPlainObject(profileResult.data?.metadata) ? profileResult.data.metadata : {}) as UserMetadata;
 
   const storedUiLanguage = isLanguageCode(String(metadata.uiLanguage))
     ? (metadata.uiLanguage as LanguageCode)
@@ -144,10 +223,12 @@ export async function resolveUserI18nPreferences(
     const nextMetadata: UserMetadata = { ...metadata };
     nextMetadata.uiLanguage = resolvedUiLanguage;
 
-    await supabase
-      .from('users')
-      .update({ metadata: nextMetadata })
-      .eq('id', user.id);
+    await withProxyDeadline(async () =>
+      await supabase
+        .from('users')
+        .update({ metadata: nextMetadata })
+        .eq('id', user.id)
+    );
   }
 
   return {

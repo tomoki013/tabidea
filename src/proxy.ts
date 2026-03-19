@@ -72,66 +72,72 @@ function createRedirectResponse(
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  if (shouldBypassI18n(pathname)) {
-    return await updateSession(request);
-  }
+  try {
+    if (shouldBypassI18n(pathname)) {
+      return await updateSession(request);
+    }
 
-  const i18nResponse = handleI18nRouting(request);
-  const languageFromPath = getLanguageFromPathname(pathname);
-  const cookieLanguage = resolveLanguageFromCookie(request);
-  const acceptLanguage = resolveLanguageFromAcceptLanguage(
-    request.headers.get('accept-language')
-  );
+    const i18nResponse = handleI18nRouting(request);
+    const languageFromPath = getLanguageFromPathname(pathname);
+    const cookieLanguage = resolveLanguageFromCookie(request);
+    const acceptLanguage = resolveLanguageFromAcceptLanguage(
+      request.headers.get('accept-language')
+    );
 
-  const detectedLanguage = resolveDetectedLanguageForProxy({
-    languageFromPath,
-    cookieLanguage,
-    acceptLanguage,
-  });
-  const detectedRegion =
-    resolveRegionFromCookie(request) ??
-    resolveRegionFromGeoHeaders({
-      vercelCountry: request.headers.get('x-vercel-ip-country'),
-      cloudflareCountry: request.headers.get('cf-ipcountry'),
-      fallbackLanguage: detectedLanguage,
-    }) ??
-    getDefaultRegionForLanguage(detectedLanguage);
+    const detectedLanguage = resolveDetectedLanguageForProxy({
+      languageFromPath,
+      cookieLanguage,
+      acceptLanguage,
+    });
+    const detectedRegion =
+      resolveRegionFromCookie(request) ??
+      resolveRegionFromGeoHeaders({
+        vercelCountry: request.headers.get('x-vercel-ip-country'),
+        cloudflareCountry: request.headers.get('cf-ipcountry'),
+        fallbackLanguage: detectedLanguage,
+      }) ??
+      getDefaultRegionForLanguage(detectedLanguage);
 
-  const { response: responseWithSession, preferences } =
-    await resolveUserI18nPreferences(request, {
-      existingResponse: i18nResponse,
-      requestedLanguage: languageFromPath,
+    const { response: responseWithSession, preferences } =
+      await resolveUserI18nPreferences(request, {
+        existingResponse: i18nResponse,
+        requestedLanguage: languageFromPath,
+        detectedLanguage,
+      });
+
+    const persistedUiLanguage = preferences.uiLanguage ?? detectedLanguage;
+    const resolvedLanguage = resolveRoutingLanguageForProxy({
+      languageFromPath,
+      persistedLanguage: persistedUiLanguage,
       detectedLanguage,
     });
+    const resolvedRegion = detectedRegion;
+    const localizedPath = localizePath(pathname, resolvedLanguage);
 
-  const persistedUiLanguage = preferences.uiLanguage ?? detectedLanguage;
-  const resolvedLanguage = resolveRoutingLanguageForProxy({
-    languageFromPath,
-    persistedLanguage: persistedUiLanguage,
-    detectedLanguage,
-  });
-  const resolvedRegion = detectedRegion;
-  const localizedPath = localizePath(pathname, resolvedLanguage);
+    const response =
+      localizedPath !== pathname
+        ? createRedirectResponse(request, responseWithSession, localizedPath)
+        : responseWithSession;
 
-  const response =
-    localizedPath !== pathname
-      ? createRedirectResponse(request, responseWithSession, localizedPath)
-      : responseWithSession;
+    response.cookies.set(LANGUAGE_COOKIE, resolvedLanguage, {
+      path: '/',
+      sameSite: 'lax',
+      maxAge: I18N_COOKIE_MAX_AGE,
+    });
+    response.cookies.set(REGION_COOKIE, resolvedRegion, {
+      path: '/',
+      sameSite: 'lax',
+      maxAge: I18N_COOKIE_MAX_AGE,
+    });
+    response.headers.set(LANGUAGE_HEADER, resolvedLanguage);
+    response.headers.set(REGION_HEADER, resolvedRegion);
 
-  response.cookies.set(LANGUAGE_COOKIE, resolvedLanguage, {
-    path: '/',
-    sameSite: 'lax',
-    maxAge: I18N_COOKIE_MAX_AGE,
-  });
-  response.cookies.set(REGION_COOKIE, resolvedRegion, {
-    path: '/',
-    sameSite: 'lax',
-    maxAge: I18N_COOKIE_MAX_AGE,
-  });
-  response.headers.set(LANGUAGE_HEADER, resolvedLanguage);
-  response.headers.set(REGION_HEADER, resolvedRegion);
+    return response;
+  } catch (error) {
+    console.error('[proxy] Failed to resolve middleware response', error);
 
-  return response;
+    return handleI18nRouting(request);
+  }
 }
 
 export const config = {
