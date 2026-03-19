@@ -3,8 +3,7 @@ import type { UserInput } from '@/types';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
-// Safe for Netlify free plan (10s limit) and Vercel hobby (60s limit)
-export const maxDuration = 9;
+export const maxDuration = 25;
 
 export async function POST(req: Request) {
   let body: { input: UserInput; options?: { isRetry?: boolean } };

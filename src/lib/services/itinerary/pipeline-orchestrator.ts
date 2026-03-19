@@ -23,6 +23,7 @@ import type {
 import { normalizeRequest } from './steps/normalize-request';
 import {
   buildDeterministicSemanticSeedPlan,
+  buildDeterministicDayCandidates,
   runSemanticDayPlanner,
   runSemanticPlanner,
   runSemanticSeedPlanner,
@@ -55,8 +56,8 @@ import {
 export { PipelineStepError } from './errors';
 
 // ---- Legacy single-function pipeline constants (kept for runComposePipeline) ----
-// Must fit within maxDuration=9s platform limit
-const COMPOSE_DEADLINE_MS = 8_500;
+// Must fit within maxDuration=25s platform limit
+const COMPOSE_DEADLINE_MS = 24_500;
 const MIN_REMAINING_FOR_PLACE_RESOLVE_MS = 9_000;
 const MIN_REMAINING_FOR_HERO_IMAGE_MS = 2_500;
 const MIN_REMAINING_FOR_SEMANTIC_RETRY_MS = 18_000;
@@ -72,13 +73,13 @@ const DEADLINE_RESERVE_MS = 2_000;
 
 // ---- Split pipeline constants ----
 // Seed / Spots pipelines: consume almost the full route budget and only reserve
-// a small tail for response serialization / flush on 10s-limited platforms.
+// a small tail for response serialization / flush.
 const SPLIT_ROUTE_BUDGET_MS = ITINERARY_SPLIT_ROUTE_MAX_DURATION_SECONDS * 1_000;
 const SEED_DEADLINE_MS = SPLIT_ROUTE_BUDGET_MS;
 const SPOTS_DEADLINE_MS = SPLIT_ROUTE_BUDGET_MS;
 
-// Structure phase: steps 0-6 (no narrative), must complete in <9s (Netlify free plan safe)
-const STRUCTURE_DEADLINE_MS = 9_000;
+// Structure phase: steps 0-6 (no narrative)
+const STRUCTURE_DEADLINE_MS = SPLIT_ROUTE_BUDGET_MS;
 const STRUCTURE_MIN_SEMANTIC_LLM_MS = 5_500;   // need at least 5.5s for AI
 const STRUCTURE_SEMANTIC_RESERVE_MS = 500;       // reserve 500ms after semantic step
 const STRUCTURE_PLACE_RESOLVE_MS = 2_500;        // skip place resolve if <2.5s remaining
@@ -87,8 +88,8 @@ const STRUCTURE_TIMELINE_BUILD_MS = 600;
 const STRUCTURE_DEADLINE_RESERVE_MS = 300;
 const SEMANTIC_SPOT_BATCH_RESERVE_MS = 400;
 
-// Narrate phase: step 7 only (narrative render), must complete in <9s
-const NARRATE_DEADLINE_MS = 8_500;
+// Narrate phase: step 7 only (narrative render)
+const NARRATE_DEADLINE_MS = 24_500;
 const NARRATE_MIN_LLM_MS = 5_000;               // need at least 5s for any LLM call
 const NARRATE_DEADLINE_RESERVE_MS = 500;
 
@@ -1176,6 +1177,16 @@ export async function runSpotCandidatesPipeline(input: {
             }, spotsTimeout);
           }),
         ]);
+      } catch (error) {
+        const fallbackReason = error instanceof Error ? error.message : 'unknown_error';
+        console.warn(`[spots-pipeline] Falling back to deterministic candidates for day ${input.day}:`, fallbackReason);
+        allWarnings.push(`spots_fallback_day${input.day}:${fallbackReason}`);
+        return buildDeterministicDayCandidates(
+          input.normalizedRequest,
+          input.seed,
+          input.day,
+          input.accumulatedCandidates,
+        );
       } finally {
         if (timeoutId) clearTimeout(timeoutId);
       }

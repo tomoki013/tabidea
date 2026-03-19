@@ -1,3 +1,10 @@
 [build]
   command = "pnpm run build"
   publish = ".next"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[functions]]
+  path = "/.netlify/functions-internal/*"
+  timeout = 26

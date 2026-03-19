@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 // Legacy SSE endpoint — kept for backward compatibility.
 // Main generation now uses /api/itinerary/plan/structure + /api/itinerary/plan/narrate.
-export const maxDuration = 9;
+export const maxDuration = 25;
 
 const HEARTBEAT_INTERVAL_MS = 4_000;
 

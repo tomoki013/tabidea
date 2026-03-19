@@ -368,6 +368,78 @@ export async function runSemanticDayPlanner(
   );
 }
 
+/**
+ * Deterministic fallback for spot candidates when AI generation times out.
+ * Generates generic candidates from the seed's day structure and destination highlights.
+ */
+export function buildDeterministicDayCandidates(
+  request: NormalizedRequest,
+  seed: SemanticSeedPlan,
+  day: number,
+  existingCandidates: SemanticCandidate[] = [],
+): SemanticCandidate[] {
+  const dayStructure = seed.dayStructure.find((d) => d.day === day);
+  if (!dayStructure) return [];
+
+  const isEn = request.outputLanguage === 'en';
+  const area = dayStructure.mainArea;
+  const existingNames = new Set(existingCandidates.map((c) => c.name));
+  const candidates: SemanticCandidate[] = [];
+
+  // Add destination highlights assigned to this day
+  const highlights = (seed.destinationHighlights ?? []).filter(
+    (h) => h.dayHint === day && !existingNames.has(h.name)
+  );
+  for (const h of highlights) {
+    candidates.push({
+      name: h.name,
+      role: 'recommended',
+      priority: 8,
+      dayHint: day,
+      timeSlotHint: h.timeSlotHint ?? 'flexible',
+      stayDurationMinutes: h.stayDurationMinutes ?? 60,
+      searchQuery: h.searchQuery ?? h.name,
+      areaHint: h.areaHint,
+      semanticId: crypto.randomUUID(),
+      rationale: h.rationale,
+    });
+    existingNames.add(h.name);
+  }
+
+  // Generate generic slot-based candidates from anchor moments
+  const slotDefaults: { timeSlot: 'morning' | 'midday' | 'afternoon' | 'evening'; role: 'recommended' | 'meal' | 'filler'; category: string; nameJa: string; nameEn: string; duration: number }[] = [
+    { timeSlot: 'morning', role: 'recommended', category: 'sightseeing', nameJa: `${area}の観光スポット`, nameEn: `Sightseeing in ${area}`, duration: 90 },
+    { timeSlot: 'midday', role: 'meal', category: 'restaurant', nameJa: `${area}のランチ`, nameEn: `Lunch in ${area}`, duration: 60 },
+    { timeSlot: 'afternoon', role: 'recommended', category: 'sightseeing', nameJa: `${area}の名所巡り`, nameEn: `Explore ${area} highlights`, duration: 90 },
+    { timeSlot: 'evening', role: 'meal', category: 'restaurant', nameJa: `${area}のディナー`, nameEn: `Dinner in ${area}`, duration: 60 },
+  ];
+
+  for (const slot of slotDefaults) {
+    const name = isEn ? slot.nameEn : slot.nameJa;
+    if (existingNames.has(name)) continue;
+    if (candidates.length >= 4) break;
+
+    candidates.push({
+      name,
+      role: slot.role,
+      priority: 5,
+      dayHint: day,
+      timeSlotHint: slot.timeSlot,
+      stayDurationMinutes: slot.duration,
+      searchQuery: `${area} ${slot.category}`,
+      categoryHint: slot.category,
+      areaHint: area,
+      semanticId: crypto.randomUUID(),
+      rationale: isEn
+        ? `Deterministic fallback candidate for ${area}.`
+        : `${area}のフォールバック候補。`,
+    });
+    existingNames.add(name);
+  }
+
+  return candidates;
+}
+
 // ============================================
 // Post-processing
 // ============================================
