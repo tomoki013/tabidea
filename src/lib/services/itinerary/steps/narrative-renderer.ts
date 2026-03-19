@@ -177,6 +177,9 @@ function buildNarrativePrompt(
 
   for (const day of timelineDays) {
     prompt += `\n--- Day ${day.day}: ${day.title} ---\n`;
+    if (day.startTime) {
+      prompt += `開始時刻: ${day.startTime}\n`;
+    }
     for (const node of day.nodes) {
       const name = node.stop.candidate.activityLabel || node.stop.candidate.name;
       const placeName = node.stop.placeDetails?.name || node.stop.candidate.searchQuery;
@@ -187,11 +190,14 @@ function buildNarrativePrompt(
   prompt += `
 【出力ルール】
 1. 各アクティビティに1-2文の生き生きとした説明文を付けてください
-2. 各日にその日の見どころを反映したタイトルを付けてください
-3. 全体の旅程を1-2文で紹介する description を生成してください
-4. 時刻・順序・場所は変更しないでください
-5. arrivalTime は入力データと完全に一致させてください
-6. 文を途中で切らず、各 description は完結した自然な文章で終える（「...」「…」で終わらない）`;
+2. 各日の説明は「どの順で回る日なのか」が伝わる itinerary 的な流れを重視してください
+3. 各日にその日の見どころを反映したタイトルを付けてください
+4. 観光スポットの百科事典的な解説ではなく、「この時間にここへ行く理由」が分かる説明にしてください
+5. 前後のスポットとのつながりや時間帯の自然さが感じられる文にしてください
+6. 全体の旅程を1-2文で紹介する description を生成してください
+7. 時刻・順序・場所は変更しないでください
+8. arrivalTime は入力データと完全に一致させてください
+9. 文を途中で切らず、各 description は完結した自然な文章で終える（「...」「…」で終わらない）`;
 
   return prompt;
 }

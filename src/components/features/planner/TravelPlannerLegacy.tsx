@@ -352,7 +352,15 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
 
   // Show compose loading animation during generation
   if (compose.isGenerating || generationState.phase === 'generating_outline') {
-    return <ComposeLoadingAnimation steps={compose.steps} currentStep={compose.currentStep} />;
+    return (
+      <ComposeLoadingAnimation
+        steps={compose.steps}
+        currentStep={compose.currentStep}
+        previewDestination={compose.previewDestination}
+        previewDescription={compose.previewDescription}
+        totalDays={compose.totalDays}
+      />
+    );
   }
 
   // Show streaming result view during/after detail generation (legacy compat)

@@ -194,10 +194,18 @@ export interface DayStructure {
   title: string;
   /** メインエリア */
   mainArea: string;
+  /** その日の始まりとして想定するエリア */
+  startArea?: string;
+  /** その日の終わりとして想定するエリア */
+  endArea?: string;
   /** 宿泊地 */
   overnightLocation: string;
   /** 概要 */
   summary: string;
+  /** その日をどう回るかの流れを短く表した文 */
+  flowSummary?: string;
+  /** 朝・昼・夕方などの代表的な過ごし方アンカー */
+  anchorMoments?: string[];
 }
 
 export interface SemanticPlan {

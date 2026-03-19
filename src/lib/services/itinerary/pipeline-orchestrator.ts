@@ -42,6 +42,7 @@ import { GenerationRunLogger } from './generation-run-logger';
 import { getDefaultProvider, resolveModelForPhase } from '@/lib/services/ai/model-resolver';
 import { createComposeTimer } from '@/lib/utils/performance-timer';
 import { checkAndRecordUsage } from '@/lib/limits/check';
+import { normalizePlaceKey } from './destination-highlights';
 
 // Re-export for backward compatibility
 export { PipelineStepError } from './errors';
@@ -194,6 +195,29 @@ function buildFallbackTimelineDays(optimizedDays: OptimizedDay[]): TimelineDay[]
       overnightLocation: day.overnightLocation,
       startTime: '09:00',
     };
+  });
+}
+
+export function getScheduledMustVisitPlacesForDay(input: {
+  mustVisitPlaces: string[];
+  day: number;
+  totalDays: number;
+  accumulatedCandidates?: SemanticCandidate[];
+  generatedCandidates?: SemanticCandidate[];
+}): string[] {
+  const existingKeys = new Set(
+    [...(input.accumulatedCandidates ?? []), ...(input.generatedCandidates ?? [])]
+      .map((candidate) => normalizePlaceKey(candidate.searchQuery || candidate.name))
+      .filter(Boolean)
+  );
+
+  return input.mustVisitPlaces.filter((place, index) => {
+    const assignedDay = Math.min(
+      Math.floor((index * Math.max(input.totalDays, 1)) / Math.max(input.mustVisitPlaces.length, 1)) + 1,
+      Math.max(input.totalDays, 1)
+    );
+
+    return assignedDay === input.day && !existingKeys.has(normalizePlaceKey(place));
   });
 }
 
@@ -1096,15 +1120,13 @@ export async function runSpotCandidatesPipeline(input: {
       })
     );
 
-    const existingMustVisit = new Set(
-      (input.accumulatedCandidates ?? [])
-        .filter((candidate) => candidate.role === 'must_visit')
-        .map((candidate) => candidate.searchQuery.toLowerCase())
-    );
-
-    const mustVisitForDay = input.normalizedRequest.mustVisitPlaces
-      .filter((place) => !existingMustVisit.has(place.toLowerCase()))
-      .slice(0, 1)
+    const mustVisitForDay = getScheduledMustVisitPlacesForDay({
+      mustVisitPlaces: input.normalizedRequest.mustVisitPlaces,
+      day: input.day,
+      totalDays: input.seed.dayStructure.length,
+      accumulatedCandidates: input.accumulatedCandidates,
+      generatedCandidates: candidates,
+    })
       .map((place) => ({
         name: place,
         role: 'must_visit' as const,
@@ -1146,8 +1168,7 @@ export async function runAssemblePipeline(input: {
   let timeoutMitigationUsed = false;
 
   try {
-    let heroImagePromise: Promise<AssemblePipelineResult['heroImage']> | undefined;
-    heroImagePromise = (async () => {
+    const heroImagePromise: Promise<AssemblePipelineResult['heroImage']> | undefined = (async () => {
       try {
         const { getUnsplashImage } = await import('@/lib/unsplash');
         const image = await getUnsplashImage(input.seed.destination);

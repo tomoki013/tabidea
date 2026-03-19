@@ -1599,7 +1599,9 @@
               "title": "しおりとして仕上げ",
               "description": "時間や説明を整えて、見やすい旅程に仕上げています。"
             }
-          }
+          },
+          "remainingSteps": "残り {count} 工程",
+          "allStepsReady": "最終仕上げを待っています"
         },
         "composeLoadingTips": {
           "label": "旅の豆知識",

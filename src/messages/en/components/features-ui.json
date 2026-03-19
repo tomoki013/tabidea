@@ -1596,7 +1596,9 @@
               "title": "Finish the travel story",
               "description": "We tidy up the timing and wording so the itinerary is easy to follow."
             }
-          }
+          },
+          "remainingSteps": "{count} steps left",
+          "allStepsReady": "Waiting for the final polish"
         },
         "composeLoadingTips": {
           "label": "Travel Tip",

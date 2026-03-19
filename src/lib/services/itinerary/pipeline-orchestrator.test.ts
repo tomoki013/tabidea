@@ -1,4 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import type { SemanticCandidate } from '@/types/itinerary-pipeline';
+import { getScheduledMustVisitPlacesForDay } from './pipeline-orchestrator';
 
 // Mock external dependencies
 vi.mock('@/lib/limits/check', () => ({
@@ -556,5 +558,57 @@ describe('pipeline-orchestrator', () => {
 
     nowSpy.mockRestore();
     optimizeSpy.mockRestore();
+  });
+});
+
+describe('getScheduledMustVisitPlacesForDay', () => {
+  const makeCandidate = (searchQuery: string): SemanticCandidate => ({
+    name: searchQuery,
+    searchQuery,
+    role: 'must_visit',
+    priority: 10,
+    dayHint: 1,
+    timeSlotHint: 'flexible',
+    stayDurationMinutes: 60,
+  });
+
+  it('distributes must-visit places across all days without dropping the overflow', () => {
+    const mustVisits = ['浅草寺', '東京スカイツリー', '上野公園', '明治神宮', '築地場外市場'];
+
+    expect(
+      getScheduledMustVisitPlacesForDay({
+        mustVisitPlaces: mustVisits,
+        day: 1,
+        totalDays: 3,
+      })
+    ).toEqual(['浅草寺', '東京スカイツリー']);
+
+    expect(
+      getScheduledMustVisitPlacesForDay({
+        mustVisitPlaces: mustVisits,
+        day: 2,
+        totalDays: 3,
+      })
+    ).toEqual(['上野公園', '明治神宮']);
+
+    expect(
+      getScheduledMustVisitPlacesForDay({
+        mustVisitPlaces: mustVisits,
+        day: 3,
+        totalDays: 3,
+      })
+    ).toEqual(['築地場外市場']);
+  });
+
+  it('skips must-visit places that are already present in accumulated or generated candidates', () => {
+    const scheduled = getScheduledMustVisitPlacesForDay({
+      mustVisitPlaces: ['清水寺', '錦市場', '伏見稲荷大社', '嵐山竹林の小径'],
+      day: 2,
+      totalDays: 2,
+      accumulatedCandidates: [makeCandidate('清水寺')],
+      generatedCandidates: [makeCandidate('伏見稲荷大社')],
+    });
+
+    expect(scheduled).toEqual(['嵐山竹林の小径']);
   });
 });
