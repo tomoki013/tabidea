@@ -10,6 +10,11 @@ const messages = {
   'components.features.planner.composeLoadingAnimation.daysCount': '{days}日間の旅',
   'components.features.planner.composeLoadingAnimation.eyebrow': 'Journey now boarding',
   'components.features.planner.composeLoadingAnimation.leadReady': '行き先が固まったら、日ごとの予定を順番に作っています。',
+  'components.features.planner.composeLoadingAnimation.snapshotLabel': '旅のスナップショット',
+  'components.features.planner.composeLoadingAnimation.routePlanLabel': '工程ごとの進み方',
+  'components.features.planner.composeLoadingAnimation.upcomingLabel': 'このあと進む工程',
+  'components.features.planner.composeLoadingAnimation.dayPill': '{days}日分を順番に作成中',
+  'components.features.planner.composeLoadingAnimation.noDestinationYet': '旅先の骨格がまとまり次第、ここに目的地プレビューが表示されます。',
   'components.features.planner.composeLoadingAnimation.progressLabel': '全体の進行',
   'components.features.planner.composeLoadingAnimation.currentStepLabel': 'ただいまの工程',
   'components.features.planner.composeLoadingAnimation.statusLive': 'いまの進み具合',
@@ -53,7 +58,7 @@ vi.mock('next-intl', () => ({
 }));
 
 describe('ComposeLoadingAnimation', () => {
-  it('shows a grid-style checklist and the active day message', () => {
+  it('shows the travel dashboard layout and the active day message', () => {
     const steps: ComposeStep[] = [
       { id: 'usage_check', message: '利用状況を確認中...', status: 'completed' },
       { id: 'normalize', message: '旅の条件を整理中...', status: 'completed' },
@@ -76,10 +81,13 @@ describe('ComposeLoadingAnimation', () => {
       />
     );
 
-    expect(screen.getAllByText('進行中のチェックリスト').length).toBeGreaterThan(0);
+    expect(screen.getByText('旅のスナップショット')).toBeInTheDocument();
+    expect(screen.getByText('工程ごとの進み方')).toBeInTheDocument();
+    expect(screen.getAllByText('このあと進む工程').length).toBeGreaterThan(0);
     expect(screen.getAllByText('2日目のスポットを作成中...').length).toBeGreaterThan(0);
     expect(screen.getByText('Paris')).toBeInTheDocument();
     expect(screen.getByText('3日間の旅')).toBeInTheDocument();
+    expect(screen.getByText('3日分を順番に作成中')).toBeInTheDocument();
     expect(screen.getByText('セーヌ川沿いから美術館、街歩きへつなぐ3日間の旅。')).toBeInTheDocument();
   });
 });

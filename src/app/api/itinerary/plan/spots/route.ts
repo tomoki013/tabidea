@@ -16,26 +16,37 @@ interface SpotsRequestBody {
 }
 
 export async function POST(req: Request) {
-  let body: SpotsRequestBody;
   try {
-    body = await req.json();
-  } catch {
-    return Response.json({ error: 'Invalid request body' }, { status: 400 });
-  }
+    let body: SpotsRequestBody;
+    try {
+      body = await req.json();
+    } catch (error) {
+      console.error('[POST /api/itinerary/plan/spots] Invalid request body:', error);
+      return Response.json({ ok: false, error: 'Invalid request body' }, { status: 400 });
+    }
 
-  const result = await runSpotCandidatesPipeline(body);
+    const result = await runSpotCandidatesPipeline(body);
 
-  if (result.success) {
-    return Response.json({
-      ok: true,
-      candidates: result.candidates,
-      warnings: result.warnings,
+    if (result.success) {
+      return Response.json({
+        ok: true,
+        candidates: result.candidates,
+        warnings: result.warnings,
+      });
+    }
+
+    console.error('[POST /api/itinerary/plan/spots] Spots pipeline failed:', {
+      failedStep: result.failedStep,
+      message: result.message,
+      day: body.day,
     });
+    return Response.json({
+      ok: false,
+      error: result.message ?? 'spots_pipeline_failed',
+      failedStep: result.failedStep,
+    }, { status: 500 });
+  } catch (error) {
+    console.error('[POST /api/itinerary/plan/spots] Unexpected error:', error);
+    return Response.json({ ok: false, error: 'spots_pipeline_failed' }, { status: 500 });
   }
-
-  return Response.json({
-    ok: false,
-    error: result.message ?? 'spots_pipeline_failed',
-    failedStep: result.failedStep,
-  }, { status: 500 });
 }
