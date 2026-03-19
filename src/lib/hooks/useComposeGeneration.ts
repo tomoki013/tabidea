@@ -341,9 +341,11 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
                 if (event.destination) setPreviewDestination(event.destination);
                 if (event.description) setPreviewDescription(event.description);
                 if (typeof event.day === "number" && event.dayData) {
+                  const fallbackDay = event.day;
+                  const fallbackDayData = event.dayData;
                   setPartialDays((prev) => {
                     const next = new Map(prev);
-                    next.set(event.day, event.dayData);
+                    next.set(fallbackDay, fallbackDayData);
                     return next;
                   });
                 }
@@ -449,9 +451,9 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
           signal: controller.signal,
         });
 
-        const seedData = await extractErrorPayload(seedRes) as SeedResponse | null;
+        const parsedSeedData = await extractErrorPayload(seedRes) as SeedResponse | null;
 
-        if (!seedData) {
+        if (!parsedSeedData) {
           shouldFallbackToLegacyCompose = true;
         }
 
@@ -461,6 +463,14 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
           setIsGenerating(false);
           return;
         }
+
+        if (!parsedSeedData) {
+          setErrorMessage(t("errors.generic"));
+          setIsGenerating(false);
+          return;
+        }
+
+        const seedData = parsedSeedData;
 
         if (!seedRes.ok || !seedData.ok) {
           if (seedData.limitExceeded) {
