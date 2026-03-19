@@ -45,6 +45,11 @@ import { createComposeTimer } from '@/lib/utils/performance-timer';
 import { checkAndRecordUsage } from '@/lib/limits/check';
 import { getItineraryProvider, toComposeModelTier } from './pipeline-helpers';
 import { normalizePlaceKey } from './destination-highlights';
+import {
+  ITINERARY_SPLIT_ROUTE_MAX_DURATION_SECONDS,
+  SEED_RESPONSE_RESERVE_MS,
+  SPOTS_RESPONSE_RESERVE_MS,
+} from './runtime-budget';
 
 // Re-export for backward compatibility
 export { PipelineStepError } from './errors';
@@ -66,9 +71,11 @@ const SEMANTIC_STEP_RESERVE_MS = 3_000;
 const DEADLINE_RESERVE_MS = 2_000;
 
 // ---- Split pipeline constants ----
-// Seed / Spots pipelines: must complete within platform function timeout (~9s)
-const SEED_DEADLINE_MS = 8_500;
-const SPOTS_DEADLINE_MS = 8_000;
+// Seed / Spots pipelines: consume almost the full route budget and only reserve
+// a small tail for response serialization / flush on 10s-limited platforms.
+const SPLIT_ROUTE_BUDGET_MS = ITINERARY_SPLIT_ROUTE_MAX_DURATION_SECONDS * 1_000;
+const SEED_DEADLINE_MS = SPLIT_ROUTE_BUDGET_MS;
+const SPOTS_DEADLINE_MS = SPLIT_ROUTE_BUDGET_MS;
 
 // Structure phase: steps 0-6 (no narrative), must complete in <9s (Netlify free plan safe)
 const STRUCTURE_DEADLINE_MS = 9_000;
@@ -1060,7 +1067,7 @@ export async function runSeedPipeline(
     const modelTier = toComposeModelTier(userType);
 
     emitProgress('semantic_plan', '旅の骨格を設計中...');
-    const seedTimeout = Math.max(remainingTimeMs() - 200, 50); // reserve 200ms for response
+    const seedTimeout = Math.max(remainingTimeMs() - SEED_RESPONSE_RESERVE_MS, 50);
     const seed = await timer.measure('semantic_plan', async () => {
       let timeoutId: ReturnType<typeof setTimeout> | undefined;
       try {
@@ -1146,7 +1153,7 @@ export async function runSpotCandidatesPipeline(input: {
       Math.ceil(totalTarget / Math.max(input.normalizedRequest.durationDays, 1))
     );
 
-    const spotsTimeout = Math.max(deadlineAt - Date.now() - 500, 50);
+    const spotsTimeout = Math.max(deadlineAt - Date.now() - SPOTS_RESPONSE_RESERVE_MS, 50);
     const candidates = await timer.measure('semantic_plan', async () => {
       let timeoutId: ReturnType<typeof setTimeout> | undefined;
       try {

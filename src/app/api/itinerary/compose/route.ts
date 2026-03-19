@@ -1,5 +1,6 @@
 import { runComposePipeline } from '@/lib/services/itinerary/pipeline-orchestrator';
 import { EventLogger } from '@/lib/services/analytics/event-logger';
+import { ITINERARY_SPLIT_ROUTE_MAX_DURATION_SECONDS } from '@/lib/services/itinerary/runtime-budget';
 import { createClient } from '@supabase/supabase-js';
 import type { UserInput } from '@/types';
 import type { PipelineStepId } from '@/types/itinerary-pipeline';
@@ -8,7 +9,7 @@ export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 // Legacy SSE endpoint — kept for backward compatibility.
 // Main generation now uses /api/itinerary/plan/structure + /api/itinerary/plan/narrate.
-export const maxDuration = 9;
+export const maxDuration = ITINERARY_SPLIT_ROUTE_MAX_DURATION_SECONDS;
 
 const HEARTBEAT_INTERVAL_MS = 4_000;
 
