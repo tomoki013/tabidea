@@ -1569,44 +1569,22 @@
         },
         "composeLoadingAnimation": {
           "waiting": "出発の準備中...",
-          "phase1Label": "ルートを設計中",
-          "phase2Label": "旅程を仕上げ中",
-          "destinationRevealed": "{destination}",
-          "stepsProgress": "{completed} / {total}",
           "daysCount": "{days}日間の旅",
-          "checkpointDone": "完了",
-          "checkpointActive": "処理中",
-          "checkpointPending": "待機中",
           "eyebrow": "Journey now boarding",
           "leadReady": "行き先が固まったら、日ごとの予定を順番に作っています。",
-          "snapshotLabel": "旅のスナップショット",
-          "routePlanLabel": "工程ごとの進み方",
-          "upcomingLabel": "このあと進む工程",
-          "dayPill": "{days}日分を順番に作成中",
           "noDestinationYet": "旅先の骨格がまとまり次第、ここに目的地プレビューが表示されます。",
           "progressLabel": "全体の進行",
-          "currentStepLabel": "ただいまの工程",
-          "statusLive": "いまの進み具合",
-          "stepListLabel": "進行中のチェックリスト",
-          "stageDone": "完了",
-          "stageActive": "進行中",
-          "stagePending": "待機中",
           "stages": {
             "concept": {
-              "title": "旅の骨格づくり",
-              "description": "旅の大まかな流れと、各日の過ごし方を決めています。"
+              "title": "旅の骨格づくり"
             },
             "spots": {
-              "title": "立ち寄り先を選定",
-              "description": "各日ごとに、行く場所や立ち寄り先を具体的に選んでいます。"
+              "title": "立ち寄り先を選定"
             },
             "polish": {
-              "title": "しおりとして仕上げ",
-              "description": "時間や説明を整えて、見やすい旅程に仕上げています。"
+              "title": "しおりとして仕上げ"
             }
-          },
-          "remainingSteps": "残り {count} 工程",
-          "allStepsReady": "最終仕上げを待っています"
+          }
         },
         "composeLoadingTips": {
           "label": "旅の豆知識",

@@ -10,6 +10,7 @@
 ## 開発者向けコミット履歴（コミット単位）
 
 ### 2026-03-19
+- `local` fix(compose-pipeline,loading-ui): パイプラインタイムアウトとローディングUIを改善。① compose route の無駄なインリクエストリトライを削除（プラットフォーム制限内でリトライが完了しない問題の根本修正）。② `SEMANTIC_STEP_RESERVE_MS` を 6s→3s に緩和し、`semantic_plan` の実行可能時間を ~18.5s→~21.5s に拡張（後続ステップは全て deterministic fallback あり）。③ seed/spots パイプラインに `Promise.race` によるデッドライン保護を追加し、プラットフォーム kill の代わりに graceful な `PipelineStepError` を返すよう改善。④ `useComposeGeneration` のレガシー compose フォールバックで、タイムアウトエラー時はフォールバックをスキップし即座にエラー表示するよう変更（二重タイムアウト待ちの解消）。⑤ `ComposeLoadingAnimation` を簡素化 — 2カラムの詳細ダッシュボードから、1カラムの「目的地プレビュー＋プログレスバー＋3ステージ横並びインジケーター＋現在ステップ名」に刷新。⑥ 不要な i18n キーを整理し、テストを更新。
 - `local` fix(compose-pipeline,fallback): プラン生成が毎回失敗しうる回帰を修正。原因は、最新の split compose 経路（`seed → spots → assemble → narrate`）のどこかで空レスポンス・非JSON・途中失敗・SSE終端欠落が起きると、クライアントがその場で失敗確定してしまい、旧 compose SSE 経路へ戻れなかったこと。`useComposeGeneration` に legacy `/api/itinerary/compose` 自動フォールバックを復活させ、split route が壊れても生成を継続できるよう修正。保存処理は共通化し、legacy SSE の `day_complete` 分岐で `event.day` が `number | undefined` 扱いになって Netlify build が落ちる箇所も型安全に修正。split seed 欠落時・day route 失敗時の回帰テストとアーキテクチャ文書も更新。
 - `local` fix(compose-pipeline,loading-ui): 分割プラン生成の障害切り分けとローディング体験を改善。① `/api/itinerary/plan/seed|spots|assemble|narrate` の各 route で request parse 失敗・パイプライン失敗・想定外例外を構造化レスポンス + 明示的な `console.error` に統一し、サーバーログに失敗箇所が残るよう修正。② `useComposeGeneration` は split route の non-JSON / 空レスポンス / SSE 事前失敗でもエラーメッセージを回収できるようにし、従来の汎用エラー化を減らした。③ `ComposeLoadingAnimation` を旅の進行ダッシュボードUIへ刷新し、旅先プレビュー・現在工程・次に進む工程・ステージ別進捗を1画面で把握しやすくした。④ ja/en 文言と compose hook / loading UI テストを更新。
 

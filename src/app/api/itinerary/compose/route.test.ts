@@ -99,22 +99,19 @@ describe("POST /api/itinerary/compose", () => {
     expect(body).toContain('"type":"heartbeat"');
   });
 
-  it("retries once when the first compose attempt times out on a retryable step", async () => {
-    mocks.runComposePipeline
-      .mockResolvedValueOnce({
-        success: false,
-        warnings: [],
-        failedStep: "narrative_render",
-        message: "narrative_render timed out before platform deadline",
-      })
-      .mockResolvedValueOnce(successResult);
+  it("emits error when compose pipeline fails with timeout (no in-request retry)", async () => {
+    mocks.runComposePipeline.mockResolvedValueOnce({
+      success: false,
+      warnings: [],
+      failedStep: "narrative_render",
+      message: "narrative_render timed out before platform deadline",
+    });
 
     const response = await POST(makeRequest());
     const body = await response.text();
 
-    expect(mocks.runComposePipeline).toHaveBeenCalledTimes(2);
-    expect(body).toContain("再試行しています");
-    expect(body).toContain('"type":"complete"');
+    expect(mocks.runComposePipeline).toHaveBeenCalledTimes(1);
+    expect(body).toContain('"type":"error"');
     expect(body).toContain('"type":"done"');
   });
 });

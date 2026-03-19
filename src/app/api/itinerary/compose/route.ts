@@ -11,23 +11,6 @@ export const runtime = 'nodejs';
 export const maxDuration = 9;
 
 const HEARTBEAT_INTERVAL_MS = 4_000;
-const COMPOSE_RETRYABLE_STEPS: PipelineStepId[] = ['semantic_plan', 'place_resolve', 'feasibility_score', 'route_optimize', 'timeline_build', 'narrative_render'];
-
-function shouldRetryCompose(result: Awaited<ReturnType<typeof runComposePipeline>>): boolean {
-  if (result.success) {
-    return false;
-  }
-
-  if (result.limitExceeded) {
-    return false;
-  }
-
-  if (!result.failedStep || !COMPOSE_RETRYABLE_STEPS.includes(result.failedStep as PipelineStepId)) {
-    return false;
-  }
-
-  return /timeout|timed out/i.test(result.message ?? '');
-}
 
 export async function POST(req: Request) {
   const encoder = new TextEncoder();
@@ -75,7 +58,7 @@ export async function POST(req: Request) {
           startedAt: new Date(startTime).toISOString(),
         });
 
-        let result = await runComposePipeline(
+        const result = await runComposePipeline(
           input,
           options,
           (event) => {
@@ -103,45 +86,6 @@ export async function POST(req: Request) {
             });
           }
         );
-
-        if (shouldRetryCompose(result)) {
-          emit('progress', {
-            step: 'usage_check',
-            message: '通信状態を確認し、再試行しています...',
-          });
-
-          result = await runComposePipeline(
-            input,
-            {
-              ...options,
-              isRetry: true,
-            },
-            (event) => {
-              currentStep = event.step;
-
-              if (event.type === 'day_complete') {
-                emit('day_complete', {
-                  step: event.step,
-                  day: event.day,
-                  dayData: event.dayData,
-                  isComplete: event.isComplete,
-                  totalDays: event.totalDays,
-                  destination: event.destination,
-                  description: event.description,
-                });
-                return;
-              }
-
-              emit('progress', {
-                step: event.step,
-                message: event.message,
-                ...(event.totalDays ? { totalDays: event.totalDays } : {}),
-                ...(event.destination ? { destination: event.destination } : {}),
-                ...(event.description ? { description: event.description } : {}),
-              });
-            }
-          );
-        }
 
         if (result.success && result.itinerary) {
           emit('complete', {
