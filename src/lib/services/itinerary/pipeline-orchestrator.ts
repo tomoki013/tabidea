@@ -22,6 +22,7 @@ import type {
 } from '@/types/itinerary-pipeline';
 import { normalizeRequest } from './steps/normalize-request';
 import {
+  buildDeterministicSemanticSeedPlan,
   runSemanticDayPlanner,
   runSemanticPlanner,
   runSemanticSeedPlanner,
@@ -955,6 +956,7 @@ export interface SeedPipelineResult {
     narrativeModelName: string;
     modelTier: 'flash' | 'pro';
     provider: string;
+    timeoutMitigationUsed: boolean;
   };
   failedStep?: string;
   limitExceeded?: boolean;
@@ -1010,6 +1012,7 @@ export async function runSeedPipeline(
   const allWarnings: string[] = [];
   const pipelineStartedAt = Date.now();
   const deadlineAt = pipelineStartedAt + SEED_DEADLINE_MS;
+  let timeoutMitigationUsed = false;
 
   const remainingTimeMs = () => deadlineAt - Date.now();
 
@@ -1079,6 +1082,17 @@ export async function runSeedPipeline(
             }, seedTimeout);
           }),
         ]);
+      } catch (error) {
+        timeoutMitigationUsed = true;
+        const fallbackReason = error instanceof Error ? error.message : 'unknown_error';
+        console.warn('[seed-pipeline] Falling back to deterministic seed plan:', fallbackReason);
+        allWarnings.push(
+          `seed_fallback:${fallbackReason}`,
+        );
+        emitProgress('semantic_plan', '旅の骨格を安全モードで再構成中...', {
+          totalDays: normalizedRequest.durationDays,
+        });
+        return buildDeterministicSemanticSeedPlan(normalizedRequest);
       } finally {
         if (timeoutId) clearTimeout(timeoutId);
       }
@@ -1096,6 +1110,7 @@ export async function runSeedPipeline(
         narrativeModelName: narrativeModel.modelName,
         modelTier,
         provider,
+        timeoutMitigationUsed,
       },
     };
   } catch (error) {

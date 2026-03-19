@@ -258,6 +258,51 @@ export async function runSemanticSeedPlanner(
   };
 }
 
+export function buildDeterministicSemanticSeedPlan(
+  request: NormalizedRequest
+): SemanticSeedPlan {
+  const destination = buildSeedDestinationLabel(request);
+  const themes = request.softPreferences.themes.slice(0, 4);
+  const mustVisitPlaces = request.mustVisitPlaces.slice(0, 6);
+  const dailyAreas = buildDailyAreas(request, destination);
+  const dayStructure = dailyAreas.map((area, index) =>
+    buildDeterministicDayStructure({
+      request,
+      area,
+      day: index + 1,
+      totalDays: dailyAreas.length,
+      mustVisitPlaces,
+    })
+  );
+
+  const highlightedPlaces = mustVisitPlaces.map((place, index) => ({
+    name: place,
+    searchQuery: place,
+    areaHint: dayStructure[index % dayStructure.length]?.mainArea ?? destination,
+    dayHint: (index % dayStructure.length) + 1,
+    rationale: request.outputLanguage === 'en'
+      ? 'Must-visit place requested by the traveler.'
+      : 'ユーザーが必ず訪れたい場所として指定。',
+    timeSlotHint: index % 3 === 0 ? 'morning' : index % 3 === 1 ? 'afternoon' : 'evening' as const,
+    stayDurationMinutes: 90,
+  }));
+
+  const constrainedDayStructure = applyHotelConstraintsToDayStructure(dayStructure, request);
+
+  return {
+    destination,
+    description: buildSeedDescription(request, destination, themes),
+    dayStructure: constrainedDayStructure,
+    themes: themes.length > 0 ? themes : undefined,
+    tripIntentSummary: buildTripIntentSummary(request, destination, themes),
+    orderingPreferences: buildOrderingPreferences(request),
+    fallbackHints: buildFallbackHints(request, destination),
+    destinationHighlights: highlightedPlaces.length > 0
+      ? assignHighlightDaysFromAreas(highlightedPlaces, constrainedDayStructure)
+      : undefined,
+  };
+}
+
 export async function runSemanticDayPlanner(
   input: SemanticDayPlannerInput
 ): Promise<SemanticCandidate[]> {
@@ -497,6 +542,147 @@ function buildSemanticSeedPrompt(request: NormalizedRequest): string {
   prompt += `\n11. 各 dayStructure は「朝はどこから始め、どこへ流れて、夜はどこで締めるか」が分かる itinerary らしい設計にする`;
 
   return prompt;
+}
+
+function buildSeedDestinationLabel(request: NormalizedRequest): string {
+  if (request.destinations.length > 0) {
+    return request.destinations.join('・');
+  }
+
+  return request.outputLanguage === 'en'
+    ? `${request.region} trip`
+    : `${request.region}の旅`;
+}
+
+function buildDailyAreas(request: NormalizedRequest, fallbackDestination: string): string[] {
+  const fromHotels = request.fixedSchedule
+    .filter((item) => item.type === 'hotel')
+    .map((item) => item.location?.trim() || item.title?.trim())
+    .filter((value): value is string => Boolean(value));
+  const sourceAreas = [...request.destinations, ...fromHotels];
+
+  if (sourceAreas.length === 0) {
+    return Array.from({ length: request.durationDays }, () => fallbackDestination);
+  }
+
+  return Array.from({ length: request.durationDays }, (_, index) => {
+    return sourceAreas[Math.min(index, sourceAreas.length - 1)] ?? fallbackDestination;
+  });
+}
+
+function buildDeterministicDayStructure(input: {
+  request: NormalizedRequest;
+  area: string;
+  day: number;
+  totalDays: number;
+  mustVisitPlaces: string[];
+}): SemanticPlan['dayStructure'][number] {
+  const { request, area, day, totalDays, mustVisitPlaces } = input;
+  const slotLabel = request.outputLanguage === 'en'
+    ? `Day ${day}`
+    : `${day}日目`;
+  const opening = day === 1
+    ? request.outputLanguage === 'en' ? 'Start gently' : '朝は無理なく始めて'
+    : request.outputLanguage === 'en' ? 'Build momentum' : '朝から流れよく巡って';
+  const ending = day === totalDays
+    ? request.outputLanguage === 'en' ? 'wrap up the trip.' : '旅を気持ちよく締めくくる。'
+    : request.outputLanguage === 'en' ? 'settle in for the evening.' : '夜は落ち着いて締める。';
+  const assignedMustVisit = mustVisitPlaces.filter((_, index) => index % totalDays === day - 1).slice(0, 2);
+
+  return {
+    day,
+    title: request.outputLanguage === 'en'
+      ? `${slotLabel}: ${area}`
+      : `${slotLabel}：${area}を中心に過ごす日`,
+    mainArea: area,
+    startArea: area,
+    endArea: area,
+    overnightLocation: area,
+    summary: request.outputLanguage === 'en'
+      ? `${opening} explore ${area} as the core area and ${ending}`
+      : `${opening}${area}を中心に巡り、${ending}`,
+    flowSummary: request.outputLanguage === 'en'
+      ? `Morning in ${area}, midday around key spots, evening near ${area}.`
+      : `朝は${area}周辺から始め、昼は見どころを回り、夜は${area}近くで締める流れ。`,
+    anchorMoments: assignedMustVisit.length > 0
+      ? assignedMustVisit
+      : request.outputLanguage === 'en'
+        ? [`Morning in ${area}`, `Afternoon highlights`, `Evening wind-down`]
+        : [`朝は${area}を散策`, '昼は見どころを体験', '夜はゆったり締める'],
+  };
+}
+
+function buildSeedDescription(
+  request: NormalizedRequest,
+  destination: string,
+  themes: string[]
+): string {
+  const themeSummary = themes.length > 0
+    ? themes.slice(0, 2).join(request.outputLanguage === 'en' ? ', ' : '・')
+    : request.outputLanguage === 'en'
+      ? 'local highlights'
+      : 'その土地らしい見どころ';
+
+  return request.outputLanguage === 'en'
+    ? `${destination} itinerary centered on ${themeSummary}, paced for a ${request.companions || 'traveler'} trip.`
+    : `${destination}で${themeSummary}を軸に、${request.companions || '旅行者'}でも動きやすい流れに整えた旅程です。`;
+}
+
+function buildTripIntentSummary(
+  request: NormalizedRequest,
+  destination: string,
+  themes: string[]
+): string {
+  const themeSummary = themes.length > 0
+    ? themes.slice(0, 3).join(request.outputLanguage === 'en' ? ', ' : '・')
+    : request.outputLanguage === 'en'
+      ? 'the best local highlights'
+      : 'その土地らしい見どころ';
+
+  return request.outputLanguage === 'en'
+    ? `${request.durationDays}-day trip in ${destination} focused on ${themeSummary}.`
+    : `${destination}で${themeSummary}を楽しむ${request.durationDays}日間の旅。`;
+}
+
+function buildOrderingPreferences(request: NormalizedRequest): string[] | undefined {
+  const entries: string[] = [];
+
+  if (request.outputLanguage === 'en') {
+    entries.push(request.pace === 'relaxed' ? 'Keep transitions gentle.' : 'Keep the day moving smoothly.');
+    if (request.fixedSchedule.some((item) => item.type === 'hotel')) {
+      entries.push('Stay anchored around booked hotels.');
+    }
+    if (request.mustVisitPlaces.length > 0) {
+      entries.push('Place must-visit spots early enough to avoid missing them.');
+    }
+  } else {
+    entries.push(request.pace === 'relaxed' ? '移動を詰め込みすぎず、余白を残す。' : '流れよく回れる順序を優先する。');
+    if (request.fixedSchedule.some((item) => item.type === 'hotel')) {
+      entries.push('予約済みホテルを起点・終点に寄せる。');
+    }
+    if (request.mustVisitPlaces.length > 0) {
+      entries.push('必ず行きたい場所は取りこぼさないよう前寄せで配置する。');
+    }
+  }
+
+  return entries.length > 0 ? entries : undefined;
+}
+
+function buildFallbackHints(
+  request: NormalizedRequest,
+  destination: string
+): string[] | undefined {
+  const hints = request.outputLanguage === 'en'
+    ? [
+      `Prefer walkable alternatives around ${destination}.`,
+      'Use a cafe or viewpoint as a low-risk filler if a slot opens.',
+    ]
+    : [
+      `${destination}周辺で徒歩移動しやすい候補を優先する。`,
+      '空き時間が出たらカフェや展望スポットで調整する。',
+    ];
+
+  return hints;
 }
 
 function buildSemanticDayPrompt(input: {

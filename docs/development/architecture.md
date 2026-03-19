@@ -1,6 +1,6 @@
 # Architecture
 
-更新日: 2026-03-12
+更新日: 2026-03-19
 
 ## 1. System Overview
 
@@ -71,6 +71,7 @@ UserInput → [Seed API]
 - Pipeline version: `v3`
 - Narrative Renderer: `streamObject` で日ごとに部分 JSON を返し、`partialDays` 経由で UI に中間結果を配信
 - 主要なタイムアウト耐性は Background Job ではなく「semantic_plan を seed + day-sized batches に分割する設計」で確保する
+- Seed phase は唯一の “全日共通の前提生成” なので、AI seed が platform deadline に近づいた場合でも全体失敗にせず、`buildDeterministicSemanticSeedPlan()` で dayStructure / ordering / must-visit highlights を TS で再構成して day-by-day spots generation を継続する。これにより seed timeout が単発の 500 失敗へ直結しない
 
 補足（サンプル再生成）:
 - `src/scripts/generate-sample-itineraries.ts` は compose pipeline (`runComposePipeline`) を使用してサンプル旅程を生成

@@ -88,6 +88,7 @@ interface SeedResponse {
     narrativeModelName: string;
     modelTier: "flash" | "pro";
     provider: string;
+    timeoutMitigationUsed: boolean;
   };
   error?: string;
   failedStep?: string;
