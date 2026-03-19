@@ -275,17 +275,25 @@ export function buildDeterministicSemanticSeedPlan(
     })
   );
 
-  const highlightedPlaces = mustVisitPlaces.map((place, index) => ({
-    name: place,
-    searchQuery: place,
-    areaHint: dayStructure[index % dayStructure.length]?.mainArea ?? destination,
-    dayHint: (index % dayStructure.length) + 1,
-    rationale: request.outputLanguage === 'en'
-      ? 'Must-visit place requested by the traveler.'
-      : 'ユーザーが必ず訪れたい場所として指定。',
-    timeSlotHint: index % 3 === 0 ? 'morning' : index % 3 === 1 ? 'afternoon' : 'evening' as const,
-    stayDurationMinutes: 90,
-  }));
+  const highlightedPlaces: DestinationHighlight[] = mustVisitPlaces.map((place, index) => {
+    const timeSlotHint: DestinationHighlight['timeSlotHint'] = index % 3 === 0
+      ? 'morning'
+      : index % 3 === 1
+        ? 'afternoon'
+        : 'evening';
+
+    return {
+      name: place,
+      searchQuery: place,
+      areaHint: dayStructure[index % dayStructure.length]?.mainArea ?? destination,
+      dayHint: (index % dayStructure.length) + 1,
+      rationale: request.outputLanguage === 'en'
+        ? 'Must-visit place requested by the traveler.'
+        : 'ユーザーが必ず訪れたい場所として指定。',
+      timeSlotHint,
+      stayDurationMinutes: 90,
+    };
+  });
 
   const constrainedDayStructure = applyHotelConstraintsToDayStructure(dayStructure, request);
 
@@ -557,7 +565,7 @@ function buildSeedDestinationLabel(request: NormalizedRequest): string {
 function buildDailyAreas(request: NormalizedRequest, fallbackDestination: string): string[] {
   const fromHotels = request.fixedSchedule
     .filter((item) => item.type === 'hotel')
-    .map((item) => item.location?.trim() || item.title?.trim())
+    .map((item) => item.name?.trim())
     .filter((value): value is string => Boolean(value));
   const sourceAreas = [...request.destinations, ...fromHotels];
 

@@ -1,10 +1,9 @@
 import { checkAndRecordUsage } from '@/lib/limits/check';
-import { ITINERARY_SPLIT_ROUTE_MAX_DURATION_SECONDS } from '@/lib/services/itinerary/runtime-budget';
 import { resolveModelsForPipeline } from '@/lib/services/itinerary/pipeline-helpers';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
-export const maxDuration = ITINERARY_SPLIT_ROUTE_MAX_DURATION_SECONDS;
+export const maxDuration = 9;
 
 export async function POST(req: Request) {
   try {

@@ -3,14 +3,13 @@ import {
   type NarratePipelineInput,
 } from '@/lib/services/itinerary/pipeline-orchestrator';
 import { EventLogger } from '@/lib/services/analytics/event-logger';
-import { ITINERARY_SPLIT_ROUTE_MAX_DURATION_SECONDS } from '@/lib/services/itinerary/runtime-budget';
 import { createClient } from '@supabase/supabase-js';
 import type { NormalizedRequest, TimelineDay } from '@/types/itinerary-pipeline';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 // Safe for Netlify free plan (10s limit)
-export const maxDuration = ITINERARY_SPLIT_ROUTE_MAX_DURATION_SECONDS;
+export const maxDuration = 9;
 
 interface NarrateRequestBody {
   timeline: TimelineDay[];
