@@ -4,7 +4,4 @@
 
 [functions]
   node_bundler = "esbuild"
-
-[[functions]]
-  path = "/.netlify/functions-internal/*"
-  timeout = 26
+  external_node_modules = ["*"]
