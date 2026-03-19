@@ -47,7 +47,7 @@ import { checkAndRecordUsage } from '@/lib/limits/check';
 import { getItineraryProvider, toComposeModelTier } from './pipeline-helpers';
 import { normalizePlaceKey } from './destination-highlights';
 import {
-  ITINERARY_SPLIT_ROUTE_MAX_DURATION_SECONDS,
+  ITINERARY_SPLIT_APP_DEADLINE_MS,
   SEED_RESPONSE_RESERVE_MS,
   SPOTS_RESPONSE_RESERVE_MS,
 } from './runtime-budget';
@@ -72,9 +72,10 @@ const SEMANTIC_STEP_RESERVE_MS = 3_000;
 const DEADLINE_RESERVE_MS = 2_000;
 
 // ---- Split pipeline constants ----
-// Seed / Spots pipelines: consume almost the full route budget and only reserve
-// a small tail for response serialization / flush.
-const SPLIT_ROUTE_BUDGET_MS = ITINERARY_SPLIT_ROUTE_MAX_DURATION_SECONDS * 1_000;
+// Seed / Spots pipelines intentionally stop a few seconds before the public
+// route cap so deterministic fallback responses can still be serialized and
+// flushed to the client.
+const SPLIT_ROUTE_BUDGET_MS = ITINERARY_SPLIT_APP_DEADLINE_MS;
 const SEED_DEADLINE_MS = SPLIT_ROUTE_BUDGET_MS;
 const SPOTS_DEADLINE_MS = SPLIT_ROUTE_BUDGET_MS;
 
@@ -1154,6 +1155,11 @@ export async function runSpotCandidatesPipeline(input: {
       Math.ceil(totalTarget / Math.max(input.normalizedRequest.durationDays, 1))
     );
 
+    // TODO(perf): multi-day trips currently pay this AI call cost once per day
+    // because the client invokes `/plan/spots` sequentially. When we optimize
+    // for long itineraries, batch multiple days per request (or run a bounded
+    // concurrency worker pool keyed by dayStructure groups) so total latency
+    // grows sublinearly with durationDays instead of roughly O(days).
     const spotsTimeout = Math.max(deadlineAt - Date.now() - SPOTS_RESPONSE_RESERVE_MS, 50);
     const candidates = await timer.measure('semantic_plan', async () => {
       let timeoutId: ReturnType<typeof setTimeout> | undefined;
