@@ -64,7 +64,7 @@ UserInput → [Seed API]
 - エラー: `src/lib/services/itinerary/errors.ts`
 - 観測ログ: `src/lib/services/itinerary/generation-run-logger.ts` → compose_runs / compose_run_steps
 - UI: `ComposeLoadingAnimation` + `ComposeLoadingTips` で seed 完了後すぐに目的地と日数を表示し、spot generation は日別進捗として見せる。`narrative_render` フェーズでは `StreamingResultView` で日ごとカード段階表示
-- Hook: `useComposeGeneration` は seed → day-by-day spots → assemble → narrate をクライアントから順次実行し、`partialDays`, `totalDays`, `previewDestination` を更新する。must-visit は index 順を日数で均等配分する deterministic scheduling を使い、日数より多い必訪問スポットが入力されても取りこぼさない
+- Hook: `useComposeGeneration` は通常は seed → day-by-day spots → assemble → narrate をクライアントから順次実行し、`partialDays`, `totalDays`, `previewDestination` を更新する。split route が空レスポンス・非JSON・途中失敗・終端欠落で壊れた場合は、互換用の legacy SSE `/api/itinerary/compose` へ自動フォールバックして生成を継続する。must-visit は index 順を日数で均等配分する deterministic scheduling を使い、日数より多い必訪問スポットが入力されても取りこぼさない
 - モデル解決は phase-aware (`outline` / `chunk`) で行い、compose pipeline は既存の `AI_MODEL_OUTLINE_*` / `AI_MODEL_CHUNK_*` env 契約を使う
 - Places 照合は `ENABLE_COMPOSE_PLACE_RESOLVE` で ON/OFF 制御
 - Phase 1 はハバーサイン距離推定 (`distance-estimator.ts`)、Phase 2 で Routes API (`routes-client.ts`) に差替予定
