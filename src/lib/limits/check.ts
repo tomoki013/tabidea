@@ -36,30 +36,47 @@ export async function checkAndRecordUsage(
   metadata?: Record<string, unknown>,
   options?: { skipConsume?: boolean }
 ): Promise<LegacyLimitCheckResult> {
-  const usageStatus = options?.skipConsume
-    ? await getUnifiedUsageStatus(action)
-    : await checkAndConsumeQuota(action, metadata);
+  if (options?.skipConsume) {
+    // Read-only path still needs billing info for userType
+    const [usageStatus, billing] = await Promise.all([
+      getUnifiedUsageStatus(action),
+      checkBillingAccess({ skipAdminCheck: true }),
+    ]);
 
-  // We need userType and userId for full compatibility
-  // Note: checkAndConsumeQuota already fetched user, but we need to fetch again or change its return type.
-  // For now, fetching billing info is safer to ensure we have the type.
-  const billing = await checkBillingAccess({ skipAdminCheck: true });
+    let currentCount = 0;
+    if (usageStatus.limit !== -1) {
+      currentCount = usageStatus.limit - usageStatus.remaining;
+    }
 
-  // Calculate current count approximation
+    return {
+      allowed: usageStatus.remaining !== 0,
+      userType: billing.userType,
+      userId: billing.userId,
+      currentCount,
+      limit: usageStatus.limit,
+      remaining: usageStatus.remaining,
+      resetAt: usageStatus.resetAt,
+    };
+  }
+
+  // Consume path: checkAndConsumeQuota now returns userType/userId directly,
+  // eliminating the redundant second checkBillingAccess call
+  const result = await checkAndConsumeQuota(action, metadata);
+
   let currentCount = 0;
-  if (usageStatus.limit !== -1) {
-    currentCount = usageStatus.limit - usageStatus.remaining;
+  if (result.limit !== -1) {
+    currentCount = result.limit - result.remaining;
   }
 
   return {
-    allowed: options?.skipConsume ? usageStatus.remaining !== 0 : (usageStatus as { allowed: boolean }).allowed,
-    userType: billing.userType,
-    userId: billing.userId,
+    allowed: result.allowed,
+    userType: result.userType ?? 'anonymous',
+    userId: result.userId ?? null,
     currentCount,
-    limit: usageStatus.limit,
-    remaining: usageStatus.remaining,
-    resetAt: usageStatus.resetAt,
-    error: (usageStatus as { error?: string }).error
+    limit: result.limit,
+    remaining: result.remaining,
+    resetAt: result.resetAt,
+    error: result.error,
   };
 }
 

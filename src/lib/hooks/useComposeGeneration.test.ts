@@ -201,6 +201,24 @@ const createLegacyComposeSuccess = () => ({
   ]),
 });
 
+const MOCK_PREFLIGHT_SUCCESS = {
+  ok: true,
+  status: 200,
+  json: async () => ({
+    ok: true,
+    allowed: true,
+    userType: "free",
+    remaining: 2,
+    resetAt: null,
+    metadata: {
+      modelName: "gemini-2.5-flash",
+      narrativeModelName: "gemini-2.5-flash",
+      modelTier: "flash",
+      provider: "gemini",
+    },
+  }),
+};
+
 const DEFAULT_INPUT = {
   destinations: ["東京"],
   region: "domestic",
@@ -225,6 +243,7 @@ describe("useComposeGeneration", () => {
 
   it("completes two-phase generation and navigates to saved local plan", async () => {
     mockFetch
+      .mockResolvedValueOnce(MOCK_PREFLIGHT_SUCCESS)
       .mockResolvedValueOnce(MOCK_SEED_SUCCESS)
       .mockResolvedValueOnce(MOCK_SPOTS_SUCCESS(1))
       .mockResolvedValueOnce(MOCK_SPOTS_SUCCESS(2))
@@ -243,12 +262,12 @@ describe("useComposeGeneration", () => {
 
     expect(mockFetch).toHaveBeenNthCalledWith(
       1,
-      "/api/itinerary/plan/seed",
+      "/api/itinerary/plan/preflight",
       expect.objectContaining({ method: "POST" })
     );
     expect(mockFetch).toHaveBeenNthCalledWith(
       2,
-      "/api/itinerary/plan/spots",
+      "/api/itinerary/plan/seed",
       expect.objectContaining({ method: "POST" })
     );
     expect(mockFetch).toHaveBeenNthCalledWith(
@@ -258,11 +277,16 @@ describe("useComposeGeneration", () => {
     );
     expect(mockFetch).toHaveBeenNthCalledWith(
       4,
-      "/api/itinerary/plan/assemble",
+      "/api/itinerary/plan/spots",
       expect.objectContaining({ method: "POST" })
     );
     expect(mockFetch).toHaveBeenNthCalledWith(
       5,
+      "/api/itinerary/plan/assemble",
+      expect.objectContaining({ method: "POST" })
+    );
+    expect(mockFetch).toHaveBeenNthCalledWith(
+      6,
       "/api/itinerary/plan/narrate",
       expect.objectContaining({ method: "POST" })
     );
@@ -276,7 +300,7 @@ describe("useComposeGeneration", () => {
     expect(mockPush).toHaveBeenCalledWith("/plan/local/local-plan-1");
   });
 
-  it("surfaces limit exceeded payload from structure phase", async () => {
+  it("surfaces limit exceeded payload from preflight phase", async () => {
     mockFetch.mockResolvedValueOnce({
       ok: false,
       status: 429,
@@ -286,7 +310,6 @@ describe("useComposeGeneration", () => {
         userType: "free",
         resetAt: "2026-03-20T00:00:00.000Z",
         remaining: 0,
-        error: "Usage limit exceeded",
       }),
     });
 
@@ -302,19 +325,21 @@ describe("useComposeGeneration", () => {
 
     expect(result.current.errorMessage).toBe("");
     expect(mockPush).not.toHaveBeenCalled();
-    expect(mockFetch).toHaveBeenCalledTimes(1); // only seed, no further calls
+    expect(mockFetch).toHaveBeenCalledTimes(1); // only preflight, no further calls
   });
 
   it("surfaces step failure error from structure phase", async () => {
-    mockFetch.mockResolvedValueOnce({
-      ok: false,
-      status: 500,
-      json: async () => ({
+    mockFetch
+      .mockResolvedValueOnce(MOCK_PREFLIGHT_SUCCESS)
+      .mockResolvedValueOnce({
         ok: false,
-        error: "semantic planner timed out",
-        failedStep: "semantic_plan",
-      }),
-    });
+        status: 500,
+        json: async () => ({
+          ok: false,
+          error: "semantic planner timed out",
+          failedStep: "semantic_plan",
+        }),
+      });
 
     const { result } = renderHook(() => useComposeGeneration());
 
@@ -333,6 +358,7 @@ describe("useComposeGeneration", () => {
 
   it("surfaces non-JSON split-route errors instead of collapsing into a network failure", async () => {
     mockFetch
+      .mockResolvedValueOnce(MOCK_PREFLIGHT_SUCCESS)
       .mockResolvedValueOnce(MOCK_SEED_SUCCESS)
       .mockResolvedValueOnce({
         ok: false,
@@ -359,6 +385,7 @@ describe("useComposeGeneration", () => {
 
   it("falls back to the legacy compose SSE route when split structure responses are missing", async () => {
     mockFetch
+      .mockResolvedValueOnce(MOCK_PREFLIGHT_SUCCESS)
       .mockResolvedValueOnce({
         ok: true,
         status: 200,
@@ -381,11 +408,16 @@ describe("useComposeGeneration", () => {
 
     expect(mockFetch).toHaveBeenNthCalledWith(
       1,
-      "/api/itinerary/plan/seed",
+      "/api/itinerary/plan/preflight",
       expect.objectContaining({ method: "POST" })
     );
     expect(mockFetch).toHaveBeenNthCalledWith(
       2,
+      "/api/itinerary/plan/seed",
+      expect.objectContaining({ method: "POST" })
+    );
+    expect(mockFetch).toHaveBeenNthCalledWith(
+      3,
       "/api/itinerary/compose",
       expect.objectContaining({ method: "POST" })
     );
@@ -395,6 +427,7 @@ describe("useComposeGeneration", () => {
 
   it("falls back to the legacy compose SSE route when a split day route fails", async () => {
     mockFetch
+      .mockResolvedValueOnce(MOCK_PREFLIGHT_SUCCESS)
       .mockResolvedValueOnce(MOCK_SEED_SUCCESS)
       .mockResolvedValueOnce({
         ok: false,
@@ -414,7 +447,7 @@ describe("useComposeGeneration", () => {
     });
 
     expect(mockFetch).toHaveBeenNthCalledWith(
-      3,
+      4,
       "/api/itinerary/compose",
       expect.objectContaining({ method: "POST" })
     );
@@ -424,6 +457,7 @@ describe("useComposeGeneration", () => {
 
   it("uses SSE error payload messages when narrate request fails before streaming starts", async () => {
     mockFetch
+      .mockResolvedValueOnce(MOCK_PREFLIGHT_SUCCESS)
       .mockResolvedValueOnce(MOCK_SEED_SUCCESS)
       .mockResolvedValueOnce(MOCK_SPOTS_SUCCESS(1))
       .mockResolvedValueOnce(MOCK_SPOTS_SUCCESS(2))
@@ -449,7 +483,8 @@ describe("useComposeGeneration", () => {
   });
 
   it("maps network error to localized message", async () => {
-    mockFetch.mockRejectedValueOnce(new Error("Failed to fetch"));
+    // All fetch calls fail with network error (preflight, seed, legacy compose)
+    mockFetch.mockRejectedValue(new Error("Failed to fetch"));
 
     const { result } = renderHook(() => useComposeGeneration());
 
@@ -464,6 +499,7 @@ describe("useComposeGeneration", () => {
 
   it("clears partial days when narrate SSE stream ends without a terminal event", async () => {
     mockFetch
+      .mockResolvedValueOnce(MOCK_PREFLIGHT_SUCCESS)
       .mockResolvedValueOnce(MOCK_SEED_SUCCESS)
       .mockResolvedValueOnce(MOCK_SPOTS_SUCCESS(1))
       .mockResolvedValueOnce(MOCK_SPOTS_SUCCESS(2))

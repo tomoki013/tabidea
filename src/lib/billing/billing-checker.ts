@@ -26,6 +26,10 @@ export interface LimitCheckResult {
   limit: number;
   resetAt: Date | null;
   error?: string;
+  /** Resolved user type (available when called via checkAndConsumeQuota) */
+  userType?: UserType;
+  /** User ID (available when called via checkAndConsumeQuota) */
+  userId?: string | null;
 }
 
 export interface CheckBillingOptions {
@@ -148,7 +152,8 @@ export async function checkAndConsumeQuota(
 
   // 1. Handle Anonymous Users (IP-based, legacy logic)
   if (!user) {
-    return handleAnonymousUsage(action, metadata);
+    const result = await handleAnonymousUsage(action, metadata);
+    return { ...result, userType: 'anonymous' as UserType, userId: null };
   }
 
   // 2. Handle Admin
@@ -158,7 +163,9 @@ export async function checkAndConsumeQuota(
       source: 'admin',
       remaining: -1,
       limit: -1,
-      resetAt: null
+      resetAt: null,
+      userType: 'admin' as UserType,
+      userId: user.id,
     };
   }
 
@@ -244,7 +251,9 @@ export async function checkAndConsumeQuota(
       limit: config.limit,
       remaining: 0,
       resetAt: null, // Calc if needed
-      error: 'Limit exceeded'
+      error: 'Limit exceeded',
+      userType,
+      userId: user.id,
     } as any; // Cast to satisfy loose return type or fix type
   }
 
@@ -285,7 +294,9 @@ export async function checkAndConsumeQuota(
         source: 'ticket',
         remaining: selectedSource.remaining - 1,
         limit: selectedSource.remaining, // Ticket limit is itself
-        resetAt: selectedSource.expiresAt
+        resetAt: selectedSource.expiresAt,
+        userType,
+        userId: user.id,
       };
 
     } else {
@@ -304,7 +315,9 @@ export async function checkAndConsumeQuota(
         source: selectedSource.type as any,
         remaining: selectedSource.remaining - 1,
         limit: config.limit,
-        resetAt: selectedSource.expiresAt
+        resetAt: selectedSource.expiresAt,
+        userType,
+        userId: user.id,
       };
     }
   } catch (err) {
@@ -314,7 +327,9 @@ export async function checkAndConsumeQuota(
       error: 'Transaction failed',
       limit: 0,
       remaining: 0,
-      resetAt: null
+      resetAt: null,
+      userType,
+      userId: user.id,
     };
   }
 }

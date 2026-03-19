@@ -39,16 +39,18 @@ import {
 import { composedToItinerary } from './adapter';
 import { PipelineStepError } from './errors';
 import { GenerationRunLogger } from './generation-run-logger';
-import { getDefaultProvider, resolveModelForPhase } from '@/lib/services/ai/model-resolver';
+import { resolveModelForPhase } from '@/lib/services/ai/model-resolver';
 import { createComposeTimer } from '@/lib/utils/performance-timer';
 import { checkAndRecordUsage } from '@/lib/limits/check';
+import { getItineraryProvider, toComposeModelTier } from './pipeline-helpers';
 import { normalizePlaceKey } from './destination-highlights';
 
 // Re-export for backward compatibility
 export { PipelineStepError } from './errors';
 
 // ---- Legacy single-function pipeline constants (kept for runComposePipeline) ----
-const COMPOSE_DEADLINE_MS = 26_000;
+// Must fit within maxDuration=9s platform limit
+const COMPOSE_DEADLINE_MS = 8_500;
 const MIN_REMAINING_FOR_PLACE_RESOLVE_MS = 9_000;
 const MIN_REMAINING_FOR_HERO_IMAGE_MS = 2_500;
 const MIN_REMAINING_FOR_SEMANTIC_RETRY_MS = 18_000;
@@ -64,7 +66,7 @@ const DEADLINE_RESERVE_MS = 2_000;
 
 // ---- Split pipeline constants ----
 // Seed / Spots pipelines: must complete within platform function timeout (~9s)
-const SEED_DEADLINE_MS = 8_000;
+const SEED_DEADLINE_MS = 8_500;
 const SPOTS_DEADLINE_MS = 8_000;
 
 // Structure phase: steps 0-6 (no narrative), must complete in <9s (Netlify free plan safe)
@@ -81,20 +83,6 @@ const SEMANTIC_SPOT_BATCH_RESERVE_MS = 400;
 const NARRATE_DEADLINE_MS = 8_500;
 const NARRATE_MIN_LLM_MS = 5_000;               // need at least 5s for any LLM call
 const NARRATE_DEADLINE_RESERVE_MS = 500;
-
-function getItineraryProvider(): 'gemini' | 'openai' {
-  const provider = process.env.AI_PROVIDER_ITINERARY;
-  if (provider === 'gemini' || provider === 'openai') {
-    return provider;
-  }
-  return getDefaultProvider();
-}
-
-function toComposeModelTier(userType: UserType): 'flash' | 'pro' {
-  return userType === 'pro' || userType === 'premium' || userType === 'admin'
-    ? 'pro'
-    : 'flash';
-}
 
 function shouldUseSemanticFastMode(
   request: NormalizedRequest,
@@ -1006,10 +994,17 @@ export interface AssemblePipelineResult {
 
 export type StructureProgressCallback = (event: ComposeProgressEvent) => void;
 
+export interface PreCheckedUsage {
+  userType: UserType;
+  remaining: number;
+  resetAt: string | null;
+}
+
 export async function runSeedPipeline(
   input: UserInput,
   options?: ComposeOptions,
-  onProgress?: StructureProgressCallback
+  onProgress?: StructureProgressCallback,
+  preCheckedUsage?: PreCheckedUsage
 ): Promise<SeedPipelineResult> {
   const timer = createComposeTimer();
   const allWarnings: string[] = [];
@@ -1027,34 +1022,42 @@ export async function runSeedPipeline(
   };
 
   try {
-    emitProgress('usage_check', '利用状況を確認中...');
-    const usageResult = await timer.measure('usage_check', () =>
-      checkAndRecordUsage('plan_generation', undefined, { skipConsume: options?.isRetry })
-    );
+    let userType: UserType;
 
-    if (!usageResult.allowed) {
-      return {
-        success: false,
-        warnings: [],
-        limitExceeded: true,
-        userType: usageResult.userType,
-        resetAt: usageResult.resetAt?.toISOString() ?? null,
-        remaining: usageResult.remaining,
-        message: 'Usage limit exceeded',
-      };
+    if (preCheckedUsage) {
+      // Usage already checked by preflight — skip expensive Supabase call
+      userType = preCheckedUsage.userType;
+    } else {
+      // Fallback: check usage inline (legacy path)
+      emitProgress('usage_check', '利用状況を確認中...');
+      const usageResult = await timer.measure('usage_check', () =>
+        checkAndRecordUsage('plan_generation', undefined, { skipConsume: options?.isRetry })
+      );
+
+      if (!usageResult.allowed) {
+        return {
+          success: false,
+          warnings: [],
+          limitExceeded: true,
+          userType: usageResult.userType,
+          resetAt: usageResult.resetAt?.toISOString() ?? null,
+          remaining: usageResult.remaining,
+          message: 'Usage limit exceeded',
+        };
+      }
+      userType = usageResult.userType as UserType;
     }
 
     emitProgress('normalize', '旅の条件を整理中...');
     const normalizedRequest = await timer.measure('normalize', async () => normalizeRequest(input));
 
-    const userType = usageResult.userType as UserType;
     const provider = getItineraryProvider();
     const semanticModel = resolveModelForPhase('outline', userType, provider);
     const narrativeModel = resolveModelForPhase('chunk', userType, provider);
     const modelTier = toComposeModelTier(userType);
 
     emitProgress('semantic_plan', '旅の骨格を設計中...');
-    const seedTimeout = Math.max(remainingTimeMs() - 500, 50); // reserve 500ms for response
+    const seedTimeout = Math.max(remainingTimeMs() - 200, 50); // reserve 200ms for response
     const seed = await timer.measure('semantic_plan', async () => {
       let timeoutId: ReturnType<typeof setTimeout> | undefined;
       try {
