@@ -144,6 +144,41 @@ interface NarrateSSEEvent {
 }
 
 // ============================================
+// Response parsing helpers
+// ============================================
+interface ParsedErrorPayload {
+  error?: string;
+  failedStep?: string;
+  limitExceeded?: boolean;
+  userType?: string;
+  resetAt?: string | null;
+  remaining?: number;
+}
+
+async function parseJsonSafely<T>(response: Response): Promise<T | null> {
+  try {
+    return (await response.json()) as T;
+  } catch {
+    return null;
+  }
+}
+
+async function extractErrorPayload(response: Response): Promise<ParsedErrorPayload | null> {
+  const jsonPayload = await parseJsonSafely<ParsedErrorPayload>(response);
+  if (jsonPayload) {
+    return jsonPayload;
+  }
+
+  try {
+    const text = await response.text();
+    const message = text.trim();
+    return message ? { error: message } : null;
+  } catch {
+    return null;
+  }
+}
+
+// ============================================
 // Hook
 // ============================================
 
@@ -196,6 +231,18 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
 
   const generate = useCallback(
     async (input: UserInput, options?: { isRetry?: boolean }) => {
+      const resolveStepErrorMessage = (failedStep?: string, fallbackMessage?: string) => {
+        if (failedStep) {
+          try {
+            return t(`errors.stepFailed.${failedStep}` as Parameters<typeof t>[0]);
+          } catch {
+            return t("errors.stepFailed.unknown");
+          }
+        }
+
+        return fallbackMessage || t("errors.generic");
+      };
+
       const initialSteps = initSteps();
       setSteps(initialSteps);
       setCurrentStep(null);
@@ -227,10 +274,9 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
           signal: controller.signal,
         });
 
-        let seedData: SeedResponse;
-        try {
-          seedData = (await seedRes.json()) as SeedResponse;
-        } catch {
+        const seedData = await extractErrorPayload(seedRes) as SeedResponse | null;
+
+        if (!seedData) {
           setErrorMessage(t("errors.generic"));
           setIsGenerating(false);
           return;
@@ -244,16 +290,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
               remaining: seedData.remaining,
             });
           } else {
-            const failedStep = seedData.failedStep;
-            if (failedStep) {
-              try {
-                setErrorMessage(t(`errors.stepFailed.${failedStep}` as Parameters<typeof t>[0]));
-              } catch {
-                setErrorMessage(t("errors.stepFailed.unknown"));
-              }
-            } else {
-              setErrorMessage(seedData.error || t("errors.generic"));
-            }
+            setErrorMessage(resolveStepErrorMessage(seedData.failedStep, seedData.error));
           }
           setIsGenerating(false);
           return;
@@ -306,19 +343,10 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
             signal: controller.signal,
           });
 
-          const spotsData = (await spotsRes.json()) as SpotsResponse;
+          const spotsData = await extractErrorPayload(spotsRes) as SpotsResponse | null;
 
-          if (!spotsRes.ok || !spotsData.ok || !spotsData.candidates) {
-            const failedStep = spotsData.failedStep;
-            if (failedStep) {
-              try {
-                setErrorMessage(t(`errors.stepFailed.${failedStep}` as Parameters<typeof t>[0]));
-              } catch {
-                setErrorMessage(t("errors.stepFailed.unknown"));
-              }
-            } else {
-              setErrorMessage(spotsData.error || t("errors.generic"));
-            }
+          if (!spotsData || !spotsRes.ok || !spotsData.ok || !spotsData.candidates) {
+            setErrorMessage(resolveStepErrorMessage(spotsData?.failedStep, spotsData?.error));
             setIsGenerating(false);
             return;
           }
@@ -346,19 +374,10 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
           signal: controller.signal,
         });
 
-        const assembleData = (await assembleRes.json()) as AssembleResponse;
+        const assembleData = await extractErrorPayload(assembleRes) as AssembleResponse | null;
 
-        if (!assembleRes.ok || !assembleData.ok) {
-          const failedStep = assembleData.failedStep;
-          if (failedStep) {
-            try {
-              setErrorMessage(t(`errors.stepFailed.${failedStep}` as Parameters<typeof t>[0]));
-            } catch {
-              setErrorMessage(t("errors.stepFailed.unknown"));
-            }
-          } else {
-            setErrorMessage(assembleData.error || t("errors.generic"));
-          }
+        if (!assembleData || !assembleRes.ok || !assembleData.ok) {
+          setErrorMessage(resolveStepErrorMessage(assembleData?.failedStep, assembleData?.error));
           setIsGenerating(false);
           return;
         }
@@ -410,7 +429,13 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         });
 
         if (!narrateRes.ok || !narrateRes.body) {
-          setErrorMessage(t("errors.requestFailed", { status: narrateRes.status }));
+          const narrateError = await extractErrorPayload(narrateRes);
+          setErrorMessage(
+            resolveStepErrorMessage(
+              narrateError?.failedStep,
+              narrateError?.error || t("errors.requestFailed", { status: narrateRes.status })
+            )
+          );
           setIsGenerating(false);
           return;
         }
@@ -497,16 +522,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
                 setCurrentStep(null);
                 setIsGenerating(false);
                 setPartialDays(new Map());
-                const failedStep = event.failedStep;
-                if (failedStep) {
-                  try {
-                    setErrorMessage(t(`errors.stepFailed.${failedStep}` as Parameters<typeof t>[0]));
-                  } catch {
-                    setErrorMessage(t("errors.stepFailed.unknown"));
-                  }
-                } else {
-                  setErrorMessage(t("errors.generic"));
-                }
+                setErrorMessage(resolveStepErrorMessage(event.failedStep, event.message));
                 break;
               }
 

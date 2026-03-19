@@ -19,30 +19,41 @@ interface AssembleRequestBody {
 }
 
 export async function POST(req: Request) {
-  let body: AssembleRequestBody;
   try {
-    body = await req.json();
-  } catch {
-    return Response.json({ error: 'Invalid request body' }, { status: 400 });
-  }
+    let body: AssembleRequestBody;
+    try {
+      body = await req.json();
+    } catch (error) {
+      console.error('[POST /api/itinerary/plan/assemble] Invalid request body:', error);
+      return Response.json({ ok: false, error: 'Invalid request body' }, { status: 400 });
+    }
 
-  const result = await runAssemblePipeline(body);
+    const result = await runAssemblePipeline(body);
 
-  if (result.success) {
-    return Response.json({
-      ok: true,
-      timeline: result.timeline,
-      destination: result.destination,
-      description: result.description,
-      heroImage: result.heroImage ?? null,
-      warnings: result.warnings,
-      metadata: result.metadata,
+    if (result.success) {
+      return Response.json({
+        ok: true,
+        timeline: result.timeline,
+        destination: result.destination,
+        description: result.description,
+        heroImage: result.heroImage ?? null,
+        warnings: result.warnings,
+        metadata: result.metadata,
+      });
+    }
+
+    console.error('[POST /api/itinerary/plan/assemble] Assemble pipeline failed:', {
+      failedStep: result.failedStep,
+      message: result.message,
+      candidateCount: body.candidates?.length ?? 0,
     });
+    return Response.json({
+      ok: false,
+      error: result.message ?? 'assemble_pipeline_failed',
+      failedStep: result.failedStep,
+    }, { status: 500 });
+  } catch (error) {
+    console.error('[POST /api/itinerary/plan/assemble] Unexpected error:', error);
+    return Response.json({ ok: false, error: 'assemble_pipeline_failed' }, { status: 500 });
   }
-
-  return Response.json({
-    ok: false,
-    error: result.message ?? 'assemble_pipeline_failed',
-    failedStep: result.failedStep,
-  }, { status: 500 });
 }

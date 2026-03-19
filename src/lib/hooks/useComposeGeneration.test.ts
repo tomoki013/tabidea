@@ -301,6 +301,59 @@ describe("useComposeGeneration", () => {
     expect(result.current.isCompleted).toBe(false);
   });
 
+
+  it("surfaces non-JSON split-route errors instead of collapsing into a network failure", async () => {
+    mockFetch
+      .mockResolvedValueOnce(MOCK_SEED_SUCCESS)
+      .mockResolvedValueOnce({
+        ok: false,
+        status: 500,
+        json: async () => {
+          throw new Error("invalid json");
+        },
+        text: async () => "spots_pipeline_failed",
+      });
+
+    const { result } = renderHook(() => useComposeGeneration());
+
+    await act(async () => {
+      await result.current.generate(DEFAULT_INPUT);
+    });
+
+    await waitFor(() => {
+      expect(result.current.isGenerating).toBe(false);
+    });
+
+    expect(result.current.errorMessage).toBe("spots_pipeline_failed");
+    expect(result.current.isCompleted).toBe(false);
+  });
+
+  it("uses SSE error payload messages when narrate request fails before streaming starts", async () => {
+    mockFetch
+      .mockResolvedValueOnce(MOCK_SEED_SUCCESS)
+      .mockResolvedValueOnce(MOCK_SPOTS_SUCCESS(1))
+      .mockResolvedValueOnce(MOCK_SPOTS_SUCCESS(2))
+      .mockResolvedValueOnce(MOCK_ASSEMBLE_SUCCESS)
+      .mockResolvedValueOnce({
+        ok: false,
+        status: 500,
+        body: null,
+        json: async () => ({ ok: false, error: "narrate_pipeline_failed", failedStep: "narrative_render" }),
+      });
+
+    const { result } = renderHook(() => useComposeGeneration());
+
+    await act(async () => {
+      await result.current.generate(DEFAULT_INPUT);
+    });
+
+    await waitFor(() => {
+      expect(result.current.isGenerating).toBe(false);
+    });
+
+    expect(result.current.errorMessage).toBe("errors.stepFailed.narrative_render");
+  });
+
   it("maps network error to localized message", async () => {
     mockFetch.mockRejectedValueOnce(new Error("Failed to fetch"));
 

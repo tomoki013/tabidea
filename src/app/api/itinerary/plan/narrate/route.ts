@@ -31,8 +31,9 @@ export async function POST(req: Request) {
   let body: NarrateRequestBody;
   try {
     body = await req.json();
-  } catch {
-    return Response.json({ error: 'Invalid request body' }, { status: 400 });
+  } catch (error) {
+    console.error('[POST /api/itinerary/plan/narrate] Invalid request body:', error);
+    return Response.json({ ok: false, error: 'Invalid request body' }, { status: 400 });
   }
 
   const {
@@ -129,6 +130,10 @@ export async function POST(req: Request) {
 
           emit('done', {});
         } else {
+          console.error('[POST /api/itinerary/plan/narrate] Narrate pipeline failed:', {
+            failedStep: result.failedStep,
+            message: result.message,
+          });
           emit('error', {
             message: result.message ?? 'narrate_pipeline_failed',
             failedStep: result.failedStep,
