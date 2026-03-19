@@ -172,6 +172,35 @@ const MOCK_NARRATE_SUCCESS = {
   ]),
 };
 
+const createLegacyComposeSuccess = () => ({
+  ok: true,
+  status: 200,
+  body: createSseBody([
+    { type: "ack" },
+    {
+      type: "progress",
+      step: "semantic_plan",
+      message: "旅の骨格を設計中...",
+      totalDays: 2,
+      destination: "東京",
+      description: "週末の東京旅行",
+    },
+    {
+      type: "complete",
+      result: {
+        itinerary: {
+          id: "itin-legacy-1",
+          destination: "東京",
+          description: "週末の東京旅行",
+          days: [{ day: 1, title: "浅草散策", activities: [] }],
+        },
+        warnings: [],
+      },
+    },
+    { type: "done" },
+  ]),
+});
+
 const DEFAULT_INPUT = {
   destinations: ["東京"],
   region: "domestic",
@@ -326,6 +355,71 @@ describe("useComposeGeneration", () => {
 
     expect(result.current.errorMessage).toBe("spots_pipeline_failed");
     expect(result.current.isCompleted).toBe(false);
+  });
+
+  it("falls back to the legacy compose SSE route when split structure responses are missing", async () => {
+    mockFetch
+      .mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => {
+          throw new Error("empty body");
+        },
+        text: async () => "",
+      })
+      .mockResolvedValueOnce(createLegacyComposeSuccess());
+
+    const { result } = renderHook(() => useComposeGeneration());
+
+    await act(async () => {
+      await result.current.generate(DEFAULT_INPUT);
+    });
+
+    await waitFor(() => {
+      expect(mockSaveLocalPlan).toHaveBeenCalledTimes(1);
+    });
+
+    expect(mockFetch).toHaveBeenNthCalledWith(
+      1,
+      "/api/itinerary/plan/seed",
+      expect.objectContaining({ method: "POST" })
+    );
+    expect(mockFetch).toHaveBeenNthCalledWith(
+      2,
+      "/api/itinerary/compose",
+      expect.objectContaining({ method: "POST" })
+    );
+    expect(result.current.isCompleted).toBe(true);
+    expect(result.current.errorMessage).toBe("");
+  });
+
+  it("falls back to the legacy compose SSE route when a split day route fails", async () => {
+    mockFetch
+      .mockResolvedValueOnce(MOCK_SEED_SUCCESS)
+      .mockResolvedValueOnce({
+        ok: false,
+        status: 500,
+        json: async () => ({ ok: false, error: "spots_pipeline_failed", failedStep: "semantic_plan" }),
+      })
+      .mockResolvedValueOnce(createLegacyComposeSuccess());
+
+    const { result } = renderHook(() => useComposeGeneration());
+
+    await act(async () => {
+      await result.current.generate(DEFAULT_INPUT);
+    });
+
+    await waitFor(() => {
+      expect(mockSaveLocalPlan).toHaveBeenCalledTimes(1);
+    });
+
+    expect(mockFetch).toHaveBeenNthCalledWith(
+      3,
+      "/api/itinerary/compose",
+      expect.objectContaining({ method: "POST" })
+    );
+    expect(result.current.isCompleted).toBe(true);
+    expect(result.current.errorMessage).toBe("");
   });
 
   it("uses SSE error payload messages when narrate request fails before streaming starts", async () => {

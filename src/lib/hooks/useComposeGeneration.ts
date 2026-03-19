@@ -143,6 +143,13 @@ interface NarrateSSEEvent {
   failedStep?: string;
 }
 
+interface ComposeSSEEvent extends NarrateSSEEvent {
+  limitExceeded?: boolean;
+  userType?: string;
+  resetAt?: string | null;
+  remaining?: number;
+}
+
 // ============================================
 // Response parsing helpers
 // ============================================
@@ -201,6 +208,24 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
   const [previewDescription, setPreviewDescription] = useState("");
   const abortRef = useRef<AbortController | null>(null);
 
+  const persistGeneratedItinerary = useCallback(
+    async (input: UserInput, itinerary: Itinerary) => {
+      if (isAuthenticated) {
+        const saveResult = await savePlanViaApi(input, itinerary, false);
+        if (saveResult.success && saveResult.plan) {
+          router.push(`/plan/id/${saveResult.plan.id}`);
+          void refreshPlans();
+          return;
+        }
+      }
+
+      const localPlan = await saveLocalPlan(input, itinerary);
+      router.push(`/plan/local/${localPlan.id}`);
+      notifyPlanChange();
+    },
+    [isAuthenticated, refreshPlans, router]
+  );
+
   const initSteps = useCallback((): ComposeStep[] => {
     return COMPOSE_STEP_IDS.map((id) => ({
       id,
@@ -243,6 +268,154 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         return fallbackMessage || t("errors.generic");
       };
 
+      const runLegacyComposeFallback = async (controller: AbortController) => {
+        setPartialDays(new Map());
+        setPreviewDestination("");
+        setPreviewDescription("");
+        setTotalDays(0);
+        advanceStep("usage_check", t("steps.usage_check"));
+
+        const composeRes = await fetch("/api/itinerary/compose", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({ input, options }),
+          signal: controller.signal,
+        });
+
+        if (!composeRes.ok || !composeRes.body) {
+          const composeError = await extractErrorPayload(composeRes);
+          if (composeError?.limitExceeded) {
+            setLimitExceeded({
+              userType: (composeError.userType as UserType) || "anonymous",
+              resetAt: composeError.resetAt ? new Date(composeError.resetAt) : null,
+              remaining: composeError.remaining,
+            });
+          } else {
+            setErrorMessage(
+              resolveStepErrorMessage(
+                composeError?.failedStep,
+                composeError?.error || t("errors.requestFailed", { status: composeRes.status })
+              )
+            );
+          }
+          setIsGenerating(false);
+          return;
+        }
+
+        const reader = composeRes.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+        let terminalSeen = false;
+
+        while (true) {
+          const { done, value } = await reader.read();
+          buffer += decoder.decode(value, { stream: !done });
+
+          const chunks = buffer.split("\n\n");
+          buffer = chunks.pop() ?? "";
+
+          for (const chunk of chunks) {
+            const dataLines = chunk
+              .split("\n")
+              .filter((line) => line.startsWith("data:"))
+              .map((line) => line.slice(5).trim());
+
+            if (dataLines.length === 0) continue;
+
+            const event = JSON.parse(dataLines.join("\n")) as ComposeSSEEvent;
+
+            switch (event.type) {
+              case "ack":
+              case "heartbeat":
+                break;
+
+              case "progress":
+                if (event.step) advanceStep(event.step, event.message);
+                if (event.totalDays) setTotalDays(event.totalDays);
+                if (event.destination) setPreviewDestination(event.destination);
+                if (event.description) setPreviewDescription(event.description);
+                break;
+
+              case "day_complete":
+                if (event.destination) setPreviewDestination(event.destination);
+                if (event.description) setPreviewDescription(event.description);
+                if (typeof event.day === "number" && event.dayData) {
+                  setPartialDays((prev) => {
+                    const next = new Map(prev);
+                    next.set(event.day, event.dayData);
+                    return next;
+                  });
+                }
+                break;
+
+              case "complete":
+                if (!event.result) {
+                  setErrorMessage(t("errors.generic"));
+                  setIsGenerating(false);
+                  terminalSeen = true;
+                  break;
+                }
+
+                setSteps((prev) => prev.map((step) => ({ ...step, status: "completed" })));
+                setCurrentStep(null);
+                setIsGenerating(false);
+                setIsCompleted(true);
+                setPartialDays(new Map());
+                setWarnings(event.result.warnings || []);
+                terminalSeen = true;
+
+                try {
+                  await persistGeneratedItinerary(input, event.result.itinerary);
+                  return;
+                } catch (saveErr) {
+                  console.error("[compose] Save failed:", saveErr);
+                  setErrorMessage(t("errors.saveFailed"));
+                }
+                break;
+
+              case "error":
+                if (event.limitExceeded) {
+                  setLimitExceeded({
+                    userType: (event.userType as UserType) || "anonymous",
+                    resetAt: event.resetAt ? new Date(event.resetAt) : null,
+                    remaining: event.remaining,
+                  });
+                } else {
+                  setErrorMessage(resolveStepErrorMessage(event.failedStep, event.message));
+                }
+                setCurrentStep(null);
+                setIsGenerating(false);
+                setPartialDays(new Map());
+                terminalSeen = true;
+                break;
+
+              case "done":
+                terminalSeen = true;
+                break;
+            }
+          }
+
+          if (done) break;
+        }
+
+        if (!terminalSeen) {
+          setErrorMessage(t("errors.streamUnexpectedEnd"));
+          setPartialDays(new Map());
+          setIsGenerating(false);
+        }
+      };
+
+      const tryLegacyComposeFallback = async (controller: AbortController) => {
+        try {
+          await runLegacyComposeFallback(controller);
+          return true;
+        } catch (fallbackError) {
+          console.error("[compose] Legacy fallback failed:", fallbackError);
+          return false;
+        }
+      };
+
       const initialSteps = initSteps();
       setSteps(initialSteps);
       setCurrentStep(null);
@@ -261,6 +434,8 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
       abortRef.current = controller;
 
       try {
+        let shouldFallbackToLegacyCompose = false;
+
         // ==============================
         // Phase 1-A: Seed pipeline
         // ==============================
@@ -277,6 +452,11 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         const seedData = await extractErrorPayload(seedRes) as SeedResponse | null;
 
         if (!seedData) {
+          shouldFallbackToLegacyCompose = true;
+        }
+
+        if (shouldFallbackToLegacyCompose) {
+          if (await tryLegacyComposeFallback(controller)) return;
           setErrorMessage(t("errors.generic"));
           setIsGenerating(false);
           return;
@@ -290,8 +470,14 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
               remaining: seedData.remaining,
             });
           } else {
+            shouldFallbackToLegacyCompose = true;
+          }
+
+          if (shouldFallbackToLegacyCompose) {
+            if (await tryLegacyComposeFallback(controller)) return;
             setErrorMessage(resolveStepErrorMessage(seedData.failedStep, seedData.error));
           }
+
           setIsGenerating(false);
           return;
         }
@@ -299,6 +485,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         const { normalizedRequest, seed, warnings: seedWarnings, metadata } = seedData;
 
         if (!normalizedRequest || !seed || !metadata) {
+          if (await tryLegacyComposeFallback(controller)) return;
           setErrorMessage(t("errors.generic"));
           setIsGenerating(false);
           return;
@@ -346,6 +533,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
           const spotsData = await extractErrorPayload(spotsRes) as SpotsResponse | null;
 
           if (!spotsData || !spotsRes.ok || !spotsData.ok || !spotsData.candidates) {
+            if (await tryLegacyComposeFallback(controller)) return;
             setErrorMessage(resolveStepErrorMessage(spotsData?.failedStep, spotsData?.error));
             setIsGenerating(false);
             return;
@@ -377,6 +565,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         const assembleData = await extractErrorPayload(assembleRes) as AssembleResponse | null;
 
         if (!assembleData || !assembleRes.ok || !assembleData.ok) {
+          if (await tryLegacyComposeFallback(controller)) return;
           setErrorMessage(resolveStepErrorMessage(assembleData?.failedStep, assembleData?.error));
           setIsGenerating(false);
           return;
@@ -392,6 +581,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         } = assembleData;
 
         if (!timeline || !assembleMetadata) {
+          if (await tryLegacyComposeFallback(controller)) return;
           setErrorMessage(t("errors.generic"));
           setIsGenerating(false);
           return;
@@ -429,6 +619,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         });
 
         if (!narrateRes.ok || !narrateRes.body) {
+          if (await tryLegacyComposeFallback(controller)) return;
           const narrateError = await extractErrorPayload(narrateRes);
           setErrorMessage(
             resolveStepErrorMessage(
@@ -499,17 +690,8 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
                 terminalSeen = true;
 
                 try {
-                  if (isAuthenticated) {
-                    const saveResult = await savePlanViaApi(input, event.result.itinerary, false);
-                    if (saveResult.success && saveResult.plan) {
-                      router.push(`/plan/id/${saveResult.plan.id}`);
-                      void refreshPlans();
-                      return;
-                    }
-                  }
-                  const localPlan = await saveLocalPlan(input, event.result.itinerary);
-                  router.push(`/plan/local/${localPlan.id}`);
-                  notifyPlanChange();
+                  await persistGeneratedItinerary(input, event.result.itinerary);
+                  return;
                 } catch (saveErr) {
                   console.error("[compose] Save failed:", saveErr);
                   setErrorMessage(t("errors.saveFailed"));
@@ -536,6 +718,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         }
 
         if (!terminalSeen) {
+          if (await tryLegacyComposeFallback(controller)) return;
           setErrorMessage(t("errors.streamUnexpectedEnd"));
           setPartialDays(new Map());
           setIsGenerating(false);
@@ -544,13 +727,14 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         if ((err as Error).name === "AbortError") {
           setErrorMessage(t("errors.cancelled"));
         } else {
+          if (await tryLegacyComposeFallback(controller)) return;
           setErrorMessage(t("errors.network"));
         }
         setPartialDays(new Map());
         setIsGenerating(false);
       }
     },
-    [initSteps, advanceStep, isAuthenticated, refreshPlans, router, t]
+    [initSteps, advanceStep, persistGeneratedItinerary, t]
   );
 
   const reset = useCallback(() => {
