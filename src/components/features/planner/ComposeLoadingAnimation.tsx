@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import { Plane } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { ComposeStep } from "@/lib/hooks/useComposeGeneration";
 import ComposeLoadingTips from "./ComposeLoadingTips";
@@ -119,12 +120,34 @@ export default function ComposeLoadingAnimation({
                   exit={{ opacity: 0 }}
                   className="space-y-3"
                 >
-                  <div className="mx-auto h-10 w-44 overflow-hidden rounded-2xl bg-stone-200/70 dark:bg-stone-800/80">
+                  <div className="relative mx-auto h-12 w-56 overflow-hidden rounded-2xl bg-gradient-to-r from-sky-200 via-sky-100 to-sky-200 dark:from-sky-900/50 dark:via-sky-800/30 dark:to-sky-900/50">
+                    {/* Clouds drifting right to left */}
                     <motion.div
-                      className="h-full w-1/2 rounded-2xl bg-white/70 dark:bg-white/10"
-                      animate={{ x: ["-100%", "220%"] }}
-                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute top-2 h-3 w-8 rounded-full bg-white/60 dark:bg-white/15"
+                      animate={{ x: ["110%", "-120%"] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                      style={{ left: "50%" }}
                     />
+                    <motion.div
+                      className="absolute top-6 h-2.5 w-6 rounded-full bg-white/50 dark:bg-white/10"
+                      animate={{ x: ["120%", "-130%"] }}
+                      transition={{ duration: 5, repeat: Infinity, ease: "linear", delay: 1.5 }}
+                      style={{ left: "30%" }}
+                    />
+                    {/* Airplane flying left to right */}
+                    <motion.div
+                      className="absolute top-1/2 -translate-y-1/2"
+                      animate={{
+                        x: ["-2rem", "16rem"],
+                        y: [0, -3, 0, 2, 0],
+                      }}
+                      transition={{
+                        x: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+                        y: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
+                      }}
+                    >
+                      <Plane className="h-5 w-5 -rotate-12 text-sky-500 dark:text-sky-400" />
+                    </motion.div>
                   </div>
                   <p className="text-sm text-stone-500 dark:text-stone-400">{t("noDestinationYet")}</p>
                 </motion.div>

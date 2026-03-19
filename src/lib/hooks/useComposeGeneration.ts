@@ -97,6 +97,22 @@ interface SeedResponse {
   remaining?: number;
 }
 
+interface PreflightResponse {
+  ok: boolean;
+  allowed?: boolean;
+  userType?: string;
+  remaining?: number;
+  resetAt?: string | null;
+  metadata?: {
+    modelName: string;
+    narrativeModelName: string;
+    modelTier: "flash" | "pro";
+    provider: string;
+  };
+  error?: string;
+  limitExceeded?: boolean;
+}
+
 interface SpotsResponse {
   ok: boolean;
   candidates?: SemanticCandidate[];
@@ -447,15 +463,57 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         let shouldFallbackToLegacyCompose = false;
 
         // ==============================
-        // Phase 1-A: Seed pipeline
+        // Phase 0: Preflight (usage check)
         // ==============================
         advanceStep("usage_check");
+
+        let preCheckedUsage: { userType: string; remaining: number; resetAt: string | null } | undefined;
+
+        try {
+          const preflightRes = await fetch("/api/itinerary/plan/preflight", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({ options }),
+            signal: controller.signal,
+          });
+
+          const preflightData = await parseJsonSafely<PreflightResponse>(preflightRes);
+
+          if (preflightData) {
+            if (preflightData.limitExceeded) {
+              setLimitExceeded({
+                userType: (preflightData.userType as UserType) || "anonymous",
+                resetAt: preflightData.resetAt ? new Date(preflightData.resetAt) : null,
+                remaining: preflightData.remaining,
+              });
+              setIsGenerating(false);
+              return;
+            }
+
+            if (preflightData.ok && preflightData.userType) {
+              preCheckedUsage = {
+                userType: preflightData.userType,
+                remaining: preflightData.remaining ?? 0,
+                resetAt: preflightData.resetAt ?? null,
+              };
+            }
+          }
+        } catch {
+          // Preflight failed — seed pipeline will do usage check inline
+          console.warn("[compose] Preflight failed, seed will check usage inline");
+        }
+
+        // ==============================
+        // Phase 1-A: Seed pipeline
+        // ==============================
+        advanceStep("normalize");
 
         const seedRes = await fetch("/api/itinerary/plan/seed", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
-          body: JSON.stringify({ input, options }),
+          body: JSON.stringify({ input, options, preCheckedUsage }),
           signal: controller.signal,
         });
 

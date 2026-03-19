@@ -1,4 +1,5 @@
 import { runSeedPipeline } from '@/lib/services/itinerary/pipeline-orchestrator';
+import type { PreCheckedUsage } from '@/lib/services/itinerary/pipeline-orchestrator';
 import type { UserInput } from '@/types';
 
 export const dynamic = 'force-dynamic';
@@ -7,7 +8,11 @@ export const maxDuration = 9;
 
 export async function POST(req: Request) {
   try {
-    let body: { input: UserInput; options?: { isRetry?: boolean } };
+    let body: {
+      input: UserInput;
+      options?: { isRetry?: boolean };
+      preCheckedUsage?: PreCheckedUsage;
+    };
     try {
       body = await req.json();
     } catch (error) {
@@ -15,7 +20,12 @@ export async function POST(req: Request) {
       return Response.json({ ok: false, error: 'Invalid request body' }, { status: 400 });
     }
 
-    const result = await runSeedPipeline(body.input, body.options);
+    const result = await runSeedPipeline(
+      body.input,
+      body.options,
+      undefined,
+      body.preCheckedUsage
+    );
 
     if (result.success) {
       return Response.json({
