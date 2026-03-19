@@ -89,7 +89,7 @@ export function mergeDestinationHighlightCandidates(input: {
 
   for (const [index, highlight] of highlights.entries()) {
     const keys = [highlight.searchQuery, highlight.name, highlight.locationEn ?? '']
-      .filter(Boolean)
+      .filter((value): value is string => typeof value === 'string' && value.length > 0)
       .map((value) => normalizePlaceKey(value));
 
     if (keys.some((key) => seen.has(key))) {

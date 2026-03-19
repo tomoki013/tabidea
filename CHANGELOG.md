@@ -11,6 +11,8 @@
 
 ### 2026-03-18 (3回目)
 
+- `local` fix(deploy,itinerary): `destination-highlights.ts` の重複除外キー生成で `filter(Boolean)` 後も `string | undefined` 扱いが残り、`pnpm build` の TypeScript チェックが落ちる問題を修正。`mergeDestinationHighlightCandidates()` の key 配列生成を型ガード付き filter に置き換え、Netlify/CI の本番ビルドが通るよう改善。
+
 - `local` fix(compose-pipeline,loading-ui): 旅行プラン生成の根本品質とローディングUIを改善。① 地域ごとの static 名所リストはやめ、seed 段階で AI 自身に `destinationHighlights`（その街らしさを担保する具体的代表スポット群）を宣言させ、day-by-day のスポット生成で引き継いで落としにくくする方式へ変更。② `semantic-planner.ts` / compose schema / itinerary pipeline 型を更新し、代表スポットを `name + areaHint + dayHint + rationale` で保持して日別候補へ deterministic に再注入できるようにした。③ `adapter.ts` の表示名 grounding は維持しつつ、ローディング中UIは grid ベースで再配置し、進捗・現在工程・全体チェックリストが見やすい構成に整理。④ ローディング文言は「{day}日目のスポットを作成中...」のようなユーザー向け表現に寄せ、タイムアウト回避などの裏側事情を表示しないよう変更。⑤ highlights helper / adapter のテスト、アーキテクチャ文書、CHANGELOG を更新。
 
 ### 2026-03-18 (2回目)
