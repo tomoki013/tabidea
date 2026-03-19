@@ -1,11 +1,10 @@
 import { runStructurePipeline } from '@/lib/services/itinerary/pipeline-orchestrator';
-import { ITINERARY_SPLIT_ROUTE_MAX_DURATION_SECONDS } from '@/lib/services/itinerary/runtime-budget';
 import type { UserInput } from '@/types';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 // Safe for Netlify free plan (10s limit) and Vercel hobby (60s limit)
-export const maxDuration = ITINERARY_SPLIT_ROUTE_MAX_DURATION_SECONDS;
+export const maxDuration = 9;
 
 export async function POST(req: Request) {
   let body: { input: UserInput; options?: { isRetry?: boolean } };

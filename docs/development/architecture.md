@@ -72,7 +72,7 @@ UserInput → [Seed API]
 - Narrative Renderer: `streamObject` で日ごとに部分 JSON を返し、`partialDays` 経由で UI に中間結果を配信
 - 主要なタイムアウト耐性は Background Job ではなく「semantic_plan を seed + day-sized batches に分割する設計」で確保する
 - Seed phase は唯一の “全日共通の前提生成” なので、AI seed が platform deadline に近づいた場合でも全体失敗にせず、`buildDeterministicSemanticSeedPlan()` で dayStructure / ordering / must-visit highlights を TS で再構成して day-by-day spots generation を継続する。これにより seed timeout が単発の 500 失敗へ直結しない
-- `maxDuration=9` は Netlify free plan の 10 秒制限を意識した安全値として維持するが、アプリ内 deadline は固定 8.5 秒打ち切りではなく route budget (`9_000ms`) から response reserve だけを引く方式へ寄せている。つまり「短い timeout を別に持つ」のではなく、「プラットフォーム上限のほぼ全量を使い、最後のレスポンス返却ぶんだけ残す」設計
+- `maxDuration=9` は Netlify free plan の 10 秒制限を意識した安全値として維持するが、アプリ内 deadline は固定 8.5 秒打ち切りではなく route budget (`9_000ms`) から response reserve だけを引く方式へ寄せている。つまり「短い timeout を別に持つ」のではなく、「プラットフォーム上限のほぼ全量を使い、最後のレスポンス返却ぶんだけ残す」設計。なお Next.js の segment config 制約上、route 側の `maxDuration` は各 route ファイルで literal のまま持ち、共通化は orchestrator の runtime budget 側で行う
 
 補足（サンプル再生成）:
 - `src/scripts/generate-sample-itineraries.ts` は compose pipeline (`runComposePipeline`) を使用してサンプル旅程を生成
