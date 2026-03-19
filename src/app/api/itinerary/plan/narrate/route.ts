@@ -8,8 +8,7 @@ import type { NormalizedRequest, TimelineDay } from '@/types/itinerary-pipeline'
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
-// Safe for Netlify free plan (10s limit)
-export const maxDuration = 9;
+export const maxDuration = 25;
 
 interface NarrateRequestBody {
   timeline: TimelineDay[];

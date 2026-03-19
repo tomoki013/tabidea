@@ -4,7 +4,7 @@ import type { SemanticSeedPlan } from '@/lib/services/itinerary/steps/semantic-p
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
-export const maxDuration = 9;
+export const maxDuration = 25;
 
 interface AssembleRequestBody {
   normalizedRequest: NormalizedRequest;

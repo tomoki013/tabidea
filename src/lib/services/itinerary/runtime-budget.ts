@@ -4,7 +4,7 @@
 // We still keep the underlying budget aligned to the same 9s route cap that is
 // used in the itinerary APIs for Netlify free-plan safety (10s hard limit).
 
-export const ITINERARY_SPLIT_ROUTE_MAX_DURATION_SECONDS = 9;
+export const ITINERARY_SPLIT_ROUTE_MAX_DURATION_SECONDS = 25;
 
 export const SEED_RESPONSE_RESERVE_MS = 200;
 export const SPOTS_RESPONSE_RESERVE_MS = 500;
