@@ -1,6 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import type { SemanticCandidate } from '@/types/itinerary-pipeline';
-import { getScheduledMustVisitPlacesForDay } from './pipeline-orchestrator';
+import {
+  getScheduledMustVisitPlacesForDay,
+  runSeedPipeline,
+  runSpotCandidatesPipeline,
+} from './pipeline-orchestrator';
 
 // Mock external dependencies
 vi.mock('@/lib/limits/check', () => ({
@@ -115,6 +119,19 @@ vi.mock('./steps/semantic-planner', () => ({
       },
     ],
   }),
+  buildDeterministicDayCandidates: vi.fn((request: { mustVisitPlaces?: string[] }, seed: { dayStructure?: Array<{ day: number; mainArea?: string }> }, day: number) => ([
+    {
+      name: request.mustVisitPlaces?.[0] ?? `候補スポット ${day}`,
+      role: 'must_visit',
+      priority: 10,
+      dayHint: day,
+      timeSlotHint: 'morning',
+      stayDurationMinutes: 60,
+      searchQuery: request.mustVisitPlaces?.[0] ?? `候補スポット ${day}`,
+      categoryHint: 'landmark',
+      areaHint: seed.dayStructure?.find((entry) => entry.day === day)?.mainArea ?? '東京',
+    },
+  ])),
 }));
 
 vi.mock('./generation-run-logger', () => {
@@ -659,6 +676,62 @@ describe('runSeedPipeline', () => {
     expect(result.seed?.destination).toBe('京都');
     expect(result.metadata?.timeoutMitigationUsed).toBe(false);
     expect(buildDeterministicSemanticSeedPlan).not.toHaveBeenCalled();
+  });
+});
+
+describe('runSpotCandidatesPipeline', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it('falls back to deterministic candidates when semantic day planning times out', async () => {
+    const {
+      runSemanticDayPlanner,
+      buildDeterministicSemanticSeedPlan,
+    } = await import('./steps/semantic-planner');
+    const { PipelineStepError } = await import('./errors');
+
+    vi.mocked(runSemanticDayPlanner).mockRejectedValueOnce(
+      new PipelineStepError('semantic_plan', 'Spots semantic_plan timed out before platform deadline')
+    );
+
+    const normalizedRequest = {
+      destinations: ['東京'],
+      durationDays: 3,
+      style: 'relaxed',
+      mustVisitPlaces: ['浅草寺'],
+      hotelLocation: '',
+      hotelCoordinates: null,
+      startDate: null,
+      travelerProfile: { adults: 2, children: 0 },
+      hardConstraints: {
+        pace: 'normal',
+        mealWindows: [],
+        mustVisitPlaces: ['浅草寺'],
+      },
+      softPreferences: {
+        themes: [],
+        rankedRequests: [],
+      },
+      outputLanguage: 'ja',
+      compaction: {
+        longInputDetected: false,
+        droppedFields: [],
+      },
+    };
+    const seed = vi.mocked(buildDeterministicSemanticSeedPlan)(normalizedRequest);
+
+    const result = await runSpotCandidatesPipeline({
+      normalizedRequest,
+      seed,
+      day: 1,
+      modelName: 'gemini-2.5-flash',
+      provider: 'gemini',
+    });
+
+    expect(result.success).toBe(true);
+    expect(result.candidates?.length).toBeGreaterThan(0);
+    expect(result.warnings.some((warning) => warning.startsWith('spots_fallback_day1:'))).toBe(true);
   });
 });
 
