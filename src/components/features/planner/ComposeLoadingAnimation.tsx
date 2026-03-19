@@ -120,33 +120,57 @@ export default function ComposeLoadingAnimation({
                   exit={{ opacity: 0 }}
                   className="space-y-3"
                 >
-                  <div className="relative mx-auto h-12 w-56 overflow-hidden rounded-2xl bg-gradient-to-r from-sky-200 via-sky-100 to-sky-200 dark:from-sky-900/50 dark:via-sky-800/30 dark:to-sky-900/50">
-                    {/* Clouds drifting right to left */}
+                  <div className="relative mx-auto h-24 w-64 overflow-hidden rounded-[24px] border border-white/60 bg-[linear-gradient(180deg,rgba(125,211,252,0.92)_0%,rgba(224,242,254,0.95)_48%,rgba(255,255,255,0.98)_100%)] shadow-[inset_0_-18px_32px_rgba(255,255,255,0.45)] dark:border-white/10 dark:bg-[linear-gradient(180deg,rgba(8,47,73,0.96)_0%,rgba(14,116,144,0.55)_48%,rgba(15,23,42,0.96)_100%)] dark:shadow-[inset_0_-18px_32px_rgba(15,23,42,0.45)]">
+                    <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-white/35 to-transparent dark:from-white/10" />
                     <motion.div
-                      className="absolute top-2 h-3 w-8 rounded-full bg-white/60 dark:bg-white/15"
-                      animate={{ x: ["110%", "-120%"] }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                      style={{ left: "50%" }}
+                      className="absolute -right-2 top-3 h-8 w-8 rounded-full bg-white/70 blur-[1px] dark:bg-amber-100/50"
+                      animate={{ scale: [1, 1.04, 1], opacity: [0.8, 1, 0.8] }}
+                      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                    <div className="absolute inset-x-0 bottom-0 h-8 bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.5)_100%)] dark:bg-[linear-gradient(180deg,rgba(15,23,42,0)_0%,rgba(15,23,42,0.5)_100%)]" />
+                    {/* Cloud layers */}
+                    <motion.div
+                      className="absolute left-6 top-6 h-4 w-16 rounded-full bg-white/80 blur-[1px] dark:bg-slate-100/15"
+                      animate={{ x: [0, 14, 0] }}
+                      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
                     />
                     <motion.div
-                      className="absolute top-6 h-2.5 w-6 rounded-full bg-white/50 dark:bg-white/10"
-                      animate={{ x: ["120%", "-130%"] }}
-                      transition={{ duration: 5, repeat: Infinity, ease: "linear", delay: 1.5 }}
-                      style={{ left: "30%" }}
+                      className="absolute left-12 top-8 h-4 w-8 rounded-full bg-white/80 blur-[1px] dark:bg-slate-100/15"
+                      animate={{ x: [0, 14, 0] }}
+                      transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
                     />
-                    {/* Airplane flying left to right */}
                     <motion.div
-                      className="absolute top-1/2 -translate-y-1/2"
+                      className="absolute right-10 top-12 h-5 w-20 rounded-full bg-white/70 blur-[2px] dark:bg-white/10"
+                      animate={{ x: [0, -18, 0] }}
+                      transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                    <motion.div
+                      className="absolute right-5 top-[3.4rem] h-4 w-10 rounded-full bg-white/65 blur-[2px] dark:bg-white/10"
+                      animate={{ x: [0, -14, 0] }}
+                      transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+                    />
+                    {/* Airplane with contrail */}
+                    <motion.div
+                      className="absolute top-1/2"
                       animate={{
-                        x: ["-2rem", "16rem"],
-                        y: [0, -3, 0, 2, 0],
+                        x: ["-4rem", "17rem"],
+                        y: [4, -2, 1, -3, 4],
+                        rotate: [-8, -5, -7, -4, -8],
                       }}
                       transition={{
-                        x: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-                        y: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
+                        duration: 4.8,
+                        repeat: Infinity,
+                        ease: "easeInOut",
                       }}
                     >
-                      <Plane className="h-5 w-5 -rotate-12 text-sky-500 dark:text-sky-400" />
+                      <motion.div
+                        className="absolute left-[-3.2rem] top-1/2 h-[2px] w-12 -translate-y-1/2 rounded-full bg-gradient-to-r from-white/0 via-white/75 to-white/10 dark:via-sky-100/30 dark:to-transparent"
+                        animate={{ opacity: [0.35, 0.8, 0.35], scaleX: [0.85, 1, 0.9] }}
+                        transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                      />
+                      <div className="relative flex items-center justify-center rounded-full bg-white/55 p-1.5 shadow-[0_8px_20px_rgba(14,165,233,0.22)] backdrop-blur-sm dark:bg-slate-900/55 dark:shadow-[0_8px_20px_rgba(14,165,233,0.12)]">
+                        <Plane className="h-5 w-5 -rotate-12 text-sky-600 drop-shadow-[0_3px_4px_rgba(255,255,255,0.65)] dark:text-sky-300 dark:drop-shadow-none" />
+                      </div>
                     </motion.div>
                   </div>
                   <p className="text-sm text-stone-500 dark:text-stone-400">{t("noDestinationYet")}</p>

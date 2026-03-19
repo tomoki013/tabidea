@@ -58,7 +58,7 @@ vi.mock('next-intl', () => ({
 }));
 
 describe('ComposeLoadingAnimation', () => {
-  it('shows the travel dashboard layout and the active day message', () => {
+  it('shows the compact loading dashboard and the active day message', () => {
     const steps: ComposeStep[] = [
       { id: 'usage_check', message: '利用状況を確認中...', status: 'completed' },
       { id: 'normalize', message: '旅の条件を整理中...', status: 'completed' },
@@ -81,13 +81,15 @@ describe('ComposeLoadingAnimation', () => {
       />
     );
 
-    expect(screen.getByText('旅のスナップショット')).toBeInTheDocument();
-    expect(screen.getByText('工程ごとの進み方')).toBeInTheDocument();
-    expect(screen.getAllByText('このあと進む工程').length).toBeGreaterThan(0);
+    expect(screen.getByText('Journey now boarding')).toBeInTheDocument();
+    expect(screen.getByText('全体の進行')).toBeInTheDocument();
     expect(screen.getAllByText('2日目のスポットを作成中...').length).toBeGreaterThan(0);
     expect(screen.getByText('Paris')).toBeInTheDocument();
     expect(screen.getByText('3日間の旅')).toBeInTheDocument();
-    expect(screen.getByText('3日分を順番に作成中')).toBeInTheDocument();
+    expect(screen.getByText('旅の骨格づくり')).toBeInTheDocument();
+    expect(screen.getByText('立ち寄り先を選定')).toBeInTheDocument();
+    expect(screen.getByText('しおりとして仕上げ')).toBeInTheDocument();
+    expect(screen.getByText('旅の豆知識')).toBeInTheDocument();
     expect(screen.getByText('セーヌ川沿いから美術館、街歩きへつなぐ3日間の旅。')).toBeInTheDocument();
   });
 });

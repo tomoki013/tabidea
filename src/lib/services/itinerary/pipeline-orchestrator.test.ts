@@ -26,6 +26,36 @@ vi.mock('@/lib/services/ai/model-resolver', () => ({
 }));
 
 vi.mock('./steps/semantic-planner', () => ({
+  buildDeterministicSemanticSeedPlan: vi.fn((request: { durationDays?: number; mustVisitPlaces?: string[] }) => ({
+    destination: '東京',
+    description: '安全モードで再構成した旅の骨格',
+    dayStructure: Array.from({ length: request.durationDays ?? 1 }, (_, index) => ({
+      day: index + 1,
+      title: `${index + 1}日目`,
+      mainArea: '東京',
+      overnightLocation: '東京',
+      summary: '安全モードの骨格',
+    })),
+    destinationHighlights: (request.mustVisitPlaces ?? []).slice(0, 3).map((name, index) => ({
+      name,
+      searchQuery: name,
+      areaHint: '東京',
+      dayHint: index + 1,
+      rationale: 'must visit',
+    })),
+  })),
+  runSemanticDayPlanner: vi.fn().mockResolvedValue([
+    {
+      name: '浅草寺',
+      role: 'must_visit',
+      priority: 10,
+      dayHint: 1,
+      timeSlotHint: 'morning',
+      stayDurationMinutes: 60,
+      searchQuery: '浅草寺',
+      categoryHint: 'temple',
+    },
+  ]),
   runSemanticPlanner: vi.fn().mockResolvedValue({
     destination: '東京',
     description: 'テスト旅行プラン',
@@ -61,6 +91,29 @@ vi.mock('./steps/semantic-planner', () => ({
       },
     ],
     themes: ['歴史', 'グルメ'],
+  }),
+  runSemanticSeedPlanner: vi.fn().mockResolvedValue({
+    destination: '東京',
+    description: 'テスト旅行の骨格',
+    dayStructure: [
+      {
+        day: 1,
+        title: '浅草散策',
+        mainArea: '浅草',
+        overnightLocation: '浅草',
+        summary: '浅草を楽しむ一日',
+      },
+    ],
+    themes: ['歴史', 'グルメ'],
+    destinationHighlights: [
+      {
+        name: '浅草寺',
+        searchQuery: '浅草寺',
+        areaHint: '浅草',
+        dayHint: 1,
+        rationale: '東京らしさを感じやすい代表スポット',
+      },
+    ],
   }),
 }));
 
@@ -292,7 +345,7 @@ vi.mock('@/lib/unsplash', () => ({
   }),
 }));
 
-import { runComposePipeline } from './pipeline-orchestrator';
+import { runComposePipeline, runSeedPipeline } from './pipeline-orchestrator';
 import type { UserInput } from '@/types/user-input';
 
 const makeTestInput = (overrides?: Partial<UserInput>): UserInput => ({
@@ -558,6 +611,54 @@ describe('pipeline-orchestrator', () => {
 
     nowSpy.mockRestore();
     optimizeSpy.mockRestore();
+  });
+});
+
+describe('runSeedPipeline', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it('falls back to deterministic seed plan when semantic seed planner times out', async () => {
+    const { runSemanticSeedPlanner, buildDeterministicSemanticSeedPlan } = await import('./steps/semantic-planner');
+    const { PipelineStepError } = await import('./errors');
+
+    vi.mocked(runSemanticSeedPlanner).mockRejectedValueOnce(
+      new PipelineStepError('semantic_plan', 'Seed semantic_plan timed out before platform deadline')
+    );
+
+    const result = await runSeedPipeline(makeTestInput({ mustVisitPlaces: ['浅草寺', '東京駅'] }));
+
+    expect(result.success).toBe(true);
+    expect(result.seed?.description).toContain('安全モード');
+    expect(result.metadata?.timeoutMitigationUsed).toBe(true);
+    expect(buildDeterministicSemanticSeedPlan).toHaveBeenCalledTimes(1);
+    expect(result.warnings.some((warning) => warning.startsWith('seed_fallback:'))).toBe(true);
+  });
+
+  it('returns AI seed result when semantic seed planner succeeds', async () => {
+    const { runSemanticSeedPlanner, buildDeterministicSemanticSeedPlan } = await import('./steps/semantic-planner');
+
+    vi.mocked(runSemanticSeedPlanner).mockResolvedValueOnce({
+      destination: '京都',
+      description: 'AIが設計した骨格',
+      dayStructure: [
+        {
+          day: 1,
+          title: '東山散策',
+          mainArea: '東山',
+          overnightLocation: '京都',
+          summary: '京都らしい見どころを巡る一日',
+        },
+      ],
+    });
+
+    const result = await runSeedPipeline(makeTestInput({ destinations: ['京都'] }));
+
+    expect(result.success).toBe(true);
+    expect(result.seed?.destination).toBe('京都');
+    expect(result.metadata?.timeoutMitigationUsed).toBe(false);
+    expect(buildDeterministicSemanticSeedPlan).not.toHaveBeenCalled();
   });
 });
 
