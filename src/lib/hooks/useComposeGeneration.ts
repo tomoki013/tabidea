@@ -408,7 +408,15 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         }
       };
 
-      const tryLegacyComposeFallback = async (controller: AbortController) => {
+      const isTimeoutError = (errorMsg?: string) =>
+        /timeout|timed out/i.test(errorMsg ?? "");
+
+      const tryLegacyComposeFallback = async (controller: AbortController, errorContext?: string) => {
+        // Skip compose fallback on timeout errors — compose will also timeout
+        if (isTimeoutError(errorContext)) {
+          console.warn("[compose] Skipping legacy fallback for timeout error:", errorContext);
+          return false;
+        }
         try {
           await runLegacyComposeFallback(controller);
           return true;
@@ -458,7 +466,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         }
 
         if (shouldFallbackToLegacyCompose) {
-          if (await tryLegacyComposeFallback(controller)) return;
+          if (await tryLegacyComposeFallback(controller, parsedSeedData?.error)) return;
           setErrorMessage(t("errors.generic"));
           setIsGenerating(false);
           return;
@@ -484,7 +492,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
           }
 
           if (shouldFallbackToLegacyCompose) {
-            if (await tryLegacyComposeFallback(controller)) return;
+            if (await tryLegacyComposeFallback(controller, seedData.error)) return;
             setErrorMessage(resolveStepErrorMessage(seedData.failedStep, seedData.error));
           }
 
@@ -495,7 +503,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         const { normalizedRequest, seed, warnings: seedWarnings, metadata } = seedData;
 
         if (!normalizedRequest || !seed || !metadata) {
-          if (await tryLegacyComposeFallback(controller)) return;
+          if (await tryLegacyComposeFallback(controller, seedData.error)) return;
           setErrorMessage(t("errors.generic"));
           setIsGenerating(false);
           return;
@@ -543,7 +551,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
           const spotsData = await extractErrorPayload(spotsRes) as SpotsResponse | null;
 
           if (!spotsData || !spotsRes.ok || !spotsData.ok || !spotsData.candidates) {
-            if (await tryLegacyComposeFallback(controller)) return;
+            if (await tryLegacyComposeFallback(controller, spotsData?.error)) return;
             setErrorMessage(resolveStepErrorMessage(spotsData?.failedStep, spotsData?.error));
             setIsGenerating(false);
             return;
@@ -575,7 +583,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         const assembleData = await extractErrorPayload(assembleRes) as AssembleResponse | null;
 
         if (!assembleData || !assembleRes.ok || !assembleData.ok) {
-          if (await tryLegacyComposeFallback(controller)) return;
+          if (await tryLegacyComposeFallback(controller, assembleData?.error)) return;
           setErrorMessage(resolveStepErrorMessage(assembleData?.failedStep, assembleData?.error));
           setIsGenerating(false);
           return;
@@ -591,7 +599,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         } = assembleData;
 
         if (!timeline || !assembleMetadata) {
-          if (await tryLegacyComposeFallback(controller)) return;
+          if (await tryLegacyComposeFallback(controller, assembleData?.error)) return;
           setErrorMessage(t("errors.generic"));
           setIsGenerating(false);
           return;
@@ -629,8 +637,8 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         });
 
         if (!narrateRes.ok || !narrateRes.body) {
-          if (await tryLegacyComposeFallback(controller)) return;
           const narrateError = await extractErrorPayload(narrateRes);
+          if (await tryLegacyComposeFallback(controller, narrateError?.error)) return;
           setErrorMessage(
             resolveStepErrorMessage(
               narrateError?.failedStep,

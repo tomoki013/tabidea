@@ -1566,44 +1566,22 @@
         },
         "composeLoadingAnimation": {
           "waiting": "Getting ready...",
-          "phase1Label": "Designing your route",
-          "phase2Label": "Crafting your itinerary",
-          "destinationRevealed": "{destination}",
-          "stepsProgress": "{completed} / {total}",
           "daysCount": "{days}-day trip",
-          "checkpointDone": "Done",
-          "checkpointActive": "Processing",
-          "checkpointPending": "Pending",
           "eyebrow": "Journey now boarding",
           "leadReady": "Once the destination is set, we build the plan day by day in order.",
-          "snapshotLabel": "Trip snapshot",
-          "routePlanLabel": "Stage-by-stage progress",
-          "upcomingLabel": "What comes next",
-          "dayPill": "Building {days} days in sequence",
           "noDestinationYet": "A destination preview will appear here as soon as the trip outline is ready.",
           "progressLabel": "Overall progress",
-          "currentStepLabel": "Current step",
-          "statusLive": "Live progress",
-          "stepListLabel": "Progress checklist",
-          "stageDone": "Done",
-          "stageActive": "In progress",
-          "stagePending": "Pending",
           "stages": {
             "concept": {
-              "title": "Shape the trip",
-              "description": "We decide the overall flow and what each day should feel like."
+              "title": "Shape the trip"
             },
             "spots": {
-              "title": "Curate real places",
-              "description": "We choose concrete places for each day and fill in the sightseeing stops."
+              "title": "Curate real places"
             },
             "polish": {
-              "title": "Finish the travel story",
-              "description": "We tidy up the timing and wording so the itinerary is easy to follow."
+              "title": "Finish the travel story"
             }
-          },
-          "remainingSteps": "{count} steps left",
-          "allStepsReady": "Waiting for the final polish"
+          }
         },
         "composeLoadingTips": {
           "label": "Travel Tip",

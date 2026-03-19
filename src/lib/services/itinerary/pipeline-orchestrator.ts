@@ -58,11 +58,15 @@ const MIN_REMAINING_FOR_NARRATIVE_STREAM_MS = 9_000;
 const MIN_REMAINING_FOR_SEMANTIC_FAST_MODE_MS = 22_000;
 const MIN_REMAINING_FOR_ROUTE_OPTIMIZE_MS = 1_800;
 const MIN_REMAINING_FOR_TIMELINE_BUILD_MS = 1_200;
-const MIN_REMAINING_FOR_POST_SEMANTIC_STEPS_MS = 5_000;
-const SEMANTIC_STEP_RESERVE_MS = 6_000;
+const MIN_REMAINING_FOR_POST_SEMANTIC_STEPS_MS = 3_500;
+const SEMANTIC_STEP_RESERVE_MS = 3_000;
 const DEADLINE_RESERVE_MS = 2_000;
 
 // ---- Split pipeline constants ----
+// Seed / Spots pipelines: must complete within platform function timeout (~9s)
+const SEED_DEADLINE_MS = 8_000;
+const SPOTS_DEADLINE_MS = 8_000;
+
 // Structure phase: steps 0-6 (no narrative), must complete in <9s (Netlify free plan safe)
 const STRUCTURE_DEADLINE_MS = 9_000;
 const STRUCTURE_MIN_SEMANTIC_LLM_MS = 5_500;   // need at least 5.5s for AI
@@ -1009,6 +1013,10 @@ export async function runSeedPipeline(
 ): Promise<SeedPipelineResult> {
   const timer = createComposeTimer();
   const allWarnings: string[] = [];
+  const pipelineStartedAt = Date.now();
+  const deadlineAt = pipelineStartedAt + SEED_DEADLINE_MS;
+
+  const remainingTimeMs = () => deadlineAt - Date.now();
 
   const emitProgress = (
     step: PipelineStepId,
@@ -1046,19 +1054,32 @@ export async function runSeedPipeline(
     const modelTier = toComposeModelTier(userType);
 
     emitProgress('semantic_plan', '旅の骨格を設計中...');
-    const seed = await timer.measure('semantic_plan', async () =>
-      runSemanticSeedPlanner({
-        request: normalizedRequest,
-        context: [],
-        modelName: semanticModel.modelName,
-        provider,
-        temperature: semanticModel.temperature,
-        onProgress: (message) =>
-          emitProgress('semantic_plan', message, {
-            totalDays: normalizedRequest.durationDays,
+    const seedTimeout = Math.max(remainingTimeMs() - 500, 50); // reserve 500ms for response
+    const seed = await timer.measure('semantic_plan', async () => {
+      let timeoutId: ReturnType<typeof setTimeout> | undefined;
+      try {
+        return await Promise.race([
+          runSemanticSeedPlanner({
+            request: normalizedRequest,
+            context: [],
+            modelName: semanticModel.modelName,
+            provider,
+            temperature: semanticModel.temperature,
+            onProgress: (message) =>
+              emitProgress('semantic_plan', message, {
+                totalDays: normalizedRequest.durationDays,
+              }),
           }),
-      })
-    );
+          new Promise<never>((_, reject) => {
+            timeoutId = setTimeout(() => {
+              reject(new PipelineStepError('semantic_plan', 'Seed semantic_plan timed out before platform deadline'));
+            }, seedTimeout);
+          }),
+        ]);
+      } finally {
+        if (timeoutId) clearTimeout(timeoutId);
+      }
+    });
 
     timer.log();
 
@@ -1096,6 +1117,8 @@ export async function runSpotCandidatesPipeline(input: {
 }): Promise<SpotsPipelineResult> {
   const timer = createComposeTimer();
   const allWarnings: string[] = [];
+  const pipelineStartedAt = Date.now();
+  const deadlineAt = pipelineStartedAt + SPOTS_DEADLINE_MS;
 
   try {
     const fastMode = shouldUseSemanticFastMode(input.normalizedRequest, 12_000);
@@ -1105,20 +1128,33 @@ export async function runSpotCandidatesPipeline(input: {
       Math.ceil(totalTarget / Math.max(input.normalizedRequest.durationDays, 1))
     );
 
-    const candidates = await timer.measure('semantic_plan', async () =>
-      runSemanticDayPlanner({
-        request: input.normalizedRequest,
-        seed: input.seed,
-        context: [],
-        modelName: input.modelName,
-        provider: input.provider as 'gemini' | 'openai',
-        temperature: 0.35,
-        day: input.day,
-        targetCandidateCount: perDayTarget,
-        existingCandidates: input.accumulatedCandidates ?? [],
-        onProgress: () => undefined,
-      })
-    );
+    const spotsTimeout = Math.max(deadlineAt - Date.now() - 500, 50);
+    const candidates = await timer.measure('semantic_plan', async () => {
+      let timeoutId: ReturnType<typeof setTimeout> | undefined;
+      try {
+        return await Promise.race([
+          runSemanticDayPlanner({
+            request: input.normalizedRequest,
+            seed: input.seed,
+            context: [],
+            modelName: input.modelName,
+            provider: input.provider as 'gemini' | 'openai',
+            temperature: 0.35,
+            day: input.day,
+            targetCandidateCount: perDayTarget,
+            existingCandidates: input.accumulatedCandidates ?? [],
+            onProgress: () => undefined,
+          }),
+          new Promise<never>((_, reject) => {
+            timeoutId = setTimeout(() => {
+              reject(new PipelineStepError('semantic_plan', 'Spots semantic_plan timed out before platform deadline'));
+            }, spotsTimeout);
+          }),
+        ]);
+      } finally {
+        if (timeoutId) clearTimeout(timeoutId);
+      }
+    });
 
     const mustVisitForDay = getScheduledMustVisitPlacesForDay({
       mustVisitPlaces: input.normalizedRequest.mustVisitPlaces,
