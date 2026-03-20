@@ -96,6 +96,14 @@ export interface NormalizedRequest {
   /** 元の UserInput (参照保持) */
   originalInput: UserInput;
 
+  // ---- 出発・帰着都市 ----
+  /** ユーザーの出発都市（設定の homeBaseCity） */
+  homeBaseCity?: string;
+  /** 出発都市の上書き（open-jaw 対応用、未指定時は homeBaseCity） */
+  departureCity?: string;
+  /** 帰着都市の上書き（open-jaw 対応用、未指定時は homeBaseCity） */
+  arrivalCity?: string;
+
   // ---- v3 追加フィールド (optional) ----
   /** 1 日の開始時刻 (HH:mm) */
   startTime?: string;

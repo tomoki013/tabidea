@@ -597,10 +597,13 @@
             "unlock": "Unlock",
             "types": {
               "flight": "Flight",
+              "bullet_train": "Bullet Train",
               "train": "Train",
               "bus": "Bus",
               "ship": "Ship",
               "car": "Car",
+              "taxi": "Taxi",
+              "walking": "Walk",
               "other": "Transit"
             }
           }

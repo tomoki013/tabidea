@@ -104,11 +104,24 @@ const SOFT_TEXT_SPLIT_PATTERN = /[\n\r。！？!?,、]+/;
 // ============================================
 
 /**
+ * パイプラインコンテキスト（ユーザー設定から取得される付加情報）
+ */
+export interface NormalizeRequestContext {
+  /** ユーザーの出発都市（設定の homeBaseCity） */
+  homeBaseCity?: string;
+  /** 出発都市の上書き（open-jaw 対応用） */
+  departureCity?: string;
+  /** 帰着都市の上書き（open-jaw 対応用） */
+  arrivalCity?: string;
+}
+
+/**
  * UserInput を NormalizedRequest に正規化する
  */
 export function normalizeRequest(
   input: UserInput,
-  outputLanguage: string = 'ja'
+  outputLanguage: string = 'ja',
+  context?: NormalizeRequestContext
 ): NormalizedRequest {
   const durationDays = parseDuration(input.dates);
   const startDate = extractStartDate(input.dates);
@@ -168,6 +181,10 @@ export function normalizeRequest(
     region: input.region || 'domestic',
     outputLanguage,
     originalInput: input,
+    // 出発・帰着都市
+    homeBaseCity: context?.homeBaseCity,
+    departureCity: context?.departureCity,
+    arrivalCity: context?.arrivalCity,
     // v3 追加フィールド
     durationMinutes: durationDays * 840, // 14h/day default (08:00-22:00)
     locale: outputLanguage,

@@ -1,6 +1,14 @@
 import { runSeedPipeline } from '@/lib/services/itinerary/pipeline-orchestrator';
 import type { PreCheckedUsage } from '@/lib/services/itinerary/pipeline-orchestrator';
 import type { UserInput } from '@/types';
+import { getUserSettings } from '@/app/actions/user-settings';
+import {
+  getDefaultHomeBaseCityForRegion,
+  getDefaultRegionForLanguage,
+  isLanguageCode,
+  type LanguageCode,
+  DEFAULT_LANGUAGE,
+} from '@/lib/i18n/locales';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -20,6 +28,18 @@ export async function POST(req: Request) {
     console.error('[POST /api/itinerary/plan/seed] Invalid request body:', error);
     return Response.json({ ok: false, error: 'Invalid request body' }, { status: 400 });
   }
+
+  // Resolve homeBaseCity from user settings
+  const { settings } = await getUserSettings().catch(() => ({ settings: null }));
+  const preferredLanguage: LanguageCode =
+    settings?.preferredLanguage && isLanguageCode(settings.preferredLanguage)
+      ? settings.preferredLanguage
+      : DEFAULT_LANGUAGE;
+  const preferredRegion = settings?.preferredRegion ?? getDefaultRegionForLanguage(preferredLanguage);
+  const homeBaseCity = settings?.homeBaseCity?.trim() || getDefaultHomeBaseCityForRegion(preferredRegion);
+
+  if (!body.options) body.options = {};
+  (body.options as Record<string, unknown>).pipelineContext = { homeBaseCity };
 
   const stream = new ReadableStream({
     async start(controller) {

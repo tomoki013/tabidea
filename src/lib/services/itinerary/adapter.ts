@@ -1,6 +1,7 @@
 /**
  * Adapter: ComposedItinerary → Itinerary 変換
  * 後方互換性維持のための変換レイヤー
+ * + フライト・宿泊の注入、移動手段の詳細化
  */
 
 import type {
@@ -18,21 +19,28 @@ import type {
   NarrativeDay,
   NarrativeActivity,
   RouteLeg,
-  TransportMode,
 } from '@/types/itinerary-pipeline';
-import type { TransitType } from '@/types/itinerary';
 import { MODE_TO_LABEL } from './constants';
+import { inferTransitType } from '@/lib/services/google/distance-estimator';
+import { injectFlights, type FlightInjectionContext } from './inject-flights';
+import { injectAccommodations, type AccommodationInjectionContext } from './inject-accommodations';
+import type { FixedScheduleItem } from '@/types/user-input';
 
 // ============================================
-// Transport mode mapping (legacy compat)
+// Adapter Context (from pipeline)
 // ============================================
 
-const MODE_TO_TRANSIT_TYPE: Record<TransportMode, TransitType> = {
-  walking: 'other',
-  public_transit: 'train',
-  car: 'car',
-  bicycle: 'other',
-};
+export interface AdapterContext {
+  homeBaseCity?: string;
+  departureCity?: string;
+  arrivalCity?: string;
+  destination: string;
+  durationDays: number;
+  startDate?: string;
+  overnightLocations: string[];
+  fixedSchedule: FixedScheduleItem[];
+  region?: string;
+}
 
 // ============================================
 // Public API
@@ -43,13 +51,37 @@ const MODE_TO_TRANSIT_TYPE: Record<TransportMode, TransitType> = {
  */
 export function composedToItinerary(
   composed: ComposedItinerary,
-  modelInfo?: ModelInfo
+  modelInfo?: ModelInfo,
+  context?: AdapterContext
 ): Itinerary {
   const id = Math.random().toString(36).substring(2, 15);
 
-  const days: DayPlan[] = composed.days.map((day) =>
+  let days: DayPlan[] = composed.days.map((day) =>
     convertDay(day)
   );
+
+  // フライト注入
+  if (context) {
+    const flightContext: FlightInjectionContext = {
+      homeBaseCity: context.homeBaseCity,
+      departureCity: context.departureCity,
+      arrivalCity: context.arrivalCity,
+      destination: context.destination,
+      durationDays: context.durationDays,
+      startDate: context.startDate,
+      fixedSchedule: context.fixedSchedule,
+      region: context.region,
+    };
+    days = injectFlights(days, flightContext);
+
+    // 宿泊注入
+    const accommodationContext: AccommodationInjectionContext = {
+      overnightLocations: context.overnightLocations,
+      startDate: context.startDate,
+      destination: context.destination,
+    };
+    days = injectAccommodations(days, accommodationContext);
+  }
 
   return {
     id,
@@ -225,6 +257,17 @@ function buildValidation(
 // Leg conversion
 // ============================================
 
+/** TransitType ごとの表示ラベル */
+const TRANSIT_TYPE_LABEL: Record<string, string> = {
+  walking: '徒歩',
+  bus: 'バス',
+  train: '電車',
+  bullet_train: '新幹線',
+  car: '車',
+  taxi: 'タクシー',
+  other: '移動',
+};
+
 function convertLeg(
   leg: RouteLeg,
   activities: NarrativeActivity[],
@@ -242,8 +285,11 @@ function convertLeg(
     toActivity?.node.stop.candidate.name ||
     '';
 
+  const transitType = inferTransitType(leg.distanceKm, leg.mode);
+  const label = TRANSIT_TYPE_LABEL[transitType] || MODE_TO_LABEL[leg.mode];
+
   return {
-    type: MODE_TO_TRANSIT_TYPE[leg.mode],
+    type: transitType,
     departure: {
       place: fromName,
       time: fromActivity?.node.departureTime,
@@ -253,7 +299,7 @@ function convertLeg(
       time: toActivity?.node.arrivalTime,
     },
     duration: formatDuration(leg.durationMinutes),
-    memo: `${MODE_TO_LABEL[leg.mode]} (${leg.distanceKm.toFixed(1)}km)`,
+    memo: `${label} (${leg.distanceKm.toFixed(1)}km)`,
   };
 }
 
