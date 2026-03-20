@@ -266,6 +266,7 @@ export function buildDeterministicSemanticSeedPlan(
   const themes = request.softPreferences.themes.slice(0, 4);
   const mustVisitPlaces = request.mustVisitPlaces.slice(0, 6);
   const dailyAreas = buildDailyAreas(request, destination);
+  const inferredPreferencePlaces = inferConcretePreferencePlaces(request);
   const dayStructure = dailyAreas.map((area, index) =>
     buildDeterministicDayStructure({
       request,
@@ -273,27 +274,15 @@ export function buildDeterministicSemanticSeedPlan(
       day: index + 1,
       totalDays: dailyAreas.length,
       mustVisitPlaces,
+      inferredPreferencePlaces,
     })
   );
 
-  const highlightedPlaces: DestinationHighlight[] = mustVisitPlaces.map((place, index) => {
-    const timeSlotHint: DestinationHighlight['timeSlotHint'] = index % 3 === 0
-      ? 'morning'
-      : index % 3 === 1
-        ? 'afternoon'
-        : 'evening';
-
-    return {
-      name: place,
-      searchQuery: place,
-      areaHint: dayStructure[index % dayStructure.length]?.mainArea ?? destination,
-      dayHint: (index % dayStructure.length) + 1,
-      rationale: request.outputLanguage === 'en'
-        ? 'Must-visit place requested by the traveler.'
-        : 'ユーザーが必ず訪れたい場所として指定。',
-      timeSlotHint,
-      stayDurationMinutes: 90,
-    };
+  const highlightedPlaces = buildDeterministicDestinationHighlights({
+    request,
+    destination,
+    dayStructure,
+    inferredPreferencePlaces,
   });
 
   const constrainedDayStructure = applyHotelConstraintsToDayStructure(dayStructure, request);
@@ -382,61 +371,93 @@ export function buildDeterministicDayCandidates(
   const dayStructure = seed.dayStructure.find((d) => d.day === day);
   if (!dayStructure) return [];
 
-  const isEn = request.outputLanguage === 'en';
   const area = dayStructure.mainArea;
-  const existingNames = new Set(existingCandidates.map((c) => c.name));
+  const existingKeys = new Set(
+    existingCandidates.flatMap((candidate) => [
+      normalizePlaceKey(candidate.name),
+      normalizePlaceKey(candidate.searchQuery),
+    ])
+  );
   const candidates: SemanticCandidate[] = [];
 
-  // Add destination highlights assigned to this day
-  const highlights = (seed.destinationHighlights ?? []).filter(
-    (h) => h.dayHint === day && !existingNames.has(h.name)
-  );
-  for (const h of highlights) {
+  const pushCandidate = (candidate: Omit<SemanticCandidate, 'semanticId'>) => {
+    const keys = [candidate.name, candidate.searchQuery]
+      .map((value) => normalizePlaceKey(value))
+      .filter((value) => value.length > 0);
+
+    if (keys.some((key) => existingKeys.has(key))) {
+      return;
+    }
+
+    keys.forEach((key) => existingKeys.add(key));
     candidates.push({
-      name: h.name,
+      ...candidate,
+      semanticId: crypto.randomUUID(),
+    });
+  };
+
+  // Prefer concrete destination highlights for this day.
+  const highlights = (seed.destinationHighlights ?? []).filter((highlight) => highlight.dayHint === day);
+  for (const highlight of highlights) {
+    pushCandidate({
+      name: highlight.name,
       role: 'recommended',
       priority: 8,
       dayHint: day,
-      timeSlotHint: h.timeSlotHint ?? 'flexible',
-      stayDurationMinutes: h.stayDurationMinutes ?? 60,
-      searchQuery: h.searchQuery ?? h.name,
-      areaHint: h.areaHint,
-      semanticId: crypto.randomUUID(),
-      rationale: h.rationale,
+      timeSlotHint: highlight.timeSlotHint ?? 'flexible',
+      stayDurationMinutes: highlight.stayDurationMinutes ?? 60,
+      searchQuery: highlight.searchQuery ?? highlight.name,
+      areaHint: highlight.areaHint,
+      rationale: highlight.rationale,
+      tags: ['destination-highlight'],
     });
-    existingNames.add(h.name);
   }
 
-  // Generate generic slot-based candidates from anchor moments
-  const slotDefaults: { timeSlot: 'morning' | 'midday' | 'afternoon' | 'evening'; role: 'recommended' | 'meal' | 'filler'; category: string; nameJa: string; nameEn: string; duration: number }[] = [
-    { timeSlot: 'morning', role: 'recommended', category: 'sightseeing', nameJa: `${area}の観光スポット`, nameEn: `Sightseeing in ${area}`, duration: 90 },
-    { timeSlot: 'midday', role: 'meal', category: 'restaurant', nameJa: `${area}のランチ`, nameEn: `Lunch in ${area}`, duration: 60 },
-    { timeSlot: 'afternoon', role: 'recommended', category: 'sightseeing', nameJa: `${area}の名所巡り`, nameEn: `Explore ${area} highlights`, duration: 90 },
-    { timeSlot: 'evening', role: 'meal', category: 'restaurant', nameJa: `${area}のディナー`, nameEn: `Dinner in ${area}`, duration: 60 },
-  ];
+  // Then use any concrete place names already embedded in the day flow.
+  const inferredSignals = inferConcretePlaceSignalsForDay(request, dayStructure);
+  for (const signal of inferredSignals) {
+    if (candidates.length >= 4) {
+      break;
+    }
 
-  for (const slot of slotDefaults) {
-    const name = isEn ? slot.nameEn : slot.nameJa;
-    if (existingNames.has(name)) continue;
-    if (candidates.length >= 4) break;
-
-    candidates.push({
-      name,
-      role: slot.role,
-      priority: 5,
+    pushCandidate({
+      name: signal.name,
+      role: signal.role,
+      priority: signal.priority,
       dayHint: day,
-      timeSlotHint: slot.timeSlot,
-      stayDurationMinutes: slot.duration,
-      searchQuery: `${area} ${slot.category}`,
-      categoryHint: slot.category,
-      areaHint: area,
-      semanticId: crypto.randomUUID(),
-      rationale: isEn
-        ? `Deterministic fallback candidate for ${area}.`
-        : `${area}のフォールバック候補。`,
+      timeSlotHint: signal.timeSlotHint,
+      stayDurationMinutes: signal.stayDurationMinutes,
+      searchQuery: signal.name,
+      areaHint: signal.areaHint ?? area,
+      rationale: signal.rationale,
+      tags: signal.tags,
     });
-    existingNames.add(name);
   }
+
+  // Precision-first fallback: if no concrete signal exists, keep the set small instead of inventing vague spots.
+  if (candidates.length > 0) {
+    return candidates;
+  }
+
+  const areaAnchor = buildAreaAnchorFallback(area);
+  if (!areaAnchor) {
+    return candidates;
+  }
+
+  pushCandidate({
+    name: areaAnchor.name,
+    role: 'recommended',
+    priority: 4,
+    dayHint: day,
+    timeSlotHint: 'flexible',
+    stayDurationMinutes: 60,
+    searchQuery: areaAnchor.searchQuery,
+    areaHint: area,
+    rationale: request.outputLanguage === 'en'
+      ? `Fallback anchor around ${area} when only area-level certainty is available.`
+      : `${area}周辺で確度高く扱えるエリア起点のフォールバック候補。`,
+    tags: ['area-anchor'],
+  });
 
   return candidates;
 }
@@ -558,8 +579,9 @@ function buildSemanticPlannerPrompt(
     }
   }
 
-  prompt += `
+ prompt += `
 出力ルール:
+0. 最適化の優先順位は「絶対条件の順守」→「ユーザー希望の満足度最大化」→「その地域らしさの担保」→「移動の無理の少なさ」の順に考える
 1. candidates には name, role, priority, dayHint, timeSlotHint, stayDurationMinutes, searchQuery を必ず含める
 2. 可能なら categoryHint, locationEn, rationale, areaHint, indoorOutdoor, tags も含める
 3. dayStructure には各日の title, mainArea, overnightLocation, summary を入れる
@@ -573,7 +595,11 @@ function buildSemanticPlannerPrompt(
 11. 参考条件は全てを機械的に盛り込まず、全体のまとまりを優先して良い感じに反映する
 12. 【最重要】name/searchQuery/destinationHighlights.name には必ず実在する具体的なスポット名・店名を入れること。「人気ランチ店」「おすすめカフェ」「代表スポット」「夜景スポット」のような曖昧・総称的な名前は絶対に禁止
 13. destinationHighlights には「この目的地に来たのに入っていないと不自然になりやすい場所」を優先して入れること
-14. 候補は単なる名所の羅列ではなく、朝→昼→夕方の流れが見える“1日の回遊プラン”として組み立てること`;
+14. 候補は単なる名所の羅列ではなく、朝→昼→夕方の流れが見える“1日の回遊プラン”として組み立てること
+15. 各候補は「どのユーザー希望/制約/旅らしさを満たすために入れたか」が rationale から伝わるようにする
+16. 有名観光地では、定番名所だけでなくユーザー希望に直結する相性の良い場所を混ぜ、満足度が最大になる組み合わせを選ぶ
+17. あまり有名ではない地域では、世界的なランドマーク不足を generic な候補名で誤魔化さず、その土地で定番になりやすい具体的スポット・商店街・展望台・博物館・海岸/公園・温泉街・市場・文化施設などを実名で選ぶ
+18. must_visit がある日は、その周辺で相性の良いスポットを優先し、「希望スポット + 地域らしい代表スポット」が同時に成立するようにする`;
 
   if (fastMode) {
     prompt += `\n15. 速度優先。エリアの重複を避け、候補は厳選してください`;
@@ -619,8 +645,10 @@ function buildSemanticSeedPrompt(request: NormalizedRequest): string {
     prompt += `\n\n参考にする希望:\n${request.softPreferences.rankedRequests.map((line) => `- ${line}`).join('\n')}`;
   }
 
-  prompt += `\n\n10. 旅のテーマと矛盾しない範囲で、その都市を代表する定番名所を少なくともいくつか骨格に含める`;
+ prompt += `\n\n10. 旅のテーマと矛盾しない範囲で、その都市を代表する定番名所を少なくともいくつか骨格に含める`;
   prompt += `\n11. 各 dayStructure は「朝はどこから始め、どこへ流れて、夜はどこで締めるか」が分かる itinerary らしい設計にする`;
+  prompt += `\n12. ユーザーの希望に強く合うスポットを主軸にしつつ、その地域を初めて訪れても「ここに来た感」が出る代表スポットを自然に織り込む`;
+  prompt += `\n13. あまり有名ではない地域でも、 generic な名前で埋めずに、駅前商店街・展望台・公園・市場・温泉街・資料館など、その土地で成立する具体的固有名詞を優先する`;
   prompt += `\n${SEED_EXPERTISE_RULES}`;
 
   return prompt;
@@ -658,8 +686,9 @@ function buildDeterministicDayStructure(input: {
   day: number;
   totalDays: number;
   mustVisitPlaces: string[];
+  inferredPreferencePlaces: string[];
 }): SemanticPlan['dayStructure'][number] {
-  const { request, area, day, totalDays, mustVisitPlaces } = input;
+  const { request, area, day, totalDays, mustVisitPlaces, inferredPreferencePlaces } = input;
   const slotLabel = request.outputLanguage === 'en'
     ? `Day ${day}`
     : `${day}日目`;
@@ -670,6 +699,10 @@ function buildDeterministicDayStructure(input: {
     ? request.outputLanguage === 'en' ? 'wrap up the trip.' : '旅を気持ちよく締めくくる。'
     : request.outputLanguage === 'en' ? 'settle in for the evening.' : '夜は落ち着いて締める。';
   const assignedMustVisit = mustVisitPlaces.filter((_, index) => index % totalDays === day - 1).slice(0, 2);
+  const assignedPreferencePlaces = inferredPreferencePlaces
+    .filter((_, index) => index % totalDays === day - 1)
+    .slice(0, Math.max(0, 3 - assignedMustVisit.length));
+  const anchorMoments = [...assignedMustVisit, ...assignedPreferencePlaces];
 
   return {
     day,
@@ -686,8 +719,8 @@ function buildDeterministicDayStructure(input: {
     flowSummary: request.outputLanguage === 'en'
       ? `Morning in ${area}, midday around key spots, evening near ${area}.`
       : `朝は${area}周辺から始め、昼は見どころを回り、夜は${area}近くで締める流れ。`,
-    anchorMoments: assignedMustVisit.length > 0
-      ? assignedMustVisit
+    anchorMoments: anchorMoments.length > 0
+      ? anchorMoments
       : request.outputLanguage === 'en'
         ? [`Morning in ${area}`, `Afternoon highlights`, `Evening wind-down`]
         : [`朝は${area}を散策`, '昼は見どころを体験', '夜はゆったり締める'],
@@ -828,7 +861,192 @@ ${mustVisitForDay.length > 0 ? mustVisitForDay.map((name) => `- ${name}`).join('
 7. 上の代表スポットのうち、この日に割り当てられているものは可能な限り候補に含める
 8. 候補全体で、朝の導入→昼の中心体験→午後の回遊→夕方の締め、という旅程の流れが伝わるようにする
 9. 単に有名スポットを列挙するのではなく、「この順に回ると1日が成立する」という組み合わせにする
+10. この日の候補セット全体で、ユーザー希望に強く合うスポットを主役にしつつ、その地域を訪れた納得感が出る代表スポットも自然に入れる
+11. 有名観光地では“定番だけで終わらない満足度”を重視し、無名寄りの地域では“generic 名禁止 + 実在する地元定番の具体名”を重視する
+12. rationale では「ユーザー希望」「代表スポット」「時間帯や導線」のどれを満たす候補か短く示す
 ${DAY_EXPERTISE_RULES}`;
+}
+
+const CONCRETE_PLACE_SUFFIX_PATTERN = /(?:寺|神社|城|宮|園|苑|館|美術館|博物館|資料館|記念館|水族館|動物園|タワー|展望台|橋|市場|商店街|温泉|温泉街|海岸|渓谷|庭園|公園|通り|坂|横丁|駅|港|岬|湖|滝|山|島|ビーチ|パーク|ミュージアム|museum|gallery|temple|shr?ine|castle|park|garden|tower|market|street|district|beach|onsen|viewpoint|observatory|station|harbor|harbour|pier|lake|falls?)$/i;
+const GENERIC_PLACE_SIGNAL_PATTERN = /(?:人気|おすすめ|名所|観光スポット|スポット|カフェ|ランチ|ディナー|グルメ|散策|体験|見どころ|ハイライト|restaurant|cafe|lunch|dinner|spot|highlights?|sightseeing)$/i;
+
+function inferConcretePreferencePlaces(request: NormalizedRequest): string[] {
+  const rawTexts = [
+    ...request.mustVisitPlaces,
+    ...request.softPreferences.rankedRequests,
+    ...request.hardConstraints.summaryLines,
+    request.freeText,
+    ...request.fixedSchedule.map((item) => item.name ?? ''),
+  ];
+
+  const seen = new Set<string>();
+  const results: string[] = [];
+
+  for (const text of rawTexts) {
+    for (const candidate of extractConcretePlaceMentions(text)) {
+      const key = normalizePlaceKey(candidate);
+      if (!key || seen.has(key)) {
+        continue;
+      }
+      seen.add(key);
+      results.push(candidate);
+    }
+  }
+
+  return results;
+}
+
+function buildDeterministicDestinationHighlights(input: {
+  request: NormalizedRequest;
+  destination: string;
+  dayStructure: SemanticPlan['dayStructure'];
+  inferredPreferencePlaces: string[];
+}): DestinationHighlight[] {
+  const { request, destination, dayStructure, inferredPreferencePlaces } = input;
+  const highlightSources = [
+    ...request.mustVisitPlaces.map((name) => ({ name, type: 'must' as const })),
+    ...inferredPreferencePlaces.map((name) => ({ name, type: 'preference' as const })),
+  ];
+  const seen = new Set<string>();
+
+  return highlightSources
+    .filter(({ name }) => {
+      const key = normalizePlaceKey(name);
+      if (!key || seen.has(key)) {
+        return false;
+      }
+      seen.add(key);
+      return true;
+    })
+    .slice(0, 6)
+    .map(({ name, type }, index) => {
+      const timeSlotHint: DestinationHighlight['timeSlotHint'] = index % 3 === 0
+        ? 'morning'
+        : index % 3 === 1
+          ? 'afternoon'
+          : 'evening';
+      const rationale = type === 'must'
+        ? (request.outputLanguage === 'en'
+          ? 'Must-visit place explicitly requested by the traveler.'
+          : 'ユーザーが必ず訪れたい場所として明示。')
+        : (request.outputLanguage === 'en'
+          ? 'Concrete place inferred from the traveler’s preferences.'
+          : 'ユーザー希望から具体スポットとして推定。');
+
+      return {
+        name,
+        searchQuery: name,
+        areaHint: dayStructure[index % dayStructure.length]?.mainArea ?? destination,
+        dayHint: (index % dayStructure.length) + 1,
+        rationale,
+        timeSlotHint,
+        stayDurationMinutes: 90,
+      };
+    });
+}
+
+function extractConcretePlaceMentions(text: string | undefined): string[] {
+  if (!text) {
+    return [];
+  }
+
+  const segmented = text
+    .split(/[\n\r、,。！!？?\u30fb/]/)
+    .map((value) => value.replace(/^[-・●\s]+/, '').trim())
+    .filter((value) => value.length >= 2 && value.length <= 40)
+    .filter((value) => CONCRETE_PLACE_SUFFIX_PATTERN.test(value))
+    .filter((value) => !GENERIC_PLACE_SIGNAL_PATTERN.test(value));
+
+  const embedded = Array.from(
+    text.matchAll(
+      /([^\s、,。！!？?「」『』（）()]{1,40}(?:美術館|博物館|資料館|記念館|水族館|動物園|商店街|温泉街|展望台|庭園|市場|神社|パーク|ミュージアム|寺|城|宮|園|苑|館|タワー|橋|温泉|海岸|渓谷|公園|通り|坂|横丁|駅|港|岬|湖|滝|山|島|ビーチ))/g
+    )
+  )
+    .map((match) => match[1]?.trim().replace(/^(?:と|や|やっぱり|そして|そのあと|その後|then|and)+/, ''))
+    .filter((value): value is string => Boolean(value))
+    .filter((value) => !GENERIC_PLACE_SIGNAL_PATTERN.test(value));
+
+  return [...new Set(
+    [...segmented, ...embedded]
+      .flatMap((value) => value.split(/(?:と| and )/i))
+      .map((value) => value.trim())
+      .filter((value) => value.length >= 2 && value.length <= 40)
+      .filter((value) => CONCRETE_PLACE_SUFFIX_PATTERN.test(value))
+      .filter((value) => !GENERIC_PLACE_SIGNAL_PATTERN.test(value))
+  )];
+}
+
+function inferConcretePlaceSignalsForDay(
+  request: NormalizedRequest,
+  dayStructure: SemanticPlan['dayStructure'][number]
+): Array<{
+  name: string;
+  role: SemanticCandidate['role'];
+  priority: number;
+  timeSlotHint: SemanticCandidate['timeSlotHint'];
+  stayDurationMinutes: number;
+  areaHint?: string;
+  rationale: string;
+  tags?: string[];
+}> {
+  const texts = [
+    ...(dayStructure.anchorMoments ?? []),
+    dayStructure.title,
+    dayStructure.flowSummary ?? '',
+    dayStructure.summary,
+  ];
+  const seen = new Set<string>();
+  const results: Array<{
+    name: string;
+    role: SemanticCandidate['role'];
+    priority: number;
+    timeSlotHint: SemanticCandidate['timeSlotHint'];
+    stayDurationMinutes: number;
+    areaHint?: string;
+    rationale: string;
+    tags?: string[];
+  }> = [];
+
+  texts.forEach((text, index) => {
+    extractConcretePlaceMentions(text).forEach((name) => {
+      const key = normalizePlaceKey(name);
+      if (!key || seen.has(key)) {
+        return;
+      }
+      seen.add(key);
+      results.push({
+        name,
+        role: 'recommended',
+        priority: index === 0 ? 7 : 6,
+        timeSlotHint: index === 0
+          ? 'morning'
+          : index === 1
+            ? 'afternoon'
+            : 'flexible',
+        stayDurationMinutes: 75,
+        areaHint: dayStructure.mainArea,
+        rationale: request.outputLanguage === 'en'
+          ? 'Concrete place already implied by the day flow.'
+          : 'その日の導線から具体スポットとして読み取れる場所。',
+        tags: ['flow-anchor'],
+      });
+    });
+  });
+
+  return results;
+}
+
+function buildAreaAnchorFallback(
+  area: string
+): { name: string; searchQuery: string } | null {
+  if (!CONCRETE_PLACE_SUFFIX_PATTERN.test(area) || GENERIC_PLACE_SIGNAL_PATTERN.test(area)) {
+    return null;
+  }
+
+  return {
+    name: area,
+    searchQuery: area,
+  };
 }
 
 
