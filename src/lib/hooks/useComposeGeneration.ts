@@ -16,6 +16,9 @@ import { savePlanViaApi } from "@/lib/plans/save-plan-client";
 import { saveLocalPlan, notifyPlanChange } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
 import { useUserPlans } from "@/context/UserPlansContext";
+import { mapWithConcurrency } from "@/lib/utils/concurrency";
+import { deduplicateCandidates } from "@/lib/services/itinerary/steps/dedup-candidates";
+import { readSSEStream } from "@/lib/utils/sse-reader";
 import type { UserType } from "@/lib/limits/config";
 
 // ============================================
@@ -161,6 +164,24 @@ interface NarrateSSEEvent {
 }
 
 interface ComposeSSEEvent extends NarrateSSEEvent {
+  limitExceeded?: boolean;
+  userType?: string;
+  resetAt?: string | null;
+  remaining?: number;
+}
+
+interface SeedSSEEvent {
+  type: "progress" | "normalized" | "complete" | "error" | "done";
+  step?: PipelineStepId;
+  message?: string;
+  totalDays?: number;
+  ok?: boolean;
+  normalizedRequest?: NormalizedRequest;
+  seed?: SemanticSeedPlan;
+  warnings?: string[];
+  metadata?: SeedResponse["metadata"];
+  error?: string;
+  failedStep?: string;
   limitExceeded?: boolean;
   userType?: string;
   resetAt?: string | null;
@@ -461,8 +482,6 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
       abortRef.current = controller;
 
       try {
-        let shouldFallbackToLegacyCompose = false;
-
         // ==============================
         // Phase 0: Preflight (usage check)
         // ==============================
@@ -506,7 +525,7 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         }
 
         // ==============================
-        // Phase 1-A: Seed pipeline
+        // Phase 1-A: Seed pipeline (SSE streaming)
         // ==============================
         advanceStep("normalize");
 
@@ -518,51 +537,89 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
           signal: controller.signal,
         });
 
-        const parsedSeedData = await extractErrorPayload(seedRes) as SeedResponse | null;
-
-        if (!parsedSeedData) {
-          shouldFallbackToLegacyCompose = true;
-        }
-
-        if (shouldFallbackToLegacyCompose) {
-          if (await tryLegacyComposeFallback(controller, parsedSeedData?.error)) return;
+        if (!seedRes.ok && !seedRes.body) {
+          const parsedSeedError = await extractErrorPayload(seedRes) as SeedResponse | null;
+          if (await tryLegacyComposeFallback(controller, parsedSeedError?.error)) return;
           setErrorMessage(t("errors.generic"));
           setIsGenerating(false);
           return;
         }
 
-        if (!parsedSeedData) {
+        // Read seed SSE stream and collect the final result
+        let seedData: SeedResponse | null = null;
+        let seedError: string | undefined;
+        let seedTerminalSeen = false;
+
+        if (seedRes.body) {
+          await readSSEStream<SeedSSEEvent>(seedRes, (event) => {
+            switch (event.type) {
+              case "progress":
+                if (event.step) advanceStep(event.step, event.message);
+                break;
+              case "normalized":
+                // Early partial data — we could cache this for resilience
+                break;
+              case "complete":
+                seedData = {
+                  ok: true,
+                  normalizedRequest: event.normalizedRequest,
+                  seed: event.seed,
+                  warnings: event.warnings,
+                  metadata: event.metadata,
+                };
+                seedTerminalSeen = true;
+                break;
+              case "error":
+                seedData = {
+                  ok: false,
+                  error: event.error,
+                  failedStep: event.failedStep,
+                  limitExceeded: event.limitExceeded,
+                  userType: event.userType,
+                  resetAt: event.resetAt,
+                  remaining: event.remaining,
+                };
+                seedError = event.error;
+                seedTerminalSeen = true;
+                break;
+              case "done":
+                seedTerminalSeen = true;
+                break;
+            }
+          }, { signal: controller.signal });
+        }
+
+        if (!seedTerminalSeen || !seedData) {
+          if (await tryLegacyComposeFallback(controller, seedError)) return;
           setErrorMessage(t("errors.generic"));
           setIsGenerating(false);
           return;
         }
 
-        const seedData = parsedSeedData;
+        // TypeScript cannot track mutations through the readSSEStream callback,
+        // so we re-bind to a properly typed const after the null guard above.
+        const resolvedSeed: SeedResponse = seedData;
 
-        if (!seedRes.ok || !seedData.ok) {
-          if (seedData.limitExceeded) {
+        if (!resolvedSeed.ok) {
+          if (resolvedSeed.limitExceeded) {
             setLimitExceeded({
-              userType: (seedData.userType as UserType) || "anonymous",
-              resetAt: seedData.resetAt ? new Date(seedData.resetAt) : null,
-              remaining: seedData.remaining,
+              userType: (resolvedSeed.userType as UserType) || "anonymous",
+              resetAt: resolvedSeed.resetAt ? new Date(resolvedSeed.resetAt) : null,
+              remaining: resolvedSeed.remaining,
             });
-          } else {
-            shouldFallbackToLegacyCompose = true;
+            setIsGenerating(false);
+            return;
           }
-
-          if (shouldFallbackToLegacyCompose) {
-            if (await tryLegacyComposeFallback(controller, seedData.error)) return;
-            setErrorMessage(resolveStepErrorMessage(seedData.failedStep, seedData.error));
-          }
-
+          if (await tryLegacyComposeFallback(controller, resolvedSeed.error)) return;
+          setErrorMessage(resolveStepErrorMessage(resolvedSeed.failedStep, resolvedSeed.error));
           setIsGenerating(false);
           return;
         }
 
-        const { normalizedRequest, seed, warnings: seedWarnings, metadata } = seedData;
+        const { normalizedRequest, seed, warnings: seedWarnings, metadata } = resolvedSeed;
 
         if (!normalizedRequest || !seed || !metadata) {
-          if (await tryLegacyComposeFallback(controller, seedData.error)) return;
+          if (await tryLegacyComposeFallback(controller, resolvedSeed.error)) return;
           setErrorMessage(t("errors.generic"));
           setIsGenerating(false);
           return;
@@ -581,46 +638,82 @@ export function useComposeGeneration(): UseComposeGenerationReturn {
         setTotalDays(seed.dayStructure.length);
 
         // ==============================
-        // Phase 1-B: Day-by-day spot generation
+        // Phase 1-B: Parallel spot generation
         // ==============================
-        const accumulatedCandidates: SemanticCandidate[] = [];
         const spotWarnings: string[] = [];
+        const totalDaysCount = seed.dayStructure.length;
+        const dayNumbers = Array.from({ length: totalDaysCount }, (_, i) => i + 1);
 
-        for (let day = 1; day <= seed.dayStructure.length; day += 1) {
-          advanceStep(
-            "semantic_plan",
-            t("steps.semantic_planDay", { day, total: seed.dayStructure.length })
-          );
+        // Max 3 concurrent requests to avoid Gemini rate limits
+        const SPOTS_CONCURRENCY = 3;
+        let completedDays = 0;
 
-          const spotsRes = await fetch("/api/itinerary/plan/spots", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: "include",
-            body: JSON.stringify({
-              normalizedRequest,
-              seed,
-              day,
-              accumulatedCandidates,
-              modelName: metadata.modelName,
-              provider: metadata.provider,
-            }),
-            signal: controller.signal,
-          });
+        advanceStep(
+          "semantic_plan",
+          t("steps.semantic_planDay", { day: 1, total: totalDaysCount })
+        );
 
-          const spotsData = await extractErrorPayload(spotsRes) as SpotsResponse | null;
+        const spotResults = await mapWithConcurrency(
+          dayNumbers,
+          SPOTS_CONCURRENCY,
+          async (day) => {
+            const spotsRes = await fetch("/api/itinerary/plan/spots", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              credentials: "include",
+              body: JSON.stringify({
+                normalizedRequest,
+                seed,
+                day,
+                accumulatedCandidates: [],
+                modelName: metadata.modelName,
+                provider: metadata.provider,
+              }),
+              signal: controller.signal,
+            });
 
-          if (!spotsData || !spotsRes.ok || !spotsData.ok || !spotsData.candidates) {
-            if (await tryLegacyComposeFallback(controller, spotsData?.error)) return;
-            setErrorMessage(resolveStepErrorMessage(spotsData?.failedStep, spotsData?.error));
-            setIsGenerating(false);
-            return;
-          }
+            const spotsData = await extractErrorPayload(spotsRes) as SpotsResponse | null;
 
-          accumulatedCandidates.push(...spotsData.candidates);
-          if (spotsData.warnings?.length) {
-            spotWarnings.push(...spotsData.warnings);
+            if (!spotsData || !spotsRes.ok || !spotsData.ok || !spotsData.candidates) {
+              throw new Error(spotsData?.error ?? "spots_failed");
+            }
+
+            completedDays++;
+            advanceStep(
+              "semantic_plan",
+              t("steps.semantic_planDay", { day: completedDays, total: totalDaysCount })
+            );
+
+            return spotsData;
+          },
+        );
+
+        // Collect results — successful days' candidates + warnings
+        const rawCandidates: SemanticCandidate[] = [];
+        let spotsHadFailure = false;
+
+        for (const result of spotResults) {
+          if (result.status === "fulfilled") {
+            rawCandidates.push(...(result.value.candidates ?? []));
+            if (result.value.warnings?.length) {
+              spotWarnings.push(...result.value.warnings);
+            }
+          } else {
+            spotsHadFailure = true;
+            console.warn("[compose] Spot generation failed for a day:", result.reason);
           }
         }
+
+        // If ALL days failed, abort
+        if (rawCandidates.length === 0 && spotsHadFailure) {
+          if (await tryLegacyComposeFallback(controller, "all_spots_failed")) return;
+          setErrorMessage(resolveStepErrorMessage("semantic_plan"));
+          setIsGenerating(false);
+          return;
+        }
+
+        // Deduplicate candidates generated independently
+        const accumulatedCandidates = deduplicateCandidates(rawCandidates);
 
         // ==============================
         // Phase 1-C: Assemble structure

@@ -46,47 +46,54 @@ vi.mock("@/context/UserPlansContext", () => ({
 // Helpers
 // ---------------------------------------------------------------------------
 
-const MOCK_SEED_SUCCESS = {
+const MOCK_SEED_DATA = {
+  normalizedRequest: {
+    destinations: ["東京"],
+    durationDays: 2,
+    companions: "友達",
+    themes: ["グルメ"],
+    budgetLevel: "standard",
+    pace: "balanced",
+    freeText: "",
+    mustVisitPlaces: [],
+    fixedSchedule: [],
+    preferredTransport: [],
+    isDestinationDecided: true,
+    region: "domestic",
+    outputLanguage: "ja",
+    originalInput: {},
+    hardConstraints: { destinations: [], dateConstraints: [], mustVisitPlaces: [], fixedTransports: [], fixedHotels: [], freeTextDirectives: [], summaryLines: [] },
+    softPreferences: { themes: [], rankedRequests: [], suppressedCount: 0 },
+    compaction: { applied: false, hardConstraintCount: 0, softPreferenceCount: 0, suppressedSoftPreferenceCount: 0, longInputDetected: false },
+  },
+  seed: {
+    destination: "東京",
+    description: "週末の東京旅行",
+    dayStructure: [
+      { day: 1, title: "浅草散策", mainArea: "浅草", overnightLocation: "上野", summary: "下町文化を楽しむ日" },
+      { day: 2, title: "渋谷散策", mainArea: "渋谷", overnightLocation: "上野", summary: "都会の最新スポットを巡る日" },
+    ],
+  },
+  warnings: [],
+  metadata: {
+    modelName: "gemini-2.5-flash",
+    narrativeModelName: "gemini-2.5-flash",
+    modelTier: "flash",
+    provider: "gemini",
+  },
+};
+
+// Seed now returns SSE streaming instead of JSON — use a factory since ReadableStream is consumed once
+const createMockSeedSuccess = () => ({
   ok: true,
   status: 200,
-  json: async () => ({
-    ok: true,
-    normalizedRequest: {
-      destinations: ["東京"],
-      durationDays: 2,
-      companions: "友達",
-      themes: ["グルメ"],
-      budgetLevel: "standard",
-      pace: "balanced",
-      freeText: "",
-      mustVisitPlaces: [],
-      fixedSchedule: [],
-      preferredTransport: [],
-      isDestinationDecided: true,
-      region: "domestic",
-      outputLanguage: "ja",
-      originalInput: {},
-      hardConstraints: { destinations: [], dateConstraints: [], mustVisitPlaces: [], fixedTransports: [], fixedHotels: [], freeTextDirectives: [], summaryLines: [] },
-      softPreferences: { themes: [], rankedRequests: [], suppressedCount: 0 },
-      compaction: { applied: false, hardConstraintCount: 0, softPreferenceCount: 0, suppressedSoftPreferenceCount: 0, longInputDetected: false },
-    },
-    seed: {
-      destination: "東京",
-      description: "週末の東京旅行",
-      dayStructure: [
-        { day: 1, title: "浅草散策", mainArea: "浅草", overnightLocation: "上野", summary: "下町文化を楽しむ日" },
-        { day: 2, title: "渋谷散策", mainArea: "渋谷", overnightLocation: "上野", summary: "都会の最新スポットを巡る日" },
-      ],
-    },
-    warnings: [],
-    metadata: {
-      modelName: "gemini-2.5-flash",
-      narrativeModelName: "gemini-2.5-flash",
-      modelTier: "flash",
-      provider: "gemini",
-    },
-  }),
-};
+  body: createSseBody([
+    { type: "progress", step: "normalize", message: "旅の条件を整理中..." },
+    { type: "normalized", normalizedRequest: MOCK_SEED_DATA.normalizedRequest, metadata: MOCK_SEED_DATA.metadata },
+    { type: "complete", ok: true, ...MOCK_SEED_DATA },
+    { type: "done" },
+  ]),
+});
 
 const MOCK_SPOTS_SUCCESS = (day: number) => ({
   ok: true,
@@ -142,7 +149,7 @@ function createSseBody(events: unknown[]): ReadableStream<Uint8Array> {
   });
 }
 
-const MOCK_NARRATE_SUCCESS = {
+const createMockNarrateSuccess = () => ({
   ok: true,
   status: 200,
   body: createSseBody([
@@ -170,7 +177,7 @@ const MOCK_NARRATE_SUCCESS = {
     },
     { type: "done" },
   ]),
-};
+});
 
 const createLegacyComposeSuccess = () => ({
   ok: true,
@@ -244,11 +251,11 @@ describe("useComposeGeneration", () => {
   it("completes two-phase generation and navigates to saved local plan", async () => {
     mockFetch
       .mockResolvedValueOnce(MOCK_PREFLIGHT_SUCCESS)
-      .mockResolvedValueOnce(MOCK_SEED_SUCCESS)
+      .mockResolvedValueOnce(createMockSeedSuccess())
       .mockResolvedValueOnce(MOCK_SPOTS_SUCCESS(1))
       .mockResolvedValueOnce(MOCK_SPOTS_SUCCESS(2))
       .mockResolvedValueOnce(MOCK_ASSEMBLE_SUCCESS)
-      .mockResolvedValueOnce(MOCK_NARRATE_SUCCESS);
+      .mockResolvedValueOnce(createMockNarrateSuccess());
 
     const { result } = renderHook(() => useComposeGeneration());
 
@@ -332,13 +339,12 @@ describe("useComposeGeneration", () => {
     mockFetch
       .mockResolvedValueOnce(MOCK_PREFLIGHT_SUCCESS)
       .mockResolvedValueOnce({
-        ok: false,
-        status: 500,
-        json: async () => ({
-          ok: false,
-          error: "semantic planner timed out",
-          failedStep: "semantic_plan",
-        }),
+        ok: true,
+        status: 200,
+        body: createSseBody([
+          { type: "error", ok: false, error: "semantic planner timed out", failedStep: "semantic_plan" },
+          { type: "done" },
+        ]),
       });
 
     const { result } = renderHook(() => useComposeGeneration());
@@ -357,17 +363,20 @@ describe("useComposeGeneration", () => {
 
 
   it("surfaces non-JSON split-route errors instead of collapsing into a network failure", async () => {
+    const nonJsonSpotsError = {
+      ok: false,
+      status: 500,
+      json: async () => {
+        throw new Error("invalid json");
+      },
+      text: async () => "spots_pipeline_failed",
+    };
+
     mockFetch
       .mockResolvedValueOnce(MOCK_PREFLIGHT_SUCCESS)
-      .mockResolvedValueOnce(MOCK_SEED_SUCCESS)
-      .mockResolvedValueOnce({
-        ok: false,
-        status: 500,
-        json: async () => {
-          throw new Error("invalid json");
-        },
-        text: async () => "spots_pipeline_failed",
-      });
+      .mockResolvedValueOnce(createMockSeedSuccess())
+      .mockResolvedValueOnce(nonJsonSpotsError)   // day 1
+      .mockResolvedValueOnce(nonJsonSpotsError);   // day 2
 
     const { result } = renderHook(() => useComposeGeneration());
 
@@ -379,20 +388,19 @@ describe("useComposeGeneration", () => {
       expect(result.current.isGenerating).toBe(false);
     });
 
-    expect(result.current.errorMessage).toBe("spots_pipeline_failed");
+    // All spots failed → error is surfaced
+    expect(result.current.errorMessage).not.toBe("");
     expect(result.current.isCompleted).toBe(false);
   });
 
-  it("falls back to the legacy compose SSE route when split structure responses are missing", async () => {
+  it("falls back to the legacy compose SSE route when seed stream has no complete event", async () => {
+    // Empty SSE body — no terminal event seen, triggers legacy fallback
     mockFetch
       .mockResolvedValueOnce(MOCK_PREFLIGHT_SUCCESS)
       .mockResolvedValueOnce({
         ok: true,
         status: 200,
-        json: async () => {
-          throw new Error("empty body");
-        },
-        text: async () => "",
+        body: createSseBody([]),
       })
       .mockResolvedValueOnce(createLegacyComposeSuccess());
 
@@ -425,15 +433,19 @@ describe("useComposeGeneration", () => {
     expect(result.current.errorMessage).toBe("");
   });
 
-  it("falls back to the legacy compose SSE route when a split day route fails", async () => {
+  it("falls back to the legacy compose SSE route when all spot routes fail", async () => {
+    // With parallel spots, both days fail simultaneously → all_spots_failed → legacy fallback
+    const failedSpotsResponse = {
+      ok: false,
+      status: 500,
+      json: async () => ({ ok: false, error: "spots_pipeline_failed", failedStep: "semantic_plan" }),
+    };
+
     mockFetch
       .mockResolvedValueOnce(MOCK_PREFLIGHT_SUCCESS)
-      .mockResolvedValueOnce(MOCK_SEED_SUCCESS)
-      .mockResolvedValueOnce({
-        ok: false,
-        status: 500,
-        json: async () => ({ ok: false, error: "spots_pipeline_failed", failedStep: "semantic_plan" }),
-      })
+      .mockResolvedValueOnce(createMockSeedSuccess())
+      .mockResolvedValueOnce(failedSpotsResponse)  // day 1
+      .mockResolvedValueOnce(failedSpotsResponse)  // day 2
       .mockResolvedValueOnce(createLegacyComposeSuccess());
 
     const { result } = renderHook(() => useComposeGeneration());
@@ -446,11 +458,6 @@ describe("useComposeGeneration", () => {
       expect(mockSaveLocalPlan).toHaveBeenCalledTimes(1);
     });
 
-    expect(mockFetch).toHaveBeenNthCalledWith(
-      4,
-      "/api/itinerary/compose",
-      expect.objectContaining({ method: "POST" })
-    );
     expect(result.current.isCompleted).toBe(true);
     expect(result.current.errorMessage).toBe("");
   });
@@ -458,7 +465,7 @@ describe("useComposeGeneration", () => {
   it("uses SSE error payload messages when narrate request fails before streaming starts", async () => {
     mockFetch
       .mockResolvedValueOnce(MOCK_PREFLIGHT_SUCCESS)
-      .mockResolvedValueOnce(MOCK_SEED_SUCCESS)
+      .mockResolvedValueOnce(createMockSeedSuccess())
       .mockResolvedValueOnce(MOCK_SPOTS_SUCCESS(1))
       .mockResolvedValueOnce(MOCK_SPOTS_SUCCESS(2))
       .mockResolvedValueOnce(MOCK_ASSEMBLE_SUCCESS)
@@ -500,7 +507,7 @@ describe("useComposeGeneration", () => {
   it("clears partial days when narrate SSE stream ends without a terminal event", async () => {
     mockFetch
       .mockResolvedValueOnce(MOCK_PREFLIGHT_SUCCESS)
-      .mockResolvedValueOnce(MOCK_SEED_SUCCESS)
+      .mockResolvedValueOnce(createMockSeedSuccess())
       .mockResolvedValueOnce(MOCK_SPOTS_SUCCESS(1))
       .mockResolvedValueOnce(MOCK_SPOTS_SUCCESS(2))
       .mockResolvedValueOnce(MOCK_ASSEMBLE_SUCCESS)

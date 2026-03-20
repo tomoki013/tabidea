@@ -7,53 +7,102 @@ export const runtime = 'nodejs';
 export const maxDuration = 25;
 
 export async function POST(req: Request) {
+  const encoder = new TextEncoder();
+
+  let body: {
+    input: UserInput;
+    options?: { isRetry?: boolean };
+    preCheckedUsage?: PreCheckedUsage;
+  };
   try {
-    let body: {
-      input: UserInput;
-      options?: { isRetry?: boolean };
-      preCheckedUsage?: PreCheckedUsage;
-    };
-    try {
-      body = await req.json();
-    } catch (error) {
-      console.error('[POST /api/itinerary/plan/seed] Invalid request body:', error);
-      return Response.json({ ok: false, error: 'Invalid request body' }, { status: 400 });
-    }
-
-    const result = await runSeedPipeline(
-      body.input,
-      body.options,
-      undefined,
-      body.preCheckedUsage
-    );
-
-    if (result.success) {
-      return Response.json({
-        ok: true,
-        normalizedRequest: result.normalizedRequest,
-        seed: result.seed,
-        warnings: result.warnings,
-        metadata: result.metadata,
-      });
-    }
-
-    const status = result.limitExceeded ? 429 : 500;
-    console.error('[POST /api/itinerary/plan/seed] Seed pipeline failed:', {
-      failedStep: result.failedStep,
-      message: result.message,
-      limitExceeded: result.limitExceeded ?? false,
-    });
-    return Response.json({
-      ok: false,
-      error: result.message ?? 'seed_pipeline_failed',
-      failedStep: result.failedStep,
-      limitExceeded: result.limitExceeded ?? false,
-      userType: result.userType,
-      resetAt: result.resetAt,
-      remaining: result.remaining,
-    }, { status });
+    body = await req.json();
   } catch (error) {
-    console.error('[POST /api/itinerary/plan/seed] Unexpected error:', error);
-    return Response.json({ ok: false, error: 'seed_pipeline_failed' }, { status: 500 });
+    console.error('[POST /api/itinerary/plan/seed] Invalid request body:', error);
+    return Response.json({ ok: false, error: 'Invalid request body' }, { status: 400 });
   }
+
+  const stream = new ReadableStream({
+    async start(controller) {
+      const emit = (type: string, payload: Record<string, unknown>) => {
+        try {
+          controller.enqueue(
+            encoder.encode(`data: ${JSON.stringify({ type, ...payload })}\n\n`)
+          );
+        } catch {
+          // Stream may already be closed
+        }
+      };
+
+      try {
+        const result = await runSeedPipeline(
+          body.input,
+          body.options,
+          (event) => {
+            // Forward pipeline progress events as SSE
+            if (event.type === 'progress') {
+              emit('progress', {
+                step: event.step,
+                message: event.message,
+                ...(event.totalDays != null ? { totalDays: event.totalDays } : {}),
+              });
+            }
+          },
+          body.preCheckedUsage
+        );
+
+        if (result.success) {
+          // Emit normalized request early so client has partial data
+          if (result.normalizedRequest && result.metadata) {
+            emit('normalized', {
+              normalizedRequest: result.normalizedRequest,
+              metadata: result.metadata,
+            });
+          }
+
+          emit('complete', {
+            ok: true,
+            normalizedRequest: result.normalizedRequest,
+            seed: result.seed,
+            warnings: result.warnings,
+            metadata: result.metadata,
+          });
+        } else {
+          console.error('[POST /api/itinerary/plan/seed] Seed pipeline failed:', {
+            failedStep: result.failedStep,
+            message: result.message,
+            limitExceeded: result.limitExceeded ?? false,
+          });
+
+          emit('error', {
+            ok: false,
+            error: result.message ?? 'seed_pipeline_failed',
+            failedStep: result.failedStep,
+            limitExceeded: result.limitExceeded ?? false,
+            userType: result.userType,
+            resetAt: result.resetAt,
+            remaining: result.remaining,
+          });
+        }
+
+        emit('done', {});
+      } catch (err) {
+        console.error('[SSE /api/itinerary/plan/seed] Uncaught error:', err);
+        emit('error', {
+          ok: false,
+          error: err instanceof Error ? err.message : 'unexpected_error',
+        });
+        emit('done', {});
+      } finally {
+        controller.close();
+      }
+    },
+  });
+
+  return new Response(stream, {
+    headers: {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache, no-transform',
+      Connection: 'keep-alive',
+    },
+  });
 }
