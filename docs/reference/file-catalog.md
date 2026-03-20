@@ -675,6 +675,7 @@ Total files: 884
 | src/lib/services/ai/model-selector.test.ts | Domain Services | Unit Test | Test | Automated test coverage for model selector.test behavior. |
 | src/lib/services/ai/model-selector.ts | Domain Services | TypeScript Module | Active | Service-layer module for model selector domain logic. |
 | src/lib/services/ai/prompt-builder.ts | Domain Services | TypeScript Module | Active | Service-layer module for prompt builder domain logic. |
+| src/lib/services/ai/prompts/travel-expertise.ts | Domain Services | TypeScript Module | Active | Travel expertise knowledge layer — time-of-day rules, energy design, day-type patterns, meal placement, weather awareness for AI prompts. |
 | src/lib/services/ai/prompts/travel-info-prompt.ts | Domain Services | TypeScript Module | Active | Service-layer module for travel info prompt domain logic. |
 | src/lib/services/ai/providers/factory.test.ts | Domain Services | Unit Test | Test | Automated test coverage for factory.test behavior. |
 | src/lib/services/ai/providers/factory.ts | Domain Services | TypeScript Module | Active | Service-layer module for factory domain logic. |

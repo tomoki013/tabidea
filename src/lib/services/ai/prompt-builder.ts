@@ -13,6 +13,7 @@ import type { Article } from './types';
 import type { GoldenPlanExample } from '@/data/golden-plans/types';
 import type { TravelInfoSnapshot } from './adapters/travel-info-adapter';
 import { formatTravelInfoForPrompt } from './adapters/travel-info-adapter';
+import { TRAVEL_EXPERTISE_RULES } from './prompts/travel-expertise';
 
 /** プロンプトバージョン（KPI計測用） */
 export const PROMPT_VERSION = 'v2.0-context-sandwich';
@@ -79,6 +80,10 @@ Golden Planの例を参考にした場合:
 - 具体的で実用的なアドバイス（「〜がおすすめ」「〜に注意」）を心がける
 - 旅行者目線でリアルな時間配分を意識する（移動時間含む）
 - 説明は生き生きとした描写を心がけ、ロボット的な羅列を避ける
+- 「なぜこの時間にこの場所なのか」を常に意識してプランを組む
+- 旅行者のエネルギーと疲労を考慮し、無理のないペース配分を行う
+
+${TRAVEL_EXPERTISE_RULES}
 
 ${knowledgeHierarchy}`;
 

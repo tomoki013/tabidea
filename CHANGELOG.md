@@ -9,6 +9,9 @@
 
 ## 開発者向けコミット履歴（コミット単位）
 
+### 2026-03-20
+- `claude/enhance-travel-planning-uR2dJ` feat(ai-prompts,golden-plans): 旅行プラン生成の品質を「旅を分かっているAI」レベルへ引き上げ。① 旅のプロの暗黙知を体系化した Travel Expertise Layer（`travel-expertise.ts`）を新設し、時間帯の黄金ルール（寺社は朝イチ、美術館は午後イチ等）・1日のエネルギー設計・旅行日タイプ別パターン（到着日/フル観光日/出発日）・食事配置ルール・天候季節配慮をシステムプロンプトに注入。② Context Sandwich の Layer 1（`prompt-builder.ts`）に expertise rules を統合し、全生成タイプ（outline/dayDetails/semanticPlan/narrativeRender/modify）で旅行知識が有効に。③ Semantic Planner の seed/day プロンプトに「なぜこの時間にこの場所なのか」の理由付け、到着日/出発日の設計パターン、具体的な料理名・体験の要求を追加。④ Golden Plan を2例→6例に拡充（既存: 京都カップル・バンコクソロ / 新規: 東京家族到着日・沖縄カップルフル観光日・パリソロフル観光日・北海道グループ最終日）。各例の description を「なぜこの時間にここなのか」が伝わる記述に改善。⑤ Narrative Renderer に五感描写・スポット間のつなぎ・旅のストーリー描写のルールを追加。⑥ `system-prompts.ts` の QUALITY_STANDARDS に1日の設計品質基準を追加。
+
 ### 2026-03-19
 - `local` fix(compose-pipeline,runtime-budget): split compose の seed / spots が 24 秒台まで AI 実行を引っ張り、Netlify 側のレスポンス flush 前に request kill → クライアントでは空レスポンス扱いとなって legacy compose fallback に落ち、さらに `semantic_plan timed out before platform deadline` で失敗しうる不具合を修正。① split pipeline の内部 deadline を route 上限 25 秒そのものではなく「platform headroom を 4 秒残したアプリ内 deadline」へ変更。② seed / spots の response reserve も拡張し、deterministic fallback を返し切る余白を確保。③ 長期旅行で day-by-day spots 生成が線形に遅くなる点について、将来的に multi-day batch / bounded concurrency へ移行する TODO コメントを orchestrator に追加。④ アーキテクチャ文書と回帰テストを更新。
 - `local` fix(proxy,netlify): Netlify Edge Middleware が毎リクエストで Supabase `auth.getUser()` / `users` metadata 読み出しを待ってしまい、匿名アクセスでも platform timeout → `AbortError` でサイト全体が開けなくなる不具合を修正。① middleware では Supabase auth cookie が存在する場合だけ session refresh / i18n preference 読み出しを行うよう変更。② Edge 上の Supabase 呼び出しには 1.5 秒の fail-open deadline を追加し、遅延時は検出言語へ安全にフォールバック。③ proxy 全体も fail-open で `next-intl` のみ返す保護を追加し、Netlify 側 abort でサイト全体が落ちないよう改善。④ 回帰防止テストを追加。

@@ -23,6 +23,7 @@ import {
   semanticSeedSchema,
 } from '@/lib/services/ai/schemas/compose-schemas';
 import { buildContextSandwich } from '@/lib/services/ai/prompt-builder';
+import { SEED_EXPERTISE_RULES, DAY_EXPERTISE_RULES } from '@/lib/services/ai/prompts/travel-expertise';
 import { PipelineStepError } from '../errors';
 import {
   assignHighlightDaysFromAreas,
@@ -620,6 +621,7 @@ function buildSemanticSeedPrompt(request: NormalizedRequest): string {
 
   prompt += `\n\n10. 旅のテーマと矛盾しない範囲で、その都市を代表する定番名所を少なくともいくつか骨格に含める`;
   prompt += `\n11. 各 dayStructure は「朝はどこから始め、どこへ流れて、夜はどこで締めるか」が分かる itinerary らしい設計にする`;
+  prompt += `\n${SEED_EXPERTISE_RULES}`;
 
   return prompt;
 }
@@ -825,7 +827,8 @@ ${mustVisitForDay.length > 0 ? mustVisitForDay.map((name) => `- ${name}`).join('
 6. なるべく ${currentDayStructure.mainArea} 周辺でまとまりよく選ぶ
 7. 上の代表スポットのうち、この日に割り当てられているものは可能な限り候補に含める
 8. 候補全体で、朝の導入→昼の中心体験→午後の回遊→夕方の締め、という旅程の流れが伝わるようにする
-9. 単に有名スポットを列挙するのではなく、「この順に回ると1日が成立する」という組み合わせにする`;
+9. 単に有名スポットを列挙するのではなく、「この順に回ると1日が成立する」という組み合わせにする
+${DAY_EXPERTISE_RULES}`;
 }
 
 
