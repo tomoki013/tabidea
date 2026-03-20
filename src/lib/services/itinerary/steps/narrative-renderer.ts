@@ -13,6 +13,7 @@ import type {
 import type { PartialDayData } from '@/types';
 import { narrativeOutputSchema } from '@/lib/services/ai/schemas/compose-schemas';
 import { buildContextSandwich } from '@/lib/services/ai/prompt-builder';
+import { NARRATIVE_EXPERTISE_RULES } from '@/lib/services/ai/prompts/travel-expertise';
 import type { Article } from '@/lib/services/ai/types';
 import type { AIProviderName } from '@/lib/services/ai/providers/types';
 
@@ -197,7 +198,8 @@ function buildNarrativePrompt(
 6. 全体の旅程を1-2文で紹介する description を生成してください
 7. 時刻・順序・場所は変更しないでください
 8. arrivalTime は入力データと完全に一致させてください
-9. 文を途中で切らず、各 description は完結した自然な文章で終える（「...」「…」で終わらない）`;
+9. 文を途中で切らず、各 description は完結した自然な文章で終える（「...」「…」で終わらない）
+${NARRATIVE_EXPERTISE_RULES}`;
 
   return prompt;
 }

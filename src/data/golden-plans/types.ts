@@ -25,4 +25,6 @@ export interface GoldenPlanExample {
       type: 'meal' | 'sightseeing' | 'transport' | 'hotel' | 'activity';
     }[];
   };
+  /** 開発用メモ: なぜこの構成が理想的なのか（プロンプトには含まれない） */
+  expertiseNotes?: string;
 }

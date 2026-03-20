@@ -111,7 +111,7 @@ UserInput → [Seed API]
 
 ## 5. Domain Layer Mapping
 
-- `lib/services/ai`: モデル選択・生成戦略・プロンプト処理
+- `lib/services/ai`: モデル選択・生成戦略・プロンプト処理・Travel Expertise Layer（旅行知識ルール）
 - `lib/services/plan-generation`: 生成オーケストレーション
 - `lib/services/rag`: 記事取得・検索
 - `lib/services/travel-info`: 渡航情報統合
