@@ -59,20 +59,20 @@ UserInput → [Seed API]
          → [GenerationRunLogger] → compose_runs / compose_run_steps (DB)
 ```
 
-- API: `POST /api/itinerary/plan/seed` → `POST /api/itinerary/plan/spots`（日ごと反復）→ `POST /api/itinerary/plan/assemble` → `POST /api/itinerary/plan/narrate`
+- API: `SSE /api/itinerary/plan/seed` → `POST /api/itinerary/plan/spots`（最大3並列）→ `POST /api/itinerary/plan/assemble` → `SSE /api/itinerary/plan/narrate`
 - 型: `src/types/itinerary-pipeline.ts`
 - 実装: `src/lib/services/itinerary/`
 - 定数: `src/lib/services/itinerary/constants.ts`
 - エラー: `src/lib/services/itinerary/errors.ts`
 - 観測ログ: `src/lib/services/itinerary/generation-run-logger.ts` → compose_runs / compose_run_steps
 - UI: `ComposeLoadingAnimation` + `ComposeLoadingTips` で seed 完了後すぐに目的地と日数を表示し、spot generation は日別進捗として見せる。`narrative_render` フェーズでは `StreamingResultView` で日ごとカード段階表示
-- Hook: `useComposeGeneration` は通常は seed → day-by-day spots → assemble → narrate をクライアントから順次実行し、`partialDays`, `totalDays`, `previewDestination` を更新する。split route が空レスポンス・非JSON・途中失敗・終端欠落で壊れた場合は、互換用の legacy SSE `/api/itinerary/compose` へ自動フォールバックして生成を継続する。must-visit は index 順を日数で均等配分する deterministic scheduling を使い、日数より多い必訪問スポットが入力されても取りこぼさない
+- Hook: `useComposeGeneration` は seed (SSE) → parallel spots (`mapWithConcurrency`, 最大3並列) → assemble → narrate をクライアントから実行し、`partialDays`, `totalDays`, `previewDestination` を更新する。seed は SSE ストリーミングで `normalized` イベントにより中間結果を先行受信し、AI生成タイムアウト時もクライアントがデータを保持する。spots は全日を並列発火し、事後に `deduplicateCandidates()` で重複排除する。narrate は2日ずつのチャンク分割で生成し、各チャンクが独自の時間予算 (`NARRATE_CHUNK_BUDGET_MS`) を持つ。split route が空レスポンス・非JSON・途中失敗・終端欠落で壊れた場合は、互換用の legacy SSE `/api/itinerary/compose` へ自動フォールバックして生成を継続する。must-visit は index 順を日数で均等配分する deterministic scheduling を使い、日数より多い必訪問スポットが入力されても取りこぼさない
 - モデル解決は phase-aware (`outline` / `chunk`) で行い、compose pipeline は既存の `AI_MODEL_OUTLINE_*` / `AI_MODEL_CHUNK_*` env 契約を使う
 - Places 照合は `ENABLE_COMPOSE_PLACE_RESOLVE` で ON/OFF 制御
 - Phase 1 はハバーサイン距離推定 (`distance-estimator.ts`)、Phase 2 で Routes API (`routes-client.ts`) に差替予定
 - Pipeline version: `v3`
 - Narrative Renderer: `streamObject` で日ごとに部分 JSON を返し、`partialDays` 経由で UI に中間結果を配信
-- 主要なタイムアウト耐性は Background Job ではなく「semantic_plan を seed + day-sized batches に分割する設計」で確保する
+- 主要なタイムアウト耐性は Background Job ではなく3つの設計で確保する: (1) スポット生成の並列化 (`mapWithConcurrency`, `deduplicateCandidates`), (2) Seed ルートの SSE ストリーミング (`readSSEStream`), (3) ナラティブ生成のチャンク分割 (`NARRATE_DAYS_PER_CHUNK=2`, `mergeChunkedNarrativeOutputs`)
 - Seed phase は唯一の “全日共通の前提生成” なので、AI seed が platform deadline に近づいた場合でも全体失敗にせず、`buildDeterministicSemanticSeedPlan()` で dayStructure / ordering / must-visit highlights を TS で再構成して day-by-day spots generation を継続する。これにより seed timeout が単発の 500 失敗へ直結しない
 - split compose route の `maxDuration` は現在 25 秒だが、seed / spots のアプリ内 deadline はその full budget を使い切らない。実測では 24 秒台まで AI 呼び出しを引っ張ると、プラットフォーム側がログ flush・JSON serialize・response write の前に request を kill し、せっかくの deterministic fallback がクライアントへ届かないことがあった。そのため orchestrator は route cap より約 4 秒早い内部 deadline を使い、fallback 応答を確実に返す tail room を確保している。なお Next.js の segment config 制約上、route 側の `maxDuration` は各 route ファイルで literal のまま持ち、共通化は orchestrator の runtime budget 側で行う
 

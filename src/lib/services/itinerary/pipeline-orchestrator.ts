@@ -38,6 +38,7 @@ import {
   runNarrativeRenderer,
   buildFallbackNarrativeOutput,
   streamNarrativeRendererWithResult,
+  mergeChunkedNarrativeOutputs,
 } from './steps/narrative-renderer';
 import { composedToItinerary } from './adapter';
 import { PipelineStepError } from './errors';
@@ -51,6 +52,9 @@ import {
   ITINERARY_SPLIT_APP_DEADLINE_MS,
   SEED_RESPONSE_RESERVE_MS,
   SPOTS_RESPONSE_RESERVE_MS,
+  NARRATE_DAYS_PER_CHUNK,
+  NARRATE_CHUNK_BUDGET_MS,
+  NARRATE_CHUNK_RESERVE_MS,
 } from './runtime-budget';
 
 // Re-export for backward compatibility
@@ -100,7 +104,6 @@ const SEMANTIC_SPOT_BATCH_RESERVE_MS = 400;
 // fallback serialization + stream close before the 25s platform kill.
 const NARRATE_DEADLINE_MS = SPLIT_ROUTE_BUDGET_MS;
 const NARRATE_MIN_LLM_MS = 5_000;               // need at least 5s for any LLM call
-const NARRATE_DEADLINE_RESERVE_MS = 1_000;        // increased from 500ms for fallback + stream close
 
 function shouldUseSemanticFastMode(
   request: NormalizedRequest,
@@ -1697,14 +1700,7 @@ export async function runNarratePipeline(
     emitProgress('narrative_render', '旅程を仕上げ中...', { totalDays, destination, description });
 
     const context: Article[] = [];
-    const narrativeInput = {
-      timelineDays: timeline,
-      request: normalizedRequest,
-      context,
-      modelName: narrativeModelName,
-      provider: provider as import('@/lib/services/ai/providers/types').AIProviderName,
-      temperature: 0.7,
-    };
+    const providerName = provider as import('@/lib/services/ai/providers/types').AIProviderName;
 
     let narrative: import('./steps/narrative-renderer').NarrativeRendererOutput;
 
@@ -1712,27 +1708,72 @@ export async function runNarratePipeline(
       // Not enough time — deterministic fallback
       narrative = buildFallbackNarrativeOutput(timeline, normalizedRequest);
     } else {
-      try {
-        // Stream per-day narrative
-        const streamResult = await new Promise<import('./steps/narrative-renderer').NarrativeStreamResult>((resolve, reject) => {
-          const timeoutId = setTimeout(() => {
-            reject(new PipelineStepError('narrative_render', 'narrative_render timed out before platform deadline'));
-          }, remainingTimeMs() - NARRATE_DEADLINE_RESERVE_MS);
-          streamNarrativeRendererWithResult(narrativeInput).then((r) => { clearTimeout(timeoutId); resolve(r); }).catch((e) => { clearTimeout(timeoutId); reject(e); });
+      // Chunked narrative generation: process 2 days at a time
+      // Each chunk gets its own AI call, staying well within the deadline
+      const chunks: import('./steps/narrative-renderer').NarrativeRendererOutput[] = [];
+      let chunkFallbackUsed = false;
+
+      for (let i = 0; i < timeline.length; i += NARRATE_DAYS_PER_CHUNK) {
+        const chunkDays = timeline.slice(i, i + NARRATE_DAYS_PER_CHUNK);
+        const chunkIndex = Math.floor(i / NARRATE_DAYS_PER_CHUNK);
+        const chunkTotal = Math.ceil(timeline.length / NARRATE_DAYS_PER_CHUNK);
+
+        emitProgress('narrative_render', `旅程を仕上げ中... (${chunkIndex + 1}/${chunkTotal})`, {
+          totalDays, destination, description,
         });
 
-        for await (const event of streamResult.dayStream) {
-          emitDayComplete({ day: event.day, dayData: event.dayData, isComplete: event.isComplete, totalDays, destination, description });
+        if (remainingTimeMs() < NARRATE_MIN_LLM_MS) {
+          // Not enough time for another AI call — fallback for remaining days
+          console.warn(`[narrate-pipeline] Not enough time for chunk ${chunkIndex + 1}, using fallback for remaining days`);
+          chunks.push(buildFallbackNarrativeOutput(chunkDays, normalizedRequest));
+          chunkFallbackUsed = true;
+          continue;
         }
 
-        // Final result (resolved by the stream)
-        narrative = await Promise.race([
-          streamResult.finalOutput,
-          new Promise<never>((_, reject) => setTimeout(() => reject(new Error('final output timeout')), Math.max(remainingTimeMs() - 200, 50))),
-        ]);
-      } catch (streamError) {
-        console.warn('[narrate-pipeline] Streaming failed, using deterministic fallback:', streamError);
-        narrative = buildFallbackNarrativeOutput(timeline, normalizedRequest);
+        const chunkNarrativeInput = {
+          timelineDays: chunkDays,
+          request: normalizedRequest,
+          context,
+          modelName: narrativeModelName,
+          provider: providerName,
+          temperature: 0.7,
+        };
+
+        try {
+          const chunkBudget = Math.min(
+            NARRATE_CHUNK_BUDGET_MS,
+            remainingTimeMs() - NARRATE_CHUNK_RESERVE_MS,
+          );
+
+          const streamResult = await new Promise<import('./steps/narrative-renderer').NarrativeStreamResult>((resolve, reject) => {
+            const timeoutId = setTimeout(() => {
+              reject(new PipelineStepError('narrative_render', `narrative chunk ${chunkIndex + 1} timed out`));
+            }, Math.max(chunkBudget, 50));
+            streamNarrativeRendererWithResult(chunkNarrativeInput)
+              .then((r) => { clearTimeout(timeoutId); resolve(r); })
+              .catch((e) => { clearTimeout(timeoutId); reject(e); });
+          });
+
+          for await (const event of streamResult.dayStream) {
+            emitDayComplete({ day: event.day, dayData: event.dayData, isComplete: event.isComplete, totalDays, destination, description });
+          }
+
+          const chunkOutput = await Promise.race([
+            streamResult.finalOutput,
+            new Promise<never>((_, reject) => setTimeout(() => reject(new Error('chunk final output timeout')), Math.max(remainingTimeMs() - NARRATE_CHUNK_RESERVE_MS, 50))),
+          ]);
+
+          chunks.push(chunkOutput);
+        } catch (chunkError) {
+          console.warn(`[narrate-pipeline] Chunk ${chunkIndex + 1} failed, using fallback:`, chunkError);
+          chunks.push(buildFallbackNarrativeOutput(chunkDays, normalizedRequest));
+          chunkFallbackUsed = true;
+        }
+      }
+
+      narrative = mergeChunkedNarrativeOutputs(chunks, description);
+      if (chunkFallbackUsed) {
+        console.info('[narrate-pipeline] Some chunks used fallback narratives');
       }
     }
 

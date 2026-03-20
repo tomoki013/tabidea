@@ -21,3 +21,10 @@ export const ITINERARY_SPLIT_APP_DEADLINE_MS =
 
 export const SEED_RESPONSE_RESERVE_MS = 400;
 export const SPOTS_RESPONSE_RESERVE_MS = 700;
+
+// Narrative chunking — generate 2 days at a time to stay within deadline
+export const NARRATE_DAYS_PER_CHUNK = 2;
+// Budget per narrative chunk (each chunk is a separate AI call within the same SSE connection)
+export const NARRATE_CHUNK_BUDGET_MS = 18_000;
+// Reserve between chunks for serialization and SSE emission
+export const NARRATE_CHUNK_RESERVE_MS = 1_500;

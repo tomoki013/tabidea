@@ -403,6 +403,31 @@ export function buildFallbackNarrativeOutput(
   return { description, days };
 }
 
+/**
+ * Merge multiple chunked narrative outputs into a single result.
+ * Used when narrative generation is split across multiple AI calls (2 days per chunk).
+ */
+export function mergeChunkedNarrativeOutputs(
+  chunks: NarrativeRendererOutput[],
+  overallDescription?: string,
+): NarrativeRendererOutput {
+  const allDays: NarrativeDay[] = [];
+  let description = overallDescription ?? '';
+
+  for (const chunk of chunks) {
+    allDays.push(...chunk.days);
+    // Use the first chunk's description if no overall description provided
+    if (!description && chunk.description) {
+      description = chunk.description;
+    }
+  }
+
+  // Sort by day number to ensure correct order
+  allDays.sort((a, b) => a.day - b.day);
+
+  return { description, days: allDays };
+}
+
 async function resolveLanguageModel(provider: AIProviderName, modelName: string) {
   if (provider === 'openai') {
     const { openai } = await import('@ai-sdk/openai');

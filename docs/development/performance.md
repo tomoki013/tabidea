@@ -52,6 +52,21 @@ Use `createComposeTimer(modelTier?)` factory.
 - App Router route は seed / spots / assemble / narrate の各短時間フェーズを担当する。
 - `semantic_plan` の target 超過は `PerformanceTimer` で監視しつつ、最も重い AI スポット生成は day-sized batches に分割して route timeout を構造的に避ける。
 
+### 3c. Timeout Prevention Architecture
+
+タイムアウト防止のため、以下の3つの設計変更を適用:
+
+1. **スポット生成の並列化**: フロントエンドが `/plan/spots` を1日ずつ逐次呼び出していた処理を、最大3並列で実行。`mapWithConcurrency()` (`src/lib/utils/concurrency.ts`) を使用。候補の重複は `deduplicateCandidates()` で事後排除。
+2. **Seed ルートの SSE ストリーミング**: `/api/itinerary/plan/seed` を JSON POST から SSE に変換。AI生成中に `normalized` イベントで中間結果を先行送信し、タイムアウト時もクライアントがデータを保持。
+3. **ナラティブ生成のチャンク分割**: `runNarratePipeline` が全日分を1回の AI 呼び出しで処理していた設計を、2日ずつのチャンクに分割。各チャンクの予算は `NARRATE_CHUNK_BUDGET_MS` (18s)。
+
+| パラメータ | 値 | 定義ファイル |
+| --- | --- | --- |
+| NARRATE_DAYS_PER_CHUNK | 2 | `runtime-budget.ts` |
+| NARRATE_CHUNK_BUDGET_MS | 18,000ms | `runtime-budget.ts` |
+| NARRATE_CHUNK_RESERVE_MS | 1,500ms | `runtime-budget.ts` |
+| SPOTS_CONCURRENCY | 3 | `useComposeGeneration.ts` |
+
 ## 4. Instrumentation Pattern
 
 ```ts
