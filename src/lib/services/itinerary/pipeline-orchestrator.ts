@@ -23,6 +23,7 @@ import type {
 import { normalizeRequest } from './steps/normalize-request';
 import {
   buildDeterministicSemanticSeedPlan,
+  buildDeterministicSemanticPlan,
   buildDeterministicDayCandidates,
   runSemanticDayPlanner,
   runSemanticPlanner,
@@ -78,6 +79,10 @@ const DEADLINE_RESERVE_MS = 2_000;
 const SPLIT_ROUTE_BUDGET_MS = ITINERARY_SPLIT_APP_DEADLINE_MS;
 const SEED_DEADLINE_MS = SPLIT_ROUTE_BUDGET_MS;
 const SPOTS_DEADLINE_MS = SPLIT_ROUTE_BUDGET_MS;
+// Cap the AI call timeout for the seed pipeline so we fall back sooner
+// instead of consuming the entire platform budget on a slow AI response.
+// Flash target is 15s; allow 2s margin before falling back to deterministic.
+const SEED_SEMANTIC_TIMEOUT_CAP_MS = 17_000;
 
 // Structure phase: steps 0-6 (no narrative)
 const STRUCTURE_DEADLINE_MS = SPLIT_ROUTE_BUDGET_MS;
@@ -90,9 +95,12 @@ const STRUCTURE_DEADLINE_RESERVE_MS = 300;
 const SEMANTIC_SPOT_BATCH_RESERVE_MS = 400;
 
 // Narrate phase: step 7 only (narrative render)
-const NARRATE_DEADLINE_MS = 24_500;
+// Align with the standard split-route budget (21s) instead of 24.5s.
+// The old value left only 500ms of platform headroom — not enough for
+// fallback serialization + stream close before the 25s platform kill.
+const NARRATE_DEADLINE_MS = SPLIT_ROUTE_BUDGET_MS;
 const NARRATE_MIN_LLM_MS = 5_000;               // need at least 5s for any LLM call
-const NARRATE_DEADLINE_RESERVE_MS = 500;
+const NARRATE_DEADLINE_RESERVE_MS = 1_000;        // increased from 500ms for fallback + stream close
 
 function shouldUseSemanticFastMode(
   request: NormalizedRequest,
@@ -429,27 +437,39 @@ export async function runComposePipeline(
     }
     const semanticPlan = await timer.measure('semantic_plan', async () => {
       if (remainingTimeMs() < MIN_REMAINING_FOR_SEMANTIC_LLM_MS) {
-        throw new PipelineStepError(
-          'semantic_plan',
-          'AIスポット生成に十分な時間がありません。もう一度お試しください。'
-        );
+        // Not enough time for AI — use deterministic fallback instead of failing
+        timeoutMitigationUsed = true;
+        fallbackUsed = true;
+        console.warn('[compose-pipeline] Not enough time for semantic LLM, using deterministic fallback');
+        allWarnings.push('semantic_fallback:insufficient_time');
+        return buildDeterministicSemanticPlan(normalizedRequest);
       }
 
       const semanticReserve = remainingTimeMs() > MIN_REMAINING_FOR_POST_SEMANTIC_STEPS_MS
         ? Math.max(DEADLINE_RESERVE_MS, SEMANTIC_STEP_RESERVE_MS)
         : DEADLINE_RESERVE_MS;
 
-      return await runWithDeadline('semantic_plan', () => runSemanticPlanner({
-        request: normalizedRequest,
-        context,
-        modelName: semanticModel.modelName,
-        provider,
-        temperature: semanticModel.temperature,
-        retryOnFailure: !semanticFastMode && remainingTimeMs() >= MIN_REMAINING_FOR_SEMANTIC_RETRY_MS,
-        targetCandidateCount: semanticCandidateTarget,
-        fastMode: semanticFastMode,
-        onProgress: (message) => emitProgress('semantic_plan', message),
-      }), semanticReserve);
+      try {
+        return await runWithDeadline('semantic_plan', () => runSemanticPlanner({
+          request: normalizedRequest,
+          context,
+          modelName: semanticModel.modelName,
+          provider,
+          temperature: semanticModel.temperature,
+          retryOnFailure: !semanticFastMode && remainingTimeMs() >= MIN_REMAINING_FOR_SEMANTIC_RETRY_MS,
+          targetCandidateCount: semanticCandidateTarget,
+          fastMode: semanticFastMode,
+          onProgress: (message) => emitProgress('semantic_plan', message),
+        }), semanticReserve);
+      } catch (error) {
+        timeoutMitigationUsed = true;
+        fallbackUsed = true;
+        const reason = error instanceof Error ? error.message : 'unknown_error';
+        console.warn('[compose-pipeline] semantic_plan failed, using deterministic fallback:', reason);
+        allWarnings.push(`semantic_fallback:${reason}`);
+        emitProgress('semantic_plan', '候補スポットを安全モードで再構成中...');
+        return buildDeterministicSemanticPlan(normalizedRequest);
+      }
     });
 
     const candidateCount = semanticPlan.candidates.length;
@@ -1069,7 +1089,10 @@ export async function runSeedPipeline(
     const modelTier = toComposeModelTier(userType);
 
     emitProgress('semantic_plan', '旅の骨格を設計中...');
-    const seedTimeout = Math.max(remainingTimeMs() - SEED_RESPONSE_RESERVE_MS, 50);
+    const seedTimeout = Math.min(
+      Math.max(remainingTimeMs() - SEED_RESPONSE_RESERVE_MS, 50),
+      SEED_SEMANTIC_TIMEOUT_CAP_MS
+    );
     const seed = await timer.measure('semantic_plan', async () => {
       let timeoutId: ReturnType<typeof setTimeout> | undefined;
       try {

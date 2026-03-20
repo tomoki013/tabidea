@@ -132,6 +132,30 @@ vi.mock('./steps/semantic-planner', () => ({
       areaHint: seed.dayStructure?.find((entry) => entry.day === day)?.mainArea ?? '東京',
     },
   ])),
+  buildDeterministicSemanticPlan: vi.fn((request: { durationDays?: number; mustVisitPlaces?: string[] }) => ({
+    destination: '東京',
+    description: '安全モードで再構成した旅行プラン',
+    candidates: [
+      {
+        name: request.mustVisitPlaces?.[0] ?? '浅草寺',
+        role: 'must_visit',
+        priority: 10,
+        dayHint: 1,
+        timeSlotHint: 'morning',
+        stayDurationMinutes: 60,
+        searchQuery: request.mustVisitPlaces?.[0] ?? '浅草寺',
+        categoryHint: 'landmark',
+      },
+    ],
+    dayStructure: Array.from({ length: request.durationDays ?? 1 }, (_, index) => ({
+      day: index + 1,
+      title: `${index + 1}日目`,
+      mainArea: '東京',
+      overnightLocation: '東京',
+      summary: '安全モードの骨格',
+    })),
+    themes: ['歴史'],
+  })),
 }));
 
 vi.mock('./generation-run-logger', () => {
@@ -592,8 +616,8 @@ describe('pipeline-orchestrator', () => {
     nowSpy.mockRestore();
   });
 
-  it('should fail when semantic planner times out (no deterministic fallback)', async () => {
-    const { runSemanticPlanner } = await import('./steps/semantic-planner');
+  it('should fall back to deterministic plan when semantic planner times out', async () => {
+    const { runSemanticPlanner, buildDeterministicSemanticPlan } = await import('./steps/semantic-planner');
     const { PipelineStepError } = await import('./errors');
 
     vi.mocked(runSemanticPlanner).mockRejectedValueOnce(
@@ -602,8 +626,10 @@ describe('pipeline-orchestrator', () => {
 
     const result = await runComposePipeline(makeTestInput({ mustVisitPlaces: ['浅草寺'] }));
 
-    expect(result.success).toBe(false);
-    expect(result.failedStep).toBe('semantic_plan');
+    expect(result.success).toBe(true);
+    expect(result.metadata?.timeoutMitigationUsed).toBe(true);
+    expect(result.metadata?.fallbackUsed).toBe(true);
+    expect(buildDeterministicSemanticPlan).toHaveBeenCalledTimes(1);
   });
 
   it('should fallback route/timeline when route optimizer times out near deadline', async () => {
