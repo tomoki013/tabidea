@@ -3,6 +3,14 @@ import { EventLogger } from '@/lib/services/analytics/event-logger';
 import { createClient } from '@supabase/supabase-js';
 import type { UserInput } from '@/types';
 import type { PipelineStepId } from '@/types/itinerary-pipeline';
+import { getUserSettings } from '@/app/actions/user-settings';
+import {
+  getDefaultHomeBaseCityForRegion,
+  getDefaultRegionForLanguage,
+  isLanguageCode,
+  type LanguageCode,
+  DEFAULT_LANGUAGE,
+} from '@/lib/i18n/locales';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -26,7 +34,18 @@ export async function POST(req: Request) {
     });
   }
 
-  const { input, options } = body;
+  const { input } = body;
+
+  // Resolve homeBaseCity from user settings
+  const { settings } = await getUserSettings().catch(() => ({ settings: null }));
+  const preferredLanguage: LanguageCode =
+    settings?.preferredLanguage && isLanguageCode(settings.preferredLanguage)
+      ? settings.preferredLanguage
+      : DEFAULT_LANGUAGE;
+  const preferredRegion = settings?.preferredRegion ?? getDefaultRegionForLanguage(preferredLanguage);
+  const homeBaseCity = settings?.homeBaseCity?.trim() || getDefaultHomeBaseCityForRegion(preferredRegion);
+
+  const options = { ...body.options, pipelineContext: { homeBaseCity } };
 
   const stream = new ReadableStream({
     async start(controller) {

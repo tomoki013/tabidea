@@ -1,6 +1,6 @@
 # Architecture
 
-更新日: 2026-03-19
+更新日: 2026-03-20
 
 ## 1. System Overview
 
@@ -56,6 +56,9 @@ UserInput → [Seed API]
          → [Narrate API]
          → [9] Narrative Renderer (Gemini / streamObject) → NarrativeDay[]
          → [Adapter] → Itinerary (後方互換, metadata に nodeId/semanticId)
+             → injectFlights (Day 1 往路 / 最終日 復路フライト注入)
+             → injectAccommodations (各日末尾に宿泊カード注入, 最終日除く)
+             → inferTransitType (距離ベースで walking/bus/train/bullet_train を推定)
          → [GenerationRunLogger] → compose_runs / compose_run_steps (DB)
 ```
 

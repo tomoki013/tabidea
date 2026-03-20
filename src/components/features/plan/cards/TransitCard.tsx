@@ -15,6 +15,8 @@ import {
   Unlock,
   ExternalLink,
   Trash2,
+  Footprints,
+  Zap,
 } from "lucide-react";
 import BaseCard, { CardState } from "./BaseCard";
 import { TransitInfo, TransitType } from "@/types";
@@ -70,6 +72,10 @@ const TRANSIT_CONFIG: Record<
     icon: Plane,
     colorTheme: "blue",
   },
+  bullet_train: {
+    icon: Zap,
+    colorTheme: "purple",
+  },
   train: {
     icon: Train,
     colorTheme: "green",
@@ -85,6 +91,14 @@ const TRANSIT_CONFIG: Record<
   car: {
     icon: Car,
     colorTheme: "purple",
+  },
+  taxi: {
+    icon: Car,
+    colorTheme: "orange",
+  },
+  walking: {
+    icon: Footprints,
+    colorTheme: "green",
   },
   other: {
     icon: MapPin,

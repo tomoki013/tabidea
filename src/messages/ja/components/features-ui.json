@@ -597,10 +597,13 @@
             "unlock": "ロック解除",
             "types": {
               "flight": "飛行機",
+              "bullet_train": "新幹線・高速列車",
               "train": "電車",
               "bus": "バス",
               "ship": "船",
               "car": "車",
+              "taxi": "タクシー",
+              "walking": "徒歩",
               "other": "移動"
             }
           }

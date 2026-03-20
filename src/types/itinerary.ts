@@ -6,7 +6,7 @@
 /**
  * 移動手段タイプ
  */
-export type TransitType = 'flight' | 'train' | 'bus' | 'ship' | 'car' | 'other';
+export type TransitType = 'flight' | 'bullet_train' | 'train' | 'bus' | 'ship' | 'car' | 'taxi' | 'walking' | 'other';
 
 /**
  * 移動情報

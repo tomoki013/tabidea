@@ -20,7 +20,7 @@ import type {
   SelectedStop,
   SemanticCandidate,
 } from '@/types/itinerary-pipeline';
-import { normalizeRequest } from './steps/normalize-request';
+import { normalizeRequest, type NormalizeRequestContext } from './steps/normalize-request';
 import {
   buildDeterministicSemanticSeedPlan,
   buildDeterministicSemanticPlan,
@@ -240,6 +240,8 @@ export function getScheduledMustVisitPlacesForDay(input: {
 
 export interface ComposeOptions {
   isRetry?: boolean;
+  /** Pipeline context from user settings (homeBaseCity, etc.) */
+  pipelineContext?: NormalizeRequestContext;
 }
 
 export type ComposeProgressEvent =
@@ -393,7 +395,7 @@ export async function runComposePipeline(
     emitProgress('normalize', '旅の条件を整理中...');
     logStepWindow('normalize:start');
     const normalizedRequest = await timer.measure('normalize', async () => {
-      return runWithDeadline('normalize', async () => normalizeRequest(input));
+      return runWithDeadline('normalize', async () => normalizeRequest(input, 'ja', options?.pipelineContext));
     });
 
     // ====================================
@@ -887,7 +889,17 @@ export async function runComposePipeline(
       tier: modelTier,
     };
 
-    const itinerary = composedToItinerary(composed, modelInfo);
+    const itinerary = composedToItinerary(composed, modelInfo, {
+      homeBaseCity: normalizedRequest.homeBaseCity,
+      departureCity: normalizedRequest.departureCity,
+      arrivalCity: normalizedRequest.arrivalCity,
+      destination: semanticPlan.destination,
+      durationDays: normalizedRequest.durationDays,
+      startDate: normalizedRequest.startDate,
+      overnightLocations: narrative.days.map((d) => d.overnightLocation),
+      fixedSchedule: normalizedRequest.fixedSchedule,
+      region: normalizedRequest.region,
+    });
 
     // End run logging (fire-and-forget)
     logger.endRun({
@@ -1084,7 +1096,7 @@ export async function runSeedPipeline(
     }
 
     emitProgress('normalize', '旅の条件を整理中...');
-    const normalizedRequest = await timer.measure('normalize', async () => normalizeRequest(input));
+    const normalizedRequest = await timer.measure('normalize', async () => normalizeRequest(input, 'ja', options?.pipelineContext));
 
     const provider = getItineraryProvider();
     const semanticModel = resolveModelForPhase('outline', userType, provider);
@@ -1469,7 +1481,7 @@ export async function runStructurePipeline(
     // Step 1: Normalize
     emitProgress('normalize', '旅の条件を整理中...');
     const normalizedRequest = await timer.measure('normalize', () =>
-      runWithDeadline('normalize', async () => normalizeRequest(input))
+      runWithDeadline('normalize', async () => normalizeRequest(input, 'ja', options?.pipelineContext))
     );
 
     // Model resolution
@@ -1805,7 +1817,17 @@ export async function runNarratePipeline(
     };
 
     const modelInfo: ModelInfo = { modelName: narrativeModelName, tier: structureInput.modelTier ?? 'flash' };
-    const itinerary = composedToItinerary(composed, modelInfo);
+    const itinerary = composedToItinerary(composed, modelInfo, {
+      homeBaseCity: normalizedRequest.homeBaseCity,
+      departureCity: normalizedRequest.departureCity,
+      arrivalCity: normalizedRequest.arrivalCity,
+      destination,
+      durationDays: normalizedRequest.durationDays,
+      startDate: normalizedRequest.startDate,
+      overnightLocations: narrative.days.map((d) => d.overnightLocation),
+      fixedSchedule: normalizedRequest.fixedSchedule,
+      region: normalizedRequest.region,
+    });
 
     return { success: true, itinerary, heroImage: options?.heroImage, warnings: allWarnings };
   } catch (error) {

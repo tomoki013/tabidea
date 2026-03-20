@@ -2,7 +2,7 @@
 
 import { TransitInfo, TransitType } from "@/types";
 import { useTranslations } from "next-intl";
-import { FaPlane, FaTrain, FaBus, FaShip, FaCar, FaQuestion, FaTimes, FaPen } from "react-icons/fa";
+import { FaPlane, FaTrain, FaBus, FaShip, FaCar, FaQuestion, FaTimes, FaPen, FaBolt, FaTaxi, FaWalking } from "react-icons/fa";
 
 interface TransitListItemProps {
   dayIndex: number;
@@ -13,10 +13,13 @@ interface TransitListItemProps {
 
 const ICONS: Record<TransitType, React.ComponentType<{ className?: string }>> = {
   flight: FaPlane,
+  bullet_train: FaBolt,
   train: FaTrain,
   bus: FaBus,
   ship: FaShip,
   car: FaCar,
+  taxi: FaTaxi,
+  walking: FaWalking,
   other: FaQuestion,
 };
 

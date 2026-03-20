@@ -1,5 +1,13 @@
 import { runStructurePipeline } from '@/lib/services/itinerary/pipeline-orchestrator';
 import type { UserInput } from '@/types';
+import { getUserSettings } from '@/app/actions/user-settings';
+import {
+  getDefaultHomeBaseCityForRegion,
+  getDefaultRegionForLanguage,
+  isLanguageCode,
+  type LanguageCode,
+  DEFAULT_LANGUAGE,
+} from '@/lib/i18n/locales';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -13,7 +21,18 @@ export async function POST(req: Request) {
     return Response.json({ error: 'Invalid request body' }, { status: 400 });
   }
 
-  const { input, options } = body;
+  const { input } = body;
+
+  // Resolve homeBaseCity from user settings
+  const { settings } = await getUserSettings().catch(() => ({ settings: null }));
+  const preferredLanguage: LanguageCode =
+    settings?.preferredLanguage && isLanguageCode(settings.preferredLanguage)
+      ? settings.preferredLanguage
+      : DEFAULT_LANGUAGE;
+  const preferredRegion = settings?.preferredRegion ?? getDefaultRegionForLanguage(preferredLanguage);
+  const homeBaseCity = settings?.homeBaseCity?.trim() || getDefaultHomeBaseCityForRegion(preferredRegion);
+
+  const options = { ...body.options, pipelineContext: { homeBaseCity } };
 
   const result = await runStructurePipeline(input, options);
 

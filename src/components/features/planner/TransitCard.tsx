@@ -2,7 +2,7 @@
 
 import { TransitInfo, TransitType } from "@/types";
 import { useTranslations } from "next-intl";
-import { FaPlane, FaTrain, FaBus, FaShip, FaCar, FaQuestion, FaLongArrowAltRight, FaLock, FaUnlock } from "react-icons/fa";
+import { FaPlane, FaTrain, FaBus, FaShip, FaCar, FaQuestion, FaLongArrowAltRight, FaLock, FaUnlock, FaBolt, FaTaxi, FaWalking } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 interface TransitCardProps {
@@ -14,10 +14,13 @@ interface TransitCardProps {
 
 const ICONS: Record<TransitType, React.ComponentType<{ className?: string }>> = {
   flight: FaPlane,
+  bullet_train: FaBolt,
   train: FaTrain,
   bus: FaBus,
   ship: FaShip,
   car: FaCar,
+  taxi: FaTaxi,
+  walking: FaWalking,
   other: FaQuestion,
 };
 
@@ -57,6 +60,24 @@ const TYPE_COLORS: Record<TransitType, {
     iconBg: "bg-slate-600",
     iconColor: "text-white",
     accentColor: "border-slate-300",
+  },
+  bullet_train: {
+    gradient: "from-purple-50 via-violet-50 to-indigo-50",
+    iconBg: "bg-purple-600",
+    iconColor: "text-white",
+    accentColor: "border-purple-300",
+  },
+  taxi: {
+    gradient: "from-yellow-50 via-amber-50 to-orange-50",
+    iconBg: "bg-yellow-500",
+    iconColor: "text-white",
+    accentColor: "border-yellow-300",
+  },
+  walking: {
+    gradient: "from-lime-50 via-green-50 to-emerald-50",
+    iconBg: "bg-green-500",
+    iconColor: "text-white",
+    accentColor: "border-green-300",
   },
   other: {
     gradient: "from-stone-50 via-neutral-50 to-gray-50",

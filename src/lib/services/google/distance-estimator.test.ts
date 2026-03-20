@@ -4,6 +4,7 @@ import {
   estimateDistance,
   suggestTransportMode,
   inferAreaType,
+  inferTransitType,
 } from './distance-estimator';
 
 // ==============================
@@ -192,5 +193,59 @@ describe('inferAreaType', () => {
 
   it('distance = 0 → urban', () => {
     expect(inferAreaType(0)).toBe('urban');
+  });
+});
+
+// ==============================
+// inferTransitType
+// ==============================
+
+describe('inferTransitType', () => {
+  it('walking mode always returns walking', () => {
+    expect(inferTransitType(0.5, 'walking')).toBe('walking');
+    expect(inferTransitType(10, 'walking')).toBe('walking');
+  });
+
+  it('car mode always returns car', () => {
+    expect(inferTransitType(1, 'car')).toBe('car');
+    expect(inferTransitType(100, 'car')).toBe('car');
+  });
+
+  it('bicycle mode returns other', () => {
+    expect(inferTransitType(5, 'bicycle')).toBe('other');
+  });
+
+  it('public_transit < 1.5km → walking', () => {
+    expect(inferTransitType(0.5, 'public_transit')).toBe('walking');
+    expect(inferTransitType(1.4, 'public_transit')).toBe('walking');
+  });
+
+  it('public_transit 1.5-5km → bus', () => {
+    expect(inferTransitType(1.5, 'public_transit')).toBe('bus');
+    expect(inferTransitType(3, 'public_transit')).toBe('bus');
+    expect(inferTransitType(4.9, 'public_transit')).toBe('bus');
+  });
+
+  it('public_transit 5-80km → train', () => {
+    expect(inferTransitType(5, 'public_transit')).toBe('train');
+    expect(inferTransitType(30, 'public_transit')).toBe('train');
+    expect(inferTransitType(79, 'public_transit')).toBe('train');
+  });
+
+  it('public_transit >= 80km → bullet_train', () => {
+    expect(inferTransitType(80, 'public_transit')).toBe('bullet_train');
+    expect(inferTransitType(200, 'public_transit')).toBe('bullet_train');
+  });
+
+  it('boundary: exactly 1.5km → bus', () => {
+    expect(inferTransitType(1.5, 'public_transit')).toBe('bus');
+  });
+
+  it('boundary: exactly 5km → train', () => {
+    expect(inferTransitType(5, 'public_transit')).toBe('train');
+  });
+
+  it('boundary: exactly 80km → bullet_train', () => {
+    expect(inferTransitType(80, 'public_transit')).toBe('bullet_train');
   });
 });

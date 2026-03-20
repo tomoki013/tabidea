@@ -114,6 +114,30 @@ export function suggestTransportMode(
 }
 
 /**
+ * 距離と移動モードから具体的な TransitType を推定
+ * walking → walking, public_transit → 距離に応じて walking/bus/train/bullet_train
+ */
+export function inferTransitType(
+  distanceKm: number,
+  mode: TransportMode
+): import('@/types/itinerary').TransitType {
+  switch (mode) {
+    case 'walking':
+      return 'walking';
+    case 'car':
+      return 'car';
+    case 'bicycle':
+      return 'other';
+    case 'public_transit':
+    default:
+      if (distanceKm < 1.5) return 'walking';
+      if (distanceKm < 5) return 'bus';
+      if (distanceKm < 80) return 'train';
+      return 'bullet_train';
+  }
+}
+
+/**
  * エリアタイプを距離で推定
  */
 export function inferAreaType(straightLineKm: number): AreaType {
