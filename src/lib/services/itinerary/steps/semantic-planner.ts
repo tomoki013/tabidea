@@ -462,6 +462,34 @@ export function buildDeterministicDayCandidates(
   return candidates;
 }
 
+/**
+ * Deterministic fallback for the full SemanticPlan (used by the legacy compose
+ * pipeline when AI generation times out). Combines the seed plan with
+ * deterministic day candidates to produce a complete plan without any AI calls.
+ */
+export function buildDeterministicSemanticPlan(
+  request: NormalizedRequest
+): SemanticPlan {
+  const seed = buildDeterministicSemanticSeedPlan(request);
+  const candidates: SemanticCandidate[] = [];
+  for (let day = 1; day <= seed.dayStructure.length; day++) {
+    candidates.push(
+      ...buildDeterministicDayCandidates(request, seed, day, candidates)
+    );
+  }
+  return {
+    destination: seed.destination,
+    description: seed.description,
+    candidates,
+    dayStructure: seed.dayStructure,
+    themes: seed.themes,
+    destinationHighlights: seed.destinationHighlights,
+    tripIntentSummary: seed.tripIntentSummary,
+    orderingPreferences: seed.orderingPreferences,
+    fallbackHints: seed.fallbackHints,
+  };
+}
+
 // ============================================
 // Post-processing
 // ============================================
