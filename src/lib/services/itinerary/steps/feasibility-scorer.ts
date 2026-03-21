@@ -61,7 +61,8 @@ export function scoreAndSelect(
         group.candidate,
         resolved.placeDetails,
         request,
-        currentLatLng
+        currentLatLng,
+        resolved.matchScore
       );
       const totalScore =
         breakdown.nameMatch +
@@ -98,8 +99,7 @@ export function scoreAndSelect(
     const best = scored[0];
 
     // must/high priority 候補は threshold 免除
-    const isExempt =
-      group.candidate.role === 'must_visit' || group.candidate.priority >= 8;
+    const isExempt = isThresholdExempt(group.candidate);
 
     if (isExempt || best.totalScore >= threshold) {
       selected.push({
@@ -120,6 +120,27 @@ export function scoreAndSelect(
     } else {
       filtered.push(best);
     }
+  }
+
+  if (selected.length === 0 && filtered.length > 0) {
+    const rescuedStops = filtered
+      .sort((a, b) => {
+        const exemptionDelta = Number(isThresholdExempt(b.candidate)) - Number(isThresholdExempt(a.candidate));
+        if (exemptionDelta !== 0) return exemptionDelta;
+        return b.totalScore - a.totalScore;
+      })
+      .map((best) => ({
+        candidate: best.candidate,
+        placeDetails: best.placeDetails,
+        feasibilityScore: best.totalScore,
+        warnings: [
+          ...best.warnings,
+          `実現性スコア閾値(${threshold})を一時緩和して採用`,
+        ],
+        semanticId: best.candidate.semanticId,
+      }));
+
+    return { selected: rescuedStops, filtered: [] };
   }
 
   return { selected, filtered };
@@ -148,10 +169,11 @@ function scorePlaceCandidate(
   candidate: SemanticCandidate,
   place: PlaceDetails,
   request: NormalizedRequest,
-  prevLatLng?: { lat: number; lng: number }
+  prevLatLng?: { lat: number; lng: number },
+  resolverMatchScore?: number
 ): FeasibilityScoreBreakdown {
   return {
-    nameMatch: scoreNameMatch(candidate.name, candidate.searchQuery, place.name),
+    nameMatch: scoreNameMatch(candidate.name, candidate.searchQuery, place.name, resolverMatchScore),
     areaHintMatch: scoreAreaHintMatch(candidate.areaHint, place.formattedAddress),
     openHoursMatch: scoreOpenHours(candidate.timeSlotHint, place.openingHours),
     ratingQuality: scoreRating(place.rating, place.userRatingsTotal),
@@ -168,26 +190,50 @@ function scorePlaceCandidate(
 function scoreNameMatch(
   candidateName: string,
   searchQuery: string,
-  placeName: string
+  placeName: string,
+  resolverMatchScore?: number
 ): number {
-  if (!placeName) return Math.round(FEASIBILITY_WEIGHTS.nameMatch * 0.5);
+  if (!placeName) {
+    return resolverMatchScore !== undefined
+      ? Math.round(FEASIBILITY_WEIGHTS.nameMatch * clampScore(resolverMatchScore))
+      : Math.round(FEASIBILITY_WEIGHTS.nameMatch * 0.5);
+  }
 
   const placeNameLower = placeName.toLowerCase();
   const candidateLower = candidateName.toLowerCase();
   const queryLower = searchQuery.toLowerCase();
+  const normalizedPlace = normalizeNameToken(placeNameLower);
+  const queryVariants = buildQueryVariants(candidateLower, queryLower);
+  let bestScore = 0;
 
-  if (placeNameLower === candidateLower || placeNameLower === queryLower) {
-    return FEASIBILITY_WEIGHTS.nameMatch;
-  }
-  if (placeNameLower.includes(candidateLower) || candidateLower.includes(placeNameLower)) {
-    return Math.round(FEASIBILITY_WEIGHTS.nameMatch * 0.8);
-  }
-  if (placeNameLower.includes(queryLower) || queryLower.includes(placeNameLower)) {
-    return Math.round(FEASIBILITY_WEIGHTS.nameMatch * 0.7);
+  for (const variant of queryVariants) {
+    if (!variant) continue;
+
+    if (normalizedPlace === variant) {
+      bestScore = Math.max(bestScore, FEASIBILITY_WEIGHTS.nameMatch);
+      continue;
+    }
+
+    if (normalizedPlace.includes(variant) || variant.includes(normalizedPlace)) {
+      bestScore = Math.max(bestScore, Math.round(FEASIBILITY_WEIGHTS.nameMatch * 0.8));
+      continue;
+    }
+
+    const overlap = calculateCharOverlap(variant, normalizedPlace);
+    bestScore = Math.max(
+      bestScore,
+      Math.round(FEASIBILITY_WEIGHTS.nameMatch * Math.min(overlap, 1))
+    );
   }
 
-  const overlap = calculateCharOverlap(candidateLower, placeNameLower);
-  return Math.round(FEASIBILITY_WEIGHTS.nameMatch * Math.min(overlap, 1));
+  if (resolverMatchScore !== undefined) {
+    bestScore = Math.max(
+      bestScore,
+      Math.round(FEASIBILITY_WEIGHTS.nameMatch * clampScore(resolverMatchScore))
+    );
+  }
+
+  return bestScore;
 }
 
 function calculateCharOverlap(a: string, b: string): number {
@@ -378,5 +424,37 @@ function parseTimeToHour(time: string): number {
   if (parts.length >= 2) {
     return parseInt(parts[0], 10) + parseInt(parts[1], 10) / 60;
   }
+  if (/^\d{4}$/.test(time)) {
+    return parseInt(time.slice(0, 2), 10) + parseInt(time.slice(2), 10) / 60;
+  }
   return parseInt(time, 10);
+}
+
+function isThresholdExempt(candidate: SemanticCandidate): boolean {
+  return candidate.role === 'must_visit' || candidate.priority >= 8;
+}
+
+function normalizeNameToken(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/[\s\-_・]/g, '')
+    .replace(/[（）()]/g, '');
+}
+
+function buildQueryVariants(candidateName: string, searchQuery: string): string[] {
+  const rawVariants = [
+    candidateName,
+    searchQuery,
+    ...searchQuery.split(/[\s、,，・/]+/),
+  ];
+
+  return Array.from(new Set(
+    rawVariants
+      .map((variant) => normalizeNameToken(variant))
+      .filter((variant) => variant.length > 0)
+  ));
+}
+
+function clampScore(score: number): number {
+  return Math.max(0, Math.min(score, 1));
 }

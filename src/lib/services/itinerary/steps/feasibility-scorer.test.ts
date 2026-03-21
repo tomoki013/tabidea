@@ -5,7 +5,6 @@ import type {
   NormalizedRequest,
   ResolvedPlaceGroup,
   SemanticCandidate,
-  SelectedStop,
 } from '@/types/itinerary-pipeline';
 import type { UserInput } from '@/types/user-input';
 
@@ -91,10 +90,11 @@ const makeRequest = (overrides: Partial<NormalizedRequest> = {}): NormalizedRequ
 const makeGroup = (
   candidate: SemanticCandidate,
   placeDetails: PlaceDetails[],
-  success = true
+  success = true,
+  matchScore = 0.9
 ): ResolvedPlaceGroup => ({
   candidate,
-  resolved: placeDetails.map((pd) => ({ placeDetails: pd, matchScore: 0.9 })),
+  resolved: placeDetails.map((pd) => ({ placeDetails: pd, matchScore })),
   success,
 });
 
@@ -126,7 +126,7 @@ describe('scoreAndSelect', () => {
     ];
 
     const request = makeRequest({ themes: ['グルメ'] });
-    const { selected, filtered } = scoreAndSelect(groups, request, undefined, 40);
+    const { selected } = scoreAndSelect(groups, request, undefined, 40);
 
     // The high score place should be selected
     const selectedIds = selected.map((s) => s.placeDetails?.placeId);
@@ -235,6 +235,81 @@ describe('scoreAndSelect', () => {
 
     // Both should be selected since threshold is 0
     expect(selected).toHaveLength(2);
+  });
+
+  it('uses resolver match score for cross-locale place names', () => {
+    const crossLocalePlace = makePlaceDetails({
+      placeId: 'sensoji',
+      name: 'Senso-ji',
+      formattedAddress: '2 Chome-3-1 Asakusa, Taito City, Tokyo',
+      rating: 4.5,
+      userRatingsTotal: 12000,
+      types: ['tourist_attraction'],
+      priceLevel: 0,
+      openingHours: undefined,
+    });
+
+    const groups: ResolvedPlaceGroup[] = [
+      makeGroup(
+        makeCandidate({
+          name: '浅草寺',
+          searchQuery: '浅草寺 東京',
+          categoryHint: 'tourist_attraction',
+        }),
+        [crossLocalePlace],
+        true,
+        0.82
+      ),
+    ];
+
+    const request = makeRequest({ themes: ['歴史'], budgetLevel: 'budget' });
+    const { selected } = scoreAndSelect(groups, request, undefined, 30);
+
+    expect(selected).toHaveLength(1);
+    expect(selected[0].placeDetails?.placeId).toBe('sensoji');
+    expect(selected[0].feasibilityScore).toBeGreaterThanOrEqual(30);
+  });
+
+  it('rescues filtered results when threshold would otherwise drop every candidate', () => {
+    const lowConfidencePlace = makePlaceDetails({
+      placeId: 'rescue-me',
+      name: 'Remote Storage',
+      formattedAddress: '大阪府大阪市港区',
+      latitude: 34.6937,
+      longitude: 135.5023,
+      rating: 1.0,
+      userRatingsTotal: 1,
+      types: ['storage'],
+      priceLevel: 4,
+      businessStatus: 'CLOSED_PERMANENTLY',
+      openingHours: {
+        periods: [{
+          open: { day: 1, time: '2300' },
+          close: { day: 2, time: '0100' },
+        }],
+      },
+    });
+
+    const groups: ResolvedPlaceGroup[] = [
+      makeGroup(
+        makeCandidate({
+          name: '厳しめ候補',
+          searchQuery: '厳しめ候補 東京',
+          priority: 3,
+          categoryHint: 'museum',
+        }),
+        [lowConfidencePlace],
+        true,
+        0.1
+      ),
+    ];
+
+    const request = makeRequest({ budgetLevel: 'budget', themes: ['グルメ'] });
+    const { selected, filtered } = scoreAndSelect(groups, request, undefined, 95);
+
+    expect(selected).toHaveLength(1);
+    expect(filtered).toHaveLength(0);
+    expect(selected[0].warnings.some((warning) => warning.includes('閾値'))).toBe(true);
   });
 });
 
