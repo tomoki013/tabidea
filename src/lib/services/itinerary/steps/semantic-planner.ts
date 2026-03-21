@@ -97,6 +97,7 @@ interface StructuredJsonGenerationInput<T> {
   maxRetries?: number;
   fallbackLabel: string;
   recoveryMode?: 'semantic_plan' | 'semantic_seed' | 'semantic_day';
+  recoveryTimeoutMs?: number;
 }
 
 async function generateStructuredJsonWithRecovery<T>(
@@ -113,9 +114,10 @@ async function generateStructuredJsonWithRecovery<T>(
     maxRetries = 0,
     fallbackLabel,
     recoveryMode = 'semantic_plan',
+    recoveryTimeoutMs = getDefaultRecoveryTimeoutMs(recoveryMode),
   } = input;
 
-  const { generateObject, generateText } = await import('ai');
+  const { generateObject } = await import('ai');
   const model = await resolveLanguageModel(provider, modelName);
 
   try {
@@ -135,23 +137,30 @@ async function generateStructuredJsonWithRecovery<T>(
       throw error;
     }
 
+    const diagnostics = extractMalformedStructuredOutputDiagnostics(error);
     console.warn(
-      `[semantic-planner] ${fallbackLabel}: structured output JSON was malformed, retrying with text recovery`,
-      error
+      `[semantic-planner] ${fallbackLabel}: structured output JSON was malformed, retrying with compact text recovery`,
+      diagnostics
     );
 
     let lastRecoveryError: unknown = error;
+    const recoveryStartedAt = Date.now();
 
     for (const attempt of buildTextRecoveryAttempts(recoveryMode, maxTokens)) {
       try {
-        const recoveredText = await generateText({
+        const remainingRecoveryMs = recoveryTimeoutMs - (Date.now() - recoveryStartedAt);
+        if (remainingRecoveryMs <= 0) {
+          throw new Error(`recovery budget exhausted before ${attempt.label}`);
+        }
+
+        const recoveredText = await generateTextWithTimeout({
           model,
           system: buildTextRecoverySystem(system, attempt.compact),
           prompt: buildTextRecoveryPrompt(prompt, attempt.compact, recoveryMode),
           temperature: Math.min(temperature + 0.1, 1),
           maxTokens: attempt.maxTokens,
           maxRetries: 0,
-        });
+        }, remainingRecoveryMs, fallbackLabel, attempt.label);
 
         const extractedJson = extractFirstJsonObject(recoveredText.text);
         if (!extractedJson) {
@@ -165,7 +174,7 @@ async function generateStructuredJsonWithRecovery<T>(
         lastRecoveryError = recoveryError;
         console.warn(
           `[semantic-planner] ${fallbackLabel}: ${attempt.label} failed`,
-          recoveryError
+          summarizeRecoveryError(recoveryError)
         );
       }
     }
@@ -175,6 +184,20 @@ async function generateStructuredJsonWithRecovery<T>(
       `${fallbackLabel}: recovered JSON was still invalid after compact retry`,
       lastRecoveryError
     );
+  }
+}
+
+function getDefaultRecoveryTimeoutMs(
+  recoveryMode: NonNullable<StructuredJsonGenerationInput<unknown>['recoveryMode']>
+): number {
+  switch (recoveryMode) {
+    case 'semantic_seed':
+      return 2_500;
+    case 'semantic_day':
+      return 2_000;
+    case 'semantic_plan':
+    default:
+      return 4_000;
   }
 }
 
@@ -189,21 +212,16 @@ function buildTextRecoveryAttempts(
   maxTokens: number
 ): TextRecoveryAttempt[] {
   const compactMaxTokens = recoveryMode === 'semantic_day'
-    ? Math.min(maxTokens, 1536)
+    ? Math.min(maxTokens, 1024)
     : recoveryMode === 'semantic_seed'
-      ? Math.min(maxTokens, 2048)
-      : Math.min(maxTokens, 4096);
+      ? Math.min(maxTokens, 1536)
+      : Math.min(maxTokens, 2048);
 
   return [
     {
       label: 'compact text recovery',
-      compact: false,
-      maxTokens: compactMaxTokens,
-    },
-    {
-      label: 'minimal text recovery',
       compact: true,
-      maxTokens: Math.min(compactMaxTokens, 1400),
+      maxTokens: compactMaxTokens,
     },
   ];
 }
@@ -221,6 +239,38 @@ ENUM CONSTRAINTS (must use exact values):
 
 Keep all string fields concise. startArea/endArea must be area names only (max 50 chars).
 ${compact ? 'Prefer the minimum schema that still validates. Omit optional fields, tags, and long rationales unless strictly necessary.' : 'Keep optional fields short and only include them when they improve routing quality.'}`;
+}
+
+async function generateTextWithTimeout(
+  request: {
+    model: Awaited<ReturnType<typeof resolveLanguageModel>>;
+    system: string;
+    prompt: string;
+    temperature: number;
+    maxTokens: number;
+    maxRetries: number;
+  },
+  timeoutMs: number,
+  fallbackLabel: string,
+  attemptLabel: string
+) {
+  const { generateText } = await import('ai');
+  let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+  try {
+    return await Promise.race([
+      generateText(request),
+      new Promise<never>((_, reject) => {
+        timeoutId = setTimeout(() => {
+          reject(new Error(`${attemptLabel} timed out after ${timeoutMs}ms for ${fallbackLabel}`));
+        }, timeoutMs);
+      }),
+    ]);
+  } finally {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+  }
 }
 
 function buildTextRecoveryPrompt(
@@ -360,6 +410,42 @@ function collectErrorMessages(error: unknown): string[] {
   }
 
   return messages;
+}
+
+function summarizeRecoveryError(error: unknown): Record<string, unknown> {
+  if (error instanceof Error) {
+    return { message: error.message };
+  }
+
+  return { message: typeof error === 'string' ? error : 'unknown_error' };
+}
+
+function extractMalformedStructuredOutputDiagnostics(error: unknown): Record<string, unknown> {
+  const text = extractMalformedOutputText(error);
+  return {
+    messages: collectErrorMessages(error).slice(0, 3),
+    rawTextLength: text?.length ?? 0,
+    rawTextSample: text ? sanitizeMalformedOutputSample(text) : undefined,
+  };
+}
+
+function extractMalformedOutputText(error: unknown): string | undefined {
+  if (!error || typeof error !== 'object') {
+    return undefined;
+  }
+
+  const candidate = error as Record<string, unknown>;
+  return typeof candidate.text === 'string'
+    ? candidate.text
+    : typeof candidate.value === 'string'
+      ? candidate.value
+      : undefined;
+}
+
+function sanitizeMalformedOutputSample(text: string): string {
+  return text
+    .replace(/\s+/g, ' ')
+    .slice(0, 240);
 }
 
 function extractFirstJsonObject(text: string): string | null {

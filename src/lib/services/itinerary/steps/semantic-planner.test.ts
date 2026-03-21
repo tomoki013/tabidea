@@ -351,29 +351,13 @@ describe('runSemanticSeedPlanner structured-output recovery', () => {
     })).rejects.toBeInstanceOf(PipelineStepError);
   });
 
-  it('falls back to a second compact text recovery attempt when the first repaired JSON is still truncated', async () => {
+  it('fails fast after a single compact text recovery attempt when repaired JSON is still truncated', async () => {
     const generateObject = vi.fn().mockRejectedValue(
       new SyntaxError('Unterminated string in JSON at position 17158')
     );
-    const generateText = vi.fn()
-      .mockResolvedValueOnce({
-        text: '{"destination":"パリ","description":"途中で切れたJSON"',
-      })
-      .mockResolvedValueOnce({
-        text: JSON.stringify({
-          destination: 'パリ',
-          description: '左岸を中心に無理なく回る1日旅の骨格です。',
-          dayStructure: [
-            {
-              day: 1,
-              title: '左岸の街歩き',
-              mainArea: 'サン・ジェルマン',
-              overnightLocation: 'パリ市内',
-              summary: '庭園と老舗カフェを巡る一日。',
-            },
-          ],
-        }),
-      });
+    const generateText = vi.fn().mockResolvedValue({
+      text: '{"destination":"パリ","description":"途中で切れたJSON"',
+    });
 
     vi.doMock('ai', () => ({
       generateObject,
@@ -384,8 +368,9 @@ describe('runSemanticSeedPlanner structured-output recovery', () => {
     }));
 
     const { runSemanticSeedPlanner } = await import('./semantic-planner');
+    const { PipelineStepError } = await import('../errors');
 
-    const result = await runSemanticSeedPlanner({
+    await expect(runSemanticSeedPlanner({
       request: makeRequest({
         destinations: ['パリ'],
         durationDays: 1,
@@ -394,11 +379,9 @@ describe('runSemanticSeedPlanner structured-output recovery', () => {
       modelName: 'gemini-2.5-flash',
       provider: 'gemini',
       temperature: 0.3,
-    });
+    })).rejects.toBeInstanceOf(PipelineStepError);
 
     expect(generateObject).toHaveBeenCalledTimes(1);
-    expect(generateText).toHaveBeenCalledTimes(2);
-    expect(result.destination).toBe('パリ');
-    expect(result.dayStructure[0]?.title).toBe('左岸の街歩き');
+    expect(generateText).toHaveBeenCalledTimes(1);
   });
 });
