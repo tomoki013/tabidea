@@ -4,6 +4,7 @@ import type { NormalizedRequest } from '@/types/itinerary-pipeline';
 import {
   buildDeterministicDayCandidates,
   buildDeterministicSemanticSeedPlan,
+  truncateRepetitive,
 } from './semantic-planner';
 
 function makeRequest(overrides: Partial<NormalizedRequest> = {}): NormalizedRequest {
@@ -102,5 +103,45 @@ describe('semantic planner deterministic fallbacks', () => {
     const candidates = buildDeterministicDayCandidates(request, seed, 1, []);
 
     expect(candidates).toEqual([]);
+  });
+});
+
+describe('truncateRepetitive', () => {
+  it('returns normal text unchanged', () => {
+    const text = '京都の嵐山を散策して竹林の小径を歩きます。';
+    expect(truncateRepetitive(text, 300)).toBe(text);
+  });
+
+  it('returns short text unchanged even under maxLength', () => {
+    expect(truncateRepetitive('hello', 100)).toBe('hello');
+  });
+
+  it('detects and truncates repeating phrases', () => {
+    const phrase = '夕食後は祇園の夜の街並みを散策します。';
+    const repeated = phrase.repeat(50);
+    const result = truncateRepetitive(repeated, 1000);
+    expect(result).toBe(phrase);
+  });
+
+  it('hard-truncates text exceeding maxLength when no repetition', () => {
+    // Use a non-repetitive long string (sequential numbers)
+    const text = Array.from({ length: 200 }, (_, i) => `項目${i}`).join('、');
+    const result = truncateRepetitive(text, 100);
+    expect(result.length).toBe(100);
+  });
+
+  it('handles text with repetition that is also too long', () => {
+    const phrase = '夕食後は祇園の夜の街並みを散策します。';
+    const repeated = phrase.repeat(1000);
+    const result = truncateRepetitive(repeated, 300);
+    // Should detect repetition and keep only one occurrence
+    expect(result).toBe(phrase);
+    expect(result.length).toBeLessThanOrEqual(300);
+  });
+
+  it('does not false-positive on short repeated substrings', () => {
+    // "の" appears multiple times but is too short (< 10 chars) to trigger
+    const text = '京都の嵐山の竹林の小径の美しさ';
+    expect(truncateRepetitive(text, 300)).toBe(text);
   });
 });

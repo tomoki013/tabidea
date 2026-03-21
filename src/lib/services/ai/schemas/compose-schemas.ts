@@ -27,7 +27,7 @@ export const timeSlotHintSchema = z.enum([
 ]);
 
 export const semanticCandidateSchema = z.object({
-  name: z.string().describe('スポット/アクティビティ名'),
+  name: z.string().max(100).describe('スポット/アクティビティ名'),
   role: candidateRoleSchema.describe('候補の役割'),
   priority: z.number().min(0).max(10).describe('優先度 (0=低, 10=高)'),
   dayHint: z.number().min(0).describe('推奨する日 (0 or 1-based)'),
@@ -39,26 +39,32 @@ export const semanticCandidateSchema = z.object({
     .describe('滞在時間（分）'),
   searchQuery: z
     .string()
+    .max(100)
     .describe('Google Places API で検索するためのスポット正式名称'),
   categoryHint: z
     .string()
+    .max(50)
     .optional()
     .describe('カテゴリヒント (例: "temple", "cafe")'),
   activityLabel: z
     .string()
+    .max(100)
     .optional()
     .describe('装飾的なアクティビティ名 (例: "金閣寺で抹茶体験")'),
   locationEn: z
     .string()
+    .max(100)
     .optional()
     .describe('英語での場所名 (例: "Kinkaku-ji Temple")'),
   // ---- v3 追加フィールド (LLM 出力、optional) ----
   rationale: z
     .string()
+    .max(300)
     .optional()
     .describe('この候補を選んだ理由 (1文)'),
   areaHint: z
     .string()
+    .max(50)
     .optional()
     .describe('候補が位置するエリア名 (例: "浅草エリア", "銀座周辺")'),
   indoorOutdoor: z
@@ -66,37 +72,37 @@ export const semanticCandidateSchema = z.object({
     .optional()
     .describe('屋内/屋外'),
   tags: z
-    .array(z.string())
+    .array(z.string().max(30))
     .optional()
     .describe('候補のタグ (例: ["写真映え", "静か"])'),
 });
 
 export const destinationHighlightSchema = z.object({
-  name: z.string().describe('その目的地らしさを感じる具体的なスポット名'),
-  searchQuery: z.string().optional().describe('Places API 検索に向いた正式名称'),
-  areaHint: z.string().describe('そのスポットがあるエリア名'),
+  name: z.string().max(100).describe('その目的地らしさを感じる具体的なスポット名'),
+  searchQuery: z.string().max(100).optional().describe('Places API 検索に向いた正式名称'),
+  areaHint: z.string().max(50).describe('そのスポットがあるエリア名'),
   dayHint: z.number().min(1).describe('どの日に入れると自然かの候補日'),
-  rationale: z.string().describe('このスポットを入れる理由'),
-  locationEn: z.string().optional().describe('英語の正式名称'),
+  rationale: z.string().max(300).describe('このスポットを入れる理由'),
+  locationEn: z.string().max(100).optional().describe('英語の正式名称'),
   timeSlotHint: timeSlotHintSchema.optional().describe('おすすめの時間帯'),
   stayDurationMinutes: z.number().min(15).max(360).optional().describe('想定滞在時間'),
 });
 
 export const dayStructureSchema = z.object({
   day: z.number().min(1).describe('日番号 (1-based)'),
-  title: z.string().describe('日のタイトル'),
-  mainArea: z.string().describe('メインエリア'),
-  startArea: z.string().optional().describe('その日の始まりに向くエリア'),
-  endArea: z.string().optional().describe('その日の終わりに向くエリア'),
-  overnightLocation: z.string().describe('宿泊地'),
-  summary: z.string().describe('概要'),
-  flowSummary: z.string().optional().describe('朝から夜までの流れの要約'),
-  anchorMoments: z.array(z.string()).optional().describe('その日の代表的な時間帯アンカー'),
+  title: z.string().max(100).describe('日のタイトル'),
+  mainArea: z.string().max(50).describe('メインエリア'),
+  startArea: z.string().max(50).optional().describe('その日の始まりに向くエリア名'),
+  endArea: z.string().max(50).optional().describe('その日の終わりに向くエリア名'),
+  overnightLocation: z.string().max(100).describe('宿泊地'),
+  summary: z.string().max(300).describe('概要'),
+  flowSummary: z.string().max(500).optional().describe('朝から夜までの流れの要約'),
+  anchorMoments: z.array(z.string().max(100)).optional().describe('その日の代表的な時間帯アンカー'),
 });
 
 export const semanticPlanSchema = z.object({
-  destination: z.string().describe('目的地'),
-  description: z.string().describe('プラン全体の説明'),
+  destination: z.string().max(100).describe('目的地'),
+  description: z.string().max(500).describe('プラン全体の説明'),
   candidates: z
     .array(semanticCandidateSchema)
     .min(1)
@@ -106,7 +112,7 @@ export const semanticPlanSchema = z.object({
     .min(1)
     .describe('日ごとの構造'),
   themes: z
-    .array(z.string())
+    .array(z.string().max(50))
     .optional()
     .describe('AIが選んだテーマタグ'),
   destinationHighlights: z
@@ -116,14 +122,15 @@ export const semanticPlanSchema = z.object({
   // ---- v3 追加フィールド ----
   tripIntentSummary: z
     .string()
+    .max(300)
     .optional()
     .describe('旅の意図サマリー (例: "歴史ある京都の寺社を巡り、抹茶スイーツを楽しむ3日間")'),
   orderingPreferences: z
-    .array(z.string())
+    .array(z.string().max(200))
     .optional()
     .describe('順序に関する好み (例: ["寺社は午前中に", "食事は地元の店で"])'),
   fallbackHints: z
-    .array(z.string())
+    .array(z.string().max(200))
     .optional()
     .describe('候補不足時の補完ヒント (例: ["近くの公園", "駅前のカフェ"])'),
 });
@@ -131,14 +138,14 @@ export const semanticPlanSchema = z.object({
 export type SemanticPlanOutput = z.infer<typeof semanticPlanSchema>;
 
 export const semanticSeedSchema = z.object({
-  destination: z.string().describe('目的地'),
-  description: z.string().describe('プラン全体の説明'),
+  destination: z.string().max(100).describe('目的地'),
+  description: z.string().max(500).describe('プラン全体の説明'),
   dayStructure: z
     .array(dayStructureSchema)
     .min(1)
     .describe('日ごとの構造'),
   themes: z
-    .array(z.string())
+    .array(z.string().max(50))
     .optional()
     .describe('AIが選んだテーマタグ'),
   destinationHighlights: z
@@ -147,14 +154,15 @@ export const semanticSeedSchema = z.object({
     .describe('その目的地らしさを担保する代表スポット'),
   tripIntentSummary: z
     .string()
+    .max(300)
     .optional()
     .describe('旅の意図サマリー'),
   orderingPreferences: z
-    .array(z.string())
+    .array(z.string().max(200))
     .optional()
     .describe('順序に関する好み'),
   fallbackHints: z
-    .array(z.string())
+    .array(z.string().max(200))
     .optional()
     .describe('候補不足時の補完ヒント'),
 });
