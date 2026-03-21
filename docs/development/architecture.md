@@ -70,6 +70,7 @@ UserInput → [Seed API]
 - 観測ログ: `src/lib/services/itinerary/generation-run-logger.ts` → compose_runs / compose_run_steps
 - UI: `ComposeLoadingAnimation` + `ComposeLoadingTips` で seed 完了後すぐに目的地と日数を表示し、spot generation は日別進捗として見せる。`narrative_render` フェーズでは `StreamingResultView` で日ごとカード段階表示
 - Hook: `useComposeGeneration` は seed (SSE) → parallel spots (`mapWithConcurrency`, 最大3並列) → assemble → narrate をクライアントから実行し、`partialDays`, `totalDays`, `previewDestination` を更新する。seed は SSE ストリーミングで `normalized` イベントにより中間結果を先行受信し、AI生成タイムアウト時もクライアントがデータを保持する。spots は全日を並列発火し、事後に `deduplicateCandidates()` で重複排除する。narrate は2日ずつのチャンク分割で生成し、各チャンクが独自の時間予算 (`NARRATE_CHUNK_BUDGET_MS`) を持つ。split route が空レスポンス・非JSON・途中失敗・終端欠落で壊れた場合は、互換用の legacy SSE `/api/itinerary/compose` へ自動フォールバックして生成を継続する。must-visit は index 順を日数で均等配分する deterministic scheduling を使い、日数より多い必訪問スポットが入力されても取りこぼさない
+- Semantic planner の structured output には transport recovery 層を置く。`generateObject()` が `Unterminated string in JSON` などの parse 系エラーを返した場合でも、その場で planner 失敗とはみなさず `generateText()` で「JSON object のみ再送」を要求し、code fence や前置き文を除去して最初の完全な JSON object を抽出・再検証する。これにより「モデル内容は妥当だが structured output 伝送だけ壊れた」ケースを seed/day planner 共通で吸収できる
 - モデル解決は phase-aware (`outline` / `chunk`) で行い、compose pipeline は既存の `AI_MODEL_OUTLINE_*` / `AI_MODEL_CHUNK_*` env 契約を使う
 - Places 照合は `ENABLE_COMPOSE_PLACE_RESOLVE` で ON/OFF 制御
 - Phase 1 はハバーサイン距離推定 (`distance-estimator.ts`)、Phase 2 で Routes API (`routes-client.ts`) に差替予定

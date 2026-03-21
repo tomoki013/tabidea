@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import type { NormalizedRequest } from '@/types/itinerary-pipeline';
 import {
@@ -244,5 +244,110 @@ describe('sanitizeSemanticPlanFields', () => {
     const result = sanitizeSemanticPlanFields(seedPlan);
     expect(result.tripIntentSummary!.length).toBeLessThanOrEqual(300);
     expect(result).not.toHaveProperty('candidates');
+  });
+});
+
+describe('runSemanticSeedPlanner structured-output recovery', () => {
+  afterEach(() => {
+    vi.resetModules();
+    vi.clearAllMocks();
+    vi.doUnmock('ai');
+    vi.doUnmock('@ai-sdk/google');
+  });
+
+  it('recovers when generateObject fails with malformed JSON but generateText returns a valid JSON object', async () => {
+    const generateObject = vi.fn().mockRejectedValue(
+      new SyntaxError('Unterminated string in JSON at position 17158')
+    );
+    const generateText = vi.fn().mockResolvedValue({
+      text: [
+        'Here is the repaired payload:',
+        '```json',
+        JSON.stringify({
+          destination: 'パリ',
+          description: '左岸とマレ地区をゆったり巡る3日間の骨格です。',
+          dayStructure: [
+            {
+              day: 1,
+              title: 'サン・ジェルマン散策',
+              mainArea: 'サン・ジェルマン',
+              overnightLocation: 'パリ市内',
+              summary: '左岸の老舗カフェや庭園を巡る一日。',
+            },
+          ],
+          tripIntentSummary: 'パリらしい街歩きとグルメを楽しむ3日間の旅。',
+          orderingPreferences: ['午前は徒歩中心で回る。'],
+          fallbackHints: ['空き時間はカフェで調整する。'],
+          destinationHighlights: [
+            {
+              name: 'リュクサンブール公園',
+              searchQuery: 'Jardin du Luxembourg',
+              areaHint: 'サン・ジェルマン',
+              dayHint: 1,
+              rationale: '左岸らしい空気感を最初に感じやすい代表スポット。',
+            },
+          ],
+        }),
+        '```',
+      ].join('\n'),
+    });
+
+    vi.doMock('ai', () => ({
+      generateObject,
+      generateText,
+    }));
+    vi.doMock('@ai-sdk/google', () => ({
+      google: vi.fn(() => ({ provider: 'google-model' })),
+    }));
+
+    const { runSemanticSeedPlanner } = await import('./semantic-planner');
+
+    const result = await runSemanticSeedPlanner({
+      request: makeRequest({
+        destinations: ['パリ'],
+        durationDays: 1,
+      }),
+      context: [],
+      modelName: 'gemini-2.5-flash',
+      provider: 'gemini',
+      temperature: 0.3,
+    });
+
+    expect(generateObject).toHaveBeenCalledTimes(1);
+    expect(generateText).toHaveBeenCalledTimes(1);
+    expect(result.destination).toBe('パリ');
+    expect(result.dayStructure[0]?.mainArea).toBe('サン・ジェルマン');
+    expect(result.destinationHighlights?.[0]?.name).toBe('リュクサンブール公園');
+  });
+
+  it('throws a PipelineStepError when recovery text still does not contain a complete JSON object', async () => {
+    const generateObject = vi.fn().mockRejectedValue(
+      new SyntaxError('Unterminated string in JSON at position 17158')
+    );
+    const generateText = vi.fn().mockResolvedValue({
+      text: '{"destination":"パリ","description":"途中で切れたJSON"',
+    });
+
+    vi.doMock('ai', () => ({
+      generateObject,
+      generateText,
+    }));
+    vi.doMock('@ai-sdk/google', () => ({
+      google: vi.fn(() => ({ provider: 'google-model' })),
+    }));
+
+    const { runSemanticSeedPlanner } = await import('./semantic-planner');
+    const { PipelineStepError } = await import('../errors');
+
+    await expect(runSemanticSeedPlanner({
+      request: makeRequest({
+        destinations: ['パリ'],
+        durationDays: 1,
+      }),
+      context: [],
+      modelName: 'gemini-2.5-flash',
+      provider: 'gemini',
+      temperature: 0.3,
+    })).rejects.toBeInstanceOf(PipelineStepError);
   });
 });
