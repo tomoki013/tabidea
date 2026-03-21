@@ -19,8 +19,8 @@ import type {
 import type { AIProviderName } from '@/lib/services/ai/providers/types';
 import {
   semanticDayPlanSchema,
-  semanticPlanSchema,
-  semanticSeedSchema,
+  semanticPlanLlmSchema,
+  semanticSeedLlmSchema,
 } from '@/lib/services/ai/schemas/compose-schemas';
 import { buildContextSandwich } from '@/lib/services/ai/prompt-builder';
 import { SEED_EXPERTISE_RULES, DAY_EXPERTISE_RULES } from '@/lib/services/ai/prompts/travel-expertise';
@@ -122,7 +122,7 @@ export async function runSemanticPlanner(
     onProgress?.('AIが候補スポットを選定中...');
     const result = await generateObject({
       model,
-      schema: semanticPlanSchema,
+      schema: semanticPlanLlmSchema,
       system: systemInstruction,
       prompt: userPrompt,
       temperature,
@@ -148,7 +148,7 @@ export async function runSemanticPlanner(
     try {
       const fallbackResult = await generateObject({
         model,
-        schema: semanticPlanSchema,
+        schema: semanticPlanLlmSchema,
         system: systemInstruction,
         prompt: userPrompt,
         temperature: Math.min(temperature + 0.3, 1.0),
@@ -235,7 +235,7 @@ export async function runSemanticSeedPlanner(
 
   const result = await generateObject({
     model,
-    schema: semanticSeedSchema,
+    schema: semanticSeedLlmSchema,
     system: systemInstruction,
     prompt: buildSemanticSeedPrompt(request),
     temperature,
@@ -243,9 +243,8 @@ export async function runSemanticSeedPlanner(
     maxRetries: 0,
   });
 
-  const seed = result.object as SemanticSeedOutput;
-
   // Sanitize repetitive/oversized text before processing
+  const seed = sanitizeSemanticPlanFields(result.object as SemanticSeedOutput);
   seed.dayStructure = sanitizeDayStructureFields(seed.dayStructure);
 
   const constrainedDayStructure = applyHotelConstraintsToDayStructure(seed.dayStructure, request);
@@ -564,6 +563,56 @@ function sanitizeDayStructureFields(
   return result;
 }
 
+/**
+ * Sanitize all top-level and nested string fields in a semantic plan or seed plan.
+ * Prevents validation errors by enforcing max lengths that match the strict schema.
+ * Works with both SemanticPlanOutput (has candidates) and SemanticSeedOutput (no candidates).
+ */
+export function sanitizeSemanticPlanFields<T extends { destination: string; description: string; tripIntentSummary?: string; orderingPreferences?: string[]; fallbackHints?: string[]; candidates?: Array<{ rationale?: string; [k: string]: unknown }>; destinationHighlights?: Array<{ rationale: string; [k: string]: unknown }> }>(
+  plan: T
+): T {
+  let anyTruncated = false;
+
+  const check = (value: string | undefined, max: number): string | undefined => {
+    if (!value) return value;
+    const cleaned = truncateRepetitive(value, max);
+    if (cleaned !== value) anyTruncated = true;
+    return cleaned;
+  };
+
+  const checkArray = (arr: string[] | undefined, max: number): string[] | undefined => {
+    if (!arr) return arr;
+    return arr.map((item) => check(item, max) ?? item);
+  };
+
+  const sanitized = {
+    ...plan,
+    destination: check(plan.destination, 100) ?? plan.destination,
+    description: check(plan.description, 500) ?? plan.description,
+    tripIntentSummary: check(plan.tripIntentSummary, 300),
+    orderingPreferences: checkArray(plan.orderingPreferences, 200),
+    fallbackHints: checkArray(plan.fallbackHints, 200),
+    ...(plan.candidates && {
+      candidates: plan.candidates.map((c) => ({
+        ...c,
+        rationale: check(c.rationale, 300),
+      })),
+    }),
+    ...(plan.destinationHighlights && {
+      destinationHighlights: plan.destinationHighlights.map((h) => ({
+        ...h,
+        rationale: check(h.rationale, 300) ?? h.rationale,
+      })),
+    }),
+  };
+
+  if (anyTruncated) {
+    console.warn('[semantic-planner] Truncated repetitive/oversized text in semantic plan fields');
+  }
+
+  return sanitized;
+}
+
 // ============================================
 // Post-processing
 // ============================================
@@ -574,6 +623,7 @@ function buildSemanticPlanResult(
   targetCandidateCount?: number
 ): SemanticPlan {
   // Sanitize repetitive/oversized text before processing
+  plan = sanitizeSemanticPlanFields(plan);
   plan = {
     ...plan,
     dayStructure: sanitizeDayStructureFields(plan.dayStructure),
@@ -699,9 +749,9 @@ function buildSemanticPlannerPrompt(
 4c. 同じフレーズの繰り返しは絶対に禁止
 5. 必ず訪れたい場所は role='must_visit' にする
 6. 時刻と最終順序は確定しない
-7. tripIntentSummary, orderingPreferences, fallbackHints を短く入れる
+7. tripIntentSummary は300文字以内の1文で旅の意図を要約する。orderingPreferences, fallbackHints は各200文字以内の短い箇条書きで入れる
 8. destinationHighlights には、その都市らしさを感じる具体的な代表スポットを 3〜6 件入れる
-9. 説明文は簡潔にする
+9. description は500文字以内。説明文は簡潔にする
 10. 絶対条件は必ず守る
 11. 参考条件は全てを機械的に盛り込まず、全体のまとまりを優先して良い感じに反映する
 12. 【最重要】name/searchQuery/destinationHighlights.name には必ず実在する具体的なスポット名・店名を入れること。「人気ランチ店」「おすすめカフェ」「代表スポット」「夜景スポット」のような曖昧・総称的な名前は絶対に禁止
@@ -746,8 +796,9 @@ function buildSemanticSeedPrompt(request: NormalizedRequest): string {
 4b. summary, flowSummary は各300文字以内の簡潔な文で
 4c. 同じフレーズの繰り返しは絶対に禁止
 5. 各日の mainArea は移動しすぎず現実的にまとめる
-6. 説明は短く、旅の期待感が高まる自然な文にする
-7. orderingPreferences と fallbackHints は短い箇条書きでよい
+6. description は500文字以内。説明は短く、旅の期待感が高まる自然な文にする
+7. orderingPreferences と fallbackHints は各200文字以内の短い箇条書きでよい
+7a. tripIntentSummary は300文字以内の1文で旅の意図をまとめる
 8. destinationHighlights には、その都市らしさを感じる具体的な代表スポットを 3〜6 件入れる
 9. destinationHighlights の各要素には name, areaHint, dayHint, rationale を入れる`;
 
