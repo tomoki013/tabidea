@@ -1,6 +1,6 @@
 # Architecture
 
-更新日: 2026-03-20
+更新日: 2026-03-21
 
 ## 1. System Overview
 
@@ -73,6 +73,7 @@ UserInput → [Seed API]
 - Semantic planner の structured output には transport recovery 層を置く。`generateObject()` が `Unterminated string in JSON` などの parse 系エラーを返した場合でも、その場で planner 失敗とはみなさず `generateText()` で「JSON object のみ再送」を要求し、code fence や前置き文を除去して最初の完全な JSON object を抽出・再検証する。これにより「モデル内容は妥当だが structured output 伝送だけ壊れた」ケースを seed/day planner 共通で吸収できる
 - モデル解決は phase-aware (`outline` / `chunk`) で行い、compose pipeline は既存の `AI_MODEL_OUTLINE_*` / `AI_MODEL_CHUNK_*` env 契約を使う
 - Places 照合は `ENABLE_COMPOSE_PLACE_RESOLVE` で ON/OFF 制御
+- Feasibility Scorer は Places Resolver の `matchScore` を name match の下限として扱う。これにより、日本語候補名 ↔ 英語/ローマ字 place 名、または `searchQuery + destination` 形式でも「Places では見つかっているのに scorer 側だけ低得点で全落ち」という層間不整合を防ぐ。さらに、resolved 候補が全部 threshold 未満でも assemble を 500 失敗にせず、warning 付きで最上位候補を救済採用して timeline/narrative まで完走を優先する
 - Phase 1 はハバーサイン距離推定 (`distance-estimator.ts`)、Phase 2 で Routes API (`routes-client.ts`) に差替予定
 - Pipeline version: `v3`
 - Narrative Renderer: `streamObject` で日ごとに部分 JSON を返し、`partialDays` 経由で UI に中間結果を配信
