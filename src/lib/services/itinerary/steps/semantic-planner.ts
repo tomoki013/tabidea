@@ -915,7 +915,7 @@ function sanitizeDayStructureFields(
  * Prevents validation errors by enforcing max lengths that match the strict schema.
  * Works with both SemanticPlanOutput (has candidates) and SemanticSeedOutput (no candidates).
  */
-export function sanitizeSemanticPlanFields<T extends { destination: string; description: string; tripIntentSummary?: string; orderingPreferences?: string[]; fallbackHints?: string[]; candidates?: Array<{ rationale?: string; [k: string]: unknown }>; destinationHighlights?: Array<{ rationale: string; [k: string]: unknown }> }>(
+export function sanitizeSemanticPlanFields<T extends { destination: string; description: string; tripIntentSummary?: string; orderingPreferences?: string[]; fallbackHints?: string[]; candidates?: Array<{ rationale?: string; tags?: string[]; [k: string]: unknown }>; destinationHighlights?: Array<{ rationale: string; [k: string]: unknown }> }>(
   plan: T
 ): T {
   let anyTruncated = false;
