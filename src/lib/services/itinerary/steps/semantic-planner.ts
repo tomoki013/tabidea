@@ -96,6 +96,7 @@ interface StructuredJsonGenerationInput<T> {
   maxTokens: number;
   maxRetries?: number;
   fallbackLabel: string;
+  recoveryMode?: 'semantic_plan' | 'semantic_seed' | 'semantic_day';
 }
 
 async function generateStructuredJsonWithRecovery<T>(
@@ -111,6 +112,7 @@ async function generateStructuredJsonWithRecovery<T>(
     maxTokens,
     maxRetries = 0,
     fallbackLabel,
+    recoveryMode = 'semantic_plan',
   } = input;
 
   const { generateObject, generateText } = await import('ai');
@@ -138,36 +140,109 @@ async function generateStructuredJsonWithRecovery<T>(
       error
     );
 
-    const recoveredText = await generateText({
-      model,
-      system: `${system}\n\nReturn ONLY one valid JSON object. Do not add markdown fences or commentary. If you are close to token limits, shorten descriptive strings instead of truncating JSON.\n\nENUM CONSTRAINTS (must use exact values):\n- timeSlotHint: "morning" | "midday" | "afternoon" | "evening" | "night" | "flexible" (NOT time ranges like "11:00 - 13:00")\n- role: "must_visit" | "recommended" | "meal" | "accommodation" | "filler" (NOT "regular" or other values)\n- indoorOutdoor: "indoor" | "outdoor" | "both"\n\nKeep all string fields concise. startArea/endArea must be area names only (max 50 chars).`,
-      prompt: `${prompt}\n\n重要: 出力は JSON オブジェクトのみ。必ず最後の閉じ波括弧 "}" まで出力し、途中で文章を切らないこと。timeSlotHint は morning/midday/afternoon/evening/night/flexible のいずれか。role は must_visit/recommended/meal/accommodation/filler のいずれか。`,
-      temperature: Math.min(temperature + 0.1, 1),
-      maxTokens,
-      maxRetries: 0,
-    });
+    let lastRecoveryError: unknown = error;
 
-    const extractedJson = extractFirstJsonObject(recoveredText.text);
-    if (!extractedJson) {
-      throw new PipelineStepError(
-        'semantic_plan',
-        `${fallbackLabel}: model returned text but no complete JSON object could be extracted`,
-        error
-      );
+    for (const attempt of buildTextRecoveryAttempts(recoveryMode, maxTokens)) {
+      try {
+        const recoveredText = await generateText({
+          model,
+          system: buildTextRecoverySystem(system, attempt.compact),
+          prompt: buildTextRecoveryPrompt(prompt, attempt.compact, recoveryMode),
+          temperature: Math.min(temperature + 0.1, 1),
+          maxTokens: attempt.maxTokens,
+          maxRetries: 0,
+        });
+
+        const extractedJson = extractFirstJsonObject(recoveredText.text);
+        if (!extractedJson) {
+          throw new Error('model returned text but no complete JSON object could be extracted');
+        }
+
+        const parsed = JSON.parse(extractedJson);
+        const coerced = coerceRecoveredJson(parsed);
+        return llmSchema.parse(coerced) as T;
+      } catch (recoveryError) {
+        lastRecoveryError = recoveryError;
+        console.warn(
+          `[semantic-planner] ${fallbackLabel}: ${attempt.label} failed`,
+          recoveryError
+        );
+      }
     }
 
-    try {
-      const parsed = JSON.parse(extractedJson);
-      const coerced = coerceRecoveredJson(parsed);
-      return llmSchema.parse(coerced) as T;
-    } catch (parseError) {
-      throw new PipelineStepError(
-        'semantic_plan',
-        `${fallbackLabel}: recovered JSON was still invalid`,
-        parseError
-      );
-    }
+    throw new PipelineStepError(
+      'semantic_plan',
+      `${fallbackLabel}: recovered JSON was still invalid after compact retry`,
+      lastRecoveryError
+    );
   }
+}
+
+interface TextRecoveryAttempt {
+  label: string;
+  compact: boolean;
+  maxTokens: number;
+}
+
+function buildTextRecoveryAttempts(
+  recoveryMode: NonNullable<StructuredJsonGenerationInput<unknown>['recoveryMode']>,
+  maxTokens: number
+): TextRecoveryAttempt[] {
+  const compactMaxTokens = recoveryMode === 'semantic_day'
+    ? Math.min(maxTokens, 1536)
+    : recoveryMode === 'semantic_seed'
+      ? Math.min(maxTokens, 2048)
+      : Math.min(maxTokens, 4096);
+
+  return [
+    {
+      label: 'compact text recovery',
+      compact: false,
+      maxTokens: compactMaxTokens,
+    },
+    {
+      label: 'minimal text recovery',
+      compact: true,
+      maxTokens: Math.min(compactMaxTokens, 1400),
+    },
+  ];
+}
+
+function buildTextRecoverySystem(system: string, compact: boolean): string {
+  return `${system}
+
+Return ONLY one valid JSON object. Do not add markdown fences or commentary.
+If you are close to token limits, shorten descriptive strings instead of truncating JSON.
+
+ENUM CONSTRAINTS (must use exact values):
+- timeSlotHint: "morning" | "midday" | "afternoon" | "evening" | "night" | "flexible" (NOT time ranges like "11:00 - 13:00")
+- role: "must_visit" | "recommended" | "meal" | "accommodation" | "filler" (NOT "regular" or other values)
+- indoorOutdoor: "indoor" | "outdoor" | "both"
+
+Keep all string fields concise. startArea/endArea must be area names only (max 50 chars).
+${compact ? 'Prefer the minimum schema that still validates. Omit optional fields, tags, and long rationales unless strictly necessary.' : 'Keep optional fields short and only include them when they improve routing quality.'}`;
+}
+
+function buildTextRecoveryPrompt(
+  prompt: string,
+  compact: boolean,
+  recoveryMode: NonNullable<StructuredJsonGenerationInput<unknown>['recoveryMode']>
+): string {
+  const compactModeInstructions = recoveryMode === 'semantic_day'
+    ? `重要: 出力は {"candidates":[...]} の JSON オブジェクトのみ。各 candidate は required fields のみを優先し、optional fields は原則省略する。候補数は 3〜4 件に抑え、各文字列は短く保つこと。`
+    : recoveryMode === 'semantic_seed'
+      ? '重要: 出力は seed 用 JSON オブジェクトのみ。dayStructure は required fields を優先し、orderingPreferences / fallbackHints は最大2件、destinationHighlights は最大4件、anchorMoments は各日最大2件までに抑えること。'
+      : '重要: 出力は semantic plan 用 JSON オブジェクトのみ。candidates / dayStructure は required fields を優先し、orderingPreferences / fallbackHints は最大2件、destinationHighlights は最大4件、各 candidate の tags は最大2件に抑えること。';
+
+  const minimalModeInstructions = compact
+    ? '\nさらに圧縮モード: optional fields は基本的に省略し、description/summary/rationale は短文にする。必ず最後の閉じ波括弧 "}" まで出力し、途中で切らないこと。'
+    : '\n必ず最後の閉じ波括弧 "}" まで出力し、途中で文章を切らないこと。';
+
+  return `${prompt}
+
+${compactModeInstructions}
+${minimalModeInstructions}
+timeSlotHint は morning/midday/afternoon/evening/night/flexible のいずれか。role は must_visit/recommended/meal/accommodation/filler のいずれか。`;
 }
 
 // ============================================
@@ -392,6 +467,7 @@ export async function runSemanticPlanner(
       maxTokens: 12288,
       maxRetries: primaryRetries,
       fallbackLabel: 'semantic plan',
+      recoveryMode: 'semantic_plan',
     });
   } catch (firstError) {
     if (!retryOnFailure) {
@@ -419,6 +495,7 @@ export async function runSemanticPlanner(
         maxTokens: 12288,
         maxRetries: 0,
         fallbackLabel: 'semantic plan retry',
+        recoveryMode: 'semantic_plan',
       });
     } catch (secondError) {
       throw new PipelineStepError(
@@ -504,6 +581,7 @@ export async function runSemanticSeedPlanner(
     maxTokens: 4096,
     maxRetries: 0,
     fallbackLabel: 'semantic seed',
+    recoveryMode: 'semantic_seed',
   });
 
   // Sanitize repetitive/oversized text before processing
@@ -619,6 +697,7 @@ export async function runSemanticDayPlanner(
     maxTokens: 4096,
     maxRetries: 0,
     fallbackLabel: `semantic day ${day}`,
+    recoveryMode: 'semantic_day',
   });
 
   return sanitizeSemanticCandidates(
@@ -816,7 +895,9 @@ function sanitizeDayStructureFields(
     sanitized.summary = check(sanitized.summary, 300) ?? sanitized.summary;
     sanitized.flowSummary = check(sanitized.flowSummary, 500);
     if (sanitized.anchorMoments) {
-      sanitized.anchorMoments = sanitized.anchorMoments.map((m) => check(m, 100) ?? m);
+      sanitized.anchorMoments = sanitized.anchorMoments
+        .slice(0, 2)
+        .map((m) => check(m, 100) ?? m);
     }
 
     return sanitized;
@@ -856,16 +937,17 @@ export function sanitizeSemanticPlanFields<T extends { destination: string; desc
     destination: check(plan.destination, 100) ?? plan.destination,
     description: check(plan.description, 500) ?? plan.description,
     tripIntentSummary: check(plan.tripIntentSummary, 300),
-    orderingPreferences: checkArray(plan.orderingPreferences, 200),
-    fallbackHints: checkArray(plan.fallbackHints, 200),
+    orderingPreferences: checkArray(plan.orderingPreferences?.slice(0, 2), 200),
+    fallbackHints: checkArray(plan.fallbackHints?.slice(0, 2), 200),
     ...(plan.candidates && {
       candidates: plan.candidates.map((c) => ({
         ...c,
         rationale: check(c.rationale, 300),
+        tags: c.tags?.slice(0, 2),
       })),
     }),
     ...(plan.destinationHighlights && {
-      destinationHighlights: plan.destinationHighlights.map((h) => ({
+      destinationHighlights: plan.destinationHighlights.slice(0, 4).map((h) => ({
         ...h,
         rationale: check(h.rationale, 300) ?? h.rationale,
       })),
@@ -1017,18 +1099,19 @@ function buildSemanticPlannerPrompt(
 4d. JSON のトークン予算は限られています。各フィールドは簡潔に。description は200文字程度を目安に
 5. 必ず訪れたい場所は role='must_visit' にする
 6. 時刻と最終順序は確定しない
-7. tripIntentSummary は300文字以内の1文で旅の意図を要約する。orderingPreferences, fallbackHints は各200文字以内の短い箇条書きで入れる
-8. destinationHighlights には、その都市らしさを感じる具体的な代表スポットを 3〜6 件入れる
+7. tripIntentSummary は300文字以内の1文で旅の意図を要約する。orderingPreferences, fallbackHints は各200文字以内・最大2件の短い箇条書きで入れる
+8. destinationHighlights には、その都市らしさを感じる具体的な代表スポットを 3〜4 件入れる
 9. description は500文字以内。説明文は簡潔にする
 10. 絶対条件は必ず守る
 11. 参考条件は全てを機械的に盛り込まず、全体のまとまりを優先して良い感じに反映する
 12. 【最重要】name/searchQuery/destinationHighlights.name には必ず実在する具体的なスポット名・店名を入れること。「人気ランチ店」「おすすめカフェ」「代表スポット」「夜景スポット」のような曖昧・総称的な名前は絶対に禁止
 13. destinationHighlights には「この目的地に来たのに入っていないと不自然になりやすい場所」を優先して入れること
 14. 候補は単なる名所の羅列ではなく、朝→昼→夕方の流れが見える“1日の回遊プラン”として組み立てること
-15. 各候補は「どのユーザー希望/制約/旅らしさを満たすために入れたか」が rationale から伝わるようにする
+15. 各候補は「どのユーザー希望/制約/旅らしさを満たすために入れたか」が rationale から伝わるようにする。rationale は短い1文にする
 16. 有名観光地では、定番名所だけでなくユーザー希望に直結する相性の良い場所を混ぜ、満足度が最大になる組み合わせを選ぶ
 17. あまり有名ではない地域では、世界的なランドマーク不足を generic な候補名で誤魔化さず、その土地で定番になりやすい具体的スポット・商店街・展望台・博物館・海岸/公園・温泉街・市場・文化施設などを実名で選ぶ
-18. must_visit がある日は、その周辺で相性の良いスポットを優先し、「希望スポット + 地域らしい代表スポット」が同時に成立するようにする`;
+18. must_visit がある日は、その周辺で相性の良いスポットを優先し、「希望スポット + 地域らしい代表スポット」が同時に成立するようにする
+19. tags を入れる場合は最大2件までにする`;
 
   if (fastMode) {
     prompt += `\n15. 速度優先。エリアの重複を避け、候補は厳選してください`;
@@ -1066,9 +1149,9 @@ function buildSemanticSeedPrompt(request: NormalizedRequest): string {
 4d. JSON のトークン予算は限られています。各フィールドは簡潔に
 5. 各日の mainArea は移動しすぎず現実的にまとめる
 6. description は200文字程度を目安に。説明は短く、旅の期待感が高まる自然な文にする
-7. orderingPreferences と fallbackHints は各200文字以内の短い箇条書きでよい
+7. orderingPreferences と fallbackHints は各200文字以内・最大2件の短い箇条書きでよい
 7a. tripIntentSummary は300文字以内の1文で旅の意図をまとめる
-8. destinationHighlights には、その都市らしさを感じる具体的な代表スポットを 3〜6 件入れる
+8. destinationHighlights には、その都市らしさを感じる具体的な代表スポットを 3〜4 件入れる
 9. destinationHighlights の各要素には name, areaHint, dayHint, rationale を入れる`;
 
   if (request.hardConstraints.summaryLines.length > 0) {
@@ -1083,6 +1166,7 @@ function buildSemanticSeedPrompt(request: NormalizedRequest): string {
   prompt += `\n11. 各 dayStructure は「朝はどこから始め、どこへ流れて、夜はどこで締めるか」が分かる itinerary らしい設計にする`;
   prompt += `\n12. ユーザーの希望に強く合うスポットを主軸にしつつ、その地域を初めて訪れても「ここに来た感」が出る代表スポットを自然に織り込む`;
   prompt += `\n13. あまり有名ではない地域でも、 generic な名前で埋めずに、駅前商店街・展望台・公園・市場・温泉街・資料館など、その土地で成立する具体的固有名詞を優先する`;
+  prompt += `\n14. anchorMoments を入れる場合は各日最大2件までにし、各文は短く保つ`;
   prompt += `\n${SEED_EXPERTISE_RULES}`;
 
   return prompt;
@@ -1298,6 +1382,7 @@ ${mustVisitForDay.length > 0 ? mustVisitForDay.map((name) => `- ${name}`).join('
 10. この日の候補セット全体で、ユーザー希望に強く合うスポットを主役にしつつ、その地域を訪れた納得感が出る代表スポットも自然に入れる
 11. 有名観光地では“定番だけで終わらない満足度”を重視し、無名寄りの地域では“generic 名禁止 + 実在する地元定番の具体名”を重視する
 12. rationale では「ユーザー希望」「代表スポット」「時間帯や導線」のどれを満たす候補か短く示す
+13. optional fields は最小限でよい。tags は原則不要、入れる場合でも最大2件まで
 ${DAY_EXPERTISE_RULES}`;
 }
 
