@@ -506,3 +506,4 @@
 ### 2026.03.14
 
 - [patch] タイムアウト時フォールバックのプラン具体性を改善: 目的地ごとの代表スポット候補（例: 大阪城天守閣・黒門市場・道頓堀）を使う決定的プラン生成に変更し、位置が曖昧な候補名のみになるケースを抑制しました。
+- `local` fix(semantic-planner,timeout): malformed structured output recovery が platform budget を食い潰し、seed / compose の deterministic fallback まで遅延する問題を最小修正で安定化。① `generateStructuredJsonWithRecovery()` の text recovery を 1 回の compact JSON 再送に限定し、semantic seed/day/full planner ごとに短い recovery budget を設定。② recovery 呼び出し自体にも timeout を掛け、壊れた JSON を深追いせず deterministic fallback へ早く戻るよう変更。③ malformed JSON ログは巨大な生テキスト全量ではなく、messages / rawTextLength / 安全な sample を出す観測ログへ置き換え。④ 回帰テストを更新し、「途中切れ JSON は 1 回だけ recovery を試して失敗なら即 fallback」方針を固定。

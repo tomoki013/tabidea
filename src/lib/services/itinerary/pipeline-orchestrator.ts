@@ -470,7 +470,12 @@ export async function runComposePipeline(
         timeoutMitigationUsed = true;
         fallbackUsed = true;
         const reason = error instanceof Error ? error.message : 'unknown_error';
-        console.warn('[compose-pipeline] semantic_plan failed, using deterministic fallback:', reason);
+        console.warn('[compose-pipeline] semantic_plan failed, using deterministic fallback', {
+          reason,
+          remainingMs: remainingTimeMs(),
+          semanticFastMode,
+          targetCandidateCount: semanticCandidateTarget,
+        });
         allWarnings.push(`semantic_fallback:${reason}`);
         emitProgress('semantic_plan', '候補スポットを安全モードで再構成中...');
         return buildDeterministicSemanticPlan(normalizedRequest);
@@ -1103,11 +1108,24 @@ export async function runSeedPipeline(
     const narrativeModel = resolveModelForPhase('chunk', userType, provider);
     const modelTier = toComposeModelTier(userType);
 
+    console.info('[seed-pipeline] model_resolution', {
+      provider,
+      userType,
+      semanticModel: semanticModel.modelName,
+      narrativeModel: narrativeModel.modelName,
+      modelTier,
+    });
+
     emitProgress('semantic_plan', '旅の骨格を設計中...');
     const seedTimeout = Math.min(
       Math.max(remainingTimeMs() - SEED_RESPONSE_RESERVE_MS, 50),
       SEED_SEMANTIC_TIMEOUT_CAP_MS
     );
+    console.info('[seed-pipeline] semantic_plan:start', {
+      remainingMs: remainingTimeMs(),
+      seedTimeoutMs: seedTimeout,
+      durationDays: normalizedRequest.durationDays,
+    });
     const seed = await timer.measure('semantic_plan', async () => {
       let timeoutId: ReturnType<typeof setTimeout> | undefined;
       try {
@@ -1132,7 +1150,11 @@ export async function runSeedPipeline(
       } catch (error) {
         timeoutMitigationUsed = true;
         const fallbackReason = error instanceof Error ? error.message : 'unknown_error';
-        console.warn('[seed-pipeline] Falling back to deterministic seed plan:', fallbackReason);
+        console.warn('[seed-pipeline] Falling back to deterministic seed plan', {
+          fallbackReason,
+          remainingMs: remainingTimeMs(),
+          seedTimeoutMs: seedTimeout,
+        });
         allWarnings.push(
           `seed_fallback:${fallbackReason}`,
         );
