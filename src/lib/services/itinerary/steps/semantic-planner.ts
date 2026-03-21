@@ -140,8 +140,8 @@ async function generateStructuredJsonWithRecovery<T>(
 
     const recoveredText = await generateText({
       model,
-      system: `${system}\n\nReturn ONLY one valid JSON object. Do not add markdown fences or commentary. If you are close to token limits, shorten descriptive strings instead of truncating JSON.`,
-      prompt: `${prompt}\n\n重要: 出力は JSON オブジェクトのみ。必ず最後の閉じ波括弧 "}" まで出力し、途中で文章を切らないこと。`,
+      system: `${system}\n\nReturn ONLY one valid JSON object. Do not add markdown fences or commentary. If you are close to token limits, shorten descriptive strings instead of truncating JSON.\n\nENUM CONSTRAINTS (must use exact values):\n- timeSlotHint: "morning" | "midday" | "afternoon" | "evening" | "night" | "flexible" (NOT time ranges like "11:00 - 13:00")\n- role: "must_visit" | "recommended" | "meal" | "accommodation" | "filler" (NOT "regular" or other values)\n- indoorOutdoor: "indoor" | "outdoor" | "both"\n\nKeep all string fields concise. startArea/endArea must be area names only (max 50 chars).`,
+      prompt: `${prompt}\n\n重要: 出力は JSON オブジェクトのみ。必ず最後の閉じ波括弧 "}" まで出力し、途中で文章を切らないこと。timeSlotHint は morning/midday/afternoon/evening/night/flexible のいずれか。role は must_visit/recommended/meal/accommodation/filler のいずれか。`,
       temperature: Math.min(temperature + 0.1, 1),
       maxTokens,
       maxRetries: 0,
@@ -157,7 +157,9 @@ async function generateStructuredJsonWithRecovery<T>(
     }
 
     try {
-      return llmSchema.parse(JSON.parse(extractedJson)) as T;
+      const parsed = JSON.parse(extractedJson);
+      const coerced = coerceRecoveredJson(parsed);
+      return llmSchema.parse(coerced) as T;
     } catch (parseError) {
       throw new PipelineStepError(
         'semantic_plan',
@@ -168,10 +170,78 @@ async function generateStructuredJsonWithRecovery<T>(
   }
 }
 
+// ============================================
+// Enum coercion for text recovery path
+// ============================================
+
+const VALID_TIME_SLOTS = new Set(['morning', 'midday', 'afternoon', 'evening', 'night', 'flexible']);
+const VALID_ROLES = new Set(['must_visit', 'recommended', 'meal', 'accommodation', 'filler']);
+
+function coerceTimeSlotHint(value: unknown): string {
+  if (typeof value === 'string' && VALID_TIME_SLOTS.has(value)) return value;
+  if (typeof value !== 'string') return 'flexible';
+
+  // Try to extract hour from time range like "11:30 - 13:00" or "11:30"
+  const hourMatch = value.match(/(\d{1,2})[:時]/);
+  if (hourMatch) {
+    const hour = parseInt(hourMatch[1], 10);
+    if (hour < 11) return 'morning';
+    if (hour < 14) return 'midday';
+    if (hour < 17) return 'afternoon';
+    if (hour < 21) return 'evening';
+    return 'night';
+  }
+
+  return 'flexible';
+}
+
+function coerceRole(value: unknown): string {
+  if (typeof value === 'string' && VALID_ROLES.has(value)) return value;
+  return 'recommended';
+}
+
+/**
+ * Coerce recovered JSON fields to match expected enum values and fill missing required fields.
+ * This runs BEFORE Zod validation to maximize the chance of successful parsing.
+ */
+function coerceRecoveredJson(data: Record<string, unknown>): Record<string, unknown> {
+  // Coerce candidates
+  if (Array.isArray(data.candidates)) {
+    data.candidates = data.candidates.map((c: Record<string, unknown>) => ({
+      ...c,
+      timeSlotHint: coerceTimeSlotHint(c.timeSlotHint),
+      role: coerceRole(c.role),
+    }));
+  }
+
+  // Coerce dayStructure — fill missing day numbers
+  if (Array.isArray(data.dayStructure)) {
+    data.dayStructure = data.dayStructure.map((d: Record<string, unknown>, i: number) => ({
+      ...d,
+      day: typeof d.day === 'number' ? d.day : i + 1,
+    }));
+  }
+
+  // Coerce destinationHighlights — fill missing required fields or filter invalid entries
+  if (Array.isArray(data.destinationHighlights)) {
+    data.destinationHighlights = data.destinationHighlights
+      .filter((h: Record<string, unknown>) => typeof h.name === 'string')
+      .map((h: Record<string, unknown>, i: number) => ({
+        ...h,
+        areaHint: typeof h.areaHint === 'string' ? h.areaHint : (typeof h.name === 'string' ? h.name : ''),
+        dayHint: typeof h.dayHint === 'number' ? h.dayHint : i + 1,
+        rationale: typeof h.rationale === 'string' ? h.rationale : 'その地域を代表するスポット',
+        timeSlotHint: h.timeSlotHint ? coerceTimeSlotHint(h.timeSlotHint) : undefined,
+      }));
+  }
+
+  return data;
+}
+
 function isMalformedStructuredOutputError(error: unknown): boolean {
   const messages = collectErrorMessages(error);
   return messages.some((message) =>
-    /unterminated string|unexpected end of json|json at position|jsonparse|ai_jsonparseerror|invalid json|expected .*[,}\]]/i.test(message)
+    /unterminated string|unexpected end of json|json at position|jsonparse|ai_jsonparseerror|invalid json|expected .*[,}\]]|recitation|finishReason.*RECITATION|content.*role.*required|content.*parts.*required/i.test(message)
   );
 }
 
@@ -319,7 +389,7 @@ export async function runSemanticPlanner(
       system: systemInstruction,
       prompt: userPrompt,
       temperature,
-      maxTokens: 8192,
+      maxTokens: 12288,
       maxRetries: primaryRetries,
       fallbackLabel: 'semantic plan',
     });
@@ -346,7 +416,7 @@ export async function runSemanticPlanner(
         system: systemInstruction,
         prompt: userPrompt,
         temperature: Math.min(temperature + 0.3, 1.0),
-        maxTokens: 8192,
+        maxTokens: 12288,
         maxRetries: 0,
         fallbackLabel: 'semantic plan retry',
       });
@@ -941,9 +1011,10 @@ function buildSemanticPlannerPrompt(
 2. 可能なら categoryHint, locationEn, rationale, areaHint, indoorOutdoor, tags も含める
 3. dayStructure には各日の title, mainArea, overnightLocation, summary を入れる
 4. 可能なら dayStructure に startArea, endArea, flowSummary, anchorMoments も入れ、その日をどう移動しながら過ごすかが分かる形にする
-4a. startArea, endArea はエリア名のみを入れる（例: "嵐山"、"祇園エリア"）。文章や説明文を入れない
-4b. summary は最大300文字、flowSummary は最大500文字。簡潔にまとめる
-4c. 同じフレーズの繰り返しは絶対に禁止
+4a. 【厳守】startArea, endArea はエリア名のみ（最大50文字）。説明文・詳細・文章は絶対に入れない。例: "嵐山"、"祇園エリア"
+4b. summary は150文字程度、flowSummary は300文字程度を目安に簡潔にまとめる
+4c. 【厳守】同じフレーズの繰り返しは絶対に禁止。1つのフィールドに同じ文を2回以上書かない
+4d. JSON のトークン予算は限られています。各フィールドは簡潔に。description は200文字程度を目安に
 5. 必ず訪れたい場所は role='must_visit' にする
 6. 時刻と最終順序は確定しない
 7. tripIntentSummary は300文字以内の1文で旅の意図を要約する。orderingPreferences, fallbackHints は各200文字以内の短い箇条書きで入れる
@@ -989,11 +1060,12 @@ function buildSemanticSeedPrompt(request: NormalizedRequest): string {
 2. destination, description, dayStructure を必ず返す
 3. dayStructure には各日の title, mainArea, overnightLocation, summary を入れる
 4. 可能なら startArea, endArea, flowSummary, anchorMoments も入れ、「どんな順で回る日か」が伝わる骨格にする
-4a. startArea, endArea はエリア名のみ（例: "嵐山"）。説明文を入れない
-4b. summary, flowSummary は各300文字以内の簡潔な文で
-4c. 同じフレーズの繰り返しは絶対に禁止
+4a. 【厳守】startArea, endArea はエリア名のみ（最大50文字）。説明文・詳細・文章は絶対に入れない。例: "嵐山"
+4b. summary は150文字程度、flowSummary は300文字程度を目安に簡潔にまとめる
+4c. 【厳守】同じフレーズの繰り返しは絶対に禁止。1つのフィールドに同じ文を2回以上書かない
+4d. JSON のトークン予算は限られています。各フィールドは簡潔に
 5. 各日の mainArea は移動しすぎず現実的にまとめる
-6. description は500文字以内。説明は短く、旅の期待感が高まる自然な文にする
+6. description は200文字程度を目安に。説明は短く、旅の期待感が高まる自然な文にする
 7. orderingPreferences と fallbackHints は各200文字以内の短い箇条書きでよい
 7a. tripIntentSummary は300文字以内の1文で旅の意図をまとめる
 8. destinationHighlights には、その都市らしさを感じる具体的な代表スポットを 3〜6 件入れる

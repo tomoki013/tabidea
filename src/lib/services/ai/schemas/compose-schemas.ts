@@ -185,8 +185,8 @@ export type SemanticDayPlanOutput = z.infer<typeof semanticDayPlanSchema>;
 // to avoid hard validation failures on verbose LLM output.
 // ============================================
 
-/** LLM output buffer: generous max to prevent generateObject() validation failure */
-const LLM_STRING_MAX = 2000;
+/** LLM output buffer: generous enough to avoid hard failures, but capped to prevent token exhaustion */
+const LLM_STRING_MAX = 800;
 
 const semanticCandidateLlmSchema = z.object({
   name: z.string().max(100).describe('スポット/アクティビティ名'),
