@@ -1,8 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import type { SemanticCandidate } from '@/types/itinerary-pipeline';
+import type { NormalizedRequest, SemanticCandidate } from '@/types/itinerary-pipeline';
 import {
   getScheduledMustVisitPlacesForDay,
-  runSeedPipeline,
   runSpotCandidatesPipeline,
 } from './pipeline-orchestrator';
 
@@ -703,6 +702,22 @@ describe('runSeedPipeline', () => {
     expect(result.metadata?.timeoutMitigationUsed).toBe(false);
     expect(buildDeterministicSemanticSeedPlan).not.toHaveBeenCalled();
   });
+
+  it('falls back to deterministic seed plan when semantic seed planner returns malformed JSON parse errors', async () => {
+    const { runSemanticSeedPlanner, buildDeterministicSemanticSeedPlan } = await import('./steps/semantic-planner');
+
+    vi.mocked(runSemanticSeedPlanner).mockRejectedValueOnce(
+      new SyntaxError('Unterminated string in JSON at position 17158')
+    );
+
+    const result = await runSeedPipeline(makeTestInput({ destinations: ['パリ'] }));
+
+    expect(result.success).toBe(true);
+    expect(result.seed?.description).toContain('安全モード');
+    expect(result.metadata?.timeoutMitigationUsed).toBe(true);
+    expect(buildDeterministicSemanticSeedPlan).toHaveBeenCalledTimes(1);
+    expect(result.warnings.some((warning) => warning.includes('Unterminated string in JSON'))).toBe(true);
+  });
 });
 
 describe('runSpotCandidatesPipeline', () => {
@@ -721,28 +736,55 @@ describe('runSpotCandidatesPipeline', () => {
       new PipelineStepError('semantic_plan', 'Spots semantic_plan timed out before platform deadline')
     );
 
-    const normalizedRequest = {
+    const normalizedRequest: NormalizedRequest = {
       destinations: ['東京'],
       durationDays: 3,
-      style: 'relaxed',
+      companions: '友人',
+      themes: [],
+      budgetLevel: 'standard',
+      pace: 'balanced',
+      freeText: '',
+      travelVibe: '',
       mustVisitPlaces: ['浅草寺'],
-      hotelLocation: '',
-      hotelCoordinates: null,
-      startDate: null,
-      travelerProfile: { adults: 2, children: 0 },
+      fixedSchedule: [],
+      preferredTransport: ['walking'],
+      isDestinationDecided: true,
+      region: 'domestic',
       hardConstraints: {
-        pace: 'normal',
-        mealWindows: [],
+        destinations: ['東京'],
+        dateConstraints: [],
         mustVisitPlaces: ['浅草寺'],
+        fixedTransports: [],
+        fixedHotels: [],
+        freeTextDirectives: [],
+        summaryLines: [],
       },
       softPreferences: {
         themes: [],
         rankedRequests: [],
+        suppressedCount: 0,
       },
       outputLanguage: 'ja',
+      originalInput: {
+        destinations: ['東京'],
+        dates: '3日間',
+        companions: '友人',
+        theme: [],
+        budget: 'standard',
+        pace: 'balanced',
+        freeText: '',
+        preferredTransport: ['walking'],
+        isDestinationDecided: true,
+        region: 'domestic',
+      },
+      durationMinutes: 3 * 24 * 60,
+      locale: 'ja',
       compaction: {
+        applied: false,
+        hardConstraintCount: 1,
+        softPreferenceCount: 0,
+        suppressedSoftPreferenceCount: 0,
         longInputDetected: false,
-        droppedFields: [],
       },
     };
     const seed = vi.mocked(buildDeterministicSemanticSeedPlan)(normalizedRequest);

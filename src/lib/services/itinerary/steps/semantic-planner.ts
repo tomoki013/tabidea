@@ -18,6 +18,8 @@ import type {
 } from '@/lib/services/ai/schemas/compose-schemas';
 import type { AIProviderName } from '@/lib/services/ai/providers/types';
 import {
+  semanticPlanSchema,
+  semanticSeedSchema,
   semanticDayPlanSchema,
   semanticPlanLlmSchema,
   semanticSeedLlmSchema,
@@ -31,6 +33,7 @@ import {
   mergeDestinationHighlightCandidates,
   normalizePlaceKey,
 } from '../destination-highlights';
+import type { ZodType } from 'zod';
 
 // ============================================
 // Public API
@@ -81,6 +84,198 @@ export interface SemanticDayPlannerInput {
   onProgress?: (message: string) => void;
 }
 
+type StructuredJsonSchema<T> = ZodType<T>;
+
+interface StructuredJsonGenerationInput<T> {
+  provider: AIProviderName;
+  modelName: string;
+  llmSchema: StructuredJsonSchema<T>;
+  system: string;
+  prompt: string;
+  temperature: number;
+  maxTokens: number;
+  maxRetries?: number;
+  fallbackLabel: string;
+}
+
+async function generateStructuredJsonWithRecovery<T>(
+  input: StructuredJsonGenerationInput<T>
+): Promise<T> {
+  const {
+    provider,
+    modelName,
+    llmSchema,
+    system,
+    prompt,
+    temperature,
+    maxTokens,
+    maxRetries = 0,
+    fallbackLabel,
+  } = input;
+
+  const { generateObject, generateText } = await import('ai');
+  const model = await resolveLanguageModel(provider, modelName);
+
+  try {
+    const result = await generateObject({
+      model,
+      schema: llmSchema,
+      system,
+      prompt,
+      temperature,
+      maxTokens,
+      maxRetries,
+    });
+
+    return result.object as T;
+  } catch (error) {
+    if (!isMalformedStructuredOutputError(error)) {
+      throw error;
+    }
+
+    console.warn(
+      `[semantic-planner] ${fallbackLabel}: structured output JSON was malformed, retrying with text recovery`,
+      error
+    );
+
+    const recoveredText = await generateText({
+      model,
+      system: `${system}\n\nReturn ONLY one valid JSON object. Do not add markdown fences or commentary. If you are close to token limits, shorten descriptive strings instead of truncating JSON.`,
+      prompt: `${prompt}\n\n重要: 出力は JSON オブジェクトのみ。必ず最後の閉じ波括弧 "}" まで出力し、途中で文章を切らないこと。`,
+      temperature: Math.min(temperature + 0.1, 1),
+      maxTokens,
+      maxRetries: 0,
+    });
+
+    const extractedJson = extractFirstJsonObject(recoveredText.text);
+    if (!extractedJson) {
+      throw new PipelineStepError(
+        'semantic_plan',
+        `${fallbackLabel}: model returned text but no complete JSON object could be extracted`,
+        error
+      );
+    }
+
+    try {
+      return llmSchema.parse(JSON.parse(extractedJson)) as T;
+    } catch (parseError) {
+      throw new PipelineStepError(
+        'semantic_plan',
+        `${fallbackLabel}: recovered JSON was still invalid`,
+        parseError
+      );
+    }
+  }
+}
+
+function isMalformedStructuredOutputError(error: unknown): boolean {
+  const messages = collectErrorMessages(error);
+  return messages.some((message) =>
+    /unterminated string|unexpected end of json|json at position|jsonparse|ai_jsonparseerror|invalid json|expected .*[,}\]]/i.test(message)
+  );
+}
+
+function collectErrorMessages(error: unknown): string[] {
+  const visited = new Set<unknown>();
+  const queue: unknown[] = [error];
+  const messages: string[] = [];
+
+  while (queue.length > 0) {
+    const current = queue.shift();
+    if (!current || visited.has(current)) {
+      continue;
+    }
+    visited.add(current);
+
+    if (typeof current === 'string') {
+      messages.push(current);
+      continue;
+    }
+
+    if (current instanceof Error) {
+      messages.push(current.message);
+      queue.push((current as Error & { cause?: unknown }).cause);
+    }
+
+    if (typeof current === 'object') {
+      const candidate = current as Record<string, unknown>;
+      if (typeof candidate.message === 'string') {
+        messages.push(candidate.message);
+      }
+      if (typeof candidate.text === 'string') {
+        messages.push(candidate.text);
+      }
+      if ('cause' in candidate) {
+        queue.push(candidate.cause);
+      }
+      if ('value' in candidate) {
+        queue.push(candidate.value);
+      }
+    }
+  }
+
+  return messages;
+}
+
+function extractFirstJsonObject(text: string): string | null {
+  const trimmed = text.trim();
+  const fenceMatch = trimmed.match(/```(?:json)?\s*([\s\S]+?)\s*```/i);
+  const source = fenceMatch?.[1]?.trim() || trimmed;
+
+  let start = -1;
+  let depth = 0;
+  let inString = false;
+  let escaping = false;
+
+  for (let index = 0; index < source.length; index += 1) {
+    const char = source[index];
+
+    if (start === -1) {
+      if (char === '{') {
+        start = index;
+        depth = 1;
+      }
+      continue;
+    }
+
+    if (inString) {
+      if (escaping) {
+        escaping = false;
+        continue;
+      }
+
+      if (char === '\\') {
+        escaping = true;
+        continue;
+      }
+
+      if (char === '"') {
+        inString = false;
+      }
+      continue;
+    }
+
+    if (char === '"') {
+      inString = true;
+      continue;
+    }
+
+    if (char === '{') {
+      depth += 1;
+      continue;
+    }
+
+    if (char === '}') {
+      depth -= 1;
+      if (depth === 0) {
+        return source.slice(start, index + 1);
+      }
+    }
+  }
+
+  return null;
+}
+
 /**
  * Semantic Planner を実行して SemanticPlan を返す
  */
@@ -112,24 +307,22 @@ export async function runSemanticPlanner(
   });
 
   // Gemini generateObject() で構造化出力（リトライ付き）
-  const { generateObject } = await import('ai');
-  const model = await resolveLanguageModel(provider, modelName);
-
   let plan: SemanticPlanOutput;
   const primaryRetries = retryOnFailure ? 1 : 0;
 
   try {
     onProgress?.('AIが候補スポットを選定中...');
-    const result = await generateObject({
-      model,
-      schema: semanticPlanLlmSchema,
+    plan = await generateStructuredJsonWithRecovery({
+      provider,
+      modelName,
+      llmSchema: semanticPlanLlmSchema,
       system: systemInstruction,
       prompt: userPrompt,
       temperature,
       maxTokens: 8192,
       maxRetries: primaryRetries,
+      fallbackLabel: 'semantic plan',
     });
-    plan = result.object;
   } catch (firstError) {
     if (!retryOnFailure) {
       throw new PipelineStepError(
@@ -146,16 +339,17 @@ export async function runSemanticPlanner(
     );
 
     try {
-      const fallbackResult = await generateObject({
-        model,
-        schema: semanticPlanLlmSchema,
+      plan = await generateStructuredJsonWithRecovery({
+        provider,
+        modelName,
+        llmSchema: semanticPlanLlmSchema,
         system: systemInstruction,
         prompt: userPrompt,
         temperature: Math.min(temperature + 0.3, 1.0),
         maxTokens: 8192,
         maxRetries: 0,
+        fallbackLabel: 'semantic plan retry',
       });
-      plan = fallbackResult.object;
     } catch (secondError) {
       throw new PipelineStepError(
         'semantic_plan',
@@ -230,36 +424,39 @@ export async function runSemanticSeedPlanner(
     generationType: 'semanticPlan',
   });
 
-  const { generateObject } = await import('ai');
-  const model = await resolveLanguageModel(provider, modelName);
-
-  const result = await generateObject({
-    model,
-    schema: semanticSeedLlmSchema,
+  const result = await generateStructuredJsonWithRecovery({
+    provider,
+    modelName,
+    llmSchema: semanticSeedLlmSchema,
     system: systemInstruction,
     prompt: buildSemanticSeedPrompt(request),
     temperature,
     maxTokens: 4096,
     maxRetries: 0,
+    fallbackLabel: 'semantic seed',
   });
 
   // Sanitize repetitive/oversized text before processing
-  const seed = sanitizeSemanticPlanFields(result.object as SemanticSeedOutput);
+  const seed = sanitizeSemanticPlanFields(result as SemanticSeedOutput);
   seed.dayStructure = sanitizeDayStructureFields(seed.dayStructure);
 
   const constrainedDayStructure = applyHotelConstraintsToDayStructure(seed.dayStructure, request);
+  const validatedSeed = semanticSeedSchema.parse({
+    ...seed,
+    dayStructure: constrainedDayStructure,
+  });
 
   return {
-    destination: seed.destination,
-    description: seed.description,
-    dayStructure: constrainedDayStructure,
-    themes: seed.themes,
-    tripIntentSummary: seed.tripIntentSummary,
-    orderingPreferences: seed.orderingPreferences,
-    fallbackHints: seed.fallbackHints,
+    destination: validatedSeed.destination,
+    description: validatedSeed.description,
+    dayStructure: validatedSeed.dayStructure,
+    themes: validatedSeed.themes,
+    tripIntentSummary: validatedSeed.tripIntentSummary,
+    orderingPreferences: validatedSeed.orderingPreferences,
+    fallbackHints: validatedSeed.fallbackHints,
     destinationHighlights: assignHighlightDaysFromAreas(
-      seed.destinationHighlights,
-      constrainedDayStructure
+      validatedSeed.destinationHighlights,
+      validatedSeed.dayStructure
     ),
   };
 }
@@ -335,12 +532,10 @@ export async function runSemanticDayPlanner(
     generationType: 'semanticPlan',
   });
 
-  const { generateObject } = await import('ai');
-  const model = await resolveLanguageModel(provider, modelName);
-
-  const result = await generateObject({
-    model,
-    schema: semanticDayPlanSchema,
+  const result = await generateStructuredJsonWithRecovery({
+    provider,
+    modelName,
+    llmSchema: semanticDayPlanSchema,
     system: systemInstruction,
     prompt: buildSemanticDayPrompt({
       request,
@@ -353,10 +548,11 @@ export async function runSemanticDayPlanner(
     temperature,
     maxTokens: 4096,
     maxRetries: 0,
+    fallbackLabel: `semantic day ${day}`,
   });
 
   return sanitizeSemanticCandidates(
-    result.object as SemanticDayPlanOutput,
+    result as SemanticDayPlanOutput,
     request,
     day,
     existingCandidates,
@@ -628,6 +824,7 @@ function buildSemanticPlanResult(
     ...plan,
     dayStructure: sanitizeDayStructureFields(plan.dayStructure),
   };
+  plan = semanticPlanSchema.parse(plan);
 
   // dayHint: 0 → 1 に clamp, semanticId を付与
   const clampedCandidates = plan.candidates.map((c) => ({

@@ -10,6 +10,7 @@
 ## 開発者向けコミット履歴（コミット単位）
 
 ### 2026-03-21
+- `local` fix(semantic-planner,json-recovery): semantic seed/day planner が Gemini の structured output で巨大 JSON を途中切断されると `SyntaxError: Unterminated string in JSON ...` がそのまま失敗要因になっていた問題を再設計で修正。① semantic planner 共通の `generateStructuredJsonWithRecovery()` を追加し、まず `generateObject()` を使い、JSON parse 系エラー時だけ `generateText()` へ自動フォールバックして「JSONのみ再送」を要求する2段構えに変更。② text fallback では code fence / 前置き文付きでも最初の完全な JSON object を抽出し、LLM 向け relaxed schema で再検証するため、structured output transport の乱れを planner ロジックから切り離した。③ sanitize 後に strict schema (`semanticPlanSchema` / `semanticSeedSchema`) で再検証し、「緩い受信 → 正規化 → 厳格採用」の境界を明確化。④ seed pipeline で unrecoverable な JSON parse error が来ても deterministic seed fallback に落ちる回帰テスト、recovery 成功/失敗テストを追加。
 - `claude/fix-summary-length-validation-FK2Hx` fix(semantic-planner,validation): `tripIntentSummary` が Zod `.max(300)` を超えて `generateObject()` 内部でバリデーション失敗 → semantic plan 全体が deterministic fallback に落ちる問題を3層防御で根本修正。① LLM 向け relaxed スキーマ（`semanticPlanLlmSchema` / `semanticSeedLlmSchema`）を新設し、`generateObject()` に渡すスキーマの `.max()` を 2000 に緩和。`.describe()` に文字数制限を明記して LLM に目標長を伝達。② `sanitizeSemanticPlanFields()` を追加し、`tripIntentSummary`（300字）・`description`（500字）・`orderingPreferences`（200字）・`fallbackHints`（200字）・`candidates[].rationale`（300字）・`destinationHighlights[].rationale`（300字）を `truncateRepetitive()` で事後サニタイズ。③ seed/full semantic planner の両プロンプトに `tripIntentSummary は300文字以内の1文`・`description は500文字以内` 等の明示的な文字数制限を追加。④ 回帰テスト7件を追加（全パス）。
 
 ### 2026-03-20
