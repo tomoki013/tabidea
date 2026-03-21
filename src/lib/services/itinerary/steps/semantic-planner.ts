@@ -126,6 +126,7 @@ export async function runSemanticPlanner(
       system: systemInstruction,
       prompt: userPrompt,
       temperature,
+      maxTokens: 8192,
       maxRetries: primaryRetries,
     });
     plan = result.object;
@@ -151,6 +152,7 @@ export async function runSemanticPlanner(
         system: systemInstruction,
         prompt: userPrompt,
         temperature: Math.min(temperature + 0.3, 1.0),
+        maxTokens: 8192,
         maxRetries: 0,
       });
       plan = fallbackResult.object;
@@ -237,10 +239,14 @@ export async function runSemanticSeedPlanner(
     system: systemInstruction,
     prompt: buildSemanticSeedPrompt(request),
     temperature,
+    maxTokens: 4096,
     maxRetries: 0,
   });
 
   const seed = result.object as SemanticSeedOutput;
+
+  // Sanitize repetitive/oversized text before processing
+  seed.dayStructure = sanitizeDayStructureFields(seed.dayStructure);
 
   const constrainedDayStructure = applyHotelConstraintsToDayStructure(seed.dayStructure, request);
 
@@ -346,6 +352,7 @@ export async function runSemanticDayPlanner(
       targetCandidateCount,
     }),
     temperature,
+    maxTokens: 4096,
     maxRetries: 0,
   });
 
@@ -491,6 +498,73 @@ export function buildDeterministicSemanticPlan(
 }
 
 // ============================================
+// Repetition detection & sanitization
+// ============================================
+
+/**
+ * Detect and truncate repetitive text patterns.
+ * When the LLM enters a loop (e.g. same phrase repeated 100+ times),
+ * this keeps only the first occurrence and hard-truncates at maxLength.
+ */
+export function truncateRepetitive(text: string, maxLength: number): string {
+  if (text.length <= maxLength) {
+    // Even short text might have micro-repetitions — check anyway
+    const match = text.match(/(.{10,}?)\1{2,}/);
+    if (match && match.index !== undefined) {
+      return text.slice(0, match.index + match[1].length);
+    }
+    return text;
+  }
+
+  // Text exceeds maxLength — check for repetition first
+  const match = text.match(/(.{10,}?)\1{2,}/);
+  if (match && match.index !== undefined) {
+    const truncated = text.slice(0, match.index + match[1].length);
+    if (truncated.length <= maxLength) {
+      return truncated;
+    }
+  }
+
+  // Hard truncate
+  return text.slice(0, maxLength);
+}
+
+function sanitizeDayStructureFields(
+  dayStructure: SemanticPlanOutput['dayStructure']
+): SemanticPlanOutput['dayStructure'] {
+  let anyTruncated = false;
+
+  const result = dayStructure.map((day) => {
+    const sanitized = { ...day };
+    const check = (value: string | undefined, max: number): string | undefined => {
+      if (!value) return value;
+      const cleaned = truncateRepetitive(value, max);
+      if (cleaned !== value) anyTruncated = true;
+      return cleaned;
+    };
+
+    sanitized.title = check(sanitized.title, 100) ?? sanitized.title;
+    sanitized.mainArea = check(sanitized.mainArea, 50) ?? sanitized.mainArea;
+    sanitized.startArea = check(sanitized.startArea, 50);
+    sanitized.endArea = check(sanitized.endArea, 50);
+    sanitized.overnightLocation = check(sanitized.overnightLocation, 100) ?? sanitized.overnightLocation;
+    sanitized.summary = check(sanitized.summary, 300) ?? sanitized.summary;
+    sanitized.flowSummary = check(sanitized.flowSummary, 500);
+    if (sanitized.anchorMoments) {
+      sanitized.anchorMoments = sanitized.anchorMoments.map((m) => check(m, 100) ?? m);
+    }
+
+    return sanitized;
+  });
+
+  if (anyTruncated) {
+    console.warn('[semantic-planner] Truncated repetitive/oversized text in dayStructure fields');
+  }
+
+  return result;
+}
+
+// ============================================
 // Post-processing
 // ============================================
 
@@ -499,6 +573,12 @@ function buildSemanticPlanResult(
   request: NormalizedRequest,
   targetCandidateCount?: number
 ): SemanticPlan {
+  // Sanitize repetitive/oversized text before processing
+  plan = {
+    ...plan,
+    dayStructure: sanitizeDayStructureFields(plan.dayStructure),
+  };
+
   // dayHint: 0 → 1 に clamp, semanticId を付与
   const clampedCandidates = plan.candidates.map((c) => ({
     ...c,
@@ -614,6 +694,9 @@ function buildSemanticPlannerPrompt(
 2. 可能なら categoryHint, locationEn, rationale, areaHint, indoorOutdoor, tags も含める
 3. dayStructure には各日の title, mainArea, overnightLocation, summary を入れる
 4. 可能なら dayStructure に startArea, endArea, flowSummary, anchorMoments も入れ、その日をどう移動しながら過ごすかが分かる形にする
+4a. startArea, endArea はエリア名のみを入れる（例: "嵐山"、"祇園エリア"）。文章や説明文を入れない
+4b. summary は最大300文字、flowSummary は最大500文字。簡潔にまとめる
+4c. 同じフレーズの繰り返しは絶対に禁止
 5. 必ず訪れたい場所は role='must_visit' にする
 6. 時刻と最終順序は確定しない
 7. tripIntentSummary, orderingPreferences, fallbackHints を短く入れる
@@ -659,6 +742,9 @@ function buildSemanticSeedPrompt(request: NormalizedRequest): string {
 2. destination, description, dayStructure を必ず返す
 3. dayStructure には各日の title, mainArea, overnightLocation, summary を入れる
 4. 可能なら startArea, endArea, flowSummary, anchorMoments も入れ、「どんな順で回る日か」が伝わる骨格にする
+4a. startArea, endArea はエリア名のみ（例: "嵐山"）。説明文を入れない
+4b. summary, flowSummary は各300文字以内の簡潔な文で
+4c. 同じフレーズの繰り返しは絶対に禁止
 5. 各日の mainArea は移動しすぎず現実的にまとめる
 6. 説明は短く、旅の期待感が高まる自然な文にする
 7. orderingPreferences と fallbackHints は短い箇条書きでよい
