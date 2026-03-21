@@ -4,6 +4,7 @@ import type { NormalizedRequest } from '@/types/itinerary-pipeline';
 import {
   buildDeterministicDayCandidates,
   buildDeterministicSemanticSeedPlan,
+  sanitizeSemanticPlanFields,
   truncateRepetitive,
 } from './semantic-planner';
 
@@ -143,5 +144,105 @@ describe('truncateRepetitive', () => {
     // "の" appears multiple times but is too short (< 10 chars) to trigger
     const text = '京都の嵐山の竹林の小径の美しさ';
     expect(truncateRepetitive(text, 300)).toBe(text);
+  });
+});
+
+describe('sanitizeSemanticPlanFields', () => {
+  const basePlan = {
+    destination: '京都',
+    description: '短い説明',
+    dayStructure: [
+      { day: 1, title: '1日目', mainArea: '嵐山', overnightLocation: '京都市内', summary: '概要' },
+    ],
+    candidates: [
+      {
+        name: '金閣寺',
+        role: 'must_visit' as const,
+        priority: 10,
+        dayHint: 1,
+        timeSlotHint: 'morning' as const,
+        stayDurationMinutes: 60,
+        searchQuery: '金閣寺',
+      },
+    ],
+    tripIntentSummary: '京都を楽しむ旅',
+  };
+
+  it('leaves fields within limits unchanged', () => {
+    const result = sanitizeSemanticPlanFields(basePlan);
+    expect(result.tripIntentSummary).toBe('京都を楽しむ旅');
+    expect(result.description).toBe('短い説明');
+    expect(result.destination).toBe('京都');
+  });
+
+  it('truncates tripIntentSummary exceeding 300 chars', () => {
+    const longSummary = Array.from({ length: 100 }, (_, i) => `項目${i}`).join('、');
+    expect(longSummary.length).toBeGreaterThan(300);
+
+    const result = sanitizeSemanticPlanFields({ ...basePlan, tripIntentSummary: longSummary });
+    expect(result.tripIntentSummary!.length).toBeLessThanOrEqual(300);
+  });
+
+  it('truncates description exceeding 500 chars', () => {
+    const longDesc = Array.from({ length: 200 }, (_, i) => `説明${i}`).join('。');
+    expect(longDesc.length).toBeGreaterThan(500);
+
+    const result = sanitizeSemanticPlanFields({ ...basePlan, description: longDesc });
+    expect(result.description.length).toBeLessThanOrEqual(500);
+  });
+
+  it('handles undefined optional fields gracefully', () => {
+    const result = sanitizeSemanticPlanFields({
+      ...basePlan,
+      tripIntentSummary: undefined,
+      orderingPreferences: undefined,
+      fallbackHints: undefined,
+      destinationHighlights: undefined,
+    });
+    expect(result.tripIntentSummary).toBeUndefined();
+    expect(result.orderingPreferences).toBeUndefined();
+    expect(result.fallbackHints).toBeUndefined();
+  });
+
+  it('truncates candidate rationale exceeding 300 chars', () => {
+    const longRationale = 'a'.repeat(400);
+    const plan = {
+      ...basePlan,
+      candidates: [{ ...basePlan.candidates[0], rationale: longRationale }],
+    };
+    const result = sanitizeSemanticPlanFields(plan);
+    expect(result.candidates![0].rationale!.length).toBeLessThanOrEqual(300);
+  });
+
+  it('truncates destinationHighlights rationale exceeding 300 chars', () => {
+    const longRationale = 'b'.repeat(400);
+    const plan = {
+      ...basePlan,
+      destinationHighlights: [
+        { name: '金閣寺', areaHint: '北山', dayHint: 1, rationale: longRationale },
+      ],
+    };
+    const result = sanitizeSemanticPlanFields(plan);
+    expect(result.destinationHighlights![0].rationale.length).toBeLessThanOrEqual(300);
+  });
+
+  it('truncates orderingPreferences items exceeding 200 chars', () => {
+    const longPref = 'c'.repeat(250);
+    const plan = { ...basePlan, orderingPreferences: [longPref, '短い好み'] };
+    const result = sanitizeSemanticPlanFields(plan);
+    expect(result.orderingPreferences![0].length).toBeLessThanOrEqual(200);
+    expect(result.orderingPreferences![1]).toBe('短い好み');
+  });
+
+  it('works with seed plans (no candidates field)', () => {
+    const seedPlan = {
+      destination: '京都',
+      description: '短い説明',
+      dayStructure: basePlan.dayStructure,
+      tripIntentSummary: 'x'.repeat(400),
+    };
+    const result = sanitizeSemanticPlanFields(seedPlan);
+    expect(result.tripIntentSummary!.length).toBeLessThanOrEqual(300);
+    expect(result).not.toHaveProperty('candidates');
   });
 });

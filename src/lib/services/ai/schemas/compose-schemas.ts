@@ -179,6 +179,81 @@ export const semanticDayPlanSchema = z.object({
 export type SemanticDayPlanOutput = z.infer<typeof semanticDayPlanSchema>;
 
 // ============================================
+// LLM-facing schemas (relaxed .max() limits)
+// generateObject() validates with these schemas internally.
+// Strict limits are enforced in post-processing sanitization
+// to avoid hard validation failures on verbose LLM output.
+// ============================================
+
+/** LLM output buffer: generous max to prevent generateObject() validation failure */
+const LLM_STRING_MAX = 2000;
+
+const semanticCandidateLlmSchema = z.object({
+  name: z.string().max(100).describe('スポット/アクティビティ名'),
+  role: candidateRoleSchema.describe('候補の役割'),
+  priority: z.number().min(0).max(10).describe('優先度 (0=低, 10=高)'),
+  dayHint: z.number().min(0).describe('推奨する日 (0 or 1-based)'),
+  timeSlotHint: timeSlotHintSchema.describe('推奨する時間帯'),
+  stayDurationMinutes: z.number().min(5).max(480).describe('滞在時間（分）'),
+  searchQuery: z.string().max(100).describe('Google Places API で検索するためのスポット正式名称'),
+  categoryHint: z.string().max(50).optional().describe('カテゴリヒント (例: "temple", "cafe")'),
+  activityLabel: z.string().max(100).optional().describe('装飾的なアクティビティ名 (例: "金閣寺で抹茶体験")'),
+  locationEn: z.string().max(100).optional().describe('英語での場所名 (例: "Kinkaku-ji Temple")'),
+  rationale: z.string().max(LLM_STRING_MAX).optional().describe('この候補を選んだ理由（300文字以内の1文）'),
+  areaHint: z.string().max(50).optional().describe('候補が位置するエリア名 (例: "浅草エリア", "銀座周辺")'),
+  indoorOutdoor: z.enum(['indoor', 'outdoor', 'both']).optional().describe('屋内/屋外'),
+  tags: z.array(z.string().max(30)).optional().describe('候補のタグ (例: ["写真映え", "静か"])'),
+});
+
+const destinationHighlightLlmSchema = z.object({
+  name: z.string().max(100).describe('その目的地らしさを感じる具体的なスポット名'),
+  searchQuery: z.string().max(100).optional().describe('Places API 検索に向いた正式名称'),
+  areaHint: z.string().max(50).describe('そのスポットがあるエリア名'),
+  dayHint: z.number().min(1).describe('どの日に入れると自然かの候補日'),
+  rationale: z.string().max(LLM_STRING_MAX).describe('このスポットを入れる理由（300文字以内）'),
+  locationEn: z.string().max(100).optional().describe('英語の正式名称'),
+  timeSlotHint: timeSlotHintSchema.optional().describe('おすすめの時間帯'),
+  stayDurationMinutes: z.number().min(15).max(360).optional().describe('想定滞在時間'),
+});
+
+const dayStructureLlmSchema = z.object({
+  day: z.number().min(1).describe('日番号 (1-based)'),
+  title: z.string().max(100).describe('日のタイトル'),
+  mainArea: z.string().max(50).describe('メインエリア'),
+  startArea: z.string().max(50).optional().describe('その日の始まりに向くエリア名'),
+  endArea: z.string().max(50).optional().describe('その日の終わりに向くエリア名'),
+  overnightLocation: z.string().max(100).describe('宿泊地'),
+  summary: z.string().max(LLM_STRING_MAX).describe('概要（300文字以内で簡潔に）'),
+  flowSummary: z.string().max(LLM_STRING_MAX).optional().describe('朝から夜までの流れの要約（500文字以内）'),
+  anchorMoments: z.array(z.string().max(100)).optional().describe('その日の代表的な時間帯アンカー'),
+});
+
+export const semanticPlanLlmSchema = z.object({
+  destination: z.string().max(100).describe('目的地'),
+  description: z.string().max(LLM_STRING_MAX).describe('プラン全体の説明（500文字以内）'),
+  candidates: z.array(semanticCandidateLlmSchema).min(1).describe('候補スポット一覧'),
+  dayStructure: z.array(dayStructureLlmSchema).min(1).describe('日ごとの構造'),
+  themes: z.array(z.string().max(50)).optional().describe('AIが選んだテーマタグ'),
+  destinationHighlights: z.array(destinationHighlightLlmSchema).optional().describe('その目的地らしさを担保する代表スポット'),
+  tripIntentSummary: z.string().max(LLM_STRING_MAX).optional()
+    .describe('旅の意図サマリー（300文字以内の1文。例: "歴史ある京都の寺社を巡り、抹茶スイーツを楽しむ3日間"）'),
+  orderingPreferences: z.array(z.string().max(LLM_STRING_MAX)).optional().describe('順序に関する好み（各200文字以内）'),
+  fallbackHints: z.array(z.string().max(LLM_STRING_MAX)).optional().describe('候補不足時の補完ヒント（各200文字以内）'),
+});
+
+export const semanticSeedLlmSchema = z.object({
+  destination: z.string().max(100).describe('目的地'),
+  description: z.string().max(LLM_STRING_MAX).describe('プラン全体の説明（500文字以内）'),
+  dayStructure: z.array(dayStructureLlmSchema).min(1).describe('日ごとの構造'),
+  themes: z.array(z.string().max(50)).optional().describe('AIが選んだテーマタグ'),
+  destinationHighlights: z.array(destinationHighlightLlmSchema).optional().describe('その目的地らしさを担保する代表スポット'),
+  tripIntentSummary: z.string().max(LLM_STRING_MAX).optional()
+    .describe('旅の意図サマリー（300文字以内の1文）'),
+  orderingPreferences: z.array(z.string().max(LLM_STRING_MAX)).optional().describe('順序に関する好み（各200文字以内）'),
+  fallbackHints: z.array(z.string().max(LLM_STRING_MAX)).optional().describe('候補不足時の補完ヒント（各200文字以内）'),
+});
+
+// ============================================
 // Step 7: Narrative Renderer Output Schema
 // ============================================
 
