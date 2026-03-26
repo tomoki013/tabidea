@@ -320,7 +320,9 @@ const rawRoadmapData: RoadmapItem[] = [
     translationKey: "entry050",
   },
   {
-    status: "developing",
+    status: "done",
+    date: "2026.03.08",
+    updateType: "patch",
     translationKey: "entry051",
   },
   {
@@ -328,7 +330,9 @@ const rawRoadmapData: RoadmapItem[] = [
     translationKey: "entry052",
   },
   {
-    status: "planned",
+    status: "done",
+    date: "2026.03.20",
+    updateType: "minor",
     translationKey: "entry053",
   },
   {
@@ -600,6 +604,36 @@ const rawRoadmapData: RoadmapItem[] = [
   {
     status: "planned",
     translationKey: "entry100",
+  },
+  {
+    status: "done",
+    date: "2026.03.11",
+    updateType: "major",
+    translationKey: "entry101",
+  },
+  {
+    status: "done",
+    date: "2026.03.20",
+    updateType: "minor",
+    translationKey: "entry102",
+  },
+  {
+    status: "done",
+    date: "2026.03.20",
+    updateType: "patch",
+    translationKey: "entry103",
+  },
+  {
+    status: "done",
+    date: "2026.03.20",
+    updateType: "patch",
+    translationKey: "entry104",
+  },
+  {
+    status: "done",
+    date: "2026.03.26",
+    updateType: "patch",
+    translationKey: "entry105",
   },
 ];
 

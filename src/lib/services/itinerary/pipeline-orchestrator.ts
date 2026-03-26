@@ -85,8 +85,8 @@ const SEED_DEADLINE_MS = SPLIT_ROUTE_BUDGET_MS;
 const SPOTS_DEADLINE_MS = SPLIT_ROUTE_BUDGET_MS;
 // Cap the AI call timeout for the seed pipeline so we fall back sooner
 // instead of consuming the entire platform budget on a slow AI response.
-// Flash target is 15s; allow 2s margin before falling back to deterministic.
-const SEED_SEMANTIC_TIMEOUT_CAP_MS = 17_000;
+// gemini-3-flash-preview can take 17-18s; allow headroom before platform deadline.
+const SEED_SEMANTIC_TIMEOUT_CAP_MS = 19_000;
 
 // Structure phase: steps 0-6 (no narrative)
 const STRUCTURE_DEADLINE_MS = SPLIT_ROUTE_BUDGET_MS;
@@ -1231,7 +1231,7 @@ export async function runSpotCandidatesPipeline(input: {
             context: [],
             modelName: input.modelName,
             provider: input.provider as 'gemini' | 'openai',
-            temperature: 0.35,
+            temperature: 0.5,
             day: input.day,
             targetCandidateCount: perDayTarget,
             existingCandidates: input.accumulatedCandidates ?? [],

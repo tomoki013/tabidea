@@ -78,7 +78,7 @@ export const USER_TYPE_TO_TIER: Record<UserType, string> = {
 /** フェーズ別温度設定 */
 export const PHASE_TEMPERATURE: Record<AIPhase, number> = {
   spot_extraction: 0.1,
-  outline: 0.3,
+  outline: 0.5,
   chunk: 0.1,
   modify: 0.1,
 };

@@ -140,7 +140,7 @@ describe("getModelForPhase", () => {
     const result = getModelForPhase("outline", "free");
     expect(result.provider).toBe("gemini");
     expect(result.modelName).toContain("flash");
-    expect(result.temperature).toBe(0.3);
+    expect(result.temperature).toBe(0.5);
     consoleSpy.mockRestore();
   });
 

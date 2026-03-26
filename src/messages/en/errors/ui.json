@@ -16,6 +16,9 @@
         "saveFailed": "Failed to save the plan.",
         "outlineFailed": "Failed to generate the plan outline.",
         "regenerateFailed": "Failed to regenerate the plan. Please try again later.",
+        "regenerateTimeout": "AI response timed out. Please try again later.",
+        "regenerateNoEffect": "No changes were reflected in the plan. Try rephrasing your request.",
+        "apiKeyMissing": "AI service API key is not configured.",
         "generic": "An error occurred.",
         "timeout": "A network error or server timeout occurred.",
         "sampleNotFound": "The specified sample plan was not found."

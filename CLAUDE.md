@@ -56,6 +56,15 @@ For any UI change (new page/component/content update), multilingual support is m
 - All user-facing UI (pages, modals, toasts, OG/PDF text) must use i18n keys.
 - At minimum, support `ja` and `en`.
 
+### AI Generation Quality Rules (Required)
+
+Plan generation must rely on AI (Gemini) for spot/candidate selection. Generic or fabricated fallback content is strictly prohibited.
+
+- **No generic fallback spots**: Never generate placeholder candidates like "パリ 朝の散策", "東京 観光". If AI cannot produce real spot names, the pipeline MUST fail cleanly.
+- **Deterministic fallback = extraction only**: `buildDeterministicDayCandidates` may extract concrete place names already present in user input (mustVisitPlaces, freeText, anchorMoments). It MUST NOT invent new place names.
+- **Fail over fabricate**: When deterministic candidates are 0 for a day, return `[]` and let the pipeline surface a clean error. Never pad empty days with vague content.
+- **AI reliability is the solution**: Improve prompt quality, timeout budgets, retry logic, and recovery mechanisms. Do not work around AI failure by lowering output quality.
+
 ## Tech Stack
 
 - **Framework**: Next.js 16 with App Router

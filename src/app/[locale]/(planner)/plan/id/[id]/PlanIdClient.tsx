@@ -60,6 +60,8 @@ export default function PlanIdClient({
         return tError("apiKeyMissing");
       case "regenerate_no_effect":
         return tError("regenerateNoEffect");
+      case "regenerate_timeout":
+        return tError("regenerateTimeout");
       case "regenerate_failed":
       case "detail_generation_failed":
       case "chunk_generation_failed":
@@ -274,10 +276,10 @@ export default function PlanIdClient({
     <div className="flex flex-col min-h-screen bg-[#fcfbf9] overflow-x-clip">
       <main className="flex-1 w-full flex flex-col items-center overflow-x-clip pt-24 md:pt-28">
         {regenerateError && (
-          <div className="fixed top-4 right-4 z-50 bg-red-50 border border-red-200 rounded-lg p-4 shadow-lg max-w-md animate-in slide-in-from-top-4">
+          <div className="fixed top-4 right-4 z-50 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800 rounded-lg p-4 shadow-lg max-w-md animate-in slide-in-from-top-4">
             <div className="flex items-start gap-3">
               <svg
-                className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5"
+                className="w-5 h-5 text-red-500 dark:text-red-400 flex-shrink-0 mt-0.5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -290,11 +292,11 @@ export default function PlanIdClient({
                 />
               </svg>
               <div className="flex-1">
-                <p className="text-red-800 text-sm font-medium">{regenerateError}</p>
+                <p className="text-red-800 dark:text-red-200 text-sm font-medium">{regenerateError}</p>
               </div>
               <button
                 onClick={() => setRegenerateError(null)}
-                className="text-red-500 hover:text-red-700"
+                className="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
               >
                 <svg
                   className="w-5 h-5"

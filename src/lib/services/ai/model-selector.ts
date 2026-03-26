@@ -64,7 +64,7 @@ const OPENAI_MODEL_PRO = process.env.OPENAI_MODEL_ITINERARY_PRO || 'gpt-4o';
 
 /** フェーズ別温度設定 */
 const TEMPERATURE_CONFIG: Record<GenerationPhase, number> = {
-  outline: 0.3,  // 創造性と一貫性のバランス
+  outline: 0.5,  // 創造性と一貫性のバランス（RECITATION軽減のため0.3→0.5）
   details: 0.1,  // 正確性重視
   modify: 0.1,   // 既存プランの修正は保守的に
 };

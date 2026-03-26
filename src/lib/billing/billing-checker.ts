@@ -338,44 +338,86 @@ export async function checkAndConsumeQuota(
  * Handle Anonymous Usage (Delegate to existing RPC or simplified logic)
  */
 async function handleAnonymousUsage(action: ActionType, metadata?: any): Promise<LimitCheckResult> {
-  const supabase = await createClient();
-  const headersList = await headers();
-  const ip = headersList.get('x-forwarded-for')?.split(',')[0].trim() || '0.0.0.0';
-
-  const { data: hashData } = await supabase.rpc('get_ip_hash', { p_ip: ip });
-  const ipHash = hashData;
-
   const config = action === 'plan_generation'
     ? PLAN_GENERATION_LIMITS['anonymous']
     : TRAVEL_INFO_LIMITS['anonymous'];
 
-  const { data, error } = await supabase.rpc('check_and_record_usage', {
-    p_user_id: null,
-    p_ip_hash: ipHash,
-    p_action_type: action,
-    p_limit: config.limit,
-    p_period: config.period,
-    p_metadata: metadata || {},
-  });
+  try {
+    const supabase = await createClient();
+    const headersList = await headers();
 
-  if (error || !data.allowed) {
+    // Resolve client IP: try platform-specific headers first, then standard ones.
+    // Netlify uses x-nf-client-connection-ip for the actual client IP.
+    const ip =
+      headersList.get('x-nf-client-connection-ip')?.trim() ||
+      headersList.get('x-forwarded-for')?.split(',')[0].trim() ||
+      headersList.get('x-real-ip')?.trim() ||
+      '0.0.0.0';
+
+    const { data: hashData, error: hashError } = await supabase.rpc('get_ip_hash', { p_ip: ip });
+
+    if (hashError || !hashData) {
+      // IP hash RPC failed — fail-open to avoid blocking legitimate users
+      console.warn('[billing] get_ip_hash RPC failed, allowing anonymous usage:', hashError?.message ?? 'null hash');
+      return {
+        allowed: true,
+        source: 'anonymous',
+        limit: config.limit,
+        remaining: config.limit,
+        resetAt: null,
+      };
+    }
+
+    const { data, error } = await supabase.rpc('check_and_record_usage', {
+      p_user_id: null,
+      p_ip_hash: hashData,
+      p_action_type: action,
+      p_limit: config.limit,
+      p_period: config.period,
+      p_metadata: metadata || {},
+    });
+
+    if (error) {
+      // Usage check RPC failed — fail-open to avoid blocking legitimate users
+      console.warn('[billing] check_and_record_usage RPC failed, allowing anonymous usage:', error.message);
+      return {
+        allowed: true,
+        source: 'anonymous',
+        limit: config.limit,
+        remaining: config.limit,
+        resetAt: null,
+      };
+    }
+
+    if (!data.allowed) {
+      return {
+        allowed: false,
+        source: 'anonymous',
+        limit: config.limit,
+        remaining: 0,
+        resetAt: data.reset_at ? new Date(data.reset_at) : null,
+        error: 'Limit exceeded',
+      };
+    }
+
     return {
-      allowed: false,
+      allowed: true,
+      source: 'anonymous',
+      limit: data.limit,
+      remaining: data.remaining,
+      resetAt: data.reset_at ? new Date(data.reset_at) : null,
+    };
+  } catch (err) {
+    // Unexpected error — fail-open for anonymous users
+    console.error('[billing] handleAnonymousUsage unexpected error, allowing usage:', err);
+    return {
+      allowed: true,
       source: 'anonymous',
       limit: config.limit,
-      remaining: 0,
+      remaining: config.limit,
       resetAt: null,
-      error: 'Limit exceeded'
     };
   }
-
-  return {
-    allowed: true,
-    source: 'anonymous',
-    limit: data.limit,
-    remaining: data.remaining,
-    resetAt: data.reset_at ? new Date(data.reset_at) : null
-  };
 }
 
 

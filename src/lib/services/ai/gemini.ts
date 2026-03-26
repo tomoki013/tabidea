@@ -7,6 +7,7 @@ import {
   DayPlanInputSchema,
   DayPlanArrayResponseInputSchema,
   ItinerarySchema,
+  ModifyOutputSchema,
   LegacyItineraryResponseSchema,
   TransitInfoParsed,
   TransitInfoInput,
@@ -54,6 +55,8 @@ const MAX_RETRIES = 1;
 const RETRY_DELAY_MS = 500;
 /** Per-attempt timeout for generateObject calls (25 seconds) */
 const GENERATION_TIMEOUT_MS = 25_000;
+/** Shorter timeout for modify: leaves headroom for post-processing within platform limit */
+const MODIFY_TIMEOUT_MS = 25_000;
 
 // ============================================
 // Helper Functions
@@ -196,6 +199,32 @@ export function normalizeDayPlan(day: DayPlanInput): DayPlan {
     transit: normalizedTransit,
     activities: normalizedActivities,
     // timelineItems is constructed by buildTimeline() from transit + activities
+  };
+}
+
+/**
+ * Strip non-essential fields from an Itinerary before sending to modify prompt.
+ * Removes timelineItems, source objects, references, heroImage, ui_type, etc.
+ * to significantly reduce prompt size and speed up the AI call.
+ */
+function buildLeanPlanJson(plan: Itinerary): object {
+  return {
+    id: plan.id,
+    destination: plan.destination,
+    description: plan.description,
+    days: plan.days.map((day) => ({
+      day: day.day,
+      title: day.title,
+      ...(day.transit ? { transit: { type: day.transit.type, departure: day.transit.departure, arrival: day.transit.arrival, ...(day.transit.duration ? { duration: day.transit.duration } : {}), ...(day.transit.memo ? { memo: day.transit.memo } : {}) } } : {}),
+      activities: day.activities.map((act) => ({
+        time: act.time,
+        activity: act.activity,
+        description: act.description,
+        ...(act.activityType ? { activityType: act.activityType } : {}),
+        ...(act.searchQuery ? { searchQuery: act.searchQuery } : {}),
+        ...(act.locationEn ? { locationEn: act.locationEn } : {}),
+      })),
+    })),
   };
 }
 
@@ -362,11 +391,14 @@ ${prompt}`;
       generationType: 'modify',
     });
 
+    // Use lean plan JSON to reduce prompt size (strips timelineItems, sources, references, etc.)
+    const leanPlan = buildLeanPlanJson(currentPlan);
+
     const prompt = `
         ${sandwichSystem}
 
         CURRENT ITINERARY JSON:
-        ${JSON.stringify(currentPlan)}
+        ${JSON.stringify(leanPlan)}
 
         CONVERSATION HISTORY:
         ${conversationHistory}
@@ -376,32 +408,37 @@ ${prompt}`;
         2. KEEP all parts of the itinerary that the user did NOT ask to change EXACTLY THE SAME. Do not invent new changes.
         3. If the user asks to change a restaurant, time, or activity, update only that specific part.
         4. RETURN the FULL updated itinerary strictly following the schema.
-        5. Preserve the id, heroImage, and other metadata.
+        5. Preserve the id field.
      `;
 
     const { model, temperature, modelName } = this.getModel('modify', undefined, providerOverride);
     console.log(`[ai-service] Modify using model: ${modelName}, temperature: ${temperature}`);
 
+    // No retry for modify: platform timeout (~25s) leaves no room for a second attempt.
     const result = await withRetry(async () => {
       const { object } = await generateObject({
         model,
-        schema: ItinerarySchema,
+        schema: ModifyOutputSchema,
         prompt,
         temperature,
         maxTokens: 8192,
-        abortSignal: AbortSignal.timeout(GENERATION_TIMEOUT_MS),
+        abortSignal: AbortSignal.timeout(MODIFY_TIMEOUT_MS),
       });
       return object;
-    });
+    }, 0);
 
-    const references = result.references || currentPlan.references;
+    // Normalize relaxed day schema output to strict types
+    const normalizedDays = result.days.map(normalizeDayPlan);
 
     return {
-      ...result,
-      heroImage: result.heroImage ?? currentPlan.heroImage,
-      heroImagePhotographer: result.heroImagePhotographer ?? currentPlan.heroImagePhotographer,
-      heroImagePhotographerUrl: result.heroImagePhotographerUrl ?? currentPlan.heroImagePhotographerUrl,
-      references,
+      id: result.id,
+      destination: result.destination,
+      description: result.description,
+      days: normalizedDays,
+      heroImage: currentPlan.heroImage,
+      heroImagePhotographer: currentPlan.heroImagePhotographer,
+      heroImagePhotographerUrl: currentPlan.heroImagePhotographerUrl,
+      references: currentPlan.references,
     } as Itinerary;
   }
 
@@ -417,9 +454,14 @@ ${prompt}`;
       return await this._modifyItinerarySingle(currentPlan, chatHistory, modifyProvider);
     } catch (error) {
       console.error("Failed to modify itinerary", error);
-      throw new Error(
-        `旅程の修正に失敗しました。しばらくしてから再度お試しください。`
-      );
+      const originalMessage = error instanceof Error ? error.message : String(error);
+      const isTimeout = /timeout|timed out|aborted/i.test(originalMessage);
+      const message = isTimeout
+        ? 'AI応答がタイムアウトしました。しばらくしてから再度お試しください。'
+        : '旅程の修正に失敗しました。しばらくしてから再度お試しください。';
+      const wrapped = new Error(message);
+      wrapped.cause = error;
+      throw wrapped;
     }
   }
 

@@ -9,6 +9,14 @@
 
 ## 開発者向けコミット履歴（コミット単位）
 
+### 2026-03-26
+- `local` docs(updates): ユーザー向け更新履歴ページに 2026-03-08 以降の主要変更を追加。entry101〜105（生成エンジン刷新・飛行機/宿泊/移動手段表示・旅のプロ知識反映・生成速度改善・AI安定性向上）を新規追加。entry051（旅行中のメモ機能）を実装済みに、entry053（ホテル/飛行機プラン提案）を実装済みに更新。ja/en 翻訳を追加。
+- `local` fix(semantic-planner,recitation): Gemini の RECITATION（著作権フィルタ）で有名観光地のプラン生成が失敗する問題への多層対策。① RECITATION 専用検出関数 `isRecitationError()` を追加し、通常の JSON パースエラーと分離。② RECITATION 検出時に `gemini-2.5-flash` へモデルフォールバックする 2 段構えリトライを `generateStructuredJsonWithRecovery` に追加。③ seed / day / recovery プロンプトに著作権回避指示（オリジナル文章で書く・旅行ガイド常套句を避ける）を常設。④ outline temperature を 0.3→0.5 に引き上げ（Gemini 3 系は高 temperature 推奨、出力固定化→RECITATION を軽減）。⑤ テキストリカバリタイムアウトを seed 2.5s→5s / day 2s→4s / plan 4s→6s に延長。⑥ `regeneratePlan` の isTimeout 判定に日本語「タイムアウト」パターンを追加。⑦ seed タイムアウトキャップを 17s→19s に緩和。⑧ modify タイムアウトを 20s→25s に拡大。
+- `local` fix(semantic-planner,gemini): semantic planner の `resolveLanguageModel()` が API キーなしで `google(modelName)` を呼んでいたため全プラン生成が deterministic fallback に落ちる問題を修正。`createGoogleGenerativeAI({ apiKey })` パターンに変更し、`model-provider.ts` と同じ方式で API キーを明示渡しに統一。併せて `modifyItinerary` のエラーハンドリングでタイムアウト情報が握りつぶされ `regeneratePlan` 側でタイムアウト判定できない問題を修正。元エラーメッセージを検査し、タイムアウト時は「タイムアウト」を含むメッセージで再 throw するよう変更。
+
+### 2026-03-25
+- `local` revert(semantic-planner): broad-area fallback（「パリ 朝の散策」等の汎用候補生成）を撤回。AI が失敗した場合は汎用コンテンツでごまかさずパイプラインを失敗させる方針に変更。「AI 生成品質ルール」を CLAUDE.md・coding-rules.md・architecture.md に明文化。
+
 ### 2026-03-21
 - `local` fix(semantic-planner,recovery): semantic seed/day planner が Gemini structured output の途中切断で `Unterminated string in JSON` を返したあとも、同じ大きさの JSON を再要求して再度壊れる設計を見直した。① `generateStructuredJsonWithRecovery()` に phase-aware な 2 段階 text repair（compact → minimal）を追加し、1 回目の repair が再び途中切れでも 2 回目は optional fields を極力省いた最小 JSON を再送させて seed/day/plan を救済するよう変更。② repair 専用 maxTokens を phase ごとに縮小し、`orderingPreferences` / `fallbackHints` / `destinationHighlights` / `anchorMoments` / `tags` の件数上限を prompt + sanitize の両方で強制して、巨大 payload 自体を出しにくい設計へ変更。③ LLM 向け文字列上限も 800→500 に縮小して JSON 切断と semantic timeout を起こしにくくした。④ 「1 回目の repair が途中切れでも 2 回目の compact retry で回復する」回帰テストを追加し、設計意図を architecture docs に追記。
 - `claude/fix-ai-response-parsing-vY2pE` fix(semantic-planner,json-recovery): Gemini構造化出力の3種のパース失敗を根本修正。① トークン枯渇によるJSON切断（`Unterminated string in JSON`）対策として、LLMスキーマの文字列上限を2000→800に縮小し、maxTokensを8192→12288に拡大。プロンプトにフィールド簡潔化の指示を強化。② テキストリカバリ時のenum違反（`timeSlotHint`に時刻範囲、`role`に`regular`等）対策として、Zod検証前にenum値を自動補正する`coerceRecoveredJson()`を追加。リカバリプロンプトにもenum制約を明示。③ Geminiの`RECITATION`空レスポンス対策として、`isMalformedStructuredOutputError()`のパターンに`recitation`/空content検出を追加し、テキストリカバリへフォールバック。

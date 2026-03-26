@@ -98,6 +98,8 @@ interface StructuredJsonGenerationInput<T> {
   fallbackLabel: string;
   recoveryMode?: 'semantic_plan' | 'semantic_seed' | 'semantic_day';
   recoveryTimeoutMs?: number;
+  /** Fallback model to try when RECITATION is detected */
+  fallbackModelName?: string;
 }
 
 async function generateStructuredJsonWithRecovery<T>(
@@ -133,10 +135,40 @@ async function generateStructuredJsonWithRecovery<T>(
 
     return result.object as T;
   } catch (error) {
-    if (!isMalformedStructuredOutputError(error)) {
+    const recitation = isRecitationError(error);
+
+    if (!recitation && !isMalformedStructuredOutputError(error)) {
       throw error;
     }
 
+    // ── RECITATION: try fallback model first ──
+    if (recitation && input.fallbackModelName && input.fallbackModelName !== modelName) {
+      console.warn(
+        `[semantic-planner] ${fallbackLabel}: RECITATION detected, retrying with fallback model ${input.fallbackModelName}`
+      );
+      try {
+        const { generateObject: genObj } = await import('ai');
+        const fallbackModel = await resolveLanguageModel(provider, input.fallbackModelName);
+        const result = await genObj({
+          model: fallbackModel,
+          schema: llmSchema,
+          system,
+          prompt: prompt + RECITATION_AVOIDANCE_INSTRUCTION,
+          temperature: Math.min(temperature + 0.2, 1.0),
+          maxTokens,
+          maxRetries: 0,
+        });
+        return result.object as T;
+      } catch (fallbackError) {
+        console.warn(
+          `[semantic-planner] ${fallbackLabel}: fallback model also failed`,
+          summarizeRecoveryError(fallbackError)
+        );
+        // Fall through to text recovery
+      }
+    }
+
+    // ── Text recovery (JSON parse errors / RECITATION fallback failure) ──
     const diagnostics = extractMalformedStructuredOutputDiagnostics(error);
     console.warn(
       `[semantic-planner] ${fallbackLabel}: structured output JSON was malformed, retrying with compact text recovery`,
@@ -192,12 +224,12 @@ function getDefaultRecoveryTimeoutMs(
 ): number {
   switch (recoveryMode) {
     case 'semantic_seed':
-      return 2_500;
+      return 5_000;
     case 'semantic_day':
-      return 2_000;
+      return 4_000;
     case 'semantic_plan':
     default:
-      return 4_000;
+      return 6_000;
   }
 }
 
@@ -238,6 +270,7 @@ ENUM CONSTRAINTS (must use exact values):
 - indoorOutdoor: "indoor" | "outdoor" | "both"
 
 Keep all string fields concise. startArea/endArea must be area names only (max 50 chars).
+All descriptions must be original text written in your own words. Do not reproduce phrases from existing travel guides or copyrighted material.
 ${compact ? 'Prefer the minimum schema that still validates. Omit optional fields, tags, and long rationales unless strictly necessary.' : 'Keep optional fields short and only include them when they improve routing quality.'}`;
 }
 
@@ -369,6 +402,21 @@ function isMalformedStructuredOutputError(error: unknown): boolean {
     /unterminated string|unexpected end of json|json at position|jsonparse|ai_jsonparseerror|invalid json|expected .*[,}\]]|recitation|finishReason.*RECITATION|content.*role.*required|content.*parts.*required/i.test(message)
   );
 }
+
+function isRecitationError(error: unknown): boolean {
+  const messages = collectErrorMessages(error);
+  return messages.some((msg) =>
+    /recitation|finishReason.*RECITATION|resembles existing copyrighted/i.test(msg)
+  );
+}
+
+const RECITATION_AVOIDANCE_INSTRUCTION = `
+
+【重要】すべてのフィールド内容は完全にオリジナルの文章で記述すること。
+- 固有名詞（スポット名・エリア名・駅名）はそのまま使ってよい
+- description, summary, rationale などの説明文は自分の言葉で書く
+- 既存の旅行ガイドブック・ブログ・Wikipediaの表現をそのまま使わない
+- 「歴史情緒あふれる」「風情ある街並み」などの旅行ガイド常套句を避け、ユーザー条件に基づいた具体的な説明にする`;
 
 function collectErrorMessages(error: unknown): string[] {
   const visited = new Set<unknown>();
@@ -668,6 +716,7 @@ export async function runSemanticSeedPlanner(
     maxRetries: 0,
     fallbackLabel: 'semantic seed',
     recoveryMode: 'semantic_seed',
+    fallbackModelName: 'gemini-2.5-flash',
   });
 
   // Sanitize repetitive/oversized text before processing
@@ -784,6 +833,7 @@ export async function runSemanticDayPlanner(
     maxRetries: 0,
     fallbackLabel: `semantic day ${day}`,
     recoveryMode: 'semantic_day',
+    fallbackModelName: 'gemini-2.5-flash',
   });
 
   return sanitizeSemanticCandidates(
@@ -1253,6 +1303,7 @@ function buildSemanticSeedPrompt(request: NormalizedRequest): string {
   prompt += `\n12. ユーザーの希望に強く合うスポットを主軸にしつつ、その地域を初めて訪れても「ここに来た感」が出る代表スポットを自然に織り込む`;
   prompt += `\n13. あまり有名ではない地域でも、 generic な名前で埋めずに、駅前商店街・展望台・公園・市場・温泉街・資料館など、その土地で成立する具体的固有名詞を優先する`;
   prompt += `\n14. anchorMoments を入れる場合は各日最大2件までにし、各文は短く保つ`;
+  prompt += `\n15. 説明文はすべてオリジナルで書くこと。旅行ガイドの定型表現（「歴史情緒あふれる」「風情ある」等）を避け、ユーザーの旅行条件に基づいた具体的な記述にする`;
   prompt += `\n${SEED_EXPERTISE_RULES}`;
 
   return prompt;
@@ -1469,6 +1520,7 @@ ${mustVisitForDay.length > 0 ? mustVisitForDay.map((name) => `- ${name}`).join('
 11. 有名観光地では“定番だけで終わらない満足度”を重視し、無名寄りの地域では“generic 名禁止 + 実在する地元定番の具体名”を重視する
 12. rationale では「ユーザー希望」「代表スポット」「時間帯や導線」のどれを満たす候補か短く示す
 13. optional fields は最小限でよい。tags は原則不要、入れる場合でも最大2件まで
+14. すべての rationale・description はオリジナルの文章で記述し、旅行ガイドの定型表現を避ける。「なぜこのユーザーにこのスポットか」をユーザー条件ベースで書く
 ${DAY_EXPERTISE_RULES}`;
 }
 
@@ -1654,7 +1706,6 @@ function buildAreaAnchorFallback(
   };
 }
 
-
 // ============================================
 // Must-visit merging
 // ============================================
@@ -1810,10 +1861,14 @@ function applyHotelConstraintsToDayStructure(
 
 async function resolveLanguageModel(provider: AIProviderName, modelName: string) {
   if (provider === 'openai') {
-    const { openai } = await import('@ai-sdk/openai');
+    const { createOpenAI } = await import('@ai-sdk/openai');
+    const openai = createOpenAI({ apiKey: process.env.OPENAI_API_KEY });
     return openai(modelName);
   }
 
-  const { google } = await import('@ai-sdk/google');
+  const { createGoogleGenerativeAI } = await import('@ai-sdk/google');
+  const google = createGoogleGenerativeAI({
+    apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
+  });
   return google(modelName);
 }

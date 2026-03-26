@@ -584,6 +584,26 @@
           "entry100": {
             "title": "AI Search for Hotels & Flights",
             "description": "We are planning a feature where AI automatically searches for hotels and flights suitable for your destination and integrates them into your itinerary."
+          },
+          "entry101": {
+            "title": "Complete Overhaul of Itinerary Generation Engine",
+            "description": "We rebuilt our itinerary generation from the ground up. The new 7-step engine lets AI plan meaningful spots, verifies them with Google Maps, and builds optimal routes. Plans now stream results in real-time as they are generated."
+          },
+          "entry102": {
+            "title": "Automatic Flights, Hotels & Transit Display",
+            "description": "Plans now automatically show round-trip flights, daily accommodation cards, and transit modes (walking, bus, train, bullet train) between spots. Get a more practical itinerary that includes travel from your home city."
+          },
+          "entry103": {
+            "title": "Travel Expert Knowledge for Better Plans",
+            "description": "We integrated travel professional insights into our AI: golden rules for time-of-day planning (temples in early morning, museums after lunch), daily energy design, and patterns for arrival/full sightseeing/departure days."
+          },
+          "entry104": {
+            "title": "Dramatically Faster Plan Generation",
+            "description": "Spot generation for each day now runs up to 3 in parallel, reducing generation time for a 5-day trip from ~100 seconds to ~20 seconds."
+          },
+          "entry105": {
+            "title": "Improved AI Generation Stability & Reliability",
+            "description": "We introduced multiple layers of fault tolerance: automatic recovery from truncated AI responses, workarounds for copyright filter failures, and prevention of AI infinite repetition loops. Plan generation success rates have significantly improved."
           }
         }
       }

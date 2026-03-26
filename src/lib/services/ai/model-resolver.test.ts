@@ -25,7 +25,7 @@ describe("resolveModelForPhase", () => {
       const result = resolveModelForPhase("outline", "free", "gemini");
       expect(result.modelName).toBe("gemini-2.5-flash");
       expect(result.provider).toBe("gemini");
-      expect(result.temperature).toBe(0.3);
+      expect(result.temperature).toBe(0.5);
       expect(result.source).toBe("default");
     });
 
@@ -120,9 +120,9 @@ describe("resolveModelForPhase", () => {
   });
 
   describe("温度設定", () => {
-    it("outline → 0.3", () => {
+    it("outline → 0.5", () => {
       const result = resolveModelForPhase("outline", "free", "gemini");
-      expect(result.temperature).toBe(0.3);
+      expect(result.temperature).toBe(0.5);
     });
 
     it("chunk → 0.1", () => {

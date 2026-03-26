@@ -244,6 +244,24 @@ export const LegacyItineraryResponseSchema = z.object({
 });
 
 // ============================================
+// Modify Output スキーマ（modifyItinerary用 — 軽量版）
+// ============================================
+
+/**
+ * modifyItinerary 専用の出力スキーマ。
+ * heroImage・references・timelineItems 等を省略し、プロンプト＆トークンを節約。
+ * 出力後に normalizeDayPlan() で正規化する。
+ */
+export const ModifyOutputSchema = z.object({
+  id: z.string().describe('一意識別子'),
+  destination: z.string().describe('目的地'),
+  description: z.string().describe('説明'),
+  days: z.array(DayPlanInputSchema).min(1).describe('日程プラン'),
+});
+
+export type ModifyOutput = z.infer<typeof ModifyOutputSchema>;
+
+// ============================================
 // 型エクスポート
 // ============================================
 

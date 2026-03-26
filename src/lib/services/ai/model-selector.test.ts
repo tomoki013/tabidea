@@ -129,7 +129,7 @@ describe("model-selector", () => {
         premiumAiStatus: undefined,
       };
 
-      expect(selectModel({ ...input, phase: "outline" }).temperature).toBe(0.3);
+      expect(selectModel({ ...input, phase: "outline" }).temperature).toBe(0.5);
       expect(selectModel({ ...input, phase: "details" }).temperature).toBe(0.1);
       expect(selectModel({ ...input, phase: "modify" }).temperature).toBe(0.1);
     });
@@ -180,7 +180,7 @@ describe("model-selector", () => {
 
   describe("getTemperature", () => {
     it("returns correct temperature for each phase", () => {
-      expect(getTemperature("outline")).toBe(0.3);
+      expect(getTemperature("outline")).toBe(0.5);
       expect(getTemperature("details")).toBe(0.1);
       expect(getTemperature("modify")).toBe(0.1);
     });

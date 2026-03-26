@@ -297,7 +297,7 @@ describe('runSemanticSeedPlanner structured-output recovery', () => {
       generateText,
     }));
     vi.doMock('@ai-sdk/google', () => ({
-      google: vi.fn(() => ({ provider: 'google-model' })),
+      createGoogleGenerativeAI: vi.fn(() => () => ({ provider: 'google-model' })),
     }));
 
     const { runSemanticSeedPlanner } = await import('./semantic-planner');
@@ -333,7 +333,7 @@ describe('runSemanticSeedPlanner structured-output recovery', () => {
       generateText,
     }));
     vi.doMock('@ai-sdk/google', () => ({
-      google: vi.fn(() => ({ provider: 'google-model' })),
+      createGoogleGenerativeAI: vi.fn(() => () => ({ provider: 'google-model' })),
     }));
 
     const { runSemanticSeedPlanner } = await import('./semantic-planner');
@@ -364,7 +364,7 @@ describe('runSemanticSeedPlanner structured-output recovery', () => {
       generateText,
     }));
     vi.doMock('@ai-sdk/google', () => ({
-      google: vi.fn(() => ({ provider: 'google-model' })),
+      createGoogleGenerativeAI: vi.fn(() => () => ({ provider: 'google-model' })),
     }));
 
     const { runSemanticSeedPlanner } = await import('./semantic-planner');

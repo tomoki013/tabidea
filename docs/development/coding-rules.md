@@ -80,5 +80,12 @@
 
 ## 11. Legacy Exception
 
-テスト配置はcolocationが原則だが、現状 `src/lib/limits/__tests__/` にレガシー構成が残っています。  
+テスト配置はcolocationが原則だが、現状 `src/lib/limits/__tests__/` にレガシー構成が残っています。
 新規追加はcolocationを遵守し、既存`__tests__`は段階的に移行します。
+
+## 12. AI Content Quality (Required)
+
+- 候補スポット（`SemanticCandidate`）は AI（Gemini）が生成した具体的固有名詞か、ユーザー入力から抽出した実在スポット名のみ。
+- `{エリア} 観光`、`{エリア} 朝の散策` のような汎用名を TypeScript コードで fabricate するフォールバックは禁止。
+- AI 失敗時、deterministic fallback はユーザー入力に含まれる具体スポット名の抽出のみ行い、抽出 0 件なら空配列を返してパイプラインを失敗させる。
+- 「品質を下げてでも結果を出す」より「失敗して再試行を促す」を選ぶ。

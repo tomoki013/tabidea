@@ -16,6 +16,9 @@
         "saveFailed": "プランの保存に失敗しました。",
         "outlineFailed": "プラン概要の作成に失敗しました。",
         "regenerateFailed": "再生成に失敗しました。時間をおいて再試行してください。",
+        "regenerateTimeout": "AI応答がタイムアウトしました。時間をおいて再試行してください。",
+        "regenerateNoEffect": "プランに変更が反映されませんでした。別の表現で変更を依頼してみてください。",
+        "apiKeyMissing": "AIサービスのAPIキーが設定されていません。",
         "generic": "エラーが発生しました",
         "timeout": "ネットワークエラーまたはサーバータイムアウトが発生しました。",
         "sampleNotFound": "指定されたサンプルプランが見つかりませんでした。"

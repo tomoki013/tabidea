@@ -78,7 +78,7 @@ UserInput → [Seed API]
 - Pipeline version: `v3`
 - Narrative Renderer: `streamObject` で日ごとに部分 JSON を返し、`partialDays` 経由で UI に中間結果を配信
 - 主要なタイムアウト耐性は Background Job ではなく3つの設計で確保する: (1) スポット生成の並列化 (`mapWithConcurrency`, `deduplicateCandidates`), (2) Seed ルートの SSE ストリーミング (`readSSEStream`), (3) ナラティブ生成のチャンク分割 (`NARRATE_DAYS_PER_CHUNK=2`, `mergeChunkedNarrativeOutputs`)
-- Seed phase は唯一の “全日共通の前提生成” なので、AI seed が platform deadline に近づいた場合でも全体失敗にせず、`buildDeterministicSemanticSeedPlan()` で dayStructure / ordering / must-visit highlights を TS で再構成して day-by-day spots generation を継続する。これにより seed timeout が単発の 500 失敗へ直結しない
+- Seed phase は唯一の “全日共通の前提生成” なので、AI seed が platform deadline に近づいた場合でも全体失敗にせず、`buildDeterministicSemanticSeedPlan()` で dayStructure / ordering / must-visit highlights を TS で再構成して day-by-day spots generation を継続する。これにより seed timeout が単発の 500 失敗へ直結しない。ただし deterministic fallback はユーザー入力から抽出した具体スポット名のみ使用し、汎用的なスポット名の fabrication は禁止。抽出候補 0 件の日は空配列を返しパイプラインを失敗させる
 - split compose route の `maxDuration` は現在 25 秒だが、seed / spots のアプリ内 deadline はその full budget を使い切らない。実測では 24 秒台まで AI 呼び出しを引っ張ると、プラットフォーム側がログ flush・JSON serialize・response write の前に request を kill し、せっかくの deterministic fallback がクライアントへ届かないことがあった。そのため orchestrator は route cap より約 4 秒早い内部 deadline を使い、fallback 応答を確実に返す tail room を確保している。なお Next.js の segment config 制約上、route 側の `maxDuration` は各 route ファイルで literal のまま持ち、共通化は orchestrator の runtime budget 側で行う
 
 補足（サンプル再生成）:

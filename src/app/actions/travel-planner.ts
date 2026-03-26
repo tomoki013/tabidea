@@ -159,8 +159,17 @@ export async function regeneratePlan(
 
     return { success: true, data: newPlan };
   } catch (e) {
-    console.error("Regeneration failed", e);
-    return { success: false, message: "regenerate_failed" };
+    const errorMessage = e instanceof Error ? e.message : String(e);
+    const isTimeout = /timeout|timed out|aborted|タイムアウト/i.test(errorMessage);
+    console.error("Regeneration failed:", {
+      error: errorMessage,
+      isTimeout,
+      stack: e instanceof Error ? e.stack : undefined,
+    });
+    return {
+      success: false,
+      message: isTimeout ? "regenerate_timeout" : "regenerate_failed",
+    };
   }
 }
 
