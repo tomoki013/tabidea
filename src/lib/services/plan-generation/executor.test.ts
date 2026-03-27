@@ -25,6 +25,15 @@ vi.mock('./logger', () => {
   return { PlanGenerationLogger: MockLogger };
 });
 
+// Mock performance-timer
+vi.mock('@/lib/utils/performance-timer', () => ({
+  createV4PipelineTimer: vi.fn(() => ({
+    measure: vi.fn((_name: string, fn: () => Promise<unknown>) => fn()),
+    log: vi.fn(),
+    getReport: vi.fn(() => ({ operation: 'test', totalDuration: 0, steps: [], targets: [], timestamp: '' })),
+  })),
+}));
+
 import { executeNextPass } from './executor';
 import { loadSession, updateSession, transitionState } from './session-store';
 import { getPass } from './passes';
