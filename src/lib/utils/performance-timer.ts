@@ -375,3 +375,50 @@ export function createComposeTimer(modelTier?: ModelTier): PerformanceTimer {
   const targets = modelTier === 'pro' ? COMPOSE_TARGETS_PRO : COMPOSE_TARGETS_FLASH;
   return new PerformanceTimer('composePipeline', targets);
 }
+
+// ============================================
+// v4 Plan Generation Pipeline Targets
+// ============================================
+
+/**
+ * v4 Pipeline パス別目標時間 (Flash モデル)
+ * 各パスは個別の HTTP リクエストで実行される
+ */
+export const V4_PASS_TARGETS_FLASH: PerformanceTargets = {
+  normalize: 1_000,
+  draft_generate: 15_000,
+  rule_score: 500,
+  local_repair: 12_000,
+  selective_verify: 10_000,
+  timeline_construct: 2_000,
+  narrative_polish: 12_000,
+  total: 20_000, // per-request budget (not sum of all passes)
+};
+
+/**
+ * v4 Pipeline パス別目標時間 (Pro モデル)
+ */
+export const V4_PASS_TARGETS_PRO: PerformanceTargets = {
+  normalize: 1_000,
+  draft_generate: 25_000,
+  rule_score: 500,
+  local_repair: 18_000,
+  selective_verify: 10_000,
+  timeline_construct: 2_000,
+  narrative_polish: 18_000,
+  total: 24_000, // per-request budget
+};
+
+/**
+ * v4 Pipeline 用タイマーを作成
+ */
+export function createV4PipelineTimer(passId: string, modelTier?: ModelTier): PerformanceTimer {
+  const targets = modelTier === 'pro' ? V4_PASS_TARGETS_PRO : V4_PASS_TARGETS_FLASH;
+  // Extract target for this specific pass
+  const passTarget = targets[passId];
+  const passTargets: PerformanceTargets = {
+    ...(passTarget != null ? { [passId]: passTarget } : {}),
+    total: targets.total,
+  };
+  return new PerformanceTimer(`v4:${passId}`, passTargets);
+}

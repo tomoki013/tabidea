@@ -21,6 +21,7 @@ import { getPass } from './passes';
 import { PlanGenerationLogger } from './logger';
 import { PassExecutionError } from './errors';
 import { DEFAULT_RETRY_POLICIES, DEFAULT_QUALITY_POLICY } from './constants';
+import { createV4PipelineTimer } from '@/lib/utils/performance-timer';
 
 export interface ExecutorResult {
   passId: PassId;
@@ -74,6 +75,9 @@ export async function executeNextPass(
     qualityPolicy: DEFAULT_QUALITY_POLICY,
   };
 
+  // PerformanceTimer で計測
+  const timer = createV4PipelineTimer(passId);
+
   // パス実行
   const startedAt = new Date().toISOString();
   const startMs = Date.now();
@@ -81,7 +85,7 @@ export async function executeNextPass(
   let attempt = 1;
 
   try {
-    result = await passFn(ctx);
+    result = await timer.measure(passId, () => passFn(ctx));
   } catch (err) {
     // リトライ対象かチェック
     const errorName = err instanceof Error ? err.constructor.name : 'UnknownError';
@@ -92,7 +96,7 @@ export async function executeNextPass(
       attempt++;
       await new Promise(r => setTimeout(r, retryPolicy.backoffMs));
       try {
-        result = await passFn(ctx);
+        result = await timer.measure(`${passId}_retry`, () => passFn(ctx));
       } catch (retryErr) {
         result = {
           outcome: 'failed_terminal',
@@ -108,6 +112,9 @@ export async function executeNextPass(
       };
     }
   }
+
+  // パフォーマンスレポート出力
+  timer.log();
 
   // 結果に応じた処理
   let newState: SessionState = session.state;

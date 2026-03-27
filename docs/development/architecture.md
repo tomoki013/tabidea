@@ -118,6 +118,8 @@ UserInput → [Session Manager]
 
 **フィーチャーフラグ**: `NEXT_PUBLIC_ENABLE_V4_PIPELINE` (デフォルト `false`)。PlanClient.tsx で v3 (`useComposeGeneration`) と v4 (`usePlanGeneration`) を両方呼び出し、フラグで切替。v4 フックは `UseComposeGenerationReturn` 互換インターフェースを返すため、ComposeLoadingAnimation / StreamingResultView は変更不要。
 
+**観測性 (Observability)**: executor の各パス実行は `PerformanceTimer` (`createV4PipelineTimer`) で計測・ログ出力。finalize ルートで `EventLogger.logGeneration()` を呼び出し、`generation_logs` テーブルに pipeline='v4' メタデータ (sessionId, passCount, repairIterations, warningCount) を記録 (v3 パリティ)。`PlanGenerationLogger.logRunSummary()` がサマリを構築。
+
 - API: `POST /api/plan-generation/session` → `POST /api/plan-generation/session/[id]/run` → `POST /api/plan-generation/session/[id]/stream` (SSE) → `POST /api/plan-generation/session/[id]/finalize`
 - 型: `src/types/plan-generation.ts`
 - 実装: `src/lib/services/plan-generation/`
