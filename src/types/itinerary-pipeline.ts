@@ -448,7 +448,7 @@ export interface ComposedItinerary {
 
 export interface ComposePipelineMetadata {
   /** パイプラインバージョン */
-  pipelineVersion: 'v2' | 'v3';
+  pipelineVersion: 'v2' | 'v3' | 'v4';
   /** 候補数 */
   candidateCount: number;
   /** 照合成功数 */
