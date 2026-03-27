@@ -112,14 +112,21 @@ UserInput → [Session Manager]
 
 **9 軸スコアリング**: constraint_fit, preference_fit, destination_authenticity, day_flow_quality, temporal_realism, spatial_coherence, variety, editability, verification_risk。各軸 0-100 点、加重平均で全体スコアとパスグレード (pass/marginal/fail) を決定。
 
-- API: `POST /api/plan-generation/session` → `POST /api/plan-generation/session/[id]/run`
+**RAG コンテキスト**: narrative-polish パスは `PineconeRetriever` で目的地・テーマに関連する記事を検索し、ナラティブ生成のコンテキストとして注入。`Promise.race` で 2000ms タイムアウト、失敗時は空配列フォールバック。
+
+**SSE ストリーミング**: `narrativePolishPassStreaming()` は `streamNarrativeRendererWithResult()` を利用し、日ごとの `day_complete` イベントを SSE で配信。クライアントは `readSSEStream()` で受信し `partialDays` Map を逐次更新。
+
+**フィーチャーフラグ**: `NEXT_PUBLIC_ENABLE_V4_PIPELINE` (デフォルト `false`)。PlanClient.tsx で v3 (`useComposeGeneration`) と v4 (`usePlanGeneration`) を両方呼び出し、フラグで切替。v4 フックは `UseComposeGenerationReturn` 互換インターフェースを返すため、ComposeLoadingAnimation / StreamingResultView は変更不要。
+
+- API: `POST /api/plan-generation/session` → `POST /api/plan-generation/session/[id]/run` → `POST /api/plan-generation/session/[id]/stream` (SSE) → `POST /api/plan-generation/session/[id]/finalize`
 - 型: `src/types/plan-generation.ts`
 - 実装: `src/lib/services/plan-generation/`
 - パス: `src/lib/services/plan-generation/passes/` (normalize, draft-generate, rule-score, local-repair, selective-verify, timeline-construct, narrative-polish)
 - スコアリング: `src/lib/services/plan-generation/scoring/`
 - ブリッジ: `src/lib/services/plan-generation/bridges/`
+- クライアントフック: `src/lib/hooks/usePlanGeneration.ts`
 - Pipeline version: `v4`
-- v3 関数再利用: `resolvePlaces()`, `optimizeRoutes()`, `buildTimeline()`, `runNarrativeRenderer()`, `composedToItinerary()`
+- v3 関数再利用: `resolvePlaces()`, `optimizeRoutes()`, `buildTimeline()`, `runNarrativeRenderer()`, `streamNarrativeRendererWithResult()`, `composedToItinerary()`, `readSSEStream()`
 
 ### 3.3 Travel Info
 

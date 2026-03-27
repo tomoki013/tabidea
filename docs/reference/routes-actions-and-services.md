@@ -43,6 +43,8 @@
 | `POST /api/plan-generation/session` | `src/app/api/plan-generation/session/route.ts` | Create v4 generation session |
 | `GET /api/plan-generation/session/[id]` | `src/app/api/plan-generation/session/[id]/route.ts` | Get session state |
 | `POST /api/plan-generation/session/[id]/run` | `src/app/api/plan-generation/session/[id]/run/route.ts` | Execute next pass |
+| `POST /api/plan-generation/session/[id]/stream` | `src/app/api/plan-generation/session/[id]/stream/route.ts` | SSE streaming for narrative polish |
+| `POST /api/plan-generation/session/[id]/finalize` | `src/app/api/plan-generation/session/[id]/finalize/route.ts` | Convert completed session to Itinerary |
 
 ## 3. Server Actions
 
@@ -80,6 +82,7 @@
 - `src/lib/services/plan-generation/passes/` — 7パス (normalize, draft-generate, rule-score, local-repair, selective-verify, timeline-construct, narrative-polish)
 - `src/lib/services/plan-generation/scoring/` — 9軸ルブリック
 - `src/lib/services/plan-generation/bridges/` — DraftStop ↔ v3 型変換、Session → Itinerary
+- `src/lib/hooks/usePlanGeneration.ts` — v4 クライアントフック (UseComposeGenerationReturn 互換)
 
 ### RAG
 - `src/lib/services/rag/*`
