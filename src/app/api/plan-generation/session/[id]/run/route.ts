@@ -8,6 +8,8 @@ import type { PassBudget } from '@/types/plan-generation';
 import { executeNextPass } from '@/lib/services/plan-generation/executor';
 import { SessionNotFoundError, PassExecutionError, PassBudgetExceededError } from '@/lib/services/plan-generation/errors';
 import { REQUEST_DEADLINE_MS, PLATFORM_HEADROOM_MS } from '@/lib/services/plan-generation/constants';
+import { loadSession } from '@/lib/services/plan-generation/session-store';
+import { assertSessionAccess } from '@/lib/services/plan-generation/auth';
 
 export const maxDuration = 25;
 export const runtime = 'nodejs';
@@ -20,6 +22,13 @@ export async function POST(
 
   try {
     const { id } = await params;
+
+    // 所有権チェック
+    const session = await loadSession(id);
+    const accessError = await assertSessionAccess(session);
+    if (accessError) {
+      return NextResponse.json({ error: accessError }, { status: 403 });
+    }
 
     // PassBudget を HTTP デッドラインから構築
     const deadlineAt = requestStart + REQUEST_DEADLINE_MS - PLATFORM_HEADROOM_MS;

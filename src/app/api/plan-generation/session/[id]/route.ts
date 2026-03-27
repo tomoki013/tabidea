@@ -6,6 +6,7 @@
 import { NextResponse } from 'next/server';
 import { loadSession } from '@/lib/services/plan-generation/session-store';
 import { SessionNotFoundError } from '@/lib/services/plan-generation/errors';
+import { assertSessionAccess } from '@/lib/services/plan-generation/auth';
 
 export const runtime = 'nodejs';
 
@@ -16,6 +17,12 @@ export async function GET(
   try {
     const { id } = await params;
     const session = await loadSession(id);
+
+    // 所有権チェック
+    const accessError = await assertSessionAccess(session);
+    if (accessError) {
+      return NextResponse.json({ error: accessError }, { status: 403 });
+    }
 
     return NextResponse.json({
       id: session.id,
@@ -33,6 +40,7 @@ export async function GET(
       draftPlan: session.draftPlan
         ? {
             destination: session.draftPlan.destination,
+            description: session.draftPlan.description,
             dayCount: session.draftPlan.days.length,
             totalStops: session.draftPlan.days.reduce((s, d) => s + d.stops.length, 0),
           }

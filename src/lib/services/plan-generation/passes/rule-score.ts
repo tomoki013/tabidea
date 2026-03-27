@@ -6,7 +6,6 @@
 
 import type { PassContext, PassResult, EvaluationReport } from '@/types/plan-generation';
 import { evaluateDraft } from '../scoring/rubric-registry';
-import { QualityThresholdError } from '../errors';
 
 export async function ruleScorePass(ctx: PassContext): Promise<PassResult<EvaluationReport>> {
   const start = Date.now();

@@ -281,6 +281,18 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
           });
 
           if (!runRes.ok) {
+            // Budget exceeded — try to resume from last checkpoint
+            if (runRes.status === 408) {
+              const resumeRes = await fetch(
+                `/api/plan-generation/session/${sessionId}/resume`,
+                { method: "POST", signal },
+              );
+              if (resumeRes.ok) {
+                const resumeData = await resumeRes.json() as { resumedState: string };
+                sessionState = resumeData.resumedState;
+                continue;
+              }
+            }
             const payload = await runRes.json().catch(() => null);
             throw new Error(payload?.error ?? `Pass execution failed: ${runRes.status}`);
           }
