@@ -10,6 +10,7 @@
 ## 開発者向けコミット履歴（コミット単位）
 
 ### 2026-03-28
+- `local` feat(plan-generation): Phase 5 実装 — 運用強化。① セッションクリーンアップ — `cleanupExpiredSessions()` で TTL (デフォルト 7 日) 超過の completed/failed/cancelled セッションと関連 pass_runs/checkpoints を一括削除。`POST /api/plan-generation/cleanup` (CRON_SECRET 認証) で cron 呼び出し可能。② チェックポイント再開 — `POST /api/plan-generation/session/[id]/resume` で failed セッションを最後の成功状態に復元。`determineResumeState()` がセッション蓄積データから再開地点を自動判定。VALID_TRANSITIONS に `failed` → 中間状態の遷移を追加。③ エラー型活用 — executor で予算超過時に `PassBudgetExceededError` を throw (run ルートで 408 返却)、rule-score パスで error レベル違反+低スコア時に `qualityThresholdBreached` メタデータを付与。テスト 132 件全パス (既存 119 + 新規 13)。
 - `local` feat(plan-generation): Phase 4 実装 — 本番ハードニング。① PerformanceTimer 統合 — v4 パス別目標時間 (Flash/Pro) を `performance-timer.ts` に追加し、executor の各パス実行を `timer.measure()` で計測・ログ出力 (CLAUDE.md 必須要件)。② EventLogger 統合 — finalize ルートで `generation_logs` テーブルに v4 メタデータ (pipeline='v4', sessionId, passCount, repairIterations) を記録し v3 パリティを実現。③ PlanGenerationLogger 拡張 — `logRunSummary()` / `logCompletedSession()` で実行全体のサマリを EventLogger 経由で書き込み。④ stream ルートにも PerformanceTimer を追加し、narrative_polish の実行時間を計測。テスト 119 件全パス (既存 114 + 新規 5)。
 
 ### 2026-03-27

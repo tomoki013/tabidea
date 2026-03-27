@@ -201,4 +201,21 @@ describe('executeNextPass', () => {
       executeNextPass('test-session-id', createMockBudget()),
     ).rejects.toThrow('not registered');
   });
+
+  it('throws PassBudgetExceededError when budget is exhausted', async () => {
+    const session = createMockSession({ state: 'created' });
+    mockLoadSession.mockResolvedValueOnce(session);
+    mockGetPass.mockReturnValue(async () => ({ outcome: 'completed' as const, data: {}, warnings: [], durationMs: 0 }));
+
+    // Budget already expired
+    const expiredBudget: PassBudget = {
+      maxExecutionMs: 20_000,
+      deadlineAt: Date.now() - 1_000,
+      remainingMs: () => -1_000,
+    };
+
+    await expect(
+      executeNextPass('test-session-id', expiredBudget),
+    ).rejects.toThrow('exceeded budget');
+  });
 });

@@ -6,7 +6,7 @@
 import { NextResponse } from 'next/server';
 import type { PassBudget } from '@/types/plan-generation';
 import { executeNextPass } from '@/lib/services/plan-generation/executor';
-import { SessionNotFoundError, PassExecutionError } from '@/lib/services/plan-generation/errors';
+import { SessionNotFoundError, PassExecutionError, PassBudgetExceededError } from '@/lib/services/plan-generation/errors';
 import { REQUEST_DEADLINE_MS, PLATFORM_HEADROOM_MS } from '@/lib/services/plan-generation/constants';
 
 export const maxDuration = 25;
@@ -46,6 +46,18 @@ export async function POST(
   } catch (err) {
     if (err instanceof SessionNotFoundError) {
       return NextResponse.json({ error: 'Session not found' }, { status: 404 });
+    }
+    if (err instanceof PassBudgetExceededError) {
+      return NextResponse.json(
+        {
+          error: err.message,
+          passId: err.passId,
+          budgetMs: err.budgetMs,
+          actualMs: err.actualMs,
+          durationMs: Date.now() - requestStart,
+        },
+        { status: 408 },
+      );
     }
     if (err instanceof PassExecutionError) {
       return NextResponse.json(

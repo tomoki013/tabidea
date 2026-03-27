@@ -120,6 +120,10 @@ UserInput → [Session Manager]
 
 **観測性 (Observability)**: executor の各パス実行は `PerformanceTimer` (`createV4PipelineTimer`) で計測・ログ出力。finalize ルートで `EventLogger.logGeneration()` を呼び出し、`generation_logs` テーブルに pipeline='v4' メタデータ (sessionId, passCount, repairIterations, warningCount) を記録 (v3 パリティ)。`PlanGenerationLogger.logRunSummary()` がサマリを構築。
 
+**セッション管理**: `cleanupExpiredSessions(ttlDays=7)` で古いセッション (completed/failed/cancelled) を一括削除。`POST /api/plan-generation/cleanup` (CRON_SECRET 認証) で cron 対応。`POST /api/plan-generation/session/[id]/resume` で failed セッションを `determineResumeState()` が判定した最後の成功状態に復元し、/run ループで再開。
+
+**エラーハンドリング**: executor で予算超過時に `PassBudgetExceededError` (408)。rule-score パスで error 違反+低スコア時に `qualityThresholdBreached` メタデータを付与し、repair loop が対応。
+
 - API: `POST /api/plan-generation/session` → `POST /api/plan-generation/session/[id]/run` → `POST /api/plan-generation/session/[id]/stream` (SSE) → `POST /api/plan-generation/session/[id]/finalize`
 - 型: `src/types/plan-generation.ts`
 - 実装: `src/lib/services/plan-generation/`
