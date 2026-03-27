@@ -1,6 +1,6 @@
 # Architecture
 
-更新日: 2026-03-21
+更新日: 2026-03-27
 
 ## 1. System Overview
 
@@ -85,7 +85,43 @@ UserInput → [Seed API]
 - `src/scripts/generate-sample-itineraries.ts` は compose pipeline (`runComposePipeline`) を使用してサンプル旅程を生成
 - サンプル旅程JSONは `src/data/itineraries/{locale}/{id}.json`（`ja`/`en`）を優先参照
 
-### 3.2 Travel Info
+### 3.2 Plan Generation Pipeline v4 (LM-First / Harness-Controlled)
+
+v3 が「ステップごとに LLM → API → TS」で構成していたのに対し、v4 は「AI が全日程ドラフトを一括生成し、ルールベースのハーネスが評価・修復・検証する」アーキテクチャ。v3 のステップ関数を直接 import して再利用する。v3 と並行運用し、プロダクション置き換えは行わない。
+
+```
+UserInput → [Session Manager]
+         → [Pass A: Normalize] (TS) → NormalizedRequest
+         → [Pass B: Draft Generate] (Gemini, generateObject) → DraftPlan (全日程一括)
+         → [Pass C: Rule Score] (TS, 9-axis rubric) → EvaluationReport + passGrade
+         → [Repair Loop] (state machine 駆動)
+           → [Pass D: Local Repair] (Gemini, 違反箇所のみ再生成) → repaired DraftPlan
+           → [Pass C: Rule Score] (再評価)
+           → passGrade=pass or 反復上限 → ループ脱出
+         → [Pass E: Selective Verify] (Places API via resolvePlaces()) → VerifiedEntity[]
+         → [Pass F: Timeline Construct] (optimizeRoutes() + buildTimeline()) → TimelineState
+         → [Pass G: Narrative Polish] (runNarrativeRenderer()) → NarrativeState
+         → [Final Adapter] (composedToItinerary()) → Itinerary (後方互換)
+```
+
+**状態機械**: 11 状態 (`created` → `normalized` → `draft_generated` → `draft_scored` → repair loop → `verification_partial` → `timeline_ready` → `narrative_partial` → `completed`)。`VALID_TRANSITIONS` による合法遷移の検証。`decideAfterScoring()` で修復/前進を判定 (passGrade, repairHistory, improvement trend)。
+
+**パスコントラクト**: 全パスは `PassContext → Promise<PassResult<T>>` を実装。`PassResult` は `outcome` (`completed` / `partial` / `needs_retry` / `failed_terminal`) + `data` + `warnings`。
+
+**ブリッジ層**: `bridges/draft-to-v3.ts` が DraftStop ↔ v3 型 (SemanticCandidate, SelectedStop, DayStructure, TimelineDay) の双方向変換を提供。セッション内はコンパクト型 (TimelineDayCompact 等) で保存し、v3 関数呼び出し時に `reconstructTimelineDays()` で復元。
+
+**9 軸スコアリング**: constraint_fit, preference_fit, destination_authenticity, day_flow_quality, temporal_realism, spatial_coherence, variety, editability, verification_risk。各軸 0-100 点、加重平均で全体スコアとパスグレード (pass/marginal/fail) を決定。
+
+- API: `POST /api/plan-generation/session` → `POST /api/plan-generation/session/[id]/run`
+- 型: `src/types/plan-generation.ts`
+- 実装: `src/lib/services/plan-generation/`
+- パス: `src/lib/services/plan-generation/passes/` (normalize, draft-generate, rule-score, local-repair, selective-verify, timeline-construct, narrative-polish)
+- スコアリング: `src/lib/services/plan-generation/scoring/`
+- ブリッジ: `src/lib/services/plan-generation/bridges/`
+- Pipeline version: `v4`
+- v3 関数再利用: `resolvePlaces()`, `optimizeRoutes()`, `buildTimeline()`, `runNarrativeRenderer()`, `composedToItinerary()`
+
+### 3.3 Travel Info
 
 1. 目的地とカテゴリを入力
 2. カテゴリ権限制御
@@ -119,7 +155,7 @@ UserInput → [Seed API]
 ## 5. Domain Layer Mapping
 
 - `lib/services/ai`: モデル選択・生成戦略・プロンプト処理・Travel Expertise Layer（旅行知識ルール）
-- `lib/services/plan-generation`: 生成オーケストレーション
+- `lib/services/plan-generation`: v4 パイプライン (セッション管理、パス実行、状態機械、9 軸スコアリング、ブリッジ層)
 - `lib/services/rag`: 記事取得・検索
 - `lib/services/travel-info`: 渡航情報統合
 - `lib/services/replan`: 再計画ロジック
