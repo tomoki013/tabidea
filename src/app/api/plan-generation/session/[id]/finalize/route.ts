@@ -10,6 +10,7 @@ import { sessionToItinerary } from '@/lib/services/plan-generation/bridges/sessi
 import { SessionNotFoundError } from '@/lib/services/plan-generation/errors';
 import { PlanGenerationLogger } from '@/lib/services/plan-generation/logger';
 import { createPerformanceTimer } from '@/lib/utils/performance-timer';
+import { assertSessionAccess } from '@/lib/services/plan-generation/auth';
 
 export const maxDuration = 10;
 export const runtime = 'nodejs';
@@ -24,6 +25,12 @@ export async function POST(
     const { id } = await params;
 
     const session = await timer.measure('load_session', () => loadSession(id));
+
+    // 所有権チェック
+    const accessError = await assertSessionAccess(session);
+    if (accessError) {
+      return NextResponse.json({ error: accessError }, { status: 403 });
+    }
 
     if (session.state !== 'completed') {
       return NextResponse.json(

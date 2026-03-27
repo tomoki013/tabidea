@@ -10,6 +10,7 @@ import { SessionNotFoundError } from '@/lib/services/plan-generation/errors';
 import { REQUEST_DEADLINE_MS, PLATFORM_HEADROOM_MS, DEFAULT_RETRY_POLICIES, DEFAULT_QUALITY_POLICY } from '@/lib/services/plan-generation/constants';
 import { PlanGenerationLogger } from '@/lib/services/plan-generation/logger';
 import { createV4PipelineTimer } from '@/lib/utils/performance-timer';
+import { assertSessionAccess } from '@/lib/services/plan-generation/auth';
 
 export const maxDuration = 25;
 export const runtime = 'nodejs';
@@ -38,6 +39,15 @@ export async function POST(
 
       try {
         const session = await timer.measure('load_session', () => loadSession(id));
+
+        // 所有権チェック
+        const accessError = await assertSessionAccess(session);
+        if (accessError) {
+          emit('error', { message: accessError });
+          emit('done');
+          controller.close();
+          return;
+        }
 
         if (session.state !== 'timeline_ready') {
           emit('error', { message: `Invalid state for streaming: expected timeline_ready, got ${session.state}` });
