@@ -1,6 +1,6 @@
 # Routes, Actions, and Services Index
 
-更新日: 2026-03-03
+更新日: 2026-03-27
 
 ## 1. App Pages (Representative)
 
@@ -40,6 +40,9 @@
 | `POST /api/external/flights/search` | `src/app/api/external/flights/search/route.ts` | Flight candidate search |
 | `GET /api/og` | `src/app/api/og/route.tsx` | OG image generation |
 | `POST /api/webhooks/stripe` | `src/app/api/webhooks/stripe/route.ts` | Stripe webhook handling |
+| `POST /api/plan-generation/session` | `src/app/api/plan-generation/session/route.ts` | Create v4 generation session |
+| `GET /api/plan-generation/session/[id]` | `src/app/api/plan-generation/session/[id]/route.ts` | Get session state |
+| `POST /api/plan-generation/session/[id]/run` | `src/app/api/plan-generation/session/[id]/run/route.ts` | Execute next pass |
 
 ## 3. Server Actions
 
@@ -70,9 +73,13 @@
 - `src/lib/services/ai/*`
 - 役割: モデル選択、プロバイダ抽象化、生成戦略、スキーマ
 
-### Plan Generation
-- `src/lib/services/plan-generation/generate-outline.ts`
-- 役割: アウトライン生成オーケストレーション
+### Plan Generation (v4 Pipeline)
+- `src/lib/services/plan-generation/executor.ts` — パス実行オーケストレーター
+- `src/lib/services/plan-generation/state-machine.ts` — 状態遷移・次パス決定
+- `src/lib/services/plan-generation/session-store.ts` — セッション永続化
+- `src/lib/services/plan-generation/passes/` — 7パス (normalize, draft-generate, rule-score, local-repair, selective-verify, timeline-construct, narrative-polish)
+- `src/lib/services/plan-generation/scoring/` — 9軸ルブリック
+- `src/lib/services/plan-generation/bridges/` — DraftStop ↔ v3 型変換、Session → Itinerary
 
 ### RAG
 - `src/lib/services/rag/*`
