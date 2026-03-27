@@ -148,3 +148,11 @@ export const MAX_REASONABLE_STOPS_PER_DAY = 10;
 
 /** 1 日の最小ストップ数 */
 export const MIN_STOPS_PER_DAY = 2;
+
+// ============================================
+// Feature Flags
+// ============================================
+
+/** v4 パイプラインの有効化フラグ (NEXT_PUBLIC_ prefix でクライアント参照可能) */
+export const V4_PIPELINE_ENABLED =
+  process.env.NEXT_PUBLIC_ENABLE_V4_PIPELINE === 'true';
