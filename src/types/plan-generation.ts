@@ -48,7 +48,7 @@ export const VALID_TRANSITIONS: Record<SessionState, readonly SessionState[]> = 
   timeline_ready:         ['narrative_partial', 'completed', 'failed', 'cancelled'],
   narrative_partial:      ['completed', 'failed', 'cancelled'],
   completed:              [],
-  failed:                 ['created'],
+  failed:                 ['created', 'normalized', 'draft_generated', 'draft_scored', 'verification_partial', 'timeline_ready'],
   cancelled:              [],
 } as const;
 

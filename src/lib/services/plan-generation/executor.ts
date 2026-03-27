@@ -19,7 +19,7 @@ import { getNextPassForState, getStateAfterPassCompleted } from './state-machine
 import { loadSession, updateSession, transitionState } from './session-store';
 import { getPass } from './passes';
 import { PlanGenerationLogger } from './logger';
-import { PassExecutionError } from './errors';
+import { PassExecutionError, PassBudgetExceededError } from './errors';
 import { DEFAULT_RETRY_POLICIES, DEFAULT_QUALITY_POLICY } from './constants';
 import { createV4PipelineTimer } from '@/lib/utils/performance-timer';
 
@@ -74,6 +74,12 @@ export async function executeNextPass(
     retryPolicy,
     qualityPolicy: DEFAULT_QUALITY_POLICY,
   };
+
+  // 予算チェック: 残り時間が 0 以下なら実行前に打ち切り
+  const remainingMs = budget.remainingMs();
+  if (remainingMs <= 0) {
+    throw new PassBudgetExceededError(passId, budget.maxExecutionMs, budget.maxExecutionMs - remainingMs);
+  }
 
   // PerformanceTimer で計測
   const timer = createV4PipelineTimer(passId);

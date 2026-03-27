@@ -4,6 +4,7 @@ import {
   assertTransition,
   getNextPassForState,
   getStateAfterPassCompleted,
+  determineResumeState,
 } from './state-machine';
 import { InvalidStateTransitionError } from './errors';
 import { VALID_TRANSITIONS } from '@/types/plan-generation';
@@ -296,6 +297,72 @@ describe('getNextPassForState', () => {
 // ============================================
 // getStateAfterPassCompleted
 // ============================================
+
+describe('determineResumeState', () => {
+  it('returns created when session has no data', () => {
+    const session = createMockSession({ state: 'failed' });
+    expect(determineResumeState(session)).toBe('created');
+  });
+
+  it('returns normalized when only normalizedInput exists', () => {
+    const session = createMockSession({
+      state: 'failed',
+      normalizedInput: { destinations: ['Tokyo'], durationDays: 3 } as PlanGenerationSession['normalizedInput'],
+    });
+    expect(determineResumeState(session)).toBe('normalized');
+  });
+
+  it('returns draft_generated when draftPlan exists', () => {
+    const session = createMockSession({
+      state: 'failed',
+      normalizedInput: {} as PlanGenerationSession['normalizedInput'],
+      draftPlan: { destination: 'Tokyo', days: [] } as unknown as PlanGenerationSession['draftPlan'],
+    });
+    expect(determineResumeState(session)).toBe('draft_generated');
+  });
+
+  it('returns draft_scored when evaluationReport exists', () => {
+    const session = createMockSession({
+      state: 'failed',
+      normalizedInput: {} as PlanGenerationSession['normalizedInput'],
+      draftPlan: { destination: 'Tokyo', days: [] } as unknown as PlanGenerationSession['draftPlan'],
+      evaluationReport: { overallScore: 65, passGrade: 'marginal' } as unknown as EvaluationReport,
+    });
+    expect(determineResumeState(session)).toBe('draft_scored');
+  });
+
+  it('returns timeline_ready when timelineState exists', () => {
+    const session = createMockSession({
+      state: 'failed',
+      normalizedInput: {} as PlanGenerationSession['normalizedInput'],
+      draftPlan: { destination: 'Tokyo', days: [] } as unknown as PlanGenerationSession['draftPlan'],
+      evaluationReport: { overallScore: 75, passGrade: 'pass' } as unknown as EvaluationReport,
+      verifiedEntities: [{ name: 'Tokyo Tower' }] as unknown as PlanGenerationSession['verifiedEntities'],
+      timelineState: { days: [] } as unknown as PlanGenerationSession['timelineState'],
+    });
+    expect(determineResumeState(session)).toBe('timeline_ready');
+  });
+
+  it('returns verification_partial when verifiedEntities exist but no timelineState', () => {
+    const session = createMockSession({
+      state: 'failed',
+      normalizedInput: {} as PlanGenerationSession['normalizedInput'],
+      draftPlan: { destination: 'Tokyo', days: [] } as unknown as PlanGenerationSession['draftPlan'],
+      evaluationReport: { overallScore: 75, passGrade: 'pass' } as unknown as EvaluationReport,
+      verifiedEntities: [{ name: 'Tokyo Tower' }] as unknown as PlanGenerationSession['verifiedEntities'],
+    });
+    expect(determineResumeState(session)).toBe('verification_partial');
+  });
+});
+
+describe('failed → resume transitions are valid', () => {
+  const resumeTargets: SessionState[] = ['created', 'normalized', 'draft_generated', 'draft_scored', 'verification_partial', 'timeline_ready'];
+  for (const target of resumeTargets) {
+    it(`failed → ${target} is allowed`, () => {
+      expect(validateTransition('failed', target)).toBe(true);
+    });
+  }
+});
 
 describe('getStateAfterPassCompleted', () => {
   const expected: [PassId, SessionState][] = [

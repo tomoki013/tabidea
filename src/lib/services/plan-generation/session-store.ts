@@ -180,6 +180,58 @@ export async function appendPassRun(
   }
 }
 
+// ============================================
+// Cleanup
+// ============================================
+
+/** セッション TTL (デフォルト 7 日) */
+const SESSION_TTL_DAYS = 7;
+
+/**
+ * TTL を超過した古いセッションを削除する。
+ * completed / failed / cancelled のみ対象 (進行中は除外)。
+ * @returns 削除件数
+ */
+export async function cleanupExpiredSessions(
+  ttlDays: number = SESSION_TTL_DAYS,
+): Promise<number> {
+  const client = getClient();
+  const cutoff = new Date(Date.now() - ttlDays * 24 * 60 * 60 * 1000).toISOString();
+
+  // まず対象セッションの ID を取得
+  const { data: sessions, error: selectError } = await client
+    .from('generation_sessions')
+    .select('id')
+    .in('state', ['completed', 'failed', 'cancelled'] satisfies SessionState[])
+    .lt('updated_at', cutoff);
+
+  if (selectError || !sessions) {
+    console.error('[session-store] cleanup select failed:', selectError?.message);
+    return 0;
+  }
+
+  if (sessions.length === 0) return 0;
+
+  const ids = sessions.map(s => s.id as string);
+
+  // 関連テーブルを先に削除 (FK 制約)
+  await client.from('generation_checkpoints').delete().in('session_id', ids);
+  await client.from('generation_pass_runs').delete().in('session_id', ids);
+
+  const { error: deleteError, count } = await client
+    .from('generation_sessions')
+    .delete({ count: 'exact' })
+    .in('id', ids);
+
+  if (deleteError) {
+    console.error('[session-store] cleanup delete failed:', deleteError.message);
+    return 0;
+  }
+
+  console.log(`[session-store] cleaned up ${count ?? 0} expired sessions (cutoff: ${cutoff})`);
+  return count ?? 0;
+}
+
 /** チェックポイント保存 */
 export async function saveCheckpoint(
   sessionId: string,

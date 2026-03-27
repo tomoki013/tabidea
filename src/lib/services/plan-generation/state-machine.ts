@@ -87,6 +87,20 @@ function decideAfterScoring(session: PlanGenerationSession): PassId {
   return 'local_repair';
 }
 
+/**
+ * failed セッションから再開可能な最新の状態を判定する。
+ * セッションに保存されたデータから、最後に成功したパスの完了状態を返す。
+ */
+export function determineResumeState(session: PlanGenerationSession): SessionState {
+  // 最も進んだ状態から逆順でチェック
+  if (session.timelineState) return 'timeline_ready';
+  if (session.verifiedEntities && session.verifiedEntities.length > 0) return 'verification_partial';
+  if (session.evaluationReport) return 'draft_scored';
+  if (session.draftPlan) return 'draft_generated';
+  if (session.normalizedInput) return 'normalized';
+  return 'created';
+}
+
 /** 状態遷移後の SessionState を PassId + PassOutcome から導出 */
 const PASS_COMPLETED_STATE: Record<PassId, SessionState> = {
   normalize:          'normalized',

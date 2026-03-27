@@ -45,6 +45,8 @@
 | `POST /api/plan-generation/session/[id]/run` | `src/app/api/plan-generation/session/[id]/run/route.ts` | Execute next pass |
 | `POST /api/plan-generation/session/[id]/stream` | `src/app/api/plan-generation/session/[id]/stream/route.ts` | SSE streaming for narrative polish |
 | `POST /api/plan-generation/session/[id]/finalize` | `src/app/api/plan-generation/session/[id]/finalize/route.ts` | Convert completed session to Itinerary |
+| `POST /api/plan-generation/session/[id]/resume` | `src/app/api/plan-generation/session/[id]/resume/route.ts` | Resume failed session from last checkpoint |
+| `POST /api/plan-generation/cleanup` | `src/app/api/plan-generation/cleanup/route.ts` | Cleanup expired sessions (CRON_SECRET auth) |
 
 ## 3. Server Actions
 
