@@ -15,6 +15,7 @@ import ShioriPromotionSection from '@/components/features/shiori/ShioriPromotion
 import { PostTripReflection } from '@/components/features/feedback/PostTripReflection';
 import { usePostTripReminder } from '@/lib/hooks/usePostTripReminder';
 import { submitReflection } from '@/app/actions/reflection';
+import { buildResolvedRegenerationState, type ResolvedRegenerationState } from '@/lib/utils/travel-planner-chat';
 
 interface PlanCodeClientProps {
   plan: Plan;
@@ -51,6 +52,8 @@ export default function PlanCodeClient({
   const [chatHistoryToKeep, setChatHistoryToKeep] = useState<
     { role: string; text: string }[]
   >(initialChatMessages?.map(m => ({ role: m.role === 'assistant' ? 'model' : 'user', text: m.content })) || []);
+  const [resolvedRegeneration, setResolvedRegeneration] = useState<ResolvedRegenerationState | null>(null);
+  const [chatSessionKey, setChatSessionKey] = useState(0);
   const [isEditingRequest, setIsEditingRequest] = useState(false);
   const [initialEditStep, setInitialEditStep] = useState(0);
   const [isNewPlanModalOpen, setIsNewPlanModalOpen] = useState(false);
@@ -130,20 +133,29 @@ export default function PlanCodeClient({
   ) => {
     const planToUse = overridePlan || result;
     if (!planToUse || !input) return;
+    const persistedHistory =
+      chatHistory.length > 0 &&
+      chatHistory[chatHistory.length - 1]?.role === "user" &&
+      chatHistory[chatHistory.length - 1]?.text === tPlan("regenerateInstruction")
+        ? chatHistory.slice(0, -1)
+        : chatHistory;
 
-    setChatHistoryToKeep(chatHistory);
+    setResolvedRegeneration(null);
+    setChatHistoryToKeep(persistedHistory);
     setStatus('regenerating');
 
     try {
       const response = await regeneratePlan(planToUse, chatHistory);
       if (response.success && response.data) {
         setResult(response.data);
+        setResolvedRegeneration(buildResolvedRegenerationState(persistedHistory));
+        setChatSessionKey((prev) => prev + 1);
         setStatus('idle');
 
         // Save to DB if owner
         if (isOwner && isAuthenticated) {
           await savePlanToDb(response.data);
-          await saveChatToDb(chatHistory);
+          await saveChatToDb(persistedHistory);
         }
 
         // Scroll to top
@@ -186,6 +198,10 @@ export default function PlanCodeClient({
     }
   }, [isOwner, isAuthenticated, saveChatToDb]);
 
+  const handleResolvedRegenerationClear = useCallback(() => {
+    setResolvedRegeneration(null);
+  }, []);
+
   const handleEditRequest = (stepIndex: number) => {
     setInitialEditStep(stepIndex);
     setIsEditingRequest(true);
@@ -219,6 +235,9 @@ export default function PlanCodeClient({
           isUpdating={status === 'regenerating'}
           onEditRequest={handleEditRequest}
           initialChatHistory={chatHistoryToKeep}
+          resolvedRegeneration={resolvedRegeneration}
+          onResolvedRegenerationClear={handleResolvedRegenerationClear}
+          chatSessionKey={chatSessionKey}
           shareCode={shareCode}
           planId={plan.id}
           showChat={false}

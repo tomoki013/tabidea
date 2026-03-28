@@ -1,14 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { UserInput } from "@/types";
 import { useLimitModals } from "@/lib/hooks";
 import { usePlanGeneration } from "@/lib/hooks/usePlanGeneration";
 import SimplifiedInputFlow from "./SimplifiedInputFlow";
-import ComposeLoadingAnimation from "./ComposeLoadingAnimation";
-import StreamingResultView from "./StreamingResultView";
 import { LoginPromptModal } from "@/components/ui/LoginPromptModal";
 import { LimitExceededModal } from "@/components/ui/LimitExceededModal";
 import {
@@ -53,11 +52,9 @@ const DEFAULT_INPUT: UserInput = {
 
 export default function TravelPlannerSimplified({
   initialInput,
-  onClose,
   isInModal = false,
 }: TravelPlannerSimplifiedProps) {
   const t = useTranslations("components.features.planner.travelPlannerSimplified");
-  const router = useRouter();
   const searchParams = useSearchParams();
   const shouldRestore = searchParams.get("restore") === "true";
 
@@ -176,56 +173,6 @@ export default function TravelPlannerSimplified({
   );
 
   // ========================================
-  // Render: Compose Pipeline — Streaming Day Cards
-  // ========================================
-  if (compose.isGenerating && compose.currentStep === 'narrative_render' && compose.partialDays.size > 0) {
-    return (
-      <StreamingResultView
-        composeMode
-        composeSteps={compose.steps}
-        composeCurrentStep={compose.currentStep}
-        partialComposeDays={compose.partialDays}
-        totalDays={compose.totalDays}
-        previewDestination={compose.previewDestination}
-        previewDescription={compose.previewDescription}
-        input={input}
-      />
-    );
-  }
-
-  // ========================================
-  // Render: Compose Pipeline Loading
-  // ========================================
-  if (compose.isGenerating) {
-    return (
-      <ComposeLoadingAnimation
-        steps={compose.steps}
-        currentStep={compose.currentStep}
-        previewDestination={compose.previewDestination}
-        previewDescription={compose.previewDescription}
-        totalDays={compose.totalDays}
-      />
-    );
-  }
-
-  // ========================================
-  // Render: Completion State (Before Route Transition)
-  // ========================================
-  if (compose.isCompleted) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center p-8">
-        <div className="h-12 w-12 rounded-full border-4 border-primary/30 border-t-primary animate-spin" />
-        <p className="text-lg font-bold text-stone-900 dark:text-stone-100">
-          {t("success.title")}
-        </p>
-        <p className="text-sm text-stone-600 dark:text-stone-300">
-          {t("success.description")}
-        </p>
-      </div>
-    );
-  }
-
-  // ========================================
   // Render: Compose Pipeline Error
   // ========================================
   if (compose.errorMessage) {
@@ -245,12 +192,12 @@ export default function TravelPlannerSimplified({
         </button>
         <p className="text-stone-600 text-sm mt-2">
           {t("contact.prefix")}
-          <a
+          <Link
             href="/contact"
             className="text-primary hover:underline font-medium ml-1"
           >
             {t("contact.link")}
-          </a>
+          </Link>
           {t("contact.suffix")}
         </p>
       </div>
@@ -355,7 +302,7 @@ export default function TravelPlannerSimplified({
         input={input}
         onChange={handleChange}
         onGenerate={handleGenerate}
-        isGenerating={false}
+        isGenerating={compose.isGenerating}
         isInModal={isInModal}
       />
 

@@ -120,6 +120,8 @@ export interface PlaceSearchResult {
   searchTime: number;
   /** エラーメッセージ */
   error?: string;
+  /** エラーコード */
+  errorCode?: PlacesApiErrorCode;
 }
 
 /**
@@ -148,7 +150,12 @@ export interface PlaceValidationResult {
     photos?: PlacePhoto[];
     googleMapsUrl: string;
   };
+  /** Places API エラーコード */
+  errorCode?: PlacesApiErrorCode;
 }
+
+export type PlacesDegradedReason = 'quota_exceeded';
+export type PlacesWarningCode = 'places_quota_exceeded';
 
 // ============================================
 // Cache Types
@@ -210,6 +217,10 @@ export interface PlacesSearchResponse {
   error?: string;
   /** キャッシュからの取得か */
   fromCache?: boolean;
+  /** 劣化理由 */
+  degradedReason?: PlacesDegradedReason;
+  /** 警告コード */
+  warningCode?: PlacesWarningCode;
 }
 
 // ============================================

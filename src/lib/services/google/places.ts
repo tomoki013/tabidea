@@ -13,6 +13,7 @@ import type {
   PlaceSearchResult,
   PlaceValidationResult,
   PlacesApiErrorCode,
+  PlacesWarningCode,
 } from '@/types/places';
 import { PlacesApiError } from '@/types/places';
 import { extractSearchableDestination } from '@/lib/utils/plan';
@@ -29,6 +30,7 @@ const DEFAULT_TIMEOUT = 10000;
 
 /** 取得する写真の最大数 */
 const MAX_PHOTOS = 3;
+const PLACES_QUOTA_WARNING_CODE: PlacesWarningCode = 'places_quota_exceeded';
 
 /** 取得するフィールド */
 const PLACE_FIELDS = [
@@ -188,6 +190,7 @@ export class GooglePlacesService {
           found: false,
           searchTime: Date.now() - startTime,
           error: error.message,
+          errorCode: error.code,
         };
       }
       throw error;
@@ -218,7 +221,7 @@ export class GooglePlacesService {
   }
 
   /**
-   * リトライ付き検索（OVER_QUERY_LIMIT, TIMEOUT に対して指数バックオフ）
+   * リトライ付き検索（TIMEOUT に対して指数バックオフ）
    */
   private async performSearchWithRetry(
     textQuery: string,
@@ -237,7 +240,7 @@ export class GooglePlacesService {
       } catch (error) {
         if (
           error instanceof PlacesApiError &&
-          (error.code === 'OVER_QUERY_LIMIT' || error.code === 'TIMEOUT') &&
+          error.code === 'TIMEOUT' &&
           attempt < MAX_RETRIES
         ) {
           await this.delay(BASE_DELAY * Math.pow(2, attempt));
@@ -306,7 +309,6 @@ export class GooglePlacesService {
     queries: Array<{ searchQuery: string; near?: string; locationEn?: string }>,
     options?: { topK?: number; delayMs?: number }
   ): Promise<Map<string, PlaceSearchResult[]>> {
-    const topK = options?.topK ?? 1;
     const delayMs = options?.delayMs ?? 100;
     const results = new Map<string, PlaceSearchResult[]>();
 
@@ -325,11 +327,21 @@ export class GooglePlacesService {
           searchResults.push(result);
         }
 
+        if (result.errorCode === 'OVER_QUERY_LIMIT') {
+          throw new PlacesApiError(
+            result.error || 'Quota exceeded for Places API',
+            result.errorCode,
+          );
+        }
+
         // topK > 1 の場合、追加検索 (Phase 1 では k=1 がデフォルト)
         // 将来の拡張用に interface を用意
 
         results.set(q.searchQuery, searchResults);
-      } catch {
+      } catch (error) {
+        if (error instanceof PlacesApiError && error.code === 'OVER_QUERY_LIMIT') {
+          throw error;
+        }
         results.set(q.searchQuery, [{
           found: false,
           searchTime: 0,
@@ -368,6 +380,7 @@ export class GooglePlacesService {
         isVerified: false,
         confidence: 'unverified',
         source: 'google_places',
+        errorCode: result.errorCode,
       };
     }
 
@@ -707,6 +720,18 @@ export class GooglePlacesService {
     const code = codeMap[status] || 'UNKNOWN_ERROR';
 
     return new PlacesApiError(errorMessage, code, errorData);
+  }
+
+  static isQuotaExceededCode(code?: PlacesApiErrorCode): boolean {
+    return code === 'OVER_QUERY_LIMIT';
+  }
+
+  static isQuotaExceededWarningCode(code?: string): code is PlacesWarningCode {
+    return code === PLACES_QUOTA_WARNING_CODE;
+  }
+
+  static getQuotaExceededWarningCode(): PlacesWarningCode {
+    return PLACES_QUOTA_WARNING_CODE;
   }
 
   private delay(ms: number): Promise<void> {

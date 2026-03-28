@@ -6,7 +6,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import type { PlaceValidationResult } from '@/types/places';
+import type { PlaceValidationResult, PlacesWarningCode } from '@/types/places';
 
 // ============================================
 // Types
@@ -19,6 +19,8 @@ export interface UsePlaceDetailsReturn {
   isLoading: boolean;
   /** エラー */
   error: string | null;
+  /** 警告コード */
+  warningCode: PlacesWarningCode | null;
   /** キャッシュから取得したか */
   fromCache: boolean;
   /** 詳細を取得する */
@@ -103,6 +105,7 @@ export function usePlaceDetails(
   const [details, setDetails] = useState<PlaceValidationResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [warningCode, setWarningCode] = useState<PlacesWarningCode | null>(null);
   const [fromCache, setFromCache] = useState(false);
 
   const fetchDetails = useCallback(async () => {
@@ -111,6 +114,7 @@ export function usePlaceDetails(
 
     setIsLoading(true);
     setError(null);
+    setWarningCode(null);
 
     try {
       const cleanedName = searchQuery || cleanSpotName(spotName);
@@ -134,6 +138,7 @@ export function usePlaceDetails(
 
       setDetails(data.validation || null);
       setFromCache(data.fromCache || false);
+      setWarningCode(data.warningCode || null);
     } catch (err) {
       const message =
         err instanceof Error ? err.message : '詳細を取得できませんでした';
@@ -147,6 +152,7 @@ export function usePlaceDetails(
     setDetails(null);
     setIsLoading(false);
     setError(null);
+    setWarningCode(null);
     setFromCache(false);
   }, []);
 
@@ -154,6 +160,7 @@ export function usePlaceDetails(
     details,
     isLoading,
     error,
+    warningCode,
     fromCache,
     fetchDetails,
     reset,

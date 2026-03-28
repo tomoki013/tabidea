@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useChat } from "ai/react";
 import type { Message } from "ai";
 import { usePathname } from "next/navigation";
@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 import { Itinerary } from '@/types';
 import ModelBadge from "@/components/ui/ModelBadge";
 import { localizeHref, resolveLanguageFromPathname } from "@/lib/i18n/navigation";
+import type { ResolvedRegenerationState } from "@/lib/utils/travel-planner-chat";
 
 const REGEN_READY_TAG = "[[REGEN_READY]]";
 
@@ -22,12 +23,16 @@ export default function TravelPlannerChat({
   isRegenerating = false,
   initialChatHistory,
   onChatChange,
+  resolvedRegeneration,
+  onResolvedRegenerationClear,
 }: {
   itinerary: Itinerary;
   onRegenerate: (history: { role: string; text: string }[]) => void;
   isRegenerating?: boolean;
   initialChatHistory?: { role: string; text: string }[];
   onChatChange?: (messages: { role: string; text: string }[]) => void;
+  resolvedRegeneration?: ResolvedRegenerationState | null;
+  onResolvedRegenerationClear?: () => void;
 }) {
   const pathname = usePathname();
   const language = resolveLanguageFromPathname(pathname);
@@ -40,6 +45,7 @@ export default function TravelPlannerChat({
   const suggestionChips = Array.isArray(suggestionChipsRaw)
     ? suggestionChipsRaw.filter((chip): chip is string => typeof chip === "string")
     : [];
+  const [isResolvedHistoryExpanded, setIsResolvedHistoryExpanded] = useState(false);
 
   const initialMessages: Message[] =
     initialChatHistory && initialChatHistory.length > 0
@@ -67,6 +73,7 @@ export default function TravelPlannerChat({
   const latestAssistantMessageIdWithReadyTag = [...messages]
     .reverse()
     .find((m) => m.role === "assistant" && hasRegenReadyTag(m.content))?.id;
+  const shouldShowResolvedSummary = Boolean(resolvedRegeneration);
 
   // Auto-scroll to bottom within chat container when messages change
   useEffect(() => {
@@ -104,6 +111,7 @@ export default function TravelPlannerChat({
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!input.trim() || isLoading || isRegenerating) return;
+    onResolvedRegenerationClear?.();
     handleSubmit(e);
   };
 
@@ -129,8 +137,56 @@ export default function TravelPlannerChat({
               {tChat("emptyState")}
             </p>
           )}
-          {messages.map((m) => {
+          {shouldShowResolvedSummary && (
+            <div className="rounded-2xl border border-emerald-200 bg-emerald-50/80 p-4 sm:p-5 shadow-xs dark:border-emerald-800 dark:bg-emerald-950/40">
+              <div className="flex items-start gap-3">
+                <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/80 dark:text-emerald-200">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.8}
+                    stroke="currentColor"
+                    className="h-4 w-4"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-bold text-emerald-900 dark:text-emerald-100">
+                    {tChat("appliedSummaryTitle")}
+                  </p>
+                  <p className="mt-1 text-sm text-emerald-900/80 dark:text-emerald-100/80">
+                    {tChat("appliedSummaryDescription")}
+                  </p>
+                  {resolvedRegeneration?.latestUserMessage && (
+                    <p className="mt-3 text-sm text-emerald-950 dark:text-emerald-50">
+                      <span className="font-semibold">{tChat("appliedRequestLabel")}</span>{" "}
+                      {resolvedRegeneration.latestUserMessage}
+                    </p>
+                  )}
+                  {resolvedRegeneration?.latestAssistantMessage && (
+                    <p className="mt-2 text-sm text-emerald-950 dark:text-emerald-50">
+                      <span className="font-semibold">{tChat("appliedPlanLabel")}</span>{" "}
+                      {resolvedRegeneration.latestAssistantMessage}
+                    </p>
+                  )}
+                  {resolvedRegeneration && resolvedRegeneration.history.length > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => setIsResolvedHistoryExpanded((prev) => !prev)}
+                      className="mt-3 inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-white/80 px-3 py-1.5 text-xs font-bold text-emerald-900 transition-colors hover:bg-white dark:border-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-100"
+                    >
+                      {isResolvedHistoryExpanded ? tChat("hideAppliedHistory") : tChat("showAppliedHistory")}
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+          {(!shouldShowResolvedSummary || isResolvedHistoryExpanded) && messages.map((m) => {
             const showRegenerateButton =
+              !shouldShowResolvedSummary &&
               m.role === "assistant" &&
               m.id === latestAssistantMessageIdWithReadyTag &&
               !isLoading;

@@ -571,6 +571,7 @@
             "delete": "Delete",
             "details": "Details",
             "unverifiedAlert": "Location unverified: No matching spot found on Google Places. This AI-generated information may not correspond to a real place.",
+            "placesQuotaWarning": "Google Places API has reached its usage limit, so detailed place information is temporarily unavailable. Please try again later.",
             "reviewCount": "({count} reviews)",
             "viewAllHours": "View all opening hours",
             "fetchDetails": "Fetch detailed information",
@@ -1588,6 +1589,20 @@
             "polish": {
               "title": "Finish the travel story"
             }
+          }
+        },
+        "fullScreenOverlay": {
+          "regenerating": {
+            "title": "Rewriting your plan...",
+            "subtitle": "This may take a moment"
+          },
+          "success": {
+            "title": "Plan updated!",
+            "subtitle": "Your new itinerary is ready"
+          },
+          "updating": {
+            "title": "Refreshing the page...",
+            "subtitle": "Almost there"
           }
         },
         "composeLoadingTips": {

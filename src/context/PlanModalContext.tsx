@@ -1,6 +1,13 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode, Suspense } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  Suspense,
+} from "react";
+import { usePathname } from "next/navigation";
 import { PlanModal } from "@/components/common";
 import { UserInput } from "@/types";
 
@@ -13,11 +20,13 @@ interface PlanModalContextType {
 const PlanModalContext = createContext<PlanModalContextType | undefined>(undefined);
 
 export function PlanModalProvider({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [modalOptions, setModalOptions] = useState<{
     initialInput?: UserInput;
     initialStep?: number;
   }>({});
+  const [openedPathname, setOpenedPathname] = useState<string | null>(null);
 
   const openModal = (options?: { initialInput?: UserInput; initialStep?: number }) => {
     if (options) {
@@ -25,21 +34,24 @@ export function PlanModalProvider({ children }: { children: ReactNode }) {
     } else {
       setModalOptions({});
     }
+    setOpenedPathname(pathname);
     setIsOpen(true);
   };
 
   const closeModal = () => {
     setIsOpen(false);
+    setOpenedPathname(null);
     // Optional: clear options after close animation
     setTimeout(() => setModalOptions({}), 300);
   };
+  const isModalVisible = isOpen && openedPathname === pathname;
 
   return (
-    <PlanModalContext.Provider value={{ isOpen, openModal, closeModal }}>
+    <PlanModalContext.Provider value={{ isOpen: isModalVisible, openModal, closeModal }}>
       {children}
       <Suspense fallback={null}>
         <PlanModal
-          isOpen={isOpen}
+          isOpen={isModalVisible}
           onClose={closeModal}
           initialInput={modalOptions.initialInput}
           initialStep={modalOptions.initialStep}

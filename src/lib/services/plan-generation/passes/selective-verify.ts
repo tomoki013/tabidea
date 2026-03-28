@@ -14,11 +14,10 @@ import type {
   DraftDay,
 } from '@/types/plan-generation';
 import type { ResolvedPlaceGroup } from '@/types/itinerary-pipeline';
+import { PlacesApiError } from '@/types/places';
+import { GooglePlacesService } from '@/lib/services/google/places';
 import { resolvePlaces } from '@/lib/services/itinerary/steps/place-resolver';
-import {
-  draftStopToCandidate,
-  flattenDraftStopsAsCandidates,
-} from '../bridges/draft-to-v3';
+import { draftStopToCandidate } from '../bridges/draft-to-v3';
 
 // ============================================
 // Verification Thresholds
@@ -192,8 +191,15 @@ export async function selectiveVerifyPass(
     });
   } catch (err) {
     // Places API が完全に使えない場合は全て unverifiable
+    const quotaExceeded =
+      err instanceof PlacesApiError
+        ? GooglePlacesService.isQuotaExceededCode(err.code)
+        : String(err).includes('OVER_QUERY_LIMIT');
+
     warnings.push(
-      `Places API error: ${err instanceof Error ? err.message : String(err)}`,
+      quotaExceeded
+        ? `warning_code:${GooglePlacesService.getQuotaExceededWarningCode()}`
+        : `Places API error: ${err instanceof Error ? err.message : String(err)}`,
     );
     const entities: VerifiedEntity[] = prioritized.map(({ stop, day }) => ({
       draftId: stop.draftId,

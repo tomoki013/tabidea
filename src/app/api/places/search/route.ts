@@ -147,6 +147,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     // Places API で検索
     const placesService = new GooglePlacesService();
     const validation = await placesService.validateSpot(query, near, locationEn, searchQuery);
+    const quotaExceeded = GooglePlacesService.isQuotaExceededCode(validation.errorCode);
 
     // キャッシュに保存
     if (validation.placeId) {
@@ -157,6 +158,10 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       success: true,
       validation,
       fromCache: false,
+      ...(quotaExceeded && {
+        degradedReason: 'quota_exceeded',
+        warningCode: GooglePlacesService.getQuotaExceededWarningCode(),
+      }),
     });
   } catch (error) {
     console.error('Places search error:', error);

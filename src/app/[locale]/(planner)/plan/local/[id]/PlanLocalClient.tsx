@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { FaPlus } from 'react-icons/fa6';
@@ -15,6 +15,8 @@ import ResultView from '@/components/features/planner/ResultView';
 import { PlanModal } from '@/components/common';
 import { FAQSection, ExampleSection } from '@/components/features/landing';
 import { restorePendingState, clearPendingState } from '@/lib/restore/pending-state';
+import FullScreenGenerationOverlay from '@/components/features/planner/FullScreenGenerationOverlay';
+import { buildResolvedRegenerationState, type ResolvedRegenerationState } from '@/lib/utils/travel-planner-chat';
 
 interface PlanLocalClientProps {
   localId: string;
@@ -35,11 +37,14 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
   const [plan, setPlan] = useState<LocalPlan | null>(null);
   const [result, setResult] = useState<Itinerary | null>(null);
   const [input, setInput] = useState<UserInput | null>(null);
-  const [status, setStatus] = useState<'loading' | 'idle' | 'regenerating' | 'syncing' | 'error'>('loading');
+  const [status, setStatus] = useState<'loading' | 'idle' | 'regenerating' | 'success' | 'updating' | 'syncing' | 'error'>('loading');
+  const pendingResultRef = useRef<{ data: Itinerary; history: { role: string; text: string }[] } | null>(null);
   const [error, setError] = useState<string>('');
   const [autoSaveError, setAutoSaveError] = useState<string | null>(null);
   const [regenerateError, setRegenerateError] = useState<string | null>(null);
   const [chatHistoryToKeep, setChatHistoryToKeep] = useState<{ role: string; text: string }[]>([]);
+  const [resolvedRegeneration, setResolvedRegeneration] = useState<ResolvedRegenerationState | null>(null);
+  const [chatSessionKey, setChatSessionKey] = useState(0);
   const [isEditingRequest, setIsEditingRequest] = useState(false);
   const [initialEditStep, setInitialEditStep] = useState(0);
   const [isNewPlanModalOpen, setIsNewPlanModalOpen] = useState(false);
@@ -186,25 +191,16 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
         : chatHistory;
 
     setRegenerateError(null);
+    setResolvedRegeneration(null);
     setChatHistoryToKeep(persistedHistory);
     setStatus('regenerating');
 
     try {
       const response = await regeneratePlan(planToUse, chatHistory);
       if (response.success && response.data) {
-        setResult(response.data);
-
-        // Update local storage
-        if (plan) {
-          updateLocalPlan(plan.id, { itinerary: response.data });
-        }
-
-        setStatus('idle');
-
-        // Scroll to top
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 100);
+        // Store result in ref for deferred application
+        pendingResultRef.current = { data: response.data, history: persistedHistory };
+        setStatus('success');
       } else {
         console.error(response.message);
         setRegenerateError(mapPlanError(response.message));
@@ -216,6 +212,30 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
       setStatus('idle');
     }
   };
+
+  const handleSuccessComplete = useCallback(() => {
+    setStatus('updating');
+
+    const pending = pendingResultRef.current;
+    if (pending) {
+      setResult(pending.data);
+      setChatHistoryToKeep(pending.history);
+      setResolvedRegeneration(buildResolvedRegenerationState(pending.history));
+      setChatSessionKey((prev) => prev + 1);
+
+      // Update local storage
+      if (plan) {
+        updateLocalPlan(plan.id, { itinerary: pending.data });
+      }
+      pendingResultRef.current = null;
+    }
+
+    // Short delay for re-render, then dismiss overlay and scroll to top
+    setTimeout(() => {
+      setStatus('idle');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 600);
+  }, [plan]);
 
   const handleRestart = () => {
     router.push('/');
@@ -234,6 +254,10 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
     setInitialEditStep(stepIndex);
     setIsEditingRequest(true);
   };
+
+  const handleResolvedRegenerationClear = useCallback(() => {
+    setResolvedRegeneration(null);
+  }, []);
 
   if (status === 'loading' || (authLoading && !plan)) {
     return (
@@ -280,6 +304,16 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9] overflow-x-clip">
+      <FullScreenGenerationOverlay
+        phase={
+          status === 'regenerating' ? 'regenerating'
+            : status === 'success' ? 'success'
+            : status === 'updating' ? 'updating'
+            : null
+        }
+        previewDestination={result.destination}
+        onSuccessComplete={handleSuccessComplete}
+      />
       <main className="flex-1 w-full flex flex-col items-center overflow-x-clip">
         {/* エラー表示 */}
         {autoSaveError && (
@@ -389,9 +423,12 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
           onRestart={handleRestart}
           onRegenerate={handleRegenerate}
           onResultChange={handleResultChange}
-          isUpdating={status === 'regenerating'}
+          isUpdating={false}
           onEditRequest={handleEditRequest}
           initialChatHistory={chatHistoryToKeep}
+          resolvedRegeneration={resolvedRegeneration}
+          onResolvedRegenerationClear={handleResolvedRegenerationClear}
+          chatSessionKey={chatSessionKey}
           localId={localId}
           mapProvider="static"
         />
