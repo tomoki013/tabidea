@@ -1,6 +1,6 @@
 # Routes, Actions, and Services Index
 
-更新日: 2026-03-27
+更新日: 2026-03-29
 
 ## 1. App Pages (Representative)
 
@@ -33,7 +33,7 @@
 | --- | --- | --- |
 | `POST /api/generate/outline` | `src/app/api/generate/outline/route.ts` | Outline generation stream/response |
 | `POST /api/generate/chunk` | `src/app/api/generate/chunk/route.ts` | Chunk detail generation |
-| `POST /api/replan` | `src/app/api/replan/route.ts` | Replan suggestions |
+| `POST /api/replan` | `src/app/api/replan/route.ts` | Replan suggestions via shared mutation contract |
 | `POST /api/chat` | `src/app/api/chat/route.ts` | Planner chat interaction |
 | `POST /api/places/search` | `src/app/api/places/search/route.ts` | Places search proxy |
 | `POST /api/external/hotels/search` | `src/app/api/external/hotels/search/route.ts` | Hotel candidate search |
@@ -51,7 +51,7 @@
 ## 3. Server Actions
 
 ### Core
-- `src/app/actions/travel-planner.ts`
+- `src/app/actions/travel-planner.ts` — プラン保存系 action と chat 起点の再生成委譲
 - `src/app/actions/plan-itinerary.ts`
 - `src/app/actions/travel-info.ts`
 - `src/app/actions/travel-info/index.ts`
@@ -86,13 +86,19 @@
 - `src/lib/services/plan-generation/bridges/` — DraftStop ↔ v3 型変換、Session → Itinerary
 - `src/lib/hooks/usePlanGeneration.ts` — v4 クライアントフック (UseComposeGenerationReturn 互換)
 
+### Plan Mutation (Shared)
+- `src/types/plan-mutation.ts` — generate / regenerate / replan 共通の成功・失敗契約
+- `src/lib/services/plan-mutation/regenerate-itinerary.ts` — チャット起点の全量再生成 orchestration
+- `src/lib/services/plan-mutation/replan-plan.ts` — ReplanEngine を API 契約へ接続する bridge
+- `src/lib/hooks/usePlanRegeneration.ts` — PlanId / PlanLocal / PlanCode で共有する再生成 state hook
+
 ### RAG
 - `src/lib/services/rag/*`
 - 役割: コンテンツ検索、前処理
 
 ### Replan
 - `src/lib/services/replan/*`
-- 役割: 制約抽出、候補評価、説明生成
+- 役割: 制約抽出、候補評価、説明生成、itinerary 差分適用
 
 ### Travel Info
 - `src/lib/services/travel-info/*`

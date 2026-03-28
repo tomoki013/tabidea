@@ -1,7 +1,6 @@
 "use server";
 
-import { GeminiService } from "@/lib/services/ai/gemini";
-import { Itinerary, UserInput } from '@/types';
+import { Itinerary, PlanMutationResult, PlanRegenerationPayload, UserInput } from '@/types';
 import { getUnsplashImage } from "@/lib/unsplash";
 import { getUser, createAdminClient, createClient } from "@/lib/supabase/server";
 import { planService } from "@/lib/plans/service";
@@ -10,55 +9,8 @@ import { isAdminEmail } from "@/lib/billing/billing-checker";
 import { EntitlementService } from "@/lib/entitlements";
 import { checkPlanUpdateRate } from "@/lib/security/rate-limit";
 import { revalidatePath } from "next/cache";
-import { GOLDEN_PLAN_EXAMPLES } from "@/data/golden-plans/examples";
 import { buildDefaultPublicationSlug } from "@/lib/plans/normalized";
-import { getUserSettings } from "@/app/actions/user-settings";
-import {
-  getDefaultHomeBaseCityForRegion,
-  getDefaultRegionForLanguage,
-  isLanguageCode,
-  type LanguageCode,
-  DEFAULT_LANGUAGE,
-} from "@/lib/i18n/locales";
-
-/**
- * Fetch and format user custom instructions (travel style + constraints).
- */
-async function getUserConstraintPrompt(): Promise<string> {
-  const { settings } = await getUserSettings();
-  const preferredLanguage: LanguageCode =
-    settings?.preferredLanguage && isLanguageCode(settings.preferredLanguage)
-      ? settings.preferredLanguage
-      : DEFAULT_LANGUAGE;
-  const preferredRegion =
-    settings?.preferredRegion ?? getDefaultRegionForLanguage(preferredLanguage);
-  const homeBaseCity =
-    settings?.homeBaseCity?.trim() ||
-    getDefaultHomeBaseCityForRegion(preferredRegion);
-  const outputLanguageLabel = preferredLanguage === "en" ? "English" : "Japanese";
-
-  let prompt = `\n=== OUTPUT LANGUAGE (MUST FOLLOW) ===
-All user-facing itinerary text MUST be written in ${outputLanguageLabel}.
-Do not switch to other languages except for proper nouns or official place names.
-=====================================\n`;
-
-  if (homeBaseCity) {
-    prompt += `\nUser's home base city: ${homeBaseCity}\n`;
-  }
-
-  const customInstructions = settings?.customInstructions?.trim();
-  if (customInstructions) {
-    prompt += `\n=== USER TRAVEL PREFERENCES (MUST FOLLOW) ===\n${customInstructions}\n=====================================\n`;
-  }
-
-  return prompt;
-}
-
-export type ActionState = {
-  success: boolean;
-  message?: string;
-  data?: Itinerary;
-};
+import { regenerateItinerary } from "@/lib/services/plan-mutation";
 
 
 export async function fetchHeroImage(
@@ -72,105 +24,14 @@ export async function fetchHeroImage(
     return null;
   }
 }
-
-const REGENERATE_RETRY_INSTRUCTION =
-  "The previous output was identical to the original plan. Reflect at least one agreed change from this chat and return the full updated itinerary JSON.";
-
-function getComparablePlanPayload(plan: Itinerary) {
-  return {
-    destination: plan.destination,
-    description: plan.description,
-    days: plan.days,
-  };
-}
-
-function isPlanEffectivelyUnchanged(basePlan: Itinerary, candidatePlan: Itinerary): boolean {
-  return JSON.stringify(getComparablePlanPayload(basePlan)) === JSON.stringify(getComparablePlanPayload(candidatePlan));
-}
-
-async function applyRegeneratedHeroImage(
-  currentPlan: Itinerary,
-  regeneratedPlan: Itinerary
-): Promise<Itinerary> {
-  const updatedPlan = { ...regeneratedPlan };
-
-  if (updatedPlan.destination !== currentPlan.destination) {
-    const heroImageData = await getUnsplashImage(updatedPlan.destination);
-    if (heroImageData) {
-      updatedPlan.heroImage = heroImageData.url;
-      updatedPlan.heroImagePhotographer = heroImageData.photographer;
-      updatedPlan.heroImagePhotographerUrl = heroImageData.photographerUrl;
-    }
-  } else {
-    updatedPlan.heroImage = currentPlan.heroImage;
-    updatedPlan.heroImagePhotographer = currentPlan.heroImagePhotographer;
-    updatedPlan.heroImagePhotographerUrl = currentPlan.heroImagePhotographerUrl;
-  }
-
-  return updatedPlan;
-}
-
 export async function regeneratePlan(
   currentPlan: Itinerary,
   chatHistory: { role: string; text: string }[]
-): Promise<ActionState> {
-  const hasAIKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.OPENAI_API_KEY;
-  if (!hasAIKey) return { success: false, message: "api_key_missing" };
-
-  try {
-    const ai = new GeminiService();
-
-    // Inject user constraint prompt into chat history context if possible,
-    // or we might need to modify modifyItinerary signature.
-    // But better to append it as a "System" message in the history or similar.
-    // However, GeminiService.modifyItinerary takes history as is.
-    // We can prepend a system instruction to the history.
-
-    const userConstraintPrompt = await getUserConstraintPrompt();
-    let effectiveHistory = chatHistory;
-
-    if (userConstraintPrompt) {
-        // Prepend as a high-priority user message or system note
-        effectiveHistory = [
-            { role: 'user', text: `[SYSTEM NOTE: ${userConstraintPrompt}]` },
-            ...chatHistory
-        ];
-    }
-
-    let newPlan = await ai.modifyItinerary(currentPlan, effectiveHistory);
-    newPlan = await applyRegeneratedHeroImage(currentPlan, newPlan);
-
-    if (isPlanEffectivelyUnchanged(currentPlan, newPlan)) {
-      const retryHistory = [
-        ...effectiveHistory,
-        { role: "user", text: REGENERATE_RETRY_INSTRUCTION },
-      ];
-      let retriedPlan = await ai.modifyItinerary(currentPlan, retryHistory);
-      retriedPlan = await applyRegeneratedHeroImage(currentPlan, retriedPlan);
-
-      if (isPlanEffectivelyUnchanged(currentPlan, retriedPlan)) {
-        return {
-          success: false,
-          message: "regenerate_no_effect",
-        };
-      }
-      newPlan = retriedPlan;
-    }
-
-    return { success: true, data: newPlan };
-  } catch (e) {
-    const errorMessage = e instanceof Error ? e.message : String(e);
-    const isTimeout = /timeout|timed out|aborted|タイムアウト/i.test(errorMessage);
-    console.error("Regeneration failed:", {
-      error: errorMessage,
-      isTimeout,
-      stack: e instanceof Error ? e.stack : undefined,
-    });
-    return {
-      success: false,
-      message: isTimeout ? "regenerate_timeout" : "regenerate_failed",
-    };
-  }
+): Promise<PlanMutationResult<PlanRegenerationPayload>> {
+  return regenerateItinerary({
+    currentPlan,
+    chatHistory,
+  });
 }
 
 // ============================================

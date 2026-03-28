@@ -3,6 +3,7 @@
  */
 export { extractSlots } from "./slot-extractor";
 export { detectConstraints } from "./constraint-detector";
+export { applyRecoveryOption } from "./apply-recovery-option";
 export { ReplanEngine } from "./replan-engine";
 export type { ReplanAIProvider } from "./replan-engine";
 export { generateExplanation } from "./explanation-generator";

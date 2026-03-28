@@ -21,6 +21,7 @@ import type {
 } from "@/types/replan";
 
 import { classifyActivity } from "@/lib/utils/activity-classifier";
+import { createReplanTimer } from "@/lib/utils/performance-timer";
 import { generateExplanation } from "./explanation-generator";
 import { scoreHumanResolution } from "./scoring/score-human-resolution";
 import type { HumanResolutionInput } from "./scoring/types";
@@ -125,19 +126,26 @@ export class ReplanEngine {
     state: TravelerState,
     context: TripContext
   ): Promise<ReplanResult> {
+    const timer = createReplanTimer();
     const locale = context.language;
-    const startTime = performance.now();
+    const startTime = Date.now();
 
     // 1. 影響スロットを特定
-    const affectedSlots = this.findAffectedSlots(trigger, tripPlan, locale);
+    const affectedSlots = await timer.measure(
+      "find_slots",
+      async () => this.findAffectedSlots(trigger, tripPlan, locale),
+    );
 
     // 2. AI 代替案を生成 (2秒タイムアウト)
     let options: RecoveryOption[];
     try {
-      options = await this.generateWithTimeout(
-        trigger,
-        affectedSlots,
-        context
+      options = await timer.measure(
+        "ai_generation",
+        () => this.generateWithTimeout(
+          trigger,
+          affectedSlots,
+          context
+        ),
       );
     } catch {
       // タイムアウトまたはエラー → フォールバック
@@ -150,23 +158,26 @@ export class ReplanEngine {
     }
 
     // 3. 各オプションをスコアリング
-    const scored = options.map((option) => {
-      const input: HumanResolutionInput = {
-        context,
-        state,
-        option,
-        mode: trigger.type,
-      };
-      const scoreBreakdown = scoreHumanResolution(input);
-      return { option, scoreBreakdown };
-    });
+    const scored = await timer.measure("scoring", async () => {
+      const nextScored = options.map((option) => {
+        const input: HumanResolutionInput = {
+          context,
+          state,
+          option,
+          mode: trigger.type,
+        };
+        const scoreBreakdown = scoreHumanResolution(input);
+        return { option, scoreBreakdown };
+      });
 
-    // 4. スコア順にソート（hardPass=false は最後尾）
-    scored.sort((a, b) => {
-      if (a.scoreBreakdown.hardPass !== b.scoreBreakdown.hardPass) {
-        return a.scoreBreakdown.hardPass ? -1 : 1;
-      }
-      return b.scoreBreakdown.total - a.scoreBreakdown.total;
+      nextScored.sort((a, b) => {
+        if (a.scoreBreakdown.hardPass !== b.scoreBreakdown.hardPass) {
+          return a.scoreBreakdown.hardPass ? -1 : 1;
+        }
+        return b.scoreBreakdown.total - a.scoreBreakdown.total;
+      });
+
+      return nextScored;
     });
 
     // hardPass=true のもののみ採用
@@ -178,7 +189,8 @@ export class ReplanEngine {
       .slice(1, MAX_ALTERNATIVES + 1)
       .map((s) => s.option);
 
-    const processingTimeMs = Math.round(performance.now() - startTime);
+    const processingTimeMs = Date.now() - startTime;
+    timer.log();
 
     return {
       primaryOption: primary.option,

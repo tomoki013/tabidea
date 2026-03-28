@@ -206,3 +206,15 @@ export type {
   SatisfactionLevel,
   Reflection,
 } from './replan';
+
+// 生成・再生成・再計画の共通 mutation 関連型
+export type {
+  PlanMutationType,
+  PlanMutationErrorCode,
+  PlanMutationMeta,
+  PlanRegenerationPayload,
+  PlanReplanPayload,
+  PlanMutationSuccess,
+  PlanMutationFailure,
+  PlanMutationResult,
+} from './plan-mutation';

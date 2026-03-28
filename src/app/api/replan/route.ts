@@ -5,7 +5,7 @@
  * 3秒以内にレスポンスを返却する（AbortSignal で強制終了）。
  *
  * Input:  { planId, trigger, travelerState, tripContext, tripPlan }
- * Output: { primaryOption, alternatives, scoreBreakdown, explanation, processingTimeMs }
+ * Output: shared PlanMutationResult<ReplanResult>
  */
 
 import { NextResponse } from "next/server";
@@ -16,9 +16,9 @@ import type {
   TripContext,
   TripPlan,
 } from "@/types/replan";
-import { ReplanEngine, REPLAN_TOTAL_TIMEOUT_MS } from "@/lib/services/replan/replan-engine";
-import { GeminiReplanProvider } from "@/lib/services/replan/gemini-replan-provider";
+import { REPLAN_TOTAL_TIMEOUT_MS } from "@/lib/services/replan/replan-engine";
 import { EventLogger } from "@/lib/services/analytics/event-logger";
+import { replanPlan } from "@/lib/services/plan-mutation";
 import { createClient } from "@/lib/supabase/server";
 
 // ============================================================================
@@ -51,25 +51,27 @@ export async function POST(request: Request) {
       );
     }
 
-    // 3秒タイムアウト
-    const controller = new AbortController();
-    const timeoutId = setTimeout(
-      () => controller.abort(),
-      REPLAN_TOTAL_TIMEOUT_MS
-    );
+    const timeoutPromise = new Promise<never>((_, reject) => {
+      setTimeout(() => {
+        reject(new DOMException("Aborted", "AbortError"));
+      }, REPLAN_TOTAL_TIMEOUT_MS);
+    });
 
     try {
-      const hasAIKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-      const aiProvider = hasAIKey ? new GeminiReplanProvider() : undefined;
-      const engine = new ReplanEngine(aiProvider);
-      const result = await engine.replan(
-        body.trigger,
-        body.tripPlan,
-        body.travelerState,
-        body.tripContext
-      );
+      const result = await Promise.race([
+        replanPlan({
+          trigger: body.trigger,
+          tripPlan: body.tripPlan,
+          travelerState: body.travelerState,
+          tripContext: body.tripContext,
+        }),
+        timeoutPromise,
+      ]);
 
-      clearTimeout(timeoutId);
+      if (!result.ok) {
+        const status = result.error === "replan_timeout" ? 504 : 500;
+        return NextResponse.json(result, { status });
+      }
 
       // イベント記録 (fire-and-forget)
       createClient().then((supabase) => {
@@ -77,26 +79,26 @@ export async function POST(request: Request) {
         logger.logReplan({
           planId: body.planId,
           triggerType: body.trigger.type,
-          humanResolutionScore: result.scoreBreakdown.total,
-          processingTimeMs: result.processingTimeMs,
+          humanResolutionScore: result.data.scoreBreakdown.total,
+          processingTimeMs: result.data.processingTimeMs,
         });
       }).catch(() => { /* fail-open */ });
 
-      return NextResponse.json({
-        primaryOption: result.primaryOption,
-        alternatives: result.alternatives,
-        scoreBreakdown: result.scoreBreakdown,
-        explanation: result.explanation,
-        processingTimeMs: result.processingTimeMs,
-      });
+      return NextResponse.json(result);
     } catch (error) {
-      clearTimeout(timeoutId);
-
       // タイムアウト
       if (error instanceof DOMException && error.name === "AbortError") {
         const elapsed = Math.round(performance.now() - startTime);
         return NextResponse.json(
-          { error: "replan_timeout", processingTimeMs: elapsed },
+          {
+            ok: false,
+            error: "replan_timeout",
+            meta: {
+              mutationType: "replan",
+              durationMs: elapsed,
+              warnings: [],
+            },
+          },
           { status: 504 }
         );
       }
@@ -106,7 +108,15 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("[replan] Error:", error);
     return NextResponse.json(
-      { error: "replan_failed" },
+      {
+        ok: false,
+        error: "replan_failed",
+        meta: {
+          mutationType: "replan",
+          durationMs: Math.round(performance.now() - startTime),
+          warnings: [],
+        },
+      },
       { status: 500 }
     );
   }
