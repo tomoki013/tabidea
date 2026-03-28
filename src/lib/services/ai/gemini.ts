@@ -1,6 +1,6 @@
 import { generateObject, streamObject } from "ai";
 import { AIService, Article } from "./types";
-import { Itinerary, PlanOutline, DayPlan, PlanOutlineDay, EntitlementStatus, type ActivityType } from '@/types';
+import { Itinerary, PlanOutline, DayPlan, PlanOutlineDay, EntitlementStatus, type ActivityType, type TimelineItem } from '@/types';
 import { classifyActivity } from '@/lib/utils/activity-classifier';
 import {
   PlanOutlineSchema,
@@ -8,6 +8,7 @@ import {
   DayPlanArrayResponseInputSchema,
   ItinerarySchema,
   ModifyOutputSchema,
+  ModifyDiffOutputSchema,
   LegacyItineraryResponseSchema,
   TransitInfoParsed,
   TransitInfoInput,
@@ -24,7 +25,7 @@ import {
   type RequestComplexity,
   type GenerationPhase,
 } from './model-selector';
-import { resolveModelForProvider, resolveProvider, type ProviderName } from './model-provider';
+import { resolveModel, resolveModelForProvider, resolveProvider, type ProviderName } from './model-provider';
 import { executeOutlineStrategy, executeDetailsStrategy, getModifyProvider } from './strategies/orchestrator';
 import { buildContextSandwich } from './prompt-builder';
 import type { GoldenPlanExample } from '@/data/golden-plans/types';
@@ -228,6 +229,61 @@ function buildLeanPlanJson(plan: Itinerary): object {
   };
 }
 
+/**
+ * Smart trim chat history for modify: keep system notes + last 4 messages.
+ * Preserves user constraints and the recent proposal→agreement flow.
+ */
+function trimChatHistoryForModify(
+  history: { role: string; text: string }[]
+): { role: string; text: string }[] {
+  const systemNotes = history.filter(m => m.text.startsWith('[SYSTEM NOTE:'));
+  const nonSystem = history.filter(m => !m.text.startsWith('[SYSTEM NOTE:'));
+  const recent = nonSystem.slice(-4);
+  return [...systemNotes, ...recent];
+}
+
+/**
+ * Ultra-lean plan context for modify prompt.
+ * Strips searchQuery, locationEn, activityType — AI re-generates these for changed days.
+ * Keeps activity name + description so AI understands what to modify.
+ */
+function buildModifyPlanJson(plan: Itinerary): object {
+  return {
+    destination: plan.destination,
+    description: plan.description,
+    days: plan.days.map((day) => ({
+      day: day.day,
+      title: day.title,
+      ...(day.transit ? { transit: { type: day.transit.type, departure: day.transit.departure?.place, arrival: day.transit.arrival?.place } } : {}),
+      activities: day.activities.map((act) => ({
+        time: act.time,
+        activity: act.activity,
+        description: act.description,
+      })),
+    })),
+  };
+}
+
+/**
+ * Ultra-lean plan context for the chat system prompt.
+ * Keeps only destination, day titles, and activity names/times to minimize token usage.
+ */
+export function buildChatContextJson(plan: Itinerary): object {
+  return {
+    destination: plan.destination,
+    description: plan.description,
+    days: plan.days.map((day) => ({
+      day: day.day,
+      title: day.title,
+      activities: day.activities.map((act) => ({
+        time: act.time,
+        activity: act.activity,
+        ...(act.activityType ? { activityType: act.activityType } : {}),
+      })),
+    })),
+  };
+}
+
 // ============================================
 // GeminiService
 // ============================================
@@ -378,63 +434,115 @@ ${prompt}`;
   private async _modifyItinerarySingle(
     currentPlan: Itinerary,
     chatHistory: { role: string; text: string }[],
-    providerOverride?: ProviderName,
+    _providerOverride?: ProviderName,
   ): Promise<Itinerary> {
-    const conversationHistory = chatHistory
+    // Smart trim: keep system notes + last 4 conversation messages
+    const trimmed = trimChatHistoryForModify(chatHistory);
+    const conversationHistory = trimmed
       .map((m) => `${m.role === "user" ? "USER" : "AI (Assistant)"}: ${m.text}`)
       .join("\n\n");
 
-    const { systemInstruction: sandwichSystem } = buildContextSandwich({
-      context: [],
-      travelInfo: this.options.travelInfo,
-      userPrompt: '',
-      generationType: 'modify',
+    const modifyPlan = buildModifyPlanJson(currentPlan);
+
+    const prompt = `あなたは旅行プランの修正アシスタントです。既存の旅程をユーザーのフィードバックに基づいて修正してください。
+
+CURRENT ITINERARY:
+${JSON.stringify(modifyPlan)}
+
+CONVERSATION:
+${conversationHistory}
+
+INSTRUCTIONS:
+1. Return ONLY days that need changes in "changedDays". Do NOT include unchanged days.
+2. Keep the "day" number matching the original.
+3. Set "description" only if the overall trip description should change, otherwise null.
+4. 出力言語は元の旅程と同じ言語を使用すること。`;
+
+    // Use the chat model (gemini-2.5-flash) for modify — much faster TTFB (~1s vs ~9s).
+    // The diff schema is simple enough for 2.5-flash structured output.
+    const { model, modelName } = resolveModel('chat');
+    const temperature = 0.1;
+    const promptBytes = new TextEncoder().encode(prompt).length;
+    console.log(`[ai-service] Modify using model: ${modelName}, temperature: ${temperature}, prompt: ${promptBytes} bytes`);
+
+    const startMs = Date.now();
+    const { object: result } = await generateObject({
+      model,
+      schema: ModifyDiffOutputSchema,
+      prompt,
+      temperature,
+      maxTokens: 4096,
+      abortSignal: AbortSignal.timeout(MODIFY_TIMEOUT_MS),
+    });
+    console.log(`[ai-service] Modify: completed in ${Date.now() - startMs}ms, changedDays: ${result.changedDays.length}`);
+
+    // Early return if no changes
+    if (result.changedDays.length === 0) {
+      return currentPlan;
+    }
+
+    // Merge changed days back into the original plan
+    const changedDayMap = new Map(
+      result.changedDays.map(d => [d.day, normalizeDayPlan(d)])
+    );
+
+    const mergedDays = currentPlan.days.map(originalDay => {
+      const changed = changedDayMap.get(originalDay.day);
+      if (!changed) return originalDay;
+
+      // Restore metadata for unchanged activities within a changed day.
+      // AI may return null for searchQuery/locationEn on activities it didn't modify,
+      // which would break place lookups and map display.
+      const restoredActivities = changed.activities.map(act => {
+        const original = originalDay.activities.find(
+          o => o.time === act.time && o.activity === act.activity
+        );
+        if (original) {
+          return {
+            ...act,
+            searchQuery: act.searchQuery || original.searchQuery,
+            locationEn: act.locationEn || original.locationEn,
+            activityType: act.activityType || original.activityType,
+            source: act.source || original.source,
+          };
+        }
+        return act;
+      });
+
+      // Restore transit from original if AI returned null
+      const restoredTransit = changed.transit || originalDay.transit;
+
+      // Preserve injected timelineItems (flights + accommodations) from original day.
+      // These are added by injectFlights/injectAccommodations during initial generation
+      // and are NOT re-injected after modify.
+      const injectedItems = (originalDay.timelineItems ?? []).filter(item =>
+        item.itemType === 'transit' ||
+        (item.itemType === 'activity' && item.data.activityType === 'accommodation')
+      );
+      const activityItems: TimelineItem[] = restoredActivities.map(act => ({
+        itemType: 'activity' as const,
+        data: act,
+      }));
+      // If original had injected items, merge them with new activities.
+      // buildTimeline's sortTimelineItems will handle chronological ordering.
+      // If no injected items, leave undefined so buildTimeline constructs from transit + activities.
+      const restoredTimelineItems = injectedItems.length > 0
+        ? [...injectedItems, ...activityItems]
+        : undefined;
+
+      return {
+        ...changed,
+        activities: restoredActivities,
+        transit: restoredTransit,
+        timelineItems: restoredTimelineItems,
+      };
     });
 
-    // Use lean plan JSON to reduce prompt size (strips timelineItems, sources, references, etc.)
-    const leanPlan = buildLeanPlanJson(currentPlan);
-
-    const prompt = `
-        ${sandwichSystem}
-
-        CURRENT ITINERARY JSON:
-        ${JSON.stringify(leanPlan)}
-
-        CONVERSATION HISTORY:
-        ${conversationHistory}
-
-        INSTRUCTIONS:
-        1. MODIFY the Current Itinerary based on the User Feedback.
-        2. KEEP all parts of the itinerary that the user did NOT ask to change EXACTLY THE SAME. Do not invent new changes.
-        3. If the user asks to change a restaurant, time, or activity, update only that specific part.
-        4. RETURN the FULL updated itinerary strictly following the schema.
-        5. Preserve the id field.
-     `;
-
-    const { model, temperature, modelName } = this.getModel('modify', undefined, providerOverride);
-    console.log(`[ai-service] Modify using model: ${modelName}, temperature: ${temperature}`);
-
-    // No retry for modify: platform timeout (~25s) leaves no room for a second attempt.
-    const result = await withRetry(async () => {
-      const { object } = await generateObject({
-        model,
-        schema: ModifyOutputSchema,
-        prompt,
-        temperature,
-        maxTokens: 8192,
-        abortSignal: AbortSignal.timeout(MODIFY_TIMEOUT_MS),
-      });
-      return object;
-    }, 0);
-
-    // Normalize relaxed day schema output to strict types
-    const normalizedDays = result.days.map(normalizeDayPlan);
-
     return {
-      id: result.id,
-      destination: result.destination,
-      description: result.description,
-      days: normalizedDays,
+      id: currentPlan.id,
+      destination: currentPlan.destination,
+      description: result.description ?? currentPlan.description,
+      days: mergedDays,
       heroImage: currentPlan.heroImage,
       heroImagePhotographer: currentPlan.heroImagePhotographer,
       heroImagePhotographerUrl: currentPlan.heroImagePhotographerUrl,

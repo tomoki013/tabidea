@@ -22,6 +22,7 @@ import BaseCard, { CardState } from "./BaseCard";
 import { TransitInfo, TransitType } from "@/types";
 import {
   generateFlightLinks,
+  getFlightSearchInfo,
   trackAffiliateClick,
 } from "@/lib/utils/affiliate-links";
 import { EditableText } from "@/components/ui/editable/EditableText";
@@ -133,6 +134,17 @@ export default function TransitCard({
     if (transit.type !== "flight") return [];
 
     return generateFlightLinks({
+      origin: transit.departure.place,
+      destination: transit.arrival.place,
+      departureDate,
+      returnDate,
+      adults,
+    });
+  }, [transit.type, transit.departure.place, transit.arrival.place, departureDate, returnDate, adults]);
+  const flightSearchInfo = useMemo(() => {
+    if (transit.type !== "flight") return null;
+
+    return getFlightSearchInfo({
       origin: transit.departure.place,
       destination: transit.arrival.place,
       departureDate,
@@ -349,6 +361,14 @@ export default function TransitCard({
             <p className="text-xs text-stone-400 text-center">
               {t("searchWithProvider", { provider: flightLinks[0].displayName })}
             </p>
+            {flightSearchInfo?.originAdjusted && (
+              <p className="text-xs text-stone-500 text-center leading-relaxed">
+                {t("searchViaAirport", {
+                  origin: flightSearchInfo.originalOrigin,
+                  airport: flightSearchInfo.resolvedOriginLabel || flightSearchInfo.resolvedOrigin,
+                })}
+              </p>
+            )}
           </div>
         )}
 

@@ -228,6 +228,58 @@ describe("buildTimeline", () => {
     expect(timeline[2].itemType).toBe("transit");  // 14:00
   });
 
+  it("keeps an injected outbound flight at the top of day 1 even without a time", () => {
+    const day: DayPlan = {
+      day: 1,
+      title: "Day 1",
+      activities: [],
+      timelineItems: [
+        {
+          itemType: "transit",
+          data: {
+            type: "flight",
+            departure: { place: "東京" },
+            arrival: { place: "沖縄" },
+          },
+        },
+        { itemType: "activity", data: { time: "10:00", activity: "国際通り散策", description: "..." } },
+        { itemType: "activity", data: { time: "14:00", activity: "ビーチ", description: "..." } },
+      ],
+    };
+
+    const timeline = buildTimeline(day);
+    expect(timeline[0].itemType).toBe("transit");
+    expect(timeline[0].itemType === "transit" && timeline[0].data.type).toBe("flight");
+    expect(timeline[1].itemType).toBe("activity");
+    expect(timeline[2].itemType).toBe("activity");
+  });
+
+  it("keeps an untimed return flight at the end of the last day", () => {
+    const day: DayPlan = {
+      day: 3,
+      title: "Day 3",
+      activities: [],
+      timelineItems: [
+        { itemType: "activity", data: { time: "09:00", activity: "朝食", description: "..." } },
+        { itemType: "activity", data: { time: "13:00", activity: "お土産購入", description: "..." } },
+        {
+          itemType: "transit",
+          data: {
+            type: "flight",
+            departure: { place: "沖縄" },
+            arrival: { place: "東京" },
+          },
+        },
+      ],
+    };
+
+    const timeline = buildTimeline(day);
+    expect(timeline[0].itemType).toBe("activity");
+    expect(timeline[1].itemType).toBe("activity");
+    expect(timeline[2].itemType).toBe("transit");
+    expect(timeline[2].itemType === "transit" && timeline[2].data.arrival.place).toBe("東京");
+  });
+
   it("sorts items without time to the end", () => {
     const day: DayPlan = {
       day: 1,

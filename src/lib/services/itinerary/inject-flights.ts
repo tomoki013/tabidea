@@ -5,6 +5,7 @@
 
 import type { DayPlan, TransitInfo, TimelineItem } from '@/types/itinerary';
 import type { FixedScheduleItem } from '@/types/user-input';
+import { resolveFlightOriginAirport } from '@/lib/utils/affiliate-links';
 
 export interface FlightInjectionContext {
   /** ユーザーの出発都市 */
@@ -70,6 +71,18 @@ export function injectFlights(
   });
 }
 
+/**
+ * Resolve a city name to its airport display label.
+ * Returns the original name if no airport rule matches (e.g., international destinations).
+ */
+function resolveAirportLabel(cityName: string): string {
+  const { rule } = resolveFlightOriginAirport(cityName);
+  if (rule) {
+    return rule.label.replace(/\s*\([A-Z]{3}\)\s*$/, '');
+  }
+  return cityName;
+}
+
 function injectOutboundFlight(
   day: DayPlan,
   departure: string,
@@ -77,8 +90,8 @@ function injectOutboundFlight(
 ): DayPlan {
   const transit: TransitInfo = {
     type: 'flight',
-    departure: { place: departure },
-    arrival: { place: destination },
+    departure: { place: resolveAirportLabel(departure) },
+    arrival: { place: resolveAirportLabel(destination) },
   };
 
   const transitItem: TimelineItem = {
@@ -100,8 +113,8 @@ function injectReturnFlight(
 ): DayPlan {
   const transit: TransitInfo = {
     type: 'flight',
-    departure: { place: destination },
-    arrival: { place: arrival },
+    departure: { place: resolveAirportLabel(destination) },
+    arrival: { place: resolveAirportLabel(arrival) },
   };
 
   const transitItem: TimelineItem = {
@@ -138,6 +151,6 @@ function isLastDayFlight(
   const start = new Date(`${startDate}T00:00:00`);
   const lastDay = new Date(start);
   lastDay.setDate(start.getDate() + durationDays - 1);
-  const lastDayStr = lastDay.toISOString().slice(0, 10);
+  const lastDayStr = `${lastDay.getFullYear()}-${String(lastDay.getMonth() + 1).padStart(2, '0')}-${String(lastDay.getDate()).padStart(2, '0')}`;
   return item.date === lastDayStr;
 }

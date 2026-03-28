@@ -30,16 +30,16 @@ describe('injectFlights', () => {
     // Day 1 should have outbound flight prepended
     expect(result[0].timelineItems![0].itemType).toBe('transit');
     expect(result[0].timelineItems![0].itemType === 'transit' && result[0].timelineItems![0].data.type).toBe('flight');
-    expect(result[0].timelineItems![0].itemType === 'transit' && result[0].timelineItems![0].data.departure.place).toBe('東京');
-    expect(result[0].timelineItems![0].itemType === 'transit' && result[0].timelineItems![0].data.arrival.place).toBe('沖縄');
+    expect(result[0].timelineItems![0].itemType === 'transit' && result[0].timelineItems![0].data.departure.place).toBe('羽田空港');
+    expect(result[0].timelineItems![0].itemType === 'transit' && result[0].timelineItems![0].data.arrival.place).toBe('那覇空港');
 
     // Last day should have return flight appended
     const lastDay = result[2];
     const lastItem = lastDay.timelineItems![lastDay.timelineItems!.length - 1];
     expect(lastItem.itemType).toBe('transit');
     expect(lastItem.itemType === 'transit' && lastItem.data.type).toBe('flight');
-    expect(lastItem.itemType === 'transit' && lastItem.data.departure.place).toBe('沖縄');
-    expect(lastItem.itemType === 'transit' && lastItem.data.arrival.place).toBe('東京');
+    expect(lastItem.itemType === 'transit' && lastItem.data.departure.place).toBe('那覇空港');
+    expect(lastItem.itemType === 'transit' && lastItem.data.arrival.place).toBe('羽田空港');
 
     // Middle day should not be affected
     expect(result[1].timelineItems!.length).toBe(1);
@@ -84,13 +84,15 @@ describe('injectFlights', () => {
 
     const result = injectFlights(days, context);
 
-    // Outbound: 大阪 → 沖縄
+    // Outbound: 大阪 → 沖縄 (resolved to airports)
     const outbound = result[0].timelineItems![0];
-    expect(outbound.itemType === 'transit' && outbound.data.departure.place).toBe('大阪');
+    expect(outbound.itemType === 'transit' && outbound.data.departure.place).toBe('関西国際空港');
+    expect(outbound.itemType === 'transit' && outbound.data.arrival.place).toBe('那覇空港');
 
-    // Return: 沖縄 → 福岡
+    // Return: 沖縄 → 福岡 (resolved to airports)
     const lastItem = result[1].timelineItems![result[1].timelineItems!.length - 1];
-    expect(lastItem.itemType === 'transit' && lastItem.data.arrival.place).toBe('福岡');
+    expect(lastItem.itemType === 'transit' && lastItem.data.departure.place).toBe('那覇空港');
+    expect(lastItem.itemType === 'transit' && lastItem.data.arrival.place).toBe('福岡空港');
   });
 
   it('should skip injection when user has booked flights in fixedSchedule', () => {
@@ -110,6 +112,28 @@ describe('injectFlights', () => {
     expect(result[0].timelineItems!.length).toBe(1);
     // Day 2 should still have return flight
     expect(result[1].timelineItems!.length).toBe(2);
+  });
+
+  it('should resolve Japanese departure to airport but keep international destination as-is', () => {
+    const days = [makeDayPlan(1), makeDayPlan(2)];
+    const context: FlightInjectionContext = {
+      homeBaseCity: '京都',
+      destination: 'パリ',
+      durationDays: 2,
+      fixedSchedule: [],
+    };
+
+    const result = injectFlights(days, context);
+
+    // Outbound: 京都 → パリ should become 関西国際空港 → パリ
+    const outbound = result[0].timelineItems![0];
+    expect(outbound.itemType === 'transit' && outbound.data.departure.place).toBe('関西国際空港');
+    expect(outbound.itemType === 'transit' && outbound.data.arrival.place).toBe('パリ');
+
+    // Return: パリ → 京都 should become パリ → 関西国際空港
+    const lastItem = result[1].timelineItems![result[1].timelineItems!.length - 1];
+    expect(lastItem.itemType === 'transit' && lastItem.data.departure.place).toBe('パリ');
+    expect(lastItem.itemType === 'transit' && lastItem.data.arrival.place).toBe('関西国際空港');
   });
 
   it('should handle empty days array', () => {

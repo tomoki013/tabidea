@@ -93,17 +93,22 @@ export async function executeNextPass(
   try {
     result = await timer.measure(passId, () => passFn(ctx));
   } catch (err) {
-    // リトライ対象かチェック
     const errorName = err instanceof Error ? err.constructor.name : 'UnknownError';
+    const errorMsg = err instanceof Error ? err.message : String(err);
+    console.error(`[executor] Pass "${passId}" threw ${errorName}: ${errorMsg} (attempt ${attempt}, ${Date.now() - startMs}ms)`);
+
+    // リトライ対象かチェック
     if (
       attempt <= retryPolicy.maxRetries &&
       retryPolicy.retryableErrors.includes(errorName)
     ) {
       attempt++;
+      console.log(`[executor] Retrying pass "${passId}" (attempt ${attempt}) after ${retryPolicy.backoffMs}ms backoff`);
       await new Promise(r => setTimeout(r, retryPolicy.backoffMs));
       try {
         result = await timer.measure(`${passId}_retry`, () => passFn(ctx));
       } catch (retryErr) {
+        console.error(`[executor] Pass "${passId}" retry failed: ${retryErr instanceof Error ? retryErr.message : String(retryErr)}`);
         result = {
           outcome: 'failed_terminal',
           warnings: [`Pass "${passId}" failed after retry: ${retryErr instanceof Error ? retryErr.message : String(retryErr)}`],
@@ -113,7 +118,7 @@ export async function executeNextPass(
     } else {
       result = {
         outcome: 'failed_terminal',
-        warnings: [`Pass "${passId}" failed: ${err instanceof Error ? err.message : String(err)}`],
+        warnings: [`Pass "${passId}" failed: ${errorMsg}`],
         durationMs: Date.now() - startMs,
       };
     }
@@ -148,7 +153,9 @@ export async function executeNextPass(
       // DB から実際の実行回数を取得してリトライ上限を判定
       const priorAttempts = await countPassRuns(sessionId, passId);
       const totalAttempts = priorAttempts + attempt;
+      console.log(`[executor] Pass "${passId}" needs_retry — total attempts: ${totalAttempts}/${retryPolicy.maxRetries + 1}, warnings: ${result.warnings.join('; ')}`);
       if (totalAttempts > retryPolicy.maxRetries + 1) {
+        console.error(`[executor] Pass "${passId}" exceeded retry limit — marking session as failed`);
         newState = 'failed';
         await transitionState(sessionId, session.state, 'failed');
       }

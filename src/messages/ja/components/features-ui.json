@@ -592,6 +592,7 @@
             "bookedHint": "予約済みですが、別の航空券も検索できます",
             "searchFlights": "航空券を探す",
             "searchWithProvider": "{provider}で航空券を検索",
+            "searchViaAirport": "{origin}発の海外航空券は、{airport} 経由の検索として案内しています",
             "locked": "ロック中",
             "lock": "ロック",
             "unlock": "ロック解除",
@@ -1473,6 +1474,9 @@
             "searchFlights": "航空券を探す"
           },
           "disclaimer": "※ 概算は目安です。実際の費用は時期、予約タイミング、為替レートなどにより変動します。"
+        },
+        "bookingLinkButton": {
+          "searchViaAirport": "{origin}発の海外航空券は、{airport} 経由の検索として案内しています"
         },
         "calendarExportButton": {
           "buttonLabel": "カレンダーに追加",

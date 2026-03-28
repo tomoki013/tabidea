@@ -11,7 +11,7 @@ import { REQUEST_DEADLINE_MS, PLATFORM_HEADROOM_MS } from '@/lib/services/plan-g
 import { loadSession } from '@/lib/services/plan-generation/session-store';
 import { assertSessionAccess } from '@/lib/services/plan-generation/auth';
 
-export const maxDuration = 25;
+export const maxDuration = 120;
 export const runtime = 'nodejs';
 
 export async function POST(

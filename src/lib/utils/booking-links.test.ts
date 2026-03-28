@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { generateBookingLinks, generateTripBookingSummary } from './booking-links';
+import { generateBookingLinks, generateTripBookingSummary, inferFlightOriginFromItinerary } from './booking-links';
 
 describe('generateBookingLinks', () => {
   it('ホテル予約リンクを生成', () => {
@@ -24,6 +24,17 @@ describe('generateBookingLinks', () => {
     expect(result.links.length).toBeGreaterThan(0);
   });
 
+  it('海外旅行では都市名の出発地を主要国際空港へ補正する', () => {
+    const result = generateBookingLinks({
+      type: 'flight',
+      destination: 'パリ',
+      origin: '京都',
+    });
+
+    expect(result.flightSearchInfo?.resolvedOrigin).toBe('KIX');
+    expect(result.flightSearchInfo?.originAdjusted).toBe(true);
+  });
+
   it('アクティビティリンクを生成', () => {
     const result = generateBookingLinks({
       type: 'activity',
@@ -42,5 +53,31 @@ describe('generateTripBookingSummary', () => {
     expect(results[0].type).toBe('hotel');
     expect(results[1].type).toBe('flight');
     expect(results[2].type).toBe('activity');
+  });
+});
+
+describe('inferFlightOriginFromItinerary', () => {
+  it('初日の往路フライトから出発地を推定する', () => {
+    const origin = inferFlightOriginFromItinerary({
+      days: [
+        {
+          day: 1,
+          title: 'Day 1',
+          activities: [],
+          timelineItems: [
+            {
+              itemType: 'transit',
+              data: {
+                type: 'flight',
+                departure: { place: '京都' },
+                arrival: { place: 'パリ' },
+              },
+            },
+          ],
+        },
+      ],
+    });
+
+    expect(origin).toBe('京都');
   });
 });

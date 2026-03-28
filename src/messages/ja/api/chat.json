@@ -2,7 +2,7 @@
   "api": {
     "chat": {
       "languageInstruction": "Reply in Japanese.",
-      "agreementExamples": "「はい」「お願いします」「その内容で」",
+      "agreementExamples": "「はい」「お願いします」「その内容で」「いいね」「OK」「それで」「それでお願い」「変えて」「やって」",
       "destinationChangeResponse": "行き先を大きく変更する場合は、新しいプランを作成してください。こちらでは{destination}のプランの微調整をお手伝いします！"
     }
   }

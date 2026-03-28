@@ -592,6 +592,7 @@
             "bookedHint": "Already booked, but you can search other flight options",
             "searchFlights": "Search flights",
             "searchWithProvider": "Search flights on {provider}",
+            "searchViaAirport": "For international flights from {origin}, we guide the search via {airport}.",
             "locked": "Locked",
             "lock": "Lock",
             "unlock": "Unlock",
@@ -1470,6 +1471,9 @@
             "searchFlights": "Search flights"
           },
           "disclaimer": "* This estimate is for reference only. Actual costs vary by season, booking timing, and exchange rates."
+        },
+        "bookingLinkButton": {
+          "searchViaAirport": "For international flights from {origin}, we guide the search via {airport}."
         },
         "calendarExportButton": {
           "buttonLabel": "Add to calendar",

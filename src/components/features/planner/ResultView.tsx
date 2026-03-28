@@ -41,6 +41,7 @@ import { MapRouteViewRenderer } from "@/components/features/planner/map-route";
 import { useSpotCoordinates } from "@/lib/hooks/useSpotCoordinates";
 import { cn } from "@/lib/utils";
 import { buildTimeline } from "@/lib/utils/plan";
+import { inferFlightOriginFromItinerary } from "@/lib/utils/booking-links";
 import type { MapProviderType } from "@/lib/limits/config";
 import type { ReplanTrigger } from "@/types/replan";
 import { ReplanTriggerPanel } from "@/components/features/replan";
@@ -244,6 +245,10 @@ export default function ResultView({
       description: t("newActivity.description"),
     }),
     [t]
+  );
+  const flightOrigin = useMemo(
+    () => inferFlightOriginFromItinerary(result),
+    [result]
   );
 
   // --------------------------------------------------------------------------
@@ -794,7 +799,7 @@ export default function ResultView({
                      </HandwrittenText>
                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                        <BookingLinkButton type="hotel" destination={result.destination} label={t("booking.hotel")} />
-                       <BookingLinkButton type="flight" destination={result.destination} label={t("booking.flight")} />
+                       <BookingLinkButton type="flight" destination={result.destination} label={t("booking.flight")} origin={flightOrigin} />
                        <BookingLinkButton type="activity" destination={result.destination} label={t("booking.activity")} />
                      </div>
                    </div>
