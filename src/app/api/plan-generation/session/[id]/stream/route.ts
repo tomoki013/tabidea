@@ -89,61 +89,70 @@ export async function POST(
           return narrativePolishPassStreaming(ctx);
         });
 
+        // Heartbeat to keep connection alive through proxies/CDN
+        const heartbeat = setInterval(() => {
+          try { controller.enqueue(encoder.encode(': heartbeat\n\n')); } catch { /* closed */ }
+        }, 4000);
+
         // Stream day_complete events
-        for await (const event of dayStream) {
-          emit('day_complete', {
-            day: event.day,
-            dayData: event.dayData,
-            isComplete: event.isComplete,
-            totalDays,
-            destination,
-            description,
-          });
-        }
+        try {
+          for await (const event of dayStream) {
+            emit('day_complete', {
+              day: event.day,
+              dayData: event.dayData,
+              isComplete: event.isComplete,
+              totalDays,
+              destination,
+              description,
+            });
+          }
 
-        // Wait for final result
-        const result = await finalResult;
+          // Wait for final result
+          const result = await finalResult;
 
-        if (result.outcome === 'completed' && result.data) {
-          // Save NarrativeState and transition to completed
-          await timer.measure('save_state', async () => {
-            await updateSession(id, { narrativeState: result.data });
-            await transitionState(id, 'timeline_ready', 'completed');
+          if (result.outcome === 'completed' && result.data) {
+            // Save NarrativeState and transition to completed
+            await timer.measure('save_state', async () => {
+              await updateSession(id, { narrativeState: result.data });
+              await transitionState(id, 'timeline_ready', 'completed');
 
-            // Accumulate warnings
-            if (result.warnings.length > 0) {
-              await updateSession(id, {
-                warnings: [...session.warnings, ...result.warnings],
-              });
-            }
-          });
+              // Accumulate warnings
+              if (result.warnings.length > 0) {
+                await updateSession(id, {
+                  warnings: [...session.warnings, ...result.warnings],
+                });
+              }
+            });
 
-          // Performance log
-          timer.log();
+            // Performance log
+            timer.log();
 
-          // Log pass run (fire-and-forget)
-          const logger = new PlanGenerationLogger(id);
-          logger.logPassRun({
-            passId: 'narrative_polish',
-            attempt: 1,
-            outcome: result.outcome,
-            durationMs: result.durationMs,
-            startedAt: new Date(requestStart).toISOString(),
-            metadata: {
-              ...result.metadata,
-              performanceReport: timer.getReport(),
-            },
-          });
+            // Log pass run (fire-and-forget)
+            const logger = new PlanGenerationLogger(id);
+            logger.logPassRun({
+              passId: 'narrative_polish',
+              attempt: 1,
+              outcome: result.outcome,
+              durationMs: result.durationMs,
+              startedAt: new Date(requestStart).toISOString(),
+              metadata: {
+                ...result.metadata,
+                performanceReport: timer.getReport(),
+              },
+            });
 
-          emit('complete', {
-            session: { id, state: 'completed' },
-          });
-        } else {
-          timer.log();
-          emit('error', {
-            message: result.warnings[0] ?? 'Narrative generation failed',
-            outcome: result.outcome,
-          });
+            emit('complete', {
+              session: { id, state: 'completed' },
+            });
+          } else {
+            timer.log();
+            emit('error', {
+              message: result.warnings[0] ?? 'Narrative generation failed',
+              outcome: result.outcome,
+            });
+          }
+        } finally {
+          clearInterval(heartbeat);
         }
       } catch (err) {
         timer.log();

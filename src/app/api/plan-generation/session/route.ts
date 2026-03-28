@@ -8,6 +8,14 @@ import { NextResponse } from 'next/server';
 import type { UserInput } from '@/types/user-input';
 import { createSession, updateSession } from '@/lib/services/plan-generation/session-store';
 import { getUser } from '@/lib/supabase/server';
+import { getUserSettings } from '@/app/actions/user-settings';
+import {
+  getDefaultHomeBaseCityForRegion,
+  getDefaultRegionForLanguage,
+  isLanguageCode,
+  type LanguageCode,
+  DEFAULT_LANGUAGE,
+} from '@/lib/i18n/locales';
 
 export const maxDuration = 25;
 export const runtime = 'nodejs';
@@ -27,11 +35,21 @@ export async function POST(request: Request) {
     const user = await getUser().catch(() => null);
     const userId = user?.id;
 
+    // homeBaseCity をユーザー設定から解決 (v3 パリティ — フライト注入に必要)
+    const { settings } = await getUserSettings().catch(() => ({ settings: null }));
+    const preferredLanguage: LanguageCode =
+      settings?.preferredLanguage && isLanguageCode(settings.preferredLanguage)
+        ? settings.preferredLanguage
+        : DEFAULT_LANGUAGE;
+    const preferredRegion = settings?.preferredRegion ?? getDefaultRegionForLanguage(preferredLanguage);
+    const homeBaseCity = settings?.homeBaseCity?.trim() || getDefaultHomeBaseCityForRegion(preferredRegion);
+
     const session = await createSession(userId);
 
-    // inputSnapshot を保存
+    // inputSnapshot + pipelineContext を保存
     await updateSession(session.id, {
       inputSnapshot: body.input,
+      pipelineContext: { homeBaseCity },
     });
 
     return NextResponse.json({

@@ -102,6 +102,7 @@ export function sessionToItinerary(session: PlanGenerationSession): Itinerary {
   // AdapterContext
   const overnightLocations = draftPlan.days.map(d => d.overnightLocation);
   const context: AdapterContext = {
+    homeBaseCity: normalizedInput.homeBaseCity ?? session.pipelineContext?.homeBaseCity,
     destination: draftPlan.destination,
     durationDays: draftPlan.days.length,
     startDate: normalizedInput.startDate,
