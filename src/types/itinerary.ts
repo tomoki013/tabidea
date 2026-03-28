@@ -3,6 +3,8 @@
  * Itinerary Types for AI Travel Planner
  */
 
+import type { PlacesApiErrorCode } from '@/types/places';
+
 /**
  * 移動手段タイプ
  */
@@ -48,6 +50,8 @@ export interface ActivityValidation {
   source?: 'google_places' | 'blog' | 'ai_generated';
   /** Google Place ID */
   placeId?: string;
+  /** Places API エラーコード */
+  errorCode?: PlacesApiErrorCode;
   /** 詳細情報 */
   details?: {
     address?: string;

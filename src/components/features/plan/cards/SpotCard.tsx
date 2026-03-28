@@ -159,12 +159,13 @@ export default function SpotCard({
 
   // Merge validation data with fetched details
   const mergedValidation: ActivityValidation | undefined = fetchedDetails
-    ? {
+      ? {
         spotName: fetchedDetails.spotName,
         isVerified: fetchedDetails.isVerified,
         confidence: fetchedDetails.confidence,
         source: fetchedDetails.source,
         placeId: fetchedDetails.placeId,
+        errorCode: fetchedDetails.errorCode,
         details: fetchedDetails.details
           ? {
               address: fetchedDetails.details.address,
