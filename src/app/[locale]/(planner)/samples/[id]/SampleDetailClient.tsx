@@ -38,23 +38,23 @@ export default function SampleDetailClient({
     setIsUpdating(true);
     try {
       const response = await regeneratePlan(planToUse, chatHistory);
-      if (response.success && response.data) {
+      if (response.ok) {
         // Save the regenerated plan
         if (isAuthenticated) {
-          const saveResult = await savePlanViaApi(sampleInput, response.data, false);
+          const saveResult = await savePlanViaApi(sampleInput, response.data.itinerary, false);
           if (saveResult.success && saveResult.shareCode) {
             router.push(`/plan/${saveResult.shareCode}`);
           } else {
             console.error("Failed to save to DB:", saveResult.error);
-            const localPlan = await saveLocalPlan(sampleInput, response.data);
+            const localPlan = await saveLocalPlan(sampleInput, response.data.itinerary);
             router.push(`/plan/local/${localPlan.id}`);
           }
         } else {
-          const localPlan = await saveLocalPlan(sampleInput, response.data);
+          const localPlan = await saveLocalPlan(sampleInput, response.data.itinerary);
           router.push(`/plan/local/${localPlan.id}`);
         }
       } else {
-        console.error(response.message);
+        console.error(response.error);
       }
     } catch (e) {
       console.error(e);

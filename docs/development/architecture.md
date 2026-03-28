@@ -1,6 +1,6 @@
 # Architecture
 
-更新日: 2026-03-27
+更新日: 2026-03-29
 
 ## 1. System Overview
 
@@ -88,6 +88,7 @@ UserInput → [Seed API]
 ### 3.2 Plan Generation Pipeline v4 (LM-First / Harness-Controlled)
 
 v3 が「ステップごとに LLM → API → TS」で構成していたのに対し、v4 は「AI が全日程ドラフトを一括生成し、ルールベースのハーネスが評価・修復・検証する」アーキテクチャ。v3 のステップ関数を直接 import して再利用する。v3 と並行運用し、プロダクション置き換えは行わない。
+また、新規生成以外の旅程変更系 (`regeneratePlan`, `/api/replan`) とは `src/types/plan-mutation.ts` と `src/lib/services/plan-mutation/*` で共通の mutation 契約を持ち、成功/失敗コード・duration・warnings を横断的に揃える。
 
 ```
 UserInput → [Session Manager]
@@ -131,6 +132,7 @@ UserInput → [Session Manager]
 - スコアリング: `src/lib/services/plan-generation/scoring/`
 - ブリッジ: `src/lib/services/plan-generation/bridges/`
 - クライアントフック: `src/lib/hooks/usePlanGeneration.ts`
+- 共通 mutation 層: `src/lib/services/plan-mutation/*`
 - Pipeline version: `v4`
 - v3 関数再利用: `resolvePlaces()`, `optimizeRoutes()`, `buildTimeline()`, `runNarrativeRenderer()`, `streamNarrativeRendererWithResult()`, `composedToItinerary()`, `readSSEStream()`
 
@@ -148,6 +150,10 @@ UserInput → [Session Manager]
 2. 制約検出・スロット抽出
 3. 候補作成とシグナル評価
 4. 説明可能性付きで候補提示
+
+- `ReplanEngine` はスロット特定 → AI代替案生成 → スコアリングを担当し、`applyRecoveryOption()` が itinerary 反映責務を持つ
+- `/api/replan` は `src/lib/services/plan-mutation/replan-plan.ts` を通して共通 mutation 契約で返却する
+- `useReplan()` は API state hook、`usePlanRegeneration()` はチャット起点の全量再生成 hook として分離する
 
 ## 4. App Router Structure
 
@@ -168,6 +174,7 @@ UserInput → [Session Manager]
 ## 5. Domain Layer Mapping
 
 - `lib/services/ai`: モデル選択・生成戦略・プロンプト処理・Travel Expertise Layer（旅行知識ルール）
+- `lib/services/plan-mutation`: 生成系の共通 mutation 契約、再生成 orchestration、replan bridge
 - `lib/services/plan-generation`: v4 パイプライン (セッション管理、パス実行、状態機械、9 軸スコアリング、ブリッジ層)
 - `lib/services/rag`: 記事取得・検索
 - `lib/services/travel-info`: 渡航情報統合

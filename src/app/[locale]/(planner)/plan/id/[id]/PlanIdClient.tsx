@@ -8,9 +8,10 @@ import { useTranslations } from 'next-intl';
 import type { UserInput, Itinerary, Plan } from '@/types';
 import type { MapProviderType } from '@/lib/limits/config';
 import type { ReplanTrigger, RecoveryOption } from '@/types/replan';
-import { regeneratePlan, updatePlanItinerary, savePlanChatMessages, type ChatMessage } from '@/app/actions/travel-planner';
+import { updatePlanItinerary, savePlanChatMessages, type ChatMessage } from '@/app/actions/travel-planner';
 import { syncJournalEntry, updatePlanItemDetails } from '@/app/actions/plan-itinerary';
 import { buildTripPlan, buildDefaultTravelerState, buildTripContext } from '@/lib/utils/replan-adapter';
+import { usePlanRegeneration } from '@/lib/hooks';
 import { useReplan } from '@/lib/hooks/useReplan';
 import ResultView from '@/components/features/planner/ResultView';
 import { ReplanSuggestionCard, ReplanSheet } from '@/components/features/replan';
@@ -18,7 +19,6 @@ import { PlanModal } from '@/components/common';
 import { FAQSection, ExampleSection } from '@/components/features/landing';
 import type { NormalizedPlanDay } from '@/types/normalized-plan';
 import FullScreenGenerationOverlay from '@/components/features/planner/FullScreenGenerationOverlay';
-import { buildResolvedRegenerationState, type ResolvedRegenerationState } from '@/lib/utils/travel-planner-chat';
 
 interface PlanIdClientProps {
   plan: Plan;
@@ -45,19 +45,15 @@ export default function PlanIdClient({
   const regenerateInstruction = tPlan("regenerateInstruction");
   const [result, setResult] = useState<Itinerary>(initialItinerary);
   const [input] = useState<UserInput>(initialInput);
-  const [status, setStatus] = useState<'idle' | 'regenerating' | 'success' | 'updating' | 'saving'>('idle');
-  const pendingResultRef = useRef<{ data: Itinerary; history: { role: string; text: string }[] } | null>(null);
-  const [chatHistoryToKeep, setChatHistoryToKeep] = useState<
-    { role: string; text: string }[]
-  >(initialChatMessages?.map(m => ({ role: m.role === 'assistant' ? 'model' : 'user', text: m.content })) || []);
-  const [resolvedRegeneration, setResolvedRegeneration] = useState<ResolvedRegenerationState | null>(null);
-  const [chatSessionKey, setChatSessionKey] = useState(0);
   const [isEditingRequest, setIsEditingRequest] = useState(false);
   const [initialEditStep, setInitialEditStep] = useState(0);
   const [isNewPlanModalOpen, setIsNewPlanModalOpen] = useState(false);
   const [normalizedDays, setNormalizedDays] = useState<NormalizedPlanDay[]>(initialNormalizedDays);
   const [showAlternatives, setShowAlternatives] = useState(false);
-  const [regenerateError, setRegenerateError] = useState<string | null>(null);
+  const initialHistory = initialChatMessages?.map((message) => ({
+    role: message.role === 'assistant' ? 'model' : 'user',
+    text: message.content,
+  })) ?? [];
 
   const mapPlanError = useCallback((code?: string | null) => {
     switch (code) {
@@ -105,7 +101,7 @@ export default function PlanIdClient({
     }, 1000);
   }, [savePlanToDb]);
 
-  const { isReplanning, result: replanResult, triggerReplan, acceptSuggestion, dismissSuggestion } =
+  const { isReplanning, result: replanResult, triggerReplan, acceptSuggestion } =
     useReplan(tripPlan, travelerState, tripContext, { onApply: handleReplanApply });
 
   const handleReplanTrigger = useCallback((trigger: ReplanTrigger) => {
@@ -134,64 +130,27 @@ export default function PlanIdClient({
     }
   }, [planId]);
 
-  const handleRegenerate = async (
-    chatHistory: { role: string; text: string }[],
-    overridePlan?: Itinerary
-  ) => {
-    const planToUse = overridePlan || result;
-    if (!planToUse || !input) return;
-    const persistedHistory =
-      chatHistory.length > 0 &&
-      chatHistory[chatHistory.length - 1]?.role === "user" &&
-      chatHistory[chatHistory.length - 1]?.text === regenerateInstruction
-        ? chatHistory.slice(0, -1)
-        : chatHistory;
-
-    setRegenerateError(null);
-    setResolvedRegeneration(null);
-    setChatHistoryToKeep(persistedHistory);
-    setStatus('regenerating');
-
-    try {
-      const response = await regeneratePlan(planToUse, chatHistory);
-      if (response.success && response.data) {
-        // Store result in ref for deferred application
-        pendingResultRef.current = { data: response.data, history: persistedHistory };
-        setStatus('success');
-      } else {
-        console.error(response.message);
-        setRegenerateError(mapPlanError(response.message));
-        setStatus('idle');
-      }
-    } catch (e) {
-      console.error(e);
-      setRegenerateError(mapPlanError("regenerate_failed"));
-      setStatus('idle');
-    }
-  };
+  const regeneration = usePlanRegeneration({
+    getCurrentPlan: () => result,
+    regenerateInstruction,
+    initialHistory,
+    mode: 'deferred',
+    mapError: mapPlanError,
+    onApply: async ({ itinerary, history }) => {
+      setResult(itinerary);
+      await savePlanToDb(itinerary);
+      await saveChatToDb(history);
+    },
+  });
 
   const handleSuccessComplete = useCallback(async () => {
-    setStatus('updating');
-
-    const pending = pendingResultRef.current;
-    if (pending) {
-      setResult(pending.data);
-      setChatHistoryToKeep(pending.history);
-      setResolvedRegeneration(buildResolvedRegenerationState(pending.history));
-      setChatSessionKey((prev) => prev + 1);
-
-      // Save to DB
-      await savePlanToDb(pending.data);
-      await saveChatToDb(pending.history);
-      pendingResultRef.current = null;
-    }
+    await regeneration.completeSuccess();
 
     // Short delay for re-render, then dismiss overlay and scroll to top
     setTimeout(() => {
-      setStatus('idle');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 600);
-  }, [savePlanToDb, saveChatToDb]);
+  }, [regeneration]);
 
   const handleRestart = () => {
     router.push('/');
@@ -211,13 +170,9 @@ export default function PlanIdClient({
 
   // Save chat messages when they change
   const handleChatChange = useCallback((messages: { role: string; text: string }[]) => {
-    setChatHistoryToKeep(messages);
+    regeneration.setChatHistoryToKeep(messages);
     saveChatToDb(messages);
-  }, [saveChatToDb]);
-
-  const handleResolvedRegenerationClear = useCallback(() => {
-    setResolvedRegeneration(null);
-  }, []);
+  }, [regeneration, saveChatToDb]);
 
   const handleEditRequest = (stepIndex: number) => {
     setInitialEditStep(stepIndex);
@@ -300,12 +255,12 @@ export default function PlanIdClient({
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9] overflow-x-clip">
       <FullScreenGenerationOverlay
-        phase={status === 'idle' || status === 'saving' ? null : status}
+        phase={regeneration.status === 'idle' ? null : regeneration.status}
         previewDestination={result.destination}
         onSuccessComplete={handleSuccessComplete}
       />
       <main className="flex-1 w-full flex flex-col items-center overflow-x-clip pt-24 md:pt-28">
-        {regenerateError && (
+        {regeneration.error && (
           <div className="fixed top-4 right-4 z-50 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800 rounded-lg p-4 shadow-lg max-w-md animate-in slide-in-from-top-4">
             <div className="flex items-start gap-3">
               <svg
@@ -322,10 +277,10 @@ export default function PlanIdClient({
                 />
               </svg>
               <div className="flex-1">
-                <p className="text-red-800 dark:text-red-200 text-sm font-medium">{regenerateError}</p>
+                <p className="text-red-800 dark:text-red-200 text-sm font-medium">{regeneration.error}</p>
               </div>
               <button
-                onClick={() => setRegenerateError(null)}
+                onClick={regeneration.clearError}
                 className="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
               >
                 <svg
@@ -350,15 +305,15 @@ export default function PlanIdClient({
           result={result}
           input={input}
           onRestart={handleRestart}
-          onRegenerate={handleRegenerate}
+          onRegenerate={regeneration.handleRegenerate}
           onResultChange={handleResultChange}
           onChatChange={handleChatChange}
           isUpdating={false}
           onEditRequest={handleEditRequest}
-          initialChatHistory={chatHistoryToKeep}
-          resolvedRegeneration={resolvedRegeneration}
-          onResolvedRegenerationClear={handleResolvedRegenerationClear}
-          chatSessionKey={chatSessionKey}
+          initialChatHistory={regeneration.chatHistoryToKeep}
+          resolvedRegeneration={regeneration.resolvedRegeneration}
+          onResolvedRegenerationClear={regeneration.clearResolvedRegeneration}
+          chatSessionKey={regeneration.chatSessionKey}
           shareCode={plan.shareCode}
           planId={planId}
           initialIsPublic={plan.isPublic}

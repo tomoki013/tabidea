@@ -7,7 +7,8 @@ import { useTranslations } from 'next-intl';
 
 import type { UserInput, Itinerary, Plan } from '@/types';
 import type { MapProviderType } from '@/lib/limits/config';
-import { regeneratePlan, updatePlanItinerary, savePlanChatMessages, type ChatMessage } from '@/app/actions/travel-planner';
+import { updatePlanItinerary, savePlanChatMessages, type ChatMessage } from '@/app/actions/travel-planner';
+import { usePlanRegeneration } from '@/lib/hooks';
 import ResultView from '@/components/features/planner/ResultView';
 import { PlanModal } from '@/components/common';
 import { FAQSection, ExampleSection } from '@/components/features/landing';
@@ -15,7 +16,6 @@ import ShioriPromotionSection from '@/components/features/shiori/ShioriPromotion
 import { PostTripReflection } from '@/components/features/feedback/PostTripReflection';
 import { usePostTripReminder } from '@/lib/hooks/usePostTripReminder';
 import { submitReflection } from '@/app/actions/reflection';
-import { buildResolvedRegenerationState, type ResolvedRegenerationState } from '@/lib/utils/travel-planner-chat';
 
 interface PlanCodeClientProps {
   plan: Plan;
@@ -46,17 +46,33 @@ export default function PlanCodeClient({
 }: PlanCodeClientProps) {
   const router = useRouter();
   const tPlan = useTranslations("app.planner.plan");
+  const tError = useTranslations("errors.ui.plan");
   const [result, setResult] = useState<Itinerary>(initialItinerary);
   const [input] = useState<UserInput>(initialInput);
-  const [status, setStatus] = useState<'idle' | 'regenerating' | 'saving'>('idle');
-  const [chatHistoryToKeep, setChatHistoryToKeep] = useState<
-    { role: string; text: string }[]
-  >(initialChatMessages?.map(m => ({ role: m.role === 'assistant' ? 'model' : 'user', text: m.content })) || []);
-  const [resolvedRegeneration, setResolvedRegeneration] = useState<ResolvedRegenerationState | null>(null);
-  const [chatSessionKey, setChatSessionKey] = useState(0);
   const [isEditingRequest, setIsEditingRequest] = useState(false);
   const [initialEditStep, setInitialEditStep] = useState(0);
   const [isNewPlanModalOpen, setIsNewPlanModalOpen] = useState(false);
+  const initialHistory = initialChatMessages?.map((message) => ({
+    role: message.role === 'assistant' ? 'model' : 'user',
+    text: message.content,
+  })) ?? [];
+
+  const mapPlanError = useCallback((code?: string | null) => {
+    switch (code) {
+      case "api_key_missing":
+        return tError("apiKeyMissing");
+      case "regenerate_no_effect":
+        return tError("regenerateNoEffect");
+      case "regenerate_timeout":
+        return tError("regenerateTimeout");
+      case "regenerate_failed":
+      case "detail_generation_failed":
+      case "chunk_generation_failed":
+        return tError("regenerateFailed");
+      default:
+        return tError("regenerateFailed");
+    }
+  }, [tError]);
 
   // ---- PR-N: Post-trip reflection ----
   // Derive trip end date from input.dates.
@@ -127,50 +143,23 @@ export default function PlanCodeClient({
     }
   }, [isOwner, isAuthenticated, plan.id]);
 
-  const handleRegenerate = async (
-    chatHistory: { role: string; text: string }[],
-    overridePlan?: Itinerary
-  ) => {
-    const planToUse = overridePlan || result;
-    if (!planToUse || !input) return;
-    const persistedHistory =
-      chatHistory.length > 0 &&
-      chatHistory[chatHistory.length - 1]?.role === "user" &&
-      chatHistory[chatHistory.length - 1]?.text === tPlan("regenerateInstruction")
-        ? chatHistory.slice(0, -1)
-        : chatHistory;
-
-    setResolvedRegeneration(null);
-    setChatHistoryToKeep(persistedHistory);
-    setStatus('regenerating');
-
-    try {
-      const response = await regeneratePlan(planToUse, chatHistory);
-      if (response.success && response.data) {
-        setResult(response.data);
-        setResolvedRegeneration(buildResolvedRegenerationState(persistedHistory));
-        setChatSessionKey((prev) => prev + 1);
-        setStatus('idle');
-
-        // Save to DB if owner
-        if (isOwner && isAuthenticated) {
-          await savePlanToDb(response.data);
-          await saveChatToDb(persistedHistory);
-        }
-
-        // Scroll to top
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 100);
-      } else {
-        console.error(response.message);
-        setStatus('idle');
+  const regeneration = usePlanRegeneration({
+    getCurrentPlan: () => result,
+    regenerateInstruction: tPlan("regenerateInstruction"),
+    initialHistory,
+    mode: 'immediate',
+    mapError: mapPlanError,
+    onApply: async ({ itinerary, history }) => {
+      setResult(itinerary);
+      if (isOwner && isAuthenticated) {
+        await savePlanToDb(itinerary);
+        await saveChatToDb(history);
       }
-    } catch (e) {
-      console.error(e);
-      setStatus('idle');
-    }
-  };
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    },
+  });
 
   const handleRestart = () => {
     router.push('/');
@@ -192,15 +181,11 @@ export default function PlanCodeClient({
 
   // Save chat messages when they change
   const handleChatChange = useCallback((messages: { role: string; text: string }[]) => {
-    setChatHistoryToKeep(messages);
+    regeneration.setChatHistoryToKeep(messages);
     if (isOwner && isAuthenticated) {
       saveChatToDb(messages);
     }
-  }, [isOwner, isAuthenticated, saveChatToDb]);
-
-  const handleResolvedRegenerationClear = useCallback(() => {
-    setResolvedRegeneration(null);
-  }, []);
+  }, [isOwner, isAuthenticated, regeneration, saveChatToDb]);
 
   const handleEditRequest = (stepIndex: number) => {
     setInitialEditStep(stepIndex);
@@ -210,6 +195,46 @@ export default function PlanCodeClient({
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9] overflow-x-clip">
       <main className="flex-1 w-full flex flex-col items-center overflow-x-clip">
+        {regeneration.error && (
+          <div className="fixed top-4 right-4 z-50 bg-red-50 border border-red-200 rounded-lg p-4 shadow-lg max-w-md animate-in slide-in-from-top-4">
+            <div className="flex items-start gap-3">
+              <svg
+                className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <div className="flex-1">
+                <p className="text-red-800 text-sm font-medium">{regeneration.error}</p>
+              </div>
+              <button
+                onClick={regeneration.clearError}
+                className="text-red-500 hover:text-red-700"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
         {/* Title Section */}
         <div className="w-full pt-32 pb-8 text-center px-4 animate-in fade-in slide-in-from-top-4 duration-700">
           <div className="inline-block mb-4 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold tracking-wider uppercase">
@@ -229,15 +254,15 @@ export default function PlanCodeClient({
           result={result}
           input={input}
           onRestart={handleRestart}
-          onRegenerate={handleRegenerate}
+          onRegenerate={regeneration.handleRegenerate}
           onResultChange={handleResultChange}
           onChatChange={handleChatChange}
-          isUpdating={status === 'regenerating'}
+          isUpdating={regeneration.status === 'regenerating'}
           onEditRequest={handleEditRequest}
-          initialChatHistory={chatHistoryToKeep}
-          resolvedRegeneration={resolvedRegeneration}
-          onResolvedRegenerationClear={handleResolvedRegenerationClear}
-          chatSessionKey={chatSessionKey}
+          initialChatHistory={regeneration.chatHistoryToKeep}
+          resolvedRegeneration={regeneration.resolvedRegeneration}
+          onResolvedRegenerationClear={regeneration.clearResolvedRegeneration}
+          chatSessionKey={regeneration.chatSessionKey}
           shareCode={shareCode}
           planId={plan.id}
           showChat={false}

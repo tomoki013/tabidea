@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { FaPlus } from 'react-icons/fa6';
 import { useTranslations } from 'next-intl';
 
 import type { UserInput, Itinerary, LocalPlan } from '@/types';
-import { regeneratePlan } from '@/app/actions/travel-planner';
+import { usePlanRegeneration } from '@/lib/hooks';
 import { getLocalPlans, updateLocalPlan, deleteLocalPlan } from '@/lib/local-storage/plans';
 import { savePlanViaApi } from '@/lib/plans/save-plan-client';
 import { useAuth } from '@/context/AuthContext';
@@ -16,7 +16,6 @@ import { PlanModal } from '@/components/common';
 import { FAQSection, ExampleSection } from '@/components/features/landing';
 import { restorePendingState, clearPendingState } from '@/lib/restore/pending-state';
 import FullScreenGenerationOverlay from '@/components/features/planner/FullScreenGenerationOverlay';
-import { buildResolvedRegenerationState, type ResolvedRegenerationState } from '@/lib/utils/travel-planner-chat';
 
 interface PlanLocalClientProps {
   localId: string;
@@ -37,14 +36,9 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
   const [plan, setPlan] = useState<LocalPlan | null>(null);
   const [result, setResult] = useState<Itinerary | null>(null);
   const [input, setInput] = useState<UserInput | null>(null);
-  const [status, setStatus] = useState<'loading' | 'idle' | 'regenerating' | 'success' | 'updating' | 'syncing' | 'error'>('loading');
-  const pendingResultRef = useRef<{ data: Itinerary; history: { role: string; text: string }[] } | null>(null);
+  const [pageStatus, setPageStatus] = useState<'loading' | 'idle' | 'syncing' | 'error'>('loading');
   const [error, setError] = useState<string>('');
   const [autoSaveError, setAutoSaveError] = useState<string | null>(null);
-  const [regenerateError, setRegenerateError] = useState<string | null>(null);
-  const [chatHistoryToKeep, setChatHistoryToKeep] = useState<{ role: string; text: string }[]>([]);
-  const [resolvedRegeneration, setResolvedRegeneration] = useState<ResolvedRegenerationState | null>(null);
-  const [chatSessionKey, setChatSessionKey] = useState(0);
   const [isEditingRequest, setIsEditingRequest] = useState(false);
   const [initialEditStep, setInitialEditStep] = useState(0);
   const [isNewPlanModalOpen, setIsNewPlanModalOpen] = useState(false);
@@ -55,6 +49,8 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
         return tError("apiKeyMissing");
       case "regenerate_no_effect":
         return tError("regenerateNoEffect");
+      case "regenerate_timeout":
+        return tError("regenerateTimeout");
       case "regenerate_failed":
       case "detail_generation_failed":
       case "chunk_generation_failed":
@@ -69,6 +65,19 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
     }
   }, [tError, tPlan]);
 
+  const regeneration = usePlanRegeneration({
+    getCurrentPlan: () => result,
+    regenerateInstruction,
+    mode: 'deferred',
+    mapError: mapPlanError,
+    onApply: async ({ itinerary }) => {
+      setResult(itinerary);
+      if (plan) {
+        updateLocalPlan(plan.id, { itinerary });
+      }
+    },
+  });
+
   const cleanupUrl = () => {
     const url = new URL(window.location.href);
     url.searchParams.delete('restore');
@@ -78,7 +87,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
 
   // 自動保存処理
   const handleAutoSave = useCallback(async (restoredInput: UserInput, restoredItinerary: Itinerary) => {
-    setStatus('syncing');
+    setPageStatus('syncing');
 
     try {
       const saveResult = await savePlanViaApi(restoredInput, restoredItinerary, false);
@@ -91,12 +100,12 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
         router.replace(`/plan/id/${saveResult.plan.id}`);
       } else {
         setAutoSaveError(mapPlanError(saveResult.error));
-        setStatus('idle');
+        setPageStatus('idle');
         cleanupUrl();
       }
-    } catch (error) {
+    } catch {
       setAutoSaveError(tPlan("autoSaveUnexpected"));
-      setStatus('idle');
+      setPageStatus('idle');
       cleanupUrl();
     }
   }, [localId, mapPlanError, router, tPlan]);
@@ -109,7 +118,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
     if (!foundPlan) {
       queueMicrotask(() => {
         setError(tPlan("localPlanNotFound"));
-        setStatus('error');
+        setPageStatus('error');
       });
       return;
     }
@@ -118,7 +127,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
       setPlan(foundPlan);
       setInput(foundPlan.input);
       setResult(foundPlan.itinerary);
-      setStatus('idle');
+      setPageStatus('idle');
     });
 
     // 復元フラグがある場合
@@ -150,7 +159,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
   const syncToDatabase = useCallback(async () => {
     if (!plan || !input || !result) return;
 
-    setStatus('syncing');
+    setPageStatus('syncing');
 
     try {
       const saveResult = await savePlanViaApi(input, result, false);
@@ -162,80 +171,28 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
         router.replace(`/plan/id/${saveResult.plan.id}`);
       } else {
         console.error('Failed to sync to database:', saveResult.error);
-        setStatus('idle');
+        setPageStatus('idle');
       }
     } catch (err) {
       console.error('Sync error:', err);
-      setStatus('idle');
+      setPageStatus('idle');
     }
   }, [plan, input, result, router]);
 
   // When user becomes authenticated, sync to database
   useEffect(() => {
-    if (!authLoading && isAuthenticated && plan && status === 'idle') {
+    if (!authLoading && isAuthenticated && plan && pageStatus === 'idle') {
       queueMicrotask(() => syncToDatabase());
     }
-  }, [authLoading, isAuthenticated, plan, status, syncToDatabase]);
-
-  const handleRegenerate = async (
-    chatHistory: { role: string; text: string }[],
-    overridePlan?: Itinerary
-  ) => {
-    const planToUse = overridePlan || result;
-    if (!planToUse || !input) return;
-    const persistedHistory =
-      chatHistory.length > 0 &&
-      chatHistory[chatHistory.length - 1]?.role === "user" &&
-      chatHistory[chatHistory.length - 1]?.text === regenerateInstruction
-        ? chatHistory.slice(0, -1)
-        : chatHistory;
-
-    setRegenerateError(null);
-    setResolvedRegeneration(null);
-    setChatHistoryToKeep(persistedHistory);
-    setStatus('regenerating');
-
-    try {
-      const response = await regeneratePlan(planToUse, chatHistory);
-      if (response.success && response.data) {
-        // Store result in ref for deferred application
-        pendingResultRef.current = { data: response.data, history: persistedHistory };
-        setStatus('success');
-      } else {
-        console.error(response.message);
-        setRegenerateError(mapPlanError(response.message));
-        setStatus('idle');
-      }
-    } catch (e) {
-      console.error(e);
-      setRegenerateError(mapPlanError("regenerate_failed"));
-      setStatus('idle');
-    }
-  };
+  }, [authLoading, isAuthenticated, plan, pageStatus, syncToDatabase]);
 
   const handleSuccessComplete = useCallback(() => {
-    setStatus('updating');
-
-    const pending = pendingResultRef.current;
-    if (pending) {
-      setResult(pending.data);
-      setChatHistoryToKeep(pending.history);
-      setResolvedRegeneration(buildResolvedRegenerationState(pending.history));
-      setChatSessionKey((prev) => prev + 1);
-
-      // Update local storage
-      if (plan) {
-        updateLocalPlan(plan.id, { itinerary: pending.data });
-      }
-      pendingResultRef.current = null;
-    }
-
-    // Short delay for re-render, then dismiss overlay and scroll to top
-    setTimeout(() => {
-      setStatus('idle');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 600);
-  }, [plan]);
+    regeneration.completeSuccess().then(() => {
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 600);
+    });
+  }, [regeneration]);
 
   const handleRestart = () => {
     router.push('/');
@@ -255,11 +212,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
     setIsEditingRequest(true);
   };
 
-  const handleResolvedRegenerationClear = useCallback(() => {
-    setResolvedRegeneration(null);
-  }, []);
-
-  if (status === 'loading' || (authLoading && !plan)) {
+  if (pageStatus === 'loading' || (authLoading && !plan)) {
     return (
       <div className="flex flex-col min-h-screen bg-[#fcfbf9] overflow-x-clip">
         <main className="flex-1 w-full flex flex-col items-center justify-center">
@@ -269,7 +222,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
     );
   }
 
-  if (status === 'syncing') {
+  if (pageStatus === 'syncing') {
     return (
       <div className="flex flex-col min-h-screen bg-[#fcfbf9] overflow-x-clip">
         <main className="flex-1 w-full flex flex-col items-center justify-center gap-4">
@@ -280,7 +233,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
     );
   }
 
-  if (status === 'error' || !result || !input) {
+  if (pageStatus === 'error' || !result || !input) {
     return (
       <div className="flex flex-col min-h-screen bg-[#fcfbf9] overflow-x-clip">
         <main className="flex-1 w-full flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center p-8">
@@ -306,10 +259,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
     <div className="flex flex-col min-h-screen bg-[#fcfbf9] overflow-x-clip">
       <FullScreenGenerationOverlay
         phase={
-          status === 'regenerating' ? 'regenerating'
-            : status === 'success' ? 'success'
-            : status === 'updating' ? 'updating'
-            : null
+          regeneration.status === 'idle' ? null : regeneration.status
         }
         previewDestination={result.destination}
         onSuccessComplete={handleSuccessComplete}
@@ -356,7 +306,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
             </div>
           </div>
         )}
-        {regenerateError && (
+        {regeneration.error && (
           <div className="fixed top-4 left-4 z-50 bg-red-50 border border-red-200 rounded-lg p-4 shadow-lg max-w-md animate-in slide-in-from-top-4">
             <div className="flex items-start gap-3">
               <svg
@@ -373,10 +323,10 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
                 />
               </svg>
               <div className="flex-1">
-                <p className="text-red-800 text-sm font-medium">{regenerateError}</p>
+                <p className="text-red-800 text-sm font-medium">{regeneration.error}</p>
               </div>
               <button
-                onClick={() => setRegenerateError(null)}
+                onClick={regeneration.clearError}
                 className="text-red-500 hover:text-red-700"
               >
                 <svg
@@ -421,14 +371,14 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
           result={result}
           input={input}
           onRestart={handleRestart}
-          onRegenerate={handleRegenerate}
+          onRegenerate={regeneration.handleRegenerate}
           onResultChange={handleResultChange}
           isUpdating={false}
           onEditRequest={handleEditRequest}
-          initialChatHistory={chatHistoryToKeep}
-          resolvedRegeneration={resolvedRegeneration}
-          onResolvedRegenerationClear={handleResolvedRegenerationClear}
-          chatSessionKey={chatSessionKey}
+          initialChatHistory={regeneration.chatHistoryToKeep}
+          resolvedRegeneration={regeneration.resolvedRegeneration}
+          onResolvedRegenerationClear={regeneration.clearResolvedRegeneration}
+          chatSessionKey={regeneration.chatSessionKey}
           localId={localId}
           mapProvider="static"
         />

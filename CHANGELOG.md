@@ -9,6 +9,9 @@
 
 ## 開発者向けコミット履歴（コミット単位）
 
+### 2026-03-29
+- `local` refactor(plan-mutation,replan): プラン生成系の責務境界を整理。① `src/types/plan-mutation.ts` と `src/lib/services/plan-mutation/*` を追加し、新規生成・チャット再生成・旅行中リプランで共通の success/error/meta 契約を導入。② `regeneratePlan()` の本体ロジックを `regenerate-itinerary.ts` へ移し、user constraints 注入・no-op 判定・retry・Unsplash hero image 更新・PerformanceTimer 計測を service 層へ集約。③ `/api/replan` は `replan-plan.ts` 経由で共通 mutation 契約を返すよう変更し、`ReplanEngine` に step 計測を追加。④ `applyRecoveryOption()` を service 化し、`useReplan` は API state 管理に集中。⑤ `usePlanRegeneration()` を追加して `PlanIdClient` / `PlanLocalClient` / `PlanCodeClient` の再生成状態管理と chat history / resolved summary / overlay 遷移を共通化。⑥ 生成系回帰テストを追加し、関連 Vitest 26 件を通過。
+
 ### 2026-03-28
 - `local` fix(places,plan-ui): Google Places API の日次 quota 枯渇時の劣化挙動を改善。① `OVER_QUERY_LIMIT` を再試行対象から外し、単一スポット内の多段フォールバック検索と複数候補の一括照合を quota 到達時点で即打ち切るよう変更して無駄な API 呼び出しを削減。② selective verify は quota 枯渇時に全体失敗させず `unverifiable` へ安全に劣化しつつ、planner 生成画面に「一部スポット確認をスキップした」警告を表示。③ SpotCard の lazy details 取得でも quota 枯渇を構造化レスポンスで受け取り、英日 i18n 対応の警告文を表示して「スポット未発見」と区別するよう改善。④ Places / selective-verify の回帰テストを追加。
 - `local` fix(chat-ui): プラン再生成成功後もチャット欄に再生成ボタンが残る問題を修正。再生成成功時はチャットを成功後状態へ切り替え、反映済みサマリーを表示しつつ直前の会話を折りたたむよう改善。次の通常チャット送信で新しい会話として再開される。
