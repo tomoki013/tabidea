@@ -261,6 +261,17 @@ export const ModifyOutputSchema = z.object({
 
 export type ModifyOutput = z.infer<typeof ModifyOutputSchema>;
 
+/**
+ * 差分方式の modify 出力スキーマ。
+ * 変更があった日のみ返すことで出力トークン量を大幅に削減。
+ */
+export const ModifyDiffOutputSchema = z.object({
+  description: z.string().nullable().describe('旅行全体の説明。変更がなければnull'),
+  changedDays: z.array(DayPlanInputSchema).describe('変更があった日のみ。変更がない日は含めない'),
+});
+
+export type ModifyDiffOutput = z.infer<typeof ModifyDiffOutputSchema>;
+
 // ============================================
 // 型エクスポート
 // ============================================

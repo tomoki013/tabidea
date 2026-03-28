@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { ChevronDown, ExternalLink } from "lucide-react";
+import { useTranslations } from "next-intl";
 import {
   generateBookingLinks,
   type BookingType,
@@ -36,6 +37,7 @@ export default function BookingLinkButton({
   className = "",
 }: BookingLinkButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations("components.features.planner.bookingLinkButton");
 
   const bookingResult = useMemo(
     () =>
@@ -50,6 +52,13 @@ export default function BookingLinkButton({
   );
 
   const displayLabel = label || bookingResult.label;
+  const flightSearchNote =
+    type === "flight" && bookingResult.flightSearchInfo?.originAdjusted
+      ? t("searchViaAirport", {
+          origin: bookingResult.flightSearchInfo.originalOrigin,
+          airport: bookingResult.flightSearchInfo.resolvedOriginLabel || bookingResult.flightSearchInfo.resolvedOrigin,
+        })
+      : null;
 
   const handleLinkClick = (link: AffiliateLink, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -66,62 +75,76 @@ export default function BookingLinkButton({
   if (bookingResult.links.length === 1) {
     const link = bookingResult.links[0];
     return (
-      <a
-        href={link.url}
-        target="_blank"
-        rel="noopener noreferrer sponsored"
-        onClick={(e) => handleLinkClick(link, e)}
-        className={`inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-stone-700 rounded-xl hover:bg-stone-50 transition-all text-sm font-bold border border-stone-200 shadow-sm hover:shadow-md ${className}`}
-      >
-        <span className="text-base">{bookingResult.icon}</span>
-        <span>{displayLabel}</span>
-        <ExternalLink className="w-3.5 h-3.5 text-stone-400" />
-      </a>
+      <div className="inline-flex flex-col gap-1.5">
+        <a
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer sponsored"
+          onClick={(e) => handleLinkClick(link, e)}
+          className={`inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-stone-700 rounded-xl hover:bg-stone-50 transition-all text-sm font-bold border border-stone-200 shadow-sm hover:shadow-md ${className}`}
+        >
+          <span className="text-base">{bookingResult.icon}</span>
+          <span>{displayLabel}</span>
+          <ExternalLink className="w-3.5 h-3.5 text-stone-400" />
+        </a>
+        {flightSearchNote && (
+          <p className="text-[11px] leading-snug text-stone-500">
+            {flightSearchNote}
+          </p>
+        )}
+      </div>
     );
   }
 
   return (
-    <div className={`relative inline-block ${className}`}>
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          setIsOpen(!isOpen);
-        }}
-        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-stone-700 rounded-xl hover:bg-stone-50 transition-all text-sm font-bold border border-stone-200 shadow-sm hover:shadow-md w-full"
-      >
-        <span className="text-base">{bookingResult.icon}</span>
-        <span>{displayLabel}</span>
-        <ChevronDown
-          className={`w-3.5 h-3.5 text-stone-400 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-        />
-      </button>
-
-      {isOpen && (
-        <>
-          <div
-            className="fixed inset-0 z-40"
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsOpen(false);
-            }}
+    <div className="inline-flex flex-col gap-1.5">
+      <div className={`relative inline-block ${className}`}>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsOpen(!isOpen);
+          }}
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-stone-700 rounded-xl hover:bg-stone-50 transition-all text-sm font-bold border border-stone-200 shadow-sm hover:shadow-md w-full"
+        >
+          <span className="text-base">{bookingResult.icon}</span>
+          <span>{displayLabel}</span>
+          <ChevronDown
+            className={`w-3.5 h-3.5 text-stone-400 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
           />
-          <div className="absolute top-full left-0 mt-2 bg-white rounded-xl shadow-xl border border-stone-200/80 overflow-hidden z-50 min-w-[200px]">
-            {bookingResult.links.map((link) => (
-              <a
-                key={link.service + link.displayName}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer sponsored"
-                onClick={(e) => handleLinkClick(link, e)}
-                className="flex items-center gap-3 px-4 py-3 hover:bg-stone-50 transition-colors text-sm text-stone-700 border-b border-stone-100 last:border-b-0 group"
-              >
-                <span className="text-base">{link.icon}</span>
-                <span className="font-medium group-hover:text-primary transition-colors">{link.displayName}</span>
-                <ExternalLink className="w-3.5 h-3.5 ml-auto text-stone-300 group-hover:text-primary/60 transition-colors" />
-              </a>
-            ))}
-          </div>
-        </>
+        </button>
+
+        {isOpen && (
+          <>
+            <div
+              className="fixed inset-0 z-40"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsOpen(false);
+              }}
+            />
+            <div className="absolute top-full left-0 mt-2 bg-white rounded-xl shadow-xl border border-stone-200/80 overflow-hidden z-50 min-w-[200px]">
+              {bookingResult.links.map((link) => (
+                <a
+                  key={link.service + link.displayName}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer sponsored"
+                  onClick={(e) => handleLinkClick(link, e)}
+                  className="flex items-center gap-3 px-4 py-3 hover:bg-stone-50 transition-colors text-sm text-stone-700 border-b border-stone-100 last:border-b-0 group"
+                >
+                  <span className="text-base">{link.icon}</span>
+                  <span className="font-medium group-hover:text-primary transition-colors">{link.displayName}</span>
+                  <ExternalLink className="w-3.5 h-3.5 ml-auto text-stone-300 group-hover:text-primary/60 transition-colors" />
+                </a>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+      {flightSearchNote && (
+        <p className="text-[11px] leading-snug text-stone-500">
+          {flightSearchNote}
+        </p>
       )}
     </div>
   );

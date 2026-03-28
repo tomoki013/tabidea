@@ -68,6 +68,17 @@ export interface FlightSearchParams {
   cabinClass?: 'economy' | 'premium_economy' | 'business' | 'first';
 }
 
+export interface FlightSearchInfo {
+  /** 元の出発地 */
+  originalOrigin: string;
+  /** 検索に使う出発地 */
+  resolvedOrigin: string;
+  /** 表示用の空港ラベル */
+  resolvedOriginLabel?: string;
+  /** 都市名から空港へ補正したか */
+  originAdjusted: boolean;
+}
+
 /**
  * アフィリエイトリンク結果
  */
@@ -179,6 +190,58 @@ const DOMESTIC_KEYWORDS = [
   '中国地方',
   '近畿',
   'kinki',
+];
+
+export interface FlightOriginAirportRule {
+  code: string;
+  label: string;
+  cityAliases: string[];
+  airportAliases: string[];
+}
+
+export const FLIGHT_ORIGIN_AIRPORT_RULES: FlightOriginAirportRule[] = [
+  {
+    code: 'KIX',
+    label: '関西国際空港 (KIX)',
+    cityAliases: ['京都', '京都市', 'kyoto', '大阪', '大阪市', 'osaka', '神戸', '神戸市', 'kobe', '奈良', '奈良市', 'nara', '関西', 'kansai'],
+    airportAliases: ['関西国際空港', '関空', 'kix', 'kansaiinternationalairport', 'kansaiairport'],
+  },
+  {
+    code: 'HND',
+    label: '羽田空港 (HND)',
+    cityAliases: ['東京', '東京都', 'tokyo'],
+    airportAliases: ['羽田', '羽田空港', 'hnd', 'haneda', 'hanedaairport'],
+  },
+  {
+    code: 'NRT',
+    label: '成田国際空港 (NRT)',
+    cityAliases: [],
+    airportAliases: ['成田', '成田空港', '成田国際空港', 'nrt', 'narita', 'naritainternationalairport', 'naritaairport'],
+  },
+  {
+    code: 'NGO',
+    label: '中部国際空港 (NGO)',
+    cityAliases: ['名古屋', '名古屋市', 'nagoya'],
+    airportAliases: ['中部国際空港', 'セントレア', 'ngo', 'chubucentrair', 'centrair'],
+  },
+  {
+    code: 'FUK',
+    label: '福岡空港 (FUK)',
+    cityAliases: ['福岡', '福岡市', 'fukuoka'],
+    airportAliases: ['福岡空港', 'fuk', 'fukuokaairport'],
+  },
+  {
+    code: 'CTS',
+    label: '新千歳空港 (CTS)',
+    cityAliases: ['札幌', '札幌市', 'sapporo', '北海道', 'hokkaido'],
+    airportAliases: ['新千歳', '新千歳空港', 'cts', 'newchitose', 'newchitoseairport', 'chitoseairport'],
+  },
+  {
+    code: 'OKA',
+    label: '那覇空港 (OKA)',
+    cityAliases: ['沖縄', '那覇', '沖縄県', 'okinawa', 'naha'],
+    airportAliases: ['那覇空港', 'oka', 'nahaairport'],
+  },
 ];
 
 // ============================================
@@ -328,6 +391,85 @@ function encode(str: string): string {
   return encodeURIComponent(str);
 }
 
+function normalizeFlightOrigin(value: string): string {
+  return value
+    .normalize('NFKC')
+    .toLowerCase()
+    .replace(/[\s\-・,()/（）]/g, '');
+}
+
+function isIataCode(value: string): boolean {
+  return /^[A-Z]{3}$/.test(value.trim().toUpperCase());
+}
+
+export function resolveFlightOriginAirport(origin: string): {
+  rule?: FlightOriginAirportRule;
+  matchedAsAirport: boolean;
+} {
+  const normalizedOrigin = normalizeFlightOrigin(origin);
+
+  for (const rule of FLIGHT_ORIGIN_AIRPORT_RULES) {
+    if (normalizedOrigin === normalizeFlightOrigin(rule.code)) {
+      return { rule, matchedAsAirport: true };
+    }
+
+    if (rule.airportAliases.some((alias) => normalizeFlightOrigin(alias) === normalizedOrigin)) {
+      return { rule, matchedAsAirport: true };
+    }
+
+    if (rule.cityAliases.some((alias) => normalizeFlightOrigin(alias) === normalizedOrigin)) {
+      return { rule, matchedAsAirport: false };
+    }
+  }
+
+  return { matchedAsAirport: false };
+}
+
+export function getFlightSearchInfo(params: FlightSearchParams): FlightSearchInfo {
+  const originalOrigin = params.origin.trim();
+
+  if (!originalOrigin) {
+    return {
+      originalOrigin: '',
+      resolvedOrigin: '',
+      originAdjusted: false,
+    };
+  }
+
+  if (isDomesticDestination(params.destination)) {
+    return {
+      originalOrigin,
+      resolvedOrigin: originalOrigin,
+      originAdjusted: false,
+    };
+  }
+
+  if (isIataCode(originalOrigin)) {
+    return {
+      originalOrigin,
+      resolvedOrigin: originalOrigin.toUpperCase(),
+      originAdjusted: false,
+    };
+  }
+
+  const { rule, matchedAsAirport } = resolveFlightOriginAirport(originalOrigin);
+
+  if (!rule) {
+    return {
+      originalOrigin,
+      resolvedOrigin: originalOrigin,
+      originAdjusted: false,
+    };
+  }
+
+  return {
+    originalOrigin,
+    resolvedOrigin: rule.code,
+    resolvedOriginLabel: rule.label,
+    originAdjusted: !matchedAsAirport,
+  };
+}
+
 // ============================================
 // Link Generators
 // ============================================
@@ -454,13 +596,14 @@ function generateJalanLink(params: HotelSearchParams): { url: string; isAffiliat
  */
 function generateSkyscannerLink(params: FlightSearchParams): { url: string; isAffiliate: boolean } {
   const affiliateId = process.env.NEXT_PUBLIC_SKYSCANNER_AFFILIATE_ID || '';
+  const searchInfo = getFlightSearchInfo(params);
 
   // 検索ページURLを使用（場所名をそのままパスに入れるとリンクが壊れるため）
   const baseUrl = 'https://www.skyscanner.jp/transport/flights';
 
   // 場所名からIATAコード的な短縮名を使えない場合は、
   // 汎用的な検索URLを使用する
-  const origin = encode(params.origin);
+  const origin = encode(searchInfo.resolvedOrigin || params.origin);
   const destination = encode(params.destination);
 
   let path = `${baseUrl}/${origin}/${destination}/`;
@@ -487,7 +630,7 @@ function generateSkyscannerLink(params: FlightSearchParams): { url: string; isAf
 
   // 場所名に日本語が含まれる場合は検索ページにフォールバック
   const hasJapanese = /[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\u4e00-\u9faf]/.test(
-    params.origin + params.destination
+    (searchInfo.resolvedOrigin || params.origin) + params.destination
   );
 
   if (hasJapanese) {
@@ -498,7 +641,7 @@ function generateSkyscannerLink(params: FlightSearchParams): { url: string; isAf
       currency: 'JPY',
       adults: (params.adults || 1).toString(),
       oym: params.departureDate ? params.departureDate.slice(0, 7).replace('-', '') : '',
-      originname: params.origin,
+      originname: searchInfo.resolvedOrigin || params.origin,
       destinationname: params.destination,
     });
     if (affiliateId) {

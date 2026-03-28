@@ -8,8 +8,11 @@ import {
   generateFlightLinks,
   generateActivityLinks,
   type AffiliateLink,
+  type FlightSearchInfo,
+  getFlightSearchInfo,
   type TravelRegion,
 } from './affiliate-links';
+import type { Itinerary, TimelineItem, TransitInfo } from '@/types';
 
 // ============================================
 // Types
@@ -31,6 +34,7 @@ export interface BookingLinkResult {
   label: string;
   icon: string;
   links: AffiliateLink[];
+  flightSearchInfo?: FlightSearchInfo;
 }
 
 // ============================================
@@ -58,6 +62,14 @@ export function generateBookingLinks(config: BookingLinkConfig): BookingLinkResu
       };
 
     case 'flight':
+      {
+        const flightSearchInfo = getFlightSearchInfo({
+          origin: config.origin || '',
+          destination: config.destination,
+          departureDate: config.checkinDate,
+          returnDate: config.checkoutDate,
+        });
+
       return {
         type: 'flight',
         label: '航空券を探す',
@@ -68,7 +80,9 @@ export function generateBookingLinks(config: BookingLinkConfig): BookingLinkResu
           departureDate: config.checkinDate,
           returnDate: config.checkoutDate,
         }),
+        flightSearchInfo,
       };
+    }
 
     case 'activity':
       return {
@@ -78,6 +92,26 @@ export function generateBookingLinks(config: BookingLinkConfig): BookingLinkResu
         links: generateActivityLinks(config.destination),
       };
   }
+}
+
+export function inferFlightOriginFromItinerary(itinerary: Pick<Itinerary, 'days'>): string | undefined {
+  const firstDay = itinerary.days[0];
+  if (!firstDay) return undefined;
+
+  const timelineFlight = firstDay.timelineItems?.find(isFlightTimelineItem);
+  if (timelineFlight?.itemType === 'transit') {
+    return timelineFlight.data.departure.place;
+  }
+
+  if (firstDay.transit?.type === 'flight') {
+    return firstDay.transit.departure.place;
+  }
+
+  return undefined;
+}
+
+function isFlightTimelineItem(item: TimelineItem): item is { itemType: 'transit'; data: TransitInfo } {
+  return item.itemType === 'transit' && item.data.type === 'flight';
 }
 
 /**

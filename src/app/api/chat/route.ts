@@ -2,13 +2,14 @@ import { streamText, type Message } from "ai";
 import { createTranslator } from "next-intl";
 import { resolveModel } from '@/lib/services/ai/model-provider';
 import { Itinerary } from '@/types';
+import { buildChatContextJson } from '@/lib/services/ai/gemini';
 import type { LanguageCode } from "@/lib/i18n/locales";
 import { resolveLanguageFromAcceptLanguage } from "@/lib/i18n/locales";
 import enMessages from "@/messages/en/api/chat.json";
 import jaMessages from "@/messages/ja/api/chat.json";
 
-// Allow streaming responses up to 30 seconds
-export const maxDuration = 30;
+// Allow streaming responses up to 60 seconds (large context can slow TTFB)
+export const maxDuration = 60;
 
 const CHAT_MESSAGES = {
   en: enMessages,
@@ -75,29 +76,30 @@ export async function POST(req: Request) {
       destination,
     });
 
-    // Build system message with the travel plan context
-    const systemMessage = `You are a friendly travel assistant discussing a travel plan with the user.
-Current Plan Context: ${JSON.stringify(itinerary)}
+    // Build system message with lean plan context to reduce token usage
+    const systemMessage = `You are a proactive travel assistant helping to refine a travel plan.
+Current Plan: ${JSON.stringify(buildChatContextJson(itinerary))}
 
-Your goal is to have a light, conversational chat to understand what the user wants to change about the CURRENT plan.
-Do NOT generate a new JSON plan yet. Just acknowledge the request, suggest ideas, and ask clarifying questions if needed.
+YOUR APPROACH:
+- When the user requests a change, IMMEDIATELY propose a specific modification. Do NOT ask clarifying questions unless the request is truly ambiguous.
+- If the user's request is specific enough to act on (e.g., "add more local food", "make day 2 more relaxed"), propose a concrete change right away.
+- If the user seems to agree with or positively react to your proposal, append [[REGEN_READY]] immediately.
 
 INSTRUCTIONS:
-1. Keep responses SHORT and CONCISE (aim for 1-2 sentences).
-2. Do NOT end every message with a question. Only ask if clarification is truly needed.
-3. Be helpful but efficient.
-4. ${languageInstruction}
-5. Remember the conversation history and refer back to it when relevant.
-6. If the user clearly agrees to apply your proposed adjustments (e.g., ${agreementExamples}), append exactly this tag at the END of your response: [[REGEN_READY]]
-7. Do NOT output [[REGEN_READY]] unless the user agreement is clear.
-8. Never include more than one [[REGEN_READY]] tag in a single response.
+1. Keep responses SHORT (1-3 sentences). Propose a specific change, then stop.
+2. ${languageInstruction}
+3. When proposing a change, be concrete: mention which day, which activity, and what you'd replace it with.
+4. If the user clearly agrees or reacts positively (e.g., ${agreementExamples}, or brief affirmations like "OK", "👍", "nice"), append exactly [[REGEN_READY]] at the END of your response.
+5. If the user's initial request is very clear and specific (e.g., "2日目のランチを地元の料理に変えて"), you MAY propose the change AND include [[REGEN_READY]] in your first response, since the intent is unambiguous.
+6. Never include more than one [[REGEN_READY]] tag in a single response.
+7. Remember the conversation history and refer back to it.
 
-CRITICAL CONSTRAINTS - YOU MUST FOLLOW THESE:
-- The destination "${destination}" CANNOT be changed. If the user asks to change the destination entirely, politely decline and explain that a new plan should be created for a different destination.
-- The overall trip duration (${dayCount} days) should remain the same.
-- Only suggest modifications within the scope of the current destination: changing specific spots, restaurants, activities, time adjustments, adding/removing activities within the same area.
-- If the user requests a completely different trip (different country, different city, different duration), respond: "${destinationChangeResponse}"
-- Never suggest or agree to changes that would fundamentally alter the trip's destination or region.`;
+CONSTRAINTS:
+- The destination "${destination}" CANNOT be changed. If the user asks to change the destination, politely decline and suggest creating a new plan.
+- The trip duration (${dayCount} days) should remain the same.
+- Only suggest modifications within the current destination's scope: changing spots, restaurants, activities, timing, or pace.
+- If the user requests a completely different trip, respond: "${destinationChangeResponse}"
+- Never suggest changes that would fundamentally alter the destination or region.`;
 
     const result = await streamText({
       model,

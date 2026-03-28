@@ -112,10 +112,58 @@ export function parseTimeForSort(time?: string): number {
 /**
  * タイムラインアイテムを時系列でソート
  */
-function sortTimelineItems(items: TimelineItem[]): TimelineItem[] {
-  return items.sort((a, b) => {
-    return parseTimeForSort(getTimelineItemTime(a)) - parseTimeForSort(getTimelineItemTime(b));
-  });
+function sortTimelineItems(day: DayPlan, items: TimelineItem[]): TimelineItem[] {
+  return items
+    .map((item, index) => ({ item, index }))
+    .sort((a, b) => {
+      const aKey = getTimelineSortKey(day, a.item);
+      const bKey = getTimelineSortKey(day, b.item);
+
+      if (aKey.specialRank !== bKey.specialRank) {
+        return aKey.specialRank - bKey.specialRank;
+      }
+
+      if (aKey.time !== bKey.time) {
+        return aKey.time - bKey.time;
+      }
+
+      return a.index - b.index;
+    })
+    .map(({ item }) => item);
+}
+
+function getTimelineSortKey(
+  day: DayPlan,
+  item: TimelineItem,
+): { specialRank: number; time: number } {
+  if (isInjectedOutboundFlight(day, item)) {
+    return {
+      specialRank: -1,
+      time: Number.NEGATIVE_INFINITY,
+    };
+  }
+
+  return {
+    specialRank: 0,
+    time: parseTimeForSort(getTimelineItemTime(item)),
+  };
+}
+
+function isInjectedOutboundFlight(day: DayPlan, item: TimelineItem): boolean {
+  if (day.day !== 1 || item.itemType !== 'transit') {
+    return false;
+  }
+
+  const transit = item.data;
+  const hasExplicitTime = Boolean(item.time || transit.departure.time || transit.arrival.time);
+
+  return (
+    transit.type === 'flight' &&
+    !hasExplicitTime &&
+    transit.departure.place.trim() !== '' &&
+    transit.arrival.place.trim() !== '' &&
+    transit.departure.place !== transit.arrival.place
+  );
 }
 
 /**
@@ -126,7 +174,7 @@ function sortTimelineItems(items: TimelineItem[]): TimelineItem[] {
 export function buildTimeline(day: DayPlan): TimelineItem[] {
   if (day.timelineItems && day.timelineItems.length > 0) {
     // AI生成のtimelineItemsを時系列ソート（安全策）
-    return sortTimelineItems([...day.timelineItems]);
+    return sortTimelineItems(day, [...day.timelineItems]);
   }
 
   const items: TimelineItem[] = [];
@@ -144,7 +192,7 @@ export function buildTimeline(day: DayPlan): TimelineItem[] {
   }
 
   // 時系列順にソート（transitを先頭固定ではなく、時刻ベースで配置）
-  return sortTimelineItems(items);
+  return sortTimelineItems(day, items);
 }
 
 /**

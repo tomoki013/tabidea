@@ -9,6 +9,7 @@ import {
   generateFlightLinks,
   generateActivityLinks,
   createAffiliateClickEvent,
+  getFlightSearchInfo,
 } from './affiliate-links';
 
 describe('affiliate-links', () => {
@@ -176,6 +177,43 @@ describe('affiliate-links', () => {
       expect(links[0].url).toContain('skyscanner.jp');
       expect(links[0].url).toContain('originname=');
       expect(links[0].url).toContain('destinationname=');
+    });
+
+    it('should resolve Kyoto to KIX for overseas flight searches', () => {
+      const info = getFlightSearchInfo({
+        origin: '京都',
+        destination: 'パリ',
+      });
+
+      expect(info.resolvedOrigin).toBe('KIX');
+      expect(info.originAdjusted).toBe(true);
+
+      const links = generateFlightLinks({
+        origin: '京都',
+        destination: 'パリ',
+      });
+
+      expect(links[0].url).toContain('originname=KIX');
+    });
+
+    it('should not adjust airport-like origins that are already specific', () => {
+      const info = getFlightSearchInfo({
+        origin: '関空',
+        destination: 'パリ',
+      });
+
+      expect(info.resolvedOrigin).toBe('KIX');
+      expect(info.originAdjusted).toBe(false);
+    });
+
+    it('should not force international airport adjustment for domestic flights', () => {
+      const info = getFlightSearchInfo({
+        origin: '京都',
+        destination: '沖縄',
+      });
+
+      expect(info.resolvedOrigin).toBe('京都');
+      expect(info.originAdjusted).toBe(false);
     });
   });
 

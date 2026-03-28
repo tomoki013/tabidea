@@ -60,9 +60,17 @@ describe("GeminiService - modifyItinerary", () => {
       ],
     };
 
+    // ModifyDiffOutputSchema format: only changed days + description
     const mockObject = {
-      ...mockPlan,
       description: "Updated description",
+      changedDays: [{
+        day: 1,
+        title: "Day 1",
+        transit: null,
+        activities: [
+          { time: "10:00", activity: "Visit Temple", description: "Explore the temple", searchQuery: null, locationEn: null, activityType: null, source: null }
+        ],
+      }],
     };
     mockGenerateObject.mockResolvedValue({ object: mockObject });
 
@@ -102,12 +110,17 @@ describe("GeminiService - modifyItinerary", () => {
       ],
     };
 
+    // ModifyDiffOutputSchema format: changed day with same activities
     const mockObject = {
-      id: "test-id",
-      destination: "Tokyo",
       description: "Updated description",
-      heroImage: null,
-      days: mockPlan.days,
+      changedDays: [{
+        day: 1,
+        title: "Day 1",
+        transit: null,
+        activities: [
+          { time: "10:00", activity: "Visit Temple", description: "Explore the temple", searchQuery: null, locationEn: null, activityType: null, source: null }
+        ],
+      }],
     };
     mockGenerateObject.mockResolvedValue({ object: mockObject });
 

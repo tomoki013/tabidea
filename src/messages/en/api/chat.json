@@ -2,7 +2,7 @@
   "api": {
     "chat": {
       "languageInstruction": "Reply in English.",
-      "agreementExamples": "\"yes\", \"please do that\", \"sounds good\"",
+      "agreementExamples": "\"yes\", \"please do that\", \"sounds good\", \"nice\", \"go for it\", \"do it\", \"sure\"",
       "destinationChangeResponse": "If you want to change the destination significantly, please create a new plan. I can help fine-tune the current plan for {destination}."
     }
   }

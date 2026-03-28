@@ -161,6 +161,10 @@ export async function draftGeneratePass(ctx: PassContext): Promise<PassResult<Dr
   const modelName = ctx.session.generationProfile?.modelName ?? 'gemini-2.5-flash';
   const temperature = ctx.session.generationProfile?.temperature ?? 0.5;
 
+  // タイムアウトは budget の残り時間を使う (上限 90 秒)
+  const timeoutMs = Math.min(ctx.budget.remainingMs() - 500, 90_000);
+  console.log(`[draft_generate] Starting AI call — model=${modelName}, provider=${provider}, timeout=${timeoutMs}ms`);
+
   try {
     const model = await resolveLanguageModel(provider, modelName);
     const { generateObject } = await import('ai');
@@ -172,10 +176,11 @@ export async function draftGeneratePass(ctx: PassContext): Promise<PassResult<Dr
       prompt: userPrompt,
       temperature,
       maxRetries: 0,
-      abortSignal: AbortSignal.timeout(60_000),
+      abortSignal: AbortSignal.timeout(timeoutMs),
     });
 
     const draftPlan = llmOutputToDraftPlan(result.object);
+    console.log(`[draft_generate] Completed in ${Date.now() - start}ms — ${draftPlan.days.length} days, ${draftPlan.days.reduce((s, d) => s + d.stops.length, 0)} stops`);
 
     return {
       outcome: 'completed',
@@ -191,16 +196,22 @@ export async function draftGeneratePass(ctx: PassContext): Promise<PassResult<Dr
       },
     };
   } catch (err) {
+    const elapsed = Date.now() - start;
+    const errMsg = err instanceof Error ? err.message : String(err);
+    const isTimeout = err instanceof Error && /abort|timeout|timed out/i.test(errMsg);
+
+    console.error(`[draft_generate] ${isTimeout ? 'TIMEOUT' : 'ERROR'} after ${elapsed}ms — ${errMsg}`);
+
     // タイムアウトやAbortはリトライ可能
-    if (err instanceof Error && /abort|timeout|timed out/i.test(err.message)) {
+    if (isTimeout) {
       return {
         outcome: 'needs_retry',
-        warnings: [`Draft generation timed out: ${err.message}`],
-        durationMs: Date.now() - start,
+        warnings: [`Draft generation timed out after ${elapsed}ms: ${errMsg}`],
+        durationMs: elapsed,
       };
     }
 
-    throw new PassExecutionError('draft_generate', err instanceof Error ? err.message : String(err), err);
+    throw new PassExecutionError('draft_generate', errMsg, err);
   }
 }
 

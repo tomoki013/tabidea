@@ -9,6 +9,7 @@ import {
   formatCostRange,
   formatCurrency,
 } from "@/lib/utils/cost-calculator";
+import { inferFlightOriginFromItinerary } from "@/lib/utils/booking-links";
 import type { UserInput, Itinerary } from "@/types";
 import BookingLinkButton from "./BookingLinkButton";
 
@@ -70,6 +71,10 @@ export default function CostEstimate({
         region: input.region,
       }),
     [itinerary.destination, itinerary.days.length, input.budget, input.companions, input.region]
+  );
+  const flightOrigin = useMemo(
+    () => inferFlightOriginFromItinerary(itinerary),
+    [itinerary]
   );
 
   return (
@@ -194,6 +199,7 @@ export default function CostEstimate({
                     type="flight"
                     destination={itinerary.destination}
                     label={t("actions.searchFlights")}
+                    origin={flightOrigin}
                   />
                 </div>
               </div>

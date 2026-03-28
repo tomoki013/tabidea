@@ -89,11 +89,11 @@ export const PASS_BUDGET_MS: Record<PassId, number> = {
   narrative_polish:   15_000,
 } as const;
 
-/** 全体のデッドライン (ms) — HTTP リクエスト 1 回分 */
-export const REQUEST_DEADLINE_MS = 24_500;
+/** 全体のデッドライン (ms) — HTTP リクエスト 1 回分 (thinking model を考慮して余裕を持たせる) */
+export const REQUEST_DEADLINE_MS = 119_000;
 
 /** プラットフォーム headroom (ms) */
-export const PLATFORM_HEADROOM_MS = 500;
+export const PLATFORM_HEADROOM_MS = 1_000;
 
 // ============================================
 // Default Quality Policy
