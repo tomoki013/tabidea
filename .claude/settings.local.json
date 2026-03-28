@@ -12,7 +12,9 @@
       "Bash(git commit:*)",
       "Bash(grep:*)",
       "Bash(pnpm lint:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(npx eslint:*)",
+      "Bash(pnpm build:*)"
     ]
   }
 }

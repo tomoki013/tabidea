@@ -21,6 +21,7 @@ import type {
 import { savePlanViaApi } from "@/lib/plans/save-plan-client";
 import { saveLocalPlan, notifyPlanChange } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
+import { usePlanGenerationOverlay } from "@/context/PlanGenerationOverlayContext";
 import { useUserPlans } from "@/context/UserPlansContext";
 import { readSSEStream } from "@/lib/utils/sse-reader";
 import type { UserType } from "@/lib/limits/config";
@@ -57,7 +58,7 @@ const PASS_TO_FAILED_STEP: Record<string, string> = {
 };
 
 /** Passes whose warnings are user-facing (final output quality) */
-const USER_FACING_WARNING_PASSES = new Set(["narrative_polish", "timeline_construct"]);
+const USER_FACING_WARNING_PASSES = new Set(["selective_verify", "narrative_polish", "timeline_construct"]);
 
 const V4_STEP_IDS: PipelineStepId[] = [
   "usage_check",
@@ -69,6 +70,8 @@ const V4_STEP_IDS: PipelineStepId[] = [
   "timeline_build",
   "narrative_render",
 ];
+
+const SUCCESS_DISPLAY_MS = 2000;
 
 // ============================================
 // SSE Event types
@@ -121,6 +124,7 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
   const router = useRouter();
   const { isAuthenticated } = useAuth();
   const { refreshPlans } = useUserPlans();
+  const overlay = usePlanGenerationOverlay();
 
   const [steps, setSteps] = useState<ComposeStep[]>([]);
   const [currentStep, setCurrentStep] = useState<PipelineStepId | null>(null);
@@ -137,21 +141,50 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
 
   // ---- Helpers ----
 
-  const persistGeneratedItinerary = useCallback(
+  const waitForSuccessDisplay = useCallback(
+    async (signal: AbortSignal) => {
+      await new Promise<void>((resolve, reject) => {
+        const timeoutId = window.setTimeout(resolve, SUCCESS_DISPLAY_MS);
+
+        const handleAbort = () => {
+          window.clearTimeout(timeoutId);
+          reject(new DOMException("Aborted", "AbortError"));
+        };
+
+        if (signal.aborted) {
+          handleAbort();
+          return;
+        }
+
+        signal.addEventListener("abort", handleAbort, { once: true });
+      });
+    },
+    [],
+  );
+
+  const resolveGeneratedItineraryTarget = useCallback(
     async (input: UserInput, itinerary: Itinerary) => {
       if (isAuthenticated) {
         const saveResult = await savePlanViaApi(input, itinerary, false);
         if (saveResult.success && saveResult.plan) {
-          router.push(`/plan/id/${saveResult.plan.id}`);
-          void refreshPlans();
-          return;
+          return {
+            targetHref: `/plan/id/${saveResult.plan.id}`,
+            onNavigated: () => {
+              void refreshPlans();
+            },
+          };
         }
       }
+
       const localPlan = await saveLocalPlan(input, itinerary);
-      router.push(`/plan/local/${localPlan.id}`);
-      notifyPlanChange();
+      return {
+        targetHref: `/plan/local/${localPlan.id}`,
+        onNavigated: () => {
+          notifyPlanChange();
+        },
+      };
     },
-    [isAuthenticated, refreshPlans, router],
+    [isAuthenticated, refreshPlans],
   );
 
   const initSteps = useCallback((): ComposeStep[] => {
@@ -164,9 +197,11 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
 
   const advanceStep = useCallback(
     (stepId: PipelineStepId, message?: string) => {
+      let nextSteps: ComposeStep[] = [];
       setCurrentStep(stepId);
       setSteps((prev) =>
-        prev.map((s) => {
+        {
+          nextSteps = prev.map((s) => {
           if (s.id === stepId) {
             return { ...s, status: "active", message: message || s.message };
           }
@@ -176,10 +211,16 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
             return { ...s, status: "completed" };
           }
           return s;
-        }),
+          });
+          return nextSteps;
+        }
       );
+      overlay.syncProgress({
+        currentStep: stepId,
+        steps: nextSteps,
+      });
     },
-    [],
+    [overlay],
   );
 
   const reset = useCallback(() => {
@@ -196,7 +237,8 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
     setTotalDays(0);
     setPreviewDestination("");
     setPreviewDescription("");
-  }, []);
+    overlay.hideOverlay();
+  }, [overlay]);
 
   const clearLimitExceeded = useCallback(() => {
     setLimitExceeded(null);
@@ -216,6 +258,19 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
     },
     [t],
   );
+
+  const mapUserFacingWarnings = useCallback((passId: string, passWarnings: string[]) => {
+    if (passId !== "selective_verify") {
+      return passWarnings;
+    }
+
+    return passWarnings.flatMap((warning) => {
+      if (warning === "warning_code:places_quota_exceeded") {
+        return [t("warnings.placeVerificationLimited")];
+      }
+      return [];
+    });
+  }, [t]);
 
   // ---- Main Generate ----
 
@@ -237,6 +292,11 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
       setTotalDays(0);
       setPreviewDestination("");
       setPreviewDescription("");
+      overlay.showGenerating({
+        steps: initSteps(),
+        currentStep: null,
+        totalDays: 0,
+      });
 
       try {
         // ---- 1. Preflight (usage check) ----
@@ -258,6 +318,7 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
               remaining: payload.remaining,
             });
             setIsGenerating(false);
+            overlay.hideOverlay();
             return;
           }
           throw new Error(payload?.error ?? `Preflight failed: ${preflightRes.status}`);
@@ -272,6 +333,7 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
               remaining: preflight.remaining,
             });
             setIsGenerating(false);
+            overlay.hideOverlay();
             return;
           }
           throw new Error("Generation not allowed");
@@ -345,13 +407,21 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
                 setPreviewDestination(sessionInfo.draftPlan.destination ?? "");
                 setPreviewDescription(sessionInfo.draftPlan.description ?? "");
                 setTotalDays(sessionInfo.draftPlan.days?.length ?? 0);
+                overlay.syncProgress({
+                  previewDestination: sessionInfo.draftPlan.destination ?? "",
+                  previewDescription: sessionInfo.draftPlan.description ?? "",
+                  totalDays: sessionInfo.draftPlan.days?.length ?? 0,
+                });
               }
             }
           }
 
           // Collect warnings (only from user-facing passes to avoid noise)
           if (runData.warnings.length > 0 && USER_FACING_WARNING_PASSES.has(runData.passId)) {
-            setWarnings((prev) => [...prev, ...runData.warnings]);
+            const nextWarnings = mapUserFacingWarnings(runData.passId, runData.warnings);
+            if (nextWarnings.length > 0) {
+              setWarnings((prev) => [...prev, ...nextWarnings]);
+            }
           }
 
           // Handle failures
@@ -383,9 +453,20 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
           await readSSEStream<V4StreamEvent>(streamRes, (event) => {
             switch (event.type) {
               case "progress":
-                if (event.totalDays) setTotalDays(event.totalDays);
-                if (event.destination) setPreviewDestination(event.destination);
-                if (event.description) setPreviewDescription(event.description);
+                if (event.totalDays) {
+                  setTotalDays(event.totalDays);
+                }
+                if (event.destination) {
+                  setPreviewDestination(event.destination);
+                }
+                if (event.description) {
+                  setPreviewDescription(event.description);
+                }
+                overlay.syncProgress({
+                  totalDays: event.totalDays,
+                  previewDestination: event.destination,
+                  previewDescription: event.description,
+                });
                 break;
 
               case "day_complete":
@@ -433,9 +514,25 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
         setSteps((prev) => prev.map((s) => ({ ...s, status: "completed" as const })));
         setIsCompleted(true);
         setIsGenerating(false);
+        overlay.syncProgress({
+          currentStep: null,
+          steps: V4_STEP_IDS.map((id) => ({
+            id,
+            message: t(`steps.${id}`),
+            status: "completed" as const,
+          })),
+        });
 
-        // Persist and navigate
-        await persistGeneratedItinerary(input, itinerary);
+        const { targetHref, onNavigated } = await resolveGeneratedItineraryTarget(
+          input,
+          itinerary,
+        );
+
+        overlay.showSuccess();
+        await waitForSuccessDisplay(signal);
+        overlay.showUpdating(targetHref);
+        router.push(targetHref);
+        onNavigated();
       } catch (err) {
         if (signal.aborted) return;
 
@@ -444,9 +541,20 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
         const message = rawMessage || t("errors.generic");
         setErrorMessage(message);
         setIsGenerating(false);
+        overlay.hideOverlay();
       }
     },
-    [advanceStep, initSteps, persistGeneratedItinerary, resolveStepErrorMessage, t],
+    [
+      advanceStep,
+      initSteps,
+      overlay,
+      resolveGeneratedItineraryTarget,
+      resolveStepErrorMessage,
+      router,
+      t,
+      mapUserFacingWarnings,
+      waitForSuccessDisplay,
+    ],
   );
 
   return {

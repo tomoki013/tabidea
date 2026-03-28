@@ -11,6 +11,7 @@ import ComposeLoadingAnimation from "@/components/features/planner/ComposeLoadin
 import StreamingResultView from "@/components/features/planner/StreamingResultView";
 import { PlanModal } from "@/components/common";
 import { FAQSection, ExampleSection } from "@/components/features/landing";
+import HighlightBox from "@/components/ui/HighlightBox/HighlightBox";
 import { FaPlus } from "react-icons/fa6";
 import { localizeHref, resolveLanguageFromPathname } from "@/lib/i18n/navigation";
 
@@ -20,7 +21,7 @@ function PlanContent() {
   const pathname = usePathname();
   const language = resolveLanguageFromPathname(pathname);
   const t = useTranslations("app.planner.plan");
-  const tError = useTranslations("errors.ui.plan");
+  const tCompose = useTranslations("lib.planGeneration.compose");
   const sampleId = searchParams.get("sample");
   const legacyQ = searchParams.get("q");
   const mode = searchParams.get("mode");
@@ -84,32 +85,50 @@ function PlanContent() {
     }
   }, [sampleId, legacyQ, mode, router, generateFromSample, language, compose]);
 
+  const warningBox = compose.warnings.length > 0 ? (
+    <div className="w-full max-w-2xl mx-auto px-4 sm:px-0 mt-4">
+      <HighlightBox variant="warning" title={tCompose("warnings.title")}>
+        <div className="space-y-2 text-sm">
+          {compose.warnings.map((warning, index) => (
+            <p key={`${warning}-${index}`}>{warning}</p>
+          ))}
+        </div>
+      </HighlightBox>
+    </div>
+  ) : null;
+
   // Show streaming day cards during narrative_render
   if (compose.isGenerating && compose.currentStep === 'narrative_render' && compose.partialDays.size > 0) {
     return (
-      <StreamingResultView
-        composeMode
-        composeSteps={compose.steps}
-        composeCurrentStep={compose.currentStep}
-        partialComposeDays={compose.partialDays}
-        totalDays={compose.totalDays}
-        previewDestination={compose.previewDestination}
-        previewDescription={compose.previewDescription}
-        input={fallbackInput}
-      />
+      <div className="w-full">
+        {warningBox}
+        <StreamingResultView
+          composeMode
+          composeSteps={compose.steps}
+          composeCurrentStep={compose.currentStep}
+          partialComposeDays={compose.partialDays}
+          totalDays={compose.totalDays}
+          previewDestination={compose.previewDestination}
+          previewDescription={compose.previewDescription}
+          input={fallbackInput}
+        />
+      </div>
     );
   }
 
   // Show compose loading animation
   if (compose.isGenerating) {
     return (
-      <ComposeLoadingAnimation
-        steps={compose.steps}
-        currentStep={compose.currentStep}
-        previewDestination={compose.previewDestination}
-        previewDescription={compose.previewDescription}
-        totalDays={compose.totalDays}
-      />
+      <div className="w-full">
+        {warningBox}
+        <ComposeLoadingAnimation
+          steps={compose.steps}
+          currentStep={compose.currentStep}
+          previewDestination={compose.previewDestination}
+          previewDescription={compose.previewDescription}
+          totalDays={compose.totalDays}
+        />
+      </div>
     );
   }
 

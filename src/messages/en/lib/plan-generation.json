@@ -60,6 +60,10 @@
             "place_resolve": "Location verification failed. Please try again.",
             "unknown": "An unexpected error occurred. Please try again."
           }
+        },
+        "warnings": {
+          "title": "Generated with limited verification",
+          "placeVerificationLimited": "Google Places API has reached its usage limit, so some spot verification was skipped. Your itinerary was still generated, but you should recheck map locations and opening hours later."
         }
       },
       "server": {

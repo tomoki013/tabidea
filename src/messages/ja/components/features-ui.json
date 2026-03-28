@@ -571,6 +571,7 @@
             "delete": "削除",
             "details": "詳細",
             "unverifiedAlert": "位置情報未確認：Google Placesで該当スポットが見つかりませんでした。AI生成の情報のため、実在しない可能性があります。",
+            "placesQuotaWarning": "Google Places API の利用上限に達したため、詳細情報を今は取得できません。時間をおいて再度お試しください。",
             "reviewCount": "({count}件の口コミ)",
             "viewAllHours": "すべての営業時間を見る",
             "fetchDetails": "詳細情報を取得",
@@ -1591,6 +1592,20 @@
             "polish": {
               "title": "しおりとして仕上げ"
             }
+          }
+        },
+        "fullScreenOverlay": {
+          "regenerating": {
+            "title": "プランを書き直しています...",
+            "subtitle": "少々お待ちください"
+          },
+          "success": {
+            "title": "プランが更新されました！",
+            "subtitle": "新しい旅程が完成しました"
+          },
+          "updating": {
+            "title": "ページを更新しています...",
+            "subtitle": "もう少しお待ちください"
           }
         },
         "composeLoadingTips": {

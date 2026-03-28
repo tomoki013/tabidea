@@ -6,7 +6,7 @@ import type {
   DraftPlan,
   VerifiedEntity,
 } from '@/types/plan-generation';
-import type { ResolvedPlaceGroup } from '@/types/itinerary-pipeline';
+import type { ResolvedPlaceGroup, SemanticCandidate } from '@/types/itinerary-pipeline';
 
 // Mock place-resolver
 vi.mock('@/lib/services/itinerary/steps/place-resolver', () => ({
@@ -17,6 +17,18 @@ import { selectiveVerifyPass } from './selective-verify';
 import { resolvePlaces } from '@/lib/services/itinerary/steps/place-resolver';
 
 const mockResolvePlaces = vi.mocked(resolvePlaces);
+
+function createMockCandidate(name: string): SemanticCandidate {
+  return {
+    name,
+    role: 'recommended',
+    priority: 5,
+    dayHint: 1,
+    timeSlotHint: 'midday',
+    stayDurationMinutes: 60,
+    searchQuery: name,
+  };
+}
 
 function createMockBudget(remainingMs = 20_000): PassBudget {
   const deadline = Date.now() + remainingMs;
@@ -103,14 +115,14 @@ function mockResolvedGroup(
 ): ResolvedPlaceGroup {
   if (!success) {
     return {
-      candidate: { name } as any,
+      candidate: createMockCandidate(name),
       resolved: [],
       success: false,
       error: 'Not found',
     };
   }
   return {
-    candidate: { name } as any,
+    candidate: createMockCandidate(name),
     resolved: [
       {
         placeDetails: {
@@ -204,7 +216,7 @@ describe('selectiveVerifyPass', () => {
     const entities = result.data as VerifiedEntity[];
     expect(entities).toHaveLength(2);
     expect(entities.every(e => e.status === 'unverifiable')).toBe(true);
-    expect(result.warnings[0]).toContain('Places API error');
+    expect(result.warnings[0]).toBe('warning_code:places_quota_exceeded');
   });
 
   it('respects budget limit on number of stops', async () => {

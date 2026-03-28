@@ -104,6 +104,21 @@ describe('GooglePlacesService', () => {
       expect(result.error).toBeDefined();
     });
 
+    it('should stop immediately when Places quota is exceeded', async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: false,
+        status: 429,
+        json: () => Promise.resolve({ error: { message: 'Quota exceeded' } }),
+      });
+
+      const service = new GooglePlacesService();
+      const result = await service.searchPlace({ query: '温泉', near: '箱根' });
+
+      expect(result.found).toBe(false);
+      expect(result.errorCode).toBe('OVER_QUERY_LIMIT');
+      expect(mockFetch).toHaveBeenCalledTimes(1);
+    });
+
     it('should include location in search query', async () => {
       // Mock all fallback attempts to return empty
       mockFetch.mockResolvedValue({
@@ -247,6 +262,20 @@ describe('GooglePlacesService', () => {
 
       expect(result.isVerified).toBe(false);
       expect(result.confidence).toBe('unverified');
+    });
+
+    it('should preserve quota-exceeded error code in validation result', async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: false,
+        status: 429,
+        json: () => Promise.resolve({ error: { message: 'Quota exceeded' } }),
+      });
+
+      const service = new GooglePlacesService();
+      const result = await service.validateSpot('架空の場所', '東京');
+
+      expect(result.isVerified).toBe(false);
+      expect(result.errorCode).toBe('OVER_QUERY_LIMIT');
     });
   });
 

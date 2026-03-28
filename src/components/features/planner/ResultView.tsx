@@ -47,6 +47,7 @@ import type { ReplanTrigger } from "@/types/replan";
 import { ReplanTriggerPanel } from "@/components/features/replan";
 import type { NormalizedPlanDay } from '@/types/normalized-plan';
 import ShioriJournalEditor from './ShioriJournalEditor';
+import type { ResolvedRegenerationState } from "@/lib/utils/travel-planner-chat";
 
 type ResultTab = "plan" | "journal" | "info" | "packing";
 
@@ -92,6 +93,9 @@ interface ResultViewProps {
   showReferences?: boolean;
   showFeedback?: boolean;
   initialChatHistory?: { role: string; text: string }[];
+  resolvedRegeneration?: ResolvedRegenerationState | null;
+  onResolvedRegenerationClear?: () => void;
+  chatSessionKey?: number;
   shareCode?: string;
   localId?: string;
   planId?: string;
@@ -134,6 +138,9 @@ export default function ResultView({
   showReferences = true,
   showFeedback = true,
   initialChatHistory,
+  resolvedRegeneration,
+  onResolvedRegenerationClear,
+  chatSessionKey = 0,
   shareCode,
   localId,
   planId,
@@ -366,27 +373,6 @@ export default function ResultView({
 
   return (
     <div className="w-full max-w-7xl mx-auto mt-4 pt-4 px-2 sm:px-6 lg:px-8 text-left animate-in fade-in duration-700 pb-20 relative overflow-x-clip">
-      {/* Updating Overlay */}
-      {isUpdating && (
-        <div className="fixed inset-0 z-60 flex flex-col items-center justify-center bg-white/60 backdrop-blur-md animate-in fade-in duration-500 p-4">
-          <div className="relative p-6 sm:p-10 rounded-3xl bg-[#fcfbf9] shadow-2xl border-4 border-white text-center max-w-sm w-full">
-            <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-40 mix-blend-multiply pointer-events-none rounded-3xl" />
-            <div className="relative z-10 flex flex-col items-center gap-6">
-              <div className="relative w-20 h-20">
-                <div className="absolute inset-0 border-4 border-dashed border-primary/30 rounded-full animate-[spin_10s_linear_infinite]" />
-                <div className="absolute inset-0 flex items-center justify-center text-3xl animate-bounce">✏️</div>
-              </div>
-              <div className="space-y-2">
-                <h2 className="text-2xl font-serif font-bold text-stone-800 tracking-wide">{t("updatingTitle")}</h2>
-              </div>
-              <div className="w-24 h-1 bg-stone-100 rounded-full overflow-hidden">
-                <div className="h-full bg-primary animate-progress-indeterminate" />
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Journal Header Section */}
       <JournalSheet variant="notebook" className="relative mb-8 md:mb-12 overflow-hidden pt-8 pb-12 px-4 sm:px-8 border-l-8 border-l-stone-300">
         <Tape color="blue" position="top-right" rotation="right" className="opacity-90 z-20" />
@@ -618,12 +604,14 @@ export default function ResultView({
                       </div>
                     </div>
                     <TravelPlannerChat
-                      key={result.id}
+                      key={`${result.id}:${chatSessionKey}`}
                       itinerary={result}
                       onRegenerate={onRegenerate}
                       isRegenerating={isUpdating}
                       initialChatHistory={initialChatHistory}
                       onChatChange={onChatChange}
+                      resolvedRegeneration={resolvedRegeneration}
+                      onResolvedRegenerationClear={onResolvedRegenerationClear}
                     />
                   </div>
                 )}

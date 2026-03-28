@@ -8,8 +8,10 @@ import { Activity, ActivityValidation, PlacePhoto } from "@/types";
 import TrustBadge from "./TrustBadge";
 import CitationBadge from "@/components/features/planner/CitationBadge";
 import { usePlaceDetails } from "@/lib/hooks/usePlaceDetails";
-import { shouldSkipPlacesSearch, classifyActivity } from "@/lib/utils/activity-classifier";
+import { classifyActivity } from "@/lib/utils/activity-classifier";
 import { EditableText } from "@/components/ui/editable/EditableText";
+
+const PLACES_QUOTA_WARNING_CODE = "places_quota_exceeded";
 
 // ============================================================================
 // Types
@@ -151,6 +153,7 @@ export default function SpotCard({
     details: fetchedDetails,
     isLoading,
     error,
+    warningCode,
     fetchDetails,
   } = usePlaceDetails(name, destination, activity.locationEn, activity.searchQuery);
 
@@ -196,7 +199,12 @@ export default function SpotCard({
   };
 
   // Check if spot was not found in Places API
-  const isNotFound = mergedValidation?.confidence === "unverified" || mergedValidation?.confidence === "low";
+  const hasQuotaWarning =
+    warningCode === PLACES_QUOTA_WARNING_CODE ||
+    mergedValidation?.errorCode === "OVER_QUERY_LIMIT";
+  const isNotFound =
+    !hasQuotaWarning &&
+    (mergedValidation?.confidence === "unverified" || mergedValidation?.confidence === "low");
 
   // Choose icon based on classification
   const getCardIcon = () => {
@@ -302,6 +310,13 @@ export default function SpotCard({
               </div>
             )}
 
+            {hasQuotaWarning && (
+              <div className="flex items-center gap-2 text-sm text-amber-700 bg-amber-50 dark:bg-amber-900/20 dark:text-amber-200 rounded-lg p-3 border border-amber-200 dark:border-amber-800">
+                <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                <span>{t("placesQuotaWarning")}</span>
+              </div>
+            )}
+
             {/* Photos Carousel */}
             {photos.length > 0 && <PhotoCarousel photos={photos} />}
 
@@ -360,7 +375,7 @@ export default function SpotCard({
             )}
 
             {/* Fetch Button (if not yet fetched and no validation) */}
-            {!isLoading && !fetchedDetails && !validation?.isVerified && !error && (
+            {!isLoading && !fetchedDetails && !validation?.isVerified && !error && !hasQuotaWarning && (
               <button
                 onClick={(e) => {
                   e.stopPropagation();

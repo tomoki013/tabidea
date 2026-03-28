@@ -8,6 +8,7 @@ import {
   GlobalAuthUI,
 } from "@/components/common";
 import ThemeProvider from "@/components/common/ThemeProvider";
+import { PlanGenerationOverlayProvider } from "@/context/PlanGenerationOverlayContext";
 import { PlanModalProvider } from "@/context/PlanModalContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { UserPlansProvider } from "@/context/UserPlansContext";
@@ -113,14 +114,16 @@ export default async function RootLayout({
             <AuthProvider>
               <FlagsProvider>
                 <UserPlansProvider>
-                  <PlanModalProvider>
-                    <Header />
-                    {children}
-                    <FloatingPlanButton />
-                    <CookieBanner />
-                    <GlobalAuthUI />
-                    <Footer />
-                  </PlanModalProvider>
+                  <PlanGenerationOverlayProvider>
+                    <PlanModalProvider>
+                      <Header />
+                      {children}
+                      <FloatingPlanButton />
+                      <CookieBanner />
+                      <GlobalAuthUI />
+                      <Footer />
+                    </PlanModalProvider>
+                  </PlanGenerationOverlayProvider>
                 </UserPlansProvider>
               </FlagsProvider>
             </AuthProvider>
