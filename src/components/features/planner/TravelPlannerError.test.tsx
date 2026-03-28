@@ -51,7 +51,7 @@ vi.mock("@/context/UserPlansContext", () => ({
   }),
 }));
 
-// Mock useComposeGeneration for error testing
+// Mock usePlanGeneration for error testing
 const mockCompose = {
   steps: [] as Array<{ id: string; message: string; status: string }>,
   currentStep: null as string | null,
@@ -69,8 +69,8 @@ const mockCompose = {
   clearLimitExceeded: vi.fn(),
 };
 
-vi.mock("@/lib/hooks/useComposeGeneration", () => ({
-  useComposeGeneration: () => mockCompose,
+vi.mock("@/lib/hooks/usePlanGeneration", () => ({
+  usePlanGeneration: () => mockCompose,
 }));
 
 const mockInput = {

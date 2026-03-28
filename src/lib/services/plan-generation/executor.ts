@@ -16,7 +16,7 @@ import type {
   SessionState,
 } from '@/types/plan-generation';
 import { getNextPassForState, getStateAfterPassCompleted } from './state-machine';
-import { loadSession, updateSession, transitionState } from './session-store';
+import { loadSession, updateSession, transitionState, countPassRuns } from './session-store';
 import { getPass } from './passes';
 import { PlanGenerationLogger } from './logger';
 import { PassExecutionError, PassBudgetExceededError } from './errors';
@@ -145,10 +145,9 @@ export async function executeNextPass(
     }
 
     case 'needs_retry': {
-      // リトライが上限に達していれば failed に遷移
-      const totalAttempts = session.passRuns.filter(
-        r => r.passId === passId,
-      ).length + attempt;
+      // DB から実際の実行回数を取得してリトライ上限を判定
+      const priorAttempts = await countPassRuns(sessionId, passId);
+      const totalAttempts = priorAttempts + attempt;
       if (totalAttempts > retryPolicy.maxRetries + 1) {
         newState = 'failed';
         await transitionState(sessionId, session.state, 'failed');

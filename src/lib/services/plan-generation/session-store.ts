@@ -183,6 +183,25 @@ export async function appendPassRun(
   }
 }
 
+/** 特定パスの実行回数を DB から取得 */
+export async function countPassRuns(
+  sessionId: string,
+  passId: string,
+): Promise<number> {
+  const client = getClient();
+  const { count, error } = await client
+    .from('generation_pass_runs')
+    .select('*', { count: 'exact', head: true })
+    .eq('session_id', sessionId)
+    .eq('pass_id', passId);
+
+  if (error) {
+    console.error(`[session-store] countPassRuns failed: ${error.message}`);
+    return 0;
+  }
+  return count ?? 0;
+}
+
 // ============================================
 // Cleanup
 // ============================================

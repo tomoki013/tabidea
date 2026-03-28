@@ -227,6 +227,7 @@ export async function localRepairPass(ctx: PassContext): Promise<PassResult<Draf
       prompt: userPrompt,
       temperature,
       maxRetries: 0,
+      abortSignal: AbortSignal.timeout(60_000),
     });
 
     const repairedDays = result.object.days.map(d => ({
