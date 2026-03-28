@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { UserInput } from "@/types";
 import { useLimitModals } from "@/lib/hooks";
-import { useComposeGeneration } from "@/lib/hooks/useComposeGeneration";
+import { usePlanGeneration } from "@/lib/hooks/usePlanGeneration";
 import SimplifiedInputFlow from "./SimplifiedInputFlow";
 import ComposeLoadingAnimation from "./ComposeLoadingAnimation";
 import StreamingResultView from "./StreamingResultView";
@@ -85,7 +85,7 @@ export default function TravelPlannerSimplified({
   // ========================================
   // Compose Pipeline
   // ========================================
-  const compose = useComposeGeneration();
+  const compose = usePlanGeneration();
 
   // ========================================
   // Limit Modals Hook

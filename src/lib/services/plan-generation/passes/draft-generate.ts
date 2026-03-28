@@ -172,6 +172,7 @@ export async function draftGeneratePass(ctx: PassContext): Promise<PassResult<Dr
       prompt: userPrompt,
       temperature,
       maxRetries: 0,
+      abortSignal: AbortSignal.timeout(60_000),
     });
 
     const draftPlan = llmOutputToDraftPlan(result.object);

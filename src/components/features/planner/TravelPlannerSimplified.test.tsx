@@ -71,9 +71,9 @@ vi.mock("@/app/actions/travel-planner", () => ({
   savePlan: vi.fn(),
 }));
 
-// Mock useComposeGeneration
-vi.mock("@/lib/hooks/useComposeGeneration", () => ({
-  useComposeGeneration: () => ({
+// Mock usePlanGeneration
+vi.mock("@/lib/hooks/usePlanGeneration", () => ({
+  usePlanGeneration: () => ({
     steps: [],
     currentStep: null,
     isGenerating: false,
