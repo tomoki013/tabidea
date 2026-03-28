@@ -4,7 +4,13 @@
       "Bash(pnpm test:*)",
       "Bash(cd C:/Users/tomoki_ttttt/Next.js/Tabidea/tabidea && npx vitest run 2>&1 | tail -40)",
       "Bash(cd C:/Users/tomoki_ttttt/Next.js/Tabidea/tabidea && npx vitest run src/lib/services/itinerary/steps/semantic-planner.test.ts 2>&1 | tail -30)",
-      "Bash(npx vitest:*)"
+      "Bash(npx vitest:*)",
+      "Bash(npx tsc:*)",
+      "Bash(pnpm vitest:*)",
+      "Bash(pnpm docs:catalog)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(grep:*)"
     ]
   }
 }

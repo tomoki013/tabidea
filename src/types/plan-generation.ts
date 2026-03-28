@@ -154,6 +154,8 @@ export interface PlanGenerationSession {
 
   /** 元のユーザー入力 */
   inputSnapshot?: UserInput;
+  /** パイプライン実行コンテキスト (ユーザー設定由来) */
+  pipelineContext?: { homeBaseCity?: string };
   /** Pass A: 正規化済み入力 */
   normalizedInput?: NormalizedRequest;
   /** 生成設定 */

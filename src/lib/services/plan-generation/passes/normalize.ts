@@ -20,7 +20,7 @@ export async function normalizePass(ctx: PassContext): Promise<PassResult<Normal
     };
   }
 
-  const normalized = normalizeRequest(input, 'ja');
+  const normalized = normalizeRequest(input, 'ja', ctx.session.pipelineContext);
 
   return {
     outcome: 'completed',

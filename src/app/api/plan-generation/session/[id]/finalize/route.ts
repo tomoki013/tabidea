@@ -43,6 +43,27 @@ export async function POST(
       Promise.resolve(sessionToItinerary(session)),
     );
 
+    // Fetch hero image (decorative — timeout 3s, failure is non-fatal)
+    const destination = session.draftPlan?.destination ?? '';
+    if (destination) {
+      try {
+        const heroImage = await timer.measure('hero_image', async () => {
+          const { getUnsplashImage } = await import('@/lib/unsplash');
+          return Promise.race([
+            getUnsplashImage(destination),
+            new Promise<undefined>((resolve) => setTimeout(() => resolve(undefined), 3000)),
+          ]);
+        });
+        if (heroImage) {
+          itinerary.heroImage = heroImage.url;
+          itinerary.heroImagePhotographer = heroImage.photographer;
+          itinerary.heroImagePhotographerUrl = heroImage.photographerUrl;
+        }
+      } catch {
+        // Hero image is decorative — skip on failure
+      }
+    }
+
     // Performance log
     timer.log();
 

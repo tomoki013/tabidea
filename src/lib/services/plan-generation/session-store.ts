@@ -28,6 +28,7 @@ function rowToSession(row: Record<string, unknown>): PlanGenerationSession {
     createdAt: (row.created_at as string) ?? new Date().toISOString(),
     updatedAt: (row.updated_at as string) ?? new Date().toISOString(),
     inputSnapshot: row.input_snapshot as PlanGenerationSession['inputSnapshot'],
+    pipelineContext: row.pipeline_context as PlanGenerationSession['pipelineContext'],
     normalizedInput: row.normalized_input as PlanGenerationSession['normalizedInput'],
     generationProfile: row.generation_profile as PlanGenerationSession['generationProfile'],
     draftPlan: row.draft_plan as PlanGenerationSession['draftPlan'],
@@ -86,6 +87,7 @@ export async function updateSession(
   patch: Partial<Pick<
     PlanGenerationSession,
     | 'inputSnapshot'
+    | 'pipelineContext'
     | 'normalizedInput'
     | 'generationProfile'
     | 'draftPlan'
@@ -109,6 +111,7 @@ export async function updateSession(
   };
 
   if (patch.inputSnapshot !== undefined) dbPatch.input_snapshot = patch.inputSnapshot;
+  if (patch.pipelineContext !== undefined) dbPatch.pipeline_context = patch.pipelineContext;
   if (patch.normalizedInput !== undefined) dbPatch.normalized_input = patch.normalizedInput;
   if (patch.generationProfile !== undefined) dbPatch.generation_profile = patch.generationProfile;
   if (patch.draftPlan !== undefined) dbPatch.draft_plan = patch.draftPlan;

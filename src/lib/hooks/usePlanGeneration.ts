@@ -34,7 +34,7 @@ import type { UserType } from "@/lib/limits/config";
  * ComposeLoadingAnimation の STAGE_GROUPS と互換。
  */
 const SESSION_STATE_TO_STEP: Record<string, PipelineStepId> = {
-  created:                "usage_check",
+  created:                "normalize",
   normalized:             "semantic_plan",
   draft_generated:        "feasibility_score",
   draft_scored:           "route_optimize",
@@ -44,6 +44,20 @@ const SESSION_STATE_TO_STEP: Record<string, PipelineStepId> = {
   narrative_partial:      "narrative_render",
   completed:              "narrative_render",
 };
+
+/** v4 passId → v3 stepFailed i18n key */
+const PASS_TO_FAILED_STEP: Record<string, string> = {
+  normalize:          "unknown",
+  draft_generate:     "semantic_plan",
+  rule_score:         "unknown",
+  local_repair:       "semantic_plan",
+  selective_verify:   "place_resolve",
+  timeline_construct: "unknown",
+  narrative_polish:   "narrative_render",
+};
+
+/** Passes whose warnings are user-facing (final output quality) */
+const USER_FACING_WARNING_PASSES = new Set(["narrative_polish", "timeline_construct"]);
 
 const V4_STEP_IDS: PipelineStepId[] = [
   "usage_check",
@@ -188,6 +202,21 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
     setLimitExceeded(null);
   }, []);
 
+  const resolveStepErrorMessage = useCallback(
+    (failedPassId?: string, fallbackMessage?: string) => {
+      const stepKey = failedPassId ? PASS_TO_FAILED_STEP[failedPassId] : undefined;
+      if (stepKey) {
+        try {
+          return t(`errors.stepFailed.${stepKey}` as Parameters<typeof t>[0]);
+        } catch {
+          return t("errors.stepFailed.unknown");
+        }
+      }
+      return fallbackMessage ?? t("errors.generic");
+    },
+    [t],
+  );
+
   // ---- Main Generate ----
 
   const generate = useCallback(
@@ -216,7 +245,7 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
         const preflightRes = await fetch("/api/itinerary/plan/preflight", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ input }),
+          body: JSON.stringify({ input, options }),
           signal,
         });
 
@@ -320,19 +349,19 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
             }
           }
 
-          // Collect warnings
-          if (runData.warnings.length > 0) {
+          // Collect warnings (only from user-facing passes to avoid noise)
+          if (runData.warnings.length > 0 && USER_FACING_WARNING_PASSES.has(runData.passId)) {
             setWarnings((prev) => [...prev, ...runData.warnings]);
           }
 
           // Handle failures
           if (runData.outcome === "failed_terminal") {
-            throw new Error(runData.warnings[0] ?? "Pipeline failed");
+            throw new Error(resolveStepErrorMessage(runData.passId, runData.warnings[0]));
           }
         }
 
         if (sessionState === "failed") {
-          throw new Error("Pipeline failed during pass execution");
+          throw new Error(t("errors.generic"));
         }
 
         // ---- 4. Stream narrative polish (SSE) ----
@@ -410,12 +439,14 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
       } catch (err) {
         if (signal.aborted) return;
 
-        const message = err instanceof Error ? err.message : "Unknown error";
+        const rawMessage = err instanceof Error ? err.message : "";
+        // Use localized message if available, fallback to raw error
+        const message = rawMessage || t("errors.generic");
         setErrorMessage(message);
         setIsGenerating(false);
       }
     },
-    [advanceStep, initSteps, persistGeneratedItinerary],
+    [advanceStep, initSteps, persistGeneratedItinerary, resolveStepErrorMessage, t],
   );
 
   return {

@@ -6,9 +6,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import type { UserInput } from "@/types";
 import { getSamplePlanById } from "@/lib/sample-plans";
-import { useComposeGeneration } from "@/lib/hooks/useComposeGeneration";
 import { usePlanGeneration } from "@/lib/hooks/usePlanGeneration";
-import { V4_PIPELINE_ENABLED } from "@/lib/services/plan-generation/constants";
 import ComposeLoadingAnimation from "@/components/features/planner/ComposeLoadingAnimation";
 import StreamingResultView from "@/components/features/planner/StreamingResultView";
 import { PlanModal } from "@/components/common";
@@ -27,9 +25,7 @@ function PlanContent() {
   const legacyQ = searchParams.get("q");
   const mode = searchParams.get("mode");
 
-  const v3 = useComposeGeneration();
-  const v4 = usePlanGeneration();
-  const compose = V4_PIPELINE_ENABLED ? v4 : v3;
+  const compose = usePlanGeneration();
   const hasStartedGeneration = useRef(false);
   const [sampleInput, setSampleInput] = useState<UserInput | null>(null);
 
