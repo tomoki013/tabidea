@@ -4,6 +4,7 @@ import { useCallback, useRef, useState } from "react";
 
 import { regeneratePlan } from "@/app/actions/travel-planner";
 import type { Itinerary, PlanMutationErrorCode } from "@/types";
+import { replanTripItinerary } from "@/lib/trips/client";
 import {
   buildResolvedRegenerationState,
   type PlannerChatHistoryMessage,
@@ -56,6 +57,16 @@ function stripRegenerateInstruction(
   }
 
   return chatHistory;
+}
+
+function buildTripStyleInstruction(chatHistory: PlannerChatHistoryMessage[]): string {
+  const relevantHistory = chatHistory.slice(-8);
+  const instruction = relevantHistory
+    .map((message) => `${message.role}: ${message.text}`)
+    .join("\n")
+    .trim();
+
+  return instruction || "旅行プラン全体のスタイルを反映して再構成してください。";
 }
 
 export function usePlanRegeneration({
@@ -120,7 +131,29 @@ export function usePlanRegeneration({
     setStatus("regenerating");
 
     try {
-      const response = await regeneratePlan(planToUse, chatHistory);
+      const tripId = planToUse.tripId;
+      const tripVersion = planToUse.version;
+      const response =
+        tripId && typeof tripVersion === "number"
+          ? await (async () => {
+            const replanned = await replanTripItinerary({
+              tripId,
+              baseVersion: tripVersion,
+              scope: { type: "style" },
+              instruction: buildTripStyleInstruction(persistedHistory),
+              reason: "user_edit",
+              idempotencyKey: globalThis.crypto?.randomUUID?.() ?? `${Date.now()}`,
+            });
+
+            return {
+              ok: true as const,
+              data: {
+                itinerary: replanned.itinerary,
+              },
+            };
+          })()
+          : await regeneratePlan(planToUse, chatHistory);
+
       if (!response.ok) {
         setError(mapError ? mapError(response.error) : response.error);
         setStatus("idle");

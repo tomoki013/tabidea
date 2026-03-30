@@ -24,6 +24,7 @@ import { MODE_TO_LABEL } from './constants';
 import { inferTransitType } from '@/lib/services/google/distance-estimator';
 import { injectFlights, type FlightInjectionContext } from './inject-flights';
 import { injectAccommodations, type AccommodationInjectionContext } from './inject-accommodations';
+import { enrichItineraryMetadata } from '@/lib/trips/metadata';
 import type { FixedScheduleItem } from '@/types/user-input';
 
 // ============================================
@@ -83,7 +84,7 @@ export function composedToItinerary(
     days = injectAccommodations(days, accommodationContext);
   }
 
-  return {
+  const itinerary: Itinerary = {
     id,
     destination: composed.destination,
     description: composed.description,
@@ -93,6 +94,8 @@ export function composedToItinerary(
     days,
     modelInfo,
   };
+
+  return enrichItineraryMetadata(itinerary);
 }
 
 // ============================================

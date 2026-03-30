@@ -5,6 +5,7 @@ import type {
   PassBudget,
   DraftPlan,
   EvaluationReport,
+  RepairRecord,
 } from '@/types/plan-generation';
 
 // Mock AI SDK
@@ -209,7 +210,7 @@ describe('localRepairPass', () => {
           repairedDay,
         ],
       },
-    } as any);
+    } as never);
 
     const ctx = createMockCtx();
     const result = await localRepairPass(ctx);
@@ -230,9 +231,12 @@ describe('localRepairPass', () => {
 
     // RepairRecord in metadata
     expect(result.metadata?.repairRecord).toBeDefined();
-    const record = result.metadata!.repairRecord as any;
+    const record = result.metadata!.repairRecord as RepairRecord;
     expect(record.iteration).toBe(1);
     expect(record.unit.type).toBe('day');
+    if (record.unit.type !== 'day') {
+      throw new Error('expected day repair unit');
+    }
     expect(record.unit.day).toBe(2);
   });
 

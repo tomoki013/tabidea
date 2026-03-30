@@ -6,10 +6,9 @@ import type {
   NarrativeState,
 } from '@/types/plan-generation';
 
-// Mock narrative renderer
-vi.mock('@/lib/services/itinerary/steps/narrative-renderer', () => ({
-  runNarrativeRenderer: vi.fn(),
-  streamNarrativeRendererWithResult: vi.fn(),
+vi.mock('../renderers/narrative-renderer-v4', () => ({
+  runNarrativeRendererV4: vi.fn(),
+  streamNarrativeRendererV4: vi.fn(),
 }));
 
 // Mock RAG retriever — shared mock search function
@@ -23,10 +22,13 @@ vi.mock('@/lib/services/rag/pinecone-retriever', () => {
 });
 
 import { narrativePolishPass, narrativePolishPassStreaming } from './narrative-polish';
-import { runNarrativeRenderer, streamNarrativeRendererWithResult } from '@/lib/services/itinerary/steps/narrative-renderer';
+import {
+  runNarrativeRendererV4,
+  streamNarrativeRendererV4,
+} from '../renderers/narrative-renderer-v4';
 
-const mockRunNarrativeRenderer = vi.mocked(runNarrativeRenderer);
-const mockStreamRenderer = vi.mocked(streamNarrativeRendererWithResult);
+const mockRunNarrativeRenderer = vi.mocked(runNarrativeRendererV4);
+const mockStreamRenderer = vi.mocked(streamNarrativeRendererV4);
 
 function createMockBudget(): PassBudget {
   const deadline = Date.now() + 20_000;
@@ -50,7 +52,7 @@ function createMockCtx(overrides: Partial<PlanGenerationSession> = {}): PassCont
       warnings: [],
       draftPlan: {
         destination: '京都',
-        description: '',
+        description: '京都寺社巡りの旅',
         tripIntentSummary: '',
         themes: [],
         orderingPreferences: [],
@@ -145,26 +147,12 @@ const mockNarrativeOutput = {
       title: '金閣寺と北山',
       activities: [
         {
-          node: {
-            stop: {
-              candidate: { name: '金閣寺', role: 'must_visit', priority: 8, dayHint: 1, timeSlotHint: 'morning', stayDurationMinutes: 60, searchQuery: '' },
-              feasibilityScore: 80,
-              warnings: [],
-              semanticId: 'stop-001',
-            },
-            arrivalTime: '09:00',
-            departureTime: '10:00',
-            stayMinutes: 60,
-            warnings: [],
-            semanticId: 'stop-001',
-          },
+          draftId: 'stop-001',
+          arrivalTime: '09:00',
           description: '朝日に輝く金閣を鑑賞',
           activityName: '金閣寺参拝',
-          source: { type: 'ai' as const, confidence: 1.0 },
         },
       ],
-      legs: [],
-      overnightLocation: '京都駅',
     },
   ],
 };
@@ -198,13 +186,13 @@ describe('narrativePolishPass', () => {
     expect(state.dayNarratives[0].activities[0].description).toBe('朝日に輝く金閣を鑑賞');
   });
 
-  it('returns needs_retry on timeout', async () => {
+  it('fails terminal on timeout', async () => {
     mockRunNarrativeRenderer.mockRejectedValue(new Error('Request timed out'));
 
     const ctx = createMockCtx();
     const result = await narrativePolishPass(ctx);
-    expect(result.outcome).toBe('needs_retry');
-    expect(result.warnings[0]).toContain('timed out');
+    expect(result.outcome).toBe('failed_terminal');
+    expect(result.warnings[0]).toBe('narrative_generation_timeout');
   });
 
   it('passes correct model settings to renderer', async () => {
@@ -296,7 +284,7 @@ describe('narrativePolishPassStreaming', () => {
     expect(state.dayNarratives[0].title).toBe('金閣寺と北山');
   });
 
-  it('handles streaming error gracefully', async () => {
+  it('fails terminal when streaming finalization errors', async () => {
     mockStreamRenderer.mockResolvedValue({
       dayStream: (async function* () { /* empty */ })(),
       finalOutput: Promise.reject(new Error('Request timed out')),
@@ -306,7 +294,26 @@ describe('narrativePolishPassStreaming', () => {
     const { finalResult } = await narrativePolishPassStreaming(ctx);
     const result = await finalResult;
 
-    expect(result.outcome).toBe('needs_retry');
-    expect(result.warnings[0]).toContain('timed out');
+    expect(result.outcome).toBe('failed_terminal');
+    expect(result.warnings[0]).toBe('narrative_generation_timeout');
+  });
+
+  it('fails terminal without calling renderer when runtime budget is too low', async () => {
+    const deadline = Date.now() + 1_000;
+    const ctx = {
+      ...createMockCtx(),
+      budget: {
+        maxExecutionMs: 1_000,
+        deadlineAt: deadline,
+        remainingMs: () => deadline - Date.now(),
+      },
+    };
+
+    const { finalResult } = await narrativePolishPassStreaming(ctx);
+    const result = await finalResult;
+
+    expect(mockStreamRenderer).not.toHaveBeenCalled();
+    expect(result.outcome).toBe('failed_terminal');
+    expect(result.warnings[0]).toBe('narrative_generation_timeout');
   });
 });

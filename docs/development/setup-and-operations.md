@@ -1,6 +1,6 @@
 # Setup and Operations
 
-更新日: 2026-03-03
+更新日: 2026-03-30
 
 ## 1. Prerequisites
 
@@ -82,3 +82,57 @@ supabase db push
 - package managerは必ず `pnpm` を使用
 - コードと同じPRでドキュメントを更新
 - パフォーマンス計測対象の処理には `PerformanceTimer` を導入
+
+## 10. Plan Generation Server Log Checkpoints
+
+開発環境でプラン生成の挙動を確認するときは、SSE や DB を直接見なくても、サーバーログの checkpoint JSONL だけで run 全体を追える。
+
+- 正系ログは `kind: "run_checkpoint"` の 1 行 JSON
+- preflight は `kind: "preflight_checkpoint"` の 1 行 JSON
+- 成功 run の期待順序
+  - `run_created`
+  - `stream_started`
+  - `pass_started` / `pass_completed` for `normalize`
+  - `pass_started` / `pass_completed` for `draft_generate`
+  - `pass_started` / `pass_completed` for `draft_format`
+  - `pass_started` / `pass_completed` for `rule_score`
+  - `pass_started` / `pass_completed` for `selective_verify` または明示 skip
+  - `pass_started` / `pass_completed` for `timeline_construct`
+  - `narrative_stream_started`
+  - `trip_persist_started`
+  - `trip_persist_completed`
+  - `eval_completed`
+  - `run_finished`
+- 失敗 run の期待終端
+  - `pass_failed` または `run_failed`
+  - failed run では `trip_persist_completed` が出ない
+- 主要確認項目
+  - `run_created.usageStatus` が `confirmed` または `degraded` で出る
+  - `POST /api/agent/runs` が usage backend timeout で 30 秒以上止まらない
+  - `run_finished.tripVersion` が存在する
+  - `trip_persist_completed.tripVersion` と一致する
+  - `run_failed.errorCode` は固定 code (`draft_generation_timeout` など) で出る
+  - `run_event_persist_degraded` が多発している場合、SSE 本体ではなく Supabase 永続化が遅延源
+  - `preflight_degraded` が出ている場合、usage/billing 読み取りが遅いが、開発環境では fail-open で生成は継続する
+  - `plannerContractVersion` は現行 `semantic_draft_v4`
+  - `draft_generate.maxTokens` は stage ごとに動的に変わり、`netlify_free_30s` では seed 最大 `768` / day 最大 `1024`
+  - `draft_generate.selectedTimeoutMs` は free runtime で seed/day ともに最大 `4000` 付近を上限にする
+  - `pass_completed(outcome=partial)` と `run_paused(nextSubstage=seed_request|day_request)` が出ていれば、same-contract retry のために run を継続している
+
+PowerShell で checkpoint 行だけ抜き出す例:
+
+```powershell
+Get-Content .next\\server.log | Select-String '\"kind\":\"run_checkpoint\"'
+```
+
+preflight も含めて見る例:
+
+```powershell
+Get-Content .next\\server.log | Select-String '\"kind\":\"(run|preflight)_checkpoint\"'
+```
+
+共有するときは、できれば同一 run の以下をまとめて渡す:
+
+- `runId`
+- `kind: "run_checkpoint"` を含むサーバーログ行
+- 画面に表示されたエラー文言（失敗時のみ）

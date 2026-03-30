@@ -7,7 +7,7 @@
  */
 
 import { NextResponse } from 'next/server';
-import { cleanupExpiredSessions } from '@/lib/services/plan-generation/session-store';
+import { cleanupExpiredRuns } from '@/lib/services/plan-generation/run-store';
 
 export const maxDuration = 30;
 export const runtime = 'nodejs';
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     const body = await request.json().catch(() => ({})) as { ttlDays?: number };
     const ttlDays = body.ttlDays ?? 7;
 
-    const deletedCount = await cleanupExpiredSessions(ttlDays);
+    const deletedCount = await cleanupExpiredRuns(ttlDays);
 
     return NextResponse.json({
       ok: true,

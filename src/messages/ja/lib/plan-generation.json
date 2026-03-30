@@ -54,6 +54,14 @@
           "cancelled": "生成がキャンセルされました",
           "saveFailed": "プランの保存に失敗しました。",
           "timeout": "サーバーの応答がタイムアウトしました。もう一度お試しください。",
+          "generationCodes": {
+            "draft_generation_timeout": "候補スポットの選定に時間がかかりすぎました。条件を少し絞ってもう一度お試しください。",
+            "draft_generation_invalid_output": "候補スポットの骨組みを作る途中で不完全な結果が返されたため、旅程を完成できませんでした。もう一度お試しください。",
+            "draft_generation_provider_error": "AIサービスとの通信で問題が発生しました。しばらくしてからもう一度お試しください。",
+            "narrative_generation_timeout": "旅程の仕上げに時間がかかりすぎました。もう一度お試しください。",
+            "narrative_generation_invalid_output": "旅程の仕上げ中に不完全な結果が返されたため、説明文を完成できませんでした。もう一度お試しください。",
+            "narrative_generation_provider_error": "旅程の仕上げ中にAIサービスとの通信で問題が発生しました。しばらくしてからもう一度お試しください。"
+          },
           "stepFailed": {
             "semantic_plan": "AIによるスポット選定に失敗しました。もう一度お試しください。",
             "narrative_render": "旅程の仕上げに失敗しました。もう一度お試しください。",

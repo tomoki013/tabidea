@@ -40,13 +40,18 @@
 | `POST /api/external/flights/search` | `src/app/api/external/flights/search/route.ts` | Flight candidate search |
 | `GET /api/og` | `src/app/api/og/route.tsx` | OG image generation |
 | `POST /api/webhooks/stripe` | `src/app/api/webhooks/stripe/route.ts` | Stripe webhook handling |
-| `POST /api/plan-generation/session` | `src/app/api/plan-generation/session/route.ts` | Create v4 generation session |
-| `GET /api/plan-generation/session/[id]` | `src/app/api/plan-generation/session/[id]/route.ts` | Get session state |
-| `POST /api/plan-generation/session/[id]/run` | `src/app/api/plan-generation/session/[id]/run/route.ts` | Execute next pass |
-| `POST /api/plan-generation/session/[id]/stream` | `src/app/api/plan-generation/session/[id]/stream/route.ts` | SSE streaming for narrative polish |
-| `POST /api/plan-generation/session/[id]/finalize` | `src/app/api/plan-generation/session/[id]/finalize/route.ts` | Convert completed session to Itinerary |
-| `POST /api/plan-generation/session/[id]/resume` | `src/app/api/plan-generation/session/[id]/resume/route.ts` | Resume failed session from last checkpoint |
-| `POST /api/plan-generation/cleanup` | `src/app/api/plan-generation/cleanup/route.ts` | Cleanup expired sessions (CRON_SECRET auth) |
+| `POST /api/agent/runs` | `src/app/api/agent/runs/route.ts` | Canonical generation run creation |
+| `GET /api/agent/runs/[runId]/stream` | `src/app/api/agent/runs/[runId]/stream/route.ts` | Canonical SSE stream for run progress |
+| `GET /api/trips/[tripId]` | `src/app/api/trips/[tripId]/route.ts` | Canonical itinerary read API |
+| `POST /api/trips/[tripId]/patch` | `src/app/api/trips/[tripId]/patch/route.ts` | Block-centric itinerary patch and new version creation |
+| `POST /api/trips/[tripId]/replan` | `src/app/api/trips/[tripId]/replan/route.ts` | Scope-limited itinerary regeneration |
+| `GET /api/users/me/memory` | `src/app/api/users/me/memory/route.ts` | Read opt-in memory profile |
+| `POST /api/users/me/memory` | `src/app/api/users/me/memory/route.ts` | Update/enable/disable memory profile |
+| `POST /api/evals/runs/[runId]` | `src/app/api/evals/runs/[runId]/route.ts` | Persist run/trip evaluation metrics |
+| `POST /api/plan-generation/cleanup` | `src/app/api/plan-generation/cleanup/route.ts` | Cleanup expired canonical runs (CRON_SECRET auth) |
+| `POST /api/itinerary/compose` | `src/app/api/itinerary/compose/route.ts` | Deprecated legacy pipeline stub (`410 deprecated_pipeline`) |
+| `POST /api/itinerary/plan/*` | `src/app/api/itinerary/plan/*/route.ts` | Deprecated split compose pipeline stubs |
+| `POST /api/plan-generation/session/*` | `src/app/api/plan-generation/session/*/route.ts` | Deprecated pre-cutover v4 session stubs |
 
 ## 3. Server Actions
 
@@ -77,14 +82,17 @@
 - `src/lib/services/ai/*`
 - 役割: モデル選択、プロバイダ抽象化、生成戦略、スキーマ
 
-### Plan Generation (v4 Pipeline)
+### Plan Generation (Canonical Pipeline)
 - `src/lib/services/plan-generation/executor.ts` — パス実行オーケストレーター
 - `src/lib/services/plan-generation/state-machine.ts` — 状態遷移・次パス決定
-- `src/lib/services/plan-generation/session-store.ts` — セッション永続化
+- `src/lib/services/plan-generation/run-store.ts` — `runs` / `run_pass_runs` / `run_checkpoints` 永続化
 - `src/lib/services/plan-generation/passes/` — 7パス (normalize, draft-generate, rule-score, local-repair, selective-verify, timeline-construct, narrative-polish)
 - `src/lib/services/plan-generation/scoring/` — 9軸ルブリック
-- `src/lib/services/plan-generation/bridges/` — DraftStop ↔ v3 型変換、Session → Itinerary
-- `src/lib/hooks/usePlanGeneration.ts` — v4 クライアントフック (UseComposeGenerationReturn 互換)
+- `src/lib/services/plan-generation/transform/` — DraftPlan → Timeline → Itinerary の canonical 変換
+- `src/lib/services/plan-generation/renderers/narrative-renderer-v4.ts` — v4 専用 AI narrative renderer
+- `src/lib/agent/run-events.ts` — fixed SSE event persistence
+- `src/lib/trips/*` — itinerary version persistence / patch / replan helpers
+- `src/lib/hooks/usePlanGeneration.ts` — canonical generation hook
 
 ### Plan Mutation (Shared)
 - `src/types/plan-mutation.ts` — generate / regenerate / replan 共通の成功・失敗契約

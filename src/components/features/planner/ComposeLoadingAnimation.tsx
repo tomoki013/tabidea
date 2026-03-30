@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Plane } from "lucide-react";
 import { useTranslations } from "next-intl";
-import type { ComposeStep } from "@/lib/hooks/useComposeGeneration";
+import type { ComposeStep } from "@/lib/plan-generation/client-contract";
 import ComposeLoadingTips from "./ComposeLoadingTips";
 
 const STAGE_GROUPS = [

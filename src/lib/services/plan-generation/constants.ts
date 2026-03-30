@@ -66,7 +66,8 @@ export const MIN_REPAIR_IMPROVEMENT = 3;
 
 export const DEFAULT_RETRY_POLICIES: Record<PassId, RetryPolicy> = {
   normalize:          { maxRetries: 0, backoffMs: 0, retryableErrors: [] },
-  draft_generate:     { maxRetries: 1, backoffMs: 500, retryableErrors: ['AbortError', 'TimeoutError', 'AI_GENERATION_ERROR'] },
+  draft_generate:     { maxRetries: 0, backoffMs: 0, retryableErrors: ['AbortError', 'TimeoutError', 'AI_GENERATION_ERROR'] },
+  draft_format:       { maxRetries: 0, backoffMs: 0, retryableErrors: [] },
   rule_score:         { maxRetries: 0, backoffMs: 0, retryableErrors: [] },
   local_repair:       { maxRetries: 1, backoffMs: 500, retryableErrors: ['AbortError', 'TimeoutError', 'AI_GENERATION_ERROR'] },
   selective_verify:   { maxRetries: 1, backoffMs: 300, retryableErrors: ['PlaceResolveError'] },
@@ -81,7 +82,8 @@ export const DEFAULT_RETRY_POLICIES: Record<PassId, RetryPolicy> = {
 /** パス別の最大実行時間 (ms) */
 export const PASS_BUDGET_MS: Record<PassId, number> = {
   normalize:          1_000,
-  draft_generate:     20_000,
+  draft_generate:     15_000,
+  draft_format:       1_000,
   rule_score:         500,
   local_repair:       15_000,
   selective_verify:   10_000,
@@ -94,6 +96,31 @@ export const REQUEST_DEADLINE_MS = 119_000;
 
 /** プラットフォーム headroom (ms) */
 export const PLATFORM_HEADROOM_MS = 1_000;
+
+export const NETLIFY_FREE_RUNTIME_PROFILE = 'netlify_free_30s';
+
+export const STREAM_EXECUTION_BUDGET_MS = {
+  default: 22_000,
+  [NETLIFY_FREE_RUNTIME_PROFILE]: 18_000,
+} as const;
+
+export const DRAFT_GENERATE_TIMEOUT_CAP_MS = {
+  default: 15_000,
+  [NETLIFY_FREE_RUNTIME_PROFILE]: 12_000,
+} as const;
+
+export const DRAFT_GENERATE_SEED_BUDGET_MS = {
+  default: 4_000,
+  [NETLIFY_FREE_RUNTIME_PROFILE]: 3_500,
+} as const;
+
+export const DRAFT_GENERATE_DAY_MIN_BUDGET_MS = {
+  default: 2_200,
+  [NETLIFY_FREE_RUNTIME_PROFILE]: 1_800,
+} as const;
+
+export const STREAM_FINALIZE_RESERVE_MS = 3_000;
+export const STREAM_CLOSE_RESERVE_MS = 1_000;
 
 // ============================================
 // Default Quality Policy
@@ -126,6 +153,18 @@ export const DRAFT_BEST_OF_N = {
   long: 1,   // 7日以上: 1案 (コスト節約)
 } as const;
 
+export const PLANNER_TOKEN_COST = {
+  BASE_OVERHEAD: 30,
+  DAY_OVERHEAD: 40,
+  STOP_COST: 75,
+  SAFETY_BUFFER: 80,
+} as const;
+
+export const PLANNER_MAX_TOKENS_CAP = {
+  default: 2_048,
+  [NETLIFY_FREE_RUNTIME_PROFILE]: 1_536,
+} as const;
+
 // ============================================
 // Scoring Detail Constants
 // ============================================
@@ -149,10 +188,3 @@ export const MAX_REASONABLE_STOPS_PER_DAY = 10;
 /** 1 日の最小ストップ数 */
 export const MIN_STOPS_PER_DAY = 2;
 
-// ============================================
-// Feature Flags
-// ============================================
-
-/** v4 パイプラインの有効化フラグ (NEXT_PUBLIC_ prefix でクライアント参照可能) */
-export const V4_PIPELINE_ENABLED =
-  process.env.NEXT_PUBLIC_ENABLE_V4_PIPELINE === 'true';

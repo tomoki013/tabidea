@@ -20,7 +20,7 @@ function createMockCtx(sessionOverrides: Partial<PlanGenerationSession> = {}): P
   return {
     session: {
       id: 'test-session',
-      state: 'draft_generated',
+      state: 'draft_formatted',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       repairHistory: [],
@@ -84,12 +84,20 @@ describe('ruleScorePass', () => {
     const report: EvaluationReport = {
       overallScore: 30,
       passGrade: 'fail',
-      categoryScores: {} as EvaluationReport['categoryScores'],
+      categoryScores: [],
       violations: [
-        { category: 'constraint_fit', severity: 'error', message: 'Duration mismatch' },
-        { category: 'variety', severity: 'warning', message: 'Low variety' },
+        { category: 'constraint_fit', severity: 'error', scope: { type: 'plan' }, message: 'Duration mismatch' },
+        { category: 'variety', severity: 'warning', scope: { type: 'plan' }, message: 'Low variety' },
       ],
-      repairTargets: ['constraint_fit'],
+      repairTargets: [
+        {
+          scope: { type: 'plan' },
+          violations: [
+            { category: 'constraint_fit', severity: 'error', scope: { type: 'plan' }, message: 'Duration mismatch' },
+          ],
+          priority: 1,
+        },
+      ],
     };
     mockEvaluateDraft.mockReturnValue(report);
 
@@ -110,11 +118,19 @@ describe('ruleScorePass', () => {
     const report: EvaluationReport = {
       overallScore: 60,
       passGrade: 'marginal',
-      categoryScores: {} as EvaluationReport['categoryScores'],
+      categoryScores: [],
       violations: [
-        { category: 'constraint_fit', severity: 'error', message: 'Minor issue' },
+        { category: 'constraint_fit', severity: 'error', scope: { type: 'plan' }, message: 'Minor issue' },
       ],
-      repairTargets: ['constraint_fit'],
+      repairTargets: [
+        {
+          scope: { type: 'plan' },
+          violations: [
+            { category: 'constraint_fit', severity: 'error', scope: { type: 'plan' }, message: 'Minor issue' },
+          ],
+          priority: 1,
+        },
+      ],
     };
     mockEvaluateDraft.mockReturnValue(report);
 

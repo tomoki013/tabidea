@@ -28,6 +28,7 @@ export type SessionState =
   | 'created'
   | 'normalized'
   | 'draft_generated'
+  | 'draft_formatted'
   | 'draft_scored'
   | 'draft_repaired_partial'
   | 'verification_partial'
@@ -41,14 +42,15 @@ export type SessionState =
 export const VALID_TRANSITIONS: Record<SessionState, readonly SessionState[]> = {
   created:                ['normalized', 'failed', 'cancelled'],
   normalized:             ['draft_generated', 'failed', 'cancelled'],
-  draft_generated:        ['draft_scored', 'failed', 'cancelled'],
+  draft_generated:        ['draft_formatted', 'failed', 'cancelled'],
+  draft_formatted:        ['draft_scored', 'failed', 'cancelled'],
   draft_scored:           ['draft_repaired_partial', 'verification_partial', 'timeline_ready', 'failed', 'cancelled'],
   draft_repaired_partial: ['draft_scored', 'verification_partial', 'timeline_ready', 'failed', 'cancelled'],
   verification_partial:   ['timeline_ready', 'failed', 'cancelled'],
   timeline_ready:         ['narrative_partial', 'completed', 'failed', 'cancelled'],
   narrative_partial:      ['completed', 'failed', 'cancelled'],
   completed:              [],
-  failed:                 ['created', 'normalized', 'draft_generated', 'draft_scored', 'verification_partial', 'timeline_ready'],
+  failed:                 ['created', 'normalized', 'draft_generated', 'draft_formatted', 'draft_scored', 'verification_partial', 'timeline_ready'],
   cancelled:              [],
 } as const;
 
@@ -60,6 +62,7 @@ export const VALID_TRANSITIONS: Record<SessionState, readonly SessionState[]> = 
 export type PassId =
   | 'normalize'
   | 'draft_generate'
+  | 'draft_format'
   | 'rule_score'
   | 'local_repair'
   | 'selective_verify'
@@ -72,6 +75,21 @@ export type PassOutcome =
   | 'partial'
   | 'needs_retry'
   | 'failed_terminal';
+
+export type RunPauseReason =
+  | 'recovery_required'
+  | 'runtime_budget_exhausted'
+  | 'verify_budget_exhausted';
+
+export type DraftGenerateResumeSubstage =
+  | 'seed_request'
+  | 'seed_parse'
+  | 'day_outline_request'
+  | 'day_outline_parse'
+  | 'day_chunk_request'
+  | 'day_chunk_parse'
+  | 'day_request'
+  | 'day_parse';
 
 /** 各パスが返す統一結果型 */
 export interface PassResult<T = unknown> {
@@ -136,10 +154,40 @@ export type VerificationLevel =
 export interface GenerationProfile {
   modelName: string;
   narrativeModelName: string;
+  plannerModelName?: string;
   modelTier: 'flash' | 'pro';
   provider: 'gemini' | 'openai';
+  plannerProvider?: 'gemini' | 'openai';
   temperature: number;
   pipelineVersion: 'v4';
+}
+
+export interface PipelineContext {
+  homeBaseCity?: string;
+  executionMode?: 'draft_only' | 'draft_with_selective_verify' | 'reverify' | 'replan_partial';
+  runtimeProfile?: string;
+  costProfile?: string;
+  usageStatus?: 'confirmed' | 'degraded';
+  usageSource?: string;
+  tripId?: string;
+  threadId?: string;
+  mode?: 'create' | 'replan' | 'patch_assist';
+  replanScope?: Record<string, unknown> | null;
+  memoryEnabled?: boolean;
+  memorySnapshot?: Record<string, unknown> | null;
+  idempotencyKey?: string;
+  resumePassId?: PassId | null;
+  resumeSubstage?: DraftGenerateResumeSubstage | null;
+  pauseReason?: RunPauseReason | null;
+  plannerRawText?: string | null;
+  plannerAttempt?: number | null;
+  nextDayIndex?: number | null;
+  dayChunkIndex?: number | null;
+  seedAttempt?: number | null;
+  dayAttempt?: number | null;
+  outlineAttempt?: number | null;
+  chunkAttempt?: number | null;
+  plannerRequestAttempt?: number | null;
 }
 
 /** 生成セッション — 生成中の全中間データを保持 */
@@ -155,22 +203,30 @@ export interface PlanGenerationSession {
   /** 元のユーザー入力 */
   inputSnapshot?: UserInput;
   /** パイプライン実行コンテキスト (ユーザー設定由来) */
-  pipelineContext?: { homeBaseCity?: string };
+  pipelineContext?: PipelineContext;
   /** Pass A: 正規化済み入力 */
   normalizedInput?: NormalizedRequest;
   /** 生成設定 */
   generationProfile?: GenerationProfile;
-  /** Pass B: AI ドラフト旅程 */
+  /** Pass B-1: Planner の seed skeleton */
+  plannerSeed?: PlannerSeed;
+  /** Pass B-2a: free runtime 向け day outline */
+  plannerDayOutline?: PlannerDayOutline | null;
+  /** Pass B-2b: free runtime 向け partial chunked stops */
+  plannerDayChunks?: PlannerDayChunkStop[] | null;
+  /** Pass B: AI の軽量 semantic draft */
+  plannerDraft?: PlannerDraft;
+  /** Pass C: deterministic に整形した DraftPlan */
   draftPlan?: DraftPlan;
-  /** Pass C: 評価レポート */
+  /** Pass D: 評価レポート */
   evaluationReport?: EvaluationReport;
-  /** Pass D: 修復履歴 */
+  /** Pass E: 修復履歴 */
   repairHistory: RepairRecord[];
-  /** Pass E: 検証済みエンティティ */
+  /** Pass F: 検証済みエンティティ */
   verifiedEntities: VerifiedEntity[];
-  /** Pass F: タイムライン構造 */
+  /** Pass G: タイムライン構造 */
   timelineState?: TimelineState;
-  /** Pass G: ナラティブ結果 */
+  /** Pass H: ナラティブ結果 */
   narrativeState?: NarrativeState;
   /** UI 表示用の現在プロジェクション */
   uiProjection?: UIProjection;
@@ -193,7 +249,67 @@ export interface PlanGenerationSession {
 }
 
 // ============================================
-// Pass B Output: Draft Plan
+// Pass B Output: Planner Draft
+// ============================================
+
+export interface PlannerSeed {
+  days: PlannerSeedDay[];
+}
+
+export interface PlannerSeedDay {
+  day: number;
+  mainArea: string;
+  overnightLocation: string;
+}
+
+export interface PlannerDayStops {
+  day: number;
+  stops: PlannerDraftStop[];
+}
+
+export interface PlannerDayOutline {
+  day: number;
+  slots: PlannerDayOutlineSlot[];
+}
+
+export interface PlannerDayOutlineSlot {
+  slotIndex: number;
+  role: CandidateRole;
+  timeSlotHint: TimeSlotHint;
+  areaHint?: string;
+}
+
+export interface PlannerDayChunkStop {
+  slotIndex: number;
+  name: string;
+  searchQuery: string;
+  role: CandidateRole;
+  timeSlotHint: TimeSlotHint;
+  areaHint: string;
+}
+
+/** Planner が返す軽量 semantic draft */
+export interface PlannerDraft {
+  days: PlannerDraftDay[];
+}
+
+export interface PlannerDraftDay {
+  day: number;
+  mainArea: string;
+  overnightLocation: string;
+  stops: PlannerDraftStop[];
+}
+
+export interface PlannerDraftStop {
+  name: string;
+  searchQuery: string;
+  role: CandidateRole;
+  timeSlotHint: TimeSlotHint;
+  areaHint: string;
+}
+
+// ============================================
+// Pass C Output: Draft Plan
 // ============================================
 
 /** AI が生成する旅程ドラフト全体 */
@@ -249,7 +365,7 @@ export interface DraftStop {
 }
 
 // ============================================
-// Pass C Output: Evaluation Report
+// Pass D Output: Evaluation Report
 // ============================================
 
 /** 評価ルブリックのカテゴリ */
@@ -317,7 +433,7 @@ export interface RepairTarget {
 }
 
 // ============================================
-// Pass D: Repair
+// Pass E: Repair
 // ============================================
 
 /** 修復の単位 */
@@ -339,7 +455,7 @@ export interface RepairRecord {
 }
 
 // ============================================
-// Pass E: Verification
+// Pass F: Verification
 // ============================================
 
 /** 検証結果のステータス */
@@ -372,7 +488,7 @@ export interface VerifiedEntity {
 }
 
 // ============================================
-// Pass F: Timeline
+// Pass G: Timeline
 // ============================================
 
 /** タイムライン構築結果 — セッションに永続化する軽量構造 */
@@ -418,7 +534,7 @@ export interface TimelineLegCompact {
 }
 
 // ============================================
-// Pass G: Narrative
+// Pass H: Narrative
 // ============================================
 
 /** ナラティブ生成結果 — セッションに永続化する構造 */

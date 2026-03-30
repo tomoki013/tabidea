@@ -1,6 +1,6 @@
 # Performance Guide
 
-更新日: 2026-03-03
+更新日: 2026-03-30
 
 ## 1. Scope
 
@@ -32,46 +32,66 @@
 | outline total | 20000 | 35000 |
 | chunk total | 22000 | 37000 |
 
-### 3b. Compose Pipeline Targets
+### 3b. Canonical Plan Generation Targets
 
 | Step | Flash target (ms) | Pro target (ms) | Notes |
 | --- | ---: | ---: | --- |
-| usage_check | 500 | 500 | |
-| normalize | 50 | 50 | Pure TS |
-| semantic_plan | 15000 | 30000 | Seed + day-sized batches of Gemini generateObject |
-| place_resolve | 10000 | 10000 | Places API (flag OFF でスキップ) |
-| feasibility_score | 200 | 200 | Pure TS (flag OFF でスキップ) |
-| route_optimize | 1000 | 1000 | Haversine + greedy + 2-opt |
-| timeline_build | 100 | 100 | Pure TS |
-| narrative_render | 12000 | 20000 | Gemini generateObject |
+| normalize | 1000 | 1000 | Pure TS |
+| draft_generate | 8000 | 12000 | Split canonical planner (`seed_request` + resumable `day_request`) |
+| draft_format | 1000 | 1000 | Deterministic `PlannerDraft -> DraftPlan` formatter |
+| rule_score | 300 | 300 | Pure TS rubric |
+| local_repair | 12000 | 20000 | AI-only retry on quality failure |
+| selective_verify | 10000 | 10000 | Places / weather / travel-time checks |
+| timeline_construct | 1000 | 1000 | Pure TS timeline assembly |
+| narrative_polish | 12000 | 20000 | v4 narrative renderer |
 | hero_image | 2000 | 2000 | Unsplash |
-| total | 45000 | 65000 | Places OFF 時は ~30000 |
+| total | 30000 | 50000 | Runtime profile で実効予算を制限 |
 
-Use `createComposeTimer(modelTier?)` factory.
+Use `createV4PipelineTimer(passId)` for pass execution and `PerformanceTimer` for surrounding routes/actions.
 
-- App Router route は seed / spots / assemble / narrate の各短時間フェーズを担当する。
-- `semantic_plan` の target 超過は `PerformanceTimer` で監視しつつ、最も重い AI スポット生成は day-sized batches に分割して route timeout を構造的に避ける。
+- App Router の正系生成導線は `/api/agent/runs` と `/api/agent/runs/:runId/stream`。
+- 各 pass の duration は executor が `createV4PipelineTimer()` で計測し、`run.progress` / server log / eval で追跡する。
 
-### 3c. Timeout Prevention Architecture
+### 3c. Runtime Budget Architecture
 
-タイムアウト防止のため、以下の3つの設計変更を適用:
+`netlify_free_30s` などの runtime profile に応じて内部 budget を制御する。
 
-1. **スポット生成の並列化**: フロントエンドが `/plan/spots` を1日ずつ逐次呼び出していた処理を、最大3並列で実行。`mapWithConcurrency()` (`src/lib/utils/concurrency.ts`) を使用。候補の重複は `deduplicateCandidates()` で事後排除。
-2. **Seed ルートの SSE ストリーミング**: `/api/itinerary/plan/seed` を JSON POST から SSE に変換。AI生成中に `normalized` イベントで中間結果を先行送信し、タイムアウト時もクライアントがデータを保持。
-3. **ナラティブ生成のチャンク分割**: `runNarratePipeline` が全日分を1回の AI 呼び出しで処理していた設計を、2日ずつのチャンクに分割。各チャンクの予算は `NARRATE_CHUNK_BUDGET_MS` (18s)。
+1. **Route-safe reserve**: stream route は finalize / write / close 分の reserve を確保し、残り時間が少ないまま新しい重い pass を始めない。
+2. **Pass-local timeout**: `draft_generate`, `local_repair`, `narrative_polish` などの AI pass は route budget 全体を使い切らない。
+3. **Split canonical planner**: `draft_generate` は seed skeleton と per-day fill に分け、同一 request に全日程を押し込まない。
+4. **UI-visible pass progress**: stream route は `run.progress` に `phase=pass_started` も含め、loading UI が 0% で固まらないようにする。
+5. **AI-only recovery**: deterministic fallback は禁止し、explicit failure に統一する。
+6. **Lean draft transport**: `draft_generate` は重い semanticPlan 共通 system prompt を使わず、canonical planner 専用の軽量 system prompt を使う。
+7. **Text-first JSON transport**: `draft_generate` は `streamText()` で partial text を回収しながら seed/day JSON を生成し、timeout 時も partial output があれば parser-side salvage を先に試す。AI repair fallback は使わない。
+8. **Dynamic planner token ceiling**: `draft_generate` の planner call は stage ごとに token ceiling を動的計算する。
+   - `netlify_free_30s`: seed 最大 `768`, day 最大 `1024`
+   - default: seed 最大 `1024`, day 最大 `1536`
+9. **Deterministic formatter after planner**: AI は minimal semantic draft だけを返し、`draft_format` が `DraftPlan` 用の内部メタデータを deterministic に補完する。
+10. **Explicit terminal semantics**: failed run では `trip_version` を作らず、成功 run のみ保存する。
+11. **Fail-open run creation**: `/api/agent/runs` の usage backend timeout は canonical run 作成を止めず、`usageStatus=degraded` をログに残して継続する。
+12. **Parser-first salvage before retry**: incomplete JSON は deterministic salvage を先に試し、それでも contract を満たせなければ same-contract retry のため `run.paused` で継続する。
 
 | パラメータ | 値 | 定義ファイル |
 | --- | --- | --- |
-| NARRATE_DAYS_PER_CHUNK | 2 | `runtime-budget.ts` |
-| NARRATE_CHUNK_BUDGET_MS | 18,000ms | `runtime-budget.ts` |
-| NARRATE_CHUNK_RESERVE_MS | 1,500ms | `runtime-budget.ts` |
-| SPOTS_CONCURRENCY | 3 | `useComposeGeneration.ts` |
+| `STREAM_EXECUTION_BUDGET_MS` | 18,000ms (`netlify_free_30s`) | `src/lib/services/plan-generation/constants.ts` |
+| `DRAFT_GENERATE_STREAM_CAP_MS` | 8,000ms (`netlify_free_30s` effective cap in pass) | `src/lib/services/plan-generation/passes/draft-generate.ts` |
+| `FINALIZE_RESERVE_MS` | 3,000ms | `src/lib/services/plan-generation/constants.ts` |
+| `STREAM_CLOSE_RESERVE_MS` | 1,000ms | `src/lib/services/plan-generation/constants.ts` |
+
+補足:
+- `draft_generate` は planner contract version を固定し、`seed_request` / `day_request` の両方を観測する
+- planner の checkpoint には `plannerContractVersion`, `selectedTimeoutMs`, `maxTokens`, `promptChars`, `recoveryMode`, `usedTextRecovery` を出す
+- seed request は `netlify_free_30s` で最大 `4000ms`、day request は最大 `4000ms` を目安にし、request を跨いで day fill を継続する
+- planner-specific model は run 作成時に固定し、run 中の provider fallback は行わない
+- `draft_format` は deterministic pass として `formatterContractVersion`, `dayCount`, `totalStops` を出す
+- `run_created` には `usageStatus` / `usageSource` を含め、billing backend 劣化で route が遅延していないかをサーバーログだけで判定できるようにする
+- `strategyAttempt` や `fallbackFromStrategy` のような downgrade metadata は live path では出さない
 
 ## 4. Instrumentation Pattern
 
 ```ts
-const timer = createOutlineTimer();
-const result = await timer.measure("ai_generation", () => service.generate());
+const timer = createV4PipelineTimer("draft_generate");
+const result = await timer.measure("draft_generate", () => service.generate());
 timer.log();
 ```
 

@@ -17,7 +17,7 @@ import type { ResolvedPlaceGroup } from '@/types/itinerary-pipeline';
 import { PlacesApiError } from '@/types/places';
 import { GooglePlacesService } from '@/lib/services/google/places';
 import { resolvePlaces } from '@/lib/services/itinerary/steps/place-resolver';
-import { draftStopToCandidate } from '../bridges/draft-to-v3';
+import { draftStopToSemanticCandidate } from '../transform/draft-to-timeline';
 
 // ============================================
 // Verification Thresholds
@@ -172,7 +172,7 @@ export async function selectiveVerifyPass(
 
   // SemanticCandidate[] に変換
   const candidates = stopsToVerify.map(({ stop, day }) =>
-    draftStopToCandidate(stop, day),
+    draftStopToSemanticCandidate(stop, day),
   );
 
   const warnings: string[] = [];

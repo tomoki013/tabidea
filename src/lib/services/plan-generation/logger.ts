@@ -8,7 +8,7 @@
  */
 
 import type { PassId, PassOutcome, PassRunRecord, PlanGenerationSession } from '@/types/plan-generation';
-import { appendPassRun } from './session-store';
+import { appendRunPass } from './run-store';
 import { EventLogger } from '@/lib/services/analytics/event-logger';
 import { createServiceRoleClient } from '@/lib/supabase/admin';
 
@@ -49,7 +49,7 @@ export class PlanGenerationLogger {
       metadata: input.metadata,
     };
 
-    appendPassRun(this.sessionId, record).catch(() => {
+    appendRunPass(this.sessionId, record).catch(() => {
       // fire-and-forget: never block pipeline on DB error
     });
   }

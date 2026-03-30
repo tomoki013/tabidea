@@ -74,8 +74,12 @@ describe('validateTransition', () => {
     expect(validateTransition('normalized', 'draft_generated')).toBe(true);
   });
 
-  it('allows draft_generated → draft_scored', () => {
-    expect(validateTransition('draft_generated', 'draft_scored')).toBe(true);
+  it('allows draft_generated → draft_formatted', () => {
+    expect(validateTransition('draft_generated', 'draft_formatted')).toBe(true);
+  });
+
+  it('allows draft_formatted → draft_scored', () => {
+    expect(validateTransition('draft_formatted', 'draft_scored')).toBe(true);
   });
 
   it('allows draft_scored → draft_repaired_partial', () => {
@@ -138,7 +142,7 @@ describe('validateTransition', () => {
   // Every state can reach failed (except terminal states)
   it('every non-terminal state can transition to failed', () => {
     const nonTerminal: SessionState[] = [
-      'created', 'normalized', 'draft_generated', 'draft_scored',
+      'created', 'normalized', 'draft_generated', 'draft_formatted', 'draft_scored',
       'draft_repaired_partial', 'verification_partial', 'timeline_ready',
       'narrative_partial',
     ];
@@ -150,7 +154,7 @@ describe('validateTransition', () => {
   // Every non-terminal state can be cancelled
   it('every non-terminal state can transition to cancelled', () => {
     const nonTerminal: SessionState[] = [
-      'created', 'normalized', 'draft_generated', 'draft_scored',
+      'created', 'normalized', 'draft_generated', 'draft_formatted', 'draft_scored',
       'draft_repaired_partial', 'verification_partial', 'timeline_ready',
       'narrative_partial',
     ];
@@ -208,7 +212,8 @@ describe('getNextPassForState', () => {
     const expected: [SessionState, PassId | null][] = [
       ['created', 'normalize'],
       ['normalized', 'draft_generate'],
-      ['draft_generated', 'rule_score'],
+      ['draft_generated', 'draft_format'],
+      ['draft_formatted', 'rule_score'],
       ['draft_scored', 'local_repair'], // no session → static fallback
       ['draft_repaired_partial', 'rule_score'],
       ['verification_partial', 'timeline_construct'],
@@ -316,15 +321,26 @@ describe('determineResumeState', () => {
     const session = createMockSession({
       state: 'failed',
       normalizedInput: {} as PlanGenerationSession['normalizedInput'],
-      draftPlan: { destination: 'Tokyo', days: [] } as unknown as PlanGenerationSession['draftPlan'],
+      plannerDraft: { days: [] } as unknown as PlanGenerationSession['plannerDraft'],
     });
     expect(determineResumeState(session)).toBe('draft_generated');
+  });
+
+  it('returns draft_formatted when draftPlan exists', () => {
+    const session = createMockSession({
+      state: 'failed',
+      normalizedInput: {} as PlanGenerationSession['normalizedInput'],
+      plannerDraft: { days: [] } as unknown as PlanGenerationSession['plannerDraft'],
+      draftPlan: { destination: 'Tokyo', days: [] } as unknown as PlanGenerationSession['draftPlan'],
+    });
+    expect(determineResumeState(session)).toBe('draft_formatted');
   });
 
   it('returns draft_scored when evaluationReport exists', () => {
     const session = createMockSession({
       state: 'failed',
       normalizedInput: {} as PlanGenerationSession['normalizedInput'],
+      plannerDraft: { days: [] } as unknown as PlanGenerationSession['plannerDraft'],
       draftPlan: { destination: 'Tokyo', days: [] } as unknown as PlanGenerationSession['draftPlan'],
       evaluationReport: { overallScore: 65, passGrade: 'marginal' } as unknown as EvaluationReport,
     });
@@ -335,6 +351,7 @@ describe('determineResumeState', () => {
     const session = createMockSession({
       state: 'failed',
       normalizedInput: {} as PlanGenerationSession['normalizedInput'],
+      plannerDraft: { days: [] } as unknown as PlanGenerationSession['plannerDraft'],
       draftPlan: { destination: 'Tokyo', days: [] } as unknown as PlanGenerationSession['draftPlan'],
       evaluationReport: { overallScore: 75, passGrade: 'pass' } as unknown as EvaluationReport,
       verifiedEntities: [{ name: 'Tokyo Tower' }] as unknown as PlanGenerationSession['verifiedEntities'],
@@ -347,6 +364,7 @@ describe('determineResumeState', () => {
     const session = createMockSession({
       state: 'failed',
       normalizedInput: {} as PlanGenerationSession['normalizedInput'],
+      plannerDraft: { days: [] } as unknown as PlanGenerationSession['plannerDraft'],
       draftPlan: { destination: 'Tokyo', days: [] } as unknown as PlanGenerationSession['draftPlan'],
       evaluationReport: { overallScore: 75, passGrade: 'pass' } as unknown as EvaluationReport,
       verifiedEntities: [{ name: 'Tokyo Tower' }] as unknown as PlanGenerationSession['verifiedEntities'],
@@ -356,7 +374,7 @@ describe('determineResumeState', () => {
 });
 
 describe('failed → resume transitions are valid', () => {
-  const resumeTargets: SessionState[] = ['created', 'normalized', 'draft_generated', 'draft_scored', 'verification_partial', 'timeline_ready'];
+  const resumeTargets: SessionState[] = ['created', 'normalized', 'draft_generated', 'draft_formatted', 'draft_scored', 'verification_partial', 'timeline_ready'];
   for (const target of resumeTargets) {
     it(`failed → ${target} is allowed`, () => {
       expect(validateTransition('failed', target)).toBe(true);
@@ -368,6 +386,7 @@ describe('getStateAfterPassCompleted', () => {
   const expected: [PassId, SessionState][] = [
     ['normalize', 'normalized'],
     ['draft_generate', 'draft_generated'],
+    ['draft_format', 'draft_formatted'],
     ['rule_score', 'draft_scored'],
     ['local_repair', 'draft_repaired_partial'],
     ['selective_verify', 'verification_partial'],

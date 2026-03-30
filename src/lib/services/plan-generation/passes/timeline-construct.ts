@@ -17,8 +17,8 @@ import { buildTimeline } from '@/lib/services/itinerary/steps/timeline-builder';
 import {
   draftStopToSelectedStop,
   draftPlanToDayStructures,
-  timelineDaysToState,
-} from '../bridges/draft-to-v3';
+  timelineDaysToTimelineState,
+} from '../transform/draft-to-timeline';
 import type { SelectedStop } from '@/types/itinerary-pipeline';
 
 // ============================================
@@ -61,7 +61,7 @@ export async function timelineConstructPass(
   const timelineDays = buildTimeline(optimizedDays, normalizedInput);
 
   // Compact timeline for session storage
-  const timelineState = timelineDaysToState(timelineDays, verifiedEntities);
+  const timelineState = timelineDaysToTimelineState(timelineDays, verifiedEntities);
 
   return {
     outcome: 'completed',

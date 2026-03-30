@@ -54,6 +54,14 @@
           "cancelled": "Generation was cancelled",
           "saveFailed": "Failed to save plan.",
           "timeout": "The server took too long to respond. Please try again.",
+          "generationCodes": {
+            "draft_generation_timeout": "Spot selection took too long. Try again with slightly narrower trip preferences.",
+            "draft_generation_invalid_output": "The planner returned an incomplete trip skeleton, so the itinerary could not be completed. Please try again.",
+            "draft_generation_provider_error": "There was a problem communicating with the AI service. Please try again in a moment.",
+            "narrative_generation_timeout": "Finishing the itinerary took too long. Please try again.",
+            "narrative_generation_invalid_output": "The narrative step returned an incomplete result, so the itinerary text could not be completed. Please try again.",
+            "narrative_generation_provider_error": "There was a problem communicating with the AI service while finishing the itinerary. Please try again in a moment."
+          },
           "stepFailed": {
             "semantic_plan": "AI spot selection failed. Please try again.",
             "narrative_render": "Failed to create the itinerary narrative. Please try again.",

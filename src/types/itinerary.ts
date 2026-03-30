@@ -10,6 +10,84 @@ import type { PlacesApiErrorCode } from '@/types/places';
  */
 export type TransitType = 'flight' | 'bullet_train' | 'train' | 'bus' | 'ship' | 'car' | 'taxi' | 'walking' | 'other';
 
+export type ItineraryCompletionLevel = 'draft_only' | 'partial_verified' | 'fully_verified';
+export type ItineraryGenerationStatus = 'draft' | 'completed' | 'failed';
+export type ActivityVerificationStatus = 'unknown' | 'partial' | 'verified';
+export type ItineraryBlockType = 'move' | 'meal' | 'sightseeing' | 'rest' | 'hotel' | 'buffer';
+
+export interface ItinerarySourceOfTruth {
+  kind: 'tool' | 'knowledge' | 'llm' | 'user' | 'system';
+  tool?: string;
+  provider?: string;
+  verifiedAt?: string;
+  sourceAgeMinutes?: number;
+}
+
+export interface ItineraryFallbackCandidate {
+  place: string;
+  reason: string;
+  placeId?: string;
+}
+
+export interface ItineraryBookingStatus {
+  type: 'not_applicable' | 'not_required' | 'required' | 'optional' | 'booked';
+  provider?: string;
+  bookingUrl?: string;
+}
+
+export interface ItineraryBlockPlace {
+  name: string;
+  placeId?: string;
+  latitude?: number;
+  longitude?: number;
+  address?: string;
+}
+
+export interface ItineraryBlock {
+  blockId: string;
+  startAt?: string;
+  endAt?: string;
+  type: ItineraryBlockType;
+  place: ItineraryBlockPlace | null;
+  reason: string;
+  sourceOfTruth: ItinerarySourceOfTruth[];
+  confidence: number;
+  needsConfirmation: boolean;
+  verificationStatus: ActivityVerificationStatus;
+  fallbackCandidates: ItineraryFallbackCandidate[];
+  editableFields: string[];
+  riskFlags: string[];
+  bookingStatus: ItineraryBookingStatus;
+}
+
+export interface ItineraryDestinationSummary {
+  primaryDestination: string;
+  destinations?: string[];
+  durationDays?: number;
+  travelDates?: {
+    start?: string;
+    end?: string;
+  };
+  styleTags?: string[];
+}
+
+export interface ItineraryGeneratedConstraints {
+  runtimeLimitMs?: number;
+  toolBudgetMode?: string;
+}
+
+export interface ItineraryVerificationSummary {
+  verifiedActivities: number;
+  partialActivities: number;
+  unknownActivities: number;
+  needsConfirmationCount: number;
+}
+
+export interface ItineraryScores {
+  utility?: number;
+  human?: number;
+}
+
 /**
  * 移動情報
  */
@@ -117,6 +195,22 @@ export interface Activity {
   searchQuery?: string;
   /** v3: パイプライン追跡用メタデータ (nodeId, semanticId) */
   metadata?: Record<string, unknown>;
+  /** itinerary-centric metadata */
+  sourceOfTruth?: ItinerarySourceOfTruth[];
+  /** 0-1 confidence score */
+  confidence?: number;
+  /** Whether the user should confirm this activity */
+  needsConfirmation?: boolean;
+  /** Verification state for this activity/block */
+  verificationStatus?: ActivityVerificationStatus;
+  /** Alternative candidates when this activity is weakly verified */
+  fallbackCandidates?: ItineraryFallbackCandidate[];
+  /** Editable fields for patch-based editing */
+  editableFields?: string[];
+  /** Risk flags surfaced to UI */
+  riskFlags?: string[];
+  /** Booking state */
+  bookingStatus?: ItineraryBookingStatus;
 }
 
 /**
@@ -149,6 +243,8 @@ export interface DayPlan {
   reference_indices?: number[];
   /** UIタイプ（Generative UI） */
   ui_type?: 'default' | 'compact' | 'narrative';
+  /** Phase 1 compatibility bridge toward block-centric itinerary */
+  blocks?: ItineraryBlock[];
 }
 
 /**
@@ -181,6 +277,12 @@ export interface ModelInfo {
 export interface Itinerary {
   /** 一意識別子 */
   id: string;
+  /** trip 集約 ID */
+  tripId?: string;
+  /** trip_version */
+  version?: number;
+  /** itinerary 表示タイトル */
+  title?: string;
   /** 目的地 */
   destination: string;
   /** 説明 */
@@ -203,6 +305,14 @@ export interface Itinerary {
   estimatedBudget?: BudgetEstimate;
   /** 使用されたAIモデルの情報 */
   modelInfo?: ModelInfo;
+  /** 保存・運用向けメタデータ */
+  destinationSummary?: ItineraryDestinationSummary;
+  completionLevel?: ItineraryCompletionLevel;
+  generationStatus?: ItineraryGenerationStatus;
+  memoryApplied?: boolean;
+  generatedConstraints?: ItineraryGeneratedConstraints;
+  verificationSummary?: ItineraryVerificationSummary;
+  scores?: ItineraryScores;
 }
 
 /**

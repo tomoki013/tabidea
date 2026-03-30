@@ -40,7 +40,7 @@ function createMockCtx(sessionOverrides: Partial<PlanGenerationSession> = {}): P
 describe('normalizePass', () => {
   it('returns completed with NormalizedRequest when inputSnapshot is present', async () => {
     const ctx = createMockCtx({
-      inputSnapshot: { destination: 'Kyoto' } as PlanGenerationSession['inputSnapshot'],
+      inputSnapshot: { destination: 'Kyoto' } as unknown as PlanGenerationSession['inputSnapshot'],
     });
 
     const result = await normalizePass(ctx);
@@ -62,7 +62,7 @@ describe('normalizePass', () => {
 
   it('includes durationMs in result', async () => {
     const ctx = createMockCtx({
-      inputSnapshot: { destination: 'Tokyo' } as PlanGenerationSession['inputSnapshot'],
+      inputSnapshot: { destination: 'Tokyo' } as unknown as PlanGenerationSession['inputSnapshot'],
     });
 
     const result = await normalizePass(ctx);

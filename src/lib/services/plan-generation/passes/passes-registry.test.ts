@@ -6,6 +6,7 @@ describe('getPass (pass registry)', () => {
   const registeredPasses: PassId[] = [
     'normalize',
     'draft_generate',
+    'draft_format',
     'rule_score',
     'local_repair',
     'selective_verify',

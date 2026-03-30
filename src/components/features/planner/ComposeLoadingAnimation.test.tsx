@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
 import ComposeLoadingAnimation from './ComposeLoadingAnimation';
-import type { ComposeStep } from '@/lib/hooks/useComposeGeneration';
+import type { ComposeStep } from '@/lib/plan-generation/client-contract';
 
 const messages = {
   'components.features.planner.composeLoadingAnimation.waiting': '出発の準備中...',

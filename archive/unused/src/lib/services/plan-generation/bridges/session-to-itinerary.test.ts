@@ -301,4 +301,19 @@ describe('sessionToItinerary', () => {
     expect(composed.metadata.modelName).toBe('unknown');
     expect(composed.metadata.modelTier).toBe('flash');
   });
+
+  it('enriches the returned itinerary with phase 1 metadata', () => {
+    const session = createMockSession();
+    const itinerary = sessionToItinerary(session);
+
+    expect(itinerary.title).toBe('京都 1日間の旅程');
+    expect(itinerary.completionLevel).toBe('fully_verified');
+    expect(itinerary.generatedConstraints).toEqual({
+      toolBudgetMode: 'selective_verify',
+    });
+    expect(itinerary.destinationSummary).toEqual({
+      primaryDestination: '京都',
+      durationDays: 1,
+    });
+  });
 });

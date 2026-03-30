@@ -11,17 +11,18 @@ import type {
   PassBudget,
   PassContext,
   PassOutcome,
-  PassRunRecord,
+  PipelineContext,
   RepairRecord,
   SessionState,
 } from '@/types/plan-generation';
 import { getNextPassForState, getStateAfterPassCompleted } from './state-machine';
-import { loadSession, updateSession, transitionState, countPassRuns } from './session-store';
+import { loadRun, persistRunSession, countRunPasses } from './run-store';
 import { getPass } from './passes';
 import { PlanGenerationLogger } from './logger';
 import { PassExecutionError, PassBudgetExceededError } from './errors';
 import { DEFAULT_RETRY_POLICIES, DEFAULT_QUALITY_POLICY } from './constants';
 import { createV4PipelineTimer } from '@/lib/utils/performance-timer';
+import { logRunCheckpoint } from '@/lib/agent/run-checkpoint-log';
 
 export interface ExecutorResult {
   passId: PassId;
@@ -29,6 +30,7 @@ export interface ExecutorResult {
   newState: SessionState;
   warnings: string[];
   durationMs: number;
+  metadata?: Record<string, unknown>;
   session: PlanGenerationSession;
 }
 
@@ -45,8 +47,9 @@ export interface ExecutorResult {
 export async function executeNextPass(
   sessionId: string,
   budget: PassBudget,
+  initialSession?: PlanGenerationSession,
 ): Promise<ExecutorResult> {
-  const session = await loadSession(sessionId);
+  const session = initialSession ?? await loadRun(sessionId);
   const logger = new PlanGenerationLogger(sessionId);
 
   // 次のパスを特定 (draft_scored ではセッションデータで分岐)
@@ -68,6 +71,9 @@ export async function executeNextPass(
 
   // PassContext を構築
   const retryPolicy = DEFAULT_RETRY_POLICIES[passId];
+  const priorAttempts = retryPolicy.maxRetries > 0
+    ? await countRunPasses(sessionId, passId)
+    : 0;
   const ctx: PassContext = {
     session,
     budget,
@@ -88,7 +94,21 @@ export async function executeNextPass(
   const startedAt = new Date().toISOString();
   const startMs = Date.now();
   let result: PassResult;
-  let attempt = 1;
+  let attempt = priorAttempts + 1;
+
+  const logPassStart = (attemptNumber: number) => {
+    logRunCheckpoint({
+      checkpoint: 'pass_started',
+      runId: sessionId,
+      state: session.state,
+      pipelineContext: session.pipelineContext,
+      passId,
+      attempt: attemptNumber,
+      remainingMs: Math.max(0, budget.remainingMs()),
+    });
+  };
+
+  logPassStart(attempt);
 
   try {
     result = await timer.measure(passId, () => passFn(ctx));
@@ -105,6 +125,7 @@ export async function executeNextPass(
       attempt++;
       console.log(`[executor] Retrying pass "${passId}" (attempt ${attempt}) after ${retryPolicy.backoffMs}ms backoff`);
       await new Promise(r => setTimeout(r, retryPolicy.backoffMs));
+      logPassStart(attempt);
       try {
         result = await timer.measure(`${passId}_retry`, () => passFn(ctx));
       } catch (retryErr) {
@@ -129,35 +150,24 @@ export async function executeNextPass(
 
   // 結果に応じた処理
   let newState: SessionState = session.state;
+  const patch = buildPassPersistencePatch(passId, result, session);
 
   switch (result.outcome) {
     case 'completed': {
       newState = getStateAfterPassCompleted(passId);
-      await transitionState(sessionId, session.state, newState);
-      // パスのデータをセッションに保存
-      await savePassData(sessionId, passId, result, session);
       break;
     }
 
     case 'partial': {
-      // チェックポイントを保存、状態は変えない
-      if (result.checkpointCursor) {
-        await updateSession(sessionId, {
-          checkpointCursor: result.checkpointCursor,
-        });
-      }
       break;
     }
 
     case 'needs_retry': {
-      // DB から実際の実行回数を取得してリトライ上限を判定
-      const priorAttempts = await countPassRuns(sessionId, passId);
-      const totalAttempts = priorAttempts + attempt;
+      const totalAttempts = attempt;
       console.log(`[executor] Pass "${passId}" needs_retry — total attempts: ${totalAttempts}/${retryPolicy.maxRetries + 1}, warnings: ${result.warnings.join('; ')}`);
       if (totalAttempts > retryPolicy.maxRetries + 1) {
         console.error(`[executor] Pass "${passId}" exceeded retry limit — marking session as failed`);
         newState = 'failed';
-        await transitionState(sessionId, session.state, 'failed');
       }
       // まだリトライ可能なら状態は変えない
       break;
@@ -165,16 +175,8 @@ export async function executeNextPass(
 
     case 'failed_terminal': {
       newState = 'failed';
-      await transitionState(sessionId, session.state, 'failed');
       break;
     }
-  }
-
-  // 警告をセッションに蓄積
-  if (result.warnings.length > 0) {
-    await updateSession(sessionId, {
-      warnings: [...session.warnings, ...result.warnings],
-    });
   }
 
   // ログ記録 (fire-and-forget)
@@ -187,8 +189,101 @@ export async function executeNextPass(
     metadata: result.metadata,
   });
 
-  // 更新後のセッションを取得
-  const updatedSession = await loadSession(sessionId);
+  const hasPatch = Object.keys(patch).length > 0 || newState !== session.state;
+  const updatedSession = hasPatch
+    ? await persistRunSession(sessionId, session.state, newState, patch)
+    : session;
+
+  const verificationCounts = passId === 'selective_verify'
+    ? {
+      verifiedCount: updatedSession.verifiedEntities.filter((entity) => entity.status === 'confirmed').length,
+      flaggedCount: updatedSession.verifiedEntities.filter((entity) => entity.status !== 'confirmed').length,
+    }
+    : undefined;
+
+  const checkpointPayload = {
+    runId: sessionId,
+    state: newState,
+    pipelineContext: updatedSession.pipelineContext,
+    passId,
+    attempt,
+    substage: typeof result.metadata?.substage === 'string' ? result.metadata.substage : undefined,
+    outcome: result.outcome,
+    durationMs: result.durationMs,
+    remainingMs: Math.max(0, budget.remainingMs()),
+    selectedTimeoutMs: typeof result.metadata?.selectedTimeoutMs === 'number'
+      ? result.metadata.selectedTimeoutMs
+      : undefined,
+    maxTokens: typeof result.metadata?.maxTokens === 'number'
+      ? result.metadata.maxTokens
+      : undefined,
+    promptChars: typeof result.metadata?.promptChars === 'number'
+      ? result.metadata.promptChars
+      : undefined,
+    plannerContractVersion: typeof result.metadata?.plannerContractVersion === 'string'
+      ? result.metadata.plannerContractVersion
+      : undefined,
+    invalidFieldPath: typeof result.metadata?.invalidFieldPath === 'string'
+      ? result.metadata.invalidFieldPath
+      : undefined,
+    validationIssueCode: typeof result.metadata?.validationIssueCode === 'string'
+      ? result.metadata.validationIssueCode
+      : undefined,
+    formatterContractVersion: typeof result.metadata?.formatterContractVersion === 'string'
+      ? result.metadata.formatterContractVersion
+      : undefined,
+    recoveryMode: typeof result.metadata?.recoveryMode === 'string'
+      ? result.metadata.recoveryMode
+      : undefined,
+    usedTextRecovery: typeof result.metadata?.usedTextRecovery === 'boolean'
+      ? result.metadata.usedTextRecovery
+      : undefined,
+    nextDayIndex: typeof result.metadata?.nextDayIndex === 'number'
+      ? result.metadata.nextDayIndex
+      : undefined,
+    dayChunkIndex: typeof result.metadata?.dayChunkIndex === 'number'
+      ? result.metadata.dayChunkIndex
+      : undefined,
+    seedAttempt: typeof result.metadata?.seedAttempt === 'number'
+      ? result.metadata.seedAttempt
+      : undefined,
+    dayAttempt: typeof result.metadata?.dayAttempt === 'number'
+      ? result.metadata.dayAttempt
+      : undefined,
+    outlineAttempt: typeof result.metadata?.outlineAttempt === 'number'
+      ? result.metadata.outlineAttempt
+      : undefined,
+    chunkAttempt: typeof result.metadata?.chunkAttempt === 'number'
+      ? result.metadata.chunkAttempt
+      : undefined,
+    plannerStrategy: typeof result.metadata?.plannerStrategy === 'string'
+      ? result.metadata.plannerStrategy
+      : undefined,
+    warningCodes: result.warnings,
+    ...(verificationCounts
+      ? {
+        toolSummary: {
+          verifiedCount: verificationCounts.verifiedCount,
+          flaggedCount: verificationCounts.flaggedCount,
+          toolCallsUsed: 1,
+        },
+      }
+      : {}),
+  };
+
+  if (result.outcome === 'failed_terminal') {
+    logRunCheckpoint({
+      checkpoint: 'pass_failed',
+      ...checkpointPayload,
+      errorCode: typeof result.metadata?.errorCode === 'string' ? result.metadata.errorCode : result.warnings[0] ?? 'run_failed',
+      rootCause: typeof result.metadata?.rootCause === 'string' ? result.metadata.rootCause : undefined,
+    });
+  } else {
+    logRunCheckpoint({
+      checkpoint: 'pass_completed',
+      ...checkpointPayload,
+    });
+  }
 
   return {
     passId,
@@ -196,43 +291,78 @@ export async function executeNextPass(
     newState,
     warnings: result.warnings,
     durationMs: result.durationMs,
+    metadata: result.metadata,
     session: updatedSession,
   };
 }
 
 /** パスのデータをセッションの対応フィールドに保存 */
-async function savePassData(
-  sessionId: string,
+function buildPassPersistencePatch(
   passId: PassId,
   result: PassResult,
   session: PlanGenerationSession,
-): Promise<void> {
-  if (!result.data) return;
+): Partial<PlanGenerationSession> {
+  const patch: Partial<PlanGenerationSession> = {};
+  const pipelineContextPatch = result.metadata?.pipelineContextPatch as Partial<PipelineContext> | undefined;
+  const sessionPatch = result.metadata?.sessionPatch as Partial<PlanGenerationSession> | undefined;
+
+  if (result.outcome === 'partial' && result.checkpointCursor) {
+    patch.checkpointCursor = result.checkpointCursor;
+  }
+
+  if (pipelineContextPatch) {
+    patch.pipelineContext = {
+      ...(session.pipelineContext ?? {}),
+      ...pipelineContextPatch,
+    };
+  }
+
+  if (result.warnings.length > 0) {
+    patch.warnings = [...session.warnings, ...result.warnings];
+  }
+
+  if (sessionPatch) {
+    Object.assign(patch, sessionPatch);
+  }
+
+  if (!result.data) return patch;
 
   // local_repair は draftPlan を上書き + repairHistory に追記
   if (passId === 'local_repair') {
     const repairRecord = result.metadata?.repairRecord as RepairRecord | undefined;
-    const patch: Record<string, unknown> = { draftPlan: result.data };
+    patch.draftPlan = result.data as PlanGenerationSession['draftPlan'];
     if (repairRecord) {
       patch.repairHistory = [...session.repairHistory, repairRecord];
     }
-    await updateSession(sessionId, patch as Parameters<typeof updateSession>[1]);
-    return;
+    return patch;
   }
 
-  const fieldMap: Partial<Record<PassId, string>> = {
-    normalize: 'normalizedInput',
-    draft_generate: 'draftPlan',
-    rule_score: 'evaluationReport',
-    selective_verify: 'verifiedEntities',
-    timeline_construct: 'timelineState',
-    narrative_polish: 'narrativeState',
-  };
-
-  const field = fieldMap[passId];
-  if (!field) return;
-
-  await updateSession(sessionId, {
-    [field]: result.data,
-  } as Parameters<typeof updateSession>[1]);
+  switch (passId) {
+    case 'normalize':
+      patch.normalizedInput = result.data as PlanGenerationSession['normalizedInput'];
+      return patch;
+    case 'draft_generate':
+      if (sessionPatch?.plannerSeed !== undefined) {
+        patch.plannerSeed = sessionPatch.plannerSeed;
+      }
+      patch.plannerDraft = result.data as PlanGenerationSession['plannerDraft'];
+      return patch;
+    case 'draft_format':
+      patch.draftPlan = result.data as PlanGenerationSession['draftPlan'];
+      return patch;
+    case 'rule_score':
+      patch.evaluationReport = result.data as PlanGenerationSession['evaluationReport'];
+      return patch;
+    case 'selective_verify':
+      patch.verifiedEntities = result.data as PlanGenerationSession['verifiedEntities'];
+      return patch;
+    case 'timeline_construct':
+      patch.timelineState = result.data as PlanGenerationSession['timelineState'];
+      return patch;
+    case 'narrative_polish':
+      patch.narrativeState = result.data as PlanGenerationSession['narrativeState'];
+      return patch;
+    default:
+      return patch;
+  }
 }

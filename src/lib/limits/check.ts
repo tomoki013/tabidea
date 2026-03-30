@@ -11,9 +11,15 @@ import {
 } from '@/lib/billing/billing-checker';
 import type { ActionType, UserType } from '@/lib/limits/config';
 
+export interface ResolvedUsageUser {
+  id: string;
+  email: string | null;
+}
+
 // Define Legacy Interface to maintain compatibility
 export interface LegacyLimitCheckResult {
   allowed: boolean;
+  source?: 'subscription' | 'ticket' | 'free' | 'admin' | 'anonymous';
   userType: UserType;
   userId: string | null;
   currentCount: number;
@@ -34,7 +40,7 @@ export type LimitCheckResult = LegacyLimitCheckResult;
 export async function checkAndRecordUsage(
   action: ActionType,
   metadata?: Record<string, unknown>,
-  options?: { skipConsume?: boolean }
+  options?: { skipConsume?: boolean; resolvedUser?: ResolvedUsageUser | null }
 ): Promise<LegacyLimitCheckResult> {
   if (options?.skipConsume) {
     // Read-only path still needs billing info for userType
@@ -61,7 +67,9 @@ export async function checkAndRecordUsage(
 
   // Consume path: checkAndConsumeQuota now returns userType/userId directly,
   // eliminating the redundant second checkBillingAccess call
-  const result = await checkAndConsumeQuota(action, metadata);
+  const result = await checkAndConsumeQuota(action, metadata, {
+    resolvedUser: options?.resolvedUser,
+  });
 
   let currentCount = 0;
   if (result.limit !== -1) {
@@ -70,6 +78,7 @@ export async function checkAndRecordUsage(
 
   return {
     allowed: result.allowed,
+    source: result.source,
     userType: result.userType ?? 'anonymous',
     userId: result.userId ?? null,
     currentCount,
