@@ -4,6 +4,8 @@ const mocks = vi.hoisted(() => ({
   getUser: vi.fn(),
   checkPlanCreationRate: vi.fn(),
   createPlan: vi.fn(),
+  ensureTripOwnership: vi.fn(),
+  persistTripVersion: vi.fn(),
 }));
 
 vi.mock("@/lib/supabase/server", () => ({
@@ -20,11 +22,27 @@ vi.mock("@/lib/plans/service", () => ({
   },
 }));
 
+vi.mock("@/lib/trips/service", () => ({
+  tripService: {
+    ensureTripOwnership: mocks.ensureTripOwnership,
+    persistTripVersion: mocks.persistTripVersion,
+  },
+}));
+
 import { savePlanOnServer } from "./save-plan";
 
 describe("savePlanOnServer", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    mocks.persistTripVersion.mockImplementation(async ({ itinerary }) => ({
+      tripId: "trip-1",
+      version: 1,
+      itinerary: {
+        ...itinerary,
+        tripId: itinerary.tripId ?? "trip-1",
+        version: itinerary.version ?? 1,
+      },
+    }));
   });
 
   it("returns authentication_required when no user is signed in", async () => {
@@ -96,5 +114,41 @@ describe("savePlanOnServer", () => {
         updatedAt: updatedAt.toISOString(),
       },
     });
+    expect(mocks.persistTripVersion).toHaveBeenCalledTimes(1);
+  });
+
+  it("claims trip ownership when itinerary already has trip metadata", async () => {
+    const createdAt = new Date("2026-03-11T12:00:00.000Z");
+    const updatedAt = new Date("2026-03-11T12:30:00.000Z");
+
+    mocks.getUser.mockResolvedValue({ id: "user-1" });
+    mocks.checkPlanCreationRate.mockResolvedValue({ success: true });
+    mocks.createPlan.mockResolvedValue({
+      success: true,
+      shareCode: "share-123",
+      plan: {
+        id: "plan-123",
+        shareCode: "share-123",
+        destination: "Tokyo",
+        durationDays: 3,
+        thumbnailUrl: "https://example.com/thumb.jpg",
+        isPublic: false,
+        createdAt,
+        updatedAt,
+      },
+    });
+
+    const result = await savePlanOnServer(
+      { destinations: ["Tokyo"] } as never,
+      {
+        destination: "Tokyo",
+        tripId: "trip-existing",
+        version: 2,
+      } as never
+    );
+
+    expect(result.success).toBe(true);
+    expect(mocks.ensureTripOwnership).toHaveBeenCalledWith("trip-existing", "user-1");
+    expect(mocks.persistTripVersion).not.toHaveBeenCalled();
   });
 });

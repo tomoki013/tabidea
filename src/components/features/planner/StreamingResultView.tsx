@@ -268,29 +268,11 @@ export default function StreamingResultView({
   const t = useTranslations("components.features.planner.streamingResultView");
   // Card expansion state: track which cards are expanded
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
-
-  // Compose mode: render streaming day cards during narrative_render
-  if (composeMode && partialComposeDays) {
-    return (
-      <ComposeStreamingView
-        partialDays={partialComposeDays}
-        totalDays={composeTotalDays || 0}
-        input={input}
-        previewDestination={previewDestination}
-        previewDescription={previewDescription}
-        t={t}
-      />
-    );
-  }
-
-  // Legacy mode requires generationState
-  if (!generationState) return null;
-
-  const { outline, heroImage, dayStatuses, completedDays, totalDays, phase } =
-    generationState;
-
-  const isCompleted = phase === "completed";
-  const isGenerating = phase === "generating_details" || phase === "outline_ready";
+  const completedDays = generationState?.completedDays ?? [];
+  const outline = generationState?.outline;
+  const heroImage = generationState?.heroImage;
+  const totalDays = generationState?.totalDays ?? 0;
+  const phase = generationState?.phase;
 
   // Build a map of day number to completed day plan for quick lookup
   const completedDayMap = useMemo(() => {
@@ -300,17 +282,6 @@ export default function StreamingResultView({
     });
     return map;
   }, [completedDays]);
-
-  // Calculate completed count
-  const completedCount = completedDays.length;
-
-  const travelDates = input.dates;
-
-  // Calculate duration string
-  const numberOfNights = Math.max(0, totalDays - 1);
-  const durationString = totalDays <= 1
-    ? t("dayTrip")
-    : t("durationString", { nights: numberOfNights, days: totalDays });
 
   // Construct a partial itinerary for sharing/PDF (when complete)
   const partialItinerary: Itinerary | null = useMemo(() => {
@@ -358,6 +329,38 @@ export default function StreamingResultView({
     },
     [expandedCards]
   );
+
+  // Compose mode: render streaming day cards during narrative_render
+  if (composeMode && partialComposeDays) {
+    return (
+      <ComposeStreamingView
+        partialDays={partialComposeDays}
+        totalDays={composeTotalDays || 0}
+        input={input}
+        previewDestination={previewDestination}
+        previewDescription={previewDescription}
+        t={t}
+      />
+    );
+  }
+
+  // Legacy mode requires generationState
+  if (!generationState) return null;
+  const { dayStatuses } = generationState;
+
+  const isCompleted = phase === "completed";
+  const isGenerating = phase === "generating_details" || phase === "outline_ready";
+
+  // Calculate completed count
+  const completedCount = completedDays.length;
+
+  const travelDates = input.dates;
+
+  // Calculate duration string
+  const numberOfNights = Math.max(0, totalDays - 1);
+  const durationString = totalDays <= 1
+    ? t("dayTrip")
+    : t("durationString", { nights: numberOfNights, days: totalDays });
 
   if (!outline) {
     return null;

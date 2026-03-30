@@ -27,3 +27,9 @@ git mv archive/unused/<original-path> <original-path>
 
 - `tsconfig.json` excludes `archive` so archived TypeScript files are not type-checked.
 - Archived tests are intentionally not executed by Vitest (`src/**/*.test.*`).
+- Archived files must not be imported from live code under `src/`.
+- The current canonical travel-generation pipeline lives under:
+  - `src/lib/services/plan-generation/*`
+  - `src/app/api/agent/runs/*`
+  - `src/app/api/trips/*`
+- As of 2026-03-29, archived generation code includes the former compose/v3 pipeline, legacy planner hook/components, and pre-cutover session-based v4 routes.

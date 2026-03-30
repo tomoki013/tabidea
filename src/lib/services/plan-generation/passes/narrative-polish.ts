@@ -2,7 +2,7 @@
  * Pass G: Narrative Polish
  * タイムライン付き旅程に AI で説明文を付与する。
  *
- * v3 の runNarrativeRenderer() / streamNarrativeRendererWithResult() を直接呼び出す。
+ * v4 専用 narrative renderer を呼び出す。
  * バッチモード (narrativePolishPass) とストリーミングモード (narrativePolishPassStreaming) を提供。
  */
 
@@ -13,17 +13,15 @@ import type {
   DayNarrative,
   ActivityNarrative,
 } from '@/types/plan-generation';
-import type { NarrativeDay, NarrativeActivity } from '@/types/itinerary-pipeline';
 import type { Article } from '@/types/api';
 import type { NormalizedRequest } from '@/types/itinerary-pipeline';
 import {
-  runNarrativeRenderer,
-  streamNarrativeRendererWithResult,
+  runNarrativeRendererV4,
+  streamNarrativeRendererV4,
   type StreamingDayEvent,
-} from '@/lib/services/itinerary/steps/narrative-renderer';
+} from '../renderers/narrative-renderer-v4';
 import { PineconeRetriever } from '@/lib/services/rag/pinecone-retriever';
-import { reconstructTimelineDays } from '../bridges/draft-to-v3';
-import { PassExecutionError } from '../errors';
+import { reconstructTimelineDays } from '../transform/draft-to-timeline';
 
 export type { StreamingDayEvent };
 
@@ -70,14 +68,22 @@ async function fetchRagContext(normalizedInput: NormalizedRequest): Promise<Arti
 // ============================================
 
 function narrativeDayToState(
-  narrativeDay: NarrativeDay,
+  narrativeDay: {
+    day: number;
+    title: string;
+    activities: Array<{
+      draftId: string;
+      activityName: string;
+      description: string;
+    }>;
+  },
 ): DayNarrative {
   return {
     day: narrativeDay.day,
     title: narrativeDay.title,
     activities: narrativeDay.activities.map(
-      (act: NarrativeActivity): ActivityNarrative => ({
-        draftId: act.node.semanticId ?? act.node.stop.semanticId ?? '',
+      (act): ActivityNarrative => ({
+        draftId: act.draftId,
         activityName: act.activityName,
         description: act.description,
       }),
@@ -98,7 +104,20 @@ function checkPreconditions(ctx: PassContext) {
 
   let timelineDays;
   try {
-    timelineDays = reconstructTimelineDays(ctx.session);
+    timelineDays = reconstructTimelineDays(ctx.session).map((day) => ({
+      day: day.day,
+      title: day.title,
+      overnightLocation: day.overnightLocation,
+      startTime: day.startTime,
+      activities: day.nodes.map((node) => ({
+        draftId: node.draftId,
+        arrivalTime: node.arrivalTime,
+        departureTime: node.departureTime,
+        activityName: node.draftStop.activityLabel ?? node.draftStop.name,
+        placeName: node.placeDetails?.name ?? node.draftStop.name,
+        role: node.draftStop.role,
+      })),
+    }));
   } catch (err) {
     return { ok: false as const, error: `Failed to reconstruct timeline: ${err instanceof Error ? err.message : String(err)}` };
   }
@@ -129,13 +148,26 @@ export async function narrativePolishPass(
   }
 
   const { normalizedInput, timelineDays, modelName, provider, temperature } = check;
+  if (ctx.budget.remainingMs() < 4_000) {
+    return {
+      outcome: 'failed_terminal',
+      warnings: ['narrative_generation_timeout'],
+      durationMs: Date.now() - start,
+      metadata: {
+        modelName,
+        provider,
+        errorCode: 'narrative_generation_timeout',
+        rootCause: 'insufficient_runtime_budget',
+      },
+    };
+  }
 
   // RAG コンテキスト取得
   const context = await fetchRagContext(normalizedInput);
 
   try {
-    const output = await runNarrativeRenderer({
-      timelineDays,
+    const output = await runNarrativeRendererV4({
+      days: timelineDays,
       request: normalizedInput,
       context,
       modelName,
@@ -165,19 +197,20 @@ export async function narrativePolishPass(
       },
     };
   } catch (err) {
-    if (err instanceof Error && /abort|timeout|timed out/i.test(err.message)) {
-      return {
-        outcome: 'needs_retry',
-        warnings: [`Narrative generation timed out: ${err.message}`],
-        durationMs: Date.now() - start,
-      };
-    }
-
-    throw new PassExecutionError(
-      'narrative_polish',
-      err instanceof Error ? err.message : String(err),
-      err,
-    );
+    const message = err instanceof Error ? err.message : String(err);
+    return {
+      outcome: 'failed_terminal',
+      warnings: [/abort|timeout|timed out/i.test(message) ? 'narrative_generation_timeout' : 'narrative_generation_provider_error'],
+      durationMs: Date.now() - start,
+      metadata: {
+        modelName,
+        provider,
+        errorCode: /abort|timeout|timed out/i.test(message)
+          ? 'narrative_generation_timeout'
+          : 'narrative_generation_provider_error',
+        rootCause: /abort|timeout|timed out/i.test(message) ? 'timeout' : 'renderer_error',
+      },
+    };
   }
 }
 
@@ -209,18 +242,57 @@ export async function narrativePolishPassStreaming(
   }
 
   const { normalizedInput, timelineDays, modelName, provider, temperature } = check;
+  if (ctx.budget.remainingMs() < 4_000) {
+    const fallbackResult: PassResult<NarrativeState> = {
+      outcome: 'failed_terminal',
+      warnings: ['narrative_generation_timeout'],
+      durationMs: Date.now() - start,
+      metadata: {
+        modelName,
+        provider,
+        errorCode: 'narrative_generation_timeout',
+        rootCause: 'insufficient_runtime_budget',
+      },
+    };
+    return {
+      dayStream: (async function* () { /* empty */ })(),
+      finalResult: Promise.resolve(fallbackResult),
+    };
+  }
 
   // RAG コンテキスト取得
   const context = await fetchRagContext(normalizedInput);
 
-  const streamResult = await streamNarrativeRendererWithResult({
-    timelineDays,
-    request: normalizedInput,
-    context,
-    modelName,
-    provider,
-    temperature,
-  });
+  let streamResult: Awaited<ReturnType<typeof streamNarrativeRendererV4>>;
+  try {
+    streamResult = await streamNarrativeRendererV4({
+      days: timelineDays,
+      request: normalizedInput,
+      context,
+      modelName,
+      provider,
+      temperature,
+    });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    const fallbackResult: PassResult<NarrativeState> = {
+      outcome: 'failed_terminal',
+      warnings: [/abort|timeout|timed out/i.test(message) ? 'narrative_generation_timeout' : 'narrative_generation_provider_error'],
+      durationMs: Date.now() - start,
+      metadata: {
+        modelName,
+        provider,
+        errorCode: /abort|timeout|timed out/i.test(message)
+          ? 'narrative_generation_timeout'
+          : 'narrative_generation_provider_error',
+        rootCause: /abort|timeout|timed out/i.test(message) ? 'timeout' : 'stream_init_error',
+      },
+    };
+    return {
+      dayStream: (async function* () { /* empty */ })(),
+      finalResult: Promise.resolve(fallbackResult),
+    };
+  }
 
   const finalResult = streamResult.finalOutput.then((output): PassResult<NarrativeState> => {
     const dayNarratives = output.days.map(narrativeDayToState);
@@ -242,17 +314,19 @@ export async function narrativePolishPassStreaming(
       },
     };
   }).catch((err): PassResult<NarrativeState> => {
-    if (err instanceof Error && /abort|timeout|timed out/i.test(err.message)) {
-      return {
-        outcome: 'needs_retry',
-        warnings: [`Narrative generation timed out: ${err.message}`],
-        durationMs: Date.now() - start,
-      };
-    }
+    const message = err instanceof Error ? err.message : String(err);
     return {
       outcome: 'failed_terminal',
-      warnings: [`Narrative generation failed: ${err instanceof Error ? err.message : String(err)}`],
+      warnings: [/abort|timeout|timed out/i.test(message) ? 'narrative_generation_timeout' : 'narrative_generation_provider_error'],
       durationMs: Date.now() - start,
+      metadata: {
+        modelName,
+        provider,
+        errorCode: /abort|timeout|timed out/i.test(message)
+          ? 'narrative_generation_timeout'
+          : 'narrative_generation_provider_error',
+        rootCause: /abort|timeout|timed out/i.test(message) ? 'timeout' : 'stream_final_error',
+      },
     };
   });
 

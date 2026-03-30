@@ -17,8 +17,8 @@ vi.mock('@/lib/supabase/admin', () => ({
   createServiceRoleClient: vi.fn(() => ({})),
 }));
 
-vi.mock('./session-store', () => ({
-  appendPassRun: (...args: unknown[]) => mockAppendPassRun(...args),
+vi.mock('./run-store', () => ({
+  appendRunPass: (...args: unknown[]) => mockAppendPassRun(...args),
 }));
 
 import { PlanGenerationLogger } from './logger';
@@ -29,7 +29,7 @@ beforeEach(() => {
 
 describe('PlanGenerationLogger', () => {
   describe('logPassRun', () => {
-    it('appends pass run record via session-store', () => {
+    it('appends pass run record via run-store', () => {
       const logger = new PlanGenerationLogger('session-1');
 
       logger.logPassRun({

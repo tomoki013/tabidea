@@ -4,7 +4,7 @@ import type { SemanticCandidate } from '@/types/itinerary-pipeline';
 
 function makeCandidate(overrides: Partial<SemanticCandidate> & { name: string }): SemanticCandidate {
   return {
-    role: 'attraction',
+    role: 'recommended',
     priority: 5,
     dayHint: 1,
     timeSlotHint: 'flexible',

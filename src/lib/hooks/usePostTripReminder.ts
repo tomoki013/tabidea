@@ -45,8 +45,18 @@ export function usePostTripReminder(
   const [shouldShow, setShouldShow] = useState(false);
 
   useEffect(() => {
+    let cancelled = false;
+
+    const applyShouldShow = (nextValue: boolean) => {
+      window.setTimeout(() => {
+        if (!cancelled) {
+          setShouldShow(nextValue);
+        }
+      }, 0);
+    };
+
     if (!tripEndDate) {
-      setShouldShow(false);
+      applyShouldShow(false);
       return;
     }
 
@@ -55,7 +65,7 @@ export function usePostTripReminder(
     // 既に dismiss 済みならスキップ
     try {
       if (localStorage.getItem(storageKey) === "true") {
-        setShouldShow(false);
+        applyShouldShow(false);
         return;
       }
     } catch {
@@ -68,10 +78,14 @@ export function usePostTripReminder(
 
     // 旅行終了から1日〜7日の間のみ表示
     if (elapsed >= REMINDER_DELAY_MS && elapsed <= REMINDER_EXPIRY_MS) {
-      setShouldShow(true);
+      applyShouldShow(true);
     } else {
-      setShouldShow(false);
+      applyShouldShow(false);
     }
+
+    return () => {
+      cancelled = true;
+    };
   }, [planId, tripEndDate]);
 
   const dismiss = useCallback(() => {

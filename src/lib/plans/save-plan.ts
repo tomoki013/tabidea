@@ -2,6 +2,8 @@ import type { Itinerary, UserInput } from "@/types";
 import { planService } from "@/lib/plans/service";
 import { checkPlanCreationRate } from "@/lib/security/rate-limit";
 import { getUser } from "@/lib/supabase/server";
+import { enrichItineraryMetadata } from "@/lib/trips/metadata";
+import { tripService } from "@/lib/trips/service";
 
 export type SavePlanResult = {
   success: boolean;
@@ -36,10 +38,31 @@ export async function savePlanOnServer(
       return { success: false, error: rateLimit.message };
     }
 
+    let itineraryToSave = enrichItineraryMetadata(itinerary, {
+      generatedConstraints: {
+        toolBudgetMode: itinerary.generatedConstraints?.toolBudgetMode ?? "legacy",
+      },
+    });
+
+    if (itineraryToSave.tripId) {
+      await tripService.ensureTripOwnership(itineraryToSave.tripId, user.id);
+    } else {
+      const persistedTrip = await tripService.persistTripVersion({
+        itinerary: itineraryToSave,
+        userId: user.id,
+        createdBy: "user",
+        changeType: "create",
+        generatedConstraints: {
+          toolBudgetMode: itineraryToSave.generatedConstraints?.toolBudgetMode ?? "legacy",
+        },
+      });
+      itineraryToSave = persistedTrip.itinerary;
+    }
+
     const result = await planService.createPlan({
       userId: user.id,
       input,
-      itinerary,
+      itinerary: itineraryToSave,
       isPublic,
     });
 

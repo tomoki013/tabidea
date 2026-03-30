@@ -4,7 +4,7 @@ import { useEffect, useCallback, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
-import type { ComposeStep } from "@/lib/hooks/useComposeGeneration";
+import type { ComposeStep } from "@/lib/plan-generation/client-contract";
 import ComposeLoadingAnimation from "./ComposeLoadingAnimation";
 
 // ============================================================================

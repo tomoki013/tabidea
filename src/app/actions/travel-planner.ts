@@ -11,6 +11,7 @@ import { checkPlanUpdateRate } from "@/lib/security/rate-limit";
 import { revalidatePath } from "next/cache";
 import { buildDefaultPublicationSlug } from "@/lib/plans/normalized";
 import { regenerateItinerary } from "@/lib/services/plan-mutation";
+import { tripService } from "@/lib/trips/service";
 
 
 export async function fetchHeroImage(
@@ -356,7 +357,7 @@ export async function updatePlanItinerary(
   planId: string,
   itinerary: Itinerary,
   input?: UserInput
-): Promise<{ success: boolean; error?: string }> {
+): Promise<{ success: boolean; itinerary?: Itinerary; error?: string }> {
   try {
     const user = await getUser();
 
@@ -370,8 +371,15 @@ export async function updatePlanItinerary(
       return { success: false, error: rateLimit.message };
     }
 
-    const result = await planService.updatePlan(planId, user.id, {
+    const persistedTrip = await tripService.persistTripVersion({
       itinerary,
+      userId: user.id,
+      createdBy: "user",
+      changeType: "patch",
+    });
+
+    const result = await planService.updatePlan(planId, user.id, {
+      itinerary: persistedTrip.itinerary,
       ...(input && { input }),
     });
 
@@ -379,7 +387,7 @@ export async function updatePlanItinerary(
       return { success: false, error: result.error };
     }
 
-    return { success: true };
+    return { success: true, itinerary: persistedTrip.itinerary };
   } catch (error) {
     console.error("Failed to update plan itinerary:", error);
     return { success: false, error: "plan_update_failed" };
@@ -585,7 +593,6 @@ export async function isCurrentUserAdmin(): Promise<boolean> {
  * Admin management is now via ADMIN_EMAILS env var — this is a no-op placeholder.
  */
 export async function grantAdminRole(
-  _targetUserId: string
 ): Promise<{ success: boolean; error?: string }> {
   return {
     success: false,
@@ -598,7 +605,6 @@ export async function grantAdminRole(
  * Admin management is now via ADMIN_EMAILS env var — this is a no-op placeholder.
  */
 export async function setInitialAdmin(
-  _userEmail: string
 ): Promise<{ success: boolean; error?: string }> {
   return {
     success: false,

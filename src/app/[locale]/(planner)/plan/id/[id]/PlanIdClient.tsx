@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useRef, useMemo } from 'react';
+import { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { FaPlus } from 'react-icons/fa6';
 import { useTranslations } from 'next-intl';
@@ -13,6 +13,8 @@ import { syncJournalEntry, updatePlanItemDetails } from '@/app/actions/plan-itin
 import { buildTripPlan, buildDefaultTravelerState, buildTripContext } from '@/lib/utils/replan-adapter';
 import { usePlanRegeneration } from '@/lib/hooks';
 import { useReplan } from '@/lib/hooks/useReplan';
+import { patchTripItinerary } from '@/lib/trips/client';
+import type { TripPatchOperation } from '@/lib/trips/patch';
 import ResultView from '@/components/features/planner/ResultView';
 import { ReplanSuggestionCard, ReplanSheet } from '@/components/features/replan';
 import { PlanModal } from '@/components/common';
@@ -50,6 +52,10 @@ export default function PlanIdClient({
   const [isNewPlanModalOpen, setIsNewPlanModalOpen] = useState(false);
   const [normalizedDays, setNormalizedDays] = useState<NormalizedPlanDay[]>(initialNormalizedDays);
   const [showAlternatives, setShowAlternatives] = useState(false);
+  const latestResultRef = useRef<Itinerary>(initialItinerary);
+  const tripVersionRef = useRef<number | null>(initialItinerary.version ?? null);
+  const isPersistingManualEditRef = useRef(false);
+  const hasQueuedManualEditRef = useRef(false);
   const initialHistory = initialChatMessages?.map((message) => ({
     role: message.role === 'assistant' ? 'model' : 'user',
     text: message.content,
@@ -80,26 +86,114 @@ export default function PlanIdClient({
   // Track if save is pending to debounce
   const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Save plan to DB (user is owner since they accessed by ID)
-  const savePlanToDb = useCallback(async (itinerary: Itinerary) => {
+  const syncPlanSnapshotToDb = useCallback(async (itinerary: Itinerary) => {
     try {
       const result = await updatePlanItinerary(planId, itinerary, input);
       if (!result.success) {
         console.error('Failed to save plan:', result.error);
+        return null;
       }
+      return result.itinerary ?? itinerary;
     } catch (e) {
       console.error('Failed to save plan:', e);
+      return null;
     }
   }, [planId, input]);
+
+  const mergePersistedTripMetadata = useCallback((base: Itinerary, persisted: Itinerary): Itinerary => ({
+    ...base,
+    tripId: persisted.tripId ?? base.tripId,
+    version: persisted.version ?? base.version,
+    title: persisted.title ?? base.title,
+    description: persisted.description ?? base.description,
+    destinationSummary: persisted.destinationSummary ?? base.destinationSummary,
+    completionLevel: persisted.completionLevel ?? base.completionLevel,
+    generationStatus: persisted.generationStatus ?? base.generationStatus,
+    memoryApplied: persisted.memoryApplied ?? base.memoryApplied,
+    generatedConstraints: persisted.generatedConstraints ?? base.generatedConstraints,
+    verificationSummary: persisted.verificationSummary ?? base.verificationSummary,
+    scores: persisted.scores ?? base.scores,
+  }), []);
+
+  const persistManualEdit = useCallback(async () => {
+    if (isPersistingManualEditRef.current) {
+      hasQueuedManualEditRef.current = true;
+      return;
+    }
+
+    const snapshot = latestResultRef.current;
+    if (!snapshot.tripId || typeof tripVersionRef.current !== 'number') {
+      const synced = await syncPlanSnapshotToDb(snapshot);
+      if (synced) {
+        latestResultRef.current = synced;
+        tripVersionRef.current = synced.version ?? tripVersionRef.current;
+        setResult(synced);
+      }
+      return;
+    }
+
+    isPersistingManualEditRef.current = true;
+    try {
+      const patches: TripPatchOperation[] = [
+        {
+          op: 'replace',
+          path: '/days',
+          value: snapshot.days,
+        },
+      ];
+
+      const patched = await patchTripItinerary({
+        tripId: snapshot.tripId,
+        baseVersion: tripVersionRef.current,
+        patches,
+        editor: 'user',
+        idempotencyKey: globalThis.crypto?.randomUUID?.() ?? `${Date.now()}`,
+      });
+
+      tripVersionRef.current = patched.itinerary.version ?? patched.newVersion;
+      const merged = mergePersistedTripMetadata(latestResultRef.current, patched.itinerary);
+      latestResultRef.current = merged;
+      setResult(merged);
+      const synced = await syncPlanSnapshotToDb(merged);
+      if (synced) {
+        latestResultRef.current = synced;
+        tripVersionRef.current = synced.version ?? tripVersionRef.current;
+        setResult(synced);
+      }
+    } catch (error) {
+      console.error('Failed to persist trip patch:', error);
+      const synced = await syncPlanSnapshotToDb(snapshot);
+      if (synced) {
+        latestResultRef.current = synced;
+        tripVersionRef.current = synced.version ?? tripVersionRef.current;
+        setResult(synced);
+      }
+    } finally {
+      isPersistingManualEditRef.current = false;
+      if (hasQueuedManualEditRef.current) {
+        hasQueuedManualEditRef.current = false;
+        void persistManualEdit();
+      }
+    }
+  }, [mergePersistedTripMetadata, syncPlanSnapshotToDb]);
+
+  const scheduleManualPersistence = useCallback((itinerary: Itinerary) => {
+    latestResultRef.current = itinerary;
+
+    if (saveTimeoutRef.current) {
+      clearTimeout(saveTimeoutRef.current);
+    }
+
+    saveTimeoutRef.current = setTimeout(() => {
+      void persistManualEdit();
+    }, 1000);
+  }, [persistManualEdit]);
 
   // Replan apply: merge recovery option into itinerary and save
   const handleReplanApply = useCallback((newItinerary: Itinerary) => {
     setResult(newItinerary);
-    if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
-    saveTimeoutRef.current = setTimeout(() => {
-      savePlanToDb(newItinerary);
-    }, 1000);
-  }, [savePlanToDb]);
+    scheduleManualPersistence(newItinerary);
+  }, [scheduleManualPersistence]);
 
   const { isReplanning, result: replanResult, triggerReplan, acceptSuggestion } =
     useReplan(tripPlan, travelerState, tripContext, { onApply: handleReplanApply });
@@ -138,7 +232,14 @@ export default function PlanIdClient({
     mapError: mapPlanError,
     onApply: async ({ itinerary, history }) => {
       setResult(itinerary);
-      await savePlanToDb(itinerary);
+      latestResultRef.current = itinerary;
+      tripVersionRef.current = itinerary.version ?? tripVersionRef.current;
+      const synced = await syncPlanSnapshotToDb(itinerary);
+      if (synced) {
+        latestResultRef.current = synced;
+        tripVersionRef.current = synced.version ?? tripVersionRef.current;
+        setResult(synced);
+      }
       await saveChatToDb(history);
     },
   });
@@ -158,15 +259,8 @@ export default function PlanIdClient({
 
   const handleResultChange = useCallback((newResult: Itinerary) => {
     setResult(newResult);
-
-    // Debounce save to DB
-    if (saveTimeoutRef.current) {
-      clearTimeout(saveTimeoutRef.current);
-    }
-    saveTimeoutRef.current = setTimeout(() => {
-      savePlanToDb(newResult);
-    }, 1000); // Save 1 second after last change
-  }, [savePlanToDb]);
+    scheduleManualPersistence(newResult);
+  }, [scheduleManualPersistence]);
 
   // Save chat messages when they change
   const handleChatChange = useCallback((messages: { role: string; text: string }[]) => {
@@ -250,6 +344,19 @@ export default function PlanIdClient({
       })));
     }
     return result;
+  }, []);
+
+  useEffect(() => {
+    latestResultRef.current = result;
+    tripVersionRef.current = result.version ?? tripVersionRef.current;
+  }, [result]);
+
+  useEffect(() => {
+    return () => {
+      if (saveTimeoutRef.current) {
+        clearTimeout(saveTimeoutRef.current);
+      }
+    };
   }, []);
 
   return (

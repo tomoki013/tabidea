@@ -18,6 +18,7 @@ import {
   isUnlimited
 } from '@/lib/limits/config';
 import { reconcileUserSubscriptionFromStripe } from '@/lib/billing/stripe-reconcile';
+import { withPromiseTimeout } from '@/lib/utils/promise-timeout';
 
 export interface LimitCheckResult {
   allowed: boolean;
@@ -35,6 +36,17 @@ export interface LimitCheckResult {
 export interface CheckBillingOptions {
   skipAdminCheck?: boolean;
 }
+
+export interface ResolvedBillingUser {
+  id: string;
+  email: string | null;
+}
+
+interface CheckAndConsumeQuotaOptions {
+  resolvedUser?: ResolvedBillingUser | null;
+}
+
+const ANONYMOUS_USAGE_RPC_TIMEOUT_MS = 1_200;
 
 interface QuotaSource {
   type: 'subscription' | 'ticket' | 'free' | 'admin';
@@ -145,14 +157,20 @@ export async function checkBillingAccess(
  */
 export async function checkAndConsumeQuota(
   action: ActionType,
-  metadata?: Record<string, unknown>
+  metadata?: Record<string, unknown>,
+  options?: CheckAndConsumeQuotaOptions,
 ): Promise<LimitCheckResult> {
   const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const resolvedUser = options && 'resolvedUser' in options
+    ? options.resolvedUser
+    : undefined;
+  const user = resolvedUser === undefined
+    ? (await supabase.auth.getUser()).data.user
+    : resolvedUser;
 
   // 1. Handle Anonymous Users (IP-based, legacy logic)
   if (!user) {
-    const result = await handleAnonymousUsage(action, metadata);
+    const result = await handleAnonymousUsage(action, metadata, supabase);
     return { ...result, userType: 'anonymous' as UserType, userId: null };
   }
 
@@ -337,13 +355,17 @@ export async function checkAndConsumeQuota(
 /**
  * Handle Anonymous Usage (Delegate to existing RPC or simplified logic)
  */
-async function handleAnonymousUsage(action: ActionType, metadata?: any): Promise<LimitCheckResult> {
+async function handleAnonymousUsage(
+  action: ActionType,
+  metadata?: any,
+  supabaseClient?: Awaited<ReturnType<typeof createClient>>,
+): Promise<LimitCheckResult> {
   const config = action === 'plan_generation'
     ? PLAN_GENERATION_LIMITS['anonymous']
     : TRAVEL_INFO_LIMITS['anonymous'];
 
   try {
-    const supabase = await createClient();
+    const supabase = supabaseClient ?? await createClient();
     const headersList = await headers();
 
     // Resolve client IP: try platform-specific headers first, then standard ones.
@@ -354,7 +376,11 @@ async function handleAnonymousUsage(action: ActionType, metadata?: any): Promise
       headersList.get('x-real-ip')?.trim() ||
       '0.0.0.0';
 
-    const { data: hashData, error: hashError } = await supabase.rpc('get_ip_hash', { p_ip: ip });
+    const { data: hashData, error: hashError } = await withPromiseTimeout<{ data: string | null; error: { message?: string } | null }>(
+      () => Promise.resolve(supabase.rpc('get_ip_hash', { p_ip: ip }) as unknown as Promise<{ data: string | null; error: { message?: string } | null }>),
+      ANONYMOUS_USAGE_RPC_TIMEOUT_MS,
+      'billing get_ip_hash',
+    );
 
     if (hashError || !hashData) {
       // IP hash RPC failed — fail-open to avoid blocking legitimate users
@@ -368,14 +394,18 @@ async function handleAnonymousUsage(action: ActionType, metadata?: any): Promise
       };
     }
 
-    const { data, error } = await supabase.rpc('check_and_record_usage', {
-      p_user_id: null,
-      p_ip_hash: hashData,
-      p_action_type: action,
-      p_limit: config.limit,
-      p_period: config.period,
-      p_metadata: metadata || {},
-    });
+    const { data, error } = await withPromiseTimeout<{ data: { allowed: boolean; limit: number; remaining: number; reset_at?: string | null }; error: { message?: string } | null }>(
+      () => Promise.resolve(supabase.rpc('check_and_record_usage', {
+        p_user_id: null,
+        p_ip_hash: hashData,
+        p_action_type: action,
+        p_limit: config.limit,
+        p_period: config.period,
+        p_metadata: metadata || {},
+      }) as unknown as Promise<{ data: { allowed: boolean; limit: number; remaining: number; reset_at?: string | null }; error: { message?: string } | null }>),
+      ANONYMOUS_USAGE_RPC_TIMEOUT_MS,
+      'billing anonymous usage consume',
+    );
 
     if (error) {
       // Usage check RPC failed — fail-open to avoid blocking legitimate users

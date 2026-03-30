@@ -1,6 +1,6 @@
 # Database and Migrations
 
-更新日: 2026-03-11
+更新日: 2026-03-29
 
 ## 1. Overview
 
@@ -54,6 +54,11 @@ supabase db push
 | `20260304090000_enforce_unique_stripe_customer_id.sql` | Stripe Customer ID の一意制約 |
 | `20260309000000_compose_pipeline_metadata.sql` | Compose pipeline 実行メタデータ |
 | `20260310000000_compose_pipeline_v3.sql` | Compose v3 実行ログ・ルートキャッシュ |
+| `20260326000000_plan_generation_sessions.sql` | v4 session / pass run / checkpoint 永続化 |
+| `20260328000000_add_pipeline_context_to_sessions.sql` | v4 session の pipeline context 追加 |
+| `20260329090000_trip_versions_phase1.sql` | itinerary-centric persistence Phase 1 (`trips`, `trip_versions`) |
+| `20260329110000_agent_runtime_phase2.sql` | agent runtime Phase 2 (`run_events`, `user_preferences`, `eval_results`, `tool_audit_logs`) |
+| `20260329140000_runs_cutover_phase3.sql` | 新パイプライン cutover (`runs`, `run_pass_runs`, `run_checkpoints`) + legacy session 系の backfill |
 
 ## 4. Operational Safety Rules
 
@@ -63,17 +68,37 @@ supabase db push
 4. 仕様変更時は docs 同時更新
 5. fresh DB での `supabase db push` 成功を壊す変更は避け、必要なら idempotent に補正する
 
-## 5. Rollback Strategy
+## 5. Current Persistence Direction
+
+- 既存の `plans` はユーザー向け保存・共有導線として維持する
+- `trips` / `trip_versions` は itinerary JSON を append-only で保持する正系履歴
+- `runs` / `run_pass_runs` / `run_checkpoints` は新パイプラインの正系実行ストア
+- `generation_sessions` / `generation_pass_runs` / `generation_checkpoints` は cutover 時に backfill された旧ストアであり、新規実行には使わない
+- 成功 run のみ `trip_version` を発行する。failed run では itinerary 履歴を残さない
+- `trip_versions.itinerary_json` には `completionLevel`, `generationStatus`, `memoryApplied`, `generatedConstraints`, `verificationSummary`, block-level `verificationStatus`, `needsConfirmation`, `sourceOfTruth` などの運用メタデータを含める
+- `run_events` は `runs` を親とする append-only イベントストアで、固定 SSE event 名 (`run.started`, `run.progress`, `assistant.delta`, `plan.draft.created`, `plan.block.verified`, `plan.block.flagged`, `itinerary.updated`, `run.finished`, `run.failed`) を保存する
+- `user_preferences` は memory の versioned envelope 保存先で、`enabled=false` を既定とし、`schema_version` と `capabilities_json` を持つ
+- `eval_results` は run / trip_version の品質評価を 1 metric = 1 row で保持する。finalize / patch / replan の保存直後に rule-based evaluator を自動記録する
+- `tool_audit_logs` は verification / provenance 用の監査ログとして利用する
+- `run_events`, `eval_results`, `tool_audit_logs` の user-read policy は `runs` を親とする RLS に切り替わっている
+## 6. Rollback Strategy
 
 - 破壊的変更は原則避ける
 - rollbackが必要な場合は補正migrationを追加
 - データ移行は再実行安全（idempotent）を意識する
 
-## 6. Related Files
+## 7. Related Files
 
 - `supabase/schema.sql`
 - `supabase/migrations/20250101000000_baseline_core_schema.sql`
+- `supabase/migrations/20260329090000_trip_versions_phase1.sql`
+- `supabase/migrations/20260329110000_agent_runtime_phase2.sql`
+- `supabase/migrations/20260329140000_runs_cutover_phase3.sql`
 - `supabase/README.md`
 - `src/lib/supabase/*`
+- `src/lib/services/plan-generation/run-store.ts`
+- `src/lib/trips/*`
+- `src/lib/memory/*`
+- `src/lib/evals/*`
 - `src/lib/limits/*`
 - `src/app/api/webhooks/stripe/route.ts`

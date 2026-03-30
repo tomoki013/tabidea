@@ -29,7 +29,8 @@ export function assertTransition(from: SessionState, to: SessionState): void {
 const STATE_TO_NEXT_PASS: Partial<Record<SessionState, PassId>> = {
   created:                'normalize',
   normalized:             'draft_generate',
-  draft_generated:        'rule_score',
+  draft_generated:        'draft_format',
+  draft_formatted:        'rule_score',
   draft_scored:           'local_repair',
   draft_repaired_partial: 'rule_score',
   verification_partial:   'timeline_construct',
@@ -96,7 +97,9 @@ export function determineResumeState(session: PlanGenerationSession): SessionSta
   if (session.timelineState) return 'timeline_ready';
   if (session.verifiedEntities && session.verifiedEntities.length > 0) return 'verification_partial';
   if (session.evaluationReport) return 'draft_scored';
-  if (session.draftPlan) return 'draft_generated';
+  if (session.draftPlan) return 'draft_formatted';
+  if (session.pipelineContext?.resumePassId === 'draft_generate') return 'normalized';
+  if (session.plannerDraft) return 'draft_generated';
   if (session.normalizedInput) return 'normalized';
   return 'created';
 }
@@ -105,6 +108,7 @@ export function determineResumeState(session: PlanGenerationSession): SessionSta
 const PASS_COMPLETED_STATE: Record<PassId, SessionState> = {
   normalize:          'normalized',
   draft_generate:     'draft_generated',
+  draft_format:       'draft_formatted',
   rule_score:         'draft_scored',
   local_repair:       'draft_repaired_partial',
   selective_verify:   'verification_partial',

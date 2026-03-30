@@ -3,14 +3,13 @@ import type {
   PlanGenerationSession,
   PassBudget,
   PassResult,
-  PassContext,
 } from '@/types/plan-generation';
 
-// Mock session-store
-vi.mock('./session-store', () => ({
-  loadSession: vi.fn(),
-  updateSession: vi.fn().mockResolvedValue(undefined),
-  transitionState: vi.fn().mockResolvedValue(undefined),
+// Mock run-store
+vi.mock('./run-store', () => ({
+  loadRun: vi.fn(),
+  persistRunSession: vi.fn(),
+  countRunPasses: vi.fn().mockResolvedValue(0),
 }));
 
 // Mock passes registry
@@ -35,13 +34,18 @@ vi.mock('@/lib/utils/performance-timer', () => ({
 }));
 
 import { executeNextPass } from './executor';
-import { loadSession, updateSession, transitionState } from './session-store';
+import { loadRun, persistRunSession, countRunPasses } from './run-store';
 import { getPass } from './passes';
 
-const mockLoadSession = vi.mocked(loadSession);
-const mockUpdateSession = vi.mocked(updateSession);
-const mockTransitionState = vi.mocked(transitionState);
+const mockLoadRun = vi.mocked(loadRun);
+const mockPersistRunSession = vi.mocked(persistRunSession);
+const mockCountRunPasses = vi.mocked(countRunPasses);
 const mockGetPass = vi.mocked(getPass);
+const mockLogRunCheckpoint = vi.fn();
+
+vi.mock('@/lib/agent/run-checkpoint-log', () => ({
+  logRunCheckpoint: (...args: unknown[]) => mockLogRunCheckpoint(...args),
+}));
 
 function createMockSession(overrides: Partial<PlanGenerationSession> = {}): PlanGenerationSession {
   return {
@@ -68,6 +72,7 @@ function createMockBudget(): PassBudget {
 
 beforeEach(() => {
   vi.clearAllMocks();
+  mockCountRunPasses.mockResolvedValue(0);
 });
 
 describe('executeNextPass', () => {
@@ -75,9 +80,8 @@ describe('executeNextPass', () => {
     const session = createMockSession({ state: 'created' });
     const updatedSession = createMockSession({ state: 'normalized' });
 
-    mockLoadSession
-      .mockResolvedValueOnce(session)
-      .mockResolvedValueOnce(updatedSession);
+    mockLoadRun.mockResolvedValueOnce(session);
+    mockPersistRunSession.mockResolvedValueOnce(updatedSession);
 
     const mockNormalizeResult: PassResult = {
       outcome: 'completed',
@@ -86,24 +90,41 @@ describe('executeNextPass', () => {
       durationMs: 10,
     };
 
-    mockGetPass.mockReturnValue(async (_ctx: PassContext) => mockNormalizeResult);
+    mockGetPass.mockReturnValue(async () => mockNormalizeResult);
 
     const result = await executeNextPass('test-session-id', createMockBudget());
 
     expect(result.passId).toBe('normalize');
     expect(result.outcome).toBe('completed');
     expect(result.newState).toBe('normalized');
-    expect(mockTransitionState).toHaveBeenCalledWith('test-session-id', 'created', 'normalized');
-    expect(mockUpdateSession).toHaveBeenCalled();
+    expect(mockPersistRunSession).toHaveBeenCalledWith(
+      'test-session-id',
+      'created',
+      'normalized',
+      expect.objectContaining({
+        normalizedInput: { destinations: ['Tokyo'], durationDays: 3 },
+      }),
+    );
+    expect(mockLogRunCheckpoint).toHaveBeenNthCalledWith(1, expect.objectContaining({
+      checkpoint: 'pass_started',
+      runId: 'test-session-id',
+      passId: 'normalize',
+      attempt: 1,
+    }));
+    expect(mockLogRunCheckpoint).toHaveBeenNthCalledWith(2, expect.objectContaining({
+      checkpoint: 'pass_completed',
+      runId: 'test-session-id',
+      passId: 'normalize',
+      outcome: 'completed',
+    }));
   });
 
   it('transitions to failed on failed_terminal outcome', async () => {
     const session = createMockSession({ state: 'normalized' });
     const failedSession = createMockSession({ state: 'failed' });
 
-    mockLoadSession
-      .mockResolvedValueOnce(session)
-      .mockResolvedValueOnce(failedSession);
+    mockLoadRun.mockResolvedValueOnce(session);
+    mockPersistRunSession.mockResolvedValueOnce(failedSession);
 
     mockGetPass.mockReturnValue(async () => ({
       outcome: 'failed_terminal' as const,
@@ -115,15 +136,28 @@ describe('executeNextPass', () => {
 
     expect(result.outcome).toBe('failed_terminal');
     expect(result.newState).toBe('failed');
-    expect(mockTransitionState).toHaveBeenCalledWith('test-session-id', 'normalized', 'failed');
+    expect(mockPersistRunSession).toHaveBeenCalledWith(
+      'test-session-id',
+      'normalized',
+      'failed',
+      expect.objectContaining({
+        warnings: ['AI generation failed'],
+      }),
+    );
+    expect(mockLogRunCheckpoint).toHaveBeenLastCalledWith(expect.objectContaining({
+      checkpoint: 'pass_failed',
+      runId: 'test-session-id',
+      passId: 'draft_generate',
+      outcome: 'failed_terminal',
+    }));
   });
 
   it('does not transition state on partial outcome', async () => {
     const session = createMockSession({ state: 'normalized' });
+    const updatedSession = createMockSession({ state: 'normalized', checkpointCursor: 'day-2' });
 
-    mockLoadSession
-      .mockResolvedValueOnce(session)
-      .mockResolvedValueOnce(session);
+    mockLoadRun.mockResolvedValueOnce(session);
+    mockPersistRunSession.mockResolvedValueOnce(updatedSession);
 
     mockGetPass.mockReturnValue(async () => ({
       outcome: 'partial' as const,
@@ -136,19 +170,78 @@ describe('executeNextPass', () => {
 
     expect(result.outcome).toBe('partial');
     expect(result.newState).toBe('normalized'); // unchanged
-    expect(mockTransitionState).not.toHaveBeenCalled();
-    expect(mockUpdateSession).toHaveBeenCalledWith('test-session-id', {
+    expect(mockPersistRunSession).toHaveBeenCalledWith('test-session-id', 'normalized', 'normalized', {
       checkpointCursor: 'day-2',
     });
+  });
+
+  it('merges pipelineContextPatch on partial outcome so resumable runs can continue later', async () => {
+    const session = createMockSession({
+      state: 'normalized',
+      pipelineContext: {
+        runtimeProfile: 'netlify_free_30s',
+      },
+    });
+    const updatedSession = createMockSession({
+      state: 'normalized',
+      checkpointCursor: 'draft_generate:day_request:2',
+      pipelineContext: {
+        runtimeProfile: 'netlify_free_30s',
+        resumePassId: 'draft_generate',
+        resumeSubstage: 'day_request',
+        pauseReason: 'runtime_budget_exhausted',
+        nextDayIndex: 2,
+        dayAttempt: 1,
+      },
+    });
+
+    mockLoadRun.mockResolvedValueOnce(session);
+    mockPersistRunSession.mockResolvedValueOnce(updatedSession);
+
+    mockGetPass.mockReturnValue(async () => ({
+      outcome: 'partial' as const,
+      checkpointCursor: 'draft_generate:day_request:2',
+      warnings: [],
+      durationMs: 1200,
+      metadata: {
+        pipelineContextPatch: {
+          resumePassId: 'draft_generate',
+          resumeSubstage: 'day_request',
+          pauseReason: 'runtime_budget_exhausted',
+          nextDayIndex: 2,
+          dayAttempt: 1,
+        },
+      },
+    }));
+
+    const result = await executeNextPass('test-session-id', createMockBudget());
+
+    expect(result.outcome).toBe('partial');
+    expect(mockPersistRunSession).toHaveBeenCalledWith('test-session-id', 'normalized', 'normalized', {
+      checkpointCursor: 'draft_generate:day_request:2',
+      pipelineContext: {
+        runtimeProfile: 'netlify_free_30s',
+        resumePassId: 'draft_generate',
+        resumeSubstage: 'day_request',
+        pauseReason: 'runtime_budget_exhausted',
+        nextDayIndex: 2,
+        dayAttempt: 1,
+      },
+    });
+    expect(mockLogRunCheckpoint).toHaveBeenLastCalledWith(expect.objectContaining({
+      checkpoint: 'pass_completed',
+      runId: 'test-session-id',
+      passId: 'draft_generate',
+      outcome: 'partial',
+    }));
   });
 
   it('catches thrown errors and returns failed_terminal', async () => {
     const session = createMockSession({ state: 'created' });
     const failedSession = createMockSession({ state: 'failed' });
 
-    mockLoadSession
-      .mockResolvedValueOnce(session)
-      .mockResolvedValueOnce(failedSession);
+    mockLoadRun.mockResolvedValueOnce(session);
+    mockPersistRunSession.mockResolvedValueOnce(failedSession);
 
     mockGetPass.mockReturnValue(async () => {
       throw new Error('Unexpected crash');
@@ -165,9 +258,8 @@ describe('executeNextPass', () => {
     const session = createMockSession({ state: 'created', warnings: ['existing warning'] });
     const updatedSession = createMockSession({ state: 'normalized' });
 
-    mockLoadSession
-      .mockResolvedValueOnce(session)
-      .mockResolvedValueOnce(updatedSession);
+    mockLoadRun.mockResolvedValueOnce(session);
+    mockPersistRunSession.mockResolvedValueOnce(updatedSession);
 
     mockGetPass.mockReturnValue(async () => ({
       outcome: 'completed' as const,
@@ -178,14 +270,19 @@ describe('executeNextPass', () => {
 
     await executeNextPass('test-session-id', createMockBudget());
 
-    expect(mockUpdateSession).toHaveBeenCalledWith('test-session-id', {
-      warnings: ['existing warning', 'new warning 1', 'new warning 2'],
-    });
+    expect(mockPersistRunSession).toHaveBeenCalledWith(
+      'test-session-id',
+      'created',
+      'normalized',
+      expect.objectContaining({
+        warnings: ['existing warning', 'new warning 1', 'new warning 2'],
+      }),
+    );
   });
 
   it('throws if no next pass available for terminal state', async () => {
     const session = createMockSession({ state: 'completed' });
-    mockLoadSession.mockResolvedValueOnce(session);
+    mockLoadRun.mockResolvedValueOnce(session);
 
     await expect(
       executeNextPass('test-session-id', createMockBudget()),
@@ -194,7 +291,7 @@ describe('executeNextPass', () => {
 
   it('throws if pass is not registered', async () => {
     const session = createMockSession({ state: 'created' });
-    mockLoadSession.mockResolvedValueOnce(session);
+    mockLoadRun.mockResolvedValueOnce(session);
     mockGetPass.mockReturnValue(null);
 
     await expect(
@@ -204,7 +301,7 @@ describe('executeNextPass', () => {
 
   it('throws PassBudgetExceededError when budget is exhausted', async () => {
     const session = createMockSession({ state: 'created' });
-    mockLoadSession.mockResolvedValueOnce(session);
+    mockLoadRun.mockResolvedValueOnce(session);
     mockGetPass.mockReturnValue(async () => ({ outcome: 'completed' as const, data: {}, warnings: [], durationMs: 0 }));
 
     // Budget already expired

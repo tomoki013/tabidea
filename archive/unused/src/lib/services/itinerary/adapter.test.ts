@@ -131,6 +131,18 @@ describe('composedToItinerary', () => {
     expect(itinerary.days).toHaveLength(1);
     expect(itinerary.days[0].day).toBe(1);
     expect(itinerary.days[0].title).toBe('Day 1: 東京下町散策');
+    expect(itinerary.completionLevel).toBe('draft_only');
+    expect(itinerary.memoryApplied).toBe(false);
+    expect(itinerary.verificationSummary).toEqual({
+      verifiedActivities: 0,
+      partialActivities: 0,
+      unknownActivities: 1,
+      needsConfirmationCount: 1,
+    });
+    expect(itinerary.days[0].activities[0].verificationStatus).toBe('unknown');
+    expect(itinerary.days[0].activities[0].needsConfirmation).toBe(true);
+    expect(itinerary.days[0].blocks).toHaveLength(1);
+    expect(itinerary.days[0].blocks?.[0].type).toBe('sightseeing');
   });
 
   it('day conversion: produces correct activities and timeline items', () => {
@@ -196,7 +208,7 @@ describe('composedToItinerary', () => {
     expect(transitItem).toBeDefined();
     if (transitItem?.itemType === 'transit') {
       const transit = transitItem.data;
-      expect(transit.type).toBe('other'); // walking → other
+      expect(transit.type).toBe('walking');
       expect(transit.departure.place).toBe('Place A');
       expect(transit.departure.time).toBe('09:00');
       expect(transit.arrival.place).toBe('Place B');

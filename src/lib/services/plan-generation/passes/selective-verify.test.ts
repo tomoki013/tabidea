@@ -111,7 +111,7 @@ function mockResolvedGroup(
   name: string,
   success: boolean,
   matchScore = 0.8,
-  businessStatus = 'OPERATIONAL' as string,
+  businessStatus: 'OPERATIONAL' | 'CLOSED_TEMPORARILY' | 'CLOSED_PERMANENTLY' = 'OPERATIONAL',
 ): ResolvedPlaceGroup {
   if (!success) {
     return {

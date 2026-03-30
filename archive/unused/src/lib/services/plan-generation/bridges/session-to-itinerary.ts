@@ -11,10 +11,10 @@ import type {
   ComposePipelineMetadata,
   NarrativeDay,
   NarrativeActivity,
-  RouteLeg,
 } from '@/types/itinerary-pipeline';
-import type { PlanGenerationSession, DayNarrative } from '@/types/plan-generation';
+import type { PlanGenerationSession } from '@/types/plan-generation';
 import { composedToItinerary, type AdapterContext } from '@/lib/services/itinerary/adapter';
+import { enrichItineraryMetadata } from '@/lib/trips/metadata';
 import { reconstructTimelineDays } from './draft-to-v3';
 
 /**
@@ -110,5 +110,30 @@ export function sessionToItinerary(session: PlanGenerationSession): Itinerary {
     fixedSchedule: normalizedInput.fixedSchedule ?? [],
   };
 
-  return composedToItinerary(composed, modelInfo, context);
+  const itinerary = composedToItinerary(composed, modelInfo, context);
+  const completionLevel =
+    verifiedCount === 0
+      ? 'draft_only'
+      : verifiedCount >= totalStops
+        ? 'fully_verified'
+        : 'partial_verified';
+
+  return enrichItineraryMetadata(itinerary, {
+    completionLevel,
+    title: `${draftPlan.destination} ${draftPlan.days.length}日間の旅程`,
+    destinationSummary: {
+      primaryDestination: draftPlan.destination,
+      durationDays: draftPlan.days.length,
+      ...(normalizedInput.startDate
+        ? {
+            travelDates: {
+              start: normalizedInput.startDate,
+            },
+          }
+        : {}),
+    },
+    generatedConstraints: {
+      toolBudgetMode: verifiedCount > 0 ? 'selective_verify' : 'draft_only',
+    },
+  });
 }

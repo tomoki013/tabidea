@@ -19,7 +19,6 @@
  */
 
 import TravelPlannerSimplified from "./TravelPlannerSimplified";
-import TravelPlannerLegacy from "./TravelPlannerLegacy";
 import type { UserInput } from "@/types";
 
 // ============================================================================
@@ -29,7 +28,7 @@ import type { UserInput } from "@/types";
 export interface TravelPlannerProps {
   /** Initial input values (for editing existing plans) */
   initialInput?: UserInput | null;
-  /** Initial step (for legacy wizard mode - if provided, uses legacy 10-step wizard) */
+  /** Deprecated compatibility prop. Ignored by the v4 planner. */
   initialStep?: number;
   /** Callback when planner is closed/completed */
   onClose?: () => void;
@@ -45,29 +44,14 @@ export interface TravelPlannerProps {
  * The main travel planner that uses a simplified 3-phase input flow
  * with streaming generation and card-based UI.
  *
- * If `initialStep` is provided, it falls back to the legacy 10-step wizard
- * for backward compatibility.
- *
  * Phase 1 (Essential): Destination, dates, companions
  * Phase 2 (Details): Theme, budget, pace
  * Phase 3 (Additional): Must-visit places, free text
  */
 export default function TravelPlanner({
   initialInput,
-  initialStep,
   onClose,
 }: TravelPlannerProps) {
-  // Use legacy wizard if initialStep is explicitly provided (for backward compatibility)
-  if (initialStep !== undefined) {
-    return (
-      <TravelPlannerLegacy
-        initialInput={initialInput}
-        initialStep={initialStep}
-        onClose={onClose}
-      />
-    );
-  }
-
   return (
     <TravelPlannerSimplified
       initialInput={initialInput}
@@ -82,9 +66,6 @@ export default function TravelPlanner({
 
 // Re-export the simplified planner for explicit imports
 export { default as TravelPlannerSimplified } from "./TravelPlannerSimplified";
-
-// Re-export the legacy wizard for backward compatibility
-export { default as TravelPlannerLegacy } from "./TravelPlannerLegacy";
 
 // Re-export input flow component
 export { default as SimplifiedInputFlow } from "./SimplifiedInputFlow";

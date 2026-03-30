@@ -386,7 +386,8 @@ export function createComposeTimer(modelTier?: ModelTier): PerformanceTimer {
  */
 export const V4_PASS_TARGETS_FLASH: PerformanceTargets = {
   normalize: 1_000,
-  draft_generate: 15_000,
+  draft_generate: 8_000,
+  draft_format: 1_000,
   rule_score: 500,
   local_repair: 12_000,
   selective_verify: 10_000,
@@ -400,7 +401,8 @@ export const V4_PASS_TARGETS_FLASH: PerformanceTargets = {
  */
 export const V4_PASS_TARGETS_PRO: PerformanceTargets = {
   normalize: 1_000,
-  draft_generate: 25_000,
+  draft_generate: 12_000,
+  draft_format: 1_000,
   rule_score: 500,
   local_repair: 18_000,
   selective_verify: 10_000,

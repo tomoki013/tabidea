@@ -133,9 +133,9 @@ describe('injectAccommodations', () => {
     const dayNoTime: DayPlan = {
       day: 1,
       title: 'Day 1',
-      activities: [{ activity: 'Free time', description: 'No fixed time' }],
+      activities: [{ time: '', activity: 'Free time', description: 'No fixed time' }],
       timelineItems: [
-        { itemType: 'activity', data: { activity: 'Free time', description: 'No fixed time' } },
+        { itemType: 'activity', data: { time: '', activity: 'Free time', description: 'No fixed time' } },
       ],
     };
     const days = [dayNoTime, makeDayPlan(2)];

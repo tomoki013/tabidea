@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState, useRef, useCallback } from "react";
+import { Suspense, useEffect, useRef, useCallback, useState } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
@@ -28,7 +28,14 @@ function PlanContent() {
 
   const compose = usePlanGeneration();
   const hasStartedGeneration = useRef(false);
-  const [sampleInput, setSampleInput] = useState<UserInput | null>(null);
+  const samplePlan = sampleId ? getSamplePlanById(sampleId) : null;
+  const sampleInput: UserInput | null = samplePlan
+    ? {
+      ...samplePlan.input,
+      hasMustVisitPlaces: samplePlan.input.hasMustVisitPlaces ?? false,
+      mustVisitPlaces: samplePlan.input.mustVisitPlaces ?? [],
+    }
+    : null;
 
   const fallbackInput: UserInput = sampleInput || {
     destinations: [],
@@ -68,14 +75,7 @@ function PlanContent() {
     // Handle sample generation
     if (sampleId && !hasStartedGeneration.current) {
       hasStartedGeneration.current = true;
-      const samplePlan = getSamplePlanById(sampleId);
-      if (samplePlan) {
-        const sampleInput: UserInput = {
-          ...samplePlan.input,
-          hasMustVisitPlaces: samplePlan.input.hasMustVisitPlaces ?? false,
-          mustVisitPlaces: samplePlan.input.mustVisitPlaces ?? [],
-        };
-        setSampleInput(sampleInput);
+      if (samplePlan && sampleInput) {
         generateFromSample(sampleInput);
       } else {
         compose.reset();

@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import { usePathname } from "next/navigation";
-import type { ComposeStep } from "@/lib/hooks/useComposeGeneration";
+import type { ComposeStep } from "@/lib/plan-generation/client-contract";
 import { localizeHref, resolveLanguageFromPathname } from "@/lib/i18n/navigation";
 import FullScreenGenerationOverlay, {
   type OverlayPhase,

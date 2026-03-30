@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useCallback } from "react";
+import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { Loader2, CheckCircle2, Circle, ChevronDown, Sparkles } from "lucide-react";
 import ModelBadge from "@/components/ui/ModelBadge";
@@ -345,12 +346,12 @@ export default function PackingListView({
             br: () => <br />,
           })}
         </p>
-        <a
+        <Link
           href="/pricing"
           className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90 transition-colors shadow-md"
         >
           {t("proRequired.cta")}
-        </a>
+        </Link>
       </div>
     );
   }
