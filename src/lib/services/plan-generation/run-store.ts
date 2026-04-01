@@ -79,7 +79,7 @@ export async function createRun(userId?: string): Promise<PlanGenerationSession>
       user_id: userId ?? null,
       state: 'created' satisfies SessionState,
     })
-    .select()
+    .select('id, user_id, state, created_at, updated_at, input_snapshot, pipeline_context, normalized_input, generation_profile, planner_seed, planner_day_outline, planner_day_chunks, planner_draft, draft_plan, evaluation_report, repair_history, verified_entities, timeline_state, narrative_state, ui_projection, checkpoint_cursor, warnings, input_hash, rubric_version')
     .single();
 
   if (error || !data) {
@@ -93,7 +93,7 @@ export async function loadRun(id: string): Promise<PlanGenerationSession> {
   const client = getClient();
   const { data, error } = await client
     .from('runs')
-    .select('*')
+    .select('id, user_id, state, created_at, updated_at, input_snapshot, pipeline_context, normalized_input, generation_profile, planner_seed, planner_day_outline, planner_day_chunks, planner_draft, draft_plan, evaluation_report, repair_history, verified_entities, timeline_state, narrative_state, ui_projection, checkpoint_cursor, warnings, input_hash, rubric_version')
     .eq('id', id)
     .single();
 
@@ -170,7 +170,7 @@ export async function persistRunSession(
     .from('runs')
     .update(dbPatch)
     .eq('id', id)
-    .select('*')
+    .select('id, user_id, state, created_at, updated_at, input_snapshot, pipeline_context, normalized_input, generation_profile, planner_seed, planner_day_outline, planner_day_chunks, planner_draft, draft_plan, evaluation_report, repair_history, verified_entities, timeline_state, narrative_state, ui_projection, checkpoint_cursor, warnings, input_hash, rubric_version')
     .single();
 
   if (error || !data) {

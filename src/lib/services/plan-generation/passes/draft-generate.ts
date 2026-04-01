@@ -67,6 +67,7 @@ const DAY_MAX_TOKENS_CAP = {
   default: 1_536,
   [NETLIFY_FREE_RUNTIME_PROFILE]: 1_024,
 } as const;
+const CHUNK_MIN_BASE_TOKENS = 900;
 const SEED_REQUEST_TIMEOUT_CAP_MS = {
   default: 6_000,
   [NETLIFY_FREE_RUNTIME_PROFILE]: 4_000,
@@ -212,6 +213,39 @@ function calculateDayMaxTokens(
     return resolveDayMaxTokens(runtimeProfile);
   }
   if (dayAttempt === 2) {
+    return Math.min(base + 128, resolveDayMaxTokens(runtimeProfile));
+  }
+  return base;
+}
+
+function calculateOutlineMaxTokens(
+  targetSlotCount: number,
+  runtimeProfile?: string,
+  outlineAttempt = 1,
+): number {
+  // Outline slots only contain slotIndex/role/timeSlotHint/areaHint — much smaller than full stops
+  const estimated = 80 + targetSlotCount * 50;
+  const cap = resolveDayMaxTokens(runtimeProfile);
+  const base = Math.min(Math.max(estimated, 400), cap);
+  if (outlineAttempt >= 3) return cap;
+  if (outlineAttempt === 2) return Math.min(base + 100, cap);
+  return base;
+}
+
+function calculateChunkMaxTokens(
+  chunkSlotCount: number,
+  runtimeProfile?: string,
+  chunkAttempt = 1,
+): number {
+  const estimated = 100 + chunkSlotCount * 90;
+  const base = Math.min(
+    Math.max(estimated, CHUNK_MIN_BASE_TOKENS),
+    resolveDayMaxTokens(runtimeProfile),
+  );
+  if (chunkAttempt >= 3) {
+    return resolveDayMaxTokens(runtimeProfile);
+  }
+  if (chunkAttempt === 2) {
     return Math.min(base + 128, resolveDayMaxTokens(runtimeProfile));
   }
   return base;
@@ -1520,8 +1554,14 @@ function salvagePlannerOutlineFromExtractedJson(
     return null;
   }
 
-  const slotsValue = record.slots;
-  if (!Array.isArray(slotsValue)) {
+  // Fallback: model may emit "stops" (wrong field name) instead of "slots"
+  const rawArray: unknown[] | null = Array.isArray(record.slots)
+    ? (record.slots as unknown[])
+    : Array.isArray(record.stops)
+      ? (record.stops as unknown[])
+      : null;
+
+  if (!rawArray) {
     return {
       outline: { day: seedDay.day, slots: [] },
       salvagedSlotCount: 0,
@@ -1533,12 +1573,13 @@ function salvagePlannerOutlineFromExtractedJson(
   const slots: PlannerDayOutlineSlot[] = [];
   let requiredMealRecovered = false;
   let expectedSlotIndex = 1;
-  for (const entry of slotsValue) {
+  for (const entry of rawArray) {
     if (!entry || typeof entry !== 'object') {
       break;
     }
     const slotRecord = entry as Record<string, unknown>;
-    const slotIndex = normalizeSeedDayNumber(slotRecord.slotIndex);
+    // Auto-assign slotIndex when falling back from stops format (stops have no slotIndex)
+    const slotIndex = normalizeSeedDayNumber(slotRecord.slotIndex) ?? expectedSlotIndex;
     const role = normalizeDayStopRole(slotRecord.role);
     const timeSlotHint = normalizeDayTimeSlot(slotRecord.timeSlotHint);
     const areaHint = normalizeSeedField(slotRecord.areaHint) ?? undefined;
@@ -1851,6 +1892,8 @@ export async function draftGeneratePass(ctx: PassContext): Promise<PassResult<Pl
         nextDayIndex: 1,
         seedAttempt,
         seedPromptVariant,
+        plannerStrategy,
+        plannerContractVersion,
       });
     }
 
@@ -1865,6 +1908,8 @@ export async function draftGeneratePass(ctx: PassContext): Promise<PassResult<Pl
       undefined,
       seedPromptVariant,
       undefined,
+      plannerStrategy,
+      plannerContractVersion,
     );
 
     let seedText = '';
@@ -1936,6 +1981,8 @@ export async function draftGeneratePass(ctx: PassContext): Promise<PassResult<Pl
       undefined,
       seedPromptVariant,
       undefined,
+      plannerStrategy,
+      plannerContractVersion,
     );
 
     let parsedSeed: PlannerSeed | null = null;
@@ -1976,6 +2023,8 @@ export async function draftGeneratePass(ctx: PassContext): Promise<PassResult<Pl
             invalidFieldPath: classification.invalidFieldPath,
             validationIssueCode: classification.validationIssueCode,
             seedPromptVariant,
+            plannerStrategy,
+            plannerContractVersion,
             message: classification.message,
           });
         }
@@ -1994,6 +2043,8 @@ export async function draftGeneratePass(ctx: PassContext): Promise<PassResult<Pl
           seedAttempt: seedAttempt + 1,
           usedTextRecovery: error instanceof TextJsonParseError ? error.salvageApplied : false,
           seedPromptVariant,
+          plannerStrategy,
+          plannerContractVersion,
         });
       }
     }
@@ -2013,6 +2064,8 @@ export async function draftGeneratePass(ctx: PassContext): Promise<PassResult<Pl
         salvagedDayCount,
         expectedDayCount: normalized.durationDays,
         seedPromptVariant,
+        plannerStrategy,
+        plannerContractVersion,
         message: 'missing_seed_after_parse',
       });
     }
@@ -2041,6 +2094,8 @@ export async function draftGeneratePass(ctx: PassContext): Promise<PassResult<Pl
           salvagedDayCount: salvagedDayCount ?? parsedSeed.days.length,
           expectedDayCount: normalized.durationDays,
           seedPromptVariant,
+          plannerStrategy,
+          plannerContractVersion,
           message: classification?.message ?? seedError,
         });
       }
@@ -2061,6 +2116,8 @@ export async function draftGeneratePass(ctx: PassContext): Promise<PassResult<Pl
         salvagedDayCount: salvagedDayCount ?? parsedSeed.days.length,
         expectedDayCount: normalized.durationDays,
         seedPromptVariant,
+        plannerStrategy,
+        plannerContractVersion,
       });
     }
 
@@ -2101,6 +2158,7 @@ export async function draftGeneratePass(ctx: PassContext): Promise<PassResult<Pl
         seedElapsedMs,
         minimumDayStartBudgetMs,
         plannerStrategy,
+        plannerContractVersion,
       });
     }
   }
@@ -2154,7 +2212,8 @@ export async function draftGeneratePass(ctx: PassContext): Promise<PassResult<Pl
           : 1;
         const outlinePromptVariant = resolveDayPromptVariant(outlineAttempt);
         const outlineTemperature = resolveDayTemperature(temperature, outlineAttempt);
-        const outlineMaxTokens = calculateDayMaxTokens(normalized, runtimeProfile, outlineAttempt);
+        const outlineTargetSlotCount = resolveTargetStopCount(normalized, runtimeProfile, outlineAttempt);
+        const outlineMaxTokens = calculateOutlineMaxTokens(outlineTargetSlotCount, runtimeProfile, outlineAttempt);
         const outlineTimeoutMs = calculateOutlineTimeoutMs(
           runtimeProfile,
           calculateCanonicalDraftTimeoutMs(ctx),
@@ -2426,7 +2485,7 @@ export async function draftGeneratePass(ctx: PassContext): Promise<PassResult<Pl
         const chunkSlots = remainingSlots.slice(0, DAY_CHUNK_SIZE);
         const chunkPromptVariant = resolveDayPromptVariant(chunkAttempt);
         const chunkTemperature = resolveDayTemperature(temperature, chunkAttempt);
-        const chunkMaxTokens = calculateDayMaxTokens(normalized, runtimeProfile, chunkAttempt);
+        const chunkMaxTokens = calculateChunkMaxTokens(chunkSlots.length, runtimeProfile, chunkAttempt);
         const chunkTimeoutMs = calculateChunkTimeoutMs(
           runtimeProfile,
           calculateCanonicalDraftTimeoutMs(ctx),
