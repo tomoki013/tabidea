@@ -1,3 +1,4 @@
+import type { LanguageModelV1 } from 'ai';
 import type { PartialDayData } from '@/types';
 import type { NormalizedRequest } from '@/types/itinerary-pipeline';
 import { narrativeOutputSchema } from '@/lib/services/ai/schemas/compose-schemas';
@@ -30,6 +31,7 @@ export interface V4NarrativeRendererInput {
   modelName: string;
   provider?: AIProviderName;
   temperature: number;
+  model?: LanguageModelV1;
 }
 
 export interface V4NarrativeDayOutput {
@@ -65,7 +67,7 @@ export async function runNarrativeRendererV4(
   const { modelName, provider = 'gemini', temperature } = input;
   const { systemInstruction, userPrompt } = buildNarrativeInstructions(input);
   const { generateObject } = await import('ai');
-  const model = await resolveLanguageModel(provider, modelName);
+  const model = input.model ?? await resolveLanguageModel(provider, modelName);
 
   const result = await generateObject({
     model,
@@ -85,7 +87,7 @@ export async function streamNarrativeRendererV4(
   const { modelName, provider = 'gemini', temperature } = input;
   const { systemInstruction, userPrompt } = buildNarrativeInstructions(input);
   const { streamObject } = await import('ai');
-  const model = await resolveLanguageModel(provider, modelName);
+  const model = input.model ?? await resolveLanguageModel(provider, modelName);
 
   const result = await streamObject({
     model,
@@ -295,7 +297,7 @@ function createStreamingDayEventStream(
   };
 }
 
-async function resolveLanguageModel(provider: AIProviderName, modelName: string) {
+export async function resolveLanguageModel(provider: AIProviderName, modelName: string) {
   if (provider === 'openai') {
     const { openai } = await import('@ai-sdk/openai');
     return openai(modelName);

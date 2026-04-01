@@ -533,6 +533,17 @@ function coerceRole(value: unknown): string {
   return 'recommended';
 }
 
+function coerceSlot(slot: unknown): unknown {
+  if (!slot || typeof slot !== 'object') {
+    return slot;
+  }
+
+  const slotRecord = { ...(slot as Record<string, unknown>) };
+  slotRecord.timeSlotHint = coerceTimeSlotHint(slotRecord.timeSlotHint);
+  slotRecord.role = coerceRole(slotRecord.role);
+  return slotRecord;
+}
+
 function coerceRecoveredJson(data: unknown): unknown {
   if (!data || typeof data !== 'object') {
     return data;
@@ -542,6 +553,10 @@ function coerceRecoveredJson(data: unknown): unknown {
 
   if (Array.isArray(record.stops)) {
     record.stops = record.stops.map((stop) => coerceStop(stop));
+  }
+
+  if (Array.isArray(record.slots)) {
+    record.slots = record.slots.map((slot) => coerceSlot(slot));
   }
 
   if (Array.isArray(record.days)) {

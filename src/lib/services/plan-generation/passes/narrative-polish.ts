@@ -18,8 +18,10 @@ import type { NormalizedRequest } from '@/types/itinerary-pipeline';
 import {
   runNarrativeRendererV4,
   streamNarrativeRendererV4,
+  resolveLanguageModel,
   type StreamingDayEvent,
 } from '../renderers/narrative-renderer-v4';
+import type { AIProviderName } from '@/lib/services/ai/providers/types';
 import { PineconeRetriever } from '@/lib/services/rag/pinecone-retriever';
 import { reconstructTimelineDays } from '../transform/draft-to-timeline';
 
@@ -162,8 +164,11 @@ export async function narrativePolishPass(
     };
   }
 
-  // RAG コンテキスト取得
-  const context = await fetchRagContext(normalizedInput);
+  // RAG コンテキスト取得とモデル解決を並行実行してレイテンシを短縮
+  const [context, preResolvedModel] = await Promise.all([
+    fetchRagContext(normalizedInput),
+    resolveLanguageModel(provider as AIProviderName, modelName),
+  ]);
 
   try {
     const output = await runNarrativeRendererV4({
@@ -173,6 +178,7 @@ export async function narrativePolishPass(
       modelName,
       provider,
       temperature,
+      model: preResolvedModel,
     });
 
     const dayNarratives = output.days.map(narrativeDayToState);
@@ -260,8 +266,11 @@ export async function narrativePolishPassStreaming(
     };
   }
 
-  // RAG コンテキスト取得
-  const context = await fetchRagContext(normalizedInput);
+  // RAG コンテキスト取得とモデル解決を並行実行してTTFTを短縮
+  const [context, preResolvedModel] = await Promise.all([
+    fetchRagContext(normalizedInput),
+    resolveLanguageModel(provider as AIProviderName, modelName),
+  ]);
 
   let streamResult: Awaited<ReturnType<typeof streamNarrativeRendererV4>>;
   try {
@@ -272,6 +281,7 @@ export async function narrativePolishPassStreaming(
       modelName,
       provider,
       temperature,
+      model: preResolvedModel,
     });
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
