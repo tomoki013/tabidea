@@ -255,7 +255,7 @@ export async function cleanupExpiredRuns(
   const { data: runs, error: selectError } = await client
     .from('runs')
     .select('id')
-    .in('state', ['completed', 'failed', 'cancelled'] satisfies SessionState[])
+    .in('state', ['core_ready', 'completed', 'failed_retryable', 'failed_terminal', 'cancelled'] satisfies SessionState[])
     .lt('updated_at', cutoff);
 
   if (selectError || !runs) {

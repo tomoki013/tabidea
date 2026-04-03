@@ -198,12 +198,6 @@ Total files: 1584
 | src/app/api/og/route.tsx | App Router | API Route | Active | HTTP endpoint handler for /api/og. |
 | src/app/api/places/search/route.ts | App Router | API Route | Active | HTTP endpoint handler for /api/places/search. |
 | src/app/api/plan-generation/cleanup/route.ts | App Router | API Route | Active | HTTP endpoint handler for /api/plan-generation/cleanup. |
-| src/app/api/plan-generation/session/[id]/finalize/route.ts | App Router | API Route | Active | HTTP endpoint handler for /api/plan-generation/session/[id]/finalize. |
-| src/app/api/plan-generation/session/[id]/resume/route.ts | App Router | API Route | Active | HTTP endpoint handler for /api/plan-generation/session/[id]/resume. |
-| src/app/api/plan-generation/session/[id]/route.ts | App Router | API Route | Active | HTTP endpoint handler for /api/plan-generation/session/[id]. |
-| src/app/api/plan-generation/session/[id]/run/route.ts | App Router | API Route | Active | HTTP endpoint handler for /api/plan-generation/session/[id]/run. |
-| src/app/api/plan-generation/session/[id]/stream/route.ts | App Router | API Route | Active | HTTP endpoint handler for /api/plan-generation/session/[id]/stream. |
-| src/app/api/plan-generation/session/route.ts | App Router | API Route | Active | HTTP endpoint handler for /api/plan-generation/session. |
 | src/app/api/plans/save/route.test.ts | App Router | Unit Test | Test | Automated test coverage for route.test behavior. |
 | src/app/api/plans/save/route.ts | App Router | API Route | Active | HTTP endpoint handler for /api/plans/save. |
 | src/app/api/replan/route.ts | App Router | API Route | Active | HTTP endpoint handler for /api/replan. |

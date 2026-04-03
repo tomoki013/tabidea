@@ -6,10 +6,7 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   // 開発時のServer Actions許可オリジン（403エラー対策）
-  allowedDevOrigins: [
-    "tabide.ai",
-    "www.tabide.ai",
-  ],
+  allowedDevOrigins: ["tabide.ai", "www.tabide.ai"],
 
   // ビルドIDの一貫性を確保（チャンクロードエラー対策）
   generateBuildId: async () => {
@@ -40,13 +37,26 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/shiori/:path*',
+        source: "/shiori/:path*",
         headers: [
-          { key: 'X-Frame-Options', value: 'ALLOWALL' },
-          { key: 'Content-Security-Policy', value: "frame-ancestors 'self' https://tabide.ai https://www.tabide.ai" },
+          { key: "X-Frame-Options", value: "ALLOWALL" },
+          {
+            key: "Content-Security-Policy",
+            value:
+              "frame-ancestors 'self' https://tabide.ai https://www.tabide.ai",
+          },
         ],
       },
     ];
+  },
+
+  logging: {
+    fetches: {
+      fullUrl: true,
+      hmrRefreshes: true,
+    },
+    incomingRequests: true,
+    // serverFunctions は dev で既定でログされる
   },
 };
 

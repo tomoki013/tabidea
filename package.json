@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "predev": "pnpm i18n:sync-locales",
-    "dev": "next dev",
+    "dev": "pnpm exec tsx scripts/dev-with-log.ts",
+    "dev:raw": "next dev",
     "prebuild": "pnpm i18n:sync-locales",
     "build": "next build",
     "postbuild": "next-sitemap",

@@ -46,6 +46,13 @@
           "semantic_planPreparing": "Setting the overall flow for the trip...",
           "semantic_planDay": "Creating the spots for day {day}..."
         },
+        "pause": {
+          "recovery_required": "Adjusting how the candidate spots are assembled",
+          "runtime_budget_exhausted": "Preparing to continue with the next step",
+          "verify_budget_exhausted": "Preparing to continue place verification",
+          "dayRetrying": "Reworking the spots for day {day}",
+          "waiting": "Preparing to resume generation"
+        },
         "errors": {
           "requestFailed": "HTTP {status}: Request failed",
           "generic": "An error occurred",
@@ -57,10 +64,38 @@
           "generationCodes": {
             "draft_generation_timeout": "Spot selection took too long. Try again with slightly narrower trip preferences.",
             "draft_generation_invalid_output": "The planner returned an incomplete trip skeleton, so the itinerary could not be completed. Please try again.",
+            "draft_generation_missing_meal": "The generated day was missing a meal block, so that day could not be completed. Please retry with slightly adjusted conditions.",
+            "draft_generation_insufficient_stops": "The generated day did not contain enough real stops to complete the itinerary. Please retry with slightly adjusted conditions.",
             "draft_generation_provider_error": "There was a problem communicating with the AI service. Please try again in a moment.",
             "narrative_generation_timeout": "Finishing the itinerary took too long. Please try again.",
             "narrative_generation_invalid_output": "The narrative step returned an incomplete result, so the itinerary text could not be completed. Please try again.",
-            "narrative_generation_provider_error": "There was a problem communicating with the AI service while finishing the itinerary. Please try again in a moment."
+              "narrative_generation_provider_error": "There was a problem communicating with the AI service while finishing the itinerary. Please try again in a moment.",
+              "finalize_incomplete_session_contract": "There was a problem while preparing the final itinerary. Please try again.",
+              "high_unverified_ratio": "Some spots could not be verified. We recommend confirming details in advance at your destination.",
+            "draft_generate:draft_generation_timeout": "Spot selection took too long. Try again with slightly narrower trip preferences.",
+            "draft_generate:draft_generation_invalid_output": "The planner returned an incomplete trip skeleton, so the itinerary could not be completed. Please try again.",
+            "draft_generate:draft_generation_provider_error": "There was a problem communicating with the AI service. Please try again in a moment.",
+            "draft_generate:draft_generation_strategy_exhausted": "The same planning error repeated for this day, so generation was stopped to avoid looping. Please retry with slightly adjusted conditions.",
+            "draft_generate:draft_generation_contract_mismatch": "The planner returned a day payload in the wrong shape, so this day's generation was restarted. Please try again.",
+            "draft_generate:draft_generation_outline_contract_mismatch": "The slot outline came back in the wrong shape, so the planner could not continue building this day. Please try again.",
+            "draft_generate:draft_generation_constrained_contract_mismatch": "The constrained recovery payload came back in the wrong shape, so generation for this day was stopped to avoid looping. Please retry with slightly adjusted conditions.",
+            "draft_generate:draft_generation_missing_meal": "The generated day was missing a meal block, so that day could not be completed. Please retry with slightly adjusted conditions.",
+            "draft_generate:draft_generation_insufficient_stops": "The generated day did not contain enough real stops to complete the itinerary. Please retry with slightly adjusted conditions.",
+            "draft_generate:missing_afternoon_activity": "The itinerary is missing meaningful stops after lunch. Regenerate it so the day continues into the afternoon or evening.",
+            "draft_generate:activity_only_until_midday": "The itinerary ends around midday. Regenerate it with real afternoon or evening activities.",
+            "draft_generate:insufficient_day_coverage": "This day does not have enough coverage to feel complete. Regenerate it so the itinerary continues beyond the morning.",
+            "narrative_polish:narrative_generation_timeout": "There was not enough runtime left to finish the itinerary narrative. Please try again in a moment.",
+            "narrative_polish:narrative_generation_invalid_output": "The narrative step returned an incomplete result, so the itinerary text could not be completed. Please try again.",
+            "narrative_polish:narrative_generation_provider_error": "There was a problem communicating with the AI service while finishing the itinerary. Please try again in a moment.",
+            "finalize:finalize_incomplete_session_contract": "There was a problem while preparing the final itinerary. Please try again.",
+            "finalize:finalize_empty_itinerary": "The itinerary was about to be saved with no days, so the save was stopped. Please try again.",
+            "finalize:finalize_incomplete_itinerary_days": "The itinerary was missing one or more requested days, so saving was stopped. Please try again.",
+            "finalize:finalize_activity_only_until_midday": "Saving was stopped because the itinerary effectively ended around midday. Regenerate it with real afternoon or evening activities.",
+            "draft_generate:draft_generate_incomplete_day_set": "The planner draft did not cover every requested day, so generation was stopped. Please try again.",
+            "draft_format:draft_format_incomplete_day_set": "A missing-day issue was found while formatting the itinerary draft. Please try again.",
+            "timeline_construct:timeline_construct_incomplete_day_set": "The timeline builder returned an itinerary with missing days. Please try again.",
+            "selective_verify:high_unverified_ratio": "Some spots could not be verified. We recommend confirming details in advance at your destination.",
+            "run_processor_unexpected_error": "An internal problem interrupted itinerary generation. Adjust the conditions slightly or try again in a moment."
           },
           "stepFailed": {
             "semantic_plan": "AI spot selection failed. Please try again.",
@@ -72,6 +107,21 @@
         "warnings": {
           "title": "Generated with limited verification",
           "placeVerificationLimited": "Google Places API has reached its usage limit, so some spot verification was skipped. Your itinerary was still generated, but you should recheck map locations and opening hours later."
+        },
+        "failureSurface": {
+          "title": {
+            "banner": "You can resume itinerary generation",
+            "modal": "The itinerary could not be completed"
+          },
+          "description": {
+            "banner": "Your input has been kept. Resume from the same run or adjust the conditions before trying again.",
+            "modal": "This failure is likely to repeat with the same conditions. You can return to the input form and revise the request."
+          },
+          "actions": {
+            "resume": "Resume from here",
+            "adjust": "Adjust conditions",
+            "backToInput": "Back to input"
+          }
         }
       },
       "server": {

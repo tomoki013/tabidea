@@ -28,6 +28,7 @@ interface ComposeLoadingAnimationProps {
   previewDestination?: string;
   previewDescription?: string;
   totalDays?: number;
+  pauseStatusText?: string;
 }
 
 export default function ComposeLoadingAnimation({
@@ -37,6 +38,7 @@ export default function ComposeLoadingAnimation({
   previewDestination = "",
   previewDescription = "",
   totalDays = 0,
+  pauseStatusText = "",
 }: ComposeLoadingAnimationProps) {
   const t = useTranslations("components.features.planner.composeLoadingAnimation");
 
@@ -241,6 +243,14 @@ export default function ComposeLoadingAnimation({
               </motion.p>
             </AnimatePresence>
           </div>
+
+          {pauseStatusText ? (
+            <div className="mt-2 min-h-[1.5rem]">
+              <p className="text-center text-xs font-medium text-stone-500 dark:text-stone-400">
+                {pauseStatusText}
+              </p>
+            </div>
+          ) : null}
         </div>
       </div>
 

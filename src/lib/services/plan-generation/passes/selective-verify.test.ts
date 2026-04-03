@@ -234,4 +234,18 @@ describe('selectiveVerifyPass', () => {
     expect(result.outcome).toBe('completed');
     expect(result.warnings.some(w => w.includes('Budget limited'))).toBe(true);
   });
+
+  it('adds high_unverified_ratio when more than half of spots are not verified', async () => {
+    mockResolvePlaces.mockResolvedValue([
+      mockResolvedGroup('金閣寺', false),
+      mockResolvedGroup('カフェ・モーニング', false),
+    ]);
+
+    const ctx = createMockCtx();
+    const result = await selectiveVerifyPass(ctx);
+
+    expect(result.outcome).toBe('completed');
+    expect(result.warnings).toContain('high_unverified_ratio');
+    expect(result.metadata?.unverifiedRatio).toBe(1);
+  });
 });

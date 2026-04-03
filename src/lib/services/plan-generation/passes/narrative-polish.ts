@@ -31,7 +31,9 @@ export type { StreamingDayEvent };
 // RAG Context Retrieval
 // ============================================
 
-const RAG_TIMEOUT_MS = 2_000;
+const RAG_TIMEOUT_MS = 3_500;
+const MIN_NARRATIVE_BUDGET_MS = 15_000;
+const NARRATIVE_ABORT_HEADROOM_MS = 2_000;
 
 let retrieverInstance: PineconeRetriever | null = null;
 
@@ -140,6 +142,9 @@ export async function narrativePolishPass(
 ): Promise<PassResult<NarrativeState>> {
   const start = Date.now();
 
+  // PineconeRetriever の warm-up（コールドスタートによる初回遅延を軽減）
+  void getRetriever();
+
   const check = checkPreconditions(ctx);
   if (!check.ok) {
     return {
@@ -150,9 +155,9 @@ export async function narrativePolishPass(
   }
 
   const { normalizedInput, timelineDays, modelName, provider, temperature } = check;
-  if (ctx.budget.remainingMs() < 4_000) {
+  if (ctx.budget.remainingMs() < MIN_NARRATIVE_BUDGET_MS) {
     return {
-      outcome: 'failed_terminal',
+      outcome: 'partial',
       warnings: ['narrative_generation_timeout'],
       durationMs: Date.now() - start,
       metadata: {
@@ -160,6 +165,10 @@ export async function narrativePolishPass(
         provider,
         errorCode: 'narrative_generation_timeout',
         rootCause: 'insufficient_runtime_budget',
+        pipelineContextPatch: {
+          resumePassId: 'narrative_polish',
+          pauseReason: 'runtime_budget_exhausted',
+        },
       },
     };
   }
@@ -169,6 +178,8 @@ export async function narrativePolishPass(
     fetchRagContext(normalizedInput),
     resolveLanguageModel(provider as AIProviderName, modelName),
   ]);
+  const narrativeTimeoutMs = Math.max(4_000, ctx.budget.remainingMs() - NARRATIVE_ABORT_HEADROOM_MS);
+  const narrativeAbortSignal = AbortSignal.timeout(narrativeTimeoutMs);
 
   try {
     const output = await runNarrativeRendererV4({
@@ -179,6 +190,7 @@ export async function narrativePolishPass(
       provider,
       temperature,
       model: preResolvedModel,
+      abortSignal: narrativeAbortSignal,
     });
 
     const dayNarratives = output.days.map(narrativeDayToState);
@@ -234,6 +246,9 @@ export async function narrativePolishPassStreaming(
 ): Promise<StreamingNarrativeResult> {
   const start = Date.now();
 
+  // PineconeRetriever の warm-up（コールドスタートによる初回遅延を軽減）
+  void getRetriever();
+
   const check = checkPreconditions(ctx);
   if (!check.ok) {
     const failResult: PassResult<NarrativeState> = {
@@ -248,9 +263,9 @@ export async function narrativePolishPassStreaming(
   }
 
   const { normalizedInput, timelineDays, modelName, provider, temperature } = check;
-  if (ctx.budget.remainingMs() < 4_000) {
+  if (ctx.budget.remainingMs() < MIN_NARRATIVE_BUDGET_MS) {
     const fallbackResult: PassResult<NarrativeState> = {
-      outcome: 'failed_terminal',
+      outcome: 'partial',
       warnings: ['narrative_generation_timeout'],
       durationMs: Date.now() - start,
       metadata: {
@@ -258,6 +273,10 @@ export async function narrativePolishPassStreaming(
         provider,
         errorCode: 'narrative_generation_timeout',
         rootCause: 'insufficient_runtime_budget',
+        pipelineContextPatch: {
+          resumePassId: 'narrative_polish',
+          pauseReason: 'runtime_budget_exhausted',
+        },
       },
     };
     return {
@@ -271,6 +290,8 @@ export async function narrativePolishPassStreaming(
     fetchRagContext(normalizedInput),
     resolveLanguageModel(provider as AIProviderName, modelName),
   ]);
+  const narrativeTimeoutMs = Math.max(4_000, ctx.budget.remainingMs() - NARRATIVE_ABORT_HEADROOM_MS);
+  const narrativeAbortSignal = AbortSignal.timeout(narrativeTimeoutMs);
 
   let streamResult: Awaited<ReturnType<typeof streamNarrativeRendererV4>>;
   try {
@@ -282,6 +303,7 @@ export async function narrativePolishPassStreaming(
       provider,
       temperature,
       model: preResolvedModel,
+      abortSignal: narrativeAbortSignal,
     });
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);

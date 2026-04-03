@@ -41,7 +41,7 @@ export const MIN_OVERALL_SCORE = 55;
 /** pass/marginal/fail の閾値 */
 export const GRADE_THRESHOLDS = {
   pass: 70,
-  marginal: 50,
+  marginal: 55,
 } as const;
 
 /** カテゴリ別の最低スコア (これを下回ると error 違反を出す) */
@@ -85,7 +85,7 @@ export const PASS_BUDGET_MS: Record<PassId, number> = {
   draft_generate:     15_000,
   draft_format:       1_000,
   rule_score:         500,
-  local_repair:       15_000,
+  local_repair:       45_000,
   selective_verify:   10_000,
   timeline_construct: 2_000,
   narrative_polish:   15_000,

@@ -6,6 +6,14 @@
 import type { DraftPlan, CategoryScore, Violation } from '@/types/plan-generation';
 import type { NormalizedRequest } from '@/types/itinerary-pipeline';
 
+function normalizeStopName(value: string): string {
+  return value
+    .normalize('NFKC')
+    .toLowerCase()
+    .replace(/\([^)]*\)|（[^）]*）/g, '')
+    .replace(/[^\p{L}\p{N}]+/gu, '');
+}
+
 export function scoreVariety(
   draft: DraftPlan,
   _normalized: NormalizedRequest,
@@ -17,7 +25,7 @@ export function scoreVariety(
 
   // ---- 同一ストップ重複 ----
   const allNames = draft.days.flatMap(d =>
-    d.stops.map(s => ({ name: s.name.toLowerCase(), day: d.day, draftId: s.draftId })),
+    d.stops.map(s => ({ name: normalizeStopName(s.name), originalName: s.name, day: d.day, draftId: s.draftId })),
   );
   const nameCounts = new Map<string, typeof allNames>();
 
@@ -30,13 +38,16 @@ export function scoreVariety(
   for (const [name, entries] of nameCounts) {
     if (entries.length > 1) {
       score -= 10;
-      violations.push({
-        severity: 'error',
-        category: 'variety',
-        scope: { type: 'plan' },
-        message: `ストップ「${name}」が ${entries.length} 回重複 (Day ${entries.map(e => e.day).join(', ')})`,
-        suggestedFix: '重複を削除し、別のスポットに置き換えてください',
-      });
+      const dayList = entries.map((entry) => entry.day).join(', ');
+      for (const entry of entries) {
+        violations.push({
+          severity: 'error',
+          category: 'variety',
+          scope: { type: 'day', day: entry.day },
+          message: `ストップ「${entry.originalName}」が重複しています (Day ${dayList})`,
+          suggestedFix: '他の日と重複しない実在スポットに置き換えてください',
+        });
+      }
     }
   }
 

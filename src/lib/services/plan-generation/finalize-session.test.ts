@@ -44,6 +44,9 @@ vi.mock('@/lib/agent/run-checkpoint-log', () => ({
 }));
 
 import { finalizeSessionToTrip } from './finalize-session';
+import { sessionToItinerary } from './transform/timeline-to-itinerary';
+
+const mockSessionToItinerary = vi.mocked(sessionToItinerary);
 
 function createSession(): PlanGenerationSession {
   return {
@@ -57,6 +60,9 @@ function createSession(): PlanGenerationSession {
       executionMode: 'draft_with_selective_verify',
       runtimeProfile: 'netlify_free_30s',
     },
+    normalizedInput: {
+      durationDays: 1,
+    } as never,
     draftPlan: {
       destination: '',
       description: 'desc',
@@ -75,6 +81,23 @@ function createSession(): PlanGenerationSession {
 describe('finalizeSessionToTrip', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    mockSessionToItinerary.mockReturnValue({
+      title: 'Test Plan',
+      tripId: 'trip_1',
+      version: 1,
+      completionLevel: 'partial_verified',
+      generatedConstraints: {
+        toolBudgetMode: 'safe',
+      },
+      days: [
+        {
+          dayNumber: 1,
+          date: '2026-04-01',
+          activities: [],
+          blocks: [],
+        },
+      ],
+    } as never);
     mockPersistTripVersion.mockResolvedValue({
       tripId: 'trip_1',
       version: 3,
@@ -122,5 +145,39 @@ describe('finalizeSessionToTrip', () => {
       tripVersion: 3,
       completionLevel: 'partial_verified',
     }));
+  });
+
+  it('fails closed when the itinerary is empty', async () => {
+    mockSessionToItinerary.mockReturnValue({
+      title: 'Empty Plan',
+      days: [],
+      destination: 'Tokyo',
+      description: 'desc',
+    } as never);
+
+    await expect(finalizeSessionToTrip(createSession())).rejects.toThrow('finalize_empty_itinerary');
+    expect(mockPersistTripVersion).not.toHaveBeenCalled();
+  });
+
+  it('fails closed when persisted day count does not match normalized duration', async () => {
+    mockSessionToItinerary.mockReturnValue({
+      title: 'Short Plan',
+      days: [
+        {
+          dayNumber: 1,
+          date: '2026-04-01',
+          activities: [],
+          blocks: [],
+        },
+      ],
+      destination: 'Tokyo',
+      description: 'desc',
+    } as never);
+
+    const session = createSession();
+    session.normalizedInput = { durationDays: 2 } as never;
+
+    await expect(finalizeSessionToTrip(session)).rejects.toThrow('finalize_incomplete_itinerary_days');
+    expect(mockPersistTripVersion).not.toHaveBeenCalled();
   });
 });

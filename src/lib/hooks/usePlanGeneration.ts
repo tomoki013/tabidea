@@ -15,6 +15,8 @@ import type { PipelineStepId } from "@/types/itinerary-pipeline";
 import type {
   ComposeStep,
   ComposeLimitExceeded,
+  GenerationFailureUi,
+  GenerationOriginSurface,
   UseComposeGenerationReturn,
 } from "@/lib/plan-generation/client-contract";
 import { savePlanViaApi } from "@/lib/plans/save-plan-client";
@@ -68,7 +70,76 @@ const PASS_TO_ACTIVE_STEP: Partial<Record<string, PipelineStepId>> = {
 };
 
 const SUCCESS_DISPLAY_MS = 2000;
-const STREAM_RESUME_BACKOFF_MS = 250;
+const STREAM_RESUME_BACKOFF_MS = 750;
+const AUTO_RETRYABLE_RESUME_LIMIT = 3;
+const DETAILED_ERROR_MAP: Record<string, string> = {
+  'draft_generate:draft_generation_timeout': 'errors.generationCodes.draft_generate:draft_generation_timeout',
+  'draft_generate:draft_generation_invalid_output': 'errors.generationCodes.draft_generate:draft_generation_invalid_output',
+  'draft_generate:draft_generation_provider_error': 'errors.generationCodes.draft_generate:draft_generation_provider_error',
+  'draft_generate:draft_generation_strategy_exhausted': 'errors.generationCodes.draft_generate:draft_generation_strategy_exhausted',
+  'draft_generate:draft_generation_contract_mismatch': 'errors.generationCodes.draft_generate:draft_generation_contract_mismatch',
+  'draft_generate:draft_generation_outline_contract_mismatch': 'errors.generationCodes.draft_generate:draft_generation_outline_contract_mismatch',
+  'draft_generate:draft_generation_constrained_contract_mismatch': 'errors.generationCodes.draft_generate:draft_generation_constrained_contract_mismatch',
+  'draft_generate:draft_generation_missing_meal': 'errors.generationCodes.draft_generate:draft_generation_missing_meal',
+  'draft_generate:draft_generation_insufficient_stops': 'errors.generationCodes.draft_generate:draft_generation_insufficient_stops',
+  'draft_generate:missing_afternoon_activity': 'errors.generationCodes.draft_generate:missing_afternoon_activity',
+  'draft_generate:activity_only_until_midday': 'errors.generationCodes.draft_generate:activity_only_until_midday',
+  'draft_generate:insufficient_day_coverage': 'errors.generationCodes.draft_generate:insufficient_day_coverage',
+  'narrative_polish:narrative_generation_timeout': 'errors.generationCodes.narrative_polish:narrative_generation_timeout',
+  'narrative_polish:narrative_generation_invalid_output': 'errors.generationCodes.narrative_polish:narrative_generation_invalid_output',
+  'narrative_polish:narrative_generation_provider_error': 'errors.generationCodes.narrative_polish:narrative_generation_provider_error',
+  'selective_verify:high_unverified_ratio': 'errors.generationCodes.selective_verify:high_unverified_ratio',
+  'finalize:finalize_incomplete_session_contract': 'errors.generationCodes.finalize_incomplete_session_contract',
+  'finalize:finalize_empty_itinerary': 'errors.generationCodes.finalize_empty_itinerary',
+  'finalize:finalize_incomplete_itinerary_days': 'errors.generationCodes.finalize_incomplete_itinerary_days',
+  'finalize:finalize_activity_only_until_midday': 'errors.generationCodes.finalize_activity_only_until_midday',
+  'draft_generate:draft_generate_incomplete_day_set': 'errors.generationCodes.draft_generate_incomplete_day_set',
+  'draft_format:draft_format_incomplete_day_set': 'errors.generationCodes.draft_format_incomplete_day_set',
+  'timeline_construct:timeline_construct_incomplete_day_set': 'errors.generationCodes.timeline_construct_incomplete_day_set',
+};
+
+const KNOWN_GENERATION_ERROR_CODES = new Set([
+  'draft_generation_timeout',
+  'draft_generation_invalid_output',
+  'draft_generation_missing_meal',
+  'draft_generation_insufficient_stops',
+  'draft_generation_provider_error',
+  'draft_generation_strategy_exhausted',
+  'draft_generation_contract_mismatch',
+  'draft_generation_outline_contract_mismatch',
+  'draft_generation_constrained_contract_mismatch',
+  'missing_afternoon_activity',
+  'activity_only_until_midday',
+  'insufficient_day_coverage',
+  'narrative_generation_timeout',
+  'narrative_generation_invalid_output',
+  'narrative_generation_provider_error',
+  'finalize_incomplete_session_contract',
+  'finalize_empty_itinerary',
+  'finalize_incomplete_itinerary_days',
+  'finalize_activity_only_until_midday',
+  'draft_generate_incomplete_day_set',
+  'draft_format_incomplete_day_set',
+  'timeline_construct_incomplete_day_set',
+  'high_unverified_ratio',
+  'run_processor_unexpected_error',
+]);
+
+const NON_RETRYABLE_ERROR_CODES = new Set([
+  'draft_generation_missing_meal',
+  'draft_generation_insufficient_stops',
+  'draft_generation_strategy_exhausted',
+  'missing_afternoon_activity',
+  'activity_only_until_midday',
+  'insufficient_day_coverage',
+  'finalize_incomplete_session_contract',
+  'finalize_empty_itinerary',
+  'finalize_incomplete_itinerary_days',
+  'finalize_activity_only_until_midday',
+  'run_processor_unexpected_error',
+]);
+
+const MODAL_BLOCKING_ERROR_CODES = new Set(NON_RETRYABLE_ERROR_CODES);
 
 interface PreflightResponse {
   ok: boolean;
@@ -93,6 +164,7 @@ interface CreateRunResponse {
   tripId?: string | null;
   status: string;
   streamUrl: string;
+  processUrl?: string | null;
 }
 
 interface CreateRunErrorResponse {
@@ -107,6 +179,10 @@ interface AgentRunEvent {
   event:
     | "run.started"
     | "run.progress"
+    | "run.day.started"
+    | "run.day.completed"
+    | "run.retryable_failed"
+    | "run.core_ready"
     | "assistant.delta"
     | "tool.call.started"
     | "tool.call.finished"
@@ -143,6 +219,57 @@ interface AgentRunEvent {
   nextPassId?: string | null;
   nextSubstage?: string | null;
   pauseReason?: string | null;
+  nextDayIndex?: number | null;
+  dayIndex?: number | null;
+  dayAttempt?: number | null;
+  outlineAttempt?: number | null;
+  chunkAttempt?: number | null;
+  completedDayCount?: number | null;
+  strategy?: string | null;
+  substage?: string | null;
+  attempt?: number | null;
+  plannerStrategy?: string | null;
+}
+
+interface ResumeRunErrorResponse {
+  error?: string;
+}
+
+interface PlanGenerationFailureState {
+  message: string;
+  ui: GenerationFailureUi;
+  kind: string;
+  canRetry: boolean;
+  resumeRunId: string | null;
+  originSurface: GenerationOriginSurface | null;
+}
+
+function resolvePauseAttempt(event: AgentRunEvent): number | null {
+  if (typeof event.chunkAttempt === "number") return event.chunkAttempt;
+  if (typeof event.outlineAttempt === "number") return event.outlineAttempt;
+  if (typeof event.dayAttempt === "number") return event.dayAttempt;
+  return null;
+}
+
+function buildPauseStatusMessage(
+  t: ReturnType<typeof useTranslations>,
+  event: AgentRunEvent,
+): string {
+  const attempt = resolvePauseAttempt(event);
+  if (typeof event.nextDayIndex === "number" && typeof attempt === "number" && attempt >= 3) {
+    return t("pause.dayRetrying", { day: event.nextDayIndex });
+  }
+
+  switch (event.pauseReason) {
+    case "recovery_required":
+      return t("pause.recovery_required");
+    case "runtime_budget_exhausted":
+      return t("pause.runtime_budget_exhausted");
+    case "verify_budget_exhausted":
+      return t("pause.verify_budget_exhausted");
+    default:
+      return t("pause.waiting");
+  }
 }
 
 export function usePlanGeneration(): UseComposeGenerationReturn {
@@ -157,6 +284,11 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
   const [isGenerating, setIsGenerating] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [failureUi, setFailureUi] = useState<GenerationFailureUi | null>(null);
+  const [failureKind, setFailureKind] = useState<string | null>(null);
+  const [canRetry, setCanRetry] = useState(false);
+  const [resumeRunId, setResumeRunId] = useState<string | null>(null);
+  const [originSurface, setOriginSurface] = useState<GenerationOriginSurface | null>(null);
   const [limitExceeded, setLimitExceeded] = useState<ComposeLimitExceeded | null>(null);
   const [warnings, setWarnings] = useState<string[]>([]);
   const [partialDays, setPartialDays] = useState<Map<number, PartialDayData>>(new Map());
@@ -246,10 +378,20 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
       overlay.syncProgress({
         currentStep: stepId,
         steps: nextSteps,
+        pauseStatusText: "",
       });
     },
     [overlay],
   );
+
+  const clearFailure = useCallback(() => {
+    setErrorMessage("");
+    setFailureUi(null);
+    setFailureKind(null);
+    setCanRetry(false);
+    setResumeRunId(null);
+    setOriginSurface(null);
+  }, []);
 
   const reset = useCallback(() => {
     abortRef.current?.abort();
@@ -258,7 +400,7 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
     setCurrentStep(null);
     setIsGenerating(false);
     setIsCompleted(false);
-    setErrorMessage("");
+    clearFailure();
     setLimitExceeded(null);
     setWarnings([]);
     stepsRef.current = [];
@@ -267,7 +409,7 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
     setPreviewDestination("");
     setPreviewDescription("");
     overlay.hideOverlay();
-  }, [overlay]);
+  }, [clearFailure, overlay]);
 
   const clearLimitExceeded = useCallback(() => {
     setLimitExceeded(null);
@@ -303,7 +445,23 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
       const message = rawMessage?.trim();
       const normalizedErrorCode = errorCode?.trim();
 
-      if (normalizedErrorCode) {
+      if (message?.startsWith("errors.")) {
+        return message;
+      }
+
+      const detailedErrorKey = normalizedErrorCode && failedPassId
+        ? DETAILED_ERROR_MAP[`${failedPassId}:${normalizedErrorCode}`]
+        : undefined;
+
+      if (detailedErrorKey) {
+        try {
+          return t(detailedErrorKey as Parameters<typeof t>[0]);
+        } catch {
+          // Fall through to generic code-based lookup.
+        }
+      }
+
+      if (normalizedErrorCode && KNOWN_GENERATION_ERROR_CODES.has(normalizedErrorCode)) {
         try {
           return t(`errors.generationCodes.${normalizedErrorCode}` as Parameters<typeof t>[0]);
         } catch {
@@ -327,6 +485,14 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
         return t("errors.generationCodes.draft_generation_timeout");
       }
 
+      if (/draft_generation_missing_meal/i.test(message)) {
+        return t("errors.generationCodes.draft_generate:draft_generation_missing_meal");
+      }
+
+      if (/draft_generation_insufficient_stops/i.test(message)) {
+        return t("errors.generationCodes.draft_generate:draft_generation_insufficient_stops");
+      }
+
       if (/draft_generation_invalid_output/i.test(message)) {
         return t("errors.generationCodes.draft_generation_invalid_output");
       }
@@ -339,10 +505,76 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
         return t("errors.generationCodes.narrative_generation_timeout");
       }
 
+      if (/Cannot build itinerary from incomplete run state/i.test(message)) {
+        return t("errors.generationCodes.finalize_incomplete_session_contract");
+      }
+
+      if (normalizedErrorCode) {
+        return message && message !== normalizedErrorCode
+          ? message
+          : resolveStepErrorMessage(failedPassId, t("errors.generic"));
+      }
+
       return message;
     },
     [resolveStepErrorMessage, t],
   );
+
+  const classifyFailurePresentation = useCallback(
+    ({
+      errorCode,
+      retryable,
+      rawMessage,
+      rootCause,
+      failedPassId,
+      runId,
+      fallbackOriginSurface,
+    }: {
+      errorCode?: string;
+      retryable?: boolean;
+      rawMessage?: string;
+      rootCause?: string;
+      failedPassId?: string;
+      runId?: string;
+      fallbackOriginSurface?: GenerationOriginSurface;
+    }): PlanGenerationFailureState => {
+      const message = mapUserFacingError({
+        rawMessage,
+        errorCode,
+        rootCause,
+        failedPassId,
+      });
+      const normalizedErrorCode = errorCode?.trim() ?? "";
+      const normalizedMessage = rawMessage?.trim() ?? "";
+      const explicitRetryable = typeof retryable === "boolean" ? retryable : undefined;
+      const retryableByCode = !NON_RETRYABLE_ERROR_CODES.has(normalizedErrorCode);
+      const canResume = explicitRetryable ?? retryableByCode;
+      const shouldUseModal = !canResume
+        || MODAL_BLOCKING_ERROR_CODES.has(normalizedErrorCode)
+        || /strategy_exhausted|finalize_/i.test(normalizedMessage);
+
+      return {
+        message,
+        ui: shouldUseModal ? "modal" : "banner",
+        kind: normalizedErrorCode || failedPassId || "unknown_failure",
+        canRetry: canResume,
+        resumeRunId: canResume ? (runId ?? null) : null,
+        originSurface: fallbackOriginSurface ?? null,
+      };
+    },
+    [mapUserFacingError],
+  );
+
+  const applyFailureState = useCallback((failure: PlanGenerationFailureState) => {
+    setErrorMessage(failure.message);
+    setFailureUi(failure.ui);
+    setFailureKind(failure.kind);
+    setCanRetry(failure.canRetry);
+    setResumeRunId(failure.resumeRunId);
+    setOriginSurface(failure.originSurface);
+    setIsGenerating(false);
+    overlay.hideOverlay();
+  }, [overlay]);
 
   const mapUserFacingWarnings = useCallback((passId: string, passWarnings: string[]) => {
     if (passId !== "selective_verify") {
@@ -353,12 +585,32 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
       if (warning === "warning_code:places_quota_exceeded") {
         return [t("warnings.placeVerificationLimited")];
       }
+      if (warning === "high_unverified_ratio") {
+        return [t("errors.generationCodes.high_unverified_ratio")];
+      }
       return [];
     });
   }, [t]);
 
+  const appendWarnings = useCallback((nextWarnings: string[]) => {
+    if (nextWarnings.length === 0) {
+      return;
+    }
+
+    setWarnings((prev) => {
+      const merged = new Set(prev);
+      for (const warning of nextWarnings) {
+        merged.add(warning);
+      }
+      return [...merged];
+    });
+  }, []);
+
   const generate = useCallback(
-    async (input: UserInput, options?: { isRetry?: boolean }) => {
+    async (
+      input: UserInput,
+      options?: { isRetry?: boolean; originSurface?: GenerationOriginSurface },
+    ) => {
       abortRef.current?.abort();
       const controller = new AbortController();
       abortRef.current = controller;
@@ -369,7 +621,8 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
       setSteps(initialSteps);
       setIsGenerating(true);
       setIsCompleted(false);
-      setErrorMessage("");
+      clearFailure();
+      setOriginSurface(options?.originSurface ?? null);
       setLimitExceeded(null);
       setWarnings([]);
       setPartialDays(new Map());
@@ -383,6 +636,75 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
       });
 
       try {
+        const createOrResumeRun = async (retry = false): Promise<CreateRunResponse> => {
+          const runRes = await fetch("/api/agent/runs", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              mode: "create",
+              executionMode: "draft_with_selective_verify",
+              constraints: {
+                runtimeProfile: "netlify_free_30s",
+                costProfile: "safe",
+              },
+              input,
+              idempotencyKey: globalThis.crypto?.randomUUID?.() ?? `${Date.now()}`,
+              options: {
+                ...options,
+                isRetry: retry || options?.isRetry,
+              },
+            }),
+            signal,
+          });
+
+          if (!runRes.ok) {
+            const payload = await runRes.json().catch(() => null) as CreateRunErrorResponse | null;
+            if (payload?.limitExceeded) {
+              setLimitExceeded({
+                userType: (payload.userType ?? "free") as UserType,
+                resetAt: payload.resetAt ? new Date(payload.resetAt) : null,
+                remaining: payload.remaining,
+              });
+              setIsGenerating(false);
+              overlay.hideOverlay();
+              throw new Error(payload?.error ?? "limit_exceeded");
+            }
+            throw new Error(payload?.error ?? `Run creation failed: ${runRes.status}`);
+          }
+
+          return runRes.json() as Promise<CreateRunResponse>;
+        };
+
+        const resumeSameRun = async (runId: string): Promise<CreateRunResponse> => {
+          const resumeRes = await fetch(`/api/agent/runs/${runId}/resume`, {
+            method: "POST",
+            signal,
+          });
+
+          if (!resumeRes.ok) {
+            const payload = await resumeRes.json().catch(() => null) as ResumeRunErrorResponse | null;
+            throw new Error(payload?.error ?? `Run resume failed: ${resumeRes.status}`);
+          }
+
+          return resumeRes.json() as Promise<CreateRunResponse>;
+        };
+
+        const processRun = async (run: CreateRunResponse): Promise<void> => {
+          if (!run.processUrl) {
+            return;
+          }
+
+          const processRes = await fetch(run.processUrl, {
+            method: "POST",
+            signal,
+          });
+
+          if (!processRes.ok) {
+            const payload = await processRes.json().catch(() => null) as { error?: string } | null;
+            throw new Error(payload?.error ?? `Process failed: ${processRes.status}`);
+          }
+        };
+
         advanceStep("usage_check");
 
         const preflightRes = await fetch("/api/itinerary/plan/preflight", {
@@ -424,46 +746,24 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
 
         advanceStep("normalize");
 
-        const runRes = await fetch("/api/agent/runs", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            mode: "create",
-            executionMode: "draft_with_selective_verify",
-            constraints: {
-              runtimeProfile: "netlify_free_30s",
-              costProfile: "safe",
-            },
-            input,
-            idempotencyKey: globalThis.crypto?.randomUUID?.() ?? `${Date.now()}`,
-            options,
-          }),
-          signal,
-        });
-
-        if (!runRes.ok) {
-          const payload = await runRes.json().catch(() => null) as CreateRunErrorResponse | null;
-          if (payload?.limitExceeded) {
-            setLimitExceeded({
-              userType: (payload.userType ?? "free") as UserType,
-              resetAt: payload.resetAt ? new Date(payload.resetAt) : null,
-              remaining: payload.remaining,
-            });
-            setIsGenerating(false);
-            overlay.hideOverlay();
-            return;
-          }
-          throw new Error(payload?.error ?? `Run creation failed: ${runRes.status}`);
-        }
-
-        const run = await runRes.json() as CreateRunResponse;
-        let streamError: string | null = null;
+        let run = await createOrResumeRun(Boolean(options?.isRetry));
+        let streamFailure: {
+          rawMessage?: string;
+          errorCode?: string;
+          rootCause?: string;
+          failedPassId?: string;
+          retryable?: boolean;
+          runId: string;
+        } | null = null;
         let finishedTripId: string | null = run.tripId ?? null;
         let finishedTripVersion: number | null = null;
         let lastSeq: number | null = null;
         let finished = false;
+        let autoResumeAttempts = 0;
 
         while (!signal.aborted && !finished) {
+          await processRun(run);
+
           const streamHeaders = new Headers();
           if (lastSeq !== null) {
             streamHeaders.set("last-event-id", String(lastSeq));
@@ -481,6 +781,7 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
           }
 
           let paused = false;
+          let resumeRequiresRunCreate = false;
 
           await readSSEStream<AgentRunEvent>(streamRes, (event) => {
             lastSeq = typeof event.seq === "number" ? event.seq : lastSeq;
@@ -507,9 +808,7 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
                   && USER_FACING_WARNING_PASSES.has(event.passId)
                 ) {
                   const nextWarnings = mapUserFacingWarnings(event.passId, event.warnings);
-                  if (nextWarnings.length > 0) {
-                    setWarnings((prev) => [...prev, ...nextWarnings]);
-                  }
+                  appendWarnings(nextWarnings);
                 }
                 break;
               }
@@ -528,6 +827,7 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
                   totalDays: typeof event.totalDays === "number" ? event.totalDays : undefined,
                   previewDestination: event.destination,
                   previewDescription: event.description,
+                  pauseStatusText: "",
                 });
                 break;
 
@@ -548,9 +848,7 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
               case "tool.call.failed":
                 if (Array.isArray(event.warnings) && event.warnings.length > 0) {
                   const nextWarnings = mapUserFacingWarnings("selective_verify", event.warnings);
-                  if (nextWarnings.length > 0) {
-                    setWarnings((prev) => [...prev, ...nextWarnings]);
-                  }
+                  appendWarnings(nextWarnings);
                 }
                 break;
 
@@ -559,7 +857,42 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
                 finishedTripVersion = typeof event.tripVersion === "number" ? event.tripVersion : finishedTripVersion;
                 break;
 
+              case "run.core_ready":
+                finishedTripId = event.tripId ?? finishedTripId;
+                finishedTripVersion = typeof event.tripVersion === "number" ? event.tripVersion : finishedTripVersion;
+                break;
+
+              case "run.retryable_failed":
+                overlay.syncProgress({
+                  pauseStatusText: buildPauseStatusMessage(t, {
+                    event: "run.paused",
+                    runId: event.runId,
+                    seq: event.seq,
+                    timestamp: event.timestamp,
+                    pauseReason: "recovery_required",
+                    nextDayIndex: event.nextDayIndex,
+                    dayAttempt: event.dayAttempt,
+                  }),
+                });
+                break;
+
+              case "run.day.started":
+                if (typeof event.dayIndex === "number") {
+                  setTotalDays((prev) => Math.max(prev, event.dayIndex));
+                }
+                break;
+
+              case "run.day.completed":
+                if (typeof event.completedDayCount === "number") {
+                  setTotalDays((prev) => Math.max(prev, event.completedDayCount));
+                }
+                break;
+
               case "run.paused":
+                overlay.syncProgress({
+                  pauseStatusText: buildPauseStatusMessage(t, event),
+                });
+                resumeRequiresRunCreate = event.state === "failed_retryable" || event.retryable === true;
                 paused = true;
                 return "stop";
 
@@ -570,12 +903,14 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
                 return "stop";
 
               case "run.failed":
-                streamError = mapUserFacingError({
+                streamFailure = {
                   rawMessage: event.error,
                   errorCode: event.errorCode,
                   rootCause: event.rootCause,
                   failedPassId: event.passId,
-                });
+                  retryable: event.retryable,
+                  runId: event.runId,
+                };
                 return "stop";
 
               default:
@@ -583,8 +918,39 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
             }
           }, { signal });
 
-          if (streamError) {
-            throw new Error(streamError);
+          if (streamFailure) {
+            if (streamFailure.retryable && autoResumeAttempts < AUTO_RETRYABLE_RESUME_LIMIT) {
+              autoResumeAttempts += 1;
+              overlay.syncProgress({
+                pauseStatusText: buildPauseStatusMessage(t, {
+                  event: "run.paused",
+                  runId: streamFailure.runId,
+                  seq: lastSeq ?? 0,
+                  timestamp: new Date().toISOString(),
+                  pauseReason: "recovery_required",
+                }),
+              });
+              await waitForResumeBackoff(signal);
+              const previousRunId = run.runId;
+              try {
+                run = await resumeSameRun(run.runId);
+              } catch {
+                run = await createOrResumeRun(true);
+              }
+              if (run.runId !== previousRunId) {
+                lastSeq = null;
+                finishedTripId = run.tripId ?? null;
+                finishedTripVersion = null;
+              }
+              streamFailure = null;
+              continue;
+            }
+
+            applyFailureState(classifyFailurePresentation({
+              ...streamFailure,
+              fallbackOriginSurface: options?.originSurface ?? null,
+            }));
+            return;
           }
 
           if (finished) {
@@ -593,6 +959,19 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
 
           if (paused) {
             await waitForResumeBackoff(signal);
+            if (resumeRequiresRunCreate) {
+              const previousRunId = run.runId;
+              try {
+                run = await resumeSameRun(run.runId);
+              } catch {
+                run = await createOrResumeRun(true);
+              }
+              if (run.runId !== previousRunId) {
+                lastSeq = null;
+                finishedTripId = run.tripId ?? null;
+                finishedTripVersion = null;
+              }
+            }
             continue;
           }
 
@@ -616,6 +995,7 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
         overlay.syncProgress({
           currentStep: null,
           steps: completedSteps,
+          pauseStatusText: "",
         });
 
         const { targetHref, onNavigated } = await resolveGeneratedItineraryTarget(
@@ -632,17 +1012,23 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
         if (signal.aborted) return;
 
         const rawMessage = err instanceof Error ? err.message : "";
-        const message = mapUserFacingError({ rawMessage });
-        setErrorMessage(message);
-        setIsGenerating(false);
-        overlay.hideOverlay();
+        if (rawMessage === "limit_exceeded") {
+          return;
+        }
+        applyFailureState(classifyFailurePresentation({
+          rawMessage,
+          fallbackOriginSurface: options?.originSurface ?? null,
+        }));
       }
     },
     [
       advanceStep,
       initSteps,
       mapUserFacingWarnings,
-      mapUserFacingError,
+      clearFailure,
+      classifyFailurePresentation,
+      applyFailureState,
+      appendWarnings,
       overlay,
       resolveGeneratedItineraryTarget,
       router,
@@ -658,6 +1044,11 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
     isGenerating,
     isCompleted,
     errorMessage,
+    failureUi,
+    failureKind,
+    canRetry,
+    resumeRunId,
+    originSurface,
     limitExceeded,
     warnings,
     partialDays,
@@ -666,6 +1057,7 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
     previewDescription,
     generate,
     reset,
+    clearFailure,
     clearLimitExceeded,
   };
 }

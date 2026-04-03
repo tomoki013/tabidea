@@ -7,6 +7,15 @@ import type { DraftPlan, CategoryScore, Violation } from '@/types/plan-generatio
 import type { NormalizedRequest } from '@/types/itinerary-pipeline';
 import { RECOMMENDED_STOPS_PER_DAY } from '../constants';
 
+function resolveHardMinimumStopCount(normalized: NormalizedRequest, day: number): number {
+  const totalDays = normalized.durationDays;
+  const range = RECOMMENDED_STOPS_PER_DAY[normalized.pace];
+  if (totalDays <= 1) return Math.max(3, range.min);
+  if (day === 1) return 3;
+  if (day === totalDays) return 3;
+  return Math.max(5, range.min);
+}
+
 export function scoreDayFlowQuality(
   draft: DraftPlan,
   normalized: NormalizedRequest,
@@ -32,8 +41,9 @@ export function scoreDayFlowQuality(
     }
 
     // ---- ストップ数 vs ペース ----
-    const stopCount = day.stops.length;
+    const stopCount = day.stops.filter((stop) => stop.role !== 'accommodation').length;
     const range = RECOMMENDED_STOPS_PER_DAY[pace];
+    const hardMinimum = resolveHardMinimumStopCount(normalized, day.day);
     if (stopCount > range.max) {
       score -= 5;
       violations.push({
@@ -42,10 +52,19 @@ export function scoreDayFlowQuality(
         scope: { type: 'day', day: day.day },
         message: `Day ${day.day}: ストップ数 ${stopCount} が pace=${pace} の推奨上限 ${range.max} を超過`,
       });
+    } else if (stopCount < hardMinimum) {
+      score -= 12;
+      violations.push({
+        severity: 'error',
+        category: 'day_flow_quality',
+        scope: { type: 'day', day: day.day },
+        message: `Day ${day.day}: ストップ数 ${stopCount} が最低必要数 ${hardMinimum} 未満`,
+        suggestedFix: '同じエリアで実在する追加スポットを入れて日程を充実させてください',
+      });
     } else if (stopCount < range.min) {
       score -= 3;
       violations.push({
-        severity: 'info',
+        severity: 'warning',
         category: 'day_flow_quality',
         scope: { type: 'day', day: day.day },
         message: `Day ${day.day}: ストップ数 ${stopCount} が pace=${pace} の推奨下限 ${range.min} 未満`,

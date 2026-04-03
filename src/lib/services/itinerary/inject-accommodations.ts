@@ -21,6 +21,8 @@ export function injectAccommodations(
   days: DayPlan[],
   context: AccommodationInjectionContext
 ): DayPlan[] {
+  const minimumAccommodationTime = '19:00';
+
   return days.map((day, index) => {
     const isLastDay = index === days.length - 1;
 
@@ -49,7 +51,7 @@ export function injectAccommodations(
 
     // 最後のアクティビティの時間を推定して宿泊時間を決定
     const lastTime = getLastActivityTime(day);
-    const accommodationTime = lastTime || '21:00';
+    const accommodationTime = clampToMinimumTime(lastTime || '21:00', minimumAccommodationTime);
 
     const accommodationActivity: Activity = {
       time: accommodationTime,
@@ -68,6 +70,11 @@ export function injectAccommodations(
       timelineItems: [...(day.timelineItems ?? []), accommodationItem],
     };
   });
+}
+
+function clampToMinimumTime(timeStr: string, minimumTime: string): string {
+  const normalizedTime = /^\d{1,2}:\d{2}$/.test(timeStr) ? timeStr : minimumTime;
+  return normalizedTime < minimumTime ? minimumTime : normalizedTime;
 }
 
 /**

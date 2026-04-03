@@ -9,6 +9,7 @@ import type {
 vi.mock('../renderers/narrative-renderer-v4', () => ({
   runNarrativeRendererV4: vi.fn(),
   streamNarrativeRendererV4: vi.fn(),
+  resolveLanguageModel: vi.fn().mockResolvedValue({}),
 }));
 
 // Mock RAG retriever — shared mock search function
@@ -195,6 +196,25 @@ describe('narrativePolishPass', () => {
     expect(result.warnings[0]).toBe('narrative_generation_timeout');
   });
 
+  it('returns partial when runtime budget is too low', async () => {
+    const deadline = Date.now() + 10_000;
+    const ctx = {
+      ...createMockCtx(),
+      budget: {
+        maxExecutionMs: 10_000,
+        deadlineAt: deadline,
+        remainingMs: () => deadline - Date.now(),
+      },
+    };
+
+    const result = await narrativePolishPass(ctx);
+
+    expect(mockRunNarrativeRenderer).not.toHaveBeenCalled();
+    expect(result.outcome).toBe('partial');
+    expect(result.warnings[0]).toBe('narrative_generation_timeout');
+    expect(result.metadata?.rootCause).toBe('insufficient_runtime_budget');
+  });
+
   it('passes correct model settings to renderer', async () => {
     mockRunNarrativeRenderer.mockResolvedValue({
       description: '',
@@ -298,12 +318,12 @@ describe('narrativePolishPassStreaming', () => {
     expect(result.warnings[0]).toBe('narrative_generation_timeout');
   });
 
-  it('fails terminal without calling renderer when runtime budget is too low', async () => {
-    const deadline = Date.now() + 1_000;
+  it('returns partial without calling renderer when runtime budget is too low', async () => {
+    const deadline = Date.now() + 10_000;
     const ctx = {
       ...createMockCtx(),
       budget: {
-        maxExecutionMs: 1_000,
+        maxExecutionMs: 10_000,
         deadlineAt: deadline,
         remainingMs: () => deadline - Date.now(),
       },
@@ -313,7 +333,8 @@ describe('narrativePolishPassStreaming', () => {
     const result = await finalResult;
 
     expect(mockStreamRenderer).not.toHaveBeenCalled();
-    expect(result.outcome).toBe('failed_terminal');
+    expect(result.outcome).toBe('partial');
     expect(result.warnings[0]).toBe('narrative_generation_timeout');
+    expect(result.metadata?.rootCause).toBe('insufficient_runtime_budget');
   });
 });

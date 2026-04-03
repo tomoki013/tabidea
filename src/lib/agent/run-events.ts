@@ -1,26 +1,12 @@
 import { createServiceRoleClient } from '@/lib/supabase/admin';
-
-export type AgentRunEventName =
-  | 'run.started'
-  | 'run.progress'
-  | 'run.paused'
-  | 'assistant.delta'
-  | 'tool.call.started'
-  | 'tool.call.finished'
-  | 'tool.call.failed'
-  | 'plan.draft.created'
-  | 'plan.block.verified'
-  | 'plan.block.flagged'
-  | 'itinerary.updated'
-  | 'run.finished'
-  | 'run.failed';
+import type { AgentRunEventName, AgentRunEventPayload } from '@/types/agent-runtime';
 
 export interface StoredRunEvent {
   eventId: number;
   runId: string;
   seq: number;
   eventName: AgentRunEventName;
-  payload: Record<string, unknown>;
+  payload: AgentRunEventPayload;
   createdAt: string;
 }
 
@@ -43,7 +29,7 @@ export function createStoredRunEvent(
   runId: string,
   seq: number,
   eventName: AgentRunEventName,
-  payload: Record<string, unknown> = {},
+  payload: AgentRunEventPayload = {},
   createdAt: string = new Date().toISOString(),
 ): StoredRunEvent {
   return {
@@ -61,31 +47,52 @@ export class RunEventService {
     runId: string,
     seq: number,
     eventName: AgentRunEventName,
-    payload: Record<string, unknown> = {},
+    payload: AgentRunEventPayload = {},
   ): Promise<StoredRunEvent> {
     const client = getClient();
     const { data, error } = await client
       .from('run_events')
-      .insert({
-        run_id: runId,
-        seq,
-        event_name: eventName,
-        payload_json: payload,
-      })
+      .upsert(
+        {
+          run_id: runId,
+          seq,
+          event_name: eventName,
+          payload_json: payload,
+        },
+        {
+          onConflict: 'run_id,seq',
+          ignoreDuplicates: true,
+        },
+      )
       .select('event_id, run_id, seq, event_name, payload_json, created_at')
-      .single();
+      .maybeSingle();
 
-    if (error || !data) {
+    if (error) {
       throw new Error(`Failed to append run event: ${error?.message ?? 'no data'}`);
     }
 
-    return mapRowToStoredEvent(data as Record<string, unknown>);
+    if (data) {
+      return mapRowToStoredEvent(data as Record<string, unknown>);
+    }
+
+    const { data: existing, error: existingError } = await client
+      .from('run_events')
+      .select('event_id, run_id, seq, event_name, payload_json, created_at')
+      .eq('run_id', runId)
+      .eq('seq', seq)
+      .maybeSingle();
+
+    if (existingError || !existing) {
+      throw new Error(`Failed to append run event: ${existingError?.message ?? 'no data'}`);
+    }
+
+    return mapRowToStoredEvent(existing as Record<string, unknown>);
   }
 
   async appendEvent(
     runId: string,
     eventName: AgentRunEventName,
-    payload: Record<string, unknown> = {},
+    payload: AgentRunEventPayload = {},
   ): Promise<StoredRunEvent> {
     const client = getClient();
     const { data: latest } = await client

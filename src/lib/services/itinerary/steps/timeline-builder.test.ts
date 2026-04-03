@@ -330,6 +330,36 @@ describe('buildTimeline', () => {
     expect(remainingNames).toContain('Spot0');
   });
 
+  it('preserves the first afternoon activity when trimming overflow', () => {
+    const nodes: OptimizedNode[] = [
+      makeNode(makeStop('Morning Spot', 120, 'recommended', 5), 0),
+      makeNode(makeStop('Lunch', 90, 'meal', 4), 1),
+      makeNode({
+        candidate: makeCandidate({
+          name: 'Afternoon Museum',
+          stayDurationMinutes: 180,
+          role: 'recommended',
+          priority: 3,
+          timeSlotHint: 'afternoon',
+        }),
+        placeDetails: undefined,
+        feasibilityScore: 70,
+        warnings: [],
+      }, 2),
+      makeNode(makeStop('Extra Filler', 180, 'filler', 1), 3),
+    ];
+    const legs: RouteLeg[] = [
+      makeLeg({ fromIndex: 0, toIndex: 1, durationMinutes: 45 }),
+      makeLeg({ fromIndex: 1, toIndex: 2, durationMinutes: 45 }),
+      makeLeg({ fromIndex: 2, toIndex: 3, durationMinutes: 45 }),
+    ];
+
+    const [timeline] = buildTimeline([makeOptimizedDay({ nodes, legs })], makeRequest());
+    const remainingNames = timeline.nodes.map((node) => node.stop.candidate.name);
+
+    expect(remainingNames).toContain('Afternoon Museum');
+  });
+
   it('empty day: returns empty timeline', () => {
     const day = makeOptimizedDay({ nodes: [], legs: [] });
     const request = makeRequest();

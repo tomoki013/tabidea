@@ -46,6 +46,13 @@
           "semantic_planPreparing": "まず旅の大まかな流れを決めています...",
           "semantic_planDay": "{day}日目のスポットを作成中..."
         },
+        "pause": {
+          "recovery_required": "候補の組み立てを調整しています",
+          "runtime_budget_exhausted": "次の工程に進むため準備しています",
+          "verify_budget_exhausted": "スポット確認の続きを準備しています",
+          "dayRetrying": "{day}日目の候補を再調整しています",
+          "waiting": "生成を再開する準備をしています"
+        },
         "errors": {
           "requestFailed": "HTTP {status}: リクエストに失敗しました",
           "generic": "エラーが発生しました",
@@ -57,10 +64,38 @@
           "generationCodes": {
             "draft_generation_timeout": "候補スポットの選定に時間がかかりすぎました。条件を少し絞ってもう一度お試しください。",
             "draft_generation_invalid_output": "候補スポットの骨組みを作る途中で不完全な結果が返されたため、旅程を完成できませんでした。もう一度お試しください。",
+            "draft_generation_missing_meal": "食事枠が不足していたため、この日の旅程を完成できませんでした。条件を少し変えて再試行してください。",
+            "draft_generation_insufficient_stops": "立ち寄り数が不足していたため、この日の旅程を完成できませんでした。条件を少し変えて再試行してください。",
             "draft_generation_provider_error": "AIサービスとの通信で問題が発生しました。しばらくしてからもう一度お試しください。",
             "narrative_generation_timeout": "旅程の仕上げに時間がかかりすぎました。もう一度お試しください。",
             "narrative_generation_invalid_output": "旅程の仕上げ中に不完全な結果が返されたため、説明文を完成できませんでした。もう一度お試しください。",
-            "narrative_generation_provider_error": "旅程の仕上げ中にAIサービスとの通信で問題が発生しました。しばらくしてからもう一度お試しください。"
+            "narrative_generation_provider_error": "旅程の仕上げ中にAIサービスとの通信で問題が発生しました。しばらくしてからもう一度お試しください。",
+            "finalize_incomplete_session_contract": "旅程の最終整形中に問題が発生しました。もう一度お試しください。",
+            "high_unverified_ratio": "一部のスポット情報が確認できませんでした。現地での事前確認をおすすめします。",
+            "draft_generate:draft_generation_timeout": "候補スポットの選定に時間がかかりすぎました。条件を少し絞ってもう一度お試しください。",
+            "draft_generate:draft_generation_invalid_output": "候補スポットの骨組みを作る途中で不完全な結果が返されたため、旅程を完成できませんでした。もう一度お試しください。",
+            "draft_generate:draft_generation_provider_error": "AIサービスとの通信で問題が発生しました。しばらくしてからもう一度お試しください。",
+            "draft_generate:draft_generation_strategy_exhausted": "同じ候補生成エラーが繰り返されたため、この日の生成を安全に停止しました。条件を少し変えて再試行してください。",
+            "draft_generate:draft_generation_contract_mismatch": "候補生成の出力形式が期待した旅程形式とずれていたため、この日の生成をやり直しました。もう一度お試しください。",
+            "draft_generate:draft_generation_outline_contract_mismatch": "候補スロットの形式が崩れていたため、この日の骨組み生成を続行できませんでした。もう一度お試しください。",
+            "draft_generate:draft_generation_constrained_contract_mismatch": "再調整用の生成形式が崩れていたため、この日の生成を安全に停止しました。条件を少し変えて再試行してください。",
+            "draft_generate:draft_generation_missing_meal": "食事枠が不足していたため、この日の旅程を完成できませんでした。条件を少し変えて再試行してください。",
+            "draft_generate:draft_generation_insufficient_stops": "立ち寄り数が不足していたため、この日の旅程を完成できませんでした。条件を少し変えて再試行してください。",
+            "draft_generate:missing_afternoon_activity": "午後以降の観光や立ち寄りが不足しています。昼以降も回れる旅程になるよう再調整してください。",
+            "draft_generate:activity_only_until_midday": "旅程が昼までで終わっています。午後以降の実活動を含む旅程に再調整してください。",
+            "draft_generate:insufficient_day_coverage": "1日の流れが不足しています。午前だけで終わらないよう旅程を組み直してください。",
+            "narrative_polish:narrative_generation_timeout": "旅程の説明文生成に必要な時間を確保できませんでした。少し待ってから再試行してください。",
+            "narrative_polish:narrative_generation_invalid_output": "旅程の仕上げ中に不完全な結果が返されたため、説明文を完成できませんでした。もう一度お試しください。",
+            "narrative_polish:narrative_generation_provider_error": "旅程の仕上げ中にAIサービスとの通信で問題が発生しました。しばらくしてからもう一度お試しください。",
+            "finalize:finalize_incomplete_session_contract": "旅程の最終整形中に問題が発生しました。もう一度お試しください。",
+            "finalize:finalize_empty_itinerary": "旅程データが空のまま保存されそうになったため停止しました。もう一度お試しください。",
+            "finalize:finalize_incomplete_itinerary_days": "旅程の日数が不足していたため保存を中止しました。もう一度お試しください。",
+            "finalize:finalize_activity_only_until_midday": "旅程が昼までで終わっていたため保存を中止しました。午後以降の立ち寄りを含む旅程に再調整してください。",
+            "draft_generate:draft_generate_incomplete_day_set": "旅程の下書きが全日分そろわなかったため、生成をやり直しています。もう一度お試しください。",
+            "draft_format:draft_format_incomplete_day_set": "旅程データの整形中に日数の欠落が見つかりました。もう一度お試しください。",
+            "timeline_construct:timeline_construct_incomplete_day_set": "時系列の組み立て結果に不足日があったため、旅程を完成できませんでした。もう一度お試しください。",
+            "selective_verify:high_unverified_ratio": "一部のスポット情報が確認できませんでした。現地での事前確認をおすすめします。",
+            "run_processor_unexpected_error": "旅程生成の内部処理で問題が発生しました。条件を少し変えるか、時間をおいてもう一度お試しください。"
           },
           "stepFailed": {
             "semantic_plan": "AIによるスポット選定に失敗しました。もう一度お試しください。",
@@ -72,6 +107,21 @@
         "warnings": {
           "title": "一部の確認をスキップして生成しました",
           "placeVerificationLimited": "Google Places API の利用上限に達したため、一部スポットの場所確認をスキップしました。旅程自体は生成されていますが、地図や営業時間は後で再確認してください。"
+        },
+        "failureSurface": {
+          "title": {
+            "banner": "旅程生成を再開できます",
+            "modal": "旅程生成を完了できませんでした"
+          },
+          "description": {
+            "banner": "入力内容は保持したままです。このまま続きから再開するか、条件を見直してください。",
+            "modal": "同じ条件のまま続けると再発する可能性があります。入力に戻って条件を見直すこともできます。"
+          },
+          "actions": {
+            "resume": "続きから再開",
+            "adjust": "条件を見直す",
+            "backToInput": "入力に戻る"
+          }
         }
       },
       "server": {

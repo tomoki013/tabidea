@@ -115,6 +115,19 @@ describe('injectAccommodations', () => {
     expect(accommodation.itemType === 'activity' && accommodation.data.time).toBe('20:00');
   });
 
+  it('should not inject accommodation before 19:00 even when the day ends early', () => {
+    const days = [makeDayPlan(1, '12:30'), makeDayPlan(2)];
+    const context: AccommodationInjectionContext = {
+      overnightLocations: ['ホテル東京'],
+      destination: '東京',
+    };
+
+    const result = injectAccommodations(days, context);
+
+    const accommodation = result[0].timelineItems![1];
+    expect(accommodation.itemType === 'activity' && accommodation.data.time).toBe('19:00');
+  });
+
   it('should cap check-in time at 23:00', () => {
     const days = [makeDayPlan(1, '22:00'), makeDayPlan(2)];
     const context: AccommodationInjectionContext = {

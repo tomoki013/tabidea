@@ -51,7 +51,6 @@
 | `POST /api/plan-generation/cleanup` | `src/app/api/plan-generation/cleanup/route.ts` | Cleanup expired canonical runs (CRON_SECRET auth) |
 | `POST /api/itinerary/compose` | `src/app/api/itinerary/compose/route.ts` | Deprecated legacy pipeline stub (`410 deprecated_pipeline`) |
 | `POST /api/itinerary/plan/*` | `src/app/api/itinerary/plan/*/route.ts` | Deprecated split compose pipeline stubs |
-| `POST /api/plan-generation/session/*` | `src/app/api/plan-generation/session/*/route.ts` | Deprecated pre-cutover v4 session stubs |
 
 ## 3. Server Actions
 

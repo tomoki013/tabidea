@@ -10,8 +10,19 @@ import type { PlacesApiErrorCode } from '@/types/places';
  */
 export type TransitType = 'flight' | 'bullet_train' | 'train' | 'bus' | 'ship' | 'car' | 'taxi' | 'walking' | 'other';
 
-export type ItineraryCompletionLevel = 'draft_only' | 'partial_verified' | 'fully_verified';
-export type ItineraryGenerationStatus = 'draft' | 'completed' | 'failed';
+export type ItineraryCompletionLevel =
+  | 'draft_only'
+  | 'core_validated'
+  | 'partial_verified'
+  | 'fully_verified'
+  | 'fully_enriched';
+export type ItineraryGenerationStatus =
+  | 'draft'
+  | 'queued'
+  | 'running'
+  | 'core_ready'
+  | 'completed'
+  | 'failed';
 export type ActivityVerificationStatus = 'unknown' | 'partial' | 'verified';
 export type ItineraryBlockType = 'move' | 'meal' | 'sightseeing' | 'rest' | 'hotel' | 'buffer';
 
@@ -24,6 +35,8 @@ export interface ItinerarySourceOfTruth {
 }
 
 export interface ItineraryFallbackCandidate {
+  kind?: 'place_swap' | 'time_shift' | 'day_swap' | 'search_needed' | 'weather_safe' | 'other';
+  label?: string;
   place: string;
   reason: string;
   placeId?: string;
@@ -50,6 +63,7 @@ export interface ItineraryBlock {
   type: ItineraryBlockType;
   place: ItineraryBlockPlace | null;
   reason: string;
+  title?: string;
   sourceOfTruth: ItinerarySourceOfTruth[];
   confidence: number;
   needsConfirmation: boolean;
@@ -58,6 +72,7 @@ export interface ItineraryBlock {
   editableFields: string[];
   riskFlags: string[];
   bookingStatus: ItineraryBookingStatus;
+  toolHints?: string[];
 }
 
 export interface ItineraryDestinationSummary {
@@ -233,6 +248,8 @@ export interface DayPlan {
   day: number;
   /** 日のタイトル */
   title: string;
+  /** その日の狙い・雰囲気 */
+  theme?: string;
   /** その日の主要な移動（到着や都市間移動） */
   transit?: TransitInfo;
   /** アクティビティ一覧 */
@@ -309,6 +326,7 @@ export interface Itinerary {
   destinationSummary?: ItineraryDestinationSummary;
   completionLevel?: ItineraryCompletionLevel;
   generationStatus?: ItineraryGenerationStatus;
+  narrativePending?: boolean;
   memoryApplied?: boolean;
   generatedConstraints?: ItineraryGeneratedConstraints;
   verificationSummary?: ItineraryVerificationSummary;

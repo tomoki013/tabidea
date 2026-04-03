@@ -48,9 +48,55 @@ export interface RunCheckpointContext {
   runtimeProfile?: string;
 }
 
+const PRODUCTION_ALLOWED_RUN_CHECKPOINTS = new Set<RunCheckpointName>([
+  'run_created',
+  'run_paused',
+  'pass_failed',
+  'run_failed',
+  'trip_persist_completed',
+  'run_finished',
+]);
+
+const PRODUCTION_ALLOWED_PREFLIGHT_CHECKPOINTS = new Set<PreflightCheckpointName>([
+  'preflight_completed',
+  'preflight_degraded',
+]);
+
+const PRODUCTION_ALLOWED_FIELDS = [
+  'passId',
+  'failureStage',
+  'errorCode',
+  'rootCause',
+  'durationMs',
+  'totalDurationMs',
+  'completedDayCount',
+  'completedStopCount',
+  'duplicateStopCount',
+  'underfilledDayCount',
+  'repairIterations',
+  'unverifiedRatio',
+  'completionLevel',
+  'tripVersion',
+  'retryable',
+  'resumeStrategy',
+  'resumeSourceRunId',
+] as const;
+
+function isProductionLogging(): boolean {
+  return process.env.NODE_ENV === 'production';
+}
+
 function compactRecord(record: Record<string, unknown>): Record<string, unknown> {
   return Object.fromEntries(
     Object.entries(record).filter(([, value]) => value !== undefined),
+  );
+}
+
+function pickProductionFields(input: Record<string, unknown>): Record<string, unknown> {
+  return compactRecord(
+    Object.fromEntries(
+      PRODUCTION_ALLOWED_FIELDS.map((field) => [field, input[field]]),
+    ),
   );
 }
 
@@ -87,6 +133,14 @@ export function logRunCheckpoint(input: RunCheckpointLogInput): void {
     pipelineContext,
   });
 
+  if (isProductionLogging() && !PRODUCTION_ALLOWED_RUN_CHECKPOINTS.has(checkpoint)) {
+    return;
+  }
+
+  const productionSafeRest = isProductionLogging()
+    ? pickProductionFields(rest)
+    : rest;
+
   const payload = compactRecord({
     kind: 'run_checkpoint',
     checkpoint,
@@ -96,7 +150,7 @@ export function logRunCheckpoint(input: RunCheckpointLogInput): void {
     state: context.state,
     executionMode: context.executionMode,
     runtimeProfile: context.runtimeProfile,
-    ...rest,
+    ...productionSafeRest,
   });
 
   console.log(JSON.stringify(payload));
@@ -105,11 +159,22 @@ export function logRunCheckpoint(input: RunCheckpointLogInput): void {
 export function logPreflightCheckpoint(input: PreflightCheckpointLogInput): void {
   const { checkpoint, ...rest } = input;
 
+  if (isProductionLogging() && !PRODUCTION_ALLOWED_PREFLIGHT_CHECKPOINTS.has(checkpoint)) {
+    return;
+  }
+
+  const productionSafeRest = isProductionLogging()
+    ? compactRecord({
+      degraded: rest.degraded,
+      errorCode: rest.errorCode,
+    })
+    : rest;
+
   const payload = compactRecord({
     kind: 'preflight_checkpoint',
     checkpoint,
     timestamp: new Date().toISOString(),
-    ...rest,
+    ...productionSafeRest,
   });
 
   console.log(JSON.stringify(payload));

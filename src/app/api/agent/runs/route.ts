@@ -1,7 +1,12 @@
 import { NextResponse } from 'next/server';
+import { createHash } from 'crypto';
 import type { UserInput } from '@/types/user-input';
+import type { PipelineContext, PlanGenerationSession } from '@/types/plan-generation';
 import { createServiceRoleClient } from '@/lib/supabase/admin';
-import { createRun, updateRun } from '@/lib/services/plan-generation/run-store';
+import { createRun, loadRun, updateRun } from '@/lib/services/plan-generation/run-store';
+import {
+  determineResumeState,
+} from '@/lib/services/plan-generation/state-machine';
 import { getUser } from '@/lib/supabase/server';
 import { getUserSettings } from '@/app/actions/user-settings';
 import { memoryService } from '@/lib/memory/service';
@@ -47,6 +52,68 @@ function getClient() {
   return createServiceRoleClient();
 }
 
+function stableSerialize(value: unknown): string {
+  if (value === null || typeof value !== 'object') {
+    return JSON.stringify(value);
+  }
+
+  if (Array.isArray(value)) {
+    return `[${value.map((item) => stableSerialize(item)).join(',')}]`;
+  }
+
+  const record = value as Record<string, unknown>;
+  const keys = Object.keys(record).sort();
+  return `{${keys.map((key) => `${JSON.stringify(key)}:${stableSerialize(record[key])}`).join(',')}}`;
+}
+
+function computeInputHash(input: UserInput): string {
+  return createHash('sha256').update(stableSerialize(input)).digest('hex');
+}
+
+async function findReusableRetryRun(
+  userId: string,
+  inputHash: string,
+  executionMode: NonNullable<CreateAgentRunRequestBody['executionMode']>,
+  mode: NonNullable<CreateAgentRunRequestBody['mode']>,
+): Promise<PlanGenerationSession | null> {
+  const { data, error } = await getClient()
+    .from('runs')
+    .select('id, state, pipeline_context')
+    .eq('user_id', userId)
+    .eq('input_hash', inputHash)
+    .order('updated_at', { ascending: false })
+    .limit(10);
+
+  if (error || !data) {
+    console.warn('[agent-runs] reusable retry lookup degraded:', error?.message);
+    return null;
+  }
+
+  const candidate = data.find((row) => {
+    const state = row.state as string | undefined;
+    const pipelineContext = (row.pipeline_context as Record<string, unknown> | null) ?? {};
+    return state !== 'completed'
+      && state !== 'failed_terminal'
+      && state !== 'cancelled'
+      && (pipelineContext.executionMode as string | undefined) === executionMode
+      && ((pipelineContext.mode as string | undefined) ?? 'create') === mode;
+  });
+
+  if (!candidate?.id) {
+    return null;
+  }
+
+  return loadRun(candidate.id as string).catch(() => null);
+}
+
+function canUseSameRunContinuation(run: PlanGenerationSession | null): boolean {
+  if (!run || run.state !== 'failed_retryable') {
+    return false;
+  }
+
+  return determineResumeState(run) !== 'created';
+}
+
 function resolvePlannerProvider(
   inheritedProvider: 'gemini' | 'openai',
 ): 'gemini' | 'openai' {
@@ -84,6 +151,10 @@ export async function POST(request: Request) {
       'run auth resolve',
     ).catch(() => null);
     const userId = user?.id;
+    const executionMode = body.executionMode ?? 'draft_with_selective_verify';
+    const mode = body.mode ?? 'create';
+    const runtimeProfile = body.constraints?.runtimeProfile ?? 'netlify_free_30s';
+    const inputHash = computeInputHash(body.input);
 
     if (userId && body.idempotencyKey) {
       const { data: existing } = await getClient()
@@ -102,9 +173,9 @@ export async function POST(request: Request) {
           runId: existing.id as string,
           tripId: (existingPipelineContext.tripId as string | null | undefined) ?? body.tripId ?? null,
           state: existing.state as string,
-          executionMode: (existingPipelineContext.executionMode as string | undefined) ?? body.executionMode ?? 'draft_with_selective_verify',
-          runtimeProfile: (existingPipelineContext.runtimeProfile as string | undefined) ?? body.constraints?.runtimeProfile ?? 'netlify_free_30s',
-          mode: body.mode ?? 'create',
+          executionMode: (existingPipelineContext.executionMode as string | undefined) ?? executionMode,
+          runtimeProfile: (existingPipelineContext.runtimeProfile as string | undefined) ?? runtimeProfile,
+          mode,
           threadId: (existingPipelineContext.threadId as string | null | undefined) ?? body.threadId ?? null,
           idempotencyHit: true,
         });
@@ -115,6 +186,7 @@ export async function POST(request: Request) {
           tripId: existingPipelineContext.tripId ?? body.tripId ?? null,
           status: 'queued',
           streamUrl: `/api/agent/runs/${existing.id}/stream`,
+          processUrl: `/api/agent/runs/${existing.id}/process`,
         });
       }
     }
@@ -208,16 +280,92 @@ export async function POST(request: Request) {
       resolvedUserType,
     );
     const plannerProvider = resolvePlannerProvider(provider);
-    const runtimeProfile = body.constraints?.runtimeProfile ?? 'netlify_free_30s';
     const plannerModelName = resolvePlannerModelName(
       runtimeProfile,
       plannerProvider,
       semanticModel.modelName,
     );
+    const reusableRun = body.options?.isRetry && userId
+      ? await findReusableRetryRun(userId, inputHash, executionMode, mode)
+      : null;
+    const useSameRunContinuation = canUseSameRunContinuation(reusableRun);
+    const resumedFromRunId = useSameRunContinuation ? reusableRun?.id ?? null : null;
+    const bootstrapState = reusableRun && useSameRunContinuation
+      ? determineResumeState(reusableRun)
+      : 'created';
+
+    const basePipelineContext: PipelineContext = {
+      homeBaseCity,
+      executionMode,
+      runtimeProfile,
+      costProfile: body.constraints?.costProfile ?? 'safe',
+      tripId: body.tripId,
+      threadId: body.threadId,
+      mode,
+      replanScope: body.replanScope ?? null,
+      memoryEnabled: memory.enabled,
+      memorySnapshot: memory.enabled ? memory as unknown as Record<string, unknown> : null,
+      idempotencyKey: body.idempotencyKey,
+      usageStatus,
+      usageSource,
+      resumedFromRunId,
+      resumeStrategy: useSameRunContinuation ? 'same_run_resume' : null,
+      reusedArtifactKinds: null,
+      artifactReuseRejectedKinds: null,
+    };
+
+    if (useSameRunContinuation && reusableRun) {
+      await updateRun(reusableRun.id, {
+        pipelineContext: {
+          ...(reusableRun.pipelineContext ?? {}),
+          ...basePipelineContext,
+        },
+      });
+
+      const { error } = await getClient()
+        .from('runs')
+        .update({
+          state: bootstrapState,
+          updated_at: new Date().toISOString(),
+        })
+        .eq('id', reusableRun.id);
+
+      if (error) {
+        throw new Error(`Failed to resume existing run ${reusableRun.id}: ${error.message}`);
+      }
+
+      logRunCheckpoint({
+        checkpoint: 'run_created',
+        runId: reusableRun.id,
+        tripId: body.tripId ?? null,
+        state: bootstrapState,
+        executionMode,
+        runtimeProfile,
+        mode,
+        threadId: body.threadId ?? null,
+        idempotencyHit: false,
+        usageStatus,
+        usageSource,
+        resumeSourceRunId: reusableRun.id,
+        resumeStrategy: 'same_run_resume',
+      });
+
+      return NextResponse.json({
+        runId: reusableRun.id,
+        threadId: body.threadId ?? null,
+        tripId: body.tripId ?? null,
+        status: 'queued',
+        streamUrl: `/api/agent/runs/${reusableRun.id}/stream`,
+        processUrl: `/api/agent/runs/${reusableRun.id}/process`,
+      });
+    }
+
     const session = await createRun(userId);
+    const initialState = session.state;
 
     await updateRun(session.id, {
       inputSnapshot: body.input,
+      inputHash,
       generationProfile: {
         modelName: semanticModel.modelName,
         narrativeModelName: narrativeModel.modelName,
@@ -228,31 +376,17 @@ export async function POST(request: Request) {
         temperature: semanticModel.temperature,
         pipelineVersion: 'v4',
       },
-      pipelineContext: {
-        homeBaseCity,
-        executionMode: body.executionMode ?? 'draft_with_selective_verify',
-        runtimeProfile,
-        costProfile: body.constraints?.costProfile ?? 'safe',
-        tripId: body.tripId,
-        threadId: body.threadId,
-        mode: body.mode ?? 'create',
-        replanScope: body.replanScope ?? null,
-        memoryEnabled: memory.enabled,
-        memorySnapshot: memory.enabled ? memory as unknown as Record<string, unknown> : null,
-        idempotencyKey: body.idempotencyKey,
-        usageStatus,
-        usageSource,
-      },
+      pipelineContext: basePipelineContext,
     });
 
     logRunCheckpoint({
       checkpoint: 'run_created',
       runId: session.id,
       tripId: body.tripId ?? null,
-      state: session.state,
-      executionMode: body.executionMode ?? 'draft_with_selective_verify',
+      state: initialState,
+      executionMode,
       runtimeProfile,
-      mode: body.mode ?? 'create',
+      mode,
       threadId: body.threadId ?? null,
       idempotencyHit: false,
       usageStatus,
@@ -265,6 +399,7 @@ export async function POST(request: Request) {
       tripId: body.tripId ?? null,
       status: 'queued',
       streamUrl: `/api/agent/runs/${session.id}/stream`,
+      processUrl: `/api/agent/runs/${session.id}/process`,
     });
   } catch (error) {
     return NextResponse.json(

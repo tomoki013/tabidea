@@ -8,6 +8,59 @@ import { VALID_TRANSITIONS } from '@/types/plan-generation';
 import { InvalidStateTransitionError } from './errors';
 import { MAX_REPAIR_ITERATIONS, MIN_REPAIR_IMPROVEMENT } from './constants';
 
+function hasContiguousDaySet(
+  days: Array<{ day: number }> | undefined,
+  expectedDayCount: number | undefined,
+): boolean {
+  if (!expectedDayCount || !days || days.length !== expectedDayCount) {
+    return false;
+  }
+
+  const dayNumbers = new Set(days.map((day) => day.day));
+  for (let day = 1; day <= expectedDayCount; day += 1) {
+    if (!dayNumbers.has(day)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function getExpectedDayCount(session: PlanGenerationSession): number | undefined {
+  return session.normalizedInput?.durationDays;
+}
+
+export function hasCompletePlannerSeed(session: PlanGenerationSession): boolean {
+  return hasContiguousDaySet(session.plannerSeed?.days, getExpectedDayCount(session));
+}
+
+export function hasCompletePlannerDraft(session: PlanGenerationSession): boolean {
+  const expectedDayCount = getExpectedDayCount(session);
+  if (!hasContiguousDaySet(session.plannerDraft?.days, expectedDayCount)) {
+    return false;
+  }
+
+  return session.plannerDraft!.days.every((day) => Array.isArray(day.stops) && day.stops.length > 0);
+}
+
+export function hasCompleteDraftPlan(session: PlanGenerationSession): boolean {
+  const expectedDayCount = getExpectedDayCount(session);
+  if (!hasContiguousDaySet(session.draftPlan?.days, expectedDayCount)) {
+    return false;
+  }
+
+  return session.draftPlan!.days.every((day) => Array.isArray(day.stops) && day.stops.length > 0);
+}
+
+export function hasCompleteTimelineState(session: PlanGenerationSession): boolean {
+  const expectedDayCount = getExpectedDayCount(session);
+  if (!hasContiguousDaySet(session.timelineState?.days, expectedDayCount)) {
+    return false;
+  }
+
+  return session.timelineState!.days.every((day) => Array.isArray(day.nodes) && day.nodes.length > 0);
+}
+
 /**
  * 状態遷移が合法かどうかを検証する
  */
@@ -35,11 +88,13 @@ const STATE_TO_NEXT_PASS: Partial<Record<SessionState, PassId>> = {
   draft_repaired_partial: 'rule_score',
   verification_partial:   'timeline_construct',
   timeline_ready:         'narrative_polish',
+  core_ready:             'narrative_polish',
+  enrichment_running:     'narrative_polish',
 };
 
 /**
  * 現在の状態から次に実行すべきパスを返す。
- * 終端状態 (completed / failed / cancelled) の場合は null。
+ * 終端状態 (completed / failed_terminal / cancelled) の場合は null。
  *
  * draft_scored 状態では session のデータを参照して
  * repair / verify のどちらに進むかを判断する。
@@ -94,12 +149,16 @@ function decideAfterScoring(session: PlanGenerationSession): PassId {
  */
 export function determineResumeState(session: PlanGenerationSession): SessionState {
   // 最も進んだ状態から逆順でチェック
-  if (session.timelineState) return 'timeline_ready';
-  if (session.verifiedEntities && session.verifiedEntities.length > 0) return 'verification_partial';
-  if (session.evaluationReport) return 'draft_scored';
-  if (session.draftPlan) return 'draft_formatted';
+  if (session.pipelineContext?.finalizedTripId && typeof session.pipelineContext?.finalizedTripVersion === 'number') {
+    return 'core_ready';
+  }
+  if (hasCompleteTimelineState(session)) return 'timeline_ready';
+  if (session.verifiedEntities && session.verifiedEntities.length > 0 && hasCompleteDraftPlan(session)) return 'verification_partial';
+  if (session.evaluationReport && hasCompleteDraftPlan(session)) return 'draft_scored';
+  if (hasCompleteDraftPlan(session)) return 'draft_formatted';
+  if (session.pipelineContext?.currentDayExecution) return 'normalized';
   if (session.pipelineContext?.resumePassId === 'draft_generate') return 'normalized';
-  if (session.plannerDraft) return 'draft_generated';
+  if (hasCompletePlannerDraft(session)) return 'draft_generated';
   if (session.normalizedInput) return 'normalized';
   return 'created';
 }

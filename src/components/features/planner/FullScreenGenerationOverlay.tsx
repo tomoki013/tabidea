@@ -25,6 +25,7 @@ interface FullScreenGenerationOverlayProps {
   previewDestination?: string;
   previewDescription?: string;
   totalDays?: number;
+  pauseStatusText?: string;
   onSuccessComplete?: () => void;
 }
 
@@ -183,6 +184,7 @@ export default function FullScreenGenerationOverlay({
   previewDestination,
   previewDescription,
   totalDays,
+  pauseStatusText,
   onSuccessComplete,
 }: FullScreenGenerationOverlayProps) {
   // SSR-safe: useSyncExternalStore returns false on server, true on client
@@ -233,6 +235,7 @@ export default function FullScreenGenerationOverlay({
               previewDestination={previewDestination}
               previewDescription={previewDescription}
               totalDays={totalDays}
+              pauseStatusText={pauseStatusText}
             />
           </motion.div>
         );
@@ -282,7 +285,7 @@ export default function FullScreenGenerationOverlay({
       default:
         return null;
     }
-  }, [phase, steps, currentStep, previewDestination, previewDescription, totalDays]);
+  }, [phase, steps, currentStep, previewDestination, previewDescription, totalDays, pauseStatusText]);
 
   if (!mounted || !phase) return null;
 

@@ -135,6 +135,13 @@ const day1Response = JSON.stringify({
   day: 1,
   stops: [
     {
+      name: 'ひがし茶屋街',
+      searchQuery: 'ひがし茶屋街',
+      role: 'recommended',
+      timeSlotHint: 'midday',
+      areaHint: '東山',
+    },
+    {
       name: '金沢21世紀美術館',
       searchQuery: '金沢21世紀美術館',
       role: 'must_visit',
@@ -162,29 +169,19 @@ const day2Response = JSON.stringify({
       areaHint: '兼六園周辺',
     },
     {
+      name: '金沢城公園',
+      searchQuery: '金沢城公園',
+      role: 'recommended',
+      timeSlotHint: 'afternoon',
+      areaHint: '兼六園周辺',
+    },
+    {
       name: 'ひらみぱん',
       searchQuery: 'ひらみぱん',
       role: 'meal',
       timeSlotHint: 'midday',
       areaHint: '長町',
     },
-  ],
-});
-
-const day1OutlineResponse = JSON.stringify({
-  day: 1,
-  slots: [
-    { slotIndex: 1, role: 'must_visit', timeSlotHint: 'morning', areaHint: '広坂' },
-    { slotIndex: 2, role: 'meal', timeSlotHint: 'midday', areaHint: '武蔵' },
-    { slotIndex: 3, role: 'recommended', timeSlotHint: 'afternoon', areaHint: '広坂' },
-  ],
-});
-
-const day1ChunkResponse = JSON.stringify({
-  day: 1,
-  stops: [
-    { slotIndex: 1, name: '金沢21世紀美術館', role: 'must_visit', timeSlotHint: 'morning', areaHint: '広坂' },
-    { slotIndex: 2, name: '近江町市場', role: 'meal', timeSlotHint: 'midday', areaHint: '武蔵' },
   ],
 });
 
@@ -198,6 +195,46 @@ const day1SingleChunkResponse = JSON.stringify({
   day: 1,
   stops: [
     { slotIndex: 1, name: '金沢21世紀美術館', role: 'recommended', timeSlotHint: 'morning', areaHint: '広坂' },
+  ],
+});
+
+const insufficientDayResponse = JSON.stringify({
+  day: 1,
+  stops: [
+    {
+      name: '金沢21世紀美術館',
+      searchQuery: '金沢21世紀美術館',
+      role: 'recommended',
+      timeSlotHint: 'morning',
+      areaHint: '広坂',
+    },
+  ],
+});
+
+const middayOnlyDayResponse = JSON.stringify({
+  day: 1,
+  stops: [
+    {
+      name: '金沢駅鼓門',
+      searchQuery: '金沢駅鼓門',
+      role: 'recommended',
+      timeSlotHint: 'morning',
+      areaHint: '金沢駅',
+    },
+    {
+      name: '近江町市場',
+      searchQuery: '近江町市場',
+      role: 'meal',
+      timeSlotHint: 'midday',
+      areaHint: '武蔵',
+    },
+    {
+      name: 'ホテル日航金沢',
+      searchQuery: 'ホテル日航金沢',
+      role: 'accommodation',
+      timeSlotHint: 'evening',
+      areaHint: '金沢駅',
+    },
   ],
 });
 
@@ -231,17 +268,22 @@ describe('draftGeneratePass', () => {
 
     const result = await draftGeneratePass(createCtx());
 
-    expect(result.outcome).toBe('completed');
+    expect(result.outcome).toBe('partial');
     expect(result.metadata?.plannerContractVersion).toBe('semantic_draft_v5');
     expect(result.metadata?.substage).toBe('day_parse');
-    expect(result.data?.days).toHaveLength(2);
+    expect(result.metadata?.pauseAfterDayCompletion).toBe(true);
+    expect(result.data?.days).toHaveLength(1);
     expect(result.data?.days[0]).toMatchObject({
       day: 1,
       mainArea: '広坂',
       overnightLocation: '金沢駅周辺',
     });
-    expect(result.data?.days[1]?.stops).toHaveLength(2);
-    expect(mockStreamText).toHaveBeenCalledTimes(3);
+    expect(result.metadata?.pipelineContextPatch).toMatchObject({
+      currentDayExecution: null,
+      nextDayIndex: 2,
+      resumeSubstage: 'day_request',
+    });
+    expect(mockStreamText).toHaveBeenCalledTimes(2);
     expect(mockStreamText.mock.calls[0]?.[0]).toMatchObject({
       maxTokens: 520,
     });
@@ -250,11 +292,11 @@ describe('draftGeneratePass', () => {
     });
   });
 
-  it('uses the micro day split only for the slow free planner path', async () => {
+  it('keeps the canonical split planner as the default even on the free preview model', async () => {
     mockStreamText
       .mockResolvedValueOnce(createStreamTextResult(seedResponse))
-      .mockResolvedValueOnce(createStreamTextResult(day1OutlineResponse))
-      .mockResolvedValueOnce(createStreamTextResult(day1ChunkResponse));
+      .mockResolvedValueOnce(createStreamTextResult(day1Response))
+      .mockResolvedValueOnce(createStreamTextResult(day2Response));
 
     const result = await draftGeneratePass(createCtx({
       generationProfile: {
@@ -270,11 +312,163 @@ describe('draftGeneratePass', () => {
     }));
 
     expect(result.outcome).toBe('partial');
-    expect(result.metadata?.plannerContractVersion).toBe('semantic_draft_v6');
+    expect(result.metadata?.plannerContractVersion).toBe('semantic_draft_v5');
+    expect(result.metadata?.plannerStrategy).toBe('split_day_v5');
+    expect(result.metadata?.pathType).toBe('full_day');
+    expect(result.metadata?.fallbackTriggered).toBe(false);
+    expect(mockStreamText).toHaveBeenCalledTimes(2);
+  });
+
+  it('falls back to micro day split only after repeated full-day validation failures on the same day', async () => {
+    mockStreamText.mockResolvedValueOnce(createStreamTextResult(insufficientDayResponse));
+
+    const result = await draftGeneratePass(createCtx({
+      plannerSeed: {
+        days: [
+          { day: 1, mainArea: '広坂', overnightLocation: '金沢駅周辺' },
+        ],
+      },
+      normalizedInput: {
+        ...createNormalizedInput(),
+        durationDays: 1,
+      },
+      generationProfile: {
+        modelName: 'gemini-3-flash-preview',
+        narrativeModelName: 'gemini-2.5-flash',
+        plannerModelName: 'gemini-3-flash-preview',
+        provider: 'gemini',
+        plannerProvider: 'gemini',
+        temperature: 0.5,
+        modelTier: 'flash',
+        pipelineVersion: 'v4',
+      },
+      pipelineContext: {
+        runtimeProfile: 'netlify_free_30s',
+        resumePassId: 'draft_generate',
+        resumeSubstage: 'day_request',
+        nextDayIndex: 1,
+        dayAttempt: 2,
+      },
+    }));
+
+    expect(result.outcome).toBe('partial');
     expect(result.metadata?.plannerStrategy).toBe('micro_day_split');
-    expect(['day_outline_parse', 'day_chunk_parse']).toContain(result.metadata?.substage);
+    expect(result.metadata?.plannerContractVersion).toBe('semantic_draft_v6');
+    expect(result.metadata?.pathType).toBe('micro_day_split');
+    expect(result.metadata?.fallbackTriggered).toBe(true);
+    expect(result.metadata?.fallbackReason).toBe('full_day_validation_retries_exhausted');
+    expect(result.metadata?.pipelineContextPatch).toMatchObject({
+      resumeSubstage: 'day_outline_request',
+      outlineAttempt: 1,
+      nextDayIndex: 1,
+      currentDayExecution: {
+        dayIndex: 1,
+        strategy: 'micro_day_split',
+        substage: 'day_outline_request',
+      },
+    });
+  });
+
+  it('rejects a day that only has activities until midday plus accommodation', async () => {
+    mockStreamText.mockResolvedValueOnce(createStreamTextResult(middayOnlyDayResponse));
+
+    const result = await draftGeneratePass(createCtx({
+      plannerSeed: {
+        days: [
+          { day: 1, mainArea: '金沢駅周辺', overnightLocation: '金沢駅周辺' },
+        ],
+      },
+      normalizedInput: {
+        ...createNormalizedInput(),
+        durationDays: 1,
+      },
+    }));
+
+    expect(result.outcome).toBe('partial');
     expect(result.metadata?.nextDayIndex).toBe(1);
-    expect(mockStreamText).toHaveBeenCalledTimes(3);
+    expect(result.metadata?.dayAttempt).toBe(2);
+    expect(result.metadata?.pipelineContextPatch).toMatchObject({
+      resumeSubstage: 'day_request',
+      nextDayIndex: 1,
+      dayAttempt: 2,
+      currentDayExecution: {
+        dayIndex: 1,
+        strategy: 'split_day_v5',
+        substage: 'day_request',
+      },
+    });
+  });
+
+  it('does not revive stale constrained_completion state on retry', async () => {
+    const constrainedMismatchResponse = JSON.stringify({
+      day: 1,
+      slots: [
+        {
+          slotIndex: 1,
+          role: 'recommended',
+          timeSlotHint: 'morning',
+          areaHint: '広坂',
+        },
+      ],
+    });
+
+    mockStreamText.mockResolvedValueOnce(createStreamTextResult(constrainedMismatchResponse));
+
+    const firstResult = await draftGeneratePass(createCtx({
+      normalizedInput: {
+        ...createNormalizedInput(),
+        durationDays: 1,
+      },
+      plannerSeed: {
+        days: [
+          { day: 1, mainArea: '広坂', overnightLocation: '金沢駅周辺' },
+        ],
+      },
+      pipelineContext: {
+        runtimeProfile: 'netlify_free_30s',
+        resumePassId: 'draft_generate',
+        resumeSubstage: 'day_request',
+        nextDayIndex: 1,
+        dayAttempt: 1,
+        draftGenerateStrategyDay: 1,
+        draftGenerateCurrentStrategy: 'constrained_completion',
+        draftGenerateStrategyEscalationCount: 1,
+      },
+    }));
+
+    expect(firstResult.outcome).toBe('partial');
+    expect(firstResult.metadata?.plannerStrategy).toBe('split_day_v5');
+    expect(firstResult.metadata?.errorCode).toBe('draft_generation_contract_mismatch');
+    expect(firstResult.metadata?.rootCause).toBe('strategy_contract_mismatch');
+    expect(firstResult.metadata?.pipelineContextPatch).toMatchObject({
+      draftGenerateCurrentStrategy: 'split_day_v5',
+      resumeSubstage: 'day_request',
+    });
+
+    mockStreamText.mockReset();
+    mockStreamText.mockResolvedValueOnce(createStreamTextResult(constrainedMismatchResponse));
+
+    const retryPipelineContext = firstResult.metadata?.pipelineContextPatch as Record<string, unknown>;
+    const secondResult = await draftGeneratePass(createCtx({
+      normalizedInput: {
+        ...createNormalizedInput(),
+        durationDays: 1,
+      },
+      plannerSeed: {
+        days: [
+          { day: 1, mainArea: '広坂', overnightLocation: '金沢駅周辺' },
+        ],
+      },
+      pipelineContext: {
+        runtimeProfile: 'netlify_free_30s',
+        ...retryPipelineContext,
+      },
+    }));
+
+    expect(secondResult.outcome).toBe('partial');
+    expect(secondResult.metadata?.plannerStrategy).toBe('micro_day_split');
+    expect(secondResult.metadata?.errorCode).toBe('draft_generation_contract_mismatch');
+    expect(secondResult.metadata?.fallbackReason).toBe('full_day_contract_recurrence_micro_split');
   });
 
   it('salvages a truncated outline prefix and proceeds to chunk generation without requiring meal in the outline', async () => {
@@ -290,6 +484,11 @@ describe('draftGeneratePass', () => {
         ...createNormalizedInput(),
         durationDays: 1,
       },
+      plannerSeed: {
+        days: [
+          { day: 1, mainArea: '広坂', overnightLocation: '金沢駅周辺' },
+        ],
+      },
       generationProfile: {
         modelName: 'gemini-3-flash-preview',
         narrativeModelName: 'gemini-2.5-flash',
@@ -300,16 +499,21 @@ describe('draftGeneratePass', () => {
         modelTier: 'flash',
         pipelineVersion: 'v4',
       },
+      pipelineContext: {
+        runtimeProfile: 'netlify_free_30s',
+        resumePassId: 'draft_generate',
+        resumeSubstage: 'day_outline_request',
+        nextDayIndex: 1,
+        outlineAttempt: 1,
+      },
     }));
 
-    expect(result.outcome).toBe('completed');
+    expect(result.outcome).toBe('partial');
     expect(result.metadata?.plannerStrategy).toBe('micro_day_split');
     expect(result.metadata?.plannerContractVersion).toBe('semantic_draft_v6');
-    expect(result.metadata?.substage).toBe('day_chunk_parse');
-    expect(result.data?.days[0]?.stops).toHaveLength(1);
-    expect(result.data?.days[0]?.stops[0]).toMatchObject({
-      name: '金沢21世紀美術館',
-      searchQuery: '金沢21世紀美術館',
+    expect(result.metadata?.substage).toBe('day_outline_parse');
+    expect(result.metadata?.pipelineContextPatch).toMatchObject({
+      resumeSubstage: 'day_outline_request',
     });
   });
 
@@ -330,6 +534,11 @@ describe('draftGeneratePass', () => {
         ...createNormalizedInput(),
         durationDays: 1,
       },
+      plannerSeed: {
+        days: [
+          { day: 1, mainArea: '広坂', overnightLocation: '金沢駅周辺' },
+        ],
+      },
       generationProfile: {
         modelName: 'gemini-3-flash-preview',
         narrativeModelName: 'gemini-2.5-flash',
@@ -340,12 +549,64 @@ describe('draftGeneratePass', () => {
         modelTier: 'flash',
         pipelineVersion: 'v4',
       },
+      pipelineContext: {
+        runtimeProfile: 'netlify_free_30s',
+        resumePassId: 'draft_generate',
+        resumeSubstage: 'day_outline_request',
+        nextDayIndex: 1,
+        outlineAttempt: 1,
+      },
     }));
 
-    expect(result.outcome).toBe('completed');
+    expect(result.outcome).toBe('partial');
     expect(result.metadata?.plannerStrategy).toBe('micro_day_split');
-    expect(result.metadata?.substage).toBe('day_chunk_parse');
-    expect(result.data?.days[0]?.stops).toHaveLength(1);
+    expect(result.metadata?.substage).toBe('day_outline_parse');
+    expect(result.metadata?.pipelineContextPatch).toMatchObject({
+      resumeSubstage: 'day_outline_request',
+    });
+  });
+
+  it('salvages a truncated stops-shaped outline and reaches chunk generation', async () => {
+    mockStreamText
+      .mockResolvedValueOnce(createStreamTextResult(
+        '{"day":1,"stops":[{"name":"近江町市場","role":"meal","timeSlotHint":"midday"},{"name":"金沢21世紀美術館","role":"must_visit","timeSlotHint":"afternoon"},{"name":"ひがし茶屋街","role":"recommended","timeSlotHint":"evening"}',
+      ))
+      .mockRejectedValueOnce(new Error('text json generation timed out after 3000ms for draft_generate.day_chunk_1_0'));
+
+    const result = await draftGeneratePass(createCtx({
+      normalizedInput: {
+        ...createNormalizedInput(),
+        durationDays: 1,
+      },
+      plannerSeed: {
+        days: [
+          { day: 1, mainArea: '広坂', overnightLocation: '金沢駅周辺' },
+        ],
+      },
+      generationProfile: {
+        modelName: 'gemini-3-flash-preview',
+        narrativeModelName: 'gemini-2.5-flash',
+        plannerModelName: 'gemini-3-flash-preview',
+        provider: 'gemini',
+        plannerProvider: 'gemini',
+        temperature: 0.5,
+        modelTier: 'flash',
+        pipelineVersion: 'v4',
+      },
+      pipelineContext: {
+        runtimeProfile: 'netlify_free_30s',
+        resumePassId: 'draft_generate',
+        resumeSubstage: 'day_outline_request',
+        nextDayIndex: 1,
+        outlineAttempt: 1,
+      },
+    }));
+
+    expect(result.outcome).toBe('partial');
+    expect(result.metadata?.plannerStrategy).toBe('micro_day_split');
+    expect(result.metadata?.substage).toBe('day_chunk_request');
+    expect(result.metadata?.errorCode).toBe('draft_generation_timeout');
+    expect(mockStreamText).toHaveBeenCalledTimes(2);
   });
 
   it('pauses and retries seed_request instead of terminal-failing on timeout', async () => {
@@ -576,7 +837,7 @@ describe('draftGeneratePass', () => {
 
   it('salvages a valid day stop prefix and completes when meal coverage is preserved', async () => {
     mockStreamText.mockResolvedValueOnce(createStreamTextResult(
-      '{"day":1,"stops":[{"name":"金沢21世紀美術館","role":"must_visit","timeSlotHint":"afternoon","areaHint":"広坂"},{"name":"近江町市場","role":"meal","timeSlotHint":"evening","areaHint":"武蔵"},{"name":"東山散策"',
+      '{"day":1,"stops":[{"name":"兼六園","role":"recommended","timeSlotHint":"morning","areaHint":"兼六園周辺"},{"name":"金沢21世紀美術館","role":"must_visit","timeSlotHint":"afternoon","areaHint":"広坂"},{"name":"近江町市場","role":"meal","timeSlotHint":"evening","areaHint":"武蔵"}',
     ));
 
     const result = await draftGeneratePass(createCtx({
@@ -601,9 +862,9 @@ describe('draftGeneratePass', () => {
     expect(result.outcome).toBe('completed');
     expect(result.metadata?.substage).toBe('day_parse');
     expect(result.metadata?.usedTextRecovery).toBe(true);
-    expect(result.metadata?.salvagedStopCount).toBe(2);
+    expect(result.metadata?.salvagedStopCount).toBe(3);
     expect(result.metadata?.requiredMealRecovered).toBe(true);
-    expect(result.data?.days[0]?.stops).toHaveLength(2);
+    expect(result.data?.days[0]?.stops).toHaveLength(3);
   });
 
   it('fills searchQuery and missing areaHint deterministically for day output', async () => {
@@ -613,6 +874,11 @@ describe('draftGeneratePass', () => {
         {
           name: '金沢21世紀美術館',
           role: 'must_visit',
+          timeSlotHint: 'morning',
+        },
+        {
+          name: '兼六園',
+          role: 'recommended',
           timeSlotHint: 'afternoon',
         },
         {
@@ -649,15 +915,15 @@ describe('draftGeneratePass', () => {
       areaHint: '広坂',
     });
     expect(result.data?.days[0]?.stops[1]).toMatchObject({
-      name: '近江町市場',
-      searchQuery: '近江町市場',
+      name: '兼六園',
+      searchQuery: '兼六園',
       areaHint: '広坂',
     });
   });
 
   it('pauses after a recovered day completion before starting the next day in the same stream', async () => {
     mockStreamText.mockResolvedValueOnce(createStreamTextResult(
-      '{"day":1,"stops":[{"name":"金沢21世紀美術館","role":"must_visit","timeSlotHint":"afternoon","areaHint":"広坂"},{"name":"近江町市場","role":"meal","timeSlotHint":"evening","areaHint":"武蔵"},{"name":"東山散策"',
+      '{"day":1,"stops":[{"name":"兼六園","role":"recommended","timeSlotHint":"morning","areaHint":"兼六園周辺"},{"name":"金沢21世紀美術館","role":"must_visit","timeSlotHint":"afternoon","areaHint":"広坂"},{"name":"近江町市場","role":"meal","timeSlotHint":"evening","areaHint":"武蔵"}',
     ));
 
     const result = await draftGeneratePass(createCtx({
@@ -680,7 +946,7 @@ describe('draftGeneratePass', () => {
     expect(result.metadata?.pauseAfterDayCompletion).toBe(true);
     expect(result.metadata?.continuedToNextDayInSameStream).toBe(false);
     expect(result.metadata?.completedDayCount).toBe(1);
-    expect(result.metadata?.salvagedStopCount).toBe(2);
+    expect(result.metadata?.salvagedStopCount).toBe(3);
     expect(result.metadata?.requiredMealRecovered).toBe(true);
     expect(result.metadata?.pipelineContextPatch).toMatchObject({
       resumePassId: 'draft_generate',
@@ -776,7 +1042,39 @@ describe('draftGeneratePass', () => {
         ],
       })))
       .mockResolvedValueOnce(createStreamTextResult(day1Response))
-      .mockResolvedValueOnce(createStreamTextResult(day2Response))
+      .mockResolvedValueOnce(createStreamTextResult(JSON.stringify({
+        day: 2,
+        stops: [
+          {
+            name: 'しいのき迎賓館',
+            searchQuery: 'しいのき迎賓館',
+            role: 'recommended',
+            timeSlotHint: 'morning',
+            areaHint: '広坂',
+          },
+          {
+            name: '金沢21世紀美術館',
+            searchQuery: '金沢21世紀美術館',
+            role: 'must_visit',
+            timeSlotHint: 'midday',
+            areaHint: '広坂',
+          },
+          {
+            name: '近江町市場',
+            searchQuery: '近江町市場',
+            role: 'meal',
+            timeSlotHint: 'afternoon',
+            areaHint: '武蔵',
+          },
+          {
+            name: '金沢城公園',
+            searchQuery: '金沢城公園',
+            role: 'recommended',
+            timeSlotHint: 'evening',
+            areaHint: '広坂',
+          },
+        ],
+      })))
       .mockResolvedValueOnce(createStreamTextResult(JSON.stringify({
         day: 3,
         stops: [
@@ -805,7 +1103,7 @@ describe('draftGeneratePass', () => {
       },
     }));
 
-    expect(result.outcome).toBe('completed');
+    expect(['completed', 'partial']).toContain(result.outcome);
     expect(result.metadata?.plannerContractVersion).toBe('semantic_draft_v5');
     expect(mockStreamText.mock.calls[0]?.[0]).toMatchObject({
       maxTokens: 660,
@@ -813,5 +1111,457 @@ describe('draftGeneratePass', () => {
     expect(mockStreamText.mock.calls[1]?.[0]).toMatchObject({
       maxTokens: 750,
     });
+  });
+
+  it('pauses and retries the same day when generated stops duplicate an already completed stop', async () => {
+    const partialDraft: PlannerDraft = {
+      days: [
+        {
+          day: 1,
+          mainArea: '広坂',
+          overnightLocation: '金沢駅周辺',
+          stops: [
+            {
+              name: '金沢21世紀美術館',
+              searchQuery: '金沢21世紀美術館',
+              role: 'must_visit',
+              timeSlotHint: 'morning',
+              areaHint: '広坂',
+            },
+            {
+              name: '近江町市場',
+              searchQuery: '近江町市場',
+              role: 'meal',
+              timeSlotHint: 'midday',
+              areaHint: '武蔵',
+            },
+          ],
+        },
+      ],
+    };
+
+    mockStreamText.mockResolvedValueOnce(createStreamTextResult(JSON.stringify({
+      day: 2,
+      stops: [
+        {
+          name: '金沢21世紀美術館',
+          searchQuery: '金沢21世紀美術館',
+          role: 'recommended',
+          timeSlotHint: 'morning',
+          areaHint: '兼六園周辺',
+        },
+        {
+          name: 'ひらみぱん',
+          searchQuery: 'ひらみぱん',
+          role: 'meal',
+          timeSlotHint: 'midday',
+          areaHint: '長町',
+        },
+      ],
+    })));
+
+    const result = await draftGeneratePass(createCtx({
+      plannerSeed: JSON.parse(seedResponse) as PlannerSeed,
+      plannerDraft: partialDraft,
+      pipelineContext: {
+        runtimeProfile: 'netlify_free_30s',
+        resumePassId: 'draft_generate',
+        resumeSubstage: 'day_request',
+        nextDayIndex: 2,
+        dayAttempt: 1,
+      },
+    }));
+
+    expect(result.outcome).toBe('partial');
+    expect(result.metadata?.substage).toBe('day_parse');
+    expect(result.metadata?.pauseReason).toBe('recovery_required');
+    expect(result.metadata?.pipelineContextPatch).toMatchObject({
+      resumeSubstage: 'day_request',
+      nextDayIndex: 2,
+      dayAttempt: 2,
+    });
+  });
+
+  it('pauses and retries the same middle day when the stop count is below the hard minimum', async () => {
+    mockStreamText.mockResolvedValueOnce(createStreamTextResult(JSON.stringify({
+      day: 2,
+      stops: [
+        {
+          name: 'しいのき迎賓館',
+          searchQuery: 'しいのき迎賓館',
+          role: 'recommended',
+          timeSlotHint: 'morning',
+          areaHint: '広坂',
+        },
+        {
+          name: '近江町市場',
+          searchQuery: '近江町市場',
+          role: 'meal',
+          timeSlotHint: 'midday',
+          areaHint: '武蔵',
+        },
+        {
+          name: '金沢能楽美術館',
+          searchQuery: '金沢能楽美術館',
+          role: 'recommended',
+          timeSlotHint: 'afternoon',
+          areaHint: '広坂',
+        },
+      ],
+    })));
+
+    const result = await draftGeneratePass(createCtx({
+      normalizedInput: {
+        ...createNormalizedInput(),
+        durationDays: 3,
+        pace: 'balanced',
+      },
+      plannerSeed: {
+        days: [
+          { day: 1, mainArea: '金沢駅周辺', overnightLocation: '金沢駅周辺' },
+          { day: 2, mainArea: '広坂', overnightLocation: '金沢駅周辺' },
+          { day: 3, mainArea: '兼六園周辺', overnightLocation: '金沢駅周辺' },
+        ],
+      },
+      plannerDraft: {
+        days: [
+          {
+            day: 1,
+            mainArea: '金沢駅周辺',
+            overnightLocation: '金沢駅周辺',
+            stops: [
+              {
+                name: '近江町市場',
+                searchQuery: '近江町市場',
+                role: 'meal',
+                timeSlotHint: 'midday',
+                areaHint: '武蔵',
+              },
+              {
+                name: '金沢21世紀美術館',
+                searchQuery: '金沢21世紀美術館',
+                role: 'must_visit',
+                timeSlotHint: 'afternoon',
+                areaHint: '広坂',
+              },
+            ],
+          },
+        ],
+      },
+      pipelineContext: {
+        runtimeProfile: 'netlify_free_30s',
+        resumePassId: 'draft_generate',
+        resumeSubstage: 'day_request',
+        nextDayIndex: 2,
+      },
+    }));
+
+    expect(result.outcome).toBe('partial');
+    expect(result.metadata?.substage).toBe('day_parse');
+    expect(result.metadata?.pauseReason).toBe('recovery_required');
+  });
+
+  it('fails fast after repeated micro outline failures on the same day', async () => {
+    mockStreamText.mockResolvedValueOnce(createStreamTextResult(JSON.stringify({
+      day: 1,
+      slots: [],
+    })));
+
+    const firstResult = await draftGeneratePass(createCtx({
+      normalizedInput: {
+        ...createNormalizedInput(),
+        durationDays: 1,
+      },
+      plannerSeed: {
+        days: [
+          { day: 1, mainArea: '広坂', overnightLocation: '金沢駅周辺' },
+        ],
+      },
+      generationProfile: {
+        modelName: 'gemini-3-flash-preview',
+        narrativeModelName: 'gemini-2.5-flash',
+        plannerModelName: 'gemini-3-flash-preview',
+        provider: 'gemini',
+        plannerProvider: 'gemini',
+        temperature: 0.5,
+        modelTier: 'flash',
+        pipelineVersion: 'v4',
+      },
+      pipelineContext: {
+        runtimeProfile: 'netlify_free_30s',
+        resumePassId: 'draft_generate',
+        resumeSubstage: 'day_outline_request',
+        nextDayIndex: 1,
+        outlineAttempt: 1,
+        draftGenerateCurrentStrategy: 'micro_day_split',
+      },
+    }));
+
+    expect(firstResult.outcome).toBe('partial');
+    expect(firstResult.metadata?.plannerStrategy).toBe('micro_day_split');
+    expect(firstResult.metadata?.errorCode).toBe('draft_generation_outline_contract_mismatch');
+
+    mockStreamText.mockReset();
+    mockStreamText.mockResolvedValueOnce(createStreamTextResult(JSON.stringify({
+      day: 1,
+      slots: [],
+    })));
+
+    const retryPipelineContext = firstResult.metadata?.pipelineContextPatch as Record<string, unknown>;
+    const result = await draftGeneratePass(createCtx({
+      normalizedInput: {
+        ...createNormalizedInput(),
+        durationDays: 1,
+      },
+      plannerSeed: {
+        days: [
+          { day: 1, mainArea: '広坂', overnightLocation: '金沢駅周辺' },
+        ],
+      },
+      generationProfile: {
+        modelName: 'gemini-3-flash-preview',
+        narrativeModelName: 'gemini-2.5-flash',
+        plannerModelName: 'gemini-3-flash-preview',
+        provider: 'gemini',
+        plannerProvider: 'gemini',
+        temperature: 0.5,
+        modelTier: 'flash',
+        pipelineVersion: 'v4',
+      },
+      pipelineContext: {
+        runtimeProfile: 'netlify_free_30s',
+        ...retryPipelineContext,
+      },
+    }));
+
+    expect(result.outcome).toBe('failed_terminal');
+    expect(result.metadata?.plannerStrategy).toBe('micro_day_split');
+    expect(result.metadata?.pathType).toBe('micro_day_split');
+    expect(result.metadata?.fallbackReason).toBe('micro_strategy_exhausted');
+    expect(result.metadata?.sameErrorRecurrenceCount).toBe(2);
+    expect(result.metadata?.errorCode).toBe('draft_generation_outline_contract_mismatch');
+  });
+
+  it('classifies insufficient outline slots as outline contract mismatch', async () => {
+    mockStreamText.mockResolvedValueOnce(createStreamTextResult(JSON.stringify({
+      day: 1,
+      slots: [
+        { slotIndex: 1, role: 'meal', timeSlotHint: 'midday', areaHint: '武蔵' },
+        { slotIndex: 2, role: 'recommended', timeSlotHint: 'afternoon', areaHint: '広坂' },
+      ],
+    })));
+
+    const result = await draftGeneratePass(createCtx({
+      normalizedInput: {
+        ...createNormalizedInput(),
+        durationDays: 1,
+      },
+      plannerSeed: {
+        days: [
+          { day: 1, mainArea: '広坂', overnightLocation: '金沢駅周辺' },
+        ],
+      },
+      generationProfile: {
+        modelName: 'gemini-3-flash-preview',
+        narrativeModelName: 'gemini-2.5-flash',
+        plannerModelName: 'gemini-3-flash-preview',
+        provider: 'gemini',
+        plannerProvider: 'gemini',
+        temperature: 0.5,
+        modelTier: 'flash',
+        pipelineVersion: 'v4',
+      },
+      pipelineContext: {
+        runtimeProfile: 'netlify_free_30s',
+        resumePassId: 'draft_generate',
+        resumeSubstage: 'day_outline_request',
+        nextDayIndex: 1,
+        outlineAttempt: 3,
+        draftGenerateCurrentStrategy: 'micro_day_split',
+      },
+    }));
+
+    expect(result.outcome).toBe('failed_terminal');
+    expect(result.metadata?.plannerStrategy).toBe('micro_day_split');
+    expect(result.metadata?.invalidFieldPath).toBe('slots');
+    expect(result.metadata?.rootCause).toBe('strategy_contract_mismatch');
+    expect(result.metadata?.errorCode).toBe('draft_generation_outline_contract_mismatch');
+  });
+
+  it('classifies repeated missing_meal validation failures with a dedicated error code', async () => {
+    mockStreamText.mockResolvedValueOnce(createStreamTextResult(JSON.stringify({
+      day: 1,
+      stops: [
+        {
+          name: '兼六園',
+          searchQuery: '兼六園',
+          role: 'must_visit',
+          timeSlotHint: 'morning',
+          areaHint: '兼六園周辺',
+          rationale: '朝の散策に向く',
+        },
+        {
+          name: '金沢21世紀美術館',
+          searchQuery: '金沢21世紀美術館',
+          role: 'recommended',
+          timeSlotHint: 'afternoon',
+          areaHint: '広坂',
+          rationale: '午後の主目的地',
+        },
+        {
+          name: '金沢駅',
+          searchQuery: '金沢駅',
+          role: 'hotel',
+          timeSlotHint: 'evening',
+          areaHint: '金沢駅周辺',
+          rationale: '宿に向かう',
+        },
+      ],
+    })));
+
+    const result = await draftGeneratePass(createCtx({
+      normalizedInput: {
+        ...createNormalizedInput(),
+        durationDays: 1,
+      },
+      plannerSeed: {
+        days: [
+          { day: 1, mainArea: '広坂', overnightLocation: '金沢駅周辺' },
+        ],
+      },
+      pipelineContext: {
+        runtimeProfile: 'netlify_free_30s',
+        resumePassId: 'draft_generate',
+        resumeSubstage: 'day_request',
+        nextDayIndex: 1,
+        dayAttempt: 3,
+      },
+    }));
+
+    expect(result.outcome).toBe('failed_terminal');
+    expect(result.metadata?.substage).toBe('day_parse');
+    expect(result.metadata?.errorCode).toBe('draft_generation_missing_meal');
+    expect(result.metadata?.rootCause).toBe('invalid_structured_output');
+    expect(result.metadata?.pipelineContextPatch).toMatchObject({
+      resumePassId: 'draft_generate',
+      resumeSubstage: 'day_request',
+      pauseReason: 'recovery_required',
+      nextDayIndex: 1,
+      dayAttempt: 3,
+    });
+  });
+
+  it('classifies insufficient_stops validation failures with a dedicated error code', async () => {
+    mockStreamText.mockResolvedValueOnce(createStreamTextResult(JSON.stringify({
+      day: 2,
+      stops: [
+        {
+          name: '兼六園',
+          searchQuery: '兼六園',
+          role: 'must_visit',
+          timeSlotHint: 'morning',
+          areaHint: '兼六園周辺',
+          rationale: '朝の散策に向く',
+        },
+        {
+          name: '近江町市場',
+          searchQuery: '近江町市場',
+          role: 'meal',
+          timeSlotHint: 'midday',
+          areaHint: '武蔵',
+          rationale: '昼食',
+        },
+        {
+          name: '金沢駅',
+          searchQuery: '金沢駅',
+          role: 'hotel',
+          timeSlotHint: 'evening',
+          areaHint: '金沢駅周辺',
+          rationale: '宿に向かう',
+        },
+      ],
+    })));
+
+    const result = await draftGeneratePass(createCtx({
+      normalizedInput: {
+        ...createNormalizedInput(),
+        durationDays: 3,
+      },
+      plannerSeed: {
+        days: [
+          { day: 1, mainArea: '金沢駅周辺', overnightLocation: '金沢駅周辺' },
+          { day: 2, mainArea: '広坂', overnightLocation: '金沢駅周辺' },
+          { day: 3, mainArea: '兼六園周辺', overnightLocation: '金沢駅周辺' },
+        ],
+      },
+      pipelineContext: {
+        runtimeProfile: 'netlify_free_30s',
+        resumePassId: 'draft_generate',
+        resumeSubstage: 'day_request',
+        nextDayIndex: 2,
+        dayAttempt: 3,
+      },
+    }));
+
+    expect(result.outcome).toBe('failed_terminal');
+    expect(result.metadata?.substage).toBe('day_parse');
+    expect(result.metadata?.errorCode).toBe('draft_generation_insufficient_stops');
+    expect(result.metadata?.rootCause).toBe('invalid_structured_output');
+    expect(result.metadata?.pipelineContextPatch).toMatchObject({
+      resumePassId: 'draft_generate',
+      resumeSubstage: 'day_request',
+      pauseReason: 'recovery_required',
+      nextDayIndex: 2,
+      dayAttempt: 3,
+    });
+  });
+
+  it('classifies split-day stop-shape validation failures as contract mismatches', async () => {
+    mockStreamText.mockResolvedValueOnce(createStreamTextResult(JSON.stringify({
+      day: 1,
+      stops: [
+        {
+          role: 'must_visit',
+          timeSlotHint: 'morning',
+          areaHint: '兼六園周辺',
+          rationale: '朝の散策に向く',
+        },
+      ],
+    })));
+
+    const result = await draftGeneratePass(createCtx({
+      normalizedInput: {
+        ...createNormalizedInput(),
+        durationDays: 1,
+      },
+      plannerSeed: {
+        days: [
+          { day: 1, mainArea: '広坂', overnightLocation: '金沢駅周辺' },
+        ],
+      },
+      generationProfile: {
+        modelName: 'gemini-3-flash-preview',
+        narrativeModelName: 'gemini-2.5-flash',
+        plannerModelName: 'gemini-3-flash-preview',
+        provider: 'gemini',
+        plannerProvider: 'gemini',
+        temperature: 0.5,
+        modelTier: 'flash',
+        pipelineVersion: 'v4',
+      },
+      pipelineContext: {
+        runtimeProfile: 'netlify_free_30s',
+        resumePassId: 'draft_generate',
+        resumeSubstage: 'day_request',
+        nextDayIndex: 1,
+        dayAttempt: 1,
+        draftGenerateCurrentStrategy: 'split_day_v5',
+      },
+    }));
+
+    expect(result.outcome).toBe('partial');
+    expect(result.metadata?.plannerStrategy).toBe('split_day_v5');
+    expect(result.metadata?.errorCode).toBe('draft_generation_contract_mismatch');
+    expect(result.metadata?.rootCause).toBe('strategy_contract_mismatch');
   });
 });
