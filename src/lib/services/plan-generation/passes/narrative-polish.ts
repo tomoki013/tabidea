@@ -178,7 +178,6 @@ export async function narrativePolishPass(
     fetchRagContext(normalizedInput),
     resolveLanguageModel(provider as AIProviderName, modelName),
   ]);
-
   const narrativeTimeoutMs = Math.max(4_000, ctx.budget.remainingMs() - NARRATIVE_ABORT_HEADROOM_MS);
   const narrativeAbortSignal = AbortSignal.timeout(narrativeTimeoutMs);
 
@@ -291,7 +290,6 @@ export async function narrativePolishPassStreaming(
     fetchRagContext(normalizedInput),
     resolveLanguageModel(provider as AIProviderName, modelName),
   ]);
-
   const narrativeTimeoutMs = Math.max(4_000, ctx.budget.remainingMs() - NARRATIVE_ABORT_HEADROOM_MS);
   const narrativeAbortSignal = AbortSignal.timeout(narrativeTimeoutMs);
 
