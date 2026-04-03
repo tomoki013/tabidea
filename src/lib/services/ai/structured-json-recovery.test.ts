@@ -1,10 +1,27 @@
 import { z } from 'zod';
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import type { LanguageModelV1 } from 'ai';
+
+const mockStreamText = vi.fn();
+
+vi.mock('ai', () => ({
+  streamText: mockStreamText,
+}));
+
 import {
   parseTextJsonObjectDetailed,
+  recoverTextJson,
   salvageIncompleteJson,
   TextJsonParseError,
 } from './structured-json-recovery';
+
+function createStreamTextResult(text: string) {
+  return {
+    textStream: (async function* generate() {
+      yield text;
+    })(),
+  };
+}
 
 describe('salvageIncompleteJson', () => {
   it('returns null when no JSON present', () => {
@@ -180,5 +197,57 @@ describe('parseTextJsonObjectDetailed', () => {
       expect(parseError.extractedJson).not.toBeNull();
       expect(parseError.rawText).toBe(input);
     }
+  });
+});
+
+describe('recoverTextJson', () => {
+  beforeEach(() => {
+    mockStreamText.mockReset();
+  });
+
+  it('uses slots-specific recovery instructions for draft outlines', async () => {
+    const outlineSchema = z.object({
+      day: z.number(),
+      slots: z.array(z.object({
+        slotIndex: z.number(),
+        role: z.string(),
+        timeSlotHint: z.string(),
+      })),
+    });
+
+    mockStreamText.mockResolvedValueOnce(createStreamTextResult(JSON.stringify({
+      day: 1,
+      slots: [
+        {
+          slotIndex: 1,
+          role: 'meal',
+          timeSlotHint: 'midday',
+        },
+      ],
+    })));
+
+    const result = await recoverTextJson({
+      resolveModel: async () => ({ provider: 'mock-model' }) as LanguageModelV1,
+      modelName: 'mock-model',
+      llmSchema: outlineSchema,
+      system: 'outline system',
+      prompt: 'outline prompt',
+      sourceText: '{"day":1,"stops":[{"name":"近江町市場","role":"meal","timeSlotHint":"midday"}',
+      temperature: 0.4,
+      maxTokens: 900,
+      fallbackLabel: 'outline-test',
+      recoveryMode: 'draft_outline',
+    });
+
+    expect(result.usedTextRecovery).toBe(true);
+    expect(result.object.slots[0]?.slotIndex).toBe(1);
+    expect(mockStreamText).toHaveBeenCalledTimes(1);
+    expect(mockStreamText.mock.calls[0]?.[0]).toMatchObject({
+      maxTokens: 768,
+      temperature: 0.5,
+    });
+    expect(mockStreamText.mock.calls[0]?.[0]?.prompt).toContain('"slots"');
+    expect(mockStreamText.mock.calls[0]?.[0]?.prompt).toContain('slotIndex は 1 からの連番');
+    expect(mockStreamText.mock.calls[0]?.[0]?.prompt).not.toContain('day 用 JSON オブジェクト');
   });
 });

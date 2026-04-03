@@ -1,6 +1,6 @@
 import type { Itinerary } from '@/types';
 import type { TripPatchOperation } from '@/lib/trips/patch';
-import type { TripReplanScope } from '@/lib/trips/replan';
+import type { TripReplanScope } from '@/types/agent-runtime';
 
 interface TripFetchResponse {
   trip: {

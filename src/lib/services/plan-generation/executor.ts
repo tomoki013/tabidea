@@ -15,7 +15,13 @@ import type {
   RepairRecord,
   SessionState,
 } from '@/types/plan-generation';
-import { getNextPassForState, getStateAfterPassCompleted } from './state-machine';
+import {
+  getNextPassForState,
+  getStateAfterPassCompleted,
+  hasCompleteDraftPlan,
+  hasCompletePlannerDraft,
+  hasCompleteTimelineState,
+} from './state-machine';
 import { loadRun, persistRunSession, countRunPasses } from './run-store';
 import { getPass } from './passes';
 import { PlanGenerationLogger } from './logger';
@@ -23,6 +29,100 @@ import { PassExecutionError, PassBudgetExceededError } from './errors';
 import { DEFAULT_RETRY_POLICIES, DEFAULT_QUALITY_POLICY } from './constants';
 import { createV4PipelineTimer } from '@/lib/utils/performance-timer';
 import { logRunCheckpoint } from '@/lib/agent/run-checkpoint-log';
+
+function countTotalStops(session: PlanGenerationSession): number | undefined {
+  if (session.draftPlan) {
+    return session.draftPlan.days.reduce((sum, day) => sum + day.stops.length, 0);
+  }
+  if (session.plannerDraft) {
+    return session.plannerDraft.days.reduce((sum, day) => sum + day.stops.length, 0);
+  }
+  return undefined;
+}
+
+function countUnderfilledDraftDays(session: PlanGenerationSession): number | undefined {
+  if (!session.normalizedInput || !session.draftPlan) {
+    return undefined;
+  }
+
+  const totalDays = session.normalizedInput.durationDays;
+  return session.draftPlan.days.filter((day) => {
+    const hardMinimum = totalDays <= 1
+      ? 1
+      : day.day === 1
+        ? 2
+        : day.day === totalDays
+          ? 2
+          : Math.max(4, session.normalizedInput!.pace === 'relaxed' ? 3 : session.normalizedInput!.pace === 'balanced' ? 4 : 5);
+    return day.stops.length < hardMinimum;
+  }).length;
+}
+
+function getExpectedDayCount(session: PlanGenerationSession): number | undefined {
+  return session.normalizedInput?.durationDays;
+}
+
+function countDays(days: Array<{ day: number }> | undefined): number | undefined {
+  return days?.length;
+}
+
+function validateCompletedPassResult(
+  passId: PassId,
+  session: PlanGenerationSession,
+  patch: Partial<PlanGenerationSession>,
+): { errorCode: string; metadata: Record<string, unknown> } | null {
+  const probeSession: PlanGenerationSession = {
+    ...session,
+    ...patch,
+    pipelineContext: patch.pipelineContext ?? session.pipelineContext,
+    repairHistory: patch.repairHistory ?? session.repairHistory,
+    verifiedEntities: patch.verifiedEntities ?? session.verifiedEntities,
+    warnings: patch.warnings ?? session.warnings,
+    passRuns: session.passRuns,
+  };
+
+  switch (passId) {
+    case 'draft_generate':
+      if (!hasCompletePlannerDraft(probeSession)) {
+        return {
+          errorCode: 'draft_generate_incomplete_day_set',
+          metadata: {
+            normalizedDayCount: getExpectedDayCount(probeSession),
+            draftDayCount: countDays(probeSession.plannerDraft?.days),
+            completenessGateFailed: true,
+          },
+        };
+      }
+      return null;
+    case 'draft_format':
+      if (!hasCompleteDraftPlan(probeSession)) {
+        return {
+          errorCode: 'draft_format_incomplete_day_set',
+          metadata: {
+            normalizedDayCount: getExpectedDayCount(probeSession),
+            draftDayCount: countDays(probeSession.draftPlan?.days),
+            completenessGateFailed: true,
+          },
+        };
+      }
+      return null;
+    case 'timeline_construct':
+      if (!hasCompleteTimelineState(probeSession)) {
+        return {
+          errorCode: 'timeline_construct_incomplete_day_set',
+          metadata: {
+            normalizedDayCount: getExpectedDayCount(probeSession),
+            draftDayCount: countDays(probeSession.draftPlan?.days),
+            timelineDayCount: countDays(probeSession.timelineState?.days),
+            completenessGateFailed: true,
+          },
+        };
+      }
+      return null;
+    default:
+      return null;
+  }
+}
 
 export interface ExecutorResult {
   passId: PassId;
@@ -150,7 +250,25 @@ export async function executeNextPass(
 
   // 結果に応じた処理
   let newState: SessionState = session.state;
-  const patch = buildPassPersistencePatch(passId, result, session);
+  let patch = buildPassPersistencePatch(passId, result, session);
+
+  if (result.outcome === 'completed') {
+    const completenessFailure = validateCompletedPassResult(passId, session, patch);
+    if (completenessFailure) {
+      result = {
+        ...result,
+        outcome: 'failed_terminal',
+        warnings: [completenessFailure.errorCode],
+        metadata: {
+          ...(result.metadata ?? {}),
+          ...completenessFailure.metadata,
+          errorCode: completenessFailure.errorCode,
+          rootCause: 'incomplete_artifact',
+        },
+      };
+      patch = buildPassPersistencePatch(passId, result, session);
+    }
+  }
 
   switch (result.outcome) {
     case 'completed': {
@@ -167,14 +285,14 @@ export async function executeNextPass(
       console.log(`[executor] Pass "${passId}" needs_retry — total attempts: ${totalAttempts}/${retryPolicy.maxRetries + 1}, warnings: ${result.warnings.join('; ')}`);
       if (totalAttempts > retryPolicy.maxRetries + 1) {
         console.error(`[executor] Pass "${passId}" exceeded retry limit — marking session as failed`);
-        newState = 'failed';
+        newState = 'failed_retryable';
       }
       // まだリトライ可能なら状態は変えない
       break;
     }
 
     case 'failed_terminal': {
-      newState = 'failed';
+      newState = 'failed_terminal';
       break;
     }
   }
@@ -258,6 +376,86 @@ export async function executeNextPass(
       : undefined,
     plannerStrategy: typeof result.metadata?.plannerStrategy === 'string'
       ? result.metadata.plannerStrategy
+      : undefined,
+    currentStrategy: typeof result.metadata?.currentStrategy === 'string'
+      ? result.metadata.currentStrategy
+      : typeof updatedSession.pipelineContext?.finalDraftStrategySummary?.lastStrategy === 'string'
+        ? updatedSession.pipelineContext.finalDraftStrategySummary.lastStrategy
+      : typeof updatedSession.pipelineContext?.currentDayExecution?.strategy === 'string'
+        ? updatedSession.pipelineContext.currentDayExecution.strategy
+      : typeof updatedSession.pipelineContext?.draftGenerateCurrentStrategy === 'string'
+        ? updatedSession.pipelineContext.draftGenerateCurrentStrategy
+        : undefined,
+    strategyEscalationCount: typeof result.metadata?.strategyEscalationCount === 'number'
+      ? result.metadata.strategyEscalationCount
+      : typeof updatedSession.pipelineContext?.finalDraftStrategySummary?.escalationCount === 'number'
+        ? updatedSession.pipelineContext.finalDraftStrategySummary.escalationCount
+      : typeof updatedSession.pipelineContext?.draftGenerateStrategyEscalationCount === 'number'
+        ? updatedSession.pipelineContext.draftGenerateStrategyEscalationCount
+        : undefined,
+    recoveryCount: typeof result.metadata?.recoveryCount === 'number'
+      ? result.metadata.recoveryCount
+      : typeof updatedSession.pipelineContext?.finalDraftStrategySummary?.recoveryCount === 'number'
+        ? updatedSession.pipelineContext.finalDraftStrategySummary.recoveryCount
+      : typeof updatedSession.pipelineContext?.draftGenerateRecoveryCount === 'number'
+        ? updatedSession.pipelineContext.draftGenerateRecoveryCount
+        : undefined,
+    draftGeneratePauseCount: typeof result.metadata?.pauseCount === 'number'
+      ? result.metadata.pauseCount
+      : typeof updatedSession.pipelineContext?.finalDraftStrategySummary?.pauseCount === 'number'
+        ? updatedSession.pipelineContext.finalDraftStrategySummary.pauseCount
+        : typeof updatedSession.pipelineContext?.draftGeneratePauseCount === 'number'
+          ? updatedSession.pipelineContext.draftGeneratePauseCount
+          : undefined,
+    sameErrorRecurrenceCount: typeof result.metadata?.sameErrorRecurrenceCount === 'number'
+      ? result.metadata.sameErrorRecurrenceCount
+      : typeof updatedSession.pipelineContext?.currentDayExecution?.sameErrorRecurrenceCount === 'number'
+        ? updatedSession.pipelineContext.currentDayExecution.sameErrorRecurrenceCount
+      : typeof updatedSession.pipelineContext?.draftGenerateSameErrorRecurrenceCount === 'number'
+        ? updatedSession.pipelineContext.draftGenerateSameErrorRecurrenceCount
+        : undefined,
+    fallbackHeavy: typeof updatedSession.pipelineContext?.finalDraftStrategySummary?.fallbackHeavy === 'boolean'
+      ? updatedSession.pipelineContext.finalDraftStrategySummary.fallbackHeavy
+      : undefined,
+    completedDayCount: typeof result.metadata?.completedDayCount === 'number'
+      ? result.metadata.completedDayCount
+      : updatedSession.plannerDraft?.days.length,
+    completedStopCount: typeof result.metadata?.completedStopCount === 'number'
+      ? result.metadata.completedStopCount
+      : countTotalStops(updatedSession),
+    duplicateStopCount: typeof result.metadata?.duplicateStopCount === 'number'
+      ? result.metadata.duplicateStopCount
+      : undefined,
+    underfilledDayCount: typeof result.metadata?.underfilledDayCount === 'number'
+      ? result.metadata.underfilledDayCount
+      : countUnderfilledDraftDays(updatedSession),
+    ragArticleCount: typeof result.metadata?.ragArticleCount === 'number'
+      ? result.metadata.ragArticleCount
+      : undefined,
+    unverifiedRatio: typeof result.metadata?.unverifiedRatio === 'number'
+      ? result.metadata.unverifiedRatio
+      : undefined,
+    normalizedDayCount: typeof result.metadata?.normalizedDayCount === 'number'
+      ? result.metadata.normalizedDayCount
+      : getExpectedDayCount(updatedSession),
+    draftDayCount: typeof result.metadata?.draftDayCount === 'number'
+      ? result.metadata.draftDayCount
+      : countDays(updatedSession.draftPlan?.days ?? updatedSession.plannerDraft?.days),
+    timelineDayCount: typeof result.metadata?.timelineDayCount === 'number'
+      ? result.metadata.timelineDayCount
+      : countDays(updatedSession.timelineState?.days),
+    completenessGateFailed: typeof result.metadata?.completenessGateFailed === 'boolean'
+      ? result.metadata.completenessGateFailed
+      : undefined,
+    repairIterations: updatedSession.repairHistory.length,
+    resumeSourceRunId: typeof updatedSession.pipelineContext?.resumedFromRunId === 'string'
+      ? updatedSession.pipelineContext.resumedFromRunId
+      : undefined,
+    resumeStrategy: typeof updatedSession.pipelineContext?.resumeStrategy === 'string'
+      ? updatedSession.pipelineContext.resumeStrategy
+      : undefined,
+    reusedArtifactKinds: Array.isArray(updatedSession.pipelineContext?.reusedArtifactKinds)
+      ? updatedSession.pipelineContext.reusedArtifactKinds
       : undefined,
     warningCodes: result.warnings,
     ...(verificationCounts

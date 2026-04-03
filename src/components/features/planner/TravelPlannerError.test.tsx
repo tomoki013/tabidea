@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @next/next/no-img-element */
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import TravelPlanner from "@/components/features/planner";
 
@@ -67,6 +67,11 @@ const mockCompose = {
   isGenerating: false,
   isCompleted: false,
   errorMessage: "",
+  failureUi: null as "banner" | "modal" | null,
+  failureKind: null as string | null,
+  canRetry: false,
+  resumeRunId: null as string | null,
+  originSurface: null as "top_page" | "plan_page" | "modal" | null,
   limitExceeded: null as any,
   warnings: [] as string[],
   partialDays: new Map(),
@@ -75,6 +80,7 @@ const mockCompose = {
   previewDescription: "",
   generate: vi.fn(),
   reset: vi.fn(),
+  clearFailure: vi.fn(),
   clearLimitExceeded: vi.fn(),
 };
 
@@ -101,11 +107,17 @@ describe("TravelPlanner Error Handling", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     mockCompose.errorMessage = "";
+    mockCompose.failureUi = null;
     mockCompose.isGenerating = false;
+    mockCompose.canRetry = false;
+    mockCompose.originSurface = null;
   });
 
-  it("shows error message when compose pipeline returns an error", async () => {
+  it("hides the planner form and shows only the retry modal for top-page failures", async () => {
     mockCompose.errorMessage = "Generation failed";
+    mockCompose.failureUi = "banner";
+    mockCompose.canRetry = true;
+    mockCompose.originSurface = "top_page";
 
     render(
       <TravelPlanner
@@ -113,11 +125,37 @@ describe("TravelPlanner Error Handling", () => {
       />
     );
 
-    // Expect error UI with retry button
     await waitFor(() => {
       expect(screen.getByText("Generation failed")).toBeDefined();
-      expect(screen.getByRole("button")).toBeDefined();
+      expect(screen.getByText("title.modal")).toBeDefined();
     });
+
+    expect(screen.queryByText("header.title")).toBeNull();
+    expect(screen.getByText("actions.backToInput")).toBeDefined();
+  });
+
+  it("restores the planner form when back to input is clicked", async () => {
+    mockCompose.errorMessage = "Generation failed";
+    mockCompose.failureUi = "modal";
+    mockCompose.canRetry = true;
+    mockCompose.originSurface = "top_page";
+
+    render(
+      <TravelPlanner
+        initialInput={mockInput}
+      />
+    );
+
+    await waitFor(() => {
+      expect(screen.getByText("actions.backToInput")).toBeDefined();
+    });
+
+    fireEvent.click(screen.getByText("actions.backToInput"));
+
+    await waitFor(() => {
+      expect(screen.getByText("header.title")).toBeDefined();
+    });
+    expect(mockCompose.clearFailure).toHaveBeenCalled();
   });
 
   it("keeps the planner mounted while generation is in progress", async () => {

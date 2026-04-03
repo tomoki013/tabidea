@@ -89,7 +89,7 @@ describe('replanTripItinerary', () => {
     const replanned = await replanTripItinerary({
       itinerary,
       scope: {
-        type: 'block',
+        type: 'block_replan',
         dayIndex: 0,
         blockId: 'blk_001',
       },
@@ -99,5 +99,35 @@ describe('replanTripItinerary', () => {
     expect(replanned.days[0].blocks?.[0].place?.name).toBe('石川県立美術館');
     expect(replanned.days[0].blocks?.[0].reason).toBe('屋内代替');
     expect(replanned.days[0].activities[0].activity).toBe('石川県立美術館');
+  });
+
+  it('accepts legacy weather_fallback scopes and normalizes them internally', async () => {
+    vi.clearAllMocks();
+    const itinerary = createItinerary();
+    mockRegenerateItinerary.mockResolvedValueOnce({
+      ok: true,
+      data: {
+        itinerary,
+        changedDestination: false,
+        retryUsed: false,
+      },
+      meta: {
+        mutationType: 'regeneration',
+        durationMs: 10,
+        warnings: [],
+      },
+    });
+
+    const replanned = await replanTripItinerary({
+      itinerary,
+      scope: {
+        type: 'weather_fallback',
+        dayIndex: 0,
+      },
+      instruction: '雨天対応にして',
+    });
+
+    expect(replanned.days[0].title).toBe(itinerary.days[0].title);
+    expect(mockRegenerateItinerary).toHaveBeenCalledOnce();
   });
 });

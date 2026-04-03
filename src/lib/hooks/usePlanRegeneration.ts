@@ -139,7 +139,7 @@ export function usePlanRegeneration({
             const replanned = await replanTripItinerary({
               tripId,
               baseVersion: tripVersion,
-              scope: { type: "style" },
+              scope: { type: "style_replan" },
               instruction: buildTripStyleInstruction(persistedHistory),
               reason: "user_edit",
               idempotencyKey: globalThis.crypto?.randomUUID?.() ?? `${Date.now()}`,

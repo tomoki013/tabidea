@@ -32,6 +32,7 @@ export interface V4NarrativeRendererInput {
   provider?: AIProviderName;
   temperature: number;
   model?: LanguageModelV1;
+  abortSignal?: AbortSignal;
 }
 
 export interface V4NarrativeDayOutput {
@@ -76,6 +77,7 @@ export async function runNarrativeRendererV4(
     prompt: userPrompt,
     temperature,
     maxRetries: 1,
+    abortSignal: input.abortSignal,
   });
 
   return mergeNarrativeOutput(input.days, result.object.description, result.object.days);
@@ -96,6 +98,7 @@ export async function streamNarrativeRendererV4(
     prompt: userPrompt,
     temperature,
     maxRetries: 1,
+    abortSignal: input.abortSignal,
   });
 
   const finalOutput = result.object.then((output) =>

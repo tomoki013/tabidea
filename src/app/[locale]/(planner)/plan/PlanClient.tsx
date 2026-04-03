@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useRef, useCallback, useState } from "react";
+import { Suspense, useEffect, useRef, useCallback, useMemo, useState } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
@@ -8,6 +8,7 @@ import type { UserInput } from "@/types";
 import { getSamplePlanById } from "@/lib/sample-plans";
 import { usePlanGeneration } from "@/lib/hooks/usePlanGeneration";
 import ComposeLoadingAnimation from "@/components/features/planner/ComposeLoadingAnimation";
+import PlanGenerationFailureSurface from "@/components/features/planner/PlanGenerationFailureSurface";
 import StreamingResultView from "@/components/features/planner/StreamingResultView";
 import { PlanModal } from "@/components/common";
 import { FAQSection, ExampleSection } from "@/components/features/landing";
@@ -29,13 +30,15 @@ function PlanContent() {
   const compose = usePlanGeneration();
   const hasStartedGeneration = useRef(false);
   const samplePlan = sampleId ? getSamplePlanById(sampleId) : null;
-  const sampleInput: UserInput | null = samplePlan
-    ? {
-      ...samplePlan.input,
-      hasMustVisitPlaces: samplePlan.input.hasMustVisitPlaces ?? false,
-      mustVisitPlaces: samplePlan.input.mustVisitPlaces ?? [],
-    }
-    : null;
+  const sampleInput: UserInput | null = useMemo(() => (
+    samplePlan
+      ? {
+        ...samplePlan.input,
+        hasMustVisitPlaces: samplePlan.input.hasMustVisitPlaces ?? false,
+        mustVisitPlaces: samplePlan.input.mustVisitPlaces ?? [],
+      }
+      : null
+  ), [samplePlan]);
 
   const fallbackInput: UserInput = sampleInput || {
     destinations: [],
@@ -55,7 +58,7 @@ function PlanContent() {
 
   // Generate plan from sample using compose pipeline
   const generateFromSample = useCallback(async (sampleInput: UserInput) => {
-    await compose.generate(sampleInput);
+    await compose.generate(sampleInput, { originSurface: "plan_page" });
   }, [compose]);
 
   useEffect(() => {
@@ -83,7 +86,7 @@ function PlanContent() {
     } else if (!sampleId && !legacyQ && !mode) {
       router.replace(localizeHref("/", language));
     }
-  }, [sampleId, legacyQ, mode, router, generateFromSample, language, compose]);
+  }, [sampleId, legacyQ, mode, router, generateFromSample, language, compose, sampleInput, samplePlan]);
 
   const warningBox = compose.warnings.length > 0 ? (
     <div className="w-full max-w-2xl mx-auto px-4 sm:px-0 mt-4">
@@ -135,38 +138,68 @@ function PlanContent() {
   // Error state
   if (compose.errorMessage) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center p-8">
-        <div className="text-6xl mb-4">😢</div>
-        <p className="text-destructive font-medium text-lg">
-          {compose.errorMessage}
-        </p>
-        {sampleId && (
-          <button
-            onClick={() => {
-              hasStartedGeneration.current = false;
-              compose.reset();
+      <div className="w-full max-w-2xl px-4 py-10">
+        {compose.failureUi === "banner" ? (
+          <PlanGenerationFailureSurface
+            variant="banner"
+            message={compose.errorMessage}
+            canRetry={compose.canRetry}
+            onPrimaryAction={() => {
+              if (sampleInput) {
+                void compose.generate(sampleInput, {
+                  isRetry: true,
+                  originSurface: "plan_page",
+                });
+              } else {
+                compose.clearFailure();
+              }
             }}
-            className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors font-bold"
-          >
-            {t("retry")}
-          </button>
+            onSecondaryAction={() => {
+              compose.clearFailure();
+              router.push(localizeHref("/", language));
+            }}
+          />
+        ) : (
+          <PlanGenerationFailureSurface
+            variant="modal"
+            message={compose.errorMessage}
+            canRetry={compose.canRetry}
+            onPrimaryAction={() => {
+              if (sampleInput) {
+                hasStartedGeneration.current = false;
+                void compose.generate(sampleInput, {
+                  isRetry: true,
+                  originSurface: "plan_page",
+                });
+              } else {
+                compose.clearFailure();
+              }
+            }}
+            onSecondaryAction={() => {
+              compose.clearFailure();
+              router.push(localizeHref("/", language));
+            }}
+          />
         )}
-        <Link
-          href={localizeHref("/", language)}
-          className="px-4 py-2 text-stone-600 hover:text-primary transition-colors"
-        >
-          {t("backHome")}
-        </Link>
-        <p className="text-stone-600 text-sm mt-2">
-          {t("contactPrefix")}
-          <a
-            href={localizeHref("/contact", language)}
-            className="text-primary hover:underline font-medium ml-1"
+        <div className="mt-6 flex flex-col items-center gap-3 text-center">
+          {sampleId && (
+            <button
+              onClick={() => {
+                hasStartedGeneration.current = false;
+                compose.clearFailure();
+              }}
+              className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors font-bold"
+            >
+              {t("retry")}
+            </button>
+          )}
+          <Link
+            href={localizeHref("/", language)}
+            className="px-4 py-2 text-stone-600 hover:text-primary transition-colors"
           >
-            {t("contact")}
-          </a>
-          {t("contactSuffix")}
-        </p>
+            {t("backHome")}
+          </Link>
+        </div>
       </div>
     );
   }

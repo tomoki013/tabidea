@@ -175,6 +175,22 @@ function buildActivity(
   };
 }
 
+function buildFallbackActivityDescription(
+  node: ReturnType<typeof reconstructTimelineDays>[number]['nodes'][number],
+): string {
+  const rationale = node.draftStop.rationale?.trim();
+  if (rationale) {
+    return rationale;
+  }
+
+  const activityName =
+    node.draftStop.activityLabel
+    ?? node.placeDetails?.name
+    ?? node.draftStop.name;
+
+  return `${activityName}を楽しみます。`;
+}
+
 function buildTransitInfo(
   leg: ReturnType<typeof reconstructTimelineDays>[number]['legs'][number],
   fromActivity: Activity,
@@ -195,20 +211,103 @@ function buildTransitInfo(
   };
 }
 
-export function sessionToItinerary(session: PlanGenerationSession): Itinerary {
-  const { draftPlan, normalizedInput, narrativeState, generationProfile, evaluationReport } = session;
-  if (!draftPlan || !normalizedInput || !session.timelineState || !narrativeState) {
-    throw new Error('Cannot build itinerary from incomplete run state');
+function assertCompleteTimelineForFinalize(session: PlanGenerationSession): number {
+  const expectedDayCount = session.normalizedInput?.durationDays;
+  if (!expectedDayCount || !session.draftPlan || !session.timelineState) {
+    throw new Error('finalize_incomplete_session_contract');
   }
 
+  const draftDays = session.draftPlan.days;
+  const timelineDays = session.timelineState.days;
+  if (timelineDays.length === 0 || draftDays.length === 0) {
+    throw new Error('finalize_empty_itinerary');
+  }
+
+  if (draftDays.length !== expectedDayCount || timelineDays.length !== expectedDayCount) {
+    throw new Error('finalize_incomplete_itinerary_days');
+  }
+
+  for (let day = 1; day <= expectedDayCount; day += 1) {
+    const draftDay = draftDays.find((entry) => entry.day === day);
+    const timelineDay = timelineDays.find((entry) => entry.day === day);
+    if (!draftDay || !timelineDay || timelineDay.nodes.length === 0) {
+      throw new Error('finalize_incomplete_itinerary_days');
+    }
+  }
+
+  return expectedDayCount;
+}
+
+function destinationMatches(
+  normalizedInput: PlanGenerationSession['normalizedInput'],
+  value?: string,
+): boolean {
+  return value
+    ? (normalizedInput?.destinations ?? []).some((destination) => value.includes(destination))
+    : false;
+}
+
+function hasDepartureConstraintForDay(
+  session: PlanGenerationSession,
+  day: number,
+): boolean {
+  const normalizedInput = session.normalizedInput;
+  if (!normalizedInput) {
+    return false;
+  }
+
+  return (normalizedInput.hardConstraints?.fixedTransports ?? []).some((transport) => {
+    if (transport.day !== day) {
+      return false;
+    }
+    return destinationMatches(normalizedInput, transport.from)
+      || (!transport.to && day === normalizedInput.durationDays);
+  });
+}
+
+function assertNoMiddayOnlyItinerary(
+  session: PlanGenerationSession,
+  timelineDays: ReturnType<typeof reconstructTimelineDays>,
+): void {
+  for (const timelineDay of timelineDays) {
+    if (hasDepartureConstraintForDay(session, timelineDay.day)) {
+      continue;
+    }
+
+    const laterActivityExists = timelineDay.nodes.some((node) =>
+      node.draftStop.role !== 'meal'
+      && node.draftStop.role !== 'accommodation'
+      && (
+        node.draftStop.timeSlotHint === 'afternoon'
+        || node.draftStop.timeSlotHint === 'evening'
+        || node.draftStop.timeSlotHint === 'night'
+      ));
+
+    if (!laterActivityExists) {
+      throw new Error('finalize_activity_only_until_midday');
+    }
+  }
+}
+
+export function sessionToItinerary(session: PlanGenerationSession): Itinerary {
+  const { draftPlan, normalizedInput, narrativeState, generationProfile, evaluationReport } = session;
+  const expectedDayCount = assertCompleteTimelineForFinalize(session);
+
   const timelineDays = reconstructTimelineDays(session);
-  const narrativeByDay = new Map(narrativeState.dayNarratives.map((day) => [day.day, day]));
+  if (timelineDays.length !== expectedDayCount) {
+    throw new Error('finalize_incomplete_itinerary_days');
+  }
+  assertNoMiddayOnlyItinerary(session, timelineDays);
+  const narrativeByDay = new Map((narrativeState?.dayNarratives ?? []).map((day) => [day.day, day]));
 
   let days: DayPlan[] = timelineDays.map((timelineDay) => {
     const narrativeDay = narrativeByDay.get(timelineDay.day);
     const activities = timelineDay.nodes.map((node) => {
       const narrativeActivity = narrativeDay?.activities.find((activity) => activity.draftId === node.draftId);
-      return buildActivity(node, narrativeActivity?.description ?? node.draftStop.rationale);
+      return buildActivity(
+        node,
+        narrativeActivity?.description ?? buildFallbackActivityDescription(node),
+      );
     });
 
     const timelineItems: TimelineItem[] = [];
@@ -238,7 +337,7 @@ export function sessionToItinerary(session: PlanGenerationSession): Itinerary {
   const flightContext: FlightInjectionContext = {
     homeBaseCity: normalizedInput.homeBaseCity ?? session.pipelineContext?.homeBaseCity,
     destination: draftPlan.destination,
-    durationDays: draftPlan.days.length,
+    durationDays: expectedDayCount,
     startDate: normalizedInput.startDate,
     fixedSchedule: normalizedInput.fixedSchedule ?? [],
   };
@@ -264,10 +363,14 @@ export function sessionToItinerary(session: PlanGenerationSession): Itinerary {
   return enrichItineraryMetadata({
     id: randomUUID(),
     destination: draftPlan.destination,
-    description: narrativeState.description || draftPlan.description,
+    description:
+      narrativeState?.description
+      || draftPlan.description
+      || draftPlan.tripIntentSummary,
     reasoning: draftPlan.tripIntentSummary,
     days,
     modelInfo,
+    narrativePending: !narrativeState,
     memoryApplied: Boolean(session.pipelineContext?.memoryEnabled),
     scores: evaluationReport
       ? {
@@ -281,10 +384,10 @@ export function sessionToItinerary(session: PlanGenerationSession): Itinerary {
         : verifiedCount >= totalStops
           ? 'fully_verified'
           : 'partial_verified',
-    title: `${draftPlan.destination} ${draftPlan.days.length}日間の旅程`,
+    title: `${draftPlan.destination} ${expectedDayCount}日間の旅程`,
     destinationSummary: {
       primaryDestination: draftPlan.destination,
-      durationDays: draftPlan.days.length,
+      durationDays: expectedDayCount,
       travelDates: normalizedInput.startDate
         ? {
             start: normalizedInput.startDate,

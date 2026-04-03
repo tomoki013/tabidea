@@ -33,24 +33,30 @@ export type SessionState =
   | 'draft_repaired_partial'
   | 'verification_partial'
   | 'timeline_ready'
+  | 'core_ready'
+  | 'enrichment_running'
   | 'narrative_partial'
   | 'completed'
-  | 'failed'
+  | 'failed_retryable'
+  | 'failed_terminal'
   | 'cancelled';
 
 /** 合法な状態遷移マップ (ランタイムで検証) */
 export const VALID_TRANSITIONS: Record<SessionState, readonly SessionState[]> = {
-  created:                ['normalized', 'failed', 'cancelled'],
-  normalized:             ['draft_generated', 'failed', 'cancelled'],
-  draft_generated:        ['draft_formatted', 'failed', 'cancelled'],
-  draft_formatted:        ['draft_scored', 'failed', 'cancelled'],
-  draft_scored:           ['draft_repaired_partial', 'verification_partial', 'timeline_ready', 'failed', 'cancelled'],
-  draft_repaired_partial: ['draft_scored', 'verification_partial', 'timeline_ready', 'failed', 'cancelled'],
-  verification_partial:   ['timeline_ready', 'failed', 'cancelled'],
-  timeline_ready:         ['narrative_partial', 'completed', 'failed', 'cancelled'],
-  narrative_partial:      ['completed', 'failed', 'cancelled'],
+  created:                ['normalized', 'failed_retryable', 'failed_terminal', 'cancelled'],
+  normalized:             ['draft_generated', 'failed_retryable', 'failed_terminal', 'cancelled'],
+  draft_generated:        ['draft_formatted', 'failed_retryable', 'failed_terminal', 'cancelled'],
+  draft_formatted:        ['draft_scored', 'failed_retryable', 'failed_terminal', 'cancelled'],
+  draft_scored:           ['draft_repaired_partial', 'verification_partial', 'timeline_ready', 'failed_retryable', 'failed_terminal', 'cancelled'],
+  draft_repaired_partial: ['draft_scored', 'verification_partial', 'timeline_ready', 'failed_retryable', 'failed_terminal', 'cancelled'],
+  verification_partial:   ['timeline_ready', 'failed_retryable', 'failed_terminal', 'cancelled'],
+  timeline_ready:         ['core_ready', 'enrichment_running', 'narrative_partial', 'completed', 'failed_retryable', 'failed_terminal', 'cancelled'],
+  core_ready:             ['enrichment_running', 'narrative_partial', 'completed', 'failed_retryable', 'failed_terminal', 'cancelled'],
+  enrichment_running:     ['narrative_partial', 'completed', 'failed_retryable', 'failed_terminal', 'cancelled'],
+  narrative_partial:      ['completed', 'failed_retryable', 'failed_terminal', 'cancelled'],
   completed:              [],
-  failed:                 ['created', 'normalized', 'draft_generated', 'draft_formatted', 'draft_scored', 'verification_partial', 'timeline_ready'],
+  failed_retryable:       ['created', 'normalized', 'draft_generated', 'draft_formatted', 'draft_scored', 'verification_partial', 'timeline_ready', 'core_ready'],
+  failed_terminal:        [],
   cancelled:              [],
 } as const;
 
@@ -81,6 +87,11 @@ export type RunPauseReason =
   | 'runtime_budget_exhausted'
   | 'verify_budget_exhausted';
 
+export type DraftGenerateStrategy =
+  | 'split_day_v5'
+  | 'micro_day_split'
+  | 'constrained_completion';
+
 export type DraftGenerateResumeSubstage =
   | 'seed_request'
   | 'seed_parse'
@@ -90,6 +101,29 @@ export type DraftGenerateResumeSubstage =
   | 'day_chunk_parse'
   | 'day_request'
   | 'day_parse';
+
+export interface DraftGenerateCurrentDayExecution {
+  dayIndex: number;
+  dayType?: 'arrival' | 'middle' | 'departure' | null;
+  strategy: DraftGenerateStrategy;
+  substage: DraftGenerateResumeSubstage;
+  attempt: number;
+  seedAttempt?: number | null;
+  dayAttempt?: number | null;
+  outlineAttempt?: number | null;
+  chunkAttempt?: number | null;
+  plannerRequestAttempt?: number | null;
+  dayChunkIndex?: number | null;
+  sameErrorFingerprint?: string | null;
+  sameErrorRecurrenceCount?: number | null;
+  strategyEscalationCount?: number | null;
+  recoveryCount?: number | null;
+  pauseCount?: number | null;
+  requiredMissingRoles?: string[] | null;
+  outlineArtifact?: PlannerDayOutline | null;
+  chunkArtifacts?: PlannerDayChunkStop[] | null;
+  candidateStops?: PlannerDraftStop[] | null;
+}
 
 /** 各パスが返す統一結果型 */
 export interface PassResult<T = unknown> {
@@ -188,6 +222,31 @@ export interface PipelineContext {
   outlineAttempt?: number | null;
   chunkAttempt?: number | null;
   plannerRequestAttempt?: number | null;
+  draftGenerateStrategyDay?: number | null;
+  draftGenerateCurrentStrategy?: DraftGenerateStrategy | null;
+  draftGenerateStrategyEscalationCount?: number | null;
+  draftGenerateRecoveryCount?: number | null;
+  draftGeneratePauseCount?: number | null;
+  draftGenerateSameErrorFingerprint?: string | null;
+  draftGenerateSameErrorRecurrenceCount?: number | null;
+  currentDayExecution?: DraftGenerateCurrentDayExecution | null;
+  finalDraftStrategySummary?: {
+    strategyDay: number | null;
+    lastStrategy: DraftGenerateStrategy | null;
+    escalationCount: number;
+    recoveryCount: number;
+    pauseCount: number;
+    fallbackHeavy: boolean;
+  } | null;
+  finalizedTripId?: string | null;
+  finalizedTripVersion?: number | null;
+  finalizedCompletionLevel?: string | null;
+  finalizedAt?: string | null;
+  coreReadyAt?: string | null;
+  resumedFromRunId?: string | null;
+  resumeStrategy?: 'same_run_resume' | null;
+  reusedArtifactKinds?: string[] | null;
+  artifactReuseRejectedKinds?: string[] | null;
 }
 
 /** 生成セッション — 生成中の全中間データを保持 */

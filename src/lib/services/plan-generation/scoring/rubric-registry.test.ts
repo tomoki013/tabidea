@@ -200,6 +200,7 @@ describe('evaluateDraft', () => {
     expect(varietyScore!.violations.some(v =>
       v.severity === 'error' && v.message.includes('重複'),
     )).toBe(true);
+    expect(varietyScore!.violations.every(v => v.scope.type === 'day')).toBe(true);
   });
 
   it('flags day count mismatch', () => {
@@ -236,6 +237,15 @@ describe('evaluateDraft', () => {
     const report = evaluateDraft(draft, normalized);
     expect(report.repairTargets.length).toBeGreaterThan(0);
     expect(report.repairTargets[0].priority).toBe(1);
+  });
+
+  it('creates day-scoped repair targets for duplicated spots', () => {
+    const draft = createGoodDraft();
+    draft.days[1].stops.push(createStop({ name: '浅草寺', draftId: 'duplicate-1' }));
+
+    const report = evaluateDraft(draft, createMinimalNormalized());
+    expect(report.repairTargets.some((target) => target.scope.type === 'day' && target.scope.day === 1)).toBe(true);
+    expect(report.repairTargets.some((target) => target.scope.type === 'day' && target.scope.day === 2)).toBe(true);
   });
 
   it('returns pass grade for high-quality draft', () => {

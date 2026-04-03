@@ -62,8 +62,12 @@ describe('validateTransition', () => {
     expect(validateTransition('created', 'normalized')).toBe(true);
   });
 
-  it('allows created → failed', () => {
-    expect(validateTransition('created', 'failed')).toBe(true);
+  it('allows created → failed_retryable', () => {
+    expect(validateTransition('created', 'failed_retryable')).toBe(true);
+  });
+
+  it('allows created → failed_terminal', () => {
+    expect(validateTransition('created', 'failed_terminal')).toBe(true);
   });
 
   it('allows created → cancelled', () => {
@@ -102,16 +106,28 @@ describe('validateTransition', () => {
     expect(validateTransition('timeline_ready', 'narrative_partial')).toBe(true);
   });
 
+  it('allows timeline_ready → core_ready', () => {
+    expect(validateTransition('timeline_ready', 'core_ready')).toBe(true);
+  });
+
   it('allows timeline_ready → completed (skip narrative)', () => {
     expect(validateTransition('timeline_ready', 'completed')).toBe(true);
+  });
+
+  it('allows core_ready → narrative_partial', () => {
+    expect(validateTransition('core_ready', 'narrative_partial')).toBe(true);
+  });
+
+  it('allows core_ready → completed', () => {
+    expect(validateTransition('core_ready', 'completed')).toBe(true);
   });
 
   it('allows narrative_partial → completed', () => {
     expect(validateTransition('narrative_partial', 'completed')).toBe(true);
   });
 
-  it('allows failed → created (retry from scratch)', () => {
-    expect(validateTransition('failed', 'created')).toBe(true);
+  it('allows failed_retryable → created (retry from scratch)', () => {
+    expect(validateTransition('failed_retryable', 'created')).toBe(true);
   });
 
   // Invalid transitions
@@ -126,7 +142,7 @@ describe('validateTransition', () => {
 
   it('rejects cancelled → anything', () => {
     expect(validateTransition('cancelled', 'created')).toBe(false);
-    expect(validateTransition('cancelled', 'failed')).toBe(false);
+    expect(validateTransition('cancelled', 'failed_terminal')).toBe(false);
   });
 
   it('rejects normalized → completed (skip all)', () => {
@@ -139,15 +155,16 @@ describe('validateTransition', () => {
     expect(validateTransition('timeline_ready', 'draft_scored')).toBe(false);
   });
 
-  // Every state can reach failed (except terminal states)
-  it('every non-terminal state can transition to failed', () => {
+  // Every state can reach failure states (except terminal states)
+  it('every non-terminal state can transition to failed_retryable and failed_terminal', () => {
     const nonTerminal: SessionState[] = [
       'created', 'normalized', 'draft_generated', 'draft_formatted', 'draft_scored',
-      'draft_repaired_partial', 'verification_partial', 'timeline_ready',
-      'narrative_partial',
+      'draft_repaired_partial', 'verification_partial', 'timeline_ready', 'core_ready',
+      'enrichment_running', 'narrative_partial',
     ];
     for (const state of nonTerminal) {
-      expect(validateTransition(state, 'failed')).toBe(true);
+      expect(validateTransition(state, 'failed_retryable')).toBe(true);
+      expect(validateTransition(state, 'failed_terminal')).toBe(true);
     }
   });
 
@@ -155,7 +172,7 @@ describe('validateTransition', () => {
   it('every non-terminal state can transition to cancelled', () => {
     const nonTerminal: SessionState[] = [
       'created', 'normalized', 'draft_generated', 'draft_formatted', 'draft_scored',
-      'draft_repaired_partial', 'verification_partial', 'timeline_ready',
+      'draft_repaired_partial', 'verification_partial', 'timeline_ready', 'core_ready',
       'narrative_partial',
     ];
     for (const state of nonTerminal) {
@@ -218,9 +235,11 @@ describe('getNextPassForState', () => {
       ['draft_repaired_partial', 'rule_score'],
       ['verification_partial', 'timeline_construct'],
       ['timeline_ready', 'narrative_polish'],
+      ['core_ready', 'narrative_polish'],
       ['narrative_partial', null],
       ['completed', null],
-      ['failed', null],
+      ['failed_retryable', null],
+      ['failed_terminal', null],
       ['cancelled', null],
     ];
 
@@ -305,79 +324,130 @@ describe('getNextPassForState', () => {
 
 describe('determineResumeState', () => {
   it('returns created when session has no data', () => {
-    const session = createMockSession({ state: 'failed' });
+    const session = createMockSession({ state: 'failed_retryable' });
     expect(determineResumeState(session)).toBe('created');
   });
 
   it('returns normalized when only normalizedInput exists', () => {
     const session = createMockSession({
-      state: 'failed',
+      state: 'failed_retryable',
       normalizedInput: { destinations: ['Tokyo'], durationDays: 3 } as PlanGenerationSession['normalizedInput'],
     });
     expect(determineResumeState(session)).toBe('normalized');
   });
 
-  it('returns draft_generated when draftPlan exists', () => {
+  it('does not return draft_generated for an incomplete plannerDraft', () => {
     const session = createMockSession({
-      state: 'failed',
-      normalizedInput: {} as PlanGenerationSession['normalizedInput'],
+      state: 'failed_retryable',
+      normalizedInput: { durationDays: 2 } as PlanGenerationSession['normalizedInput'],
       plannerDraft: { days: [] } as unknown as PlanGenerationSession['plannerDraft'],
     });
-    expect(determineResumeState(session)).toBe('draft_generated');
+    expect(determineResumeState(session)).toBe('normalized');
   });
 
-  it('returns draft_formatted when draftPlan exists', () => {
+  it('does not return draft_formatted for an incomplete draftPlan', () => {
     const session = createMockSession({
-      state: 'failed',
-      normalizedInput: {} as PlanGenerationSession['normalizedInput'],
+      state: 'failed_retryable',
+      normalizedInput: { durationDays: 2 } as PlanGenerationSession['normalizedInput'],
       plannerDraft: { days: [] } as unknown as PlanGenerationSession['plannerDraft'],
       draftPlan: { destination: 'Tokyo', days: [] } as unknown as PlanGenerationSession['draftPlan'],
     });
-    expect(determineResumeState(session)).toBe('draft_formatted');
+    expect(determineResumeState(session)).toBe('normalized');
   });
 
-  it('returns draft_scored when evaluationReport exists', () => {
+  it('does not return draft_scored for an incomplete draftPlan even if evaluationReport exists', () => {
     const session = createMockSession({
-      state: 'failed',
-      normalizedInput: {} as PlanGenerationSession['normalizedInput'],
+      state: 'failed_retryable',
+      normalizedInput: { durationDays: 2 } as PlanGenerationSession['normalizedInput'],
       plannerDraft: { days: [] } as unknown as PlanGenerationSession['plannerDraft'],
       draftPlan: { destination: 'Tokyo', days: [] } as unknown as PlanGenerationSession['draftPlan'],
       evaluationReport: { overallScore: 65, passGrade: 'marginal' } as unknown as EvaluationReport,
     });
-    expect(determineResumeState(session)).toBe('draft_scored');
+    expect(determineResumeState(session)).toBe('normalized');
   });
 
-  it('returns timeline_ready when timelineState exists', () => {
+  it('does not return timeline_ready for an incomplete timelineState', () => {
     const session = createMockSession({
-      state: 'failed',
-      normalizedInput: {} as PlanGenerationSession['normalizedInput'],
+      state: 'failed_retryable',
+      normalizedInput: { durationDays: 2 } as PlanGenerationSession['normalizedInput'],
       plannerDraft: { days: [] } as unknown as PlanGenerationSession['plannerDraft'],
       draftPlan: { destination: 'Tokyo', days: [] } as unknown as PlanGenerationSession['draftPlan'],
       evaluationReport: { overallScore: 75, passGrade: 'pass' } as unknown as EvaluationReport,
       verifiedEntities: [{ name: 'Tokyo Tower' }] as unknown as PlanGenerationSession['verifiedEntities'],
       timelineState: { days: [] } as unknown as PlanGenerationSession['timelineState'],
     });
-    expect(determineResumeState(session)).toBe('timeline_ready');
+    expect(determineResumeState(session)).toBe('normalized');
   });
 
-  it('returns verification_partial when verifiedEntities exist but no timelineState', () => {
+  it('does not return verification_partial when the draft plan is incomplete', () => {
     const session = createMockSession({
-      state: 'failed',
-      normalizedInput: {} as PlanGenerationSession['normalizedInput'],
+      state: 'failed_retryable',
+      normalizedInput: { durationDays: 2 } as PlanGenerationSession['normalizedInput'],
       plannerDraft: { days: [] } as unknown as PlanGenerationSession['plannerDraft'],
       draftPlan: { destination: 'Tokyo', days: [] } as unknown as PlanGenerationSession['draftPlan'],
       evaluationReport: { overallScore: 75, passGrade: 'pass' } as unknown as EvaluationReport,
       verifiedEntities: [{ name: 'Tokyo Tower' }] as unknown as PlanGenerationSession['verifiedEntities'],
     });
-    expect(determineResumeState(session)).toBe('verification_partial');
+    expect(determineResumeState(session)).toBe('normalized');
+  });
+
+  it('returns draft_formatted only when all requested days are present', () => {
+    const session = createMockSession({
+      state: 'failed_retryable',
+      normalizedInput: { durationDays: 2 } as PlanGenerationSession['normalizedInput'],
+      plannerDraft: {
+        days: [
+          { day: 1, stops: [{ name: 'A' }] },
+          { day: 2, stops: [{ name: 'B' }] },
+        ],
+      } as unknown as PlanGenerationSession['plannerDraft'],
+      draftPlan: {
+        destination: 'Tokyo',
+        days: [
+          { day: 1, stops: [{ name: 'A' }] },
+          { day: 2, stops: [{ name: 'B' }] },
+        ],
+      } as unknown as PlanGenerationSession['draftPlan'],
+    });
+
+    expect(determineResumeState(session)).toBe('draft_formatted');
+  });
+
+  it('returns core_ready when a finalized trip already exists in pipeline context', () => {
+    const session = createMockSession({
+      state: 'failed_retryable',
+      pipelineContext: {
+        finalizedTripId: 'trip_123',
+        finalizedTripVersion: 7,
+      } as PlanGenerationSession['pipelineContext'],
+    });
+
+    expect(determineResumeState(session)).toBe('core_ready');
+  });
+
+  it('returns normalized when currentDayExecution exists for draft_generate continuation', () => {
+    const session = createMockSession({
+      state: 'failed_retryable',
+      normalizedInput: { durationDays: 3 } as PlanGenerationSession['normalizedInput'],
+      pipelineContext: {
+        currentDayExecution: {
+          dayIndex: 2,
+          strategy: 'constrained_completion',
+          substage: 'day_request',
+          attempt: 1,
+        },
+      } as PlanGenerationSession['pipelineContext'],
+    });
+
+    expect(determineResumeState(session)).toBe('normalized');
   });
 });
 
-describe('failed → resume transitions are valid', () => {
-  const resumeTargets: SessionState[] = ['created', 'normalized', 'draft_generated', 'draft_formatted', 'draft_scored', 'verification_partial', 'timeline_ready'];
+describe('failed_retryable → resume transitions are valid', () => {
+  const resumeTargets: SessionState[] = ['created', 'normalized', 'draft_generated', 'draft_formatted', 'draft_scored', 'verification_partial', 'timeline_ready', 'core_ready'];
   for (const target of resumeTargets) {
-    it(`failed → ${target} is allowed`, () => {
-      expect(validateTransition('failed', target)).toBe(true);
+    it(`failed_retryable → ${target} is allowed`, () => {
+      expect(validateTransition('failed_retryable', target)).toBe(true);
     });
   }
 });

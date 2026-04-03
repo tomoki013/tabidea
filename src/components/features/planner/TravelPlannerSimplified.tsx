@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -14,6 +13,7 @@ import {
   restorePendingState,
   clearPendingState,
 } from "@/lib/restore/pending-state";
+import PlanGenerationFailureSurface from "./PlanGenerationFailureSurface";
 
 // ============================================================================
 // Types
@@ -101,6 +101,8 @@ export default function TravelPlannerSimplified({
   // ========================================
   const [showExpiredNotice, setShowExpiredNotice] = useState(false);
   const [showRestoredNotice, setShowRestoredNotice] = useState(false);
+  const [showPlannerInput, setShowPlannerInput] = useState(false);
+  const plannerInputAnchorId = "planner-input-anchor";
 
   // ========================================
   // Handle Compose Pipeline Limit Exceeded
@@ -165,44 +167,73 @@ export default function TravelPlannerSimplified({
   }, []);
 
   const handleGenerate = useCallback(
-    async (inputOverride?: UserInput, options?: { isRetry?: boolean }) => {
+    async (
+      inputOverride?: UserInput,
+      options?: {
+        isRetry?: boolean;
+        originSurface?: "top_page" | "modal";
+        keepInputHidden?: boolean;
+      },
+    ) => {
+      setShowPlannerInput(!options?.keepInputHidden);
       window.scrollTo({ top: 0, behavior: "smooth" });
       await compose.generate(inputOverride || input, options);
     },
     [compose, input]
   );
 
-  // ========================================
-  // Render: Compose Pipeline Error
-  // ========================================
-  if (compose.errorMessage) {
-    const displayMessage = compose.errorMessage;
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center p-8">
-        <div className="text-6xl mb-4">😢</div>
-        <p className="text-destructive font-medium text-lg">{displayMessage}</p>
-        <button
-          onClick={() => {
-            compose.reset();
-            handleGenerate(undefined, { isRetry: true });
-          }}
-          className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors font-bold"
-        >
-          {t("actions.tryAgain")}
-        </button>
-        <p className="text-stone-600 text-sm mt-2">
-          {t("contact.prefix")}
-          <Link
-            href="/contact"
-            className="text-primary hover:underline font-medium ml-1"
-          >
-            {t("contact.link")}
-          </Link>
-          {t("contact.suffix")}
-        </p>
-      </div>
-    );
-  }
+  const effectiveFailureUi =
+    compose.errorMessage && compose.originSurface === "top_page" && !isInModal
+      ? "modal"
+      : compose.failureUi;
+
+  const shouldHidePlannerInputForFailure =
+    Boolean(compose.errorMessage)
+    && effectiveFailureUi === "modal"
+    && !showPlannerInput;
+
+  useEffect(() => {
+    if (!shouldHidePlannerInputForFailure) {
+      return;
+    }
+
+    const anchor = document.getElementById(plannerInputAnchorId);
+    if (!anchor) {
+      return;
+    }
+
+    const frameId = requestAnimationFrame(() => {
+      if (typeof anchor.scrollIntoView === "function") {
+        anchor.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+
+    return () => cancelAnimationFrame(frameId);
+  }, [shouldHidePlannerInputForFailure]);
+
+  const handleReturnToInput = useCallback(() => {
+    setShowPlannerInput(true);
+    compose.clearFailure();
+    if (isInModal) {
+      return;
+    }
+    const anchor = document.getElementById(plannerInputAnchorId);
+    if (anchor && typeof anchor.scrollIntoView === "function") {
+      anchor.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [compose, isInModal]);
+
+  const handleRetryFromFailure = useCallback(async () => {
+    if (!compose.canRetry) {
+      handleReturnToInput();
+      return;
+    }
+    await handleGenerate(undefined, {
+      isRetry: true,
+      originSurface: isInModal ? "modal" : "top_page",
+      keepInputHidden: !isInModal,
+    });
+  }, [compose.canRetry, handleGenerate, handleReturnToInput, isInModal]);
 
   // ========================================
   // Render: Input Flow (Default)
@@ -297,14 +328,44 @@ export default function TravelPlannerSimplified({
         </div>
       )}
 
+      <div id={plannerInputAnchorId} />
+
+      {compose.errorMessage && effectiveFailureUi === "banner" && (
+        <div className="mx-auto mb-4 w-full max-w-5xl px-4">
+          <PlanGenerationFailureSurface
+            variant="banner"
+            message={compose.errorMessage}
+            canRetry={compose.canRetry}
+            onPrimaryAction={handleRetryFromFailure}
+            onSecondaryAction={handleReturnToInput}
+          />
+        </div>
+      )}
+
       {/* Input Flow */}
-      <SimplifiedInputFlow
-        input={input}
-        onChange={handleChange}
-        onGenerate={handleGenerate}
-        isGenerating={compose.isGenerating}
-        isInModal={isInModal}
-      />
+      {!shouldHidePlannerInputForFailure && (
+        <SimplifiedInputFlow
+          input={input}
+          onChange={handleChange}
+          onGenerate={(nextInput) =>
+            handleGenerate(nextInput, {
+              originSurface: isInModal ? "modal" : "top_page",
+            })
+          }
+          isGenerating={compose.isGenerating}
+          isInModal={isInModal}
+        />
+      )}
+
+      {compose.errorMessage && effectiveFailureUi === "modal" && (
+        <PlanGenerationFailureSurface
+          variant="modal"
+          message={compose.errorMessage}
+          canRetry={compose.canRetry}
+          onPrimaryAction={handleRetryFromFailure}
+          onSecondaryAction={handleReturnToInput}
+        />
+      )}
 
       {/* Rate Limit Modals */}
       <LoginPromptModal

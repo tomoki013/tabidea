@@ -8,18 +8,36 @@ export interface FinalizeSessionResult extends PersistTripVersionResult {
   totalDurationMs: number;
 }
 
+interface FinalizeSessionOptions {
+  includeHeroImage?: boolean;
+}
+
 export async function finalizeSessionToTrip(
   session: PlanGenerationSession,
+  options: FinalizeSessionOptions = {},
 ): Promise<FinalizeSessionResult> {
   const timer = createPerformanceTimer('v4:finalize');
   const totalDurationMs = Date.now() - new Date(session.createdAt).getTime();
+  const expectedDayCount = session.normalizedInput?.durationDays;
 
   const itinerary = await timer.measure('session_to_itinerary', () =>
     Promise.resolve(sessionToItinerary(session)),
   );
 
+  if (!expectedDayCount) {
+    throw new Error('finalize_incomplete_session_contract');
+  }
+
+  if (itinerary.days.length === 0) {
+    throw new Error('finalize_empty_itinerary');
+  }
+
+  if (itinerary.days.length !== expectedDayCount) {
+    throw new Error('finalize_incomplete_itinerary_days');
+  }
+
   const destination = session.draftPlan?.destination ?? '';
-  if (destination) {
+  if (destination && options.includeHeroImage !== false) {
     try {
       const heroImage = await timer.measure('hero_image', async () => {
         const { getUnsplashImage } = await import('@/lib/unsplash');

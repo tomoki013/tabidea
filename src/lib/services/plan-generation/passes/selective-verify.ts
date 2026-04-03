@@ -241,8 +241,14 @@ export async function selectiveVerifyPass(
 
   const confirmed = verifiedEntities.filter(v => v.status === 'confirmed').length;
   const invalid = verifiedEntities.filter(v => v.status === 'invalid').length;
+  const unverifiable = verifiedEntities.filter(v => v.status === 'unverifiable').length;
   if (invalid > 0) {
     warnings.push(`${invalid} stop(s) marked as invalid (permanently closed)`);
+  }
+  const totalCount = verifiedEntities.length;
+  const unverifiedRatio = totalCount > 0 ? (unverifiable + invalid) / totalCount : 0;
+  if (unverifiedRatio > 0.5) {
+    warnings.push('high_unverified_ratio');
   }
 
   return {
@@ -255,6 +261,7 @@ export async function selectiveVerifyPass(
       verified: stopsToVerify.length,
       confirmed,
       invalid,
+      unverifiedRatio,
     },
   };
 }

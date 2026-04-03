@@ -74,6 +74,9 @@ function buildRepairPrompt(
   plan: DraftPlan,
 ): string {
   const parts: string[] = [];
+  const otherDayStops = plan.days
+    .filter((day) => day.day !== targetDay.day)
+    .flatMap((day) => day.stops.map((stop) => `Day ${day.day}: ${stop.name}`));
 
   parts.push(`## 修復指示`);
   parts.push(`以下の旅程の ${targetDay.day} 日目を改善してください。`);
@@ -99,12 +102,22 @@ function buildRepairPrompt(
   }
   parts.push('');
 
+  if (otherDayStops.length > 0) {
+    parts.push('## 他の日で既に確定しているスポット');
+    for (const stop of otherDayStops.slice(0, 20)) {
+      parts.push(`- ${stop}`);
+    }
+    parts.push('');
+  }
+
   parts.push(`## 要件`);
   parts.push(`- 上記の問題を解決する改善版の旅程全体を出力してください`);
   parts.push(`- ${targetDay.day} 日目のストップを改善・入れ替えて問題を解消すること`);
   parts.push(`- 他の日は変更せずそのまま返すこと`);
   parts.push(`- must_visit のストップは絶対に削除しないこと`);
   parts.push(`- 各ストップの aiConfidence は正直に評価すること`);
+  parts.push(`- 他の日と重複するスポットは別の実在スポットに置き換えること`);
+  parts.push(`- ストップ数が不足している場合は、この日のエリアに合う実在スポットを追加して最低件数を満たすこと`);
 
   return parts.join('\n');
 }
@@ -220,6 +233,10 @@ export async function localRepairPass(ctx: PassContext): Promise<PassResult<Draf
     const model = await resolveLanguageModel(provider, modelName);
     const { generateObject } = await import('ai');
 
+    const repairTimeoutMs = Math.min(
+      45_000,
+      Math.max(10_000, ctx.budget.remainingMs() - 8_000),
+    );
     const result = await generateObject({
       model,
       schema: draftPlanLlmSchema,
@@ -227,7 +244,7 @@ export async function localRepairPass(ctx: PassContext): Promise<PassResult<Draf
       prompt: userPrompt,
       temperature,
       maxRetries: 0,
-      abortSignal: AbortSignal.timeout(60_000),
+      abortSignal: AbortSignal.timeout(repairTimeoutMs),
     });
 
     const repairedDays = result.object.days.map(d => ({

@@ -21,6 +21,7 @@ interface OverlayProgressPayload {
   previewDestination?: string;
   previewDescription?: string;
   totalDays?: number;
+  pauseStatusText?: string;
 }
 
 interface OverlayState extends OverlayProgressPayload {
@@ -43,6 +44,7 @@ const DEFAULT_STATE: OverlayState = {
   previewDestination: "",
   previewDescription: "",
   totalDays: 0,
+  pauseStatusText: "",
   targetHref: null,
 };
 
@@ -79,6 +81,7 @@ export function PlanGenerationOverlayProvider({
       previewDestination: payload?.previewDestination ?? "",
       previewDescription: payload?.previewDescription ?? "",
       totalDays: payload?.totalDays ?? 0,
+      pauseStatusText: payload?.pauseStatusText ?? "",
     });
   }, []);
 
@@ -95,6 +98,7 @@ export function PlanGenerationOverlayProvider({
         previewDestination: payload.previewDestination ?? prev.previewDestination,
         previewDescription: payload.previewDescription ?? prev.previewDescription,
         totalDays: payload.totalDays ?? prev.totalDays,
+        pauseStatusText: payload.pauseStatusText ?? prev.pauseStatusText,
       };
     });
   }, []);
@@ -138,6 +142,7 @@ export function PlanGenerationOverlayProvider({
         previewDestination={effectiveState.previewDestination}
         previewDescription={effectiveState.previewDescription}
         totalDays={effectiveState.totalDays}
+        pauseStatusText={effectiveState.pauseStatusText}
       />
     </PlanGenerationOverlayContext.Provider>
   );

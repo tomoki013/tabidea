@@ -5,11 +5,19 @@
 
 import type { DraftPlan, CategoryScore, Violation } from '@/types/plan-generation';
 import type { NormalizedRequest } from '@/types/itinerary-pipeline';
-import { MAX_REASONABLE_STOPS_PER_DAY, MIN_STOPS_PER_DAY } from '../constants';
+import { MAX_REASONABLE_STOPS_PER_DAY, MIN_STOPS_PER_DAY, RECOMMENDED_STOPS_PER_DAY } from '../constants';
+
+function resolveHardMinimumStopCount(normalized: NormalizedRequest, day: number): number {
+  const totalDays = normalized.durationDays;
+  if (totalDays <= 1) return 1;
+  if (day === 1) return 2;
+  if (day === totalDays) return 2;
+  return Math.max(4, RECOMMENDED_STOPS_PER_DAY[normalized.pace].min);
+}
 
 export function scoreEditability(
   draft: DraftPlan,
-  _normalized: NormalizedRequest,
+  normalized: NormalizedRequest,
 ): CategoryScore {
   const violations: Violation[] = [];
   const details: string[] = [];
@@ -29,13 +37,15 @@ export function scoreEditability(
       });
     }
 
-    if (day.stops.length < MIN_STOPS_PER_DAY) {
-      score -= 5;
+    const hardMinimum = Math.max(MIN_STOPS_PER_DAY, resolveHardMinimumStopCount(normalized, day.day));
+    if (day.stops.length < hardMinimum) {
+      score -= 10;
       violations.push({
-        severity: 'info',
+        severity: 'error',
         category: 'editability',
         scope: { type: 'day', day: day.day },
-        message: `Day ${day.day}: ストップ数 ${day.stops.length} が少なすぎる`,
+        message: `Day ${day.day}: ストップ数 ${day.stops.length} が最低必要数 ${hardMinimum} を下回っています`,
+        suggestedFix: '同日内で実在スポットを追加し、編集可能な密度まで補ってください',
       });
     }
 

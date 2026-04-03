@@ -7,6 +7,7 @@ export type StructuredRecoveryMode =
   | 'semantic_day'
   | 'draft_plan'
   | 'draft_seed'
+  | 'draft_outline'
   | 'draft_day'
   | 'draft_compact';
 
@@ -330,6 +331,7 @@ function getDefaultRecoveryTimeoutMs(recoveryMode: StructuredRecoveryMode): numb
     case 'draft_seed':
     case 'semantic_seed':
       return 3_000;
+    case 'draft_outline':
     case 'draft_day':
     case 'semantic_day':
       return 3_000;
@@ -351,7 +353,9 @@ function buildTextRecoveryAttempts(
   recoveryMode: StructuredRecoveryMode,
   maxTokens: number,
 ): TextRecoveryAttempt[] {
-  const compactMaxTokens = recoveryMode === 'draft_day' || recoveryMode === 'semantic_day'
+  const compactMaxTokens = recoveryMode === 'draft_outline'
+    ? Math.min(maxTokens, 768)
+    : recoveryMode === 'draft_day' || recoveryMode === 'semantic_day'
     ? Math.min(maxTokens, 1024)
     : recoveryMode === 'draft_seed' || recoveryMode === 'semantic_seed'
       ? Math.min(maxTokens, 1536)
@@ -460,6 +464,26 @@ function buildTextRecoveryPrompt(
   recoveryMode: StructuredRecoveryMode,
   sourceText?: string,
 ): string {
+  if (compact && recoveryMode === 'draft_outline' && sourceText) {
+    return `この不完全な day outline JSON を修正し完成させてください。
+目標: day と slots を持つ 1 日ぶんの JSON オブジェクト。
+スキーマ: { "day": number, "slots": [{ "slotIndex", "role", "timeSlotHint", "areaHint?" }] }
+
+必須ルール:
+- JSON オブジェクトのみ返す
+- day と slots の required fields を満たす
+- slots の各要素は slotIndex, role, timeSlotHint を必ず持つ
+- slotIndex は 1 からの連番にする
+- role=meal を少なくとも 1 件含める
+- timeSlotHint は morning/midday/afternoon/evening/night/flexible のいずれか
+- role は must_visit/recommended/meal/accommodation/filler のいずれか
+- 不完全な末尾は削除し、必ず最後の "}" まで閉じる
+- 文字列は短く保つ
+
+## 前回の不完全出力
+${sourceText.slice(0, 4000)}`;
+  }
+
   if (compact && recoveryMode === 'draft_plan' && sourceText) {
     const expectedDayCount = extractExpectedDayCount(prompt);
     const dayGoalLine = expectedDayCount
@@ -482,7 +506,9 @@ ${dayGoalLine}
 ${sourceText.slice(0, 4000)}`;
   }
 
-  const baseInstructions = recoveryMode === 'draft_day'
+  const baseInstructions = recoveryMode === 'draft_outline'
+    ? '重要: 出力は day outline 用 JSON オブジェクトのみ。slots は required fields を優先し、slotIndex/role/timeSlotHint だけでもよい。'
+    : recoveryMode === 'draft_day'
     ? '重要: 出力は day 用 JSON オブジェクトのみ。stops は required fields を優先し、optional fields は原則省略する。'
     : recoveryMode === 'draft_seed'
       ? '重要: 出力は seed 用 JSON オブジェクトのみ。days は required fields を優先し、description と tripIntentSummary は短く保つ。'

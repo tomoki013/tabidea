@@ -121,7 +121,7 @@ describe('executeNextPass', () => {
 
   it('transitions to failed on failed_terminal outcome', async () => {
     const session = createMockSession({ state: 'normalized' });
-    const failedSession = createMockSession({ state: 'failed' });
+    const failedSession = createMockSession({ state: 'failed_terminal' });
 
     mockLoadRun.mockResolvedValueOnce(session);
     mockPersistRunSession.mockResolvedValueOnce(failedSession);
@@ -135,11 +135,11 @@ describe('executeNextPass', () => {
     const result = await executeNextPass('test-session-id', createMockBudget());
 
     expect(result.outcome).toBe('failed_terminal');
-    expect(result.newState).toBe('failed');
+    expect(result.newState).toBe('failed_terminal');
     expect(mockPersistRunSession).toHaveBeenCalledWith(
       'test-session-id',
       'normalized',
-      'failed',
+      'failed_terminal',
       expect.objectContaining({
         warnings: ['AI generation failed'],
       }),
@@ -238,7 +238,7 @@ describe('executeNextPass', () => {
 
   it('catches thrown errors and returns failed_terminal', async () => {
     const session = createMockSession({ state: 'created' });
-    const failedSession = createMockSession({ state: 'failed' });
+    const failedSession = createMockSession({ state: 'failed_terminal' });
 
     mockLoadRun.mockResolvedValueOnce(session);
     mockPersistRunSession.mockResolvedValueOnce(failedSession);
@@ -250,7 +250,7 @@ describe('executeNextPass', () => {
     const result = await executeNextPass('test-session-id', createMockBudget());
 
     expect(result.outcome).toBe('failed_terminal');
-    expect(result.newState).toBe('failed');
+    expect(result.newState).toBe('failed_terminal');
     expect(result.warnings[0]).toContain('Unexpected crash');
   });
 
@@ -278,6 +278,59 @@ describe('executeNextPass', () => {
         warnings: ['existing warning', 'new warning 1', 'new warning 2'],
       }),
     );
+  });
+
+  it('fails closed when draft_generate completes with fewer days than requested', async () => {
+    const session = createMockSession({
+      state: 'normalized',
+      normalizedInput: { durationDays: 2 } as never,
+    });
+    const failedSession = createMockSession({
+      state: 'failed_terminal',
+      normalizedInput: { durationDays: 2 } as never,
+      plannerDraft: {
+        days: [
+          {
+            day: 1,
+            stops: [{ name: 'Only day' }],
+          },
+        ],
+      } as never,
+    });
+
+    mockLoadRun.mockResolvedValueOnce(session);
+    mockPersistRunSession.mockResolvedValueOnce(failedSession);
+    mockGetPass.mockReturnValue(async () => ({
+      outcome: 'completed' as const,
+      data: {
+        days: [
+          {
+            day: 1,
+            stops: [{ name: 'Only day' }],
+          },
+        ],
+      },
+      warnings: [],
+      durationMs: 1200,
+    }));
+
+    const result = await executeNextPass('test-session-id', createMockBudget());
+
+    expect(result.outcome).toBe('failed_terminal');
+    expect(result.newState).toBe('failed_terminal');
+    expect(mockPersistRunSession).toHaveBeenCalledWith(
+      'test-session-id',
+      'normalized',
+      'failed_terminal',
+      expect.objectContaining({
+        plannerDraft: expect.any(Object),
+      }),
+    );
+    expect(mockLogRunCheckpoint).toHaveBeenLastCalledWith(expect.objectContaining({
+      checkpoint: 'pass_failed',
+      passId: 'draft_generate',
+      errorCode: 'draft_generate_incomplete_day_set',
+    }));
   });
 
   it('throws if no next pass available for terminal state', async () => {

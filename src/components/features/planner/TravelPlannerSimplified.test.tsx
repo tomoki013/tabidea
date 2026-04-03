@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen, fireEvent } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import TravelPlannerSimplified from "./TravelPlannerSimplified";
 
 const { createTranslator } = vi.hoisted(() => {
@@ -71,24 +71,32 @@ vi.mock("@/app/actions/travel-planner", () => ({
   savePlan: vi.fn(),
 }));
 
+const mockCompose = {
+  steps: [] as Array<{ id: string; message: string; status: string }>,
+  currentStep: null as string | null,
+  isGenerating: false,
+  isCompleted: false,
+  errorMessage: "",
+  failureUi: null as "banner" | "modal" | null,
+  failureKind: null as string | null,
+  canRetry: false,
+  resumeRunId: null as string | null,
+  originSurface: null as "top_page" | "plan_page" | "modal" | null,
+  limitExceeded: null as unknown,
+  warnings: [] as string[],
+  partialDays: new Map(),
+  totalDays: 0,
+  previewDestination: "",
+  previewDescription: "",
+  generate: vi.fn(),
+  reset: vi.fn(),
+  clearFailure: vi.fn(),
+  clearLimitExceeded: vi.fn(),
+};
+
 // Mock usePlanGeneration
 vi.mock("@/lib/hooks/usePlanGeneration", () => ({
-  usePlanGeneration: () => ({
-    steps: [],
-    currentStep: null,
-    isGenerating: false,
-    isCompleted: false,
-    errorMessage: "",
-    limitExceeded: null,
-    warnings: [],
-    partialDays: new Map(),
-    totalDays: 0,
-    previewDestination: "",
-    previewDescription: "",
-    generate: vi.fn(),
-    reset: vi.fn(),
-    clearLimitExceeded: vi.fn(),
-  }),
+  usePlanGeneration: () => mockCompose,
 }));
 
 // Mock next/navigation
@@ -144,6 +152,26 @@ vi.mock("framer-motion", () => ({
 }));
 
 describe("TravelPlannerSimplified", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockCompose.steps = [];
+    mockCompose.currentStep = null;
+    mockCompose.isGenerating = false;
+    mockCompose.isCompleted = false;
+    mockCompose.errorMessage = "";
+    mockCompose.failureUi = null;
+    mockCompose.failureKind = null;
+    mockCompose.canRetry = false;
+    mockCompose.resumeRunId = null;
+    mockCompose.originSurface = null;
+    mockCompose.limitExceeded = null;
+    mockCompose.warnings = [];
+    mockCompose.partialDays = new Map();
+    mockCompose.totalDays = 0;
+    mockCompose.previewDestination = "";
+    mockCompose.previewDescription = "";
+  });
+
   it("renders the simplified form", () => {
     render(<TravelPlannerSimplified />);
     // Use flexible matchers or exact strings including the numbers
@@ -216,5 +244,24 @@ describe("TravelPlannerSimplified", () => {
     // 8. Select Pace
     const paceBtn = screen.getByText("バランスよく");
     fireEvent.click(paceBtn);
+  });
+
+  it("shows only the modal failure surface on top-page failure and restores the form on back to input", async () => {
+    mockCompose.errorMessage = "Generation failed";
+    mockCompose.failureUi = "banner";
+    mockCompose.canRetry = true;
+    mockCompose.originSurface = "top_page";
+
+    render(<TravelPlannerSimplified />);
+
+    expect(screen.queryByText("旅行プランを作成")).toBeNull();
+    expect(screen.getByText("Generation failed")).toBeDefined();
+    expect(screen.getAllByText("modal")).toHaveLength(2);
+    expect(screen.queryByText("banner")).toBeNull();
+
+    fireEvent.click(screen.getByText("backToInput"));
+
+    expect(mockCompose.clearFailure).toHaveBeenCalled();
+    expect(screen.getByText("旅行プランを作成")).toBeDefined();
   });
 });

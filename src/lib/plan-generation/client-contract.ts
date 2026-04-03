@@ -14,20 +14,32 @@ export interface GenerationLimitExceeded {
   remaining?: number;
 }
 
+export type GenerationFailureUi = "banner" | "modal";
+export type GenerationOriginSurface = "top_page" | "plan_page" | "modal";
+
 export interface UsePlanGenerationReturn {
   steps: GenerationStep[];
   currentStep: PipelineStepId | null;
   isGenerating: boolean;
   isCompleted: boolean;
   errorMessage: string;
+  failureUi: GenerationFailureUi | null;
+  failureKind: string | null;
+  canRetry: boolean;
+  resumeRunId: string | null;
+  originSurface: GenerationOriginSurface | null;
   limitExceeded: GenerationLimitExceeded | null;
   warnings: string[];
   partialDays: Map<number, PartialDayData>;
   totalDays: number;
   previewDestination: string;
   previewDescription: string;
-  generate: (input: UserInput, options?: { isRetry?: boolean }) => Promise<void>;
+  generate: (
+    input: UserInput,
+    options?: { isRetry?: boolean; originSurface?: GenerationOriginSurface },
+  ) => Promise<void>;
   reset: () => void;
+  clearFailure: () => void;
   clearLimitExceeded: () => void;
 }
 

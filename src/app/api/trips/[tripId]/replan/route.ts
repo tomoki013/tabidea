@@ -1,8 +1,13 @@
 import { NextResponse } from 'next/server';
 import { getUser } from '@/lib/supabase/server';
 import { tripService } from '@/lib/trips/service';
-import { replanTripItinerary, type TripReplanScope } from '@/lib/trips/replan';
+import { replanTripItinerary } from '@/lib/trips/replan';
 import { evalService } from '@/lib/evals/service';
+import {
+  isWeatherFallbackReplanScope,
+  normalizeTripReplanScope,
+  type TripReplanScope,
+} from '@/types/agent-runtime';
 
 interface ReplanTripRequestBody {
   baseVersion: number;
@@ -29,6 +34,7 @@ export async function POST(
     if (!body.scope || !body.instruction) {
       return NextResponse.json({ error: 'unsupported_scope' }, { status: 422 });
     }
+    const normalizedScope = normalizeTripReplanScope(body.scope);
 
     const latest = await tripService.getTripVersion(tripId, user.id);
     if (!latest) {
@@ -53,7 +59,7 @@ export async function POST(
 
     const replannedItinerary = await replanTripItinerary({
       itinerary: latest.itinerary,
-      scope: body.scope,
+      scope: normalizedScope,
       instruction: body.instruction,
     });
 
@@ -62,7 +68,7 @@ export async function POST(
       userId: user.id,
       createdBy: 'agent',
       baseVersion: body.baseVersion,
-      changeType: body.scope.type === 'weather_fallback' ? 'fallback' : 'replan',
+      changeType: isWeatherFallbackReplanScope(normalizedScope) ? 'fallback' : 'replan',
     });
 
     await evalService.evaluateAndSaveItinerary(persistedTrip.itinerary, {
@@ -77,7 +83,7 @@ export async function POST(
     return NextResponse.json({
       tripId: persistedTrip.tripId,
       newVersion: persistedTrip.version,
-      scope: body.scope,
+      scope: normalizedScope,
       itinerary: persistedTrip.itinerary,
     });
   } catch (error) {

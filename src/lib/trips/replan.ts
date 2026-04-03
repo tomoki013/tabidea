@@ -1,39 +1,43 @@
 import type { Itinerary } from '@/types/itinerary';
 import { regenerateItinerary } from '@/lib/services/plan-mutation';
 import { synchronizeItineraryStructures } from './sync';
+import {
+  normalizeTripReplanScope,
+  type TripReplanScope,
+  type CanonicalTripReplanScope,
+} from '@/types/agent-runtime';
 
-export type TripReplanScope =
-  | { type: 'block'; dayIndex: number; blockId: string }
-  | { type: 'day'; dayIndex: number }
-  | { type: 'style' }
-  | { type: 'weather_fallback'; dayIndex?: number; blockId?: string };
-
-function buildReplanInstruction(scope: TripReplanScope, instruction: string): string {
+function buildReplanInstruction(scope: CanonicalTripReplanScope, instruction: string): string {
   switch (scope.type) {
-    case 'block':
+    case 'message_rewind':
+      return `Rebuild the itinerary from the selected conversation point onward while preserving still-valid constraints and locked commitments. ${instruction}`.trim();
+    case 'block_replan':
       return `Replan only the targeted block "${scope.blockId}" on day ${scope.dayIndex + 1}. Preserve every other day and block as-is. ${instruction}`;
-    case 'day':
+    case 'day_replan':
       return `Replan only day ${scope.dayIndex + 1}. Preserve every other day exactly. ${instruction}`;
-    case 'weather_fallback':
+    case 'weather_fallback_replan':
       return `Apply a weather-safe fallback. Prioritize indoor or low-risk alternatives while preserving the trip structure. ${instruction}`;
-    case 'style':
+    case 'style_replan':
     default:
       return `Adjust the overall travel style while preserving the trip length, destination, and locked commitments. ${instruction}`;
   }
 }
 
-function mergeScopedResult(base: Itinerary, candidate: Itinerary, scope: TripReplanScope): Itinerary {
+function mergeScopedResult(base: Itinerary, candidate: Itinerary, scope: CanonicalTripReplanScope): Itinerary {
   switch (scope.type) {
-    case 'style':
+    case 'message_rewind':
       return synchronizeItineraryStructures(candidate, base);
 
-    case 'day': {
+    case 'style_replan':
+      return synchronizeItineraryStructures(candidate, base);
+
+    case 'day_replan': {
       const next = structuredClone(base) as Itinerary;
       next.days[scope.dayIndex] = candidate.days[scope.dayIndex] ?? next.days[scope.dayIndex];
       return synchronizeItineraryStructures(next, base);
     }
 
-    case 'block': {
+    case 'block_replan': {
       const targetDayIndex = scope.dayIndex;
       const targetBlockId = scope.blockId;
       const baseDay = base.days[targetDayIndex];
@@ -60,10 +64,10 @@ function mergeScopedResult(base: Itinerary, candidate: Itinerary, scope: TripRep
       return synchronizeItineraryStructures(next, base);
     }
 
-    case 'weather_fallback': {
+    case 'weather_fallback_replan': {
       if (typeof scope.dayIndex === 'number' && typeof scope.blockId === 'string') {
         return mergeScopedResult(base, candidate, {
-          type: 'block',
+          type: 'block_replan',
           dayIndex: scope.dayIndex,
           blockId: scope.blockId,
         });
@@ -71,7 +75,7 @@ function mergeScopedResult(base: Itinerary, candidate: Itinerary, scope: TripRep
 
       if (typeof scope.dayIndex === 'number') {
         return mergeScopedResult(base, candidate, {
-          type: 'day',
+          type: 'day_replan',
           dayIndex: scope.dayIndex,
         });
       }
@@ -90,13 +94,14 @@ export async function replanTripItinerary(params: {
   instruction: string;
 }): Promise<Itinerary> {
   const base = synchronizeItineraryStructures(params.itinerary, params.itinerary);
+  const normalizedScope = normalizeTripReplanScope(params.scope);
 
   const regeneration = await regenerateItinerary({
     currentPlan: base,
     chatHistory: [
       {
         role: 'user',
-        text: buildReplanInstruction(params.scope, params.instruction),
+        text: buildReplanInstruction(normalizedScope, params.instruction),
       },
     ],
   });
@@ -106,5 +111,5 @@ export async function replanTripItinerary(params: {
   }
 
   const candidate = synchronizeItineraryStructures(regeneration.data.itinerary, base);
-  return mergeScopedResult(base, candidate, params.scope);
+  return mergeScopedResult(base, candidate, normalizedScope);
 }

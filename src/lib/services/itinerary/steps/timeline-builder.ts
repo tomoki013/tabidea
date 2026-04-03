@@ -96,7 +96,6 @@ function buildDayTimeline(
     const openHoursWarning = checkOpeningHours(
       node.stop.placeDetails?.openingHours,
       arrivalTime,
-      departureTime
     );
     if (openHoursWarning) {
       warnings.push(openHoursWarning);
@@ -258,7 +257,6 @@ function parseDayFromDate(
 function checkOpeningHours(
   openingHours: { periods?: Array<{ open: { day: number; time: string }; close?: { day: number; time: string } }> } | undefined,
   arrivalMinutes: number,
-  departureMinutes: number
 ): string | null {
   if (!openingHours?.periods || openingHours.periods.length === 0) {
     return null;
@@ -309,7 +307,7 @@ function trimOverflowNodes(
   const removed = new Set<TimelineNode>();
 
   for (const node of sorted) {
-    if (isHardLockedNode(node, request)) continue;
+    if (isHardLockedNode(node, request) || preservesDayCoverage(node, nodes)) continue;
 
     removed.add(node);
 
@@ -340,12 +338,45 @@ function isHardLockedNode(
   );
 }
 
+function preservesDayCoverage(
+  node: TimelineNode,
+  nodes: TimelineNode[],
+): boolean {
+  if (node.stop.candidate.role === 'accommodation') {
+    return false;
+  }
+
+  const laterCoverageSlots = new Set(['afternoon', 'evening', 'night']);
+  if (
+    node.stop.candidate.role !== 'meal'
+    && laterCoverageSlots.has(node.stop.candidate.timeSlotHint)
+    && nodes.find((candidate) =>
+      candidate.stop.candidate.role !== 'meal'
+      && candidate.stop.candidate.role !== 'accommodation'
+      && candidate.stop.candidate.timeSlotHint === node.stop.candidate.timeSlotHint,
+    ) === node
+  ) {
+    return true;
+  }
+
+  if (node.stop.candidate.role === 'meal') {
+    return nodes.filter((candidate) => candidate.stop.candidate.role === 'meal').length <= 1;
+  }
+
+  return false;
+}
+
 function recalculateTimes(nodes: TimelineNode[], startMinutes: number): TimelineNode[] {
   let currentTime = startMinutes;
 
   return nodes.map((node, i) => {
     if (i > 0) {
-      currentTime += 15;
+      const previousNode = nodes[i - 1];
+      const inferredGap = Math.max(
+        15,
+        timeToMinutes(node.arrivalTime) - timeToMinutes(previousNode.departureTime),
+      );
+      currentTime += inferredGap;
     }
     const arrivalTime = currentTime;
     const departureTime = arrivalTime + node.stayMinutes;
