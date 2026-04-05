@@ -782,7 +782,7 @@ function sanitizeMalformedOutputSample(text: string): string {
   return text.replace(/\s+/g, ' ').slice(0, 200);
 }
 
-function extractFirstJsonObject(source: string): string | null {
+export function extractFirstJsonObject(source: string): string | null {
   const start = source.indexOf('{');
   if (start < 0) {
     return null;

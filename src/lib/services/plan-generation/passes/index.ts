@@ -1,28 +1,23 @@
 /**
- * Pass Registry
+ * Pass Registry (v4 legacy)
  * PassId → PassFn のマッピング
+ *
+ * NOTE: selective_verify と timeline_construct は plan-run rebuild により削除されました。
+ * 新パイプラインは src/lib/services/plan-run/ を参照してください。
  */
 
 import type { PassId, PassFn } from '@/types/plan-generation';
 import { normalizePass } from './normalize';
 import { draftGeneratePass } from './draft-generate';
 import { draftFormatPass } from './draft-format';
-import { ruleScorePass } from './rule-score';
 import { localRepairPass } from './local-repair';
-import { selectiveVerifyPass } from './selective-verify';
-import { timelineConstructPass } from './timeline-construct';
-import { narrativePolishPass } from './narrative-polish';
 
 /** 登録済みパスのレジストリ */
-const PASS_REGISTRY: Record<string, PassFn> = {
+const PASS_REGISTRY: Partial<Record<string, PassFn>> = {
   normalize: normalizePass,
   draft_generate: draftGeneratePass,
   draft_format: draftFormatPass,
-  rule_score: ruleScorePass,
   local_repair: localRepairPass,
-  selective_verify: selectiveVerifyPass,
-  timeline_construct: timelineConstructPass,
-  narrative_polish: narrativePolishPass,
 };
 
 /**

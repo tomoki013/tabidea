@@ -95,7 +95,11 @@
             "draft_format:draft_format_incomplete_day_set": "A missing-day issue was found while formatting the itinerary draft. Please try again.",
             "timeline_construct:timeline_construct_incomplete_day_set": "The timeline builder returned an itinerary with missing days. Please try again.",
             "selective_verify:high_unverified_ratio": "Some spots could not be verified. We recommend confirming details in advance at your destination.",
-            "run_processor_unexpected_error": "An internal problem interrupted itinerary generation. Adjust the conditions slightly or try again in a moment."
+            "run_processor_unexpected_error": "An internal problem interrupted itinerary generation. Adjust the conditions slightly or try again in a moment.",
+            "pipeline_ai_output_error": "A problem occurred while generating the itinerary. Please try again.",
+            "pipeline_timeout": "The AI took too long to respond. Please try again.",
+            "pipeline_day_count_mismatch": "There was a problem assembling the day-by-day schedule. Please try again.",
+            "pipeline_gate_failed": "The itinerary failed a final consistency check. Please try again."
           },
           "stepFailed": {
             "semantic_plan": "AI spot selection failed. Please try again.",
@@ -119,8 +123,10 @@
           },
           "actions": {
             "resume": "Resume from here",
+            "retryFresh": "Try again",
             "adjust": "Adjust conditions",
-            "backToInput": "Back to input"
+            "backToInput": "Back to input",
+            "contactLink": "Contact us if the issue persists"
           }
         }
       },

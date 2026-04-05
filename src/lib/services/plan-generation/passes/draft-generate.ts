@@ -18,6 +18,7 @@ import type {
   PlannerDayOutlineSlot,
   PlannerDraft,
   PlannerDraftDay,
+  PlannerDraftStop,
   PlannerSeed,
   PlannerSeedDay,
 } from '@/types/plan-generation';
@@ -4673,8 +4674,8 @@ export async function draftGeneratePass(ctx: PassContext): Promise<PassResult<Pl
           pauseAfterDayCompletion: false,
           plannerStrategy,
           pathType: resolvePlannerPathType(plannerStrategy),
-          fallbackTriggered: plannerStrategy === 'micro_day_split',
-          fallbackReason: plannerStrategy === 'micro_day_split'
+          fallbackTriggered: (plannerStrategy as string) === 'micro_day_split',
+          fallbackReason: (plannerStrategy as string) === 'micro_day_split'
             ? 'resumed_micro_day_split'
             : undefined,
           currentStrategy: resolveNextDraftGenerateHarnessState(ctx, {

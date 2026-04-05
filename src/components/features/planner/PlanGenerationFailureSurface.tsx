@@ -1,7 +1,10 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import type { GenerationFailureUi } from "@/lib/plan-generation/client-contract";
+import { localizeHref, resolveLanguageFromPathname } from "@/lib/i18n/navigation";
 
 interface PlanGenerationFailureSurfaceProps {
   variant: GenerationFailureUi;
@@ -19,11 +22,12 @@ export default function PlanGenerationFailureSurface({
   onSecondaryAction,
 }: PlanGenerationFailureSurfaceProps) {
   const t = useTranslations("lib.planGeneration.compose.failureSurface");
+  const pathname = usePathname();
   const title =
     variant === "modal" ? t("title.modal") : t("title.banner");
   const description =
     variant === "modal" ? t("description.modal") : t("description.banner");
-  const primaryLabel = canRetry ? t("actions.resume") : t("actions.adjust");
+  const primaryLabel = canRetry ? t("actions.resume") : t("actions.retryFresh");
   const secondaryLabel = t("actions.backToInput");
 
   if (variant === "modal") {
@@ -57,6 +61,16 @@ export default function PlanGenerationFailureSurface({
               {secondaryLabel}
             </button>
           </div>
+          <p className="mt-3 text-center text-xs text-stone-400 dark:text-stone-500">
+            <Link
+              href={localizeHref("/contact", resolveLanguageFromPathname(pathname))}
+              className="underline underline-offset-2 hover:text-stone-600 dark:hover:text-stone-300"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t("actions.contactLink")}
+            </Link>
+          </p>
         </div>
       </div>
     );
