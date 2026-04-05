@@ -3,8 +3,9 @@
 /**
  * usePlanGeneration — run/event ベースの itinerary 生成クライアントフック
  *
- * 新しい `/api/agent/runs` + SSE stream + `/api/trips/:tripId` を使い、
+ * 新パイプライン `/api/v1/plan-runs` + SSE events + `/api/v1/trips/:tripId` を使い、
  * 既存の ComposeLoadingAnimation / StreamingResultView 契約を維持する。
+ * 設計書: design/tabidea_plan_generation_redesign_20260404.md
  */
 
 import { useState, useCallback, useRef } from "react";
@@ -24,7 +25,6 @@ import { saveLocalPlan, notifyPlanChange } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
 import { usePlanGenerationOverlay } from "@/context/PlanGenerationOverlayContext";
 import { useUserPlans } from "@/context/UserPlansContext";
-import { readSSEStream } from "@/lib/utils/sse-reader";
 import type { UserType } from "@/lib/limits/config";
 import { fetchTripItinerary } from "@/lib/trips/client";
 import {
@@ -33,17 +33,13 @@ import {
   completeComposeSteps,
 } from "@/lib/plan-generation/progress";
 
+// 新パイプライン: coarse PlanRunState → PipelineStepId マッピング
 const SESSION_STATE_TO_STEP: Record<string, PipelineStepId> = {
   created: "normalize",
-  normalized: "semantic_plan",
-  draft_generated: "feasibility_score",
-  draft_formatted: "feasibility_score",
-  draft_scored: "route_optimize",
-  draft_repaired_partial: "route_optimize",
-  verification_partial: "place_resolve",
-  timeline_ready: "timeline_build",
-  narrative_partial: "narrative_render",
+  running: "normalize",
+  paused: "timeline_build",
   completed: "narrative_render",
+  failed: "narrative_render",
 };
 
 const PASS_TO_FAILED_STEP: Record<string, string> = {
@@ -55,10 +51,18 @@ const PASS_TO_FAILED_STEP: Record<string, string> = {
   selective_verify: "place_resolve",
   timeline_construct: "unknown",
   narrative_polish: "narrative_render",
+  // 新パイプライン
+  normalize_request: "normalize",
+  plan_frame_build: "semantic_plan",
+  draft_validate: "route_optimize",
+  draft_repair_local: "route_optimize",
+  timeline_finalize: "timeline_build",
+  completion_gate: "timeline_build",
+  persist_completed_trip: "narrative_render",
 };
 
-const USER_FACING_WARNING_PASSES = new Set(["selective_verify", "narrative_polish", "timeline_construct"]);
 const PASS_TO_ACTIVE_STEP: Partial<Record<string, PipelineStepId>> = {
+  // 旧パイプライン
   normalize: "normalize",
   draft_generate: "semantic_plan",
   draft_format: "feasibility_score",
@@ -67,11 +71,20 @@ const PASS_TO_ACTIVE_STEP: Partial<Record<string, PipelineStepId>> = {
   selective_verify: "place_resolve",
   timeline_construct: "timeline_build",
   narrative_polish: "narrative_render",
+  // 新パイプライン
+  normalize_request: "normalize",
+  plan_frame_build: "semantic_plan",
+  draft_generate_v2: "semantic_plan",
+  draft_validate: "route_optimize",
+  draft_repair_local: "route_optimize",
+  timeline_finalize: "timeline_build",
+  completion_gate: "timeline_build",
+  persist_completed_trip: "narrative_render",
 };
 
 const SUCCESS_DISPLAY_MS = 2000;
 const STREAM_RESUME_BACKOFF_MS = 750;
-const AUTO_RETRYABLE_RESUME_LIMIT = 3;
+const AUTO_RESUME_SLICE_LIMIT = 6;
 const DETAILED_ERROR_MAP: Record<string, string> = {
   'draft_generate:draft_generation_timeout': 'errors.generationCodes.draft_generate:draft_generation_timeout',
   'draft_generate:draft_generation_invalid_output': 'errors.generationCodes.draft_generate:draft_generation_invalid_output',
@@ -123,6 +136,8 @@ const KNOWN_GENERATION_ERROR_CODES = new Set([
   'timeline_construct_incomplete_day_set',
   'high_unverified_ratio',
   'run_processor_unexpected_error',
+  'plan_run_resume_internal_error',
+  'internal_error',
 ]);
 
 const NON_RETRYABLE_ERROR_CODES = new Set([
@@ -137,34 +152,31 @@ const NON_RETRYABLE_ERROR_CODES = new Set([
   'finalize_incomplete_itinerary_days',
   'finalize_activity_only_until_midday',
   'run_processor_unexpected_error',
+  'plan_run_resume_internal_error',
+  'internal_error',
 ]);
 
 const MODAL_BLOCKING_ERROR_CODES = new Set(NON_RETRYABLE_ERROR_CODES);
 
-interface PreflightResponse {
-  ok: boolean;
-  allowed?: boolean;
-  userType?: string;
-  remaining?: number;
-  resetAt?: string | null;
-  metadata?: {
-    modelName: string;
-    narrativeModelName: string;
-    modelTier: "flash" | "pro";
-    provider: string;
-  };
-  error?: string;
-  limitExceeded?: boolean;
-  degraded?: boolean;
-}
-
 interface CreateRunResponse {
   runId: string;
-  threadId?: string | null;
-  tripId?: string | null;
-  status: string;
-  streamUrl: string;
-  processUrl?: string | null;
+  accessToken?: string | null;
+  statusUrl?: string;
+  resumeUrl?: string;
+  resultUrl?: string;
+  state?: string;
+  stateVersion?: number;
+  currentPassId?: string | null;
+  resumeHint?: {
+    mode?: "auto" | "manual" | "none";
+    reason?: string | null;
+    retryAfterMs?: number | null;
+  } | null;
+  execution?: {
+    status?: "idle" | "running";
+    leaseExpiresAt?: string | null;
+    sliceId?: string | null;
+  } | null;
 }
 
 interface CreateRunErrorResponse {
@@ -175,64 +187,61 @@ interface CreateRunErrorResponse {
   resetAt?: string | null;
 }
 
-interface AgentRunEvent {
-  event:
-    | "run.started"
-    | "run.progress"
-    | "run.day.started"
-    | "run.day.completed"
-    | "run.retryable_failed"
-    | "run.core_ready"
-    | "assistant.delta"
-    | "tool.call.started"
-    | "tool.call.finished"
-    | "tool.call.failed"
-    | "plan.draft.created"
-    | "plan.block.verified"
-    | "plan.block.flagged"
-    | "itinerary.updated"
-    | "run.paused"
-    | "run.finished"
-    | "run.failed";
-  runId: string;
-  seq: number;
-  timestamp: string;
-  phase?: string;
-  state?: string;
-  passId?: string;
-  outcome?: string;
-  warnings?: string[];
-  destination?: string;
-  description?: string;
-  totalDays?: number;
-  day?: number;
-  dayData?: PartialDayData;
-  isComplete?: boolean;
-  tripId?: string;
-  tripVersion?: number;
-  completionLevel?: string;
-  error?: string;
-  errorCode?: string;
-  rootCause?: string;
-  invalidFieldPath?: string;
-  retryable?: boolean;
-  nextPassId?: string | null;
-  nextSubstage?: string | null;
-  pauseReason?: string | null;
-  nextDayIndex?: number | null;
-  dayIndex?: number | null;
-  dayAttempt?: number | null;
-  outlineAttempt?: number | null;
-  chunkAttempt?: number | null;
-  completedDayCount?: number | null;
-  strategy?: string | null;
-  substage?: string | null;
-  attempt?: number | null;
-  plannerStrategy?: string | null;
+interface RunFailurePayload {
+  passId?: string | null;
+  errorCode?: string | null;
+  message?: string | null;
+  rootCause?: string | null;
+  invalidFieldPath?: string | null;
+  retryable?: boolean | null;
 }
 
-interface ResumeRunErrorResponse {
+interface ResumeErrorResponse {
   error?: string;
+  message?: string | null;
+  stage?: string | null;
+  retryable?: boolean | null;
+  failure?: RunFailurePayload | null;
+  recoveredState?: string | null;
+}
+
+interface RunStatusResponse {
+  runId: string;
+  state: string;
+  stateVersion?: number;
+  executionStatus?: "advanced" | "already_running" | "terminal";
+  currentPassId?: string | null;
+  lastCompletedPassId?: string | null;
+  completedTripId?: string | null;
+  completedTripVersion?: number | null;
+  failure?: RunFailurePayload | null;
+  resumeHint?: {
+    mode?: "auto" | "manual" | "none";
+    reason?: string | null;
+    retryAfterMs?: number | null;
+  } | null;
+  execution?: {
+    status?: "idle" | "running";
+    leaseExpiresAt?: string | null;
+    sliceId?: string | null;
+  } | null;
+  pauseContext?: {
+    pauseReason?: string | null;
+    nextDayNumber?: number | null;
+    resumePassId?: string | null;
+  } | null;
+}
+
+interface RunResultResponse {
+  state?: string;
+  tripId?: string;
+  tripVersion?: number;
+  itinerary?: import('@/types').Itinerary;
+  failure?: RunFailurePayload | null;
+  pauseContext?: RunStatusResponse["pauseContext"] | null;
+  resumeHint?: RunStatusResponse["resumeHint"] | null;
+  execution?: RunStatusResponse["execution"] | null;
+  currentPassId?: string | null;
 }
 
 interface PlanGenerationFailureState {
@@ -244,18 +253,23 @@ interface PlanGenerationFailureState {
   originSurface: GenerationOriginSurface | null;
 }
 
-function resolvePauseAttempt(event: AgentRunEvent): number | null {
-  if (typeof event.chunkAttempt === "number") return event.chunkAttempt;
-  if (typeof event.outlineAttempt === "number") return event.outlineAttempt;
-  if (typeof event.dayAttempt === "number") return event.dayAttempt;
-  return null;
-}
-
 function buildPauseStatusMessage(
   t: ReturnType<typeof useTranslations>,
-  event: AgentRunEvent,
+  event: {
+    pauseReason?: string | null;
+    nextDayIndex?: number | null;
+    dayAttempt?: number | null;
+    outlineAttempt?: number | null;
+    chunkAttempt?: number | null;
+  },
 ): string {
-  const attempt = resolvePauseAttempt(event);
+  const attempt = typeof event.chunkAttempt === "number"
+    ? event.chunkAttempt
+    : typeof event.outlineAttempt === "number"
+      ? event.outlineAttempt
+      : typeof event.dayAttempt === "number"
+        ? event.dayAttempt
+        : null;
   if (typeof event.nextDayIndex === "number" && typeof attempt === "number" && attempt >= 3) {
     return t("pause.dayRetrying", { day: event.nextDayIndex });
   }
@@ -265,11 +279,58 @@ function buildPauseStatusMessage(
       return t("pause.recovery_required");
     case "runtime_budget_exhausted":
       return t("pause.runtime_budget_exhausted");
+    case "day_unit_boundary":
+      return t("pause.waiting");
+    case "infrastructure_interrupted":
+      return t("pause.recovery_required");
     case "verify_budget_exhausted":
       return t("pause.verify_budget_exhausted");
     default:
       return t("pause.waiting");
   }
+}
+
+class PlanGenerationRequestError extends Error {
+  errorCode?: string;
+  retryable?: boolean;
+  rootCause?: string;
+  failedPassId?: string;
+
+  constructor(message: string, options?: {
+    errorCode?: string;
+    retryable?: boolean;
+    rootCause?: string;
+    failedPassId?: string;
+  }) {
+    super(message);
+    this.name = 'PlanGenerationRequestError';
+    this.errorCode = options?.errorCode;
+    this.retryable = options?.retryable;
+    this.rootCause = options?.rootCause;
+    this.failedPassId = options?.failedPassId;
+  }
+}
+
+function buildPausedFailureState(
+  t: ReturnType<typeof useTranslations>,
+  runId: string,
+  options?: {
+    pauseReason?: string | null;
+    nextDayNumber?: number | null;
+    originSurface?: GenerationOriginSurface;
+  },
+): PlanGenerationFailureState {
+  return {
+    message: buildPauseStatusMessage(t, {
+      pauseReason: options?.pauseReason ?? "runtime_budget_exhausted",
+      nextDayIndex: options?.nextDayNumber ?? null,
+    }),
+    ui: "banner",
+    kind: "run_paused",
+    canRetry: true,
+    resumeRunId: runId,
+    originSurface: options?.originSurface ?? null,
+  };
 }
 
 export function usePlanGeneration(): UseComposeGenerationReturn {
@@ -288,6 +349,7 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
   const [failureKind, setFailureKind] = useState<string | null>(null);
   const [canRetry, setCanRetry] = useState(false);
   const [resumeRunId, setResumeRunId] = useState<string | null>(null);
+  const resumeAccessTokenRef = useRef<string | null>(null);
   const [originSurface, setOriginSurface] = useState<GenerationOriginSurface | null>(null);
   const [limitExceeded, setLimitExceeded] = useState<ComposeLimitExceeded | null>(null);
   const [warnings, setWarnings] = useState<string[]>([]);
@@ -390,6 +452,7 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
     setFailureKind(null);
     setCanRetry(false);
     setResumeRunId(null);
+    resumeAccessTokenRef.current = null;
     setOriginSurface(null);
   }, []);
 
@@ -509,13 +572,26 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
         return t("errors.generationCodes.finalize_incomplete_session_contract");
       }
 
-      if (normalizedErrorCode) {
-        return message && message !== normalizedErrorCode
-          ? message
-          : resolveStepErrorMessage(failedPassId, t("errors.generic"));
+      if (/plan_run_resume_internal_error|internal_error/i.test(message)) {
+        return t("errors.generationCodes.run_processor_unexpected_error");
       }
 
-      return message;
+      // New pipeline: classify raw server messages into user-facing categories.
+      // Never leak raw messages (JSON blobs, stack traces, internal Japanese) to the UI.
+      if (/JSON parsing failed|Type validation failed|Unterminated string|invalid_enum_value/i.test(message ?? '')) {
+        return t("errors.generationCodes.pipeline_ai_output_error");
+      }
+      if (/aborted due to timeout|operation.*aborted|AbortError|timed out|DEADLINE_EXCEEDED/i.test(message ?? '')) {
+        return t("errors.generationCodes.pipeline_timeout");
+      }
+      if (/日数が一致しません|frame の日数.*が要求日数/i.test(message ?? '')) {
+        return t("errors.generationCodes.pipeline_day_count_mismatch");
+      }
+      if (/meal block がありません|blocks がありません|timeline が存在|都市数が一致|都市順が一致|title がありません|gate failed/i.test(message ?? '')) {
+        return t("errors.generationCodes.pipeline_gate_failed");
+      }
+
+      return resolveStepErrorMessage(failedPassId, t("errors.generic"));
     },
     [resolveStepErrorMessage, t],
   );
@@ -551,6 +627,7 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
       const canResume = explicitRetryable ?? retryableByCode;
       const shouldUseModal = !canResume
         || MODAL_BLOCKING_ERROR_CODES.has(normalizedErrorCode)
+        || /plan_run_resume_internal_error|internal_error/i.test(normalizedMessage)
         || /strategy_exhausted|finalize_/i.test(normalizedMessage);
 
       return {
@@ -576,35 +653,88 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
     overlay.hideOverlay();
   }, [overlay]);
 
-  const mapUserFacingWarnings = useCallback((passId: string, passWarnings: string[]) => {
-    if (passId !== "selective_verify") {
-      return passWarnings;
+  const buildRunUrl = useCallback((runId: string, path?: string, accessToken?: string | null) => {
+    const basePath = path
+      ? `/api/v1/plan-runs/${runId}/${path}`
+      : `/api/v1/plan-runs/${runId}`;
+    if (!accessToken) {
+      return basePath;
     }
-
-    return passWarnings.flatMap((warning) => {
-      if (warning === "warning_code:places_quota_exceeded") {
-        return [t("warnings.placeVerificationLimited")];
-      }
-      if (warning === "high_unverified_ratio") {
-        return [t("errors.generationCodes.high_unverified_ratio")];
-      }
-      return [];
-    });
-  }, [t]);
-
-  const appendWarnings = useCallback((nextWarnings: string[]) => {
-    if (nextWarnings.length === 0) {
-      return;
-    }
-
-    setWarnings((prev) => {
-      const merged = new Set(prev);
-      for (const warning of nextWarnings) {
-        merged.add(warning);
-      }
-      return [...merged];
-    });
+    return `${basePath}?access_token=${encodeURIComponent(accessToken)}`;
   }, []);
+
+  const fetchRunStatus = useCallback(
+    async (runId: string, accessToken?: string | null): Promise<RunStatusResponse> => {
+      const res = await fetch(buildRunUrl(runId, undefined, accessToken));
+      const payload = await res.json().catch(() => null) as RunStatusResponse | null;
+      if (!res.ok || !payload) {
+        throw new Error(t("errors.streamUnexpectedEnd"));
+      }
+      return payload;
+    },
+    [buildRunUrl, t],
+  );
+
+  const resumeRun = useCallback(
+    async (runId: string, accessToken?: string | null): Promise<RunStatusResponse> => {
+      const res = await fetch(buildRunUrl(runId, "resume", accessToken), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+      const payload = await res.json().catch(() => null) as (RunStatusResponse & ResumeErrorResponse) | null;
+      if (!res.ok) {
+        throw new PlanGenerationRequestError(
+          payload?.failure?.message
+            ?? payload?.message
+            ?? t("errors.streamUnexpectedEnd"),
+          {
+            errorCode: payload?.failure?.errorCode
+              ?? payload?.error
+              ?? 'internal_error',
+            retryable: payload?.failure?.retryable
+              ?? payload?.retryable
+              ?? false,
+            rootCause: payload?.failure?.rootCause
+              ?? payload?.stage
+              ?? undefined,
+            failedPassId: payload?.failure?.passId ?? undefined,
+          },
+        );
+      }
+      if (!payload) {
+        throw new PlanGenerationRequestError(t("errors.streamUnexpectedEnd"), {
+          errorCode: 'internal_error',
+          retryable: false,
+        });
+      }
+      return payload;
+    },
+    [buildRunUrl, t],
+  );
+
+  const syncProgressFromStatus = useCallback((status: RunStatusResponse) => {
+    const pauseStatusText = status.pauseContext
+      ? buildPauseStatusMessage(t, {
+        pauseReason: status.pauseContext.pauseReason ?? undefined,
+        nextDayIndex: status.pauseContext.nextDayNumber ?? undefined,
+      })
+      : "";
+    const mappedStep = status.currentPassId
+      ? PASS_TO_ACTIVE_STEP[status.currentPassId]
+      : status.pauseContext?.resumePassId
+        ? PASS_TO_ACTIVE_STEP[status.pauseContext.resumePassId]
+        : SESSION_STATE_TO_STEP[status.state];
+
+    if (mappedStep) {
+      advanceStep(mappedStep);
+    }
+
+    overlay.syncProgress({
+      currentStep: mappedStep ?? null,
+      steps: stepsRef.current,
+      pauseStatusText,
+    });
+  }, [advanceStep, overlay, t]);
 
   const generate = useCallback(
     async (
@@ -636,23 +766,14 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
       });
 
       try {
-        const createOrResumeRun = async (retry = false): Promise<CreateRunResponse> => {
-          const runRes = await fetch("/api/agent/runs", {
+        const createRun = async (): Promise<CreateRunResponse> => {
+          const runRes = await fetch("/api/v1/plan-runs", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              mode: "create",
-              executionMode: "draft_with_selective_verify",
-              constraints: {
-                runtimeProfile: "netlify_free_30s",
-                costProfile: "safe",
-              },
               input,
               idempotencyKey: globalThis.crypto?.randomUUID?.() ?? `${Date.now()}`,
-              options: {
-                ...options,
-                isRetry: retry || options?.isRetry,
-              },
+              runtimeProfile: "netlify_free_30s",
             }),
             signal,
           });
@@ -675,317 +796,124 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
           return runRes.json() as Promise<CreateRunResponse>;
         };
 
-        const resumeSameRun = async (runId: string): Promise<CreateRunResponse> => {
-          const resumeRes = await fetch(`/api/agent/runs/${runId}/resume`, {
-            method: "POST",
-            signal,
-          });
-
-          if (!resumeRes.ok) {
-            const payload = await resumeRes.json().catch(() => null) as ResumeRunErrorResponse | null;
-            throw new Error(payload?.error ?? `Run resume failed: ${resumeRes.status}`);
-          }
-
-          return resumeRes.json() as Promise<CreateRunResponse>;
-        };
-
-        const processRun = async (run: CreateRunResponse): Promise<void> => {
-          if (!run.processUrl) {
-            return;
-          }
-
-          const processRes = await fetch(run.processUrl, {
-            method: "POST",
-            signal,
-          });
-
-          if (!processRes.ok) {
-            const payload = await processRes.json().catch(() => null) as { error?: string } | null;
-            throw new Error(payload?.error ?? `Process failed: ${processRes.status}`);
-          }
-        };
-
         advanceStep("usage_check");
-
-        const preflightRes = await fetch("/api/itinerary/plan/preflight", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ input, options }),
-          signal,
-        });
-
-        if (!preflightRes.ok) {
-          const payload = await preflightRes.json().catch(() => null) as PreflightResponse | null;
-          if (payload?.limitExceeded) {
-            setLimitExceeded({
-              userType: (payload.userType ?? "free") as UserType,
-              resetAt: payload.resetAt ? new Date(payload.resetAt) : null,
-              remaining: payload.remaining,
-            });
-            setIsGenerating(false);
-            overlay.hideOverlay();
-            return;
-          }
-          throw new Error(payload?.error ?? `Preflight failed: ${preflightRes.status}`);
-        }
-
-        const preflight = await preflightRes.json() as PreflightResponse;
-        if (!preflight.allowed) {
-          if (preflight.limitExceeded) {
-            setLimitExceeded({
-              userType: (preflight.userType ?? "free") as UserType,
-              resetAt: preflight.resetAt ? new Date(preflight.resetAt) : null,
-              remaining: preflight.remaining,
-            });
-            setIsGenerating(false);
-            overlay.hideOverlay();
-            return;
-          }
-          throw new Error("Generation not allowed");
-        }
-
         advanceStep("normalize");
 
-        let run = await createOrResumeRun(Boolean(options?.isRetry));
-        let streamFailure: {
-          rawMessage?: string;
-          errorCode?: string;
-          rootCause?: string;
-          failedPassId?: string;
-          retryable?: boolean;
-          runId: string;
-        } | null = null;
-        let finishedTripId: string | null = run.tripId ?? null;
+        const run = options?.isRetry && resumeRunId
+          ? {
+            runId: resumeRunId,
+            accessToken: resumeAccessTokenRef.current,
+            statusUrl: buildRunUrl(resumeRunId, undefined, resumeAccessTokenRef.current),
+            resumeUrl: buildRunUrl(resumeRunId, "resume", resumeAccessTokenRef.current),
+            resultUrl: buildRunUrl(resumeRunId, "result", resumeAccessTokenRef.current),
+          }
+          : await createRun();
+        resumeAccessTokenRef.current = run.accessToken ?? null;
+
+        let finishedTripId: string | null = null;
         let finishedTripVersion: number | null = null;
-        let lastSeq: number | null = null;
         let finished = false;
         let autoResumeAttempts = 0;
 
         while (!signal.aborted && !finished) {
-          await processRun(run);
+          let status = await resumeRun(run.runId, run.accessToken);
+          syncProgressFromStatus(status);
 
-          const streamHeaders = new Headers();
-          if (lastSeq !== null) {
-            streamHeaders.set("last-event-id", String(lastSeq));
+          if (status.state === "running" || status.executionStatus === "already_running") {
+            await waitForResumeBackoff(signal);
+            status = await fetchRunStatus(run.runId, run.accessToken);
+            syncProgressFromStatus(status);
           }
 
-          const streamRes = await fetch(run.streamUrl, {
-            method: "GET",
-            headers: streamHeaders,
-            signal,
-          });
-
-          if (!streamRes.ok) {
-            const payload = await streamRes.json().catch(() => null) as { error?: string } | null;
-            throw new Error(payload?.error ?? `Stream failed: ${streamRes.status}`);
+          if (status.state === "completed") {
+            finished = true;
+            finishedTripId = status.completedTripId ?? finishedTripId;
+            finishedTripVersion = status.completedTripVersion ?? finishedTripVersion;
+            break;
           }
 
-          let paused = false;
-          let resumeRequiresRunCreate = false;
-
-          await readSSEStream<AgentRunEvent>(streamRes, (event) => {
-            lastSeq = typeof event.seq === "number" ? event.seq : lastSeq;
-
-            switch (event.event) {
-              case "run.progress": {
-                if (event.phase === "pass_started" && event.passId) {
-                  const stepId = PASS_TO_ACTIVE_STEP[event.passId];
-                  if (stepId) {
-                    advanceStep(stepId);
-                  }
-                } else if (event.phase === "narrative_streaming" || event.phase === "narrative_completed") {
-                  advanceStep("narrative_render");
-                } else if (event.state) {
-                  const mappedStep = SESSION_STATE_TO_STEP[event.state];
-                  if (mappedStep) {
-                    advanceStep(mappedStep);
-                  }
-                }
-
-                if (
-                  event.passId
-                  && Array.isArray(event.warnings)
-                  && USER_FACING_WARNING_PASSES.has(event.passId)
-                ) {
-                  const nextWarnings = mapUserFacingWarnings(event.passId, event.warnings);
-                  appendWarnings(nextWarnings);
-                }
-                break;
-              }
-
-              case "plan.draft.created":
-                if (typeof event.totalDays === "number") {
-                  setTotalDays(event.totalDays);
-                }
-                if (event.destination) {
-                  setPreviewDestination(event.destination);
-                }
-                if (event.description) {
-                  setPreviewDescription(event.description);
-                }
-                overlay.syncProgress({
-                  totalDays: typeof event.totalDays === "number" ? event.totalDays : undefined,
-                  previewDestination: event.destination,
-                  previewDescription: event.description,
-                  pauseStatusText: "",
-                });
-                break;
-
-              case "assistant.delta":
-                advanceStep("narrative_render");
-                if (typeof event.day === "number" && event.dayData) {
-                  const day = event.day;
-                  const dayData = event.dayData;
-                  setPartialDays((prev) => {
-                    const next = new Map(prev);
-                    next.set(day, dayData);
-                    return next;
-                  });
-                  setTotalDays((prev) => Math.max(prev, day));
-                }
-                break;
-
-              case "tool.call.failed":
-                if (Array.isArray(event.warnings) && event.warnings.length > 0) {
-                  const nextWarnings = mapUserFacingWarnings("selective_verify", event.warnings);
-                  appendWarnings(nextWarnings);
-                }
-                break;
-
-              case "itinerary.updated":
-                finishedTripId = event.tripId ?? finishedTripId;
-                finishedTripVersion = typeof event.tripVersion === "number" ? event.tripVersion : finishedTripVersion;
-                break;
-
-              case "run.core_ready":
-                finishedTripId = event.tripId ?? finishedTripId;
-                finishedTripVersion = typeof event.tripVersion === "number" ? event.tripVersion : finishedTripVersion;
-                break;
-
-              case "run.retryable_failed":
-                overlay.syncProgress({
-                  pauseStatusText: buildPauseStatusMessage(t, {
-                    event: "run.paused",
-                    runId: event.runId,
-                    seq: event.seq,
-                    timestamp: event.timestamp,
-                    pauseReason: "recovery_required",
-                    nextDayIndex: event.nextDayIndex,
-                    dayAttempt: event.dayAttempt,
-                  }),
-                });
-                break;
-
-              case "run.day.started":
-                if (typeof event.dayIndex === "number") {
-                  setTotalDays((prev) => Math.max(prev, event.dayIndex));
-                }
-                break;
-
-              case "run.day.completed":
-                if (typeof event.completedDayCount === "number") {
-                  setTotalDays((prev) => Math.max(prev, event.completedDayCount));
-                }
-                break;
-
-              case "run.paused":
-                overlay.syncProgress({
-                  pauseStatusText: buildPauseStatusMessage(t, event),
-                });
-                resumeRequiresRunCreate = event.state === "failed_retryable" || event.retryable === true;
-                paused = true;
-                return "stop";
-
-              case "run.finished":
-                finishedTripId = event.tripId ?? finishedTripId;
-                finishedTripVersion = typeof event.tripVersion === "number" ? event.tripVersion : finishedTripVersion;
-                finished = true;
-                return "stop";
-
-              case "run.failed":
-                streamFailure = {
-                  rawMessage: event.error,
-                  errorCode: event.errorCode,
-                  rootCause: event.rootCause,
-                  failedPassId: event.passId,
-                  retryable: event.retryable,
-                  runId: event.runId,
-                };
-                return "stop";
-
-              default:
-                break;
-            }
-          }, { signal });
-
-          if (streamFailure) {
-            if (streamFailure.retryable && autoResumeAttempts < AUTO_RETRYABLE_RESUME_LIMIT) {
-              autoResumeAttempts += 1;
-              overlay.syncProgress({
-                pauseStatusText: buildPauseStatusMessage(t, {
-                  event: "run.paused",
-                  runId: streamFailure.runId,
-                  seq: lastSeq ?? 0,
-                  timestamp: new Date().toISOString(),
-                  pauseReason: "recovery_required",
-                }),
-              });
-              await waitForResumeBackoff(signal);
-              const previousRunId = run.runId;
-              try {
-                run = await resumeSameRun(run.runId);
-              } catch {
-                run = await createOrResumeRun(true);
-              }
-              if (run.runId !== previousRunId) {
-                lastSeq = null;
-                finishedTripId = run.tripId ?? null;
-                finishedTripVersion = null;
-              }
-              streamFailure = null;
-              continue;
-            }
-
+          if (status.state === "failed") {
             applyFailureState(classifyFailurePresentation({
-              ...streamFailure,
-              fallbackOriginSurface: options?.originSurface ?? null,
+              rawMessage: status.failure?.message ?? t("errors.streamUnexpectedEnd"),
+              errorCode: status.failure?.errorCode ?? undefined,
+              rootCause: status.failure?.rootCause ?? undefined,
+              failedPassId: status.failure?.passId ?? undefined,
+              retryable: status.failure?.retryable ?? undefined,
+              runId: run.runId,
+              fallbackOriginSurface: options?.originSurface ?? undefined,
             }));
             return;
           }
 
-          if (finished) {
-            break;
+          if (status.state === "paused") {
+            if (
+              (status.resumeHint?.mode === "auto"
+                || status.pauseContext?.pauseReason === "runtime_budget_exhausted"
+                || status.pauseContext?.pauseReason === "day_unit_boundary")
+              && autoResumeAttempts < AUTO_RESUME_SLICE_LIMIT
+            ) {
+              autoResumeAttempts += 1;
+              await waitForResumeBackoff(signal);
+              continue;
+            }
+
+            applyFailureState(buildPausedFailureState(t, run.runId, {
+              pauseReason: status.pauseContext?.pauseReason ?? undefined,
+              nextDayNumber: status.pauseContext?.nextDayNumber ?? undefined,
+              originSurface: options?.originSurface ?? undefined,
+            }));
+            return;
           }
 
-          if (paused) {
+          if (status.state === "running" || status.executionStatus === "already_running") {
             await waitForResumeBackoff(signal);
-            if (resumeRequiresRunCreate) {
-              const previousRunId = run.runId;
-              try {
-                run = await resumeSameRun(run.runId);
-              } catch {
-                run = await createOrResumeRun(true);
-              }
-              if (run.runId !== previousRunId) {
-                lastSeq = null;
-                finishedTripId = run.tripId ?? null;
-                finishedTripVersion = null;
-              }
-            }
             continue;
           }
 
-          throw new Error(t("errors.generic"));
+          throw new Error(t("errors.streamUnexpectedEnd"));
         }
 
-        if (!finishedTripId) {
-          throw new Error(t("errors.generic"));
+        const resultUrl = buildRunUrl(run.runId, "result", run.accessToken);
+        const resultRes = await fetch(resultUrl, { signal });
+        const resultData = await resultRes.json().catch(() => null) as RunResultResponse | null;
+
+        if (resultRes.status === 422 && resultData?.state === "failed") {
+          applyFailureState(classifyFailurePresentation({
+            rawMessage: resultData.failure?.message ?? t("errors.streamUnexpectedEnd"),
+            errorCode: resultData.failure?.errorCode ?? undefined,
+            rootCause: resultData.failure?.rootCause ?? undefined,
+            failedPassId: resultData.failure?.passId ?? undefined,
+            retryable: resultData.failure?.retryable ?? undefined,
+            runId: run.runId,
+            fallbackOriginSurface: options?.originSurface ?? undefined,
+          }));
+          return;
         }
 
-        const itinerary = await fetchTripItinerary(
-          finishedTripId,
-          finishedTripVersion ?? undefined,
-        );
+        if (resultRes.status === 409 && resultData?.state === "paused") {
+          applyFailureState(buildPausedFailureState(t, run.runId, {
+            pauseReason: resultData.pauseContext?.pauseReason ?? resultData.resumeHint?.reason ?? undefined,
+            nextDayNumber: resultData.pauseContext?.nextDayNumber ?? undefined,
+            originSurface: options?.originSurface ?? undefined,
+          }));
+          return;
+        }
+
+        if (!resultRes.ok || !resultData?.itinerary) {
+          // result endpoint が失敗した場合は旧 endpoint にフォールバック
+          if (!finishedTripId) throw new Error(t("errors.streamUnexpectedEnd"));
+        }
+
+        let itinerary = resultData?.itinerary;
+        if (!itinerary) {
+          // フォールバック: 旧 endpoint
+          itinerary = await fetchTripItinerary(
+            finishedTripId!,
+            finishedTripVersion ?? undefined,
+          );
+        }
+        if (resultData?.tripId) finishedTripId = resultData.tripId;
+        if (typeof resultData?.tripVersion === 'number') finishedTripVersion = resultData.tripVersion;
 
         const completedSteps = completeComposeSteps(stepsRef.current);
         stepsRef.current = completedSteps;
@@ -1017,21 +945,29 @@ export function usePlanGeneration(): UseComposeGenerationReturn {
         }
         applyFailureState(classifyFailurePresentation({
           rawMessage,
-          fallbackOriginSurface: options?.originSurface ?? null,
+          errorCode: err instanceof PlanGenerationRequestError ? err.errorCode : undefined,
+          retryable: err instanceof PlanGenerationRequestError ? err.retryable : undefined,
+          rootCause: err instanceof PlanGenerationRequestError ? err.rootCause : undefined,
+          failedPassId: err instanceof PlanGenerationRequestError ? err.failedPassId : undefined,
+          runId: resumeRunId ?? undefined,
+          fallbackOriginSurface: options?.originSurface ?? undefined,
         }));
       }
     },
     [
       advanceStep,
       initSteps,
-      mapUserFacingWarnings,
       clearFailure,
       classifyFailurePresentation,
       applyFailureState,
-      appendWarnings,
+      buildRunUrl,
+      fetchRunStatus,
       overlay,
+      resumeRun,
+      resumeRunId,
       resolveGeneratedItineraryTarget,
       router,
+      syncProgressFromStatus,
       t,
       waitForResumeBackoff,
       waitForSuccessDisplay,

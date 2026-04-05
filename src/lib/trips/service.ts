@@ -163,6 +163,48 @@ export class TripService {
     };
   }
 
+  /**
+   * trip_id のみで取得 (service role = RLS bypass, user_id フィルターなし)
+   * 新パイプライン用: 匿名 run でも取得できる
+   */
+  async fetchTrip(tripId: string): Promise<{ trip: TripFetchResult['trip']; itinerary: Itinerary }> {
+    const client = getClient();
+    const { data: trip, error: tripError } = await client
+      .from('trips')
+      .select('trip_id, user_id, current_version, title, destination_summary, trip_status, created_at, updated_at')
+      .eq('trip_id', tripId)
+      .single();
+
+    if (tripError || !trip) {
+      throw new Error(`Trip not found: ${tripId}`);
+    }
+
+    const { data: tripVersion, error: versionError } = await client
+      .from('trip_versions')
+      .select('itinerary_json, version')
+      .eq('trip_id', tripId)
+      .eq('version', trip.current_version as number)
+      .single();
+
+    if (versionError || !tripVersion) {
+      throw new Error(`Trip version not found: ${tripId} v${trip.current_version}`);
+    }
+
+    return {
+      trip: {
+        tripId: trip.trip_id as string,
+        userId: (trip.user_id as string | null) ?? null,
+        currentVersion: trip.current_version as number,
+        title: (trip.title as string | null) ?? null,
+        destinationSummary: trip.destination_summary,
+        tripStatus: normalizeTripStatus(trip.trip_status),
+        createdAt: trip.created_at as string,
+        updatedAt: trip.updated_at as string,
+      },
+      itinerary: tripVersion.itinerary_json as Itinerary,
+    };
+  }
+
   async ensureTripOwnership(tripId: string, userId: string): Promise<void> {
     const client = getClient();
     const { data: trip, error } = await client

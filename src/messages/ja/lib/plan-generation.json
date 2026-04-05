@@ -95,7 +95,11 @@
             "draft_format:draft_format_incomplete_day_set": "旅程データの整形中に日数の欠落が見つかりました。もう一度お試しください。",
             "timeline_construct:timeline_construct_incomplete_day_set": "時系列の組み立て結果に不足日があったため、旅程を完成できませんでした。もう一度お試しください。",
             "selective_verify:high_unverified_ratio": "一部のスポット情報が確認できませんでした。現地での事前確認をおすすめします。",
-            "run_processor_unexpected_error": "旅程生成の内部処理で問題が発生しました。条件を少し変えるか、時間をおいてもう一度お試しください。"
+            "run_processor_unexpected_error": "旅程生成の内部処理で問題が発生しました。条件を少し変えるか、時間をおいてもう一度お試しください。",
+            "pipeline_ai_output_error": "旅程データの生成中に問題が発生しました。もう一度お試しください。",
+            "pipeline_timeout": "AIの応答がタイムアウトしました。もう一度お試しください。",
+            "pipeline_day_count_mismatch": "日程の組み立てに問題が発生しました。もう一度お試しください。",
+            "pipeline_gate_failed": "旅程の最終確認に失敗しました。もう一度お試しください。"
           },
           "stepFailed": {
             "semantic_plan": "AIによるスポット選定に失敗しました。もう一度お試しください。",
@@ -119,8 +123,10 @@
           },
           "actions": {
             "resume": "続きから再開",
+            "retryFresh": "もう一度試す",
             "adjust": "条件を見直す",
-            "backToInput": "入力に戻る"
+            "backToInput": "入力に戻る",
+            "contactLink": "問題が続く場合はお問い合わせ"
           }
         }
       },

@@ -183,7 +183,7 @@ export default function TravelPlannerSimplified({
   );
 
   const effectiveFailureUi =
-    compose.errorMessage && compose.originSurface === "top_page" && !isInModal
+    compose.errorMessage && compose.originSurface === "top_page" && !isInModal && !compose.canRetry
       ? "modal"
       : compose.failureUi;
 
@@ -224,16 +224,21 @@ export default function TravelPlannerSimplified({
   }, [compose, isInModal]);
 
   const handleRetryFromFailure = useCallback(async () => {
-    if (!compose.canRetry) {
-      handleReturnToInput();
-      return;
+    if (compose.canRetry) {
+      await handleGenerate(undefined, {
+        isRetry: true,
+        originSurface: isInModal ? "modal" : "top_page",
+        keepInputHidden: !isInModal,
+      });
+    } else {
+      compose.clearFailure();
+      await handleGenerate(undefined, {
+        isRetry: false,
+        originSurface: isInModal ? "modal" : "top_page",
+        keepInputHidden: !isInModal,
+      });
     }
-    await handleGenerate(undefined, {
-      isRetry: true,
-      originSurface: isInModal ? "modal" : "top_page",
-      keepInputHidden: !isInModal,
-    });
-  }, [compose.canRetry, handleGenerate, handleReturnToInput, isInModal]);
+  }, [compose, handleGenerate, isInModal]);
 
   // ========================================
   // Render: Input Flow (Default)
