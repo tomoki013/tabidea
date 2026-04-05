@@ -137,7 +137,7 @@ export async function POST(request: Request, { params }: Params) {
   } catch (error) {
     timer.log();
     const message = error instanceof Error ? error.message : 'Internal error';
-    const effectiveStage = error instanceof PlanRunStoreOperationError ? error.stage : stage;
+    const effectiveStage: ResumeFailurePayload['stage'] = error instanceof PlanRunStoreOperationError ? error.stage : stage;
     const rootCause = error instanceof PlanRunStoreOperationError
       ? JSON.stringify(error.details ?? {})
       : error instanceof Error
