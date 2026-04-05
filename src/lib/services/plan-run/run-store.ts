@@ -297,11 +297,15 @@ export async function transitionPlanRun(
     .from('plan_runs')
     .update(dbPatch)
     .eq('id', runId)
+    .eq('state', from)
     .select('*')
     .single();
 
   if (error || !data) {
-    throw new Error(`Failed to transition plan run ${runId}: ${error?.message}`);
+    throw new PlanRunStoreOperationError(
+      `Failed to transition plan run ${runId} from ${from} to ${to}: ${error?.message ?? 'state mismatch or not found'}`,
+      'update_run',
+    );
   }
 
   return rowToRun(data as RowRecord);

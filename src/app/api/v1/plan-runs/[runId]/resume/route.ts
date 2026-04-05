@@ -25,7 +25,7 @@ interface Params {
 interface ResumeFailurePayload {
   error: 'plan_run_resume_internal_error';
   message: string;
-  stage: 'load_run' | 'auth' | 'claim_execution' | 'execute_slice' | 'commit_slice' | 'unknown';
+  stage: 'load_run' | 'auth' | 'claim_execution' | 'execute_slice' | 'commit_slice' | 'update_run' | 'unknown';
   retryable: false;
   failure?: {
     errorCode: 'plan_run_resume_internal_error';
@@ -157,7 +157,7 @@ export async function POST(request: Request, { params }: Params) {
     });
 
     let recoveredState: ResumeFailurePayload['recoveredState'];
-    if (currentRun && (effectiveStage === 'claim_execution' || effectiveStage === 'unknown') && canExecute(currentRun.state) && nextPassId) {
+    if (currentRun && effectiveStage === 'claim_execution' && canExecute(currentRun.state) && nextPassId) {
       try {
         await transitionPlanRun(currentRun.id, currentRun.state, 'paused', {
           currentPassId: nextPassId,

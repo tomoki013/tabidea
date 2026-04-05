@@ -25,13 +25,9 @@ export async function GET(request: Request, { params }: Params) {
     const { trip, itinerary } = await tripService.fetchTrip(tripId);
 
     // 認可チェック (設計書 §8.5)
+    // TODO: share token validation (設計書 §7.5) が実装されるまで、オーナー以外は 403
     if (trip.userId && trip.userId !== user?.id) {
-      // share token がなければ 403
-      const shareToken = new URL(request.url).searchParams.get('share_token');
-      if (!shareToken) {
-        return NextResponse.json({ error: 'forbidden' }, { status: 403 });
-      }
-      // TODO: share token validation (設計書 §7.5)
+      return NextResponse.json({ error: 'forbidden' }, { status: 403 });
     }
 
     return NextResponse.json({ trip, itinerary });
@@ -70,7 +66,7 @@ export async function DELETE(_request: Request, { params }: Params) {
     const { error } = await client
       .from('trips')
       .delete()
-      .eq('id', tripId)
+      .eq('trip_id', tripId)
       .eq('user_id', user.id);
 
     if (error) {
